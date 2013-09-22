@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vim | blog.kobtea.net]]></title>
+  <link href="http://kobtea.github.io/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://kobtea.github.io/"/>
+  <updated>2013-09-22T23:04:49+09:00</updated>
+  <id>http://kobtea.github.io/</id>
+  <author>
+    <name><![CDATA[kobtea]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[VimでステキなMarkdownライフを送りたい]]></title>
+    <link href="http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim/"/>
+    <updated>2013-09-22T22:57:00+09:00</updated>
+    <id>http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim</id>
+    <content type="html"><![CDATA[<p>インストールするもの。</p>
+
+<ul>
+<li><a href="https://github.com/plasticboy/vim-markdown">https://github.com/plasticboy/vim-markdown</a>
+
+<ul>
+<li>markdown用シンタックスハイライト</li>
+</ul>
+</li>
+<li><a href="https://github.com/kannokanno/previm">https://github.com/kannokanno/previm</a>
+
+<ul>
+<li>markdownのプレビュー</li>
+</ul>
+</li>
+<li><a href="https://github.com/tyru/open-browser.vim">https://github.com/tyru/open-browser.vim</a>
+
+<ul>
+<li>URIをブラウザで開く</li>
+</ul>
+</li>
+</ul>
+
+
+<p>.vimrcに以下を追記する。<br/>
+NeoBundle使ってるよ。</p>
+
+<p>```vim
+NeoBundle &lsquo;plasticboy/vim-markdown&rsquo;
+NeoBundle &lsquo;kannokanno/previm&rsquo;
+NeoBundle &lsquo;tyru/open-browser.vim&rsquo;</p>
+
+<p>&ldquo;g:previm_open_cmd   &rdquo; open-browser使用時は不要
+autocmd BufNewFile,BufRead <em>.{md,mdwn,mkd,mkdn,mark</em>} setfiletype mkd
+```</p>
+
+<p>mkdファイルを良い感じに編集して、<code>:PrevimOpen</code>するといい感じにプレビューが出る。<br/>
+ファイル保存すると、自動で更新される。<br/>
+ステキやん。</p>
+]]></content>
+  </entry>
+  
+</feed>

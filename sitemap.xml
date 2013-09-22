@@ -1,12 +1,20 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://kobtea.github.io/blog/2013/09/22/hello-octopress/</loc>
+        <lastmod>2013-09-22T22:48:43+09:00</lastmod>
+    </url>
+    <url>
+        <loc>http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim/</loc>
+        <lastmod>2013-09-22T23:04:40+09:00</lastmod>
+    </url>
+    <url>
         <loc>http://kobtea.github.io/blog/archives/</loc>
-        <lastmod>2013-09-22T20:51:23+09:00</lastmod>
+        <lastmod>2013-09-22T23:04:40+09:00</lastmod>
     </url>
     <url>
         <loc>http://kobtea.github.io/</loc>
-        <lastmod>2013-09-22T20:51:23+09:00</lastmod>
+        <lastmod>2013-09-22T23:04:40+09:00</lastmod>
     </url>
     <url>
         <loc>http://kobtea.github.io/robots.txt</loc>

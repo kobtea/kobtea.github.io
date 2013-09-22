@@ -4,7 +4,7 @@
   <title><![CDATA[blog.kobtea.net]]></title>
   <link href="http://kobtea.github.io/atom.xml" rel="self"/>
   <link href="http://kobtea.github.io/"/>
-  <updated>2013-09-22T22:37:27+09:00</updated>
+  <updated>2013-09-22T23:04:49+09:00</updated>
   <id>http://kobtea.github.io/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
@@ -12,5 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[VimでステキなMarkdownライフを送りたい]]></title>
+    <link href="http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim/"/>
+    <updated>2013-09-22T22:57:00+09:00</updated>
+    <id>http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim</id>
+    <content type="html"><![CDATA[<p>インストールするもの。</p>
+
+<ul>
+<li><a href="https://github.com/plasticboy/vim-markdown">https://github.com/plasticboy/vim-markdown</a>
+
+<ul>
+<li>markdown用シンタックスハイライト</li>
+</ul>
+</li>
+<li><a href="https://github.com/kannokanno/previm">https://github.com/kannokanno/previm</a>
+
+<ul>
+<li>markdownのプレビュー</li>
+</ul>
+</li>
+<li><a href="https://github.com/tyru/open-browser.vim">https://github.com/tyru/open-browser.vim</a>
+
+<ul>
+<li>URIをブラウザで開く</li>
+</ul>
+</li>
+</ul>
+
+
+<p>.vimrcに以下を追記する。<br/>
+NeoBundle使ってるよ。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='vim'><span class='line'>NeoBundle <span class="s1">&#39;plasticboy/vim-markdown&#39;</span>
+</span><span class='line'>NeoBundle <span class="s1">&#39;kannokanno/previm&#39;</span>
+</span><span class='line'>NeoBundle <span class="s1">&#39;tyru/open-browser.vim&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="c">&quot;g:previm_open_cmd   &quot; open-browser使用時は不要</span>
+</span><span class='line'>autocmd <span class="nb">BufNewFile</span><span class="p">,</span><span class="nb">BufRead</span> *.{md<span class="p">,</span>mdwn<span class="p">,</span>mkd<span class="p">,</span>mkdn<span class="p">,</span>mark*} <span class="k">setfiletype</span> mkd
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>mkdファイルを良い感じに編集して、<code>:PrevimOpen</code>するといい感じにプレビューが出る。<br/>
+ファイル保存すると、自動で更新される。<br/>
+ステキやん。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[こんにちはOctopress]]></title>
+    <link href="http://kobtea.github.io/blog/2013/09/22/hello-octopress/"/>
+    <updated>2013-09-22T22:44:00+09:00</updated>
+    <id>http://kobtea.github.io/blog/2013/09/22/hello-octopress</id>
+    <content type="html"><![CDATA[<p>よろしくタコ出版！</p>
+]]></content>
+  </entry>
   
 </feed>
