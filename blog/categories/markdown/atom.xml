@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Markdown | blog.kobtea.net]]></title>
   <link href="http://kobtea.github.io/blog/categories/markdown/atom.xml" rel="self"/>
   <link href="http://kobtea.github.io/"/>
-  <updated>2013-09-22T23:04:49+09:00</updated>
+  <updated>2013-09-22T23:36:22+09:00</updated>
   <id>http://kobtea.github.io/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
@@ -45,7 +45,7 @@
 <p>.vimrcに以下を追記する。<br/>
 NeoBundle使ってるよ。</p>
 
-<p>```vim
+<p>```vim .vimrc
 NeoBundle &lsquo;plasticboy/vim-markdown&rsquo;
 NeoBundle &lsquo;kannokanno/previm&rsquo;
 NeoBundle &lsquo;tyru/open-browser.vim&rsquo;</p>
