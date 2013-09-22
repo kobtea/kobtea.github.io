@@ -9,21 +9,17 @@
   <meta name="author" content="kobtea">
 
   
-  <meta name="description" content="紆余曲折の作業ログ。 1
+  <meta name="description" content="1
 2
 3
 4
-5
-6
-7
-8
-9
-10
 $ sw_vers
 ProductName: Mac OS X
 ProductVersion: 10.8.4
-BuildVersion: 12E3067 $ ruby --version
-ruby 2.0.0p247 (2013-06 &hellip;">
+BuildVersion: 12E3067 rbenvのreadmeにそってやる。
+PATHについて解説までしてくれるとかマジ天使。 rbenvのインストール 1
+2
+3 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +81,400 @@ ruby 2.0.0p247 (2013-06 &hellip;">
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2013/09/23/install-ruby-on-mba/">MBAにRuby環境を作る</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-09-23T00:17:00+09:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>sw_vers
+</span><span class='line'>ProductName:    Mac OS X
+</span><span class='line'>ProductVersion: 10.8.4
+</span><span class='line'>BuildVersion:   12E3067
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><a href="https://github.com/sstephenson/rbenv">rbenv</a>のreadmeにそってやる。<br/>
+PATHについて解説までしてくれるとかマジ天使。</p>
+
+<h2>rbenvのインストール</h2>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># homebrewを最新の状態に</span>
+</span><span class='line'><span class="nv">$ </span>brew update
+</span><span class='line'><span class="nv">$ </span>brew upgrade
+</span><span class='line'>
+</span><span class='line'><span class="c"># rbenvをインストール</span>
+</span><span class='line'><span class="nv">$ </span>brew install <span class="nv">rbenv</span>
+</span><span class='line'><span class="o">==</span>&gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
+</span><span class='line'><span class="c">######################################################################## 100.0%</span>
+</span><span class='line'><span class="o">==</span>&gt; Caveats
+</span><span class='line'>To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.rbenv add to your profile:
+</span><span class='line'>  <span class="nb">export </span><span class="nv">RBENV_ROOT</span><span class="o">=</span>/usr/local/var/rbenv
+</span><span class='line'>
+</span><span class='line'>To <span class="nb">enable </span>shims and autocompletion add to your profile:
+</span><span class='line'>  <span class="k">if </span>which rbenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>; <span class="k">fi</span>
+</span><span class='line'><span class="o">==</span>&gt; Summary
+</span><span class='line'>🍺  /usr/local/Cellar/rbenv/0.4.0: 31 files, 152K, built in 2 seconds
+</span><span class='line'>
+</span><span class='line'><span class="c"># ruby-buildをインストール</span>
+</span><span class='line'><span class="nv">$ </span>brew install ruby-build
+</span><span class='line'><span class="c">######################################################################## 100.0%</span>
+</span><span class='line'><span class="o">==</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/autoconf/2.69
+</span><span class='line'><span class="o">==</span>&gt; make install
+</span><span class='line'>🍺  /usr/local/Cellar/autoconf/2.69: 69 files, 2.0M, built in 8 <span class="nv">seconds</span>
+</span><span class='line'><span class="o">==</span>&gt; Installing ruby-build
+</span><span class='line'><span class="o">==</span>&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
+</span><span class='line'><span class="c">######################################################################## 100.0%</span>
+</span><span class='line'><span class="o">==</span>&gt; ./install.sh
+</span><span class='line'>🍺  /usr/local/Cellar/ruby-build/20130907: 83 files, 368K, built in 2 seconds
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>profileとかrcに以下を追記する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi&#39;</span> &gt;&gt; ~/.zprofile
+</span><span class='line'><span class="nv">$ </span><span class="nb">source</span> ~/.zprofile
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rbenv --help
+</span><span class='line'>rbenv 0.4.0
+</span><span class='line'>Usage: rbenv &lt;<span class="nb">command</span>&gt; <span class="o">[</span>&lt;args&gt;<span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>Some useful rbenv commands are:
+</span><span class='line'>   commands    List all available rbenv commands
+</span><span class='line'>   <span class="nb">local       </span>Set or show the <span class="nb">local </span>application-specific Ruby version
+</span><span class='line'>   global      Set or show the global Ruby version
+</span><span class='line'>   shell       Set or show the shell-specific Ruby version
+</span><span class='line'>   install     Install a Ruby version using the ruby-build plugin
+</span><span class='line'>   uninstall   Uninstall a specific Ruby version
+</span><span class='line'>   rehash      Rehash rbenv shims <span class="o">(</span>run this after installing executables<span class="o">)</span>
+</span><span class='line'>   version     Show the current Ruby version and its origin
+</span><span class='line'>   versions    List all Ruby versions available to rbenv
+</span><span class='line'>   which       Display the full path to an executable
+</span><span class='line'>   whence      List all Ruby versions that contain the given executable
+</span><span class='line'>
+</span><span class='line'>See <span class="sb">`</span>rbenv <span class="nb">help</span> &lt;<span class="nb">command</span>&gt;<span class="err">&#39;</span> <span class="k">for </span>information on a specific command.
+</span><span class='line'>For full documentation, see: https://github.com/sstephenson/rbenv#readme
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>rbenv-default-gemsをインストール</h2>
+
+<p>ついでに<a href="https://github.com/sstephenson/rbenv-default-gems">rbenv-default-gems</a>を入れておく。<br/>
+<code>rbenv install &lt;version&gt;</code>でRubyをインストールする際に、一緒に必要なgemを入れてくれる。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;bundler&#39;</span> &gt;&gt; ~/.rbenv/default-gems
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>ひとまずbundlerだけでいいかな。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 一応homebrewを再度更新</span>
+</span><span class='line'><span class="nv">$ </span>brew update
+</span><span class='line'><span class="nv">$ </span>brew upgrade
+</span><span class='line'>
+</span><span class='line'><span class="c"># ruby 2.0をインストール</span>
+</span><span class='line'><span class="nv">$ </span>rbenv install 2.0.0-p247
+</span><span class='line'>Downloading openssl-1.0.1e.tar.gz...
+</span><span class='line'>-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+</span><span class='line'>Installing openssl-1.0.1e...
+</span><span class='line'>
+</span><span class='line'>BUILD FAILED
+</span><span class='line'>
+</span><span class='line'>Inspect or clean up the working tree at /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114
+</span><span class='line'>Results logged to /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114.log
+</span><span class='line'>
+</span><span class='line'>Last 10 log lines:
+</span><span class='line'><span class="nv">RANLIB</span>        <span class="o">=</span><span class="nb">true</span>
+</span><span class='line'><span class="nv">ARFLAGS</span>       <span class="o">=</span>
+</span><span class='line'><span class="nv">PERL</span>          <span class="o">=</span>/usr/bin/perl
+</span><span class='line'>SIXTY_FOUR_BIT_LONG mode
+</span><span class='line'>DES_UNROLL used
+</span><span class='line'>DES_INT used
+</span><span class='line'>RC4 uses uchar
+</span><span class='line'>RC4_CHUNK is unsigned long
+</span><span class='line'>sh: make: <span class="nb">command </span>not found
+</span><span class='line'>/usr/local/bin/ruby-build: line 387: make: <span class="nb">command </span>not found
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>makeコマンドがないぽい。<br/>
+command line toolsが入ってなかった。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>Xcode -&gt; Preferences -&gt; Downloads -&gt; Command Line Tools -&gt; Install
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>リトライ。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rbenv install 2.0.0-p247
+</span><span class='line'>Downloading openssl-1.0.1e.tar.gz...
+</span><span class='line'>-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+</span><span class='line'>Installing openssl-1.0.1e...
+</span><span class='line'>Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
+</span><span class='line'>
+</span><span class='line'>Downloading ruby-2.0.0-p247.tar.gz...
+</span><span class='line'>-&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+</span><span class='line'>Installing ruby-2.0.0-p247...
+</span><span class='line'>Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+</span><span class='line'>
+</span><span class='line'>ERROR:  While executing gem ... <span class="o">(</span>Gem::FilePermissionError<span class="o">)</span>
+</span><span class='line'>    You don<span class="s1">&#39;t have write permissions into the /Library/Ruby/Gems/1.8 directory.</span>
+</span><span class='line'><span class="s1">rbenv: error installing gem `bundler&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>今度は権限がない。<br/>
+<a href="https://github.com/sstephenson/rbenv-default-gems/issues/7">Issue</a>に載っていた。<br/>
+どうやら環境変数に<code>$RBENV_ROOT</code>が必要らしい。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rbenv root
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>で表示されたパスを.zprofileとかに書く。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=$HOME/.rbenv&#39;</span> &gt;&gt; ~/.zprofile
+</span><span class='line'><span class="nv">$ </span><span class="nb">source</span> ~/.zprofile
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>リトライ。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rbenv install 2.0.0-p247
+</span><span class='line'>rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
+</span><span class='line'><span class="k">continue </span>with installation? <span class="o">(</span>y/N<span class="o">)</span> y
+</span><span class='line'>Downloading openssl-1.0.1e.tar.gz...
+</span><span class='line'>-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+</span><span class='line'>Installing openssl-1.0.1e...
+</span><span class='line'>Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
+</span><span class='line'>
+</span><span class='line'>Downloading ruby-2.0.0-p247.tar.gz...
+</span><span class='line'>-&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+</span><span class='line'>Installing ruby-2.0.0-p247...
+</span><span class='line'>Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+</span><span class='line'>
+</span><span class='line'>Fetching: bundler-1.3.5.gem <span class="o">(</span>100%<span class="o">)</span>
+</span><span class='line'>Successfully installed bundler-1.3.5
+</span><span class='line'>Parsing documentation <span class="k">for </span>bundler-1.3.5
+</span><span class='line'>Installing ri documentation <span class="k">for </span>bundler-1.3.5
+</span><span class='line'>1 gem installed
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>できた。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># ruby, gemのパスが$RBENV_ROOT以下に向いているか確認</span>
+</span><span class='line'><span class="nv">$ </span>rbenv rehash
+</span><span class='line'><span class="nv">$ </span>rbenv versions
+</span><span class='line'>* system <span class="o">(</span><span class="nb">set </span>by /Users/kobtea/.rbenv/version<span class="o">)</span>
+</span><span class='line'>  2.0.0-p247
+</span><span class='line'><span class="nv">$ </span>which ruby
+</span><span class='line'>/Users/kobtea/.rbenv/shims/ruby
+</span><span class='line'><span class="nv">$ </span>which gem
+</span><span class='line'>/Users/kobtea/.rbenv/shims/gem
+</span><span class='line'>
+</span><span class='line'><span class="c"># システムデフォルトのバージョン確認</span>
+</span><span class='line'><span class="nv">$ </span>ruby --version
+</span><span class='line'>ruby 1.8.7 <span class="o">(</span>2012-02-08 patchlevel 358<span class="o">)</span> <span class="o">[</span>universal-darwin12.0<span class="o">]</span>
+</span><span class='line'><span class="nv">$ </span>gem --version
+</span><span class='line'>1.3.6
+</span><span class='line'>
+</span><span class='line'><span class="c"># デフォルトのバージョンを2.0に変更</span>
+</span><span class='line'><span class="nv">$ </span>rbenv global 2.0.0-p247
+</span><span class='line'><span class="nv">$ </span>rbenv versions
+</span><span class='line'>  system
+</span><span class='line'>* 2.0.0-p247 <span class="o">(</span><span class="nb">set </span>by /Users/kobtea/.rbenv/version<span class="o">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="nv">$ </span>ruby --version
+</span><span class='line'>ruby 2.0.0p247 <span class="o">(</span>2013-06-27 revision 41674<span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.1<span class="o">]</span>
+</span><span class='line'><span class="nv">$ </span>gem --version
+</span><span class='line'>2.0.3
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>こんにちはRuby。</p>
+
+<h2>追記</h2>
+
+<p>Macデフォルトのreadlineは使わないほうがいいらしい。
+<code>rbenv install</code>する際にはhomebrewで入れたreadline, opensslを指定する。<br/>
+指定しない場合、Macだとirbでマルチバイトが使えない。<br/>
+<a href="/blog/2013/09/22/use-multibytes-on-ruby">irbで日本語が文字化けする</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2013/09/22/use-multibytes-on-ruby/">Irbで日本語が文字化けする</a></h1>
     
     
@@ -108,9 +498,7 @@ ruby 2.0.0p247 (2013-06 &hellip;">
   </header>
 
 
-  <div class="entry-content"><p>紆余曲折の作業ログ。</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -349,6 +737,10 @@ NeoBundle使ってるよ。</p>
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/09/23/install-ruby-on-mba/">MBAにRuby環境を作る</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/09/22/use-multibytes-on-ruby/">Irbで日本語が文字化けする</a>
