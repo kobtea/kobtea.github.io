@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Github Pages | blog.kobtea.net]]></title>
+  <link href="http://blog.kobtea.net/blog/categories/github-pages/atom.xml" rel="self"/>
+  <link href="http://blog.kobtea.net/"/>
+  <updated>2013-09-23T22:34:55+09:00</updated>
+  <id>http://blog.kobtea.net/</id>
+  <author>
+    <name><![CDATA[kobtea]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Github Pagesにカスタムドメインを割り当てる]]></title>
+    <link href="http://blog.kobtea.net/blog/2013/09/23/set-custom-domain-at-github-pages/"/>
+    <updated>2013-09-23T21:39:00+09:00</updated>
+    <id>http://blog.kobtea.net/blog/2013/09/23/set-custom-domain-at-github-pages</id>
+    <content type="html"><![CDATA[<p>参考:</p>
+
+<ul>
+<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></li>
+<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains &ndash; Octopress</a></li>
+</ul>
+
+
+<p>リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。</p>
+
+<blockquote><p>Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&rsquo;t build successfully, you&rsquo;ll receive a notification from GitHub.</p>
+
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></p></blockquote>
+
+<p>反映されるのに10分くらい待ってね、とのこと。<br/>
+反映されたらメールをくれるらしい。</p>
+
+<h2>Octopress側の設定</h2>
+
+<p><code>source/CNAME</code>に割り当てるドメインを設定する。</p>
+
+<p><code>bash
+$ echo 'blog.kobtea.net' &gt;&gt; source/CNAME
+</code></p>
+
+<p><code>_config.yml</code>のurlも変更しておく。</p>
+
+<p>```yml _config.yml</p>
+
+<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
+
+<h1>Main Configs</h1>
+
+<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
+
+<p>url: <a href="http://blog.kobtea.net">http://blog.kobtea.net</a>
+title: blog.kobtea.net
+subtitle: 咳をしても情弱
+author: kobtea
+simple_search: <a href="http://google.com/search">http://google.com/search</a>
+description:
+```</p>
+
+<h2>DNS設定</h2>
+
+<p>お名前.comを使っているので、そちらで設定する。</p>
+
+<p><code>
+ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
+</code></p>
+
+<p><img src="/images/dns-setting-onamae.png" alt="dns-setting" /></p>
+
+<p>で適用。
+適用されたよメールが届くまでのんびり待つ。</p>
+
+<h2>確認</h2>
+
+<p>digしてみる。</p>
+
+<p><code>bash
+$ dig +noall +answer blog.kobtea.net CNAME
+blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
+</code></p>
+
+<p>できてるぽい。<br/>
+最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。</p>
+]]></content>
+  </entry>
+  
+</feed>

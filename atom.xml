@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[blog.kobtea.net]]></title>
-  <link href="http://kobtea.github.io/atom.xml" rel="self"/>
-  <link href="http://kobtea.github.io/"/>
-  <updated>2013-09-23T21:56:52+09:00</updated>
-  <id>http://kobtea.github.io/</id>
+  <link href="http://blog.kobtea.net/atom.xml" rel="self"/>
+  <link href="http://blog.kobtea.net/"/>
+  <updated>2013-09-23T22:34:55+09:00</updated>
+  <id>http://blog.kobtea.net/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
     
@@ -14,10 +14,96 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Github Pagesにカスタムドメインを割り当てる]]></title>
+    <link href="http://blog.kobtea.net/blog/2013/09/23/set-custom-domain-at-github-pages/"/>
+    <updated>2013-09-23T21:39:00+09:00</updated>
+    <id>http://blog.kobtea.net/blog/2013/09/23/set-custom-domain-at-github-pages</id>
+    <content type="html"><![CDATA[<p>参考:</p>
+
+<ul>
+<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></li>
+<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains &ndash; Octopress</a></li>
+</ul>
+
+
+<p>リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。</p>
+
+<blockquote><p>Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&rsquo;t build successfully, you&rsquo;ll receive a notification from GitHub.</p>
+
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></p></blockquote>
+
+<p>反映されるのに10分くらい待ってね、とのこと。<br/>
+反映されたらメールをくれるらしい。</p>
+
+<h2>Octopress側の設定</h2>
+
+<p><code>source/CNAME</code>に割り当てるドメインを設定する。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span><span class="nb">echo</span> <span class="s1">&#39;blog.kobtea.net&#39;</span> &gt;&gt; <span class="nb">source</span>/CNAME
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><code>_config.yml</code>のurlも変更しておく。</p>
+
+<figure class='code'><figcaption><span>_config.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="c1"># ----------------------- #</span>
+</span><span class='line'><span class="c1">#      Main Configs       #</span>
+</span><span class='line'><span class="c1"># ----------------------- #</span>
+</span><span class='line'>
+</span><span class='line'><span class="l-Scalar-Plain">url</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://blog.kobtea.net</span>
+</span><span class='line'><span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">blog.kobtea.net</span>
+</span><span class='line'><span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">咳をしても情弱</span>
+</span><span class='line'><span class="l-Scalar-Plain">author</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">kobtea</span>
+</span><span class='line'><span class="l-Scalar-Plain">simple_search</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">http://google.com/search</span>
+</span><span class='line'><span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h2>DNS設定</h2>
+
+<p>お名前.comを使っているので、そちらで設定する。</p>
+
+<figure class='code'><figcaption><span>_config.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><img src="http://blog.kobtea.net/images/dns-setting-onamae.png" alt="dns-setting" /></p>
+
+<p>で適用。
+適用されたよメールが届くまでのんびり待つ。</p>
+
+<h2>確認</h2>
+
+<p>digしてみる。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>dig +noall +answer blog.kobtea.net CNAME
+</span><span class='line'>blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>できてるぽい。<br/>
+最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Octopressのテーマを変更する]]></title>
-    <link href="http://kobtea.github.io/blog/2013/09/23/change-octopress-theme/"/>
+    <link href="http://blog.kobtea.net/blog/2013/09/23/change-octopress-theme/"/>
     <updated>2013-09-23T14:56:00+09:00</updated>
-    <id>http://kobtea.github.io/blog/2013/09/23/change-octopress-theme</id>
+    <id>http://blog.kobtea.net/blog/2013/09/23/change-octopress-theme</id>
     <content type="html"><![CDATA[<p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a>で公開されているので気に入ったものを選ぶ。<br/>
 <a href="https://github.com/macjasp/cleanpress">CleanPress</a>がステキ。</p>
 
@@ -86,7 +172,7 @@
 
 <p><code>rake preview</code>してちゃんと反映されているかを確認する。</p>
 
-<p><img src="http://kobtea.github.io/images/install-cleanpress.png" alt="cleanpress-capture" /></p>
+<p><img src="http://blog.kobtea.net/images/install-cleanpress.png" alt="cleanpress-capture" /></p>
 
 <p>おおん、ページ作っていないAboutとかPortfolioがおる&hellip;</p>
 
@@ -263,7 +349,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><img src="http://kobtea.github.io/images/install-cleanpress2.png" alt="cleanpress-capture2" /></p>
+<p><img src="http://blog.kobtea.net/images/install-cleanpress2.png" alt="cleanpress-capture2" /></p>
 
 <p>ちゃんと消えているね。</p>
 ]]></content>
@@ -271,9 +357,9 @@
   
   <entry>
     <title type="html"><![CDATA[Octopress + Github Pagesな環境構築]]></title>
-    <link href="http://kobtea.github.io/blog/2013/09/23/setup-octopress/"/>
+    <link href="http://blog.kobtea.net/blog/2013/09/23/setup-octopress/"/>
     <updated>2013-09-23T01:54:00+09:00</updated>
-    <id>http://kobtea.github.io/blog/2013/09/23/setup-octopress</id>
+    <id>http://blog.kobtea.net/blog/2013/09/23/setup-octopress</id>
     <content type="html"><![CDATA[<p>もはや様式美だけど自分のために。<br/>
 公式の<a href="http://octopress.org/docs/">Octopress Documentation</a>を参考に。</p>
 
@@ -450,7 +536,7 @@
 
 
 <p>ブラウザでlocalhost:4000にアクセス。<br/>
-<img src="http://kobtea.github.io/images/hello-octopress.png" alt="hello-octopress" />
+<img src="http://blog.kobtea.net/images/hello-octopress.png" alt="hello-octopress" />
 わーお</p>
 
 <h2>Github Pagesへデプロイ</h2>
@@ -888,9 +974,9 @@
   
   <entry>
     <title type="html"><![CDATA[MBAにRuby環境を作る]]></title>
-    <link href="http://kobtea.github.io/blog/2013/09/23/install-ruby-on-mba/"/>
+    <link href="http://blog.kobtea.net/blog/2013/09/23/install-ruby-on-mba/"/>
     <updated>2013-09-23T00:17:00+09:00</updated>
-    <id>http://kobtea.github.io/blog/2013/09/23/install-ruby-on-mba</id>
+    <id>http://blog.kobtea.net/blog/2013/09/23/install-ruby-on-mba</id>
     <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -1249,15 +1335,15 @@ command line toolsが入ってなかった。</p>
 <p>Macデフォルトのreadlineは使わないほうがいいらしい。<br/>
 <code>rbenv install</code>する際にはhomebrewで入れたreadline, opensslを指定する。<br/>
 指定しない場合、Macだとirbでマルチバイトが使えない。<br/>
-<a href="http://kobtea.github.io/blog/2013/09/22/use-multibytes-on-ruby">irbで日本語が文字化けする</a></p>
+<a href="http://blog.kobtea.net/blog/2013/09/22/use-multibytes-on-ruby">irbで日本語が文字化けする</a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[irbで日本語が文字化けする]]></title>
-    <link href="http://kobtea.github.io/blog/2013/09/22/use-multibytes-on-ruby/"/>
+    <link href="http://blog.kobtea.net/blog/2013/09/22/use-multibytes-on-ruby/"/>
     <updated>2013-09-22T23:38:00+09:00</updated>
-    <id>http://kobtea.github.io/blog/2013/09/22/use-multibytes-on-ruby</id>
+    <id>http://blog.kobtea.net/blog/2013/09/22/use-multibytes-on-ruby</id>
     <content type="html"><![CDATA[<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
@@ -1368,9 +1454,9 @@ CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline` --enable-bundled-li
   
   <entry>
     <title type="html"><![CDATA[VimでステキなMarkdownライフを送りたい]]></title>
-    <link href="http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim/"/>
+    <link href="http://blog.kobtea.net/blog/2013/09/22/use-markdown-on-vim/"/>
     <updated>2013-09-22T22:57:00+09:00</updated>
-    <id>http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim</id>
+    <id>http://blog.kobtea.net/blog/2013/09/22/use-markdown-on-vim</id>
     <content type="html"><![CDATA[<p>インストールするもの。</p>
 
 <ul>
@@ -1421,9 +1507,9 @@ NeoBundle使ってるよ。</p>
   
   <entry>
     <title type="html"><![CDATA[こんにちはOctopress]]></title>
-    <link href="http://kobtea.github.io/blog/2013/09/22/hello-octopress/"/>
+    <link href="http://blog.kobtea.net/blog/2013/09/22/hello-octopress/"/>
     <updated>2013-09-22T22:44:00+09:00</updated>
-    <id>http://kobtea.github.io/blog/2013/09/22/hello-octopress</id>
+    <id>http://blog.kobtea.net/blog/2013/09/22/hello-octopress</id>
     <content type="html"><![CDATA[<p>よろしくタコ出版！</p>
 ]]></content>
   </entry>

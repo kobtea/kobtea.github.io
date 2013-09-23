@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Vim | blog.kobtea.net]]></title>
-  <link href="http://kobtea.github.io/blog/categories/vim/atom.xml" rel="self"/>
-  <link href="http://kobtea.github.io/"/>
-  <updated>2013-09-23T21:56:52+09:00</updated>
-  <id>http://kobtea.github.io/</id>
+  <link href="http://blog.kobtea.net/blog/categories/vim/atom.xml" rel="self"/>
+  <link href="http://blog.kobtea.net/"/>
+  <updated>2013-09-23T22:34:55+09:00</updated>
+  <id>http://blog.kobtea.net/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[VimでステキなMarkdownライフを送りたい]]></title>
-    <link href="http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim/"/>
+    <link href="http://blog.kobtea.net/blog/2013/09/22/use-markdown-on-vim/"/>
     <updated>2013-09-22T22:57:00+09:00</updated>
-    <id>http://kobtea.github.io/blog/2013/09/22/use-markdown-on-vim</id>
+    <id>http://blog.kobtea.net/blog/2013/09/22/use-markdown-on-vim</id>
     <content type="html"><![CDATA[<p>インストールするもの。</p>
 
 <ul>
