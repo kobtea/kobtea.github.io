@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | blog.kobtea.net]]></title>
+  <link href="http://kobtea.github.io/blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://kobtea.github.io/"/>
+  <updated>2013-09-23T14:47:28+09:00</updated>
+  <id>http://kobtea.github.io/</id>
+  <author>
+    <name><![CDATA[kobtea]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Octopress + Github Pagesな環境構築]]></title>
+    <link href="http://kobtea.github.io/blog/2013/09/23/setup-octopress/"/>
+    <updated>2013-09-23T01:54:00+09:00</updated>
+    <id>http://kobtea.github.io/blog/2013/09/23/setup-octopress</id>
+    <content type="html"><![CDATA[<p>もはや様式美だけど自分のために。<br/>
+公式の<a href="http://octopress.org/docs/">Octopress Documentation</a>を参考に。</p>
+
+<p>```bash
+$ sw_vers
+ProductName:    Mac OS X
+ProductVersion: 10.8.4
+BuildVersion:   12E3067</p>
+
+<p>$ ruby -v
+ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]</p>
+
+<p>$ gem -v
+2.0.3</p>
+
+<p>$ bundle -v
+Bundler version 1.3.5
+```</p>
+
+<h2>Octopressのセットアップ</h2>
+
+<p>参考 : <a href="http://octopress.org/docs/setup/">Octopress Setup</a></p>
+
+<p>```bash</p>
+
+<h1>リポジトリをclone</h1>
+
+<p>$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress</p>
+
+<h1>必要なgemを入れる</h1>
+
+<p>$ bundle install
+$ rake install
+rake aborted!
+You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2. Using bundle exec may solve this.
+/Users/kobtea/Programs/octopress/Rakefile:2:in `<top (required)>&lsquo;
+(See full trace by running task with &mdash;trace)</p>
+
+<h1>失敗した</h1>
+
+<h1>落ち着いてもう一度update</h1>
+
+<p>$ bundle update
+$ rake install</p>
+
+<h2>Copying classic theme into ./source and ./sass</h2>
+
+<p>mkdir -p source
+cp -r .themes/classic/source/. source
+mkdir -p sass
+cp -r .themes/classic/sass/. sass
+mkdir -p source/_posts
+mkdir -p public
+```</p>
+
+<p>rakeタスクを見てみる。</p>
+
+<p><code>bash
+$ rake -T
+rake clean                     # Clean out caches: .pygments-cache, .gist-cache, .sass-cache
+rake copydot[source,dest]      # copy dot files for deployment
+rake deploy                    # Default deploy task
+rake gen_deploy                # Generate website and deploy
+rake generate                  # Generate jekyll site
+rake install[theme]            # Initial setup for Octopress: copies the default theme into the path of Jekyll's generator.
+rake integrate                 # Move all stashed posts back into the posts directory, ready for site generation.
+rake isolate[filename]         # Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much more quickly.
+rake list                      # list tasks
+rake new_page[filename]        # Create a new page in source/(filename)/index.markdown
+rake new_post[title]           # Begin a new post in source/_posts
+rake preview                   # preview the site in a web browser
+rake push                      # deploy public directory to github pages
+rake rsync                     # Deploy website via rsync
+rake set_root_dir[dir]         # Update configurations to support publishing to root or sub directory
+rake setup_github_pages[repo]  # Set up _deploy folder and deploy branch for Github Pages deployment
+rake update_source[theme]      # Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source.old's navigation
+rake update_style[theme]       # Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom
+rake watch                     # Watch the site and regenerate when it changes
+</code></p>
+
+<p>試しに<code>rake preview</code>してみる。</p>
+
+<p>```bash
+$ rake preview
+Stkobteang to watch source with Jekyll and Compass. Stkobteang Rack on port 4000
+directory source/stylesheets/
+   create source/stylesheets/screen.css
+Configuration from /Users/kobtea/Programs/octopress/_config.yml
+[2013-09-22 20:52:05] INFO  WEBrick 1.3.1
+[2013-09-22 20:52:05] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.1]
+[2013-09-22 20:52:05] INFO  WEBrick::HTTPServer#start: pid=136 port=4000</p>
+
+<blockquote><blockquote><blockquote><p>Change detected at 20:52:05 to: screen.scss
+Auto-regenerating enabled: source &ndash;> public
+[2013-09-22 20:52:05] regeneration: 93 files changed
+identical public/stylesheets/screen.css
+Compass is watching for changes. Press Ctrl-C to Stop.
+127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET / HTTP/1.1&rdquo; 200 &ndash; 0.0207
+127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /stylesheets/screen.css HTTP/1.1&rdquo; 200 &ndash; 0.0034
+127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /javascripts/modernizr-2.0.js HTTP/1.1&rdquo; 200 &ndash; 0.0014
+127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /javascripts/octopress.js HTTP/1.1&rdquo; 200 &ndash; 0.0015
+127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /images/line-tile.png?1379850683 HTTP/1.1&rdquo; 200 &ndash; 0.0013
+127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /images/noise.png?1379850683 HTTP/1.1&rdquo; 200 &ndash; 0.0025
+127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /images/rss.png?1379850683 HTTP/1.1&rdquo; 200 &ndash; 0.0010
+127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:36] &ldquo;GET /favicon.png HTTP/1.1&rdquo; 200 &ndash; 0.0015
+```</p></blockquote></blockquote></blockquote>
+
+<p>ブラウザでlocalhost:4000にアクセス。<br/>
+<img src="/images/hello-octopress.png" alt="hello-octopress" />
+わーお</p>
+
+<h2>Github Pagesへデプロイ</h2>
+
+<p>参考 :</p>
+
+<ul>
+<li><a href="http://octopress.org/docs/deploying/github/">Deploying to Github Pages</a></li>
+<li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで</a></li>
+</ul>
+
+
+<p>githubにUSERNAME.github.ioでリポジトリを作成しておく。</p>
+
+<p>```bash</p>
+
+<h1>途中でgithub pagesのリポジトリを入力する</h1>
+
+<p>$ rake setup_github_pages
+Enter the read/write url for your repository
+(For example, &lsquo;git@github.com:your_username/your_username.github.io.git)</p>
+
+<pre><code>       or 'https://github.com/your_username/your_username.github.io')
+</code></pre>
+
+<p>Repository url: git@github.com:kobtea/kobtea.github.io.git
+rm -rf <em>deploy
+mkdir </em>deploy
+cd <em>deploy
+Initialized empty Git repository in /Users/kobtea/Programs/octopress/</em>deploy/.git/
+[master (root-commit) d1ed656] Octopress init
+ 1 file changed, 1 insertion(+)
+ create mode 100644 index.html
+cd &ndash;</p>
+
+<hr />
+
+<h2>Now you can deploy to git@github.com:kobtea/kobtea.github.io.git with <code>rake deploy</code></h2>
+
+<h1>とりあえずdeploy</h1>
+
+<p>$ rake deploy</p>
+
+<h2>Deploying branch to Github Pages</h2>
+
+<h2>Pulling any updates from Github Pages</h2>
+
+<p>cd _deploy
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details</p>
+
+<pre><code>git pull &lt;remote&gt; &lt;branch&gt;
+</code></pre>
+
+<p>If you wish to set tracking information for this branch you can do so with:</p>
+
+<pre><code>git branch --set-upstream master origin/&lt;branch&gt;
+</code></pre>
+
+<p>cd &ndash;
+rm -rf _deploy/index.html</p>
+
+<h2>Copying public to _deploy</h2>
+
+<p>cp -r public/. <em>deploy
+cd </em>deploy</p>
+
+<h2>Commiting: Site updated at 2013-09-22 12:50:23 UTC</h2>
+
+<p>[master 29f0918] Site updated at 2013-09-22 12:50:23 UTC
+ 61 files changed, 1118 insertions(+), 1 deletion(&ndash;)
+ create mode 100644 assets/jwplayer/glow/controlbar/background.png
+ create mode 100644 assets/jwplayer/glow/controlbar/blankButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/divider.png
+ create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/muteButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/muteButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/pauseButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/pauseButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/playButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/playButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderBuffer.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapLeft.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapRight.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderProgress.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderRail.png
+ create mode 100644 assets/jwplayer/glow/controlbar/unmuteButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/unmuteButtonOver.png
+ create mode 100644 assets/jwplayer/glow/display/background.png
+ create mode 100644 assets/jwplayer/glow/display/bufferIcon.png
+ create mode 100644 assets/jwplayer/glow/display/muteIcon.png
+ create mode 100644 assets/jwplayer/glow/display/playIcon.png
+ create mode 100644 assets/jwplayer/glow/dock/button.png
+ create mode 100644 assets/jwplayer/glow/glow.xml
+ create mode 100644 assets/jwplayer/glow/playlist/item.png
+ create mode 100644 assets/jwplayer/glow/playlist/itemOver.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderCapBottom.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderCapTop.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderRail.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderThumb.png
+ create mode 100644 assets/jwplayer/glow/sharing/embedIcon.png
+ create mode 100644 assets/jwplayer/glow/sharing/embedScreen.png
+ create mode 100644 assets/jwplayer/glow/sharing/shareIcon.png
+ create mode 100644 assets/jwplayer/glow/sharing/shareScreen.png
+ create mode 100644 assets/jwplayer/player.swf
+ create mode 100644 atom.xml
+ create mode 100644 blog/archives/index.html
+ create mode 100644 favicon.png
+ create mode 100644 images/bird_32_gray.png
+ create mode 100644 images/bird_32_gray_fail.png
+ create mode 100644 images/code_bg.png
+ create mode 100644 images/dotted-border.png
+ create mode 100644 images/email.png
+ create mode 100644 images/line-tile.png
+ create mode 100644 images/noise.png
+ create mode 100644 images/rss.png
+ create mode 100644 images/search.png
+ rewrite index.html (100%)
+ create mode 100644 javascripts/github.js
+ create mode 100644 javascripts/libs/jXHR.js
+ create mode 100644 javascripts/libs/jquery.min.js
+ create mode 100644 javascripts/libs/swfobject-dynamic.js
+ create mode 100644 javascripts/modernizr-2.0.js
+ create mode 100644 javascripts/octopress.js
+ create mode 100644 javascripts/pinboard.js
+ create mode 100644 javascripts/twitter.js
+ create mode 100644 robots.txt
+ create mode 100644 sitemap.xml
+ create mode 100644 stylesheets/screen.css</p>
+
+<h2>Pushing generated _deploy website</h2>
+
+<p>Counting objects: 79, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (72/72), done.
+Writing objects: 100% (79/79), 186.46 KiB, done.
+Total 79 (delta 1), reused 0 (delta 0)
+To git@github.com:kobtea/kobtea.github.io.git
+ * [new branch]      master &ndash;> master</p>
+
+<h2>Github Pages deploy complete</h2>
+
+<p>cd &ndash;
+```</p>
+
+<p>で、10~20分くらいのんびり待つ。<br/>
+しばらくするとkobtea.github.ioにページが出来てる！すごい!</p>
+
+<p>sourceブランチはBitbucketで管理する。</p>
+
+<p>```bash
+$ git remote add bitbucket git@bitbucket.org:kobtea/kobtea.github.io.git
+$ git push -u bitbucket source</p>
+
+<h1>ブランチはこんな感じになる</h1>
+
+<p>$ git branch -a
+* source
+  remotes/bitbucket/source
+  remotes/octopress/2.5
+  remotes/octopress/2.5-simplify-rakefile
+  remotes/octopress/3.0
+  remotes/octopress/HEAD &ndash;> octopress/master
+  remotes/octopress/commander
+  remotes/octopress/gh-pages
+  remotes/octopress/guard
+  remotes/octopress/linklog
+  remotes/octopress/master
+  remotes/octopress/migrator
+  remotes/octopress/refactor_with_tests
+  remotes/octopress/rubygemcli
+  remotes/octopress/site
+  remotes/octopress/site-2.1
+  remotes/origin/master
+  remotes/origin/source
+```</p>
+
+<h2>Octopressの設定</h2>
+
+<p>参考 : <a href="http://octopress.org/docs/configuring/">Configuring Octopress</a></p>
+
+<p>ブログの基本的な設定は<code>_config.yml</code>で行う。<br/>
+とりあえず、title, subtitleだけ変更した。</p>
+
+<p>```yml</p>
+
+<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
+
+<h1>Main Configs</h1>
+
+<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
+
+<p>url: <a href="http://kobtea.github.io">http://kobtea.github.io</a>
+title: blog.kobtea.net
+subtitle: 咳をしても情弱
+author: kobtea
+simple_search: <a href="http://google.com/search">http://google.com/search</a>
+description:</p>
+
+<h1>Default date format is &ldquo;ordinal&rdquo; (resulting in &ldquo;July 22nd 2007&rdquo;)</h1>
+
+<h1>You can customize the format as defined in</h1>
+
+<h1><a href="http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime">http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime</a></h1>
+
+<h1>Additionally, %o will give you the ordinal representation of the day</h1>
+
+<p>date_format: &ldquo;ordinal&rdquo;</p>
+
+<h1>RSS / Email (optional) subscription links (change if using something like Feedburner)</h1>
+
+<p>subscribe_rss: /atom.xml
+subscribe_email:</p>
+
+<h1>RSS feeds can list your email address if you like</h1>
+
+<p>email:
+```</p>
+
+<p>Jekyll &amp; Plugins, 3rd Party Settingsはまた今度いじる。</p>
+
+<h2>投稿！</h2>
+
+<p>参考 : <a href="http://octopress.org/docs/blogging/">Blogging Basics</a></p>
+
+<p>```bash</p>
+
+<h1>記事を作成する</h1>
+
+<p>$ rake new_post[&ldquo;hello-octopress&rdquo;]
+zsh: no matches found: new_post[hello-octopress]</p>
+
+<h1>zshだと[]はエスケープしないといけないのね</h1>
+
+<p>$ rake new_post[&ldquo;hello-octopress&rdquo;]
+mkdir -p source/<em>posts
+Creating new post: source/</em>posts/2013-09-22-hello-octopress.markdown
+```</p>
+
+<p>markdownファイルが生成されるので編集する。</p>
+
+<h2>```yml source/_posts/2013-09-22-hello-octopress.markdown</h2>
+
+<p>layout: post
+title: &ldquo;こんにちはOctopress&rdquo;
+date: 2013-09-22 22:44
+comments: true</p>
+
+<h2>categories:</h2>
+
+<p>よろしくタコ出版！
+```</p>
+
+<p><code>---</code>で囲まれたブロック内にはポストのメタデータを書く。<br/>
+カテゴリを複数登録するには2通りある。</p>
+
+<p>```yml
+categories: [hoge, huga]</p>
+
+<p>categories:
+&ndash; hoge
+&ndash; huga
+```</p>
+
+<p>書けたら、generateしてdeploy!</p>
+
+<p><code>bash
+$ rake generate
+$ rake deploy
+</code></p>
+
+<p>反映に時間がかかることもあるからのんびり待つ。<br/>
+記事が投稿されたら喜んでおしまい。</p>
+]]></content>
+  </entry>
+  
+</feed>
