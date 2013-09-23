@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | blog.kobtea.net]]></title>
   <link href="http://kobtea.github.io/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://kobtea.github.io/"/>
-  <updated>2013-09-23T14:47:28+09:00</updated>
+  <updated>2013-09-23T15:40:33+09:00</updated>
   <id>http://kobtea.github.io/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
@@ -12,6 +12,170 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Octopressのテーマを変更する]]></title>
+    <link href="http://kobtea.github.io/blog/2013/09/23/change-octopress-theme/"/>
+    <updated>2013-09-23T14:56:00+09:00</updated>
+    <id>http://kobtea.github.io/blog/2013/09/23/change-octopress-theme</id>
+    <content type="html"><![CDATA[<p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a>で公開されているので気に入ったものを選ぶ。<br/>
+<a href="https://github.com/macjasp/cleanpress">CleanPress</a>がステキ。</p>
+
+<p>```bash</p>
+
+<h1>テーマのディレクトリまで行ってテーマのリポジトリをclone</h1>
+
+<p>$ cd octopress/.theme
+$ git clone git@github.com:macjasp/cleanpress.git
+Cloning into &lsquo;cleanpress&rsquo;&hellip;
+remote: Counting objects: 273, done.
+remote: Compressing objects: 100% (248/248), done.
+remote: Total 273 (delta 30), reused 229 (delta 16)
+Receiving objects: 100% (273/273), 1.09 MiB | 554 KiB/s, done.
+Resolving deltas: 100% (30/30), done.</p>
+
+<h1>テーマを適用する</h1>
+
+<p>$ rake install[cleanpress]
+(in /Users/kobtea/Programs/octopress)
+A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y</p>
+
+<h2>Copying cleanpress theme into ./source and ./sass</h2>
+
+<p>mkdir -p source
+cp -r .themes/cleanpress/source/. source
+mkdir -p sass
+cp -r .themes/cleanpress/sass/. sass
+mkdir -p source/_posts
+mkdir -p public</p>
+
+<h1>generate!</h1>
+
+<p>$ rake generate
+(in /Users/kobtea/Programs/octopress)</p>
+
+<h2>Generating Site with Jekyll</h2>
+
+<p>unchanged sass/screen.scss
+Configuration from /Users/kobtea/Programs/octopress/_config.yml
+Building site: source &ndash;> public
+Successfully generated site: source &ndash;> public
+```</p>
+
+<p><code>rake preview</code>してちゃんと反映されているかを確認する。</p>
+
+<p><img src="/images/install-cleanpress.png" alt="cleanpress-capture" /></p>
+
+<p>おおん、ページ作っていないAboutとかPortfolioがおる&hellip;</p>
+
+<p>どのへんで定義されているか探してみる。<br/>
+<code>bash
+$ find . -type f | xargs grep Portfolio
+./.themes/cleanpress/source/_includes/custom/navigation.html:   &lt;li&gt;&lt;a href="/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/404.html:  &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/404.html:  &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/archives/index.html:   &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/archives/index.html:   &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+./public/blog/2013/06/15/tywin-lannister-quote/index.html:  &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/06/15/tywin-lannister-quote/index.html:  &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/hello-octopress/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/hello-octopress/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/use-markdown-on-vim/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/use-markdown-on-vim/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/use-multibytes-on-ruby/index.html: &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/use-multibytes-on-ruby/index.html: &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html: &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html: &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+./public/blog/2013/09/23/install-ruby-on-mba/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/install-ruby-on-mba/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/setup-octopress/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/setup-octopress/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/archives/index.html:  &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/archives/index.html:  &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/etc/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/etc/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/markdown/index.html:   &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/markdown/index.html:   &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/octopress/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+./public/blog/categories/octopress/index.html:  &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/octopress/index.html:  &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/ruby/index.html:   &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/ruby/index.html:   &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/vim/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/vim/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/index.html:   &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/index.html:   &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+./public/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/index.html:    &lt;li&gt;&lt;a href="http://kobtea.github.io/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+./source/_includes/custom/navigation.html:  &lt;li&gt;&lt;a href="/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+Binary file ./source/_posts/.2013-09-23-change-octopress-theme.markdown.swp matches
+./source/_posts/2013-09-23-change-octopress-theme.markdown:おおん、ページ作っていないAboutとかPortfolioがおる...
+</code></p>
+
+<p><code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code>あたりがくさい。<br/>
+ブランチ切って編集する。</p>
+
+<p><code>bash
+$ cd .themes/cleanpress
+$ git branch
+* master
+$ git checkout -b edit-contents-links
+Switched to a new branch 'edit-contents-links'
+$ git branch
+* edit-contents-links
+  master
+</code></p>
+
+<p>ひとまずコメントアウトしておく。</p>
+
+<p>```html octopress/.themes/cleanpress/source/_includes/custom/navigation.html</p>
+
+<ul>
+    <li><a href="/">Blog</a></li>
+    <!--li><a href="/about">About</a></li-->
+    <!--li><a href="/portfolio">Portfolio</a></li-->
+    <li><a href="/archives">Archive</a></li>
+</ul>
+
+
+<p>```</p>
+
+<p>再度テーマをインストールする。</p>
+
+<p>```bash
+$ rake install[cleanpress]
+(in /Users/kobtea/Programs/octopress)
+A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y</p>
+
+<h2>Copying cleanpress theme into ./source and ./sass</h2>
+
+<p>mkdir -p source
+cp -r .themes/cleanpress/source/. source
+mkdir -p sass
+cp -r .themes/cleanpress/sass/. sass
+mkdir -p source/_posts
+mkdir -p public</p>
+
+<p>$ rake generate
+(in /Users/kobtea/Programs/octopress)</p>
+
+<h2>Generating Site with Jekyll</h2>
+
+<p>unchanged sass/screen.scss
+Configuration from /Users/kobtea/Programs/octopress/_config.yml
+Building site: source &ndash;> public
+Successfully generated site: source &ndash;> public
+```</p>
+
+<p><img src="/images/install-cleanpress2.png" alt="cleanpress-capture2" /></p>
+
+<p>ちゃんと消えているね。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Octopress + Github Pagesな環境構築]]></title>
