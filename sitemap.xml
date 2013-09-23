@@ -1,10 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://kobtea.github.io/blog/2013/06/15/tywin-lannister-quote/</loc>
-        <lastmod>2013-09-23T15:35:19+09:00</lastmod>
-    </url>
-    <url>
         <loc>http://kobtea.github.io/blog/2013/09/22/hello-octopress/</loc>
         <lastmod>2013-09-23T15:35:19+09:00</lastmod>
     </url>
