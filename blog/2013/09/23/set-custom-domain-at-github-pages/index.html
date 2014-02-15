@@ -2,16 +2,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
-	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Github Pagesにカスタムドメインを割り当てる  | blog.kobtea.net</title>
+	<title>Github Pagesにカスタムドメインを割り当てる - blog.kobtea.net</title>
+	<meta name="author" content="kobtea">
 
-<meta name="author" content="kobtea"> 
-
-<meta name="description" content="参考: Setting up a custom domain with Pages &ndash; Github Pages
-Custom Domains &ndash; Octopress リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。 Tip: &hellip;"> <meta name="keywords" content="">
-
+	
+	<meta name="description" content="参考: Setting up a custom domain with Pages &ndash; Github Pages
+Custom Domains &ndash; Octopress リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。 Tip: &hellip;">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<link href="/atom.xml" rel="alternate" title="blog.kobtea.net" type="application/atom+xml">
@@ -19,65 +17,24 @@ Custom Domains &ndash; Octopress リポジトリのトップディレクトリ�
 	<link href="/favicon.png" rel="shortcut icon">
 	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-<script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
-
-<script language="Javascript" type="text/javascript">
-$(document).ready(
-  function() {
-    (function($) {
-      $(".fancybox[data-content-id]").each(function() {
-        this.href = $(this).data('content-id');
-      });
-      $(".fancybox").fancybox({
-        beforeLoad: function() {
-          var el, 
-              id = $(this.element).data('title-id');
-
-          if (id) {
-            el = $('#' + id);
-
-            if (el.length) {
-              this.title = el.html();
-            }
-          }
-          if ($(this).data('content')) {
-            this.content = $(this).data('content');
-          }
-        },
-        helpers: {
-          title: {
-            type: 'inside'
-          }
-        }
-      });
-    })(jQuery);
-  }
-);
-</script>
+	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	
 </head>
 
 
 <body>
 	<header id="header" class="inner"><h1><a href="/">blog.kobtea.net</a></h1>
-<h4>咳をしても情弱</h4>
-<nav id="main-nav"><ul>
+<nav id="main-nav"><ul class="main">
 	<li><a href="/">Blog</a></li>
-	<!--li><a href="/about">About</a></li-->
-	<!--li><a href="/portfolio">Portfolio</a></li-->
-	<li><a href="/archives">Archive</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </nav>
 <nav id="mobile-nav">
 	<div class="alignleft menu">
 		<a class="button">Menu</a>
-		<div class="container"><ul>
+		<div class="container"><ul class="main">
 	<li><a href="/">Blog</a></li>
-	<!--li><a href="/about">About</a></li-->
-	<!--li><a href="/portfolio">Portfolio</a></li-->
-	<li><a href="/archives">Archive</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </div>
 	</div>
@@ -91,10 +48,32 @@ $(document).ready(
 		</div>
 	</div>
 </nav>
-
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		
+		
+    
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+    
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:blog.kobtea.net">
+	</form>
+</nav>
 
 </header>
-
+	
+		
+	
 	<div id="content" class="inner"><article class="post">
 	<h2 class="title">Github Pagesにカスタムドメインを割り当てる</h2>
 	<div class="entry-content"><p>参考:</p>
@@ -192,38 +171,35 @@ $(document).ready(
 
 
 <time datetime="2013-09-23T21:39:00+09:00" pubdate data-updated="true">Sep 23<span>rd</span>, 2013</time></div>
-	
+	<div class="tags">
 
-<div class="tags">
 
 	<a class='category' href='/blog/categories/github-pages/'>Github Pages</a>, <a class='category' href='/blog/categories/octopress/'>Octopress</a>
 
+
 </div>
-
-
 	
-</div></article>
+</div>
+</article>
 
 	<div class="share">
 	<div class="addthis_toolbox addthis_default_style ">
-	
-	
-	<a class="addthis_button_tweet"></a>
-	
-	
-<!---	<a class="addthis_counter addthis_pill_style"></a> --->
+		
+		
+		<a class="addthis_button_tweet"></a>
+		
+		
+		
 	</div>
-  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+	
 </div>
 
 
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2013
+	<footer id="footer" class="inner">Copyright &copy; 2014
 
     kobtea
 
-<br>
-Powered by Octopress.
 </footer>
 	<script src="/javascripts/slash.js"></script>
 <script src="/javascripts/jquery.fancybox.pack.js"></script>
