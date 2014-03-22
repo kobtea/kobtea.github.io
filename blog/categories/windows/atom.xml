@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Windows | blog.kobtea.net]]></title>
+  <link href="http://blog.kobtea.net/blog/categories/windows/atom.xml" rel="self"/>
+  <link href="http://blog.kobtea.net/"/>
+  <updated>2014-03-23T02:11:22+09:00</updated>
+  <id>http://blog.kobtea.net/</id>
+  <author>
+    <name><![CDATA[kobtea]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[WindowsでUS配列+親指IME ON/OFFするための設定]]></title>
+    <link href="http://blog.kobtea.net/blog/2014/03/23/setup-us-keyboard-on-win/"/>
+    <updated>2014-03-23T00:43:00+09:00</updated>
+    <id>http://blog.kobtea.net/blog/2014/03/23/setup-us-keyboard-on-win</id>
+    <content type="html"><![CDATA[<p>macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。<br/>
+RealforceのUS配列を購入してwinに設定したこと。</p>
+
+<h2>環境</h2>
+
+<ul>
+<li>OS: Windows7 64bit</li>
+<li>Keyboard: Realforce 87U</li>
+</ul>
+
+
+<p>デスクトップ環境なので今回考えてないけど、ノートの場合は本体の配列がーとか考慮してあげないといけない。</p>
+
+<h2>やりたいこと</h2>
+
+<ul>
+<li>[alt] [無変換] [space] [変換] [alt] みたいな配列にしたい</li>
+<li>[半角/全角] みたいなトグルは使いたくない</li>
+</ul>
+
+
+<p>macのJIS配列みたいな感じ。</p>
+
+<h2>作業ログ</h2>
+
+<h3>英語キーボードとして認識させる</h3>
+
+<p>```sh</p>
+
+<h1>レジストリエディタを起動</h1>
+
+<p>Start > regedit</p>
+
+<h1>キーボード設定を開く</h1>
+
+<p>コンピュータ > HKEY_LOCAL_MACHINE > SYSTEM > CurrentControlSet > services > i8042prt > Parameters</p>
+
+<h1>US配列の設定</h1>
+
+<p>LayerDriver JPN             : kbd106.dll    &ndash;> kbd101.dll
+OverrideKeyboardIdentifier  : PCAT_106KEY   &ndash;> PCAT_101KEY
+OverrideKeyboardSubtype     : 2             &ndash;> 0
+```</p>
+
+<p>再起動する。<br/>
+ログインパスワードを設定している場合、古いJISキーボードでないと弾かれる。<br/>
+スキャンコードか何かで識別していたのかなぁ&hellip;<br/>
+JIS, US両方あるうちにログインパスワード再設定をしておく。</p>
+
+<p>参考 : <a href="http://blog.heiichi.com/?eid=792239">Windows 7 のキーボードを英語キーボードに変更 &ndash; へーいち の うぇぶろぐ</a></p>
+
+<h3>Keyの配置を変える</h3>
+
+<p><a href="http://www.forest.impress.co.jp/library/software/changekey/">Change Key</a>を使う。<br/>
+winキーとaltキーをスワップさせる。</p>
+
+<p><code>
+Left  Win  -&gt; Left  Alt
+Left  Alt  -&gt; Left  Win
+Right Alt  -&gt; Right Win
+Right Win  -&gt; Right Alt
+</code></p>
+
+<p>登録して再起動する。
+Winキーを潰して代わりに変換/無変換キーにするよ。</p>
+
+<h3>変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる</h3>
+
+<p>US配列だと変換/無変換というキーは存在しない。<br/>
+ので、絶対使わないであろうショートカットをWinキーに割り当てて、IMEにはそのショートカットに変換/無変換をフックさせる。</p>
+
+<p><a href="http://www.autohotkey.com/">AutoHotkey</a>を使う。<br/>
+AutoHotkeyを起動して<code>Edit This Script</code>。</p>
+
+<p><code>sh AutoHotkey.ahk
+; Right Winに Ctrl + Shift + Rightを割り当てる
+RWin::^+Right
+; Left  Winに Ctrl + Shift + Left を割り当てる
+LWin::^+Left
+</code></p>
+
+<p>編集したら<code>Reload This Script</code>。<br/>
+Win起動時に一緒に起動して欲しいなら、スタートアップフォルダの中に<code>AutoHotkey.ahk</code>のショートカットを置いておく。</p>
+
+<h3>IMEに変換/無変換の設定をする</h3>
+
+<p>google IMEを使っているのでその設定方法を。</p>
+
+<p>```sh</p>
+
+<h1>キー設定を開く</h1>
+
+<p>google IME > プロパティ > 一般 > キー設定 > キー設定の選択 > 編集</p>
+
+<h1>変換</h1>
+
+<p>直接入力, Ctrl Shift Right, IMEを有効化
+入力文字なし, Ctrl Shift Right, IMEを有効化</p>
+
+<h1>無変換</h1>
+
+<p>直接入力, Ctrl Shift Left, IMEを無効化
+入力文字なし, Ctrl Shift Left, IMEを無効化
+```</p>
+
+<p>これで大勝利。
+なんというまわりくどさ。</p>
+
+<h2>Appendix</h2>
+
+<p>トグルでもよければAX配列設定で、右Altに半角/全角相当が割り当てられる。<br/>
+参考 : <a href="http://www.atmarkit.co.jp/fwin2k/win2ktips/041axkbd/axkbd.html">右Altキーに［漢字］キーを割り当てる方法（AXキーボード設定を利用する方法）</a></p>
+]]></content>
+  </entry>
+  
+</feed>
