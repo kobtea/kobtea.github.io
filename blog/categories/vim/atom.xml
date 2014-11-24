@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | blog.kobtea.net]]></title>
   <link href="http://blog.kobtea.net/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://blog.kobtea.net/"/>
-  <updated>2014-03-23T02:11:22+09:00</updated>
+  <updated>2014-11-24T17:41:10+09:00</updated>
   <id>http://blog.kobtea.net/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
@@ -45,14 +45,13 @@
 <p>.vimrcに以下を追記する。<br/>
 NeoBundle使ってるよ。</p>
 
-<p>```vim .vimrc
-NeoBundle &lsquo;plasticboy/vim-markdown&rsquo;
-NeoBundle &lsquo;kannokanno/previm&rsquo;
-NeoBundle &lsquo;tyru/open-browser.vim&rsquo;</p>
+<pre><code class="vim .vimrc">NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
 
-<p>&ldquo;g:previm_open_cmd   &rdquo; open-browser使用時は不要
-autocmd BufNewFile,BufRead <em>.{md,mdwn,mkd,mkdn,mark</em>} setfiletype mkd
-```</p>
+"g:previm_open_cmd   " open-browser使用時は不要
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype mkd
+</code></pre>
 
 <p>mkdファイルを良い感じに編集して、<code>:PrevimOpen</code>するといい感じにプレビューが出る。<br/>
 ファイル保存すると、自動で更新される。<br/>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: python | blog.kobtea.net]]></title>
+  <title><![CDATA[Category: Python | blog.kobtea.net]]></title>
   <link href="http://blog.kobtea.net/blog/categories/python/atom.xml" rel="self"/>
   <link href="http://blog.kobtea.net/"/>
-  <updated>2014-03-23T02:11:22+09:00</updated>
+  <updated>2014-11-24T17:41:10+09:00</updated>
   <id>http://blog.kobtea.net/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
@@ -18,116 +18,105 @@
     <link href="http://blog.kobtea.net/blog/2013/11/24/install-pyenv-on-mba/"/>
     <updated>2013-11-24T17:31:00+09:00</updated>
     <id>http://blog.kobtea.net/blog/2013/11/24/install-pyenv-on-mba</id>
-    <content type="html"><![CDATA[<p><code>bash
-$ sw_vers
+    <content type="html"><![CDATA[<pre><code class="bash">$ sw_vers
 ProductName:    Mac OS X
 ProductVersion: 10.8.4
 BuildVersion:   12E3067
-</code></p>
+</code></pre>
 
 <p>rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。<br/>
 <a href="https://github.com/yyuu/pyenv">Simple Python Version Management: pyenv</a>を参考に。</p>
 
 <p>Macでhomebrew使っているなら、brewで入れるのがらくちん。</p>
 
-<p>```bash</p>
+<pre><code class="bash"># brewを最新の状態にする
+$ brew update
+$ brew upgrade
 
-<h1>brewを最新の状態にする</h1>
-
-<p>$ brew update
-$ brew upgrade</p>
-
-<p>$ brew search pyenv
+$ brew search pyenv
 pyenv          pyenv-virtualenv
 $ brew install pyenv
 Warning: Your Xcode (4.6.3) is outdated
 Please update to Xcode 5.0.1.
 Xcode can be updated from the App Store.
-==> Downloading <a href="https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz">https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz</a></p>
-
-<h6>################################################################## 100.0%</h6>
-
-<p>==> Caveats
+==&gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
+######################################################################## 100.0%
+==&gt; Caveats
 To enable shims and autocompletion add to your profile:
-  if which pyenv > /dev/null; then eval &ldquo;$(pyenv init &ndash;)&rdquo;; fi</p>
+  if which pyenv &gt; /dev/null; then eval "$(pyenv init -)"; fi
 
-<p>To use Homebrew&rsquo;s directories rather than ~/.pyenv add to your profile:
+To use Homebrew's directories rather than ~/.pyenv add to your profile:
   export PYENV_ROOT=/usr/local/opt/pyenv
-==> Summary
+==&gt; Summary
 🍺  /usr/local/Cellar/pyenv/20131116: 199 files, 2.2M, built in 5 seconds
-```</p>
+</code></pre>
 
 <p><code>.profile</code>とかに以下を追記する。</p>
 
-<p><code>
-if which pyenv &gt; /dev/null; then eval "$(pyenv init -)"; fi
-</code></p>
+<pre><code>if which pyenv &gt; /dev/null; then eval "$(pyenv init -)"; fi
+</code></pre>
 
 <p>profileを再読み込み。</p>
 
-<p><code>bash
-$ source ~/.zprofile
-</code></p>
+<pre><code class="bash">$ source ~/.zprofile
+</code></pre>
 
 <p>使えるか試してみる。</p>
 
-<p><code>bash
-$ pyenv versions
+<pre><code class="bash">$ pyenv versions
 * system (set by /Users/kobtea/.pyenv/version)
 $ pyenv global
 system
 $ python --version
 Python 2.7.2
-</code></p>
+</code></pre>
 
 <p>試しに3.3.2を入れてみる。</p>
 
-<p>```bash
-$ pyenv install 3.3.2
-Downloading Python-3.3.2.tgz&hellip;
-&ndash;> <a href="http://yyuu.github.io/pythons/0a2ea57f6184baf45b150aee53c0c8da">http://yyuu.github.io/pythons/0a2ea57f6184baf45b150aee53c0c8da</a>
-Installing Python-3.3.2&hellip;
-Installed Python-3.3.2 to /Users/kobtea/.pyenv/versions/3.3.2</p>
+<pre><code class="bash">$ pyenv install 3.3.2
+Downloading Python-3.3.2.tgz...
+-&gt; http://yyuu.github.io/pythons/0a2ea57f6184baf45b150aee53c0c8da
+Installing Python-3.3.2...
+Installed Python-3.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
 
-<p>Downloading setuptools-1.3.2.tar.gz&hellip;
-&ndash;> <a href="https://pypi.python.org/packages/source/s/setuptools/setuptools-1.3.2.tar.gz">https://pypi.python.org/packages/source/s/setuptools/setuptools-1.3.2.tar.gz</a>
-Installing setuptools-1.3.2&hellip;
-Installed setuptools-1.3.2 to /Users/kobtea/.pyenv/versions/3.3.2</p>
+Downloading setuptools-1.3.2.tar.gz...
+-&gt; https://pypi.python.org/packages/source/s/setuptools/setuptools-1.3.2.tar.gz
+Installing setuptools-1.3.2...
+Installed setuptools-1.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
 
-<p>Downloading pip-1.4.1.tar.gz&hellip;
-&ndash;> <a href="https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz">https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz</a>
-Installing pip-1.4.1&hellip;
-Installed pip-1.4.1 to /Users/kobtea/.pyenv/versions/3.3.2</p>
+Downloading pip-1.4.1.tar.gz...
+-&gt; https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
+Installing pip-1.4.1...
+Installed pip-1.4.1 to /Users/kobtea/.pyenv/versions/3.3.2
 
-<p>$ pyenv rehash
+
+$ pyenv rehash
 $ pyenv versions
 * system (set by /Users/kobtea/.pyenv/version)
   3.3.2
 $ pyenv global 3.3.2
 $ pyenv version
 3.3.2 (set by /Users/kobtea/.pyenv/version)
-```</p>
+</code></pre>
 
-<p><code>bash
-$ pip --version
+<pre><code class="bash">$ pip --version
 pip 1.4.1 from /Users/kobtea/.pyenv/versions/3.3.2/lib/python3.3/site-packages/pip-1.4.1-py3.3.egg (python 3.3)
-</code></p>
+</code></pre>
 
 <p>すごいpipがもう使えるようになってる！！ステキ！！<br/>
 ついでにipythonを入れてみる。</p>
 
-<p>```bash
-$ pip install ipython
+<pre><code class="bash">$ pip install ipython
 Downloading/unpacking ipython
   Downloading ipython-1.1.0.tar.gz (8.7MB): 8.7MB downloaded
   Running setup.py egg_info for package ipython
-&hellip;</p>
+...
 
-<p>$ pip list
+$ pip list
 ipython (1.1.0)
 pip (1.4.1)
 setuptools (1.3.2)
-```</p>
+</code></pre>
 
 <p>らくちん。</p>
 ]]></content>

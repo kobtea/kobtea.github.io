@@ -4,7 +4,7 @@
   <title><![CDATA[blog.kobtea.net]]></title>
   <link href="http://blog.kobtea.net/atom.xml" rel="self"/>
   <link href="http://blog.kobtea.net/"/>
-  <updated>2014-03-23T02:11:22+09:00</updated>
+  <updated>2014-11-24T17:41:10+09:00</updated>
   <id>http://blog.kobtea.net/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
@@ -62,7 +62,7 @@ RealforceのUS配列を購入してwinに設定したこと。</p>
 </span><span class='line'><span class="c"># US配列の設定</span>
 </span><span class='line'>LayerDriver JPN             : kbd106.dll    -&gt; kbd101.dll
 </span><span class='line'>OverrideKeyboardIdentifier  : PCAT_106KEY   -&gt; PCAT_101KEY
-</span><span class='line'>OverrideKeyboardSubtype     : 2             -&gt; 0
+</span><span class='line'>OverrideKeyboardSubtype     : <span class="m">2</span>             -&gt; 0
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -71,7 +71,7 @@ RealforceのUS配列を購入してwinに設定したこと。</p>
 スキャンコードか何かで識別していたのかなぁ&hellip;<br/>
 JIS, US両方あるうちにログインパスワード再設定をしておく。</p>
 
-<p>参考 : <a href="http://blog.heiichi.com/?eid=792239">Windows 7 のキーボードを英語キーボードに変更 &ndash; へーいち の うぇぶろぐ</a></p>
+<p>参考 : <a href="http://blog.heiichi.com/?eid=792239">Windows 7 のキーボードを英語キーボードに変更 - へーいち の うぇぶろぐ</a></p>
 
 <h3>Keyの配置を変える</h3>
 
@@ -104,9 +104,9 @@ AutoHotkeyを起動して<code>Edit This Script</code>。</p>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='sh'><span class='line'>; Right Winに Ctrl + Shift + Rightを割り当てる
+</pre></td><td class='code'><pre><code class='sh'><span class='line'><span class="p">;</span> Right Winに Ctrl + Shift + Rightを割り当てる
 </span><span class='line'>RWin::^+Right
-</span><span class='line'>; Left  Winに Ctrl + Shift + Left を割り当てる
+</span><span class='line'><span class="p">;</span> Left  Winに Ctrl + Shift + Left を割り当てる
 </span><span class='line'>LWin::^+Left
 </span></code></pre></td></tr></table></div></figure>
 
@@ -204,19 +204,19 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'><span class="c">######################################################################## 100.0%</span>
 </span><span class='line'><span class="o">==</span>&gt; Caveats
 </span><span class='line'>To <span class="nb">enable </span>shims and autocompletion add to your profile:
-</span><span class='line'>  <span class="k">if </span>which pyenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(pyenv init -)&quot;</span>; <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> which pyenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&quot;$(pyenv init -)&quot;</span><span class="p">;</span> <span class="k">fi</span>
 </span><span class='line'>
 </span><span class='line'>To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.pyenv add to your profile:
 </span><span class='line'>  <span class="nb">export </span><span class="nv">PYENV_ROOT</span><span class="o">=</span>/usr/local/opt/pyenv
 </span><span class='line'><span class="o">==</span>&gt; Summary
-</span><span class='line'>🍺  /usr/local/Cellar/pyenv/20131116: 199 files, 2.2M, built in 5 seconds
+</span><span class='line'>🍺  /usr/local/Cellar/pyenv/20131116: <span class="m">199</span> files, 2.2M, built in <span class="m">5</span> seconds
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p><code>.profile</code>とかに以下を追記する。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">if </span>which pyenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(pyenv init -)&quot;</span>; <span class="k">fi</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">if</span> which pyenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&quot;$(pyenv init -)&quot;</span><span class="p">;</span> <span class="k">fi</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -322,7 +322,7 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install ipython
 </span><span class='line'>Downloading/unpacking ipython
 </span><span class='line'>  Downloading ipython-1.1.0.tar.gz <span class="o">(</span>8.7MB<span class="o">)</span>: 8.7MB downloaded
-</span><span class='line'>  Running setup.py egg_info <span class="k">for </span>package ipython
+</span><span class='line'>  Running setup.py egg_info <span class="k">for</span> package ipython
 </span><span class='line'>...
 </span><span class='line'>
 </span><span class='line'><span class="nv">$ </span>pip list
@@ -344,8 +344,8 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
     <content type="html"><![CDATA[<p>参考:</p>
 
 <ul>
-<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></li>
-<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains &ndash; Octopress</a></li>
+<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></li>
+<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains - Octopress</a></li>
 </ul>
 
 
@@ -353,7 +353,7 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 
 <blockquote><p>Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&rsquo;t build successfully, you&rsquo;ll receive a notification from GitHub.</p>
 
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></p></blockquote>
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></p></blockquote>
 
 <p>反映されるのに10分くらい待ってね、とのこと。<br/>
 反映されたらメールをくれるらしい。</p>
@@ -413,7 +413,7 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>dig +noall +answer blog.kobtea.net CNAME
-</span><span class='line'>blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
+</span><span class='line'>blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -466,8 +466,8 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'>Cloning into <span class="s1">&#39;cleanpress&#39;</span>...
 </span><span class='line'>remote: Counting objects: 273, <span class="k">done</span>.
 </span><span class='line'>remote: Compressing objects: 100% <span class="o">(</span>248/248<span class="o">)</span>, <span class="k">done</span>.
-</span><span class='line'>remote: Total 273 <span class="o">(</span>delta 30<span class="o">)</span>, reused 229 <span class="o">(</span>delta 16<span class="o">)</span>
-</span><span class='line'>Receiving objects: 100% <span class="o">(</span>273/273<span class="o">)</span>, 1.09 MiB | 554 KiB/s, <span class="k">done</span>.
+</span><span class='line'>remote: Total <span class="m">273</span> <span class="o">(</span>delta 30<span class="o">)</span>, reused <span class="m">229</span> <span class="o">(</span>delta 16<span class="o">)</span>
+</span><span class='line'>Receiving objects: 100% <span class="o">(</span>273/273<span class="o">)</span>, 1.09 MiB <span class="p">|</span> <span class="m">554</span> KiB/s, <span class="k">done</span>.
 </span><span class='line'>Resolving deltas: 100% <span class="o">(</span>30/30<span class="o">)</span>, <span class="k">done</span>.
 </span><span class='line'>
 </span><span class='line'><span class="c"># テーマを適用する</span>
@@ -545,13 +545,13 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 <span class='line-number'>42</span>
 <span class='line-number'>43</span>
 <span class='line-number'>44</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find . -type f | xargs grep Portfolio
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>find . -type f <span class="p">|</span> xargs grep Portfolio
 </span><span class='line'>./.themes/cleanpress/source/_includes/custom/navigation.html: &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/404.html:    &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/404.html:    &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/archives/index.html: &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/archives/index.html: &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-</span><span class='line'>./public/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+</span><span class='line'>./public/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
 </span><span class='line'>./public/blog/2013/06/15/tywin-lannister-quote/index.html:    &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/2013/06/15/tywin-lannister-quote/index.html:    &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/2013/09/22/hello-octopress/index.html:  &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
@@ -562,7 +562,7 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'>./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:   &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/2013/09/23/change-octopress-theme/index.html:   &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/2013/09/23/change-octopress-theme/index.html:   &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-</span><span class='line'>./public/blog/2013/09/23/change-octopress-theme/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+</span><span class='line'>./public/blog/2013/09/23/change-octopress-theme/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
 </span><span class='line'>./public/blog/2013/09/23/install-ruby-on-mba/index.html:  &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/2013/09/23/install-ruby-on-mba/index.html:  &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/2013/09/23/setup-octopress/index.html:  &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
@@ -573,7 +573,7 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'>./public/blog/categories/etc/index.html:  &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/categories/markdown/index.html: &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/categories/markdown/index.html: &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-</span><span class='line'>./public/blog/categories/octopress/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+</span><span class='line'>./public/blog/categories/octopress/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
 </span><span class='line'>./public/blog/categories/octopress/index.html:    &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/categories/octopress/index.html:    &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/categories/ruby/index.html: &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
@@ -582,10 +582,10 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'>./public/blog/categories/vim/index.html:  &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/index.html: &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/blog/index.html: &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-</span><span class='line'>./public/blog/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+</span><span class='line'>./public/blog/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
 </span><span class='line'>./public/index.html:  &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>./public/index.html:  &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-</span><span class='line'>./public/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
+</span><span class='line'>./public/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
 </span><span class='line'>./source/_includes/custom/navigation.html:    &lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;/portfolio&quot;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 </span><span class='line'>Binary file ./source/_posts/.2013-09-23-change-octopress-theme.markdown.swp matches
 </span><span class='line'>./source/_posts/2013-09-23-change-octopress-theme.markdown:おおん、ページ作っていないAboutとかPortfolioがおる...
@@ -841,20 +841,20 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'>Configuration from /Users/kobtea/Programs/octopress/_config.yml
 </span><span class='line'><span class="o">[</span>2013-09-22 20:52:05<span class="o">]</span> INFO  WEBrick 1.3.1
 </span><span class='line'><span class="o">[</span>2013-09-22 20:52:05<span class="o">]</span> INFO  ruby 2.0.0 <span class="o">(</span>2013-06-27<span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.1<span class="o">]</span>
-</span><span class='line'><span class="o">[</span>2013-09-22 20:52:05<span class="o">]</span> INFO  WEBrick::HTTPServer#start: <span class="nv">pid</span><span class="o">=</span>136 <span class="nv">port</span><span class="o">=</span>4000
+</span><span class='line'><span class="o">[</span>2013-09-22 20:52:05<span class="o">]</span> INFO  WEBrick::HTTPServer#start: <span class="nv">pid</span><span class="o">=</span><span class="m">136</span> <span class="nv">port</span><span class="o">=</span>4000
 </span><span class='line'>&gt;&gt;&gt; Change detected at 20:52:05 to: screen.scss
 </span><span class='line'>Auto-regenerating enabled: <span class="nb">source</span> -&gt; public
-</span><span class='line'><span class="o">[</span>2013-09-22 20:52:05<span class="o">]</span> regeneration: 93 files changed
+</span><span class='line'><span class="o">[</span>2013-09-22 20:52:05<span class="o">]</span> regeneration: <span class="m">93</span> files changed
 </span><span class='line'>identical public/stylesheets/screen.css
-</span><span class='line'>&gt;&gt;&gt; Compass is watching <span class="k">for </span>changes. Press Ctrl-C to Stop.
-</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET / HTTP/1.1&quot;</span> 200 - 0.0207
-</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /stylesheets/screen.css HTTP/1.1&quot;</span> 200 - 0.0034
-</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /javascripts/modernizr-2.0.js HTTP/1.1&quot;</span> 200 - 0.0014
-</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /javascripts/octopress.js HTTP/1.1&quot;</span> 200 - 0.0015
-</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /images/line-tile.png?1379850683 HTTP/1.1&quot;</span> 200 - 0.0013
-</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /images/noise.png?1379850683 HTTP/1.1&quot;</span> 200 - 0.0025
-</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /images/rss.png?1379850683 HTTP/1.1&quot;</span> 200 - 0.0010
-</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:36<span class="o">]</span> <span class="s2">&quot;GET /favicon.png HTTP/1.1&quot;</span> 200 - 0.0015
+</span><span class='line'>&gt;&gt;&gt; Compass is watching <span class="k">for</span> changes. Press Ctrl-C to Stop.
+</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET / HTTP/1.1&quot;</span> <span class="m">200</span> - 0.0207
+</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /stylesheets/screen.css HTTP/1.1&quot;</span> <span class="m">200</span> - 0.0034
+</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /javascripts/modernizr-2.0.js HTTP/1.1&quot;</span> <span class="m">200</span> - 0.0014
+</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /javascripts/octopress.js HTTP/1.1&quot;</span> <span class="m">200</span> - 0.0015
+</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /images/line-tile.png?1379850683 HTTP/1.1&quot;</span> <span class="m">200</span> - 0.0013
+</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /images/noise.png?1379850683 HTTP/1.1&quot;</span> <span class="m">200</span> - 0.0025
+</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:35<span class="o">]</span> <span class="s2">&quot;GET /images/rss.png?1379850683 HTTP/1.1&quot;</span> <span class="m">200</span> - 0.0010
+</span><span class='line'>127.0.0.1 - - <span class="o">[</span>22/Sep/2013 20:52:36<span class="o">]</span> <span class="s2">&quot;GET /favicon.png HTTP/1.1&quot;</span> <span class="m">200</span> - 0.0015
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -992,7 +992,7 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 <span class='line-number'>116</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># 途中でgithub pagesのリポジトリを入力する</span>
 </span><span class='line'><span class="nv">$ </span>rake setup_github_pages
-</span><span class='line'>Enter the <span class="nb">read</span>/write url <span class="k">for </span>your repository
+</span><span class='line'>Enter the <span class="nb">read</span>/write url <span class="k">for</span> your repository
 </span><span class='line'><span class="o">(</span>For example, <span class="s1">&#39;git@github.com:your_username/your_username.github.io.git)</span>
 </span><span class='line'><span class="s1">           or &#39;</span>https://github.com/your_username/your_username.github.io<span class="err">&#39;</span><span class="o">)</span>
 </span><span class='line'>Repository url: git@github.com:kobtea/kobtea.github.io.git
@@ -1001,8 +1001,8 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'><span class="nb">cd </span>_deploy
 </span><span class='line'>Initialized empty Git repository in /Users/kobtea/Programs/octopress/_deploy/.git/
 </span><span class='line'><span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> d1ed656<span class="o">]</span> Octopress init
-</span><span class='line'> 1 file changed, 1 insertion<span class="o">(</span>+<span class="o">)</span>
-</span><span class='line'> create mode 100644 index.html
+</span><span class='line'> <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+</span><span class='line'> create mode <span class="m">100644</span> index.html
 </span><span class='line'><span class="nb">cd</span> -
 </span><span class='line'>
 </span><span class='line'>---
@@ -1013,13 +1013,13 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'><span class="c">## Deploying branch to Github Pages</span>
 </span><span class='line'><span class="c">## Pulling any updates from Github Pages</span>
 </span><span class='line'><span class="nb">cd </span>_deploy
-</span><span class='line'>There is no tracking information <span class="k">for </span>the current branch.
+</span><span class='line'>There is no tracking information <span class="k">for</span> the current branch.
 </span><span class='line'>Please specify which branch you want to merge with.
-</span><span class='line'>See git-pull<span class="o">(</span>1<span class="o">)</span> <span class="k">for </span>details
+</span><span class='line'>See git-pull<span class="o">(</span>1<span class="o">)</span> <span class="k">for</span> details
 </span><span class='line'>
 </span><span class='line'>    git pull &lt;remote&gt; &lt;branch&gt;
 </span><span class='line'>
-</span><span class='line'>If you wish to <span class="nb">set </span>tracking information <span class="k">for </span>this branch you can <span class="k">do </span>so with:
+</span><span class='line'>If you wish to <span class="nb">set </span>tracking information <span class="k">for</span> this branch you can <span class="k">do</span> so with:
 </span><span class='line'>
 </span><span class='line'>    git branch --set-upstream master origin/&lt;branch&gt;
 </span><span class='line'>
@@ -1032,75 +1032,75 @@ Win起動時に一緒に起動して欲しいなら、スタートアップフ�
 </span><span class='line'>
 </span><span class='line'><span class="c">## Commiting: Site updated at 2013-09-22 12:50:23 UTC</span>
 </span><span class='line'><span class="o">[</span>master 29f0918<span class="o">]</span> Site updated at 2013-09-22 12:50:23 UTC
-</span><span class='line'> 61 files changed, 1118 insertions<span class="o">(</span>+<span class="o">)</span>, 1 deletion<span class="o">(</span>-<span class="o">)</span>
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/background.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/blankButton.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/divider.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButton.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButtonOver.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/muteButton.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/muteButtonOver.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButton.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButtonOver.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/pauseButton.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/pauseButtonOver.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/playButton.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/playButtonOver.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/timeSliderBuffer.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapLeft.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapRight.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/timeSliderProgress.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/timeSliderRail.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/unmuteButton.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/controlbar/unmuteButtonOver.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/display/background.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/display/bufferIcon.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/display/muteIcon.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/display/playIcon.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/dock/button.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/glow.xml
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/playlist/item.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/playlist/itemOver.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/playlist/sliderCapBottom.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/playlist/sliderCapTop.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/playlist/sliderRail.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/playlist/sliderThumb.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/sharing/embedIcon.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/sharing/embedScreen.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/sharing/shareIcon.png
-</span><span class='line'> create mode 100644 assets/jwplayer/glow/sharing/shareScreen.png
-</span><span class='line'> create mode 100644 assets/jwplayer/player.swf
-</span><span class='line'> create mode 100644 atom.xml
-</span><span class='line'> create mode 100644 blog/archives/index.html
-</span><span class='line'> create mode 100644 favicon.png
-</span><span class='line'> create mode 100644 images/bird_32_gray.png
-</span><span class='line'> create mode 100644 images/bird_32_gray_fail.png
-</span><span class='line'> create mode 100644 images/code_bg.png
-</span><span class='line'> create mode 100644 images/dotted-border.png
-</span><span class='line'> create mode 100644 images/email.png
-</span><span class='line'> create mode 100644 images/line-tile.png
-</span><span class='line'> create mode 100644 images/noise.png
-</span><span class='line'> create mode 100644 images/rss.png
-</span><span class='line'> create mode 100644 images/search.png
+</span><span class='line'> <span class="m">61</span> files changed, <span class="m">1118</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">1</span> deletion<span class="o">(</span>-<span class="o">)</span>
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/background.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/blankButton.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/divider.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/fullscreenButton.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/fullscreenButtonOver.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/muteButton.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/muteButtonOver.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/normalscreenButton.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/normalscreenButtonOver.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/pauseButton.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/pauseButtonOver.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/playButton.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/playButtonOver.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/timeSliderBuffer.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/timeSliderCapLeft.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/timeSliderCapRight.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/timeSliderProgress.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/timeSliderRail.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/unmuteButton.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/controlbar/unmuteButtonOver.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/display/background.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/display/bufferIcon.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/display/muteIcon.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/display/playIcon.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/dock/button.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/glow.xml
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/playlist/item.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/playlist/itemOver.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/playlist/sliderCapBottom.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/playlist/sliderCapTop.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/playlist/sliderRail.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/playlist/sliderThumb.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/sharing/embedIcon.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/sharing/embedScreen.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/sharing/shareIcon.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/glow/sharing/shareScreen.png
+</span><span class='line'> create mode <span class="m">100644</span> assets/jwplayer/player.swf
+</span><span class='line'> create mode <span class="m">100644</span> atom.xml
+</span><span class='line'> create mode <span class="m">100644</span> blog/archives/index.html
+</span><span class='line'> create mode <span class="m">100644</span> favicon.png
+</span><span class='line'> create mode <span class="m">100644</span> images/bird_32_gray.png
+</span><span class='line'> create mode <span class="m">100644</span> images/bird_32_gray_fail.png
+</span><span class='line'> create mode <span class="m">100644</span> images/code_bg.png
+</span><span class='line'> create mode <span class="m">100644</span> images/dotted-border.png
+</span><span class='line'> create mode <span class="m">100644</span> images/email.png
+</span><span class='line'> create mode <span class="m">100644</span> images/line-tile.png
+</span><span class='line'> create mode <span class="m">100644</span> images/noise.png
+</span><span class='line'> create mode <span class="m">100644</span> images/rss.png
+</span><span class='line'> create mode <span class="m">100644</span> images/search.png
 </span><span class='line'> rewrite index.html <span class="o">(</span>100%<span class="o">)</span>
-</span><span class='line'> create mode 100644 javascripts/github.js
-</span><span class='line'> create mode 100644 javascripts/libs/jXHR.js
-</span><span class='line'> create mode 100644 javascripts/libs/jquery.min.js
-</span><span class='line'> create mode 100644 javascripts/libs/swfobject-dynamic.js
-</span><span class='line'> create mode 100644 javascripts/modernizr-2.0.js
-</span><span class='line'> create mode 100644 javascripts/octopress.js
-</span><span class='line'> create mode 100644 javascripts/pinboard.js
-</span><span class='line'> create mode 100644 javascripts/twitter.js
-</span><span class='line'> create mode 100644 robots.txt
-</span><span class='line'> create mode 100644 sitemap.xml
-</span><span class='line'> create mode 100644 stylesheets/screen.css
+</span><span class='line'> create mode <span class="m">100644</span> javascripts/github.js
+</span><span class='line'> create mode <span class="m">100644</span> javascripts/libs/jXHR.js
+</span><span class='line'> create mode <span class="m">100644</span> javascripts/libs/jquery.min.js
+</span><span class='line'> create mode <span class="m">100644</span> javascripts/libs/swfobject-dynamic.js
+</span><span class='line'> create mode <span class="m">100644</span> javascripts/modernizr-2.0.js
+</span><span class='line'> create mode <span class="m">100644</span> javascripts/octopress.js
+</span><span class='line'> create mode <span class="m">100644</span> javascripts/pinboard.js
+</span><span class='line'> create mode <span class="m">100644</span> javascripts/twitter.js
+</span><span class='line'> create mode <span class="m">100644</span> robots.txt
+</span><span class='line'> create mode <span class="m">100644</span> sitemap.xml
+</span><span class='line'> create mode <span class="m">100644</span> stylesheets/screen.css
 </span><span class='line'>
 </span><span class='line'><span class="c">## Pushing generated _deploy website</span>
 </span><span class='line'>Counting objects: 79, <span class="k">done</span>.
-</span><span class='line'>Delta compression using up to 4 threads.
+</span><span class='line'>Delta compression using up to <span class="m">4</span> threads.
 </span><span class='line'>Compressing objects: 100% <span class="o">(</span>72/72<span class="o">)</span>, <span class="k">done</span>.
 </span><span class='line'>Writing objects: 100% <span class="o">(</span>79/79<span class="o">)</span>, 186.46 KiB, <span class="k">done</span>.
-</span><span class='line'>Total 79 <span class="o">(</span>delta 1<span class="o">)</span>, reused 0 <span class="o">(</span>delta 0<span class="o">)</span>
+</span><span class='line'>Total <span class="m">79</span> <span class="o">(</span>delta 1<span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta 0<span class="o">)</span>
 </span><span class='line'>To git@github.com:kobtea/kobtea.github.io.git
 </span><span class='line'> * <span class="o">[</span>new branch<span class="o">]</span>      master -&gt; master
 </span><span class='line'>
@@ -1357,21 +1357,21 @@ PATHについて解説までしてくれるとかマジ天使。</p>
 </span><span class='line'>  <span class="nb">export </span><span class="nv">RBENV_ROOT</span><span class="o">=</span>/usr/local/var/rbenv
 </span><span class='line'>
 </span><span class='line'>To <span class="nb">enable </span>shims and autocompletion add to your profile:
-</span><span class='line'>  <span class="k">if </span>which rbenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span>; <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> which rbenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&quot;$(rbenv init -)&quot;</span><span class="p">;</span> <span class="k">fi</span>
 </span><span class='line'><span class="o">==</span>&gt; Summary
-</span><span class='line'>🍺  /usr/local/Cellar/rbenv/0.4.0: 31 files, 152K, built in 2 seconds
+</span><span class='line'>🍺  /usr/local/Cellar/rbenv/0.4.0: <span class="m">31</span> files, 152K, built in <span class="m">2</span> seconds
 </span><span class='line'>
 </span><span class='line'><span class="c"># ruby-buildをインストール</span>
 </span><span class='line'><span class="nv">$ </span>brew install ruby-build
 </span><span class='line'><span class="c">######################################################################## 100.0%</span>
 </span><span class='line'><span class="o">==</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/autoconf/2.69
 </span><span class='line'><span class="o">==</span>&gt; make install
-</span><span class='line'>🍺  /usr/local/Cellar/autoconf/2.69: 69 files, 2.0M, built in 8 <span class="nv">seconds</span>
+</span><span class='line'>🍺  /usr/local/Cellar/autoconf/2.69: <span class="m">69</span> files, 2.0M, built in <span class="m">8</span> <span class="nv">seconds</span>
 </span><span class='line'><span class="o">==</span>&gt; Installing ruby-build
 </span><span class='line'><span class="o">==</span>&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
 </span><span class='line'><span class="c">######################################################################## 100.0%</span>
 </span><span class='line'><span class="o">==</span>&gt; ./install.sh
-</span><span class='line'>🍺  /usr/local/Cellar/ruby-build/20130907: 83 files, 368K, built in 2 seconds
+</span><span class='line'>🍺  /usr/local/Cellar/ruby-build/20130907: <span class="m">83</span> files, 368K, built in <span class="m">2</span> seconds
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1422,7 +1422,7 @@ PATHについて解説までしてくれるとかマジ天使。</p>
 </span><span class='line'>   which       Display the full path to an executable
 </span><span class='line'>   whence      List all Ruby versions that contain the given executable
 </span><span class='line'>
-</span><span class='line'>See <span class="sb">`</span>rbenv <span class="nb">help</span> &lt;<span class="nb">command</span>&gt;<span class="err">&#39;</span> <span class="k">for </span>information on a specific command.
+</span><span class='line'>See <span class="sb">`</span>rbenv <span class="nb">help</span> &lt;<span class="nb">command</span>&gt;<span class="err">&#39;</span> <span class="k">for</span> information on a specific command.
 </span><span class='line'>For full documentation, see: https://github.com/sstephenson/rbenv#readme
 </span></code></pre></td></tr></table></div></figure>
 
@@ -1480,7 +1480,7 @@ PATHについて解説までしてくれるとかマジ天使。</p>
 </span><span class='line'>Inspect or clean up the working tree at /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114
 </span><span class='line'>Results logged to /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114.log
 </span><span class='line'>
-</span><span class='line'>Last 10 log lines:
+</span><span class='line'>Last <span class="m">10</span> log lines:
 </span><span class='line'><span class="nv">RANLIB</span>        <span class="o">=</span><span class="nb">true</span>
 </span><span class='line'><span class="nv">ARFLAGS</span>       <span class="o">=</span>
 </span><span class='line'><span class="nv">PERL</span>          <span class="o">=</span>/usr/bin/perl
@@ -1575,7 +1575,7 @@ command line toolsが入ってなかった。</p>
 <span class='line-number'>18</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>rbenv install 2.0.0-p247
 </span><span class='line'>rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
-</span><span class='line'><span class="k">continue </span>with installation? <span class="o">(</span>y/N<span class="o">)</span> y
+</span><span class='line'><span class="k">continue</span> with installation? <span class="o">(</span>y/N<span class="o">)</span> y
 </span><span class='line'>Downloading openssl-1.0.1e.tar.gz...
 </span><span class='line'>-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
 </span><span class='line'>Installing openssl-1.0.1e...
@@ -1588,9 +1588,9 @@ command line toolsが入ってなかった。</p>
 </span><span class='line'>
 </span><span class='line'>Fetching: bundler-1.3.5.gem <span class="o">(</span>100%<span class="o">)</span>
 </span><span class='line'>Successfully installed bundler-1.3.5
-</span><span class='line'>Parsing documentation <span class="k">for </span>bundler-1.3.5
-</span><span class='line'>Installing ri documentation <span class="k">for </span>bundler-1.3.5
-</span><span class='line'>1 gem installed
+</span><span class='line'>Parsing documentation <span class="k">for</span> bundler-1.3.5
+</span><span class='line'>Installing ri documentation <span class="k">for</span> bundler-1.3.5
+</span><span class='line'><span class="m">1</span> gem installed
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1663,7 +1663,7 @@ command line toolsが入ってなかった。</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[irbで日本語が文字化けする]]></title>
+    <title type="html"><![CDATA[Irbで日本語が文字化けする]]></title>
     <link href="http://blog.kobtea.net/blog/2013/09/22/use-multibytes-on-ruby/"/>
     <updated>2013-09-22T23:38:00+09:00</updated>
     <id>http://blog.kobtea.net/blog/2013/09/22/use-multibytes-on-ruby</id>
@@ -1737,7 +1737,7 @@ CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline` --enable-bundled-li
 </span><span class='line'><span class="c"># 参考通りにやってみる</span>
 </span><span class='line'><span class="nv">$ CONFIGURE_OPTS</span><span class="o">=</span><span class="s2">&quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&quot;</span> rbenv install 2.0.0-p247
 </span><span class='line'>rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
-</span><span class='line'><span class="k">continue </span>with installation? <span class="o">(</span>y/N<span class="o">)</span> y
+</span><span class='line'><span class="k">continue</span> with installation? <span class="o">(</span>y/N<span class="o">)</span> y
 </span><span class='line'>Downloading ruby-2.0.0-p247.tar.gz...
 </span><span class='line'>-&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
 </span><span class='line'>Installing ruby-2.0.0-p247...
@@ -1745,9 +1745,9 @@ CONFIGURE_OPTS="--with-readline-dir=`brew --prefix readline` --enable-bundled-li
 </span><span class='line'>
 </span><span class='line'>Fetching: bundler-1.3.5.gem <span class="o">(</span>100%<span class="o">)</span>
 </span><span class='line'>Successfully installed bundler-1.3.5
-</span><span class='line'>Parsing documentation <span class="k">for </span>bundler-1.3.5
-</span><span class='line'>Installing ri documentation <span class="k">for </span>bundler-1.3.5
-</span><span class='line'>1 gem installed
+</span><span class='line'>Parsing documentation <span class="k">for</span> bundler-1.3.5
+</span><span class='line'>Installing ri documentation <span class="k">for</span> bundler-1.3.5
+</span><span class='line'><span class="m">1</span> gem installed
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -1818,7 +1818,7 @@ NeoBundle使ってるよ。</p>
 </span><span class='line'>NeoBundle <span class="s1">&#39;tyru/open-browser.vim&#39;</span>
 </span><span class='line'>
 </span><span class='line'><span class="c">&quot;g:previm_open_cmd   &quot; open-browser使用時は不要</span>
-</span><span class='line'>autocmd <span class="nb">BufNewFile</span><span class="p">,</span><span class="nb">BufRead</span> *.{md<span class="p">,</span>mdwn<span class="p">,</span>mkd<span class="p">,</span>mkdn<span class="p">,</span>mark*} <span class="k">setfiletype</span> mkd
+</span><span class='line'><span class="k">autocmd</span> <span class="nb">BufNewFile</span><span class="p">,</span><span class="nb">BufRead</span> *.{md<span class="p">,</span>mdwn<span class="p">,</span>mkd<span class="p">,</span>mkdn<span class="p">,</span>mark*} <span class="k">setfiletype</span> mkd
 </span></code></pre></td></tr></table></div></figure>
 
 

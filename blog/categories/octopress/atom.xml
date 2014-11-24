@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Octopress | blog.kobtea.net]]></title>
   <link href="http://blog.kobtea.net/blog/categories/octopress/atom.xml" rel="self"/>
   <link href="http://blog.kobtea.net/"/>
-  <updated>2014-03-23T02:11:22+09:00</updated>
+  <updated>2014-11-24T17:41:10+09:00</updated>
   <id>http://blog.kobtea.net/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
@@ -21,8 +21,8 @@
     <content type="html"><![CDATA[<p>参考:</p>
 
 <ul>
-<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></li>
-<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains &ndash; Octopress</a></li>
+<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></li>
+<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains - Octopress</a></li>
 </ul>
 
 
@@ -30,7 +30,7 @@
 
 <blockquote><p>Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&rsquo;t build successfully, you&rsquo;ll receive a notification from GitHub.</p>
 
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></p></blockquote>
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></p></blockquote>
 
 <p>反映されるのに10分くらい待ってね、とのこと。<br/>
 反映されたらメールをくれるらしい。</p>
@@ -39,35 +39,29 @@
 
 <p><code>source/CNAME</code>に割り当てるドメインを設定する。</p>
 
-<p><code>bash
-$ echo 'blog.kobtea.net' &gt;&gt; source/CNAME
-</code></p>
+<pre><code class="bash">$ echo 'blog.kobtea.net' &gt;&gt; source/CNAME
+</code></pre>
 
 <p><code>_config.yml</code>のurlも変更しておく。</p>
 
-<p>```yml _config.yml</p>
+<pre><code class="yml _config.yml"># ----------------------- #
+#      Main Configs       #
+# ----------------------- #
 
-<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
-
-<h1>Main Configs</h1>
-
-<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
-
-<p>url: <a href="http://blog.kobtea.net">http://blog.kobtea.net</a>
+url: http://blog.kobtea.net
 title: blog.kobtea.net
 subtitle: 咳をしても情弱
 author: kobtea
-simple_search: <a href="http://google.com/search">http://google.com/search</a>
+simple_search: http://google.com/search
 description:
-```</p>
+</code></pre>
 
 <h2>DNS設定</h2>
 
 <p>お名前.comを使っているので、そちらで設定する。</p>
 
-<p><code>
-ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
-</code></p>
+<pre><code>ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
+</code></pre>
 
 <p><img src="/images/dns-setting-onamae.png" alt="dns-setting" /></p>
 
@@ -78,10 +72,9 @@ description:
 
 <p>digしてみる。</p>
 
-<p><code>bash
-$ dig +noall +answer blog.kobtea.net CNAME
+<pre><code class="bash">$ dig +noall +answer blog.kobtea.net CNAME
 blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
-</code></p>
+</code></pre>
 
 <p>できてるぽい。<br/>
 最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。</p>
@@ -96,46 +89,37 @@ blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
     <content type="html"><![CDATA[<p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a>で公開されているので気に入ったものを選ぶ。<br/>
 <a href="https://github.com/macjasp/cleanpress">CleanPress</a>がステキ。</p>
 
-<p>```bash</p>
-
-<h1>テーマのディレクトリまで行ってテーマのリポジトリをclone</h1>
-
-<p>$ cd octopress/.theme
+<pre><code class="bash"># テーマのディレクトリまで行ってテーマのリポジトリをclone
+$ cd octopress/.theme
 $ git clone git@github.com:macjasp/cleanpress.git
-Cloning into &lsquo;cleanpress&rsquo;&hellip;
+Cloning into 'cleanpress'...
 remote: Counting objects: 273, done.
 remote: Compressing objects: 100% (248/248), done.
 remote: Total 273 (delta 30), reused 229 (delta 16)
 Receiving objects: 100% (273/273), 1.09 MiB | 554 KiB/s, done.
-Resolving deltas: 100% (30/30), done.</p>
+Resolving deltas: 100% (30/30), done.
 
-<h1>テーマを適用する</h1>
-
-<p>$ rake install[cleanpress]
+# テーマを適用する
+$ rake install\[cleanpress\]
 (in /Users/kobtea/Programs/octopress)
-A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y</p>
-
-<h2>Copying cleanpress theme into ./source and ./sass</h2>
-
-<p>mkdir -p source
+A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y
+## Copying cleanpress theme into ./source and ./sass
+mkdir -p source
 cp -r .themes/cleanpress/source/. source
 mkdir -p sass
 cp -r .themes/cleanpress/sass/. sass
 mkdir -p source/_posts
-mkdir -p public</p>
+mkdir -p public
 
-<h1>generate!</h1>
-
-<p>$ rake generate
-(in /Users/kobtea/Programs/octopress)</p>
-
-<h2>Generating Site with Jekyll</h2>
-
-<p>unchanged sass/screen.scss
+# generate!
+$ rake generate
+(in /Users/kobtea/Programs/octopress)
+## Generating Site with Jekyll
+unchanged sass/screen.scss
 Configuration from /Users/kobtea/Programs/octopress/_config.yml
-Building site: source &ndash;> public
-Successfully generated site: source &ndash;> public
-```</p>
+Building site: source -&gt; public
+Successfully generated site: source -&gt; public
+</code></pre>
 
 <p><code>rake preview</code>してちゃんと反映されているかを確認する。</p>
 
@@ -194,8 +178,7 @@ Binary file ./source/_posts/.2013-09-23-change-octopress-theme.markdown.swp matc
 <p><code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code>あたりがくさい。<br/>
 ブランチ切って編集する。</p>
 
-<p><code>bash
-$ cd .themes/cleanpress
+<pre><code class="bash">$ cd .themes/cleanpress
 $ git branch
 * master
 $ git checkout -b edit-contents-links
@@ -203,11 +186,11 @@ Switched to a new branch 'edit-contents-links'
 $ git branch
 * edit-contents-links
   master
-</code></p>
+</code></pre>
 
 <p>ひとまずコメントアウトしておく。</p>
 
-<p>```html octopress/.themes/cleanpress/source/_includes/custom/navigation.html</p>
+<p>&#8220;`html octopress/.themes/cleanpress/source/_includes/custom/navigation.html</p>
 
 <ul>
     <li><a href="/">Blog</a></li>
@@ -217,12 +200,11 @@ $ git branch
 </ul>
 
 
-<p>```</p>
+<pre><code>
+再度テーマをインストールする。  
+</code></pre>
 
-<p>再度テーマをインストールする。</p>
-
-<p>```bash
-$ rake install[cleanpress]
+<p>$ rake install[cleanpress]
 (in /Users/kobtea/Programs/octopress)
 A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y</p>
 
@@ -242,9 +224,9 @@ mkdir -p public</p>
 
 <p>unchanged sass/screen.scss
 Configuration from /Users/kobtea/Programs/octopress/_config.yml
-Building site: source &ndash;> public
-Successfully generated site: source &ndash;> public
-```</p>
+Building site: source -> public
+Successfully generated site: source -> public
+&#8220;`</p>
 
 <p><img src="/images/install-cleanpress2.png" alt="cleanpress-capture2" /></p>
 
@@ -260,63 +242,52 @@ Successfully generated site: source &ndash;> public
     <content type="html"><![CDATA[<p>もはや様式美だけど自分のために。<br/>
 公式の<a href="http://octopress.org/docs/">Octopress Documentation</a>を参考に。</p>
 
-<p>```bash
-$ sw_vers
+<pre><code class="bash">$ sw_vers
 ProductName:    Mac OS X
 ProductVersion: 10.8.4
-BuildVersion:   12E3067</p>
+BuildVersion:   12E3067
 
-<p>$ ruby -v
-ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]</p>
+$ ruby -v
+ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
 
-<p>$ gem -v
-2.0.3</p>
+$ gem -v
+2.0.3
 
-<p>$ bundle -v
+$ bundle -v
 Bundler version 1.3.5
-```</p>
+</code></pre>
 
 <h2>Octopressのセットアップ</h2>
 
 <p>参考 : <a href="http://octopress.org/docs/setup/">Octopress Setup</a></p>
 
-<p>```bash</p>
+<pre><code class="bash"># リポジトリをclone
+$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
 
-<h1>リポジトリをclone</h1>
-
-<p>$ git clone git://github.com/imathis/octopress.git octopress
-$ cd octopress</p>
-
-<h1>必要なgemを入れる</h1>
-
-<p>$ bundle install
+# 必要なgemを入れる
+$ bundle install
 $ rake install
 rake aborted!
 You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2. Using bundle exec may solve this.
-/Users/kobtea/Programs/octopress/Rakefile:2:in `<top (required)>&lsquo;
-(See full trace by running task with &mdash;trace)</p>
-
-<h1>失敗した</h1>
-
-<h1>落ち着いてもう一度update</h1>
-
-<p>$ bundle update
-$ rake install</p>
-
-<h2>Copying classic theme into ./source and ./sass</h2>
-
-<p>mkdir -p source
+/Users/kobtea/Programs/octopress/Rakefile:2:in `&lt;top (required)&gt;'
+(See full trace by running task with --trace)
+# 失敗した
+# 落ち着いてもう一度update
+$ bundle update
+$ rake install
+## Copying classic theme into ./source and ./sass
+mkdir -p source
 cp -r .themes/classic/source/. source
 mkdir -p sass
 cp -r .themes/classic/sass/. sass
 mkdir -p source/_posts
 mkdir -p public
-```</p>
+</code></pre>
 
 <p>rakeタスクを見てみる。</p>
 
-<p><code>bash
-$ rake -T
+<pre><code class="bash">$ rake -T
 rake clean                     # Clean out caches: .pygments-cache, .gist-cache, .sass-cache
 rake copydot[source,dest]      # copy dot files for deployment
 rake deploy                    # Default deploy task
@@ -336,34 +307,32 @@ rake setup_github_pages[repo]  # Set up _deploy folder and deploy branch for Git
 rake update_source[theme]      # Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source.old's navigation
 rake update_style[theme]       # Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom
 rake watch                     # Watch the site and regenerate when it changes
-</code></p>
+</code></pre>
 
 <p>試しに<code>rake preview</code>してみる。</p>
 
-<p>```bash
-$ rake preview
+<pre><code class="bash">$ rake preview
 Stkobteang to watch source with Jekyll and Compass. Stkobteang Rack on port 4000
 directory source/stylesheets/
    create source/stylesheets/screen.css
 Configuration from /Users/kobtea/Programs/octopress/_config.yml
 [2013-09-22 20:52:05] INFO  WEBrick 1.3.1
 [2013-09-22 20:52:05] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.1]
-[2013-09-22 20:52:05] INFO  WEBrick::HTTPServer#start: pid=136 port=4000</p>
-
-<blockquote><blockquote><blockquote><p>Change detected at 20:52:05 to: screen.scss
-Auto-regenerating enabled: source &ndash;> public
+[2013-09-22 20:52:05] INFO  WEBrick::HTTPServer#start: pid=136 port=4000
+&gt;&gt;&gt; Change detected at 20:52:05 to: screen.scss
+Auto-regenerating enabled: source -&gt; public
 [2013-09-22 20:52:05] regeneration: 93 files changed
 identical public/stylesheets/screen.css
-Compass is watching for changes. Press Ctrl-C to Stop.
-127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET / HTTP/1.1&rdquo; 200 &ndash; 0.0207
-127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /stylesheets/screen.css HTTP/1.1&rdquo; 200 &ndash; 0.0034
-127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /javascripts/modernizr-2.0.js HTTP/1.1&rdquo; 200 &ndash; 0.0014
-127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /javascripts/octopress.js HTTP/1.1&rdquo; 200 &ndash; 0.0015
-127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /images/line-tile.png?1379850683 HTTP/1.1&rdquo; 200 &ndash; 0.0013
-127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /images/noise.png?1379850683 HTTP/1.1&rdquo; 200 &ndash; 0.0025
-127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:35] &ldquo;GET /images/rss.png?1379850683 HTTP/1.1&rdquo; 200 &ndash; 0.0010
-127.0.0.1 &ndash; &ndash; [22/Sep/2013 20:52:36] &ldquo;GET /favicon.png HTTP/1.1&rdquo; 200 &ndash; 0.0015
-```</p></blockquote></blockquote></blockquote>
+&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.
+127.0.0.1 - - [22/Sep/2013 20:52:35] "GET / HTTP/1.1" 200 - 0.0207
+127.0.0.1 - - [22/Sep/2013 20:52:35] "GET /stylesheets/screen.css HTTP/1.1" 200 - 0.0034
+127.0.0.1 - - [22/Sep/2013 20:52:35] "GET /javascripts/modernizr-2.0.js HTTP/1.1" 200 - 0.0014
+127.0.0.1 - - [22/Sep/2013 20:52:35] "GET /javascripts/octopress.js HTTP/1.1" 200 - 0.0015
+127.0.0.1 - - [22/Sep/2013 20:52:35] "GET /images/line-tile.png?1379850683 HTTP/1.1" 200 - 0.0013
+127.0.0.1 - - [22/Sep/2013 20:52:35] "GET /images/noise.png?1379850683 HTTP/1.1" 200 - 0.0025
+127.0.0.1 - - [22/Sep/2013 20:52:35] "GET /images/rss.png?1379850683 HTTP/1.1" 200 - 0.0010
+127.0.0.1 - - [22/Sep/2013 20:52:36] "GET /favicon.png HTTP/1.1" 200 - 0.0015
+</code></pre>
 
 <p>ブラウザでlocalhost:4000にアクセス。<br/>
 <img src="/images/hello-octopress.png" alt="hello-octopress" />
@@ -381,64 +350,49 @@ Compass is watching for changes. Press Ctrl-C to Stop.
 
 <p>githubにUSERNAME.github.ioでリポジトリを作成しておく。</p>
 
-<p>```bash</p>
-
-<h1>途中でgithub pagesのリポジトリを入力する</h1>
-
-<p>$ rake setup_github_pages
+<pre><code class="bash"># 途中でgithub pagesのリポジトリを入力する
+$ rake setup_github_pages
 Enter the read/write url for your repository
-(For example, &lsquo;git@github.com:your_username/your_username.github.io.git)</p>
-
-<pre><code>       or 'https://github.com/your_username/your_username.github.io')
-</code></pre>
-
-<p>Repository url: git@github.com:kobtea/kobtea.github.io.git
-rm -rf <em>deploy
-mkdir </em>deploy
-cd <em>deploy
-Initialized empty Git repository in /Users/kobtea/Programs/octopress/</em>deploy/.git/
+(For example, 'git@github.com:your_username/your_username.github.io.git)
+           or 'https://github.com/your_username/your_username.github.io')
+Repository url: git@github.com:kobtea/kobtea.github.io.git
+rm -rf _deploy
+mkdir _deploy
+cd _deploy
+Initialized empty Git repository in /Users/kobtea/Programs/octopress/_deploy/.git/
 [master (root-commit) d1ed656] Octopress init
  1 file changed, 1 insertion(+)
  create mode 100644 index.html
-cd &ndash;</p>
+cd -
 
-<hr />
+---
+## Now you can deploy to git@github.com:kobtea/kobtea.github.io.git with `rake deploy` ##
 
-<h2>Now you can deploy to git@github.com:kobtea/kobtea.github.io.git with <code>rake deploy</code></h2>
-
-<h1>とりあえずdeploy</h1>
-
-<p>$ rake deploy</p>
-
-<h2>Deploying branch to Github Pages</h2>
-
-<h2>Pulling any updates from Github Pages</h2>
-
-<p>cd _deploy
+# とりあえずdeploy
+$ rake deploy
+## Deploying branch to Github Pages
+## Pulling any updates from Github Pages
+cd _deploy
 There is no tracking information for the current branch.
 Please specify which branch you want to merge with.
-See git-pull(1) for details</p>
+See git-pull(1) for details
 
-<pre><code>git pull &lt;remote&gt; &lt;branch&gt;
-</code></pre>
+    git pull &lt;remote&gt; &lt;branch&gt;
 
-<p>If you wish to set tracking information for this branch you can do so with:</p>
+If you wish to set tracking information for this branch you can do so with:
 
-<pre><code>git branch --set-upstream master origin/&lt;branch&gt;
-</code></pre>
+    git branch --set-upstream master origin/&lt;branch&gt;
 
-<p>cd &ndash;
-rm -rf _deploy/index.html</p>
+cd -
+rm -rf _deploy/index.html
 
-<h2>Copying public to _deploy</h2>
+## Copying public to _deploy
+cp -r public/. _deploy
+cd _deploy
 
-<p>cp -r public/. <em>deploy
-cd </em>deploy</p>
-
-<h2>Commiting: Site updated at 2013-09-22 12:50:23 UTC</h2>
-
-<p>[master 29f0918] Site updated at 2013-09-22 12:50:23 UTC
- 61 files changed, 1118 insertions(+), 1 deletion(&ndash;)
+## Commiting: Site updated at 2013-09-22 12:50:23 UTC
+[master 29f0918] Site updated at 2013-09-22 12:50:23 UTC
+ 61 files changed, 1118 insertions(+), 1 deletion(-)
  create mode 100644 assets/jwplayer/glow/controlbar/background.png
  create mode 100644 assets/jwplayer/glow/controlbar/blankButton.png
  create mode 100644 assets/jwplayer/glow/controlbar/divider.png
@@ -499,41 +453,37 @@ cd </em>deploy</p>
  create mode 100644 javascripts/twitter.js
  create mode 100644 robots.txt
  create mode 100644 sitemap.xml
- create mode 100644 stylesheets/screen.css</p>
+ create mode 100644 stylesheets/screen.css
 
-<h2>Pushing generated _deploy website</h2>
-
-<p>Counting objects: 79, done.
+## Pushing generated _deploy website
+Counting objects: 79, done.
 Delta compression using up to 4 threads.
 Compressing objects: 100% (72/72), done.
 Writing objects: 100% (79/79), 186.46 KiB, done.
 Total 79 (delta 1), reused 0 (delta 0)
 To git@github.com:kobtea/kobtea.github.io.git
- * [new branch]      master &ndash;> master</p>
+ * [new branch]      master -&gt; master
 
-<h2>Github Pages deploy complete</h2>
-
-<p>cd &ndash;
-```</p>
+## Github Pages deploy complete
+cd -
+</code></pre>
 
 <p>で、10~20分くらいのんびり待つ。<br/>
 しばらくするとkobtea.github.ioにページが出来てる！すごい!</p>
 
 <p>sourceブランチはBitbucketで管理する。</p>
 
-<p>```bash
-$ git remote add bitbucket git@bitbucket.org:kobtea/kobtea.github.io.git
-$ git push -u bitbucket source</p>
+<pre><code class="bash">$ git remote add bitbucket git@bitbucket.org:kobtea/kobtea.github.io.git
+$ git push -u bitbucket source
 
-<h1>ブランチはこんな感じになる</h1>
-
-<p>$ git branch -a
+# ブランチはこんな感じになる
+$ git branch -a
 * source
   remotes/bitbucket/source
   remotes/octopress/2.5
   remotes/octopress/2.5-simplify-rakefile
   remotes/octopress/3.0
-  remotes/octopress/HEAD &ndash;> octopress/master
+  remotes/octopress/HEAD -&gt; octopress/master
   remotes/octopress/commander
   remotes/octopress/gh-pages
   remotes/octopress/guard
@@ -546,7 +496,7 @@ $ git push -u bitbucket source</p>
   remotes/octopress/site-2.1
   remotes/origin/master
   remotes/origin/source
-```</p>
+</code></pre>
 
 <h2>Octopressの設定</h2>
 
@@ -555,40 +505,29 @@ $ git push -u bitbucket source</p>
 <p>ブログの基本的な設定は<code>_config.yml</code>で行う。<br/>
 とりあえず、title, subtitleだけ変更した。</p>
 
-<p>```yml</p>
+<pre><code class="yml"># ----------------------- #
+#      Main Configs       #
+# ----------------------- #
 
-<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
-
-<h1>Main Configs</h1>
-
-<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
-
-<p>url: <a href="http://kobtea.github.io">http://kobtea.github.io</a>
+url: http://kobtea.github.io
 title: blog.kobtea.net
 subtitle: 咳をしても情弱
 author: kobtea
-simple_search: <a href="http://google.com/search">http://google.com/search</a>
-description:</p>
+simple_search: http://google.com/search
+description:
 
-<h1>Default date format is &ldquo;ordinal&rdquo; (resulting in &ldquo;July 22nd 2007&rdquo;)</h1>
+# Default date format is "ordinal" (resulting in "July 22nd 2007")
+# You can customize the format as defined in
+# http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
+# Additionally, %o will give you the ordinal representation of the day
+date_format: "ordinal"
 
-<h1>You can customize the format as defined in</h1>
-
-<h1><a href="http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime">http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime</a></h1>
-
-<h1>Additionally, %o will give you the ordinal representation of the day</h1>
-
-<p>date_format: &ldquo;ordinal&rdquo;</p>
-
-<h1>RSS / Email (optional) subscription links (change if using something like Feedburner)</h1>
-
-<p>subscribe_rss: /atom.xml
-subscribe_email:</p>
-
-<h1>RSS feeds can list your email address if you like</h1>
-
-<p>email:
-```</p>
+# RSS / Email (optional) subscription links (change if using something like Feedburner)
+subscribe_rss: /atom.xml
+subscribe_email:
+# RSS feeds can list your email address if you like
+email:
+</code></pre>
 
 <p>Jekyll &amp; Plugins, 3rd Party Settingsはまた今度いじる。</p>
 
@@ -596,51 +535,44 @@ subscribe_email:</p>
 
 <p>参考 : <a href="http://octopress.org/docs/blogging/">Blogging Basics</a></p>
 
-<p>```bash</p>
+<pre><code class="bash"># 記事を作成する
+$ rake new_post["hello-octopress"]
+zsh: no matches found: new_post[hello-octopress]
 
-<h1>記事を作成する</h1>
-
-<p>$ rake new_post[&ldquo;hello-octopress&rdquo;]
-zsh: no matches found: new_post[hello-octopress]</p>
-
-<h1>zshだと[]はエスケープしないといけないのね</h1>
-
-<p>$ rake new_post[&ldquo;hello-octopress&rdquo;]
-mkdir -p source/<em>posts
-Creating new post: source/</em>posts/2013-09-22-hello-octopress.markdown
-```</p>
+# zshだと[]はエスケープしないといけないのね
+$ rake new_post\["hello-octopress"\]
+mkdir -p source/_posts
+Creating new post: source/_posts/2013-09-22-hello-octopress.markdown
+</code></pre>
 
 <p>markdownファイルが生成されるので編集する。</p>
 
-<h2>```yml source/_posts/2013-09-22-hello-octopress.markdown</h2>
-
-<p>layout: post
-title: &ldquo;こんにちはOctopress&rdquo;
+<pre><code class="yml source/_posts/2013-09-22-hello-octopress.markdown">---
+layout: post
+title: "こんにちはOctopress"
 date: 2013-09-22 22:44
-comments: true</p>
+comments: true
+categories:
+---
 
-<h2>categories:</h2>
-
-<p>よろしくタコ出版！
-```</p>
+よろしくタコ出版！
+</code></pre>
 
 <p><code>---</code>で囲まれたブロック内にはポストのメタデータを書く。<br/>
 カテゴリを複数登録するには2通りある。</p>
 
-<p>```yml
-categories: [hoge, huga]</p>
+<pre><code class="yml">categories: [hoge, huga]
 
-<p>categories:
-&ndash; hoge
-&ndash; huga
-```</p>
+categories:
+- hoge
+- huga
+</code></pre>
 
 <p>書けたら、generateしてdeploy!</p>
 
-<p><code>bash
-$ rake generate
+<pre><code class="bash">$ rake generate
 $ rake deploy
-</code></p>
+</code></pre>
 
 <p>反映に時間がかかることもあるからのんびり待つ。<br/>
 記事が投稿されたら喜んでおしまい。</p>

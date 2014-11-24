@@ -1,13 +1,15 @@
 
-<!DOCTYPE HTML>
-<html>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
-	<meta charset="utf-8">
-	<title>MBAにpyenvを入れる - blog.kobtea.net</title>
-	<meta name="author" content="kobtea">
+  <meta charset="utf-8">
+  <title>MBAにpyenvを入れる - blog.kobtea.net</title>
+  <meta name="author" content="kobtea">
 
-	
-	<meta name="description" content="1
+  
+  <meta name="description" content="1
 2
 3
 4
@@ -16,74 +18,94 @@ ProductName: Mac OS X
 ProductVersion: 10.8.4
 BuildVersion: 12E3067 rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。
 Simple Python &hellip;">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
 
-	<link href="/atom.xml" rel="alternate" title="blog.kobtea.net" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script async="true" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.kobtea.net/blog/2013/11/24/install-pyenv-on-mba">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="blog.kobtea.net" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
 </head>
 
-
-<body>
-	<header id="header" class="inner"><h1><a href="/">blog.kobtea.net</a></h1>
-<nav id="main-nav"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archives</a></li>
-</ul>
-</nav>
-<nav id="mobile-nav">
-	<div class="alignleft menu">
-		<a class="button">Menu</a>
-		<div class="container"><ul class="main">
-	<li><a href="/">Blog</a></li>
-	<li><a href="/blog/archives">Archives</a></li>
-</ul>
-</div>
-	</div>
-	<div class="alignright search">
-		<a class="button"></a>
-		<div class="container">
-			<form action="http://google.com/search" method="get">
-				<input type="text" name="q" results="0">
-				<input type="hidden" name="q" value="site:blog.kobtea.net">
-			</form>
-		</div>
-	</div>
-</nav>
-<nav id="sub-nav" class="alignright">
-	<div class="social">
-		
-		
-		
-		
-    
-		
-		
-		
-		
-		
-		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
-		
-    
-	</div>
-	<form class="search" action="http://google.com/search" method="get">
-		<input class="alignright" type="text" name="q" results="0">
-		<input type="hidden" name="q" value="site:blog.kobtea.net">
-	</form>
-</nav>
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">blog.kobtea.net</a></h1>
+  
+    <h2>咳をしても情弱</h2>
+  
+</hgroup>
 
 </header>
-	
-		
-	
-	<div id="content" class="inner"><article class="post">
-	<h2 class="title">MBAにpyenvを入れる</h2>
-	<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="http://google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="q" value="site:blog.kobtea.net" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">MBAにpyenvを入れる</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2013-11-24T17:31:00+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>5:31 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -133,19 +155,19 @@ Simple Python &hellip;">
 </span><span class='line'><span class="c">######################################################################## 100.0%</span>
 </span><span class='line'><span class="o">==</span>&gt; Caveats
 </span><span class='line'>To <span class="nb">enable </span>shims and autocompletion add to your profile:
-</span><span class='line'>  <span class="k">if </span>which pyenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(pyenv init -)&quot;</span>; <span class="k">fi</span>
+</span><span class='line'>  <span class="k">if</span> which pyenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&quot;$(pyenv init -)&quot;</span><span class="p">;</span> <span class="k">fi</span>
 </span><span class='line'>
 </span><span class='line'>To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.pyenv add to your profile:
 </span><span class='line'>  <span class="nb">export </span><span class="nv">PYENV_ROOT</span><span class="o">=</span>/usr/local/opt/pyenv
 </span><span class='line'><span class="o">==</span>&gt; Summary
-</span><span class='line'>🍺  /usr/local/Cellar/pyenv/20131116: 199 files, 2.2M, built in 5 seconds
+</span><span class='line'>🍺  /usr/local/Cellar/pyenv/20131116: <span class="m">199</span> files, 2.2M, built in <span class="m">5</span> seconds
 </span></code></pre></td></tr></table></div></figure>
 
 
 <p><code>.profile</code>とかに以下を追記する。</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">if </span>which pyenv &gt; /dev/null; <span class="k">then </span><span class="nb">eval</span> <span class="s2">&quot;$(pyenv init -)&quot;</span>; <span class="k">fi</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="k">if</span> which pyenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&quot;$(pyenv init -)&quot;</span><span class="p">;</span> <span class="k">fi</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -251,7 +273,7 @@ Simple Python &hellip;">
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="nv">$ </span>pip install ipython
 </span><span class='line'>Downloading/unpacking ipython
 </span><span class='line'>  Downloading ipython-1.1.0.tar.gz <span class="o">(</span>8.7MB<span class="o">)</span>: 8.7MB downloaded
-</span><span class='line'>  Running setup.py egg_info <span class="k">for </span>package ipython
+</span><span class='line'>  Running setup.py egg_info <span class="k">for</span> package ipython
 </span><span class='line'>...
 </span><span class='line'>
 </span><span class='line'><span class="nv">$ </span>pip list
@@ -265,58 +287,89 @@ Simple Python &hellip;">
 </div>
 
 
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
+  <footer>
+    <p class="meta">
+      
   
 
 
-<time datetime="2013-11-24T17:31:00+09:00" pubdate data-updated="true">Nov 24<span>th</span>, 2013</time></div>
-	<div class="tags">
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    kobtea
+  
+  </span></span>
 
 
-	<a class='category' href='/blog/categories/python/'>python</a>
+      
 
 
+
+
+<time class='entry-date' datetime='2013-11-24T17:31:00+09:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>24</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>5:31 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/python/'>python</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.kobtea.net/blog/2013/11/24/install-pyenv-on-mba/" data-via="" data-counturl="http://blog.kobtea.net/blog/2013/11/24/install-pyenv-on-mba/" >Tweet</a>
+  
+  
+  
 </div>
-	
-</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/09/23/set-custom-domain-at-github-pages/" title="Previous Post: Github Pagesにカスタムドメインを割り当てる">&laquo; Github Pagesにカスタムドメインを割り当てる</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2014/03/23/setup-us-keyboard-on-win/" title="Next Post: WindowsでUS配列+親指IME ON/OFFするための設定">WindowsでUS配列+親指IME ON/OFFするための設定 &raquo;</a>
+      
+    </p>
+  </footer>
 </article>
 
-	<div class="share">
-	<div class="addthis_toolbox addthis_default_style ">
-		
-		
-		<a class="addthis_button_tweet"></a>
-		
-		
-		
-	</div>
-	
-</div>
-
 
 </div>
-	<footer id="footer" class="inner">Copyright &copy; 2014
 
-    kobtea
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - kobtea -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
 
 </footer>
-	<script src="/javascripts/slash.js"></script>
-<script src="/javascripts/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script> <!-- Delete or comment this line to disable Fancybox -->
+  
 
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
 
 
 

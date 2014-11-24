@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Github Pages | blog.kobtea.net]]></title>
   <link href="http://blog.kobtea.net/blog/categories/github-pages/atom.xml" rel="self"/>
   <link href="http://blog.kobtea.net/"/>
-  <updated>2014-03-23T02:11:22+09:00</updated>
+  <updated>2014-11-24T17:41:10+09:00</updated>
   <id>http://blog.kobtea.net/</id>
   <author>
     <name><![CDATA[kobtea]]></name>
@@ -21,8 +21,8 @@
     <content type="html"><![CDATA[<p>参考:</p>
 
 <ul>
-<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></li>
-<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains &ndash; Octopress</a></li>
+<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></li>
+<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains - Octopress</a></li>
 </ul>
 
 
@@ -30,7 +30,7 @@
 
 <blockquote><p>Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&rsquo;t build successfully, you&rsquo;ll receive a notification from GitHub.</p>
 
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages &ndash; Github Pages</a></p></blockquote>
+<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></p></blockquote>
 
 <p>反映されるのに10分くらい待ってね、とのこと。<br/>
 反映されたらメールをくれるらしい。</p>
@@ -39,35 +39,29 @@
 
 <p><code>source/CNAME</code>に割り当てるドメインを設定する。</p>
 
-<p><code>bash
-$ echo 'blog.kobtea.net' &gt;&gt; source/CNAME
-</code></p>
+<pre><code class="bash">$ echo 'blog.kobtea.net' &gt;&gt; source/CNAME
+</code></pre>
 
 <p><code>_config.yml</code>のurlも変更しておく。</p>
 
-<p>```yml _config.yml</p>
+<pre><code class="yml _config.yml"># ----------------------- #
+#      Main Configs       #
+# ----------------------- #
 
-<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
-
-<h1>Main Configs</h1>
-
-<h1>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</h1>
-
-<p>url: <a href="http://blog.kobtea.net">http://blog.kobtea.net</a>
+url: http://blog.kobtea.net
 title: blog.kobtea.net
 subtitle: 咳をしても情弱
 author: kobtea
-simple_search: <a href="http://google.com/search">http://google.com/search</a>
+simple_search: http://google.com/search
 description:
-```</p>
+</code></pre>
 
 <h2>DNS設定</h2>
 
 <p>お名前.comを使っているので、そちらで設定する。</p>
 
-<p><code>
-ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
-</code></p>
+<pre><code>ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
+</code></pre>
 
 <p><img src="/images/dns-setting-onamae.png" alt="dns-setting" /></p>
 
@@ -78,10 +72,9 @@ description:
 
 <p>digしてみる。</p>
 
-<p><code>bash
-$ dig +noall +answer blog.kobtea.net CNAME
+<pre><code class="bash">$ dig +noall +answer blog.kobtea.net CNAME
 blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
-</code></p>
+</code></pre>
 
 <p>できてるぽい。<br/>
 最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。</p>
