@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MBAにRuby環境を作る - blog.kobtea.net</title>
+    <meta name="description" content="eternal jojaku">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://blog.kobtea.net/css/capybara-style.css">
+    <style>
+        .container-fluid {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 960px;
+        }
+    </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#header-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://blog.kobtea.net">blog.kobtea.net</a>
+
+                <p class="navbar-text">eternal jojaku</p>
+            </div>
+
+            <div class="collapse navbar-collapse" id="header-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="http://blog.kobtea.net/posts/">archives</a></li>
+                    
+                    <li><a href="http://blog.kobtea.net/posts/index.xml">rss</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<article class="container-fluid">
+    <div class="page-header">
+        <h2><a href="http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/">MBAにRuby環境を作る</a></h2>
+        <time pubdate datetime=" 2013-09-23 " title="2013-09-23">2013-09-23</time>
+        
+        <a href="/tags/ruby">
+            <button type="button" class="btn btn-default btn-xs">Ruby</button>
+        </a>
+        
+    </div>
+
+    
+
+<pre><code class="language-bash">$ sw_vers
+ProductName:    Mac OS X
+ProductVersion: 10.8.4
+BuildVersion:   12E3067
+</code></pre>
+
+<p><a href="https://github.com/sstephenson/rbenv">rbenv</a>のreadmeにそってやる。<br />
+PATHについて解説までしてくれるとかマジ天使。</p>
+
+<h2 id="rbenvのインストール:02efbb982949a3203f0d32f585df492a">rbenvのインストール</h2>
+
+<pre><code class="language-bash"># homebrewを最新の状態に
+$ brew update
+$ brew upgrade
+
+# rbenvをインストール
+$ brew install rbenv
+==&gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
+######################################################################## 100.0%
+==&gt; Caveats
+To use Homebrew's directories rather than ~/.rbenv add to your profile:
+  export RBENV_ROOT=/usr/local/var/rbenv
+
+To enable shims and autocompletion add to your profile:
+  if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi
+==&gt; Summary
+🍺  /usr/local/Cellar/rbenv/0.4.0: 31 files, 152K, built in 2 seconds
+
+# ruby-buildをインストール
+$ brew install ruby-build
+######################################################################## 100.0%
+==&gt; ./configure --prefix=/usr/local/Cellar/autoconf/2.69
+==&gt; make install
+🍺  /usr/local/Cellar/autoconf/2.69: 69 files, 2.0M, built in 8 seconds
+==&gt; Installing ruby-build
+==&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
+######################################################################## 100.0%
+==&gt; ./install.sh
+🍺  /usr/local/Cellar/ruby-build/20130907: 83 files, 368K, built in 2 seconds
+</code></pre>
+
+<p>profileとかrcに以下を追記する。</p>
+
+<pre><code class="language-bash">$ echo 'if which rbenv &gt; /dev/null; then eval &quot;$(rbenv init -)&quot;; fi' &gt;&gt; ~/.zprofile
+$ source ~/.zprofile
+</code></pre>
+
+<pre><code class="language-bash">$ rbenv --help
+rbenv 0.4.0
+Usage: rbenv &lt;command&gt; [&lt;args&gt;]
+
+Some useful rbenv commands are:
+   commands    List all available rbenv commands
+   local       Set or show the local application-specific Ruby version
+   global      Set or show the global Ruby version
+   shell       Set or show the shell-specific Ruby version
+   install     Install a Ruby version using the ruby-build plugin
+   uninstall   Uninstall a specific Ruby version
+   rehash      Rehash rbenv shims (run this after installing executables)
+   version     Show the current Ruby version and its origin
+   versions    List all Ruby versions available to rbenv
+   which       Display the full path to an executable
+   whence      List all Ruby versions that contain the given executable
+
+See `rbenv help &lt;command&gt;' for information on a specific command.
+For full documentation, see: https://github.com/sstephenson/rbenv#readme
+</code></pre>
+
+<h2 id="rbenv-default-gemsをインストール:02efbb982949a3203f0d32f585df492a">rbenv-default-gemsをインストール</h2>
+
+<p>ついでに<a href="https://github.com/sstephenson/rbenv-default-gems">rbenv-default-gems</a>を入れておく。<br />
+<code>rbenv install &lt;version&gt;</code>でRubyをインストールする際に、一緒に必要なgemを入れてくれる。</p>
+
+<pre><code class="language-bash">$ echo 'bundler' &gt;&gt; ~/.rbenv/default-gems
+</code></pre>
+
+<p>ひとまずbundlerだけでいいかな。</p>
+
+<pre><code class="language-bash"># 一応homebrewを再度更新
+$ brew update
+$ brew upgrade
+
+# ruby 2.0をインストール
+$ rbenv install 2.0.0-p247
+Downloading openssl-1.0.1e.tar.gz...
+-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+Installing openssl-1.0.1e...
+
+BUILD FAILED
+
+Inspect or clean up the working tree at /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114
+Results logged to /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114.log
+
+Last 10 log lines:
+RANLIB        =true
+ARFLAGS       =
+PERL          =/usr/bin/perl
+SIXTY_FOUR_BIT_LONG mode
+DES_UNROLL used
+DES_INT used
+RC4 uses uchar
+RC4_CHUNK is unsigned long
+sh: make: command not found
+/usr/local/bin/ruby-build: line 387: make: command not found
+</code></pre>
+
+<p>makeコマンドがないぽい。<br />
+command line toolsが入ってなかった。</p>
+
+<pre><code>Xcode -&gt; Preferences -&gt; Downloads -&gt; Command Line Tools -&gt; Install
+</code></pre>
+
+<p>リトライ。</p>
+
+<pre><code class="language-bash">$ rbenv install 2.0.0-p247
+Downloading openssl-1.0.1e.tar.gz...
+-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+Installing openssl-1.0.1e...
+Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+Downloading ruby-2.0.0-p247.tar.gz...
+-&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+Installing ruby-2.0.0-p247...
+Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions into the /Library/Ruby/Gems/1.8 directory.
+rbenv: error installing gem `bundler'
+</code></pre>
+
+<p>今度は権限がない。<br />
+<a href="https://github.com/sstephenson/rbenv-default-gems/issues/7">Issue</a>に載っていた。<br />
+どうやら環境変数に<code>$RBENV_ROOT</code>が必要らしい。</p>
+
+<pre><code class="language-bash">$ rbenv root
+</code></pre>
+
+<p>で表示されたパスを.zprofileとかに書く。</p>
+
+<pre><code class="language-bash">$ echo 'export RBENV_ROOT=$HOME/.rbenv' &gt;&gt; ~/.zprofile
+$ source ~/.zprofile
+</code></pre>
+
+<p>リトライ。</p>
+
+<pre><code class="language-bash">$ rbenv install 2.0.0-p247
+rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
+continue with installation? (y/N) y
+Downloading openssl-1.0.1e.tar.gz...
+-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+Installing openssl-1.0.1e...
+Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+Downloading ruby-2.0.0-p247.tar.gz...
+-&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+Installing ruby-2.0.0-p247...
+Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+Fetching: bundler-1.3.5.gem (100%)
+Successfully installed bundler-1.3.5
+Parsing documentation for bundler-1.3.5
+Installing ri documentation for bundler-1.3.5
+1 gem installed
+</code></pre>
+
+<p>できた。</p>
+
+<pre><code class="language-bash"># ruby, gemのパスが$RBENV_ROOT以下に向いているか確認
+$ rbenv rehash
+$ rbenv versions
+* system (set by /Users/kobtea/.rbenv/version)
+  2.0.0-p247
+$ which ruby
+/Users/kobtea/.rbenv/shims/ruby
+$ which gem
+/Users/kobtea/.rbenv/shims/gem
+
+# システムデフォルトのバージョン確認
+$ ruby --version
+ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+$ gem --version
+1.3.6
+
+# デフォルトのバージョンを2.0に変更
+$ rbenv global 2.0.0-p247
+$ rbenv versions
+  system
+* 2.0.0-p247 (set by /Users/kobtea/.rbenv/version)
+
+$ ruby --version
+ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
+$ gem --version
+2.0.3
+</code></pre>
+
+<p>こんにちはRuby。</p>
+
+<h2 id="追記:02efbb982949a3203f0d32f585df492a">追記</h2>
+
+<p>Macデフォルトのreadlineは使わないほうがいいらしい。<br />
+<code>rbenv install</code>する際にはhomebrewで入れたreadline, opensslを指定する。<br />
+指定しない場合、Macだとirbでマルチバイトが使えない。<br />
+<a href="/blog/2013/09/22/use-multibytes-on-ruby">irbで日本語が文字化けする</a></p>
+
+</article>
+
+<nav class="container-fluid">
+    <ul class="pager">
+        
+        <li class="previous"><a href="http://blog.kobtea.net/posts/2013/09/23/setup-octopress/"><i class="fa fa-caret-left"></i> Octopress &#43; Github Pagesな環境構築</a></li>
+        
+
+        
+        <li class="next"><a href="http://blog.kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/">irbで日本語が文字化けする <i class="fa fa-caret-right"></i></a></li>
+        
+    </ul>
+</nav>
+
+
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-4">
+                <strong>Author</strong>
+                <div class="media">
+                    <div class="media-left media-top">
+                        <img src="http://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
+                    </div>
+                    <div class="media-body">
+                        <strong class="media-heading">kobtea</strong>
+                        <a href="https://twitter.com/kobtea">
+                            <i class="fa fa-twitter-square fa-lg"></i>
+                        </a>
+                        <a href="https://github.com/kobtea">
+                            <i class="fa fa-github-square fa-lg"></i>
+                        </a>
+                        <br/>
+                        <small>カピバラと暮らしたい</small>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="col-md-8">
+                <strong> Tags </strong><br/><br/>
+                
+                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                
+                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
+                
+                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
+                
+                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
+                
+                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                
+                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
+                
+                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
+                
+            </div>
+
+        </div>
+        <p>&copy; 2015 kobtea | Powered by <a href="http://gohugo.io/">HUGO</a> | Themed with <a
+                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+    </div>
+</footer>
+<script src="http://blog.kobtea.net/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

@@ -1,0 +1,1148 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog.kobtea.net</title>
+    <link>http://blog.kobtea.net/</link>
+    <description>Recent content on blog.kobtea.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    
+    
+    
+    <lastBuildDate>Sun, 23 Mar 2014 00:43:00 JST</lastBuildDate>
+    <atom:link href="http://blog.kobtea.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>WindowsでUS配列&#43;親指IME ON/OFFするための設定</title>
+      <link>http://blog.kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</link>
+      <pubDate>Sun, 23 Mar 2014 00:43:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</guid>
+      <description>
+
+&lt;p&gt;macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。&lt;br /&gt;
+RealforceのUS配列を購入してwinに設定したこと。&lt;/p&gt;
+
+&lt;h2 id=&#34;環境:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;環境&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OS: Windows7 64bit&lt;/li&gt;
+&lt;li&gt;Keyboard: Realforce 87U&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;デスクトップ環境なので今回考えてないけど、ノートの場合は本体の配列がーとか考慮してあげないといけない。&lt;/p&gt;
+
+&lt;h2 id=&#34;やりたいこと:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;やりたいこと&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[alt] [無変換] [space] [変換] [alt] みたいな配列にしたい&lt;/li&gt;
+&lt;li&gt;[半角/全角] みたいなトグルは使いたくない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;macのJIS配列みたいな感じ。&lt;/p&gt;
+
+&lt;h2 id=&#34;作業ログ:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;作業ログ&lt;/h2&gt;
+
+&lt;h3 id=&#34;英語キーボードとして認識させる:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;英語キーボードとして認識させる&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# レジストリエディタを起動
+Start &amp;gt; regedit
+# キーボード設定を開く
+コンピュータ &amp;gt; HKEY_LOCAL_MACHINE &amp;gt; SYSTEM &amp;gt; CurrentControlSet &amp;gt; services &amp;gt; i8042prt &amp;gt; Parameters
+
+# US配列の設定
+LayerDriver JPN             : kbd106.dll    -&amp;gt; kbd101.dll
+OverrideKeyboardIdentifier  : PCAT_106KEY   -&amp;gt; PCAT_101KEY
+OverrideKeyboardSubtype     : 2             -&amp;gt; 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再起動する。&lt;br /&gt;
+ログインパスワードを設定している場合、古いJISキーボードでないと弾かれる。&lt;br /&gt;
+スキャンコードか何かで識別していたのかなぁ&amp;hellip;&lt;br /&gt;
+JIS, US両方あるうちにログインパスワード再設定をしておく。&lt;/p&gt;
+
+&lt;p&gt;参考 : &lt;a href=&#34;http://blog.heiichi.com/?eid=792239&#34;&gt;Windows 7 のキーボードを英語キーボードに変更 - へーいち の うぇぶろぐ&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;keyの配置を変える:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;Keyの配置を変える&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.forest.impress.co.jp/library/software/changekey/&#34;&gt;Change Key&lt;/a&gt;を使う。&lt;br /&gt;
+winキーとaltキーをスワップさせる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Left  Win  -&amp;gt; Left  Alt
+Left  Alt  -&amp;gt; Left  Win
+Right Alt  -&amp;gt; Right Win
+Right Win  -&amp;gt; Right Alt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;登録して再起動する。
+Winキーを潰して代わりに変換/無変換キーにするよ。&lt;/p&gt;
+
+&lt;h3 id=&#34;変換-無変換キー候補に絶対使わないであろうショートカットを割り当てる:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる&lt;/h3&gt;
+
+&lt;p&gt;US配列だと変換/無変換というキーは存在しない。&lt;br /&gt;
+ので、絶対使わないであろうショートカットをWinキーに割り当てて、IMEにはそのショートカットに変換/無変換をフックさせる。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.autohotkey.com/&#34;&gt;AutoHotkey&lt;/a&gt;を使う。&lt;br /&gt;
+AutoHotkeyを起動して&lt;code&gt;Edit This Script&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;; AutoHotkey.ahk
+
+; Right Winに Ctrl + Shift + Rightを割り当てる
+RWin::^+Right
+; Left  Winに Ctrl + Shift + Left を割り当てる
+LWin::^+Left
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;編集したら&lt;code&gt;Reload This Script&lt;/code&gt;。&lt;br /&gt;
+Win起動時に一緒に起動して欲しいなら、スタートアップフォルダの中に&lt;code&gt;AutoHotkey.ahk&lt;/code&gt;のショートカットを置いておく。&lt;/p&gt;
+
+&lt;h3 id=&#34;imeに変換-無変換の設定をする:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;IMEに変換/無変換の設定をする&lt;/h3&gt;
+
+&lt;p&gt;google IMEを使っているのでその設定方法を。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# キー設定を開く
+google IME &amp;gt; プロパティ &amp;gt; 一般 &amp;gt; キー設定 &amp;gt; キー設定の選択 &amp;gt; 編集
+
+# 変換
+直接入力, Ctrl Shift Right, IMEを有効化
+入力文字なし, Ctrl Shift Right, IMEを有効化
+# 無変換
+直接入力, Ctrl Shift Left, IMEを無効化
+入力文字なし, Ctrl Shift Left, IMEを無効化
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これで大勝利。
+なんというまわりくどさ。&lt;/p&gt;
+
+&lt;h2 id=&#34;appendix:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;Appendix&lt;/h2&gt;
+
+&lt;p&gt;トグルでもよければAX配列設定で、右Altに半角/全角相当が割り当てられる。&lt;br /&gt;
+参考 : &lt;a href=&#34;http://www.atmarkit.co.jp/fwin2k/win2ktips/041axkbd/axkbd.html&#34;&gt;右Altキーに［漢字］キーを割り当てる方法（AXキーボード設定を利用する方法）&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MBAにpyenvを入れる</title>
+      <link>http://blog.kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</link>
+      <pubDate>Sun, 24 Nov 2013 17:31:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
+ProductName:    Mac OS X
+ProductVersion: 10.8.4
+BuildVersion:   12E3067
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/yyuu/pyenv&#34;&gt;Simple Python Version Management: pyenv&lt;/a&gt;を参考に。&lt;/p&gt;
+
+&lt;p&gt;Macでhomebrew使っているなら、brewで入れるのがらくちん。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# brewを最新の状態にする
+$ brew update
+$ brew upgrade
+
+$ brew search pyenv
+pyenv		   pyenv-virtualenv
+$ brew install pyenv
+Warning: Your Xcode (4.6.3) is outdated
+Please update to Xcode 5.0.1.
+Xcode can be updated from the App Store.
+==&amp;gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Caveats
+To enable shims and autocompletion add to your profile:
+  if which pyenv &amp;gt; /dev/null; then eval &amp;quot;$(pyenv init -)&amp;quot;; fi
+
+To use Homebrew&#39;s directories rather than ~/.pyenv add to your profile:
+  export PYENV_ROOT=/usr/local/opt/pyenv
+==&amp;gt; Summary
+🍺  /usr/local/Cellar/pyenv/20131116: 199 files, 2.2M, built in 5 seconds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;.profile&lt;/code&gt;とかに以下を追記する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if which pyenv &amp;gt; /dev/null; then eval &amp;quot;$(pyenv init -)&amp;quot;; fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;profileを再読み込み。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ source ~/.zprofile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使えるか試してみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ pyenv versions
+* system (set by /Users/kobtea/.pyenv/version)
+$ pyenv global
+system
+$ python --version
+Python 2.7.2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;試しに3.3.2を入れてみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ pyenv install 3.3.2
+Downloading Python-3.3.2.tgz...
+-&amp;gt; http://yyuu.github.io/pythons/0a2ea57f6184baf45b150aee53c0c8da
+Installing Python-3.3.2...
+Installed Python-3.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
+
+Downloading setuptools-1.3.2.tar.gz...
+-&amp;gt; https://pypi.python.org/packages/source/s/setuptools/setuptools-1.3.2.tar.gz
+Installing setuptools-1.3.2...
+Installed setuptools-1.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
+
+Downloading pip-1.4.1.tar.gz...
+-&amp;gt; https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
+Installing pip-1.4.1...
+Installed pip-1.4.1 to /Users/kobtea/.pyenv/versions/3.3.2
+
+
+$ pyenv rehash
+$ pyenv versions
+* system (set by /Users/kobtea/.pyenv/version)
+  3.3.2
+$ pyenv global 3.3.2
+$ pyenv version
+3.3.2 (set by /Users/kobtea/.pyenv/version)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ pip --version
+pip 1.4.1 from /Users/kobtea/.pyenv/versions/3.3.2/lib/python3.3/site-packages/pip-1.4.1-py3.3.egg (python 3.3)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;すごいpipがもう使えるようになってる！！ステキ！！&lt;br /&gt;
+ついでにipythonを入れてみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ pip install ipython
+Downloading/unpacking ipython
+  Downloading ipython-1.1.0.tar.gz (8.7MB): 8.7MB downloaded
+  Running setup.py egg_info for package ipython
+...
+
+$ pip list
+ipython (1.1.0)
+pip (1.4.1)
+setuptools (1.3.2)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;らくちん。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Github Pagesにカスタムドメインを割り当てる</title>
+      <link>http://blog.kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</link>
+      <pubDate>Mon, 23 Sep 2013 21:39:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</guid>
+      <description>
+
+&lt;p&gt;参考:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#34;&gt;Setting up a custom domain with Pages - Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/#custom_domains&#34;&gt;Custom Domains - Octopress&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&amp;rsquo;t build successfully, you&amp;rsquo;ll receive a notification from GitHub.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#34;&gt;Setting up a custom domain with Pages - Github Pages&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;反映されるのに10分くらい待ってね、とのこと。&lt;br /&gt;
+反映されたらメールをくれるらしい。&lt;/p&gt;
+
+&lt;h2 id=&#34;octopress側の設定:012f76cf3e52873906c9239002dbb318&#34;&gt;Octopress側の設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;source/CNAME&lt;/code&gt;に割り当てるドメインを設定する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;blog.kobtea.net&#39; &amp;gt;&amp;gt; source/CNAME
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;_config.yml&lt;/code&gt;のurlも変更しておく。&lt;/p&gt;
+
+&lt;p&gt;source: &lt;code&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: http://blog.kobtea.net
+title: blog.kobtea.net
+subtitle: 咳をしても情弱
+author: kobtea
+simple_search: http://google.com/search
+description:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;dns設定:012f76cf3e52873906c9239002dbb318&#34;&gt;DNS設定&lt;/h2&gt;
+
+&lt;p&gt;お名前.comを使っているので、そちらで設定する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ドメイン設定 -&amp;gt; ネームサーバの設定 -&amp;gt; DNS関連機能の設定 -&amp;gt; DNSレコード設定を利用する
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/dns-setting-onamae.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;で適用。
+適用されたよメールが届くまでのんびり待つ。&lt;/p&gt;
+
+&lt;h2 id=&#34;確認:012f76cf3e52873906c9239002dbb318&#34;&gt;確認&lt;/h2&gt;
+
+&lt;p&gt;digしてみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ dig +noall +answer blog.kobtea.net CNAME
+blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;できてるぽい。&lt;br /&gt;
+最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Octopressのテーマを変更する</title>
+      <link>http://blog.kobtea.net/posts/2013/09/23/change-octopress-theme/</link>
+      <pubDate>Mon, 23 Sep 2013 14:56:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/09/23/change-octopress-theme/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes&#34;&gt;3rd Party Octopress Themes&lt;/a&gt;で公開されているので気に入ったものを選ぶ。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/macjasp/cleanpress&#34;&gt;CleanPress&lt;/a&gt;がステキ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# テーマのディレクトリまで行ってテーマのリポジトリをclone
+$ cd octopress/.theme
+$ git clone git@github.com:macjasp/cleanpress.git
+Cloning into &#39;cleanpress&#39;...
+remote: Counting objects: 273, done.
+remote: Compressing objects: 100% (248/248), done.
+remote: Total 273 (delta 30), reused 229 (delta 16)
+Receiving objects: 100% (273/273), 1.09 MiB | 554 KiB/s, done.
+Resolving deltas: 100% (30/30), done.
+
+# テーマを適用する
+$ rake install\[cleanpress\]
+(in /Users/kobtea/Programs/octopress)
+A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y
+## Copying cleanpress theme into ./source and ./sass
+mkdir -p source
+cp -r .themes/cleanpress/source/. source
+mkdir -p sass
+cp -r .themes/cleanpress/sass/. sass
+mkdir -p source/_posts
+mkdir -p public
+
+# generate!
+$ rake generate
+(in /Users/kobtea/Programs/octopress)
+## Generating Site with Jekyll
+unchanged sass/screen.scss
+Configuration from /Users/kobtea/Programs/octopress/_config.yml
+Building site: source -&amp;gt; public
+Successfully generated site: source -&amp;gt; public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;rake preview&lt;/code&gt;してちゃんと反映されているかを確認する。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/install-cleanpress.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;どのへんで定義されているか探してみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ find . -type f | xargs grep Portfolio
+./.themes/cleanpress/source/_includes/custom/navigation.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ root_url }}/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/404.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/404.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/archives/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/archives/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/atom.xml:&amp;lt;p&amp;gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;amp;hellip;&amp;lt;br/&amp;gt;
+./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/22/hello-octopress/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/22/hello-octopress/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html:&amp;lt;p&amp;gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;amp;hellip;&amp;lt;br/&amp;gt;
+./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/23/setup-octopress/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/2013/09/23/setup-octopress/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/archives/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/archives/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/etc/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/etc/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/markdown/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/markdown/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/octopress/atom.xml:&amp;lt;p&amp;gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;amp;hellip;&amp;lt;br/&amp;gt;
+./public/blog/categories/octopress/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/octopress/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/ruby/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/ruby/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/vim/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/categories/vim/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/blog/index.html:&amp;lt;p&amp;gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;amp;hellip;&amp;lt;br/&amp;gt;
+./public/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/index.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+./public/index.html:&amp;lt;p&amp;gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;amp;hellip;&amp;lt;br/&amp;gt;
+./source/_includes/custom/navigation.html:	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ root_url }}/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+Binary file ./source/_posts/.2013-09-23-change-octopress-theme.markdown.swp matches
+./source/_posts/2013-09-23-change-octopress-theme.markdown:おおん、ページ作っていないAboutとかPortfolioがおる...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;octopress/.themes/cleanpress/source/_includes/custom/navigation.html&lt;/code&gt;あたりがくさい。&lt;br /&gt;
+ブランチ切って編集する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ cd .themes/cleanpress
+$ git branch
+* master
+$ git checkout -b edit-contents-links
+Switched to a new branch &#39;edit-contents-links&#39;
+$ git branch
+* edit-contents-links
+  master
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ひとまずコメントアウトしておく。&lt;/p&gt;
+
+&lt;p&gt;source: &lt;code&gt;octopress/.themes/cleanpress/source/_includes/custom/navigation.html&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;ul&amp;gt;
+	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ root_url }}/&amp;quot;&amp;gt;Blog&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+	&amp;lt;!--li&amp;gt;&amp;lt;a href=&amp;quot;{{ root_url }}/about&amp;quot;&amp;gt;About&amp;lt;/a&amp;gt;&amp;lt;/li--&amp;gt;
+	&amp;lt;!--li&amp;gt;&amp;lt;a href=&amp;quot;{{ root_url }}/portfolio&amp;quot;&amp;gt;Portfolio&amp;lt;/a&amp;gt;&amp;lt;/li--&amp;gt;
+	&amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;{{ root_url }}/archives&amp;quot;&amp;gt;Archive&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再度テーマをインストールする。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake install\[cleanpress\]
+(in /Users/kobtea/Programs/octopress)
+A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y
+## Copying cleanpress theme into ./source and ./sass
+mkdir -p source
+cp -r .themes/cleanpress/source/. source
+mkdir -p sass
+cp -r .themes/cleanpress/sass/. sass
+mkdir -p source/_posts
+mkdir -p public
+
+$ rake generate
+(in /Users/kobtea/Programs/octopress)
+## Generating Site with Jekyll
+unchanged sass/screen.scss
+Configuration from /Users/kobtea/Programs/octopress/_config.yml
+Building site: source -&amp;gt; public
+Successfully generated site: source -&amp;gt; public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/install-cleanpress2.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;ちゃんと消えているね。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Octopress &#43; Github Pagesな環境構築</title>
+      <link>http://blog.kobtea.net/posts/2013/09/23/setup-octopress/</link>
+      <pubDate>Mon, 23 Sep 2013 01:54:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/09/23/setup-octopress/</guid>
+      <description>
+
+&lt;p&gt;もはや様式美だけど自分のために。&lt;br /&gt;
+公式の&lt;a href=&#34;http://octopress.org/docs/&#34;&gt;Octopress Documentation&lt;/a&gt;を参考に。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
+ProductName:	Mac OS X
+ProductVersion:	10.8.4
+BuildVersion:	12E3067
+
+$ ruby -v
+ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
+
+$ gem -v
+2.0.3
+
+$ bundle -v
+Bundler version 1.3.5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;octopressのセットアップ:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;Octopressのセットアップ&lt;/h2&gt;
+
+&lt;p&gt;参考 : &lt;a href=&#34;http://octopress.org/docs/setup/&#34;&gt;Octopress Setup&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# リポジトリをclone
+$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+
+# 必要なgemを入れる
+$ bundle install
+$ rake install
+rake aborted!
+You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2. Using bundle exec may solve this.
+/Users/kobtea/Programs/octopress/Rakefile:2:in `&amp;lt;top (required)&amp;gt;&#39;
+(See full trace by running task with --trace)
+# 失敗した
+# 落ち着いてもう一度update
+$ bundle update
+$ rake install
+## Copying classic theme into ./source and ./sass
+mkdir -p source
+cp -r .themes/classic/source/. source
+mkdir -p sass
+cp -r .themes/classic/sass/. sass
+mkdir -p source/_posts
+mkdir -p public
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;rakeタスクを見てみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake -T
+rake clean                     # Clean out caches: .pygments-cache, .gist-cache, .sass-cache
+rake copydot[source,dest]      # copy dot files for deployment
+rake deploy                    # Default deploy task
+rake gen_deploy                # Generate website and deploy
+rake generate                  # Generate jekyll site
+rake install[theme]            # Initial setup for Octopress: copies the default theme into the path of Jekyll&#39;s generator.
+rake integrate                 # Move all stashed posts back into the posts directory, ready for site generation.
+rake isolate[filename]         # Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much more quickly.
+rake list                      # list tasks
+rake new_page[filename]        # Create a new page in source/(filename)/index.markdown
+rake new_post[title]           # Begin a new post in source/_posts
+rake preview                   # preview the site in a web browser
+rake push                      # deploy public directory to github pages
+rake rsync                     # Deploy website via rsync
+rake set_root_dir[dir]         # Update configurations to support publishing to root or sub directory
+rake setup_github_pages[repo]  # Set up _deploy folder and deploy branch for Github Pages deployment
+rake update_source[theme]      # Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source.old&#39;s navigation
+rake update_style[theme]       # Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom
+rake watch                     # Watch the site and regenerate when it changes
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;試しに&lt;code&gt;rake preview&lt;/code&gt;してみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake preview
+Stkobteang to watch source with Jekyll and Compass. Stkobteang Rack on port 4000
+directory source/stylesheets/
+   create source/stylesheets/screen.css
+Configuration from /Users/kobtea/Programs/octopress/_config.yml
+[2013-09-22 20:52:05] INFO  WEBrick 1.3.1
+[2013-09-22 20:52:05] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.1]
+[2013-09-22 20:52:05] INFO  WEBrick::HTTPServer#start: pid=136 port=4000
+&amp;gt;&amp;gt;&amp;gt; Change detected at 20:52:05 to: screen.scss
+Auto-regenerating enabled: source -&amp;gt; public
+[2013-09-22 20:52:05] regeneration: 93 files changed
+identical public/stylesheets/screen.css
+&amp;gt;&amp;gt;&amp;gt; Compass is watching for changes. Press Ctrl-C to Stop.
+127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET / HTTP/1.1&amp;quot; 200 - 0.0207
+127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /stylesheets/screen.css HTTP/1.1&amp;quot; 200 - 0.0034
+127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /javascripts/modernizr-2.0.js HTTP/1.1&amp;quot; 200 - 0.0014
+127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /javascripts/octopress.js HTTP/1.1&amp;quot; 200 - 0.0015
+127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /images/line-tile.png?1379850683 HTTP/1.1&amp;quot; 200 - 0.0013
+127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /images/noise.png?1379850683 HTTP/1.1&amp;quot; 200 - 0.0025
+127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /images/rss.png?1379850683 HTTP/1.1&amp;quot; 200 - 0.0010
+127.0.0.1 - - [22/Sep/2013 20:52:36] &amp;quot;GET /favicon.png HTTP/1.1&amp;quot; 200 - 0.0015
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ブラウザでlocalhost:4000にアクセス。&lt;br /&gt;
+&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/hello-octopress.png&#34; class=&#34;img-responsive&#34;/&gt;
+わーお&lt;/p&gt;
+
+&lt;h2 id=&#34;github-pagesへデプロイ:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;Github Pagesへデプロイ&lt;/h2&gt;
+
+&lt;p&gt;参考 :&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/&#34;&gt;Deploying to Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/&#34;&gt;Octopressのインストールから運用管理まで&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;githubにUSERNAME.github.ioでリポジトリを作成しておく。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 途中でgithub pagesのリポジトリを入力する
+$ rake setup_github_pages
+Enter the read/write url for your repository
+(For example, &#39;git@github.com:your_username/your_username.github.io.git)
+           or &#39;https://github.com/your_username/your_username.github.io&#39;)
+Repository url: git@github.com:kobtea/kobtea.github.io.git
+rm -rf _deploy
+mkdir _deploy
+cd _deploy
+Initialized empty Git repository in /Users/kobtea/Programs/octopress/_deploy/.git/
+[master (root-commit) d1ed656] Octopress init
+ 1 file changed, 1 insertion(+)
+ create mode 100644 index.html
+cd -
+
+---
+## Now you can deploy to git@github.com:kobtea/kobtea.github.io.git with `rake deploy` ##
+
+# とりあえずdeploy
+$ rake deploy
+## Deploying branch to Github Pages
+## Pulling any updates from Github Pages
+cd _deploy
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream master origin/&amp;lt;branch&amp;gt;
+
+cd -
+rm -rf _deploy/index.html
+
+## Copying public to _deploy
+cp -r public/. _deploy
+cd _deploy
+
+## Commiting: Site updated at 2013-09-22 12:50:23 UTC
+[master 29f0918] Site updated at 2013-09-22 12:50:23 UTC
+ 61 files changed, 1118 insertions(+), 1 deletion(-)
+ create mode 100644 assets/jwplayer/glow/controlbar/background.png
+ create mode 100644 assets/jwplayer/glow/controlbar/blankButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/divider.png
+ create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/muteButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/muteButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/pauseButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/pauseButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/playButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/playButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderBuffer.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapLeft.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapRight.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderProgress.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderRail.png
+ create mode 100644 assets/jwplayer/glow/controlbar/unmuteButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/unmuteButtonOver.png
+ create mode 100644 assets/jwplayer/glow/display/background.png
+ create mode 100644 assets/jwplayer/glow/display/bufferIcon.png
+ create mode 100644 assets/jwplayer/glow/display/muteIcon.png
+ create mode 100644 assets/jwplayer/glow/display/playIcon.png
+ create mode 100644 assets/jwplayer/glow/dock/button.png
+ create mode 100644 assets/jwplayer/glow/glow.xml
+ create mode 100644 assets/jwplayer/glow/playlist/item.png
+ create mode 100644 assets/jwplayer/glow/playlist/itemOver.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderCapBottom.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderCapTop.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderRail.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderThumb.png
+ create mode 100644 assets/jwplayer/glow/sharing/embedIcon.png
+ create mode 100644 assets/jwplayer/glow/sharing/embedScreen.png
+ create mode 100644 assets/jwplayer/glow/sharing/shareIcon.png
+ create mode 100644 assets/jwplayer/glow/sharing/shareScreen.png
+ create mode 100644 assets/jwplayer/player.swf
+ create mode 100644 atom.xml
+ create mode 100644 blog/archives/index.html
+ create mode 100644 favicon.png
+ create mode 100644 images/bird_32_gray.png
+ create mode 100644 images/bird_32_gray_fail.png
+ create mode 100644 images/code_bg.png
+ create mode 100644 images/dotted-border.png
+ create mode 100644 images/email.png
+ create mode 100644 images/line-tile.png
+ create mode 100644 images/noise.png
+ create mode 100644 images/rss.png
+ create mode 100644 images/search.png
+ rewrite index.html (100%)
+ create mode 100644 javascripts/github.js
+ create mode 100644 javascripts/libs/jXHR.js
+ create mode 100644 javascripts/libs/jquery.min.js
+ create mode 100644 javascripts/libs/swfobject-dynamic.js
+ create mode 100644 javascripts/modernizr-2.0.js
+ create mode 100644 javascripts/octopress.js
+ create mode 100644 javascripts/pinboard.js
+ create mode 100644 javascripts/twitter.js
+ create mode 100644 robots.txt
+ create mode 100644 sitemap.xml
+ create mode 100644 stylesheets/screen.css
+
+## Pushing generated _deploy website
+Counting objects: 79, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (72/72), done.
+Writing objects: 100% (79/79), 186.46 KiB, done.
+Total 79 (delta 1), reused 0 (delta 0)
+To git@github.com:kobtea/kobtea.github.io.git
+ * [new branch]      master -&amp;gt; master
+
+## Github Pages deploy complete
+cd -
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;で、10~20分くらいのんびり待つ。&lt;br /&gt;
+しばらくするとkobtea.github.ioにページが出来てる！すごい!&lt;/p&gt;
+
+&lt;p&gt;sourceブランチはBitbucketで管理する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git remote add bitbucket git@bitbucket.org:kobtea/kobtea.github.io.git
+$ git push -u bitbucket source
+
+# ブランチはこんな感じになる
+$ git branch -a
+* source
+  remotes/bitbucket/source
+  remotes/octopress/2.5
+  remotes/octopress/2.5-simplify-rakefile
+  remotes/octopress/3.0
+  remotes/octopress/HEAD -&amp;gt; octopress/master
+  remotes/octopress/commander
+  remotes/octopress/gh-pages
+  remotes/octopress/guard
+  remotes/octopress/linklog
+  remotes/octopress/master
+  remotes/octopress/migrator
+  remotes/octopress/refactor_with_tests
+  remotes/octopress/rubygemcli
+  remotes/octopress/site
+  remotes/octopress/site-2.1
+  remotes/origin/master
+  remotes/origin/source
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;octopressの設定:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;Octopressの設定&lt;/h2&gt;
+
+&lt;p&gt;参考 : &lt;a href=&#34;http://octopress.org/docs/configuring/&#34;&gt;Configuring Octopress&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;ブログの基本的な設定は&lt;code&gt;_config.yml&lt;/code&gt;で行う。&lt;br /&gt;
+とりあえず、title, subtitleだけ変更した。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: http://kobtea.github.io
+title: blog.kobtea.net
+subtitle: 咳をしても情弱
+author: kobtea
+simple_search: http://google.com/search
+description:
+
+# Default date format is &amp;quot;ordinal&amp;quot; (resulting in &amp;quot;July 22nd 2007&amp;quot;)
+# You can customize the format as defined in
+# http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
+# Additionally, %o will give you the ordinal representation of the day
+date_format: &amp;quot;ordinal&amp;quot;
+
+# RSS / Email (optional) subscription links (change if using something like Feedburner)
+subscribe_rss: /atom.xml
+subscribe_email:
+# RSS feeds can list your email address if you like
+email:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Jekyll &amp;amp; Plugins, 3rd Party Settingsはまた今度いじる。&lt;/p&gt;
+
+&lt;h2 id=&#34;投稿:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;投稿！&lt;/h2&gt;
+
+&lt;p&gt;参考 : &lt;a href=&#34;http://octopress.org/docs/blogging/&#34;&gt;Blogging Basics&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 記事を作成する
+$ rake new_post[&amp;quot;hello-octopress&amp;quot;]
+zsh: no matches found: new_post[hello-octopress]
+
+# zshだと[]はエスケープしないといけないのね
+$ rake new_post\[&amp;quot;hello-octopress&amp;quot;\]
+mkdir -p source/_posts
+Creating new post: source/_posts/2013-09-22-hello-octopress.markdown
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;markdownファイルが生成されるので編集する。&lt;/p&gt;
+
+&lt;p&gt;source: &lt;code&gt;source/_posts/2013-09-22-hello-octopress.markdown&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;---
+layout: post
+title: &amp;quot;こんにちはOctopress&amp;quot;
+date: 2013-09-22 22:44
+comments: true
+categories:
+---
+
+よろしくタコ出版！
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;---&lt;/code&gt;で囲まれたブロック内にはポストのメタデータを書く。&lt;br /&gt;
+カテゴリを複数登録するには2通りある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;categories: [hoge, huga]
+
+categories:
+- hoge
+- huga
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;書けたら、generateしてdeploy!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake generate
+$ rake deploy
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;反映に時間がかかることもあるからのんびり待つ。&lt;br /&gt;
+記事が投稿されたら喜んでおしまい。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MBAにRuby環境を作る</title>
+      <link>http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/</link>
+      <pubDate>Mon, 23 Sep 2013 00:17:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
+ProductName:    Mac OS X
+ProductVersion: 10.8.4
+BuildVersion:   12E3067
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt;のreadmeにそってやる。&lt;br /&gt;
+PATHについて解説までしてくれるとかマジ天使。&lt;/p&gt;
+
+&lt;h2 id=&#34;rbenvのインストール:02efbb982949a3203f0d32f585df492a&#34;&gt;rbenvのインストール&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# homebrewを最新の状態に
+$ brew update
+$ brew upgrade
+
+# rbenvをインストール
+$ brew install rbenv
+==&amp;gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
+######################################################################## 100.0%
+==&amp;gt; Caveats
+To use Homebrew&#39;s directories rather than ~/.rbenv add to your profile:
+  export RBENV_ROOT=/usr/local/var/rbenv
+
+To enable shims and autocompletion add to your profile:
+  if which rbenv &amp;gt; /dev/null; then eval &amp;quot;$(rbenv init -)&amp;quot;; fi
+==&amp;gt; Summary
+🍺  /usr/local/Cellar/rbenv/0.4.0: 31 files, 152K, built in 2 seconds
+
+# ruby-buildをインストール
+$ brew install ruby-build
+######################################################################## 100.0%
+==&amp;gt; ./configure --prefix=/usr/local/Cellar/autoconf/2.69
+==&amp;gt; make install
+🍺  /usr/local/Cellar/autoconf/2.69: 69 files, 2.0M, built in 8 seconds
+==&amp;gt; Installing ruby-build
+==&amp;gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
+######################################################################## 100.0%
+==&amp;gt; ./install.sh
+🍺  /usr/local/Cellar/ruby-build/20130907: 83 files, 368K, built in 2 seconds
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;profileとかrcに以下を追記する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;if which rbenv &amp;gt; /dev/null; then eval &amp;quot;$(rbenv init -)&amp;quot;; fi&#39; &amp;gt;&amp;gt; ~/.zprofile
+$ source ~/.zprofile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv --help
+rbenv 0.4.0
+Usage: rbenv &amp;lt;command&amp;gt; [&amp;lt;args&amp;gt;]
+
+Some useful rbenv commands are:
+   commands    List all available rbenv commands
+   local       Set or show the local application-specific Ruby version
+   global      Set or show the global Ruby version
+   shell       Set or show the shell-specific Ruby version
+   install     Install a Ruby version using the ruby-build plugin
+   uninstall   Uninstall a specific Ruby version
+   rehash      Rehash rbenv shims (run this after installing executables)
+   version     Show the current Ruby version and its origin
+   versions    List all Ruby versions available to rbenv
+   which       Display the full path to an executable
+   whence      List all Ruby versions that contain the given executable
+
+See `rbenv help &amp;lt;command&amp;gt;&#39; for information on a specific command.
+For full documentation, see: https://github.com/sstephenson/rbenv#readme
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;rbenv-default-gemsをインストール:02efbb982949a3203f0d32f585df492a&#34;&gt;rbenv-default-gemsをインストール&lt;/h2&gt;
+
+&lt;p&gt;ついでに&lt;a href=&#34;https://github.com/sstephenson/rbenv-default-gems&#34;&gt;rbenv-default-gems&lt;/a&gt;を入れておく。&lt;br /&gt;
+&lt;code&gt;rbenv install &amp;lt;version&amp;gt;&lt;/code&gt;でRubyをインストールする際に、一緒に必要なgemを入れてくれる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;bundler&#39; &amp;gt;&amp;gt; ~/.rbenv/default-gems
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ひとまずbundlerだけでいいかな。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 一応homebrewを再度更新
+$ brew update
+$ brew upgrade
+
+# ruby 2.0をインストール
+$ rbenv install 2.0.0-p247
+Downloading openssl-1.0.1e.tar.gz...
+-&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+Installing openssl-1.0.1e...
+
+BUILD FAILED
+
+Inspect or clean up the working tree at /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114
+Results logged to /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114.log
+
+Last 10 log lines:
+RANLIB        =true
+ARFLAGS       =
+PERL          =/usr/bin/perl
+SIXTY_FOUR_BIT_LONG mode
+DES_UNROLL used
+DES_INT used
+RC4 uses uchar
+RC4_CHUNK is unsigned long
+sh: make: command not found
+/usr/local/bin/ruby-build: line 387: make: command not found
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;makeコマンドがないぽい。&lt;br /&gt;
+command line toolsが入ってなかった。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Xcode -&amp;gt; Preferences -&amp;gt; Downloads -&amp;gt; Command Line Tools -&amp;gt; Install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;リトライ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv install 2.0.0-p247
+Downloading openssl-1.0.1e.tar.gz...
+-&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+Installing openssl-1.0.1e...
+Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+Downloading ruby-2.0.0-p247.tar.gz...
+-&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+Installing ruby-2.0.0-p247...
+Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don&#39;t have write permissions into the /Library/Ruby/Gems/1.8 directory.
+rbenv: error installing gem `bundler&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;今度は権限がない。&lt;br /&gt;
+&lt;a href=&#34;https://github.com/sstephenson/rbenv-default-gems/issues/7&#34;&gt;Issue&lt;/a&gt;に載っていた。&lt;br /&gt;
+どうやら環境変数に&lt;code&gt;$RBENV_ROOT&lt;/code&gt;が必要らしい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv root
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;で表示されたパスを.zprofileとかに書く。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;export RBENV_ROOT=$HOME/.rbenv&#39; &amp;gt;&amp;gt; ~/.zprofile
+$ source ~/.zprofile
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;リトライ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv install 2.0.0-p247
+rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
+continue with installation? (y/N) y
+Downloading openssl-1.0.1e.tar.gz...
+-&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+Installing openssl-1.0.1e...
+Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+Downloading ruby-2.0.0-p247.tar.gz...
+-&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+Installing ruby-2.0.0-p247...
+Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+Fetching: bundler-1.3.5.gem (100%)
+Successfully installed bundler-1.3.5
+Parsing documentation for bundler-1.3.5
+Installing ri documentation for bundler-1.3.5
+1 gem installed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;できた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# ruby, gemのパスが$RBENV_ROOT以下に向いているか確認
+$ rbenv rehash
+$ rbenv versions
+* system (set by /Users/kobtea/.rbenv/version)
+  2.0.0-p247
+$ which ruby
+/Users/kobtea/.rbenv/shims/ruby
+$ which gem
+/Users/kobtea/.rbenv/shims/gem
+
+# システムデフォルトのバージョン確認
+$ ruby --version
+ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
+$ gem --version
+1.3.6
+
+# デフォルトのバージョンを2.0に変更
+$ rbenv global 2.0.0-p247
+$ rbenv versions
+  system
+* 2.0.0-p247 (set by /Users/kobtea/.rbenv/version)
+
+$ ruby --version
+ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
+$ gem --version
+2.0.3
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;こんにちはRuby。&lt;/p&gt;
+
+&lt;h2 id=&#34;追記:02efbb982949a3203f0d32f585df492a&#34;&gt;追記&lt;/h2&gt;
+
+&lt;p&gt;Macデフォルトのreadlineは使わないほうがいいらしい。&lt;br /&gt;
+&lt;code&gt;rbenv install&lt;/code&gt;する際にはhomebrewで入れたreadline, opensslを指定する。&lt;br /&gt;
+指定しない場合、Macだとirbでマルチバイトが使えない。&lt;br /&gt;
+&lt;a href=&#34;http://blog.kobtea.net/blog/2013/09/22/use-multibytes-on-ruby&#34;&gt;irbで日本語が文字化けする&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>irbで日本語が文字化けする</title>
+      <link>http://blog.kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</link>
+      <pubDate>Sun, 22 Sep 2013 23:38:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
+      <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
+ProductName:    Mac OS X
+ProductVersion: 10.8.4
+BuildVersion:   12E3067
+
+$ ruby --version
+ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
+
+$ irb --version
+irb 0.9.6(09/06/30)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;lsquo;日本語&amp;rsquo;と打とうとするとこうなる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;$ irb
+irb(main):001:0&amp;gt; p &#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&#39;
+&amp;quot;&amp;quot;
+=&amp;gt; &amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこと。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;irb で日本語を使うならば、下記でインストール。&lt;br /&gt;
+&lt;code&gt;bash
+CONFIGURE_OPTS=&amp;quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&amp;quot; rbenv install 2.0.0-p247
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.d-wood.com/blog/2013/08/06_4453.html&#34;&gt;[Ruby on Rails] RUBY_CONFIGURE_OPTS, readline, openssl&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# readlineとopensslをインストールする
+$ brew install readline
+$ brew install openssl
+
+# 参考通りにやってみる
+$ CONFIGURE_OPTS=&amp;quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&amp;quot; rbenv install 2.0.0-p247
+rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
+continue with installation? (y/N) y
+Downloading ruby-2.0.0-p247.tar.gz...
+-&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+Installing ruby-2.0.0-p247...
+Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+
+Fetching: bundler-1.3.5.gem (100%)
+Successfully installed bundler-1.3.5
+Parsing documentation for bundler-1.3.5
+Installing ri documentation for bundler-1.3.5
+1 gem installed
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どきどき&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;$ irb
+irb(main):001:0&amp;gt; puts &#39;ほげ&#39;
+ほげ
+=&amp;gt; nil
+irb(main):002:0&amp;gt; p &#39;ほげ&#39;
+&amp;quot;ほげ&amp;quot;
+=&amp;gt; &amp;quot;ほげ&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;やったあ！！！！！！！！！！！&lt;br /&gt;
+本当にありがとうございます。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>VimでステキなMarkdownライフを送りたい</title>
+      <link>http://blog.kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
+      <pubDate>Sun, 22 Sep 2013 22:57:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
+      <description>&lt;p&gt;インストールするもの。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/plasticboy/vim-markdown&#34;&gt;https://github.com/plasticboy/vim-markdown&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;markdown用シンタックスハイライト&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kannokanno/previm&#34;&gt;https://github.com/kannokanno/previm&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;markdownのプレビュー&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tyru/open-browser.vim&#34;&gt;https://github.com/tyru/open-browser.vim&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;URIをブラウザで開く&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;.vimrcに以下を追記する。&lt;br /&gt;
+NeoBundle使ってるよ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-vim&#34;&gt;&amp;quot; .vimrc
+
+NeoBundle &#39;plasticboy/vim-markdown&#39;
+NeoBundle &#39;kannokanno/previm&#39;
+NeoBundle &#39;tyru/open-browser.vim&#39;
+
+&amp;quot;g:previm_open_cmd   &amp;quot; open-browser使用時は不要
+autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype mkd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;mkdファイルを良い感じに編集して、&lt;code&gt;:PrevimOpen&lt;/code&gt;するといい感じにプレビューが出る。&lt;br /&gt;
+ファイル保存すると、自動で更新される。&lt;br /&gt;
+ステキやん。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>こんにちはOctopress</title>
+      <link>http://blog.kobtea.net/posts/2013/09/22/hello-octopress/</link>
+      <pubDate>Sun, 22 Sep 2013 22:44:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/09/22/hello-octopress/</guid>
+      <description>&lt;p&gt;よろしくタコ出版！&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

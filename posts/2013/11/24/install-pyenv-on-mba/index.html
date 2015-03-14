@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>MBAにpyenvを入れる - blog.kobtea.net</title>
+    <meta name="description" content="eternal jojaku">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://blog.kobtea.net/css/capybara-style.css">
+    <style>
+        .container-fluid {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 960px;
+        }
+    </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#header-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://blog.kobtea.net">blog.kobtea.net</a>
+
+                <p class="navbar-text">eternal jojaku</p>
+            </div>
+
+            <div class="collapse navbar-collapse" id="header-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="http://blog.kobtea.net/posts/">archives</a></li>
+                    
+                    <li><a href="http://blog.kobtea.net/posts/index.xml">rss</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<article class="container-fluid">
+    <div class="page-header">
+        <h2><a href="http://blog.kobtea.net/posts/2013/11/24/install-pyenv-on-mba/">MBAにpyenvを入れる</a></h2>
+        <time pubdate datetime=" 2013-11-24 " title="2013-11-24">2013-11-24</time>
+        
+        <a href="/tags/python">
+            <button type="button" class="btn btn-default btn-xs">python</button>
+        </a>
+        
+    </div>
+
+    <pre><code class="language-bash">$ sw_vers
+ProductName:    Mac OS X
+ProductVersion: 10.8.4
+BuildVersion:   12E3067
+</code></pre>
+
+<p>rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。<br />
+<a href="https://github.com/yyuu/pyenv">Simple Python Version Management: pyenv</a>を参考に。</p>
+
+<p>Macでhomebrew使っているなら、brewで入れるのがらくちん。</p>
+
+<pre><code class="language-bash"># brewを最新の状態にする
+$ brew update
+$ brew upgrade
+
+$ brew search pyenv
+pyenv		   pyenv-virtualenv
+$ brew install pyenv
+Warning: Your Xcode (4.6.3) is outdated
+Please update to Xcode 5.0.1.
+Xcode can be updated from the App Store.
+==&gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
+######################################################################## 100.0%
+==&gt; Caveats
+To enable shims and autocompletion add to your profile:
+  if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi
+
+To use Homebrew's directories rather than ~/.pyenv add to your profile:
+  export PYENV_ROOT=/usr/local/opt/pyenv
+==&gt; Summary
+🍺  /usr/local/Cellar/pyenv/20131116: 199 files, 2.2M, built in 5 seconds
+</code></pre>
+
+<p><code>.profile</code>とかに以下を追記する。</p>
+
+<pre><code>if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi
+</code></pre>
+
+<p>profileを再読み込み。</p>
+
+<pre><code class="language-bash">$ source ~/.zprofile
+</code></pre>
+
+<p>使えるか試してみる。</p>
+
+<pre><code class="language-bash">$ pyenv versions
+* system (set by /Users/kobtea/.pyenv/version)
+$ pyenv global
+system
+$ python --version
+Python 2.7.2
+</code></pre>
+
+<p>試しに3.3.2を入れてみる。</p>
+
+<pre><code class="language-bash">$ pyenv install 3.3.2
+Downloading Python-3.3.2.tgz...
+-&gt; http://yyuu.github.io/pythons/0a2ea57f6184baf45b150aee53c0c8da
+Installing Python-3.3.2...
+Installed Python-3.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
+
+Downloading setuptools-1.3.2.tar.gz...
+-&gt; https://pypi.python.org/packages/source/s/setuptools/setuptools-1.3.2.tar.gz
+Installing setuptools-1.3.2...
+Installed setuptools-1.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
+
+Downloading pip-1.4.1.tar.gz...
+-&gt; https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
+Installing pip-1.4.1...
+Installed pip-1.4.1 to /Users/kobtea/.pyenv/versions/3.3.2
+
+
+$ pyenv rehash
+$ pyenv versions
+* system (set by /Users/kobtea/.pyenv/version)
+  3.3.2
+$ pyenv global 3.3.2
+$ pyenv version
+3.3.2 (set by /Users/kobtea/.pyenv/version)
+</code></pre>
+
+<pre><code class="language-bash">$ pip --version
+pip 1.4.1 from /Users/kobtea/.pyenv/versions/3.3.2/lib/python3.3/site-packages/pip-1.4.1-py3.3.egg (python 3.3)
+</code></pre>
+
+<p>すごいpipがもう使えるようになってる！！ステキ！！<br />
+ついでにipythonを入れてみる。</p>
+
+<pre><code class="language-bash">$ pip install ipython
+Downloading/unpacking ipython
+  Downloading ipython-1.1.0.tar.gz (8.7MB): 8.7MB downloaded
+  Running setup.py egg_info for package ipython
+...
+
+$ pip list
+ipython (1.1.0)
+pip (1.4.1)
+setuptools (1.3.2)
+</code></pre>
+
+<p>らくちん。</p>
+
+</article>
+
+<nav class="container-fluid">
+    <ul class="pager">
+        
+        <li class="previous"><a href="http://blog.kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/"><i class="fa fa-caret-left"></i> WindowsでUS配列&#43;親指IME ON/OFFするための設定</a></li>
+        
+
+        
+        <li class="next"><a href="http://blog.kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/">Github Pagesにカスタムドメインを割り当てる <i class="fa fa-caret-right"></i></a></li>
+        
+    </ul>
+</nav>
+
+
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-4">
+                <strong>Author</strong>
+                <div class="media">
+                    <div class="media-left media-top">
+                        <img src="http://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
+                    </div>
+                    <div class="media-body">
+                        <strong class="media-heading">kobtea</strong>
+                        <a href="https://twitter.com/kobtea">
+                            <i class="fa fa-twitter-square fa-lg"></i>
+                        </a>
+                        <a href="https://github.com/kobtea">
+                            <i class="fa fa-github-square fa-lg"></i>
+                        </a>
+                        <br/>
+                        <small>カピバラと暮らしたい</small>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="col-md-8">
+                <strong> Tags </strong><br/><br/>
+                
+                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                
+                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
+                
+                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
+                
+                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
+                
+                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                
+                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
+                
+                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
+                
+            </div>
+
+        </div>
+        <p>&copy; 2015 kobtea | Powered by <a href="http://gohugo.io/">HUGO</a> | Themed with <a
+                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+    </div>
+</footer>
+<script src="http://blog.kobtea.net/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Octopress &#43; Github Pagesな環境構築 - blog.kobtea.net</title>
+    <meta name="description" content="eternal jojaku">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://blog.kobtea.net/css/capybara-style.css">
+    <style>
+        .container-fluid {
+            margin-right: auto;
+            margin-left: auto;
+            max-width: 960px;
+        }
+    </style>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#header-navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://blog.kobtea.net">blog.kobtea.net</a>
+
+                <p class="navbar-text">eternal jojaku</p>
+            </div>
+
+            <div class="collapse navbar-collapse" id="header-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="http://blog.kobtea.net/posts/">archives</a></li>
+                    
+                    <li><a href="http://blog.kobtea.net/posts/index.xml">rss</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<article class="container-fluid">
+    <div class="page-header">
+        <h2><a href="http://blog.kobtea.net/posts/2013/09/23/setup-octopress/">Octopress &#43; Github Pagesな環境構築</a></h2>
+        <time pubdate datetime=" 2013-09-23 " title="2013-09-23">2013-09-23</time>
+        
+        <a href="/tags/octopress">
+            <button type="button" class="btn btn-default btn-xs">Octopress</button>
+        </a>
+        
+    </div>
+
+    
+
+<p>もはや様式美だけど自分のために。<br />
+公式の<a href="http://octopress.org/docs/">Octopress Documentation</a>を参考に。</p>
+
+<pre><code class="language-bash">$ sw_vers
+ProductName:	Mac OS X
+ProductVersion:	10.8.4
+BuildVersion:	12E3067
+
+$ ruby -v
+ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
+
+$ gem -v
+2.0.3
+
+$ bundle -v
+Bundler version 1.3.5
+</code></pre>
+
+<h2 id="octopressのセットアップ:4a5f145a9902224d63225b1c2ea5b6fd">Octopressのセットアップ</h2>
+
+<p>参考 : <a href="http://octopress.org/docs/setup/">Octopress Setup</a></p>
+
+<pre><code class="language-bash"># リポジトリをclone
+$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+
+# 必要なgemを入れる
+$ bundle install
+$ rake install
+rake aborted!
+You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2. Using bundle exec may solve this.
+/Users/kobtea/Programs/octopress/Rakefile:2:in `&lt;top (required)&gt;'
+(See full trace by running task with --trace)
+# 失敗した
+# 落ち着いてもう一度update
+$ bundle update
+$ rake install
+## Copying classic theme into ./source and ./sass
+mkdir -p source
+cp -r .themes/classic/source/. source
+mkdir -p sass
+cp -r .themes/classic/sass/. sass
+mkdir -p source/_posts
+mkdir -p public
+</code></pre>
+
+<p>rakeタスクを見てみる。</p>
+
+<pre><code class="language-bash">$ rake -T
+rake clean                     # Clean out caches: .pygments-cache, .gist-cache, .sass-cache
+rake copydot[source,dest]      # copy dot files for deployment
+rake deploy                    # Default deploy task
+rake gen_deploy                # Generate website and deploy
+rake generate                  # Generate jekyll site
+rake install[theme]            # Initial setup for Octopress: copies the default theme into the path of Jekyll's generator.
+rake integrate                 # Move all stashed posts back into the posts directory, ready for site generation.
+rake isolate[filename]         # Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much more quickly.
+rake list                      # list tasks
+rake new_page[filename]        # Create a new page in source/(filename)/index.markdown
+rake new_post[title]           # Begin a new post in source/_posts
+rake preview                   # preview the site in a web browser
+rake push                      # deploy public directory to github pages
+rake rsync                     # Deploy website via rsync
+rake set_root_dir[dir]         # Update configurations to support publishing to root or sub directory
+rake setup_github_pages[repo]  # Set up _deploy folder and deploy branch for Github Pages deployment
+rake update_source[theme]      # Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source.old's navigation
+rake update_style[theme]       # Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom
+rake watch                     # Watch the site and regenerate when it changes
+</code></pre>
+
+<p>試しに<code>rake preview</code>してみる。</p>
+
+<pre><code class="language-bash">$ rake preview
+Stkobteang to watch source with Jekyll and Compass. Stkobteang Rack on port 4000
+directory source/stylesheets/
+   create source/stylesheets/screen.css
+Configuration from /Users/kobtea/Programs/octopress/_config.yml
+[2013-09-22 20:52:05] INFO  WEBrick 1.3.1
+[2013-09-22 20:52:05] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.1]
+[2013-09-22 20:52:05] INFO  WEBrick::HTTPServer#start: pid=136 port=4000
+&gt;&gt;&gt; Change detected at 20:52:05 to: screen.scss
+Auto-regenerating enabled: source -&gt; public
+[2013-09-22 20:52:05] regeneration: 93 files changed
+identical public/stylesheets/screen.css
+&gt;&gt;&gt; Compass is watching for changes. Press Ctrl-C to Stop.
+127.0.0.1 - - [22/Sep/2013 20:52:35] &quot;GET / HTTP/1.1&quot; 200 - 0.0207
+127.0.0.1 - - [22/Sep/2013 20:52:35] &quot;GET /stylesheets/screen.css HTTP/1.1&quot; 200 - 0.0034
+127.0.0.1 - - [22/Sep/2013 20:52:35] &quot;GET /javascripts/modernizr-2.0.js HTTP/1.1&quot; 200 - 0.0014
+127.0.0.1 - - [22/Sep/2013 20:52:35] &quot;GET /javascripts/octopress.js HTTP/1.1&quot; 200 - 0.0015
+127.0.0.1 - - [22/Sep/2013 20:52:35] &quot;GET /images/line-tile.png?1379850683 HTTP/1.1&quot; 200 - 0.0013
+127.0.0.1 - - [22/Sep/2013 20:52:35] &quot;GET /images/noise.png?1379850683 HTTP/1.1&quot; 200 - 0.0025
+127.0.0.1 - - [22/Sep/2013 20:52:35] &quot;GET /images/rss.png?1379850683 HTTP/1.1&quot; 200 - 0.0010
+127.0.0.1 - - [22/Sep/2013 20:52:36] &quot;GET /favicon.png HTTP/1.1&quot; 200 - 0.0015
+</code></pre>
+
+<p>ブラウザでlocalhost:4000にアクセス。<br />
+<img src="/img/2013/09/23/hello-octopress.png" class="img-responsive"/>
+わーお</p>
+
+<h2 id="github-pagesへデプロイ:4a5f145a9902224d63225b1c2ea5b6fd">Github Pagesへデプロイ</h2>
+
+<p>参考 :</p>
+
+<ul>
+<li><a href="http://octopress.org/docs/deploying/github/">Deploying to Github Pages</a></li>
+<li><a href="http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/">Octopressのインストールから運用管理まで</a></li>
+</ul>
+
+<p>githubにUSERNAME.github.ioでリポジトリを作成しておく。</p>
+
+<pre><code class="language-bash"># 途中でgithub pagesのリポジトリを入力する
+$ rake setup_github_pages
+Enter the read/write url for your repository
+(For example, 'git@github.com:your_username/your_username.github.io.git)
+           or 'https://github.com/your_username/your_username.github.io')
+Repository url: git@github.com:kobtea/kobtea.github.io.git
+rm -rf _deploy
+mkdir _deploy
+cd _deploy
+Initialized empty Git repository in /Users/kobtea/Programs/octopress/_deploy/.git/
+[master (root-commit) d1ed656] Octopress init
+ 1 file changed, 1 insertion(+)
+ create mode 100644 index.html
+cd -
+
+---
+## Now you can deploy to git@github.com:kobtea/kobtea.github.io.git with `rake deploy` ##
+
+# とりあえずdeploy
+$ rake deploy
+## Deploying branch to Github Pages
+## Pulling any updates from Github Pages
+cd _deploy
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details
+
+    git pull &lt;remote&gt; &lt;branch&gt;
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream master origin/&lt;branch&gt;
+
+cd -
+rm -rf _deploy/index.html
+
+## Copying public to _deploy
+cp -r public/. _deploy
+cd _deploy
+
+## Commiting: Site updated at 2013-09-22 12:50:23 UTC
+[master 29f0918] Site updated at 2013-09-22 12:50:23 UTC
+ 61 files changed, 1118 insertions(+), 1 deletion(-)
+ create mode 100644 assets/jwplayer/glow/controlbar/background.png
+ create mode 100644 assets/jwplayer/glow/controlbar/blankButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/divider.png
+ create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/muteButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/muteButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/pauseButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/pauseButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/playButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/playButtonOver.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderBuffer.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapLeft.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapRight.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderProgress.png
+ create mode 100644 assets/jwplayer/glow/controlbar/timeSliderRail.png
+ create mode 100644 assets/jwplayer/glow/controlbar/unmuteButton.png
+ create mode 100644 assets/jwplayer/glow/controlbar/unmuteButtonOver.png
+ create mode 100644 assets/jwplayer/glow/display/background.png
+ create mode 100644 assets/jwplayer/glow/display/bufferIcon.png
+ create mode 100644 assets/jwplayer/glow/display/muteIcon.png
+ create mode 100644 assets/jwplayer/glow/display/playIcon.png
+ create mode 100644 assets/jwplayer/glow/dock/button.png
+ create mode 100644 assets/jwplayer/glow/glow.xml
+ create mode 100644 assets/jwplayer/glow/playlist/item.png
+ create mode 100644 assets/jwplayer/glow/playlist/itemOver.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderCapBottom.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderCapTop.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderRail.png
+ create mode 100644 assets/jwplayer/glow/playlist/sliderThumb.png
+ create mode 100644 assets/jwplayer/glow/sharing/embedIcon.png
+ create mode 100644 assets/jwplayer/glow/sharing/embedScreen.png
+ create mode 100644 assets/jwplayer/glow/sharing/shareIcon.png
+ create mode 100644 assets/jwplayer/glow/sharing/shareScreen.png
+ create mode 100644 assets/jwplayer/player.swf
+ create mode 100644 atom.xml
+ create mode 100644 blog/archives/index.html
+ create mode 100644 favicon.png
+ create mode 100644 images/bird_32_gray.png
+ create mode 100644 images/bird_32_gray_fail.png
+ create mode 100644 images/code_bg.png
+ create mode 100644 images/dotted-border.png
+ create mode 100644 images/email.png
+ create mode 100644 images/line-tile.png
+ create mode 100644 images/noise.png
+ create mode 100644 images/rss.png
+ create mode 100644 images/search.png
+ rewrite index.html (100%)
+ create mode 100644 javascripts/github.js
+ create mode 100644 javascripts/libs/jXHR.js
+ create mode 100644 javascripts/libs/jquery.min.js
+ create mode 100644 javascripts/libs/swfobject-dynamic.js
+ create mode 100644 javascripts/modernizr-2.0.js
+ create mode 100644 javascripts/octopress.js
+ create mode 100644 javascripts/pinboard.js
+ create mode 100644 javascripts/twitter.js
+ create mode 100644 robots.txt
+ create mode 100644 sitemap.xml
+ create mode 100644 stylesheets/screen.css
+
+## Pushing generated _deploy website
+Counting objects: 79, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (72/72), done.
+Writing objects: 100% (79/79), 186.46 KiB, done.
+Total 79 (delta 1), reused 0 (delta 0)
+To git@github.com:kobtea/kobtea.github.io.git
+ * [new branch]      master -&gt; master
+
+## Github Pages deploy complete
+cd -
+</code></pre>
+
+<p>で、10~20分くらいのんびり待つ。<br />
+しばらくするとkobtea.github.ioにページが出来てる！すごい!</p>
+
+<p>sourceブランチはBitbucketで管理する。</p>
+
+<pre><code class="language-bash">$ git remote add bitbucket git@bitbucket.org:kobtea/kobtea.github.io.git
+$ git push -u bitbucket source
+
+# ブランチはこんな感じになる
+$ git branch -a
+* source
+  remotes/bitbucket/source
+  remotes/octopress/2.5
+  remotes/octopress/2.5-simplify-rakefile
+  remotes/octopress/3.0
+  remotes/octopress/HEAD -&gt; octopress/master
+  remotes/octopress/commander
+  remotes/octopress/gh-pages
+  remotes/octopress/guard
+  remotes/octopress/linklog
+  remotes/octopress/master
+  remotes/octopress/migrator
+  remotes/octopress/refactor_with_tests
+  remotes/octopress/rubygemcli
+  remotes/octopress/site
+  remotes/octopress/site-2.1
+  remotes/origin/master
+  remotes/origin/source
+</code></pre>
+
+<h2 id="octopressの設定:4a5f145a9902224d63225b1c2ea5b6fd">Octopressの設定</h2>
+
+<p>参考 : <a href="http://octopress.org/docs/configuring/">Configuring Octopress</a></p>
+
+<p>ブログの基本的な設定は<code>_config.yml</code>で行う。<br />
+とりあえず、title, subtitleだけ変更した。</p>
+
+<pre><code class="language-yml"># ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: http://kobtea.github.io
+title: blog.kobtea.net
+subtitle: 咳をしても情弱
+author: kobtea
+simple_search: http://google.com/search
+description:
+
+# Default date format is &quot;ordinal&quot; (resulting in &quot;July 22nd 2007&quot;)
+# You can customize the format as defined in
+# http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
+# Additionally, %o will give you the ordinal representation of the day
+date_format: &quot;ordinal&quot;
+
+# RSS / Email (optional) subscription links (change if using something like Feedburner)
+subscribe_rss: /atom.xml
+subscribe_email:
+# RSS feeds can list your email address if you like
+email:
+</code></pre>
+
+<p>Jekyll &amp; Plugins, 3rd Party Settingsはまた今度いじる。</p>
+
+<h2 id="投稿:4a5f145a9902224d63225b1c2ea5b6fd">投稿！</h2>
+
+<p>参考 : <a href="http://octopress.org/docs/blogging/">Blogging Basics</a></p>
+
+<pre><code class="language-bash"># 記事を作成する
+$ rake new_post[&quot;hello-octopress&quot;]
+zsh: no matches found: new_post[hello-octopress]
+
+# zshだと[]はエスケープしないといけないのね
+$ rake new_post\[&quot;hello-octopress&quot;\]
+mkdir -p source/_posts
+Creating new post: source/_posts/2013-09-22-hello-octopress.markdown
+</code></pre>
+
+<p>markdownファイルが生成されるので編集する。</p>
+
+<p>source: <code>source/_posts/2013-09-22-hello-octopress.markdown</code></p>
+
+<pre><code class="language-yml">---
+layout: post
+title: &quot;こんにちはOctopress&quot;
+date: 2013-09-22 22:44
+comments: true
+categories:
+---
+
+よろしくタコ出版！
+</code></pre>
+
+<p><code>---</code>で囲まれたブロック内にはポストのメタデータを書く。<br />
+カテゴリを複数登録するには2通りある。</p>
+
+<pre><code class="language-yml">categories: [hoge, huga]
+
+categories:
+- hoge
+- huga
+</code></pre>
+
+<p>書けたら、generateしてdeploy!</p>
+
+<pre><code class="language-bash">$ rake generate
+$ rake deploy
+</code></pre>
+
+<p>反映に時間がかかることもあるからのんびり待つ。<br />
+記事が投稿されたら喜んでおしまい。</p>
+
+</article>
+
+<nav class="container-fluid">
+    <ul class="pager">
+        
+        <li class="previous"><a href="http://blog.kobtea.net/posts/2013/09/23/change-octopress-theme/"><i class="fa fa-caret-left"></i> Octopressのテーマを変更する</a></li>
+        
+
+        
+        <li class="next"><a href="http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/">MBAにRuby環境を作る <i class="fa fa-caret-right"></i></a></li>
+        
+    </ul>
+</nav>
+
+
+<footer>
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-md-4">
+                <strong>Author</strong>
+                <div class="media">
+                    <div class="media-left media-top">
+                        <img src="http://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
+                    </div>
+                    <div class="media-body">
+                        <strong class="media-heading">kobtea</strong>
+                        <a href="https://twitter.com/kobtea">
+                            <i class="fa fa-twitter-square fa-lg"></i>
+                        </a>
+                        <a href="https://github.com/kobtea">
+                            <i class="fa fa-github-square fa-lg"></i>
+                        </a>
+                        <br/>
+                        <small>カピバラと暮らしたい</small>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div class="col-md-8">
+                <strong> Tags </strong><br/><br/>
+                
+                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                
+                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
+                
+                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
+                
+                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
+                
+                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                
+                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
+                
+                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
+                
+            </div>
+
+        </div>
+        <p>&copy; 2015 kobtea | Powered by <a href="http://gohugo.io/">HUGO</a> | Themed with <a
+                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+    </div>
+</footer>
+<script src="http://blog.kobtea.net/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+</body>
+</html>

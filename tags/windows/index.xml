@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windows on blog.kobtea.net</title>
+    <link>http://blog.kobtea.net/tags/windows/</link>
+    <description>Recent content in Windows on blog.kobtea.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    
+    
+    
+    <lastBuildDate>Sun, 23 Mar 2014 00:43:00 JST</lastBuildDate>
+    <atom:link href="http://blog.kobtea.net/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>WindowsでUS配列&#43;親指IME ON/OFFするための設定</title>
+      <link>http://blog.kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</link>
+      <pubDate>Sun, 23 Mar 2014 00:43:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</guid>
+      <description>
+
+&lt;p&gt;macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。&lt;br /&gt;
+RealforceのUS配列を購入してwinに設定したこと。&lt;/p&gt;
+
+&lt;h2 id=&#34;環境:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;環境&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;OS: Windows7 64bit&lt;/li&gt;
+&lt;li&gt;Keyboard: Realforce 87U&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;デスクトップ環境なので今回考えてないけど、ノートの場合は本体の配列がーとか考慮してあげないといけない。&lt;/p&gt;
+
+&lt;h2 id=&#34;やりたいこと:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;やりたいこと&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[alt] [無変換] [space] [変換] [alt] みたいな配列にしたい&lt;/li&gt;
+&lt;li&gt;[半角/全角] みたいなトグルは使いたくない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;macのJIS配列みたいな感じ。&lt;/p&gt;
+
+&lt;h2 id=&#34;作業ログ:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;作業ログ&lt;/h2&gt;
+
+&lt;h3 id=&#34;英語キーボードとして認識させる:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;英語キーボードとして認識させる&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# レジストリエディタを起動
+Start &amp;gt; regedit
+# キーボード設定を開く
+コンピュータ &amp;gt; HKEY_LOCAL_MACHINE &amp;gt; SYSTEM &amp;gt; CurrentControlSet &amp;gt; services &amp;gt; i8042prt &amp;gt; Parameters
+
+# US配列の設定
+LayerDriver JPN             : kbd106.dll    -&amp;gt; kbd101.dll
+OverrideKeyboardIdentifier  : PCAT_106KEY   -&amp;gt; PCAT_101KEY
+OverrideKeyboardSubtype     : 2             -&amp;gt; 0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再起動する。&lt;br /&gt;
+ログインパスワードを設定している場合、古いJISキーボードでないと弾かれる。&lt;br /&gt;
+スキャンコードか何かで識別していたのかなぁ&amp;hellip;&lt;br /&gt;
+JIS, US両方あるうちにログインパスワード再設定をしておく。&lt;/p&gt;
+
+&lt;p&gt;参考 : &lt;a href=&#34;http://blog.heiichi.com/?eid=792239&#34;&gt;Windows 7 のキーボードを英語キーボードに変更 - へーいち の うぇぶろぐ&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;keyの配置を変える:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;Keyの配置を変える&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.forest.impress.co.jp/library/software/changekey/&#34;&gt;Change Key&lt;/a&gt;を使う。&lt;br /&gt;
+winキーとaltキーをスワップさせる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Left  Win  -&amp;gt; Left  Alt
+Left  Alt  -&amp;gt; Left  Win
+Right Alt  -&amp;gt; Right Win
+Right Win  -&amp;gt; Right Alt
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;登録して再起動する。
+Winキーを潰して代わりに変換/無変換キーにするよ。&lt;/p&gt;
+
+&lt;h3 id=&#34;変換-無変換キー候補に絶対使わないであろうショートカットを割り当てる:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる&lt;/h3&gt;
+
+&lt;p&gt;US配列だと変換/無変換というキーは存在しない。&lt;br /&gt;
+ので、絶対使わないであろうショートカットをWinキーに割り当てて、IMEにはそのショートカットに変換/無変換をフックさせる。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.autohotkey.com/&#34;&gt;AutoHotkey&lt;/a&gt;を使う。&lt;br /&gt;
+AutoHotkeyを起動して&lt;code&gt;Edit This Script&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;; AutoHotkey.ahk
+
+; Right Winに Ctrl + Shift + Rightを割り当てる
+RWin::^+Right
+; Left  Winに Ctrl + Shift + Left を割り当てる
+LWin::^+Left
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;編集したら&lt;code&gt;Reload This Script&lt;/code&gt;。&lt;br /&gt;
+Win起動時に一緒に起動して欲しいなら、スタートアップフォルダの中に&lt;code&gt;AutoHotkey.ahk&lt;/code&gt;のショートカットを置いておく。&lt;/p&gt;
+
+&lt;h3 id=&#34;imeに変換-無変換の設定をする:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;IMEに変換/無変換の設定をする&lt;/h3&gt;
+
+&lt;p&gt;google IMEを使っているのでその設定方法を。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# キー設定を開く
+google IME &amp;gt; プロパティ &amp;gt; 一般 &amp;gt; キー設定 &amp;gt; キー設定の選択 &amp;gt; 編集
+
+# 変換
+直接入力, Ctrl Shift Right, IMEを有効化
+入力文字なし, Ctrl Shift Right, IMEを有効化
+# 無変換
+直接入力, Ctrl Shift Left, IMEを無効化
+入力文字なし, Ctrl Shift Left, IMEを無効化
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これで大勝利。
+なんというまわりくどさ。&lt;/p&gt;
+
+&lt;h2 id=&#34;appendix:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;Appendix&lt;/h2&gt;
+
+&lt;p&gt;トグルでもよければAX配列設定で、右Altに半角/全角相当が割り当てられる。&lt;br /&gt;
+参考 : &lt;a href=&#34;http://www.atmarkit.co.jp/fwin2k/win2ktips/041axkbd/axkbd.html&#34;&gt;右Altキーに［漢字］キーを割り当てる方法（AXキーボード設定を利用する方法）&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

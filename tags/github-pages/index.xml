@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Github Pages on blog.kobtea.net</title>
+    <link>http://blog.kobtea.net/tags/github-pages/</link>
+    <description>Recent content in Github Pages on blog.kobtea.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    
+    
+    
+    <lastBuildDate>Mon, 23 Sep 2013 21:39:00 JST</lastBuildDate>
+    <atom:link href="http://blog.kobtea.net/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Github Pagesにカスタムドメインを割り当てる</title>
+      <link>http://blog.kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</link>
+      <pubDate>Mon, 23 Sep 2013 21:39:00 JST</pubDate>
+      
+      <guid>http://blog.kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</guid>
+      <description>
+
+&lt;p&gt;参考:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#34;&gt;Setting up a custom domain with Pages - Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/#custom_domains&#34;&gt;Custom Domains - Octopress&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&amp;rsquo;t build successfully, you&amp;rsquo;ll receive a notification from GitHub.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#34;&gt;Setting up a custom domain with Pages - Github Pages&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;反映されるのに10分くらい待ってね、とのこと。&lt;br /&gt;
+反映されたらメールをくれるらしい。&lt;/p&gt;
+
+&lt;h2 id=&#34;octopress側の設定:012f76cf3e52873906c9239002dbb318&#34;&gt;Octopress側の設定&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;source/CNAME&lt;/code&gt;に割り当てるドメインを設定する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;blog.kobtea.net&#39; &amp;gt;&amp;gt; source/CNAME
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;_config.yml&lt;/code&gt;のurlも変更しておく。&lt;/p&gt;
+
+&lt;p&gt;source: &lt;code&gt;_config.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;# ----------------------- #
+#      Main Configs       #
+# ----------------------- #
+
+url: http://blog.kobtea.net
+title: blog.kobtea.net
+subtitle: 咳をしても情弱
+author: kobtea
+simple_search: http://google.com/search
+description:
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;dns設定:012f76cf3e52873906c9239002dbb318&#34;&gt;DNS設定&lt;/h2&gt;
+
+&lt;p&gt;お名前.comを使っているので、そちらで設定する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;ドメイン設定 -&amp;gt; ネームサーバの設定 -&amp;gt; DNS関連機能の設定 -&amp;gt; DNSレコード設定を利用する
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/dns-setting-onamae.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;で適用。
+適用されたよメールが届くまでのんびり待つ。&lt;/p&gt;
+
+&lt;h2 id=&#34;確認:012f76cf3e52873906c9239002dbb318&#34;&gt;確認&lt;/h2&gt;
+
+&lt;p&gt;digしてみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ dig +noall +answer blog.kobtea.net CNAME
+blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;できてるぽい。&lt;br /&gt;
+最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
