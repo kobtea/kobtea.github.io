@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ruby on blog.kobtea.net</title>
-    <link>http://blog.kobtea.net/tags/ruby/</link>
-    <description>Recent content in Ruby on blog.kobtea.net</description>
+    <title>Ruby on kobtea.net</title>
+    <link>http://kobtea.net/tags/ruby/</link>
+    <description>Recent content in Ruby on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     
     
     
     <lastBuildDate>Mon, 23 Sep 2013 00:17:00 JST</lastBuildDate>
-    <atom:link href="http://blog.kobtea.net/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kobtea.net/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>MBAにRuby環境を作る</title>
-      <link>http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/</link>
+      <link>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</link>
       <pubDate>Mon, 23 Sep 2013 00:17:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
+      <guid>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
@@ -222,16 +222,16 @@ $ gem --version
 &lt;p&gt;Macデフォルトのreadlineは使わないほうがいいらしい。&lt;br /&gt;
 &lt;code&gt;rbenv install&lt;/code&gt;する際にはhomebrewで入れたreadline, opensslを指定する。&lt;br /&gt;
 指定しない場合、Macだとirbでマルチバイトが使えない。&lt;br /&gt;
-&lt;a href=&#34;http://blog.kobtea.net/blog/2013/09/22/use-multibytes-on-ruby&#34;&gt;irbで日本語が文字化けする&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://kobtea.net/blog/2013/09/22/use-multibytes-on-ruby&#34;&gt;irbで日本語が文字化けする&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>irbで日本語が文字化けする</title>
-      <link>http://blog.kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</link>
+      <link>http://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</link>
       <pubDate>Sun, 22 Sep 2013 23:38:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
+      <guid>http://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
 ProductName:    Mac OS X
 ProductVersion: 10.8.4

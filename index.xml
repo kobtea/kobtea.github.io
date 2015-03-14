@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>blog.kobtea.net</title>
-    <link>http://blog.kobtea.net/</link>
-    <description>Recent content on blog.kobtea.net</description>
+    <title>kobtea.net</title>
+    <link>http://kobtea.net/</link>
+    <description>Recent content on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     
     
     
     <lastBuildDate>Sun, 23 Mar 2014 00:43:00 JST</lastBuildDate>
-    <atom:link href="http://blog.kobtea.net/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kobtea.net/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>WindowsでUS配列&#43;親指IME ON/OFFするための設定</title>
-      <link>http://blog.kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</link>
+      <link>http://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</link>
       <pubDate>Sun, 23 Mar 2014 00:43:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</guid>
+      <guid>http://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</guid>
       <description>
 
 &lt;p&gt;macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。&lt;br /&gt;
@@ -123,10 +123,10 @@ google IME &amp;gt; プロパティ &amp;gt; 一般 &amp;gt; キー設定 &amp;g
     
     <item>
       <title>MBAにpyenvを入れる</title>
-      <link>http://blog.kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</link>
+      <link>http://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</link>
       <pubDate>Sun, 24 Nov 2013 17:31:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</guid>
+      <guid>http://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
 ProductName:    Mac OS X
 ProductVersion: 10.8.4
@@ -233,10 +233,10 @@ setuptools (1.3.2)
     
     <item>
       <title>Github Pagesにカスタムドメインを割り当てる</title>
-      <link>http://blog.kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</link>
+      <link>http://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</link>
       <pubDate>Mon, 23 Sep 2013 21:39:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</guid>
+      <guid>http://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</guid>
       <description>
 
 &lt;p&gt;参考:&lt;/p&gt;
@@ -287,7 +287,7 @@ description:
 &lt;pre&gt;&lt;code&gt;ドメイン設定 -&amp;gt; ネームサーバの設定 -&amp;gt; DNS関連機能の設定 -&amp;gt; DNSレコード設定を利用する
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/dns-setting-onamae.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2013/09/23/dns-setting-onamae.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;で適用。
 適用されたよメールが届くまでのんびり待つ。&lt;/p&gt;
@@ -307,10 +307,10 @@ blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
     
     <item>
       <title>Octopressのテーマを変更する</title>
-      <link>http://blog.kobtea.net/posts/2013/09/23/change-octopress-theme/</link>
+      <link>http://kobtea.net/posts/2013/09/23/change-octopress-theme/</link>
       <pubDate>Mon, 23 Sep 2013 14:56:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/23/change-octopress-theme/</guid>
+      <guid>http://kobtea.net/posts/2013/09/23/change-octopress-theme/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes&#34;&gt;3rd Party Octopress Themes&lt;/a&gt;で公開されているので気に入ったものを選ぶ。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/macjasp/cleanpress&#34;&gt;CleanPress&lt;/a&gt;がステキ。&lt;/p&gt;
 
@@ -348,7 +348,7 @@ Successfully generated site: source -&amp;gt; public
 
 &lt;p&gt;&lt;code&gt;rake preview&lt;/code&gt;してちゃんと反映されているかを確認する。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/install-cleanpress.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2013/09/23/install-cleanpress.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;/p&gt;
 
@@ -447,7 +447,7 @@ Building site: source -&amp;gt; public
 Successfully generated site: source -&amp;gt; public
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/install-cleanpress2.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2013/09/23/install-cleanpress2.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;ちゃんと消えているね。&lt;/p&gt;
 </description>
@@ -455,10 +455,10 @@ Successfully generated site: source -&amp;gt; public
     
     <item>
       <title>Octopress &#43; Github Pagesな環境構築</title>
-      <link>http://blog.kobtea.net/posts/2013/09/23/setup-octopress/</link>
+      <link>http://kobtea.net/posts/2013/09/23/setup-octopress/</link>
       <pubDate>Mon, 23 Sep 2013 01:54:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/23/setup-octopress/</guid>
+      <guid>http://kobtea.net/posts/2013/09/23/setup-octopress/</guid>
       <description>
 
 &lt;p&gt;もはや様式美だけど自分のために。&lt;br /&gt;
@@ -557,7 +557,7 @@ identical public/stylesheets/screen.css
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;ブラウザでlocalhost:4000にアクセス。&lt;br /&gt;
-&lt;img src=&#34;http://blog.kobtea.net/img/2013/09/23/hello-octopress.png&#34; class=&#34;img-responsive&#34;/&gt;
+&lt;img src=&#34;http://kobtea.net/img/2013/09/23/hello-octopress.png&#34; class=&#34;img-responsive&#34;/&gt;
 わーお&lt;/p&gt;
 
 &lt;h2 id=&#34;github-pagesへデプロイ:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;Github Pagesへデプロイ&lt;/h2&gt;
@@ -804,10 +804,10 @@ $ rake deploy
     
     <item>
       <title>MBAにRuby環境を作る</title>
-      <link>http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/</link>
+      <link>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</link>
       <pubDate>Mon, 23 Sep 2013 00:17:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
+      <guid>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
       <description>
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
@@ -1012,16 +1012,16 @@ $ gem --version
 &lt;p&gt;Macデフォルトのreadlineは使わないほうがいいらしい。&lt;br /&gt;
 &lt;code&gt;rbenv install&lt;/code&gt;する際にはhomebrewで入れたreadline, opensslを指定する。&lt;br /&gt;
 指定しない場合、Macだとirbでマルチバイトが使えない。&lt;br /&gt;
-&lt;a href=&#34;http://blog.kobtea.net/blog/2013/09/22/use-multibytes-on-ruby&#34;&gt;irbで日本語が文字化けする&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;http://kobtea.net/blog/2013/09/22/use-multibytes-on-ruby&#34;&gt;irbで日本語が文字化けする&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>irbで日本語が文字化けする</title>
-      <link>http://blog.kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</link>
+      <link>http://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</link>
       <pubDate>Sun, 22 Sep 2013 23:38:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
+      <guid>http://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
 ProductName:    Mac OS X
 ProductVersion: 10.8.4
@@ -1091,10 +1091,10 @@ irb(main):002:0&amp;gt; p &#39;ほげ&#39;
     
     <item>
       <title>VimでステキなMarkdownライフを送りたい</title>
-      <link>http://blog.kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
+      <link>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
       <pubDate>Sun, 22 Sep 2013 22:57:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
+      <guid>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
       <description>&lt;p&gt;インストールするもの。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1136,10 +1136,10 @@ autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype mkd
     
     <item>
       <title>こんにちはOctopress</title>
-      <link>http://blog.kobtea.net/posts/2013/09/22/hello-octopress/</link>
+      <link>http://kobtea.net/posts/2013/09/22/hello-octopress/</link>
       <pubDate>Sun, 22 Sep 2013 22:44:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/22/hello-octopress/</guid>
+      <guid>http://kobtea.net/posts/2013/09/22/hello-octopress/</guid>
       <description>&lt;p&gt;よろしくタコ出版！&lt;/p&gt;
 </description>
     </item>

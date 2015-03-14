@@ -2,53 +2,53 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://blog.kobtea.net/</loc>
+    <loc>http://kobtea.net/</loc>
     <lastmod>2014-03-23T00:43:00+09:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</loc>
+    <loc>http://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</loc>
     <lastmod>2014-03-23T00:43:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</loc>
+    <loc>http://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</loc>
     <lastmod>2013-11-24T17:31:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</loc>
+    <loc>http://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</loc>
     <lastmod>2013-09-23T21:39:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2013/09/23/change-octopress-theme/</loc>
+    <loc>http://kobtea.net/posts/2013/09/23/change-octopress-theme/</loc>
     <lastmod>2013-09-23T14:56:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2013/09/23/setup-octopress/</loc>
+    <loc>http://kobtea.net/posts/2013/09/23/setup-octopress/</loc>
     <lastmod>2013-09-23T01:54:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2013/09/23/install-ruby-on-mba/</loc>
+    <loc>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</loc>
     <lastmod>2013-09-23T00:17:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</loc>
+    <loc>http://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</loc>
     <lastmod>2013-09-22T23:38:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2013/09/22/use-markdown-on-vim/</loc>
+    <loc>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</loc>
     <lastmod>2013-09-22T22:57:00+09:00</lastmod>
   </url>
   
   <url>
-    <loc>http://blog.kobtea.net/posts/2013/09/22/hello-octopress/</loc>
+    <loc>http://kobtea.net/posts/2013/09/22/hello-octopress/</loc>
     <lastmod>2013-09-22T22:44:00+09:00</lastmod>
   </url>
   

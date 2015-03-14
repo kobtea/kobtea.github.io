@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Markdown on blog.kobtea.net</title>
-    <link>http://blog.kobtea.net/tags/markdown/</link>
-    <description>Recent content in Markdown on blog.kobtea.net</description>
+    <title>Markdown on kobtea.net</title>
+    <link>http://kobtea.net/tags/markdown/</link>
+    <description>Recent content in Markdown on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     
     
     
     <lastBuildDate>Sun, 22 Sep 2013 22:57:00 JST</lastBuildDate>
-    <atom:link href="http://blog.kobtea.net/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://kobtea.net/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>VimでステキなMarkdownライフを送りたい</title>
-      <link>http://blog.kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
+      <link>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
       <pubDate>Sun, 22 Sep 2013 22:57:00 JST</pubDate>
       
-      <guid>http://blog.kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
+      <guid>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
       <description>&lt;p&gt;インストールするもの。&lt;/p&gt;
 
 &lt;ul&gt;
