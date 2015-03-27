@@ -6,16 +6,13 @@
     <description>Recent content in Octopress on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    
-    
-    
-    <lastBuildDate>Mon, 23 Sep 2013 21:39:00 JST</lastBuildDate>
+    <lastBuildDate>Mon, 23 Sep 2013 21:39:00 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/tags/octopress/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Github Pagesにカスタムドメインを割り当てる</title>
       <link>http://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</link>
-      <pubDate>Mon, 23 Sep 2013 21:39:00 JST</pubDate>
+      <pubDate>Mon, 23 Sep 2013 21:39:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</guid>
       <description>
@@ -89,7 +86,7 @@ blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
     <item>
       <title>Octopressのテーマを変更する</title>
       <link>http://kobtea.net/posts/2013/09/23/change-octopress-theme/</link>
-      <pubDate>Mon, 23 Sep 2013 14:56:00 JST</pubDate>
+      <pubDate>Mon, 23 Sep 2013 14:56:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/23/change-octopress-theme/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes&#34;&gt;3rd Party Octopress Themes&lt;/a&gt;で公開されているので気に入ったものを選ぶ。&lt;br /&gt;
@@ -237,7 +234,7 @@ Successfully generated site: source -&amp;gt; public
     <item>
       <title>Octopress &#43; Github Pagesな環境構築</title>
       <link>http://kobtea.net/posts/2013/09/23/setup-octopress/</link>
-      <pubDate>Mon, 23 Sep 2013 01:54:00 JST</pubDate>
+      <pubDate>Mon, 23 Sep 2013 01:54:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/23/setup-octopress/</guid>
       <description>

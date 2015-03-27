@@ -1,90 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>kobtea.net - kobtea.net</title>
-    <meta name="description" content="eternal jojaku">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java on kobtea.net</title>
+    <link>http://kobtea.net/tags/java/</link>
+    <description>Recent content in Java on kobtea.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Sat, 28 Mar 2015 01:23:54 +0900</lastBuildDate>
+    <atom:link href="http://kobtea.net/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://kobtea.net//css/capybara-style.css">
-    <style>
-        .container-fluid {
-            margin-right: auto;
-            margin-left: auto;
-            max-width: 960px;
-        }
-    </style>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <item>
+      <title>Java Optionの一覧表示</title>
+      <link>http://kobtea.net/posts/2015/03/28/java-printflagsfinal/</link>
+      <pubDate>Sat, 28 Mar 2015 01:23:54 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2015/03/28/java-printflagsfinal/</guid>
+      <description>
 
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-</head>
+&lt;p&gt;JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。&lt;br /&gt;
+そんなときは&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt;等を使うと幸せになれるかもしれない！&lt;br /&gt;
+(しかしこのOptionも先の例に漏れず偶然知った)&lt;/p&gt;
 
-<body>
-<header>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#header-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="http://kobtea.net/">kobtea.net</a>
+&lt;p&gt;Java Optionを表示するには3つのOptionがある。&lt;/p&gt;
 
-                <p class="navbar-text">eternal jojaku</p>
-            </div>
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt;: 最終的な設定値&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt;: 初期値&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt;: コマンドライン上で与えた設定値&lt;/li&gt;
+&lt;/ul&gt;
 
-            <div class="collapse navbar-collapse" id="header-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    
-                    <li><a href="/posts/">archives</a></li>
-                    
-                    <li><a href="/posts/index.xml">rss</a></li>
-                    
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
+&lt;h3 id=&#34;xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h3&gt;
 
-
-
-<article class="container-fluid">
-    <div class="page-header">
-        <h2><a href="http://kobtea.net/posts/2015/03/28/java-printflagsfinal/">Java Optionの一覧表示</a></h2>
-        <time pubdate datetime=" 2015-03-28 " title="2015-03-28">2015-03-28</time>
-        
-        <a href="/tags/java">
-            <button type="button" class="btn btn-default btn-xs">java</button>
-        </a>
-        
-    </div>
-
-    
-
-<p>JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。<br />
-そんなときは<code>-XX:+PrintFlagsFinal</code>等を使うと幸せになれるかもしれない！<br />
-(しかしこのOptionも先の例に漏れず偶然知った)</p>
-
-<p>Java Optionを表示するには3つのOptionがある。</p>
-
-<ul>
-<li><code>-XX:+PrintFlagsFinal</code>: 最終的な設定値</li>
-<li><code>-XX:+PrintFlagsInitial</code>: 初期値</li>
-<li><code>-XX:+PrintCommandLineFlags</code>: コマンドライン上で与えた設定値</li>
-</ul>
-
-<h3 id="xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8"><code>-XX:+PrintFlagsFinal</code> Option</h3>
-
-<pre><code class="language-bash">$ java -XX:+PrintFlagsFinal -version
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsFinal -version
 [Global flags]
     uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}
     uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}
@@ -104,16 +51,16 @@
 # ...
      bool ZeroTLAB                                  = false           {product}
      intx hashCode                                  = 5               {product}
-java version &quot;1.8.0_11&quot;
+java version &amp;quot;1.8.0_11&amp;quot;
 Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
 Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>どしゃっとOption一覧とその設定値が表示される。</p>
+&lt;p&gt;どしゃっとOption一覧とその設定値が表示される。&lt;/p&gt;
 
-<p>どうやら<code>=</code>は初期値で、<code>:=</code>は設定された値ぽい。</p>
+&lt;p&gt;どうやら&lt;code&gt;=&lt;/code&gt;は初期値で、&lt;code&gt;:=&lt;/code&gt;は設定された値ぽい。&lt;/p&gt;
 
-<pre><code class="language-bash">$ java -XX:+PrintFlagsFinal -version | grep :=
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsFinal -version | grep :=
     uintx InitialHeapSize                          := 134217728       {product}
     uintx MaxHeapSize                              := 2147483648      {product}
     uintx MaxNewSize                               := 715653120       {product}
@@ -124,16 +71,16 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
      bool UseCompressedClassPointers               := true            {lp64_product}
      bool UseCompressedOops                        := true            {lp64_product}
      bool UseParallelGC                            := true            {product}
-java version &quot;1.8.0_11&quot;
+java version &amp;quot;1.8.0_11&amp;quot;
 Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
 Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。</p>
+&lt;p&gt;ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。&lt;/p&gt;
 
-<h3 id="xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8"><code>-XX:+PrintFlagsInitial</code> Option</h3>
+&lt;h3 id=&#34;xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt; Option&lt;/h3&gt;
 
-<pre><code class="language-bash">$ java -XX:+PrintFlagsInitial
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial
 [Global flags]
     uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}
     uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}
@@ -153,14 +100,14 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
 # ...
      bool ZeroTLAB                                  = false           {product}
      intx hashCode                                  = 5               {product}
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>こちらもどしゃっと表示される。</p>
+&lt;p&gt;こちらもどしゃっと表示される。&lt;/p&gt;
 
-<p>せっかくなので<code>~Initial</code>と<code>~Final</code>でdiffをとってみる。</p>
+&lt;p&gt;せっかくなので&lt;code&gt;~Initial&lt;/code&gt;と&lt;code&gt;~Final&lt;/code&gt;でdiffをとってみる。&lt;/p&gt;
 
-<pre><code class="language-bash">$ java -XX:+PrintFlagsInitial &gt;&amp; PrintFlagsInitial
-$ java -XX:+PrintFlagsFinal -version &gt;&amp; PrintFlagsFinal
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial &amp;gt;&amp;amp; PrintFlagsInitial
+$ java -XX:+PrintFlagsFinal -version &amp;gt;&amp;amp; PrintFlagsFinal
 $ diff -U0 PrintFlagsInitial PrintFlagsFinal
 --- PrintFlagsInitial	2015-03-28 02:16:40.000000000 +0900
 +++ PrintFlagsFinal	2015-03-28 02:17:15.000000000 +0900
@@ -299,132 +246,43 @@ $ diff -U0 PrintFlagsInitial PrintFlagsFinal
 -     bool UseXmmRegToRegMoveAll                     = false           {ARCH product}
 +     bool UseXmmRegToRegMoveAll                     = true            {ARCH product}
 @@ -686,0 +687,3 @@
-+java version &quot;1.8.0_11&quot;
++java version &amp;quot;1.8.0_11&amp;quot;
 +Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
 +Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>あれ、<code>:=</code>以外にも初期値と違うOptionがある&hellip;なんでだろう&hellip;<br />
-あとでしらべる。</p>
+&lt;p&gt;あれ、&lt;code&gt;:=&lt;/code&gt;以外にも初期値と違うOptionがある&amp;hellip;なんでだろう&amp;hellip;&lt;br /&gt;
+あとでしらべる。&lt;/p&gt;
 
-<h3 id="xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8"><code>-XX:+PrintCommandLineFlags</code> Option</h3>
+&lt;h3 id=&#34;xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt; Option&lt;/h3&gt;
 
-<pre><code class="language-bash">$ java -XX:+PrintCommandLineFlags -version
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintCommandLineFlags -version
 -XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
-java version &quot;1.8.0_11&quot;
+java version &amp;quot;1.8.0_11&amp;quot;
 Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
 Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>馴染みのある見た目で表示される。</p>
+&lt;p&gt;馴染みのある見た目で表示される。&lt;/p&gt;
 
-<p>ところで、<code>~Initial</code>だけexit statusが違うのは何故なんだろう。</p>
+&lt;p&gt;ところで、&lt;code&gt;~Initial&lt;/code&gt;だけexit statusが違うのは何故なんだろう。&lt;/p&gt;
 
-<pre><code class="language-bash">$ java -XX:+PrintFlagsInitial &gt;&amp; /dev/null; echo $?
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial &amp;gt;&amp;amp; /dev/null; echo $?
 0
-$ java -XX:+PrintFlagsFinal &gt;&amp; /dev/null; echo $?
+$ java -XX:+PrintFlagsFinal &amp;gt;&amp;amp; /dev/null; echo $?
 1
-$ java -XX:+PrintCommandLineFlags &gt;&amp; /dev/null; echo $?
+$ java -XX:+PrintCommandLineFlags &amp;gt;&amp;amp; /dev/null; echo $?
 1
-</code></pre>
+&lt;/code&gt;&lt;/pre&gt;
 
-<p>参考:</p>
+&lt;p&gt;参考:&lt;/p&gt;
 
-<ul>
-<li><a href="http://www.javaworld.com/article/2073676/hotspot-jvm-options-displayed---xx--printflagsinitial-and--xx--printflagsfinal.html">HotSpot JVM Options Displayed: -XX:+PrintFlagsInitial and -XX:+PrintFlagsFinal | JavaWorld</a></li>
-<li><a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/">Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog</a></li>
-</ul>
-
-
-    <hr/>
-
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-         
-        var disqus_shortname = 'kobtea';
-
-         
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-</article>
-
-<nav class="container-fluid">
-    <ul class="pager">
-        
-
-        
-        <li class="next"><a href="http://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/">WindowsでUS配列&#43;親指IME ON/OFFするための設定 <i class="fa fa-caret-right"></i></a></li>
-        
-    </ul>
-</nav>
-
-
-
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-md-4">
-                <strong>Author</strong>
-                <div class="media">
-                    <div class="media-left media-top">
-                        <img src="http://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
-                    </div>
-                    <div class="media-body">
-                        <strong class="media-heading">kobtea</strong>
-                        <a href="https://twitter.com/kobtea"><i class="fa fa-twitter-square fa-lg"></i></a>
-                        <a href="https://github.com/kobtea"><i class="fa fa-github-square fa-lg"></i></a>
-                        <br/>
-                        <small>カピバラと暮らしたい</small>
-                    </div>
-                </div>
-            </div>
-
-            
-
-            <div class="col-md-8">
-                <strong> Tags </strong><br/><br/>
-                
-                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
-                
-                <a href="/tags/java"><button type="button" class="btn btn-default btn-xs">java</button></a>
-                
-                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
-                
-                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
-                
-                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
-                
-                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
-                
-                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
-                
-                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
-                
-            </div>
-
-        </div>
-        <p>&copy; 2015 kobtea | Powered by <a href="http://gohugo.io/">HUGO</a> | Themed with <a
-                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
-    </div>
-</footer>
-<script src="http://kobtea.net//js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-60750954-1', 'auto');
-    ga('send', 'pageview');
-</script>
-
-</body>
-</html>
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.javaworld.com/article/2073676/hotspot-jvm-options-displayed---xx--printflagsinitial-and--xx--printflagsfinal.html&#34;&gt;HotSpot JVM Options Displayed: -XX:+PrintFlagsInitial and -XX:+PrintFlagsFinal | JavaWorld&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&#34;&gt;Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,16 +6,288 @@
     <description>Recent content in Posts on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    
-    
-    
-    <lastBuildDate>Sun, 23 Mar 2014 00:43:00 JST</lastBuildDate>
+    <lastBuildDate>Sat, 28 Mar 2015 01:23:54 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Java Optionの一覧表示</title>
+      <link>http://kobtea.net/posts/2015/03/28/java-printflagsfinal/</link>
+      <pubDate>Sat, 28 Mar 2015 01:23:54 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2015/03/28/java-printflagsfinal/</guid>
+      <description>
+
+&lt;p&gt;JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。&lt;br /&gt;
+そんなときは&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt;等を使うと幸せになれるかもしれない！&lt;br /&gt;
+(しかしこのOptionも先の例に漏れず偶然知った)&lt;/p&gt;
+
+&lt;p&gt;Java Optionを表示するには3つのOptionがある。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt;: 最終的な設定値&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt;: 初期値&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt;: コマンドライン上で与えた設定値&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsFinal -version
+[Global flags]
+    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}
+    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}
+    uintx AdaptiveSizePausePolicy                   = 0               {product}
+    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}
+    uintx AdaptiveSizePolicyInitializingSteps       = 20              {product}
+    uintx AdaptiveSizePolicyOutputInterval          = 0               {product}
+    uintx AdaptiveSizePolicyWeight                  = 10              {product}
+    uintx AdaptiveSizeThroughPutPolicy              = 0               {product}
+    uintx AdaptiveTimeWeight                        = 25              {product}
+     bool AdjustConcurrency                         = false           {product}
+     bool AggressiveOpts                            = false           {product}
+     intx AliasLevel                                = 3               {C2 product}
+     bool AlignVector                               = false           {C2 product}
+     intx AllocateInstancePrefetchLines             = 1               {product}
+     intx AllocatePrefetchDistance                  = 192             {product}
+# ...
+     bool ZeroTLAB                                  = false           {product}
+     intx hashCode                                  = 5               {product}
+java version &amp;quot;1.8.0_11&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;どしゃっとOption一覧とその設定値が表示される。&lt;/p&gt;
+
+&lt;p&gt;どうやら&lt;code&gt;=&lt;/code&gt;は初期値で、&lt;code&gt;:=&lt;/code&gt;は設定された値ぽい。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsFinal -version | grep :=
+    uintx InitialHeapSize                          := 134217728       {product}
+    uintx MaxHeapSize                              := 2147483648      {product}
+    uintx MaxNewSize                               := 715653120       {product}
+    uintx MinHeapDeltaBytes                        := 524288          {product}
+    uintx NewSize                                  := 1572864         {product}
+    uintx OldSize                                  := 132644864       {product}
+     bool PrintFlagsFinal                          := true            {product}
+     bool UseCompressedClassPointers               := true            {lp64_product}
+     bool UseCompressedOops                        := true            {lp64_product}
+     bool UseParallelGC                            := true            {product}
+java version &amp;quot;1.8.0_11&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。&lt;/p&gt;
+
+&lt;h3 id=&#34;xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt; Option&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial
+[Global flags]
+    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}
+    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}
+    uintx AdaptiveSizePausePolicy                   = 0               {product}
+    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}
+    uintx AdaptiveSizePolicyInitializingSteps       = 20              {product}
+    uintx AdaptiveSizePolicyOutputInterval          = 0               {product}
+    uintx AdaptiveSizePolicyWeight                  = 10              {product}
+    uintx AdaptiveSizeThroughPutPolicy              = 0               {product}
+    uintx AdaptiveTimeWeight                        = 25              {product}
+     bool AdjustConcurrency                         = false           {product}
+     bool AggressiveOpts                            = false           {product}
+     intx AliasLevel                                = 3               {C2 product}
+     bool AlignVector                               = true            {C2 product}
+     intx AllocateInstancePrefetchLines             = 1               {product}
+     intx AllocatePrefetchDistance                  = -1              {product}
+# ...
+     bool ZeroTLAB                                  = false           {product}
+     intx hashCode                                  = 5               {product}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;こちらもどしゃっと表示される。&lt;/p&gt;
+
+&lt;p&gt;せっかくなので&lt;code&gt;~Initial&lt;/code&gt;と&lt;code&gt;~Final&lt;/code&gt;でdiffをとってみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial &amp;gt;&amp;amp; PrintFlagsInitial
+$ java -XX:+PrintFlagsFinal -version &amp;gt;&amp;amp; PrintFlagsFinal
+$ diff -U0 PrintFlagsInitial PrintFlagsFinal
+--- PrintFlagsInitial	2015-03-28 02:16:40.000000000 +0900
++++ PrintFlagsFinal	2015-03-28 02:17:15.000000000 +0900
+@@ -14 +14 @@
+-     bool AlignVector                               = true            {C2 product}
++     bool AlignVector                               = false           {C2 product}
+@@ -16 +16 @@
+-     intx AllocatePrefetchDistance                  = -1              {product}
++     intx AllocatePrefetchDistance                  = 192             {product}
+@@ -18,2 +18,2 @@
+-     intx AllocatePrefetchLines                     = 3               {product}
+-     intx AllocatePrefetchStepSize                  = 16              {product}
++     intx AllocatePrefetchLines                     = 4               {product}
++     intx AllocatePrefetchStepSize                  = 64              {product}
+@@ -58 +58 @@
+-     bool CICompilerCountPerCPU                     = false           {product}
++     bool CICompilerCountPerCPU                     = true            {product}
+@@ -144 +144 @@
+-     intx CompilationPolicyChoice                   = 0               {product}
++     intx CompilationPolicyChoice                   = 3               {product}
+@@ -251 +251 @@
+-    uintx InitialHeapSize                           = 0               {product}
++    uintx InitialHeapSize                          := 134217728       {product}
+@@ -257 +257 @@
+-     intx InlineSmallCode                           = 1000            {pd product}
++     intx InlineSmallCode                           = 2000            {pd product}
+@@ -289 +289 @@
+-    uintx MarkSweepDeadRatio                        = 5               {product}
++    uintx MarkSweepDeadRatio                        = 1               {product}
+@@ -297 +297 @@
+-    uintx MaxHeapSize                               = 130862280       {product}
++    uintx MaxHeapSize                              := 2147483648      {product}
+@@ -304,2 +304,2 @@
+-     intx MaxLoopPad                                = 15              {C2 product}
+-    uintx MaxMetaspaceExpansion                     = 5452592         {product}
++     intx MaxLoopPad                                = 11              {C2 product}
++    uintx MaxMetaspaceExpansion                     = 5451776         {product}
+@@ -307,3 +307,3 @@
+-    uintx MaxMetaspaceSize                          = 18446744073709551615{product}
+-    uintx MaxNewSize                                = 18446744073709551615{product}
+-     intx MaxNodeLimit                              = 80000           {C2 product}
++    uintx MaxMetaspaceSize                          = 18446744073709547520{product}
++    uintx MaxNewSize                               := 715653120       {product}
++     intx MaxNodeLimit                              = 75000           {C2 product}
+@@ -315,2 +315,2 @@
+-     intx MaxVectorSize                             = 32              {C2 product}
+-    uintx MetaspaceSize                             = 21810376        {pd product}
++     intx MaxVectorSize                             = 16              {C2 product}
++    uintx MetaspaceSize                             = 21807104        {pd product}
+@@ -318 +318 @@
+-    uintx MinHeapDeltaBytes                         = 170392          {product}
++    uintx MinHeapDeltaBytes                        := 524288          {product}
+@@ -322 +322 @@
+-    uintx MinMetaspaceExpansion                     = 340784          {product}
++    uintx MinMetaspaceExpansion                     = 339968          {product}
+@@ -344 +344 @@
+-    uintx NewSize                                   = 1363144         {product}
++    uintx NewSize                                  := 1572864         {product}
+@@ -355 +355 @@
+-    uintx OldSize                                   = 5452592         {product}
++    uintx OldSize                                  := 132644864       {product}
+@@ -373 +373 @@
+-    uintx ParallelGCThreads                         = 0               {product}
++    uintx ParallelGCThreads                         = 4               {product}
+@@ -397,3 +397,3 @@
+-     intx PrefetchCopyIntervalInBytes               = -1              {product}
+-     intx PrefetchFieldsAhead                       = -1              {product}
+-     intx PrefetchScanIntervalInBytes               = -1              {product}
++     intx PrefetchCopyIntervalInBytes               = 576             {product}
++     intx PrefetchFieldsAhead                       = 1               {product}
++     intx PrefetchScanIntervalInBytes               = 576             {product}
+@@ -415 +415 @@
+-     bool PrintFlagsFinal                           = false           {product}
++     bool PrintFlagsFinal                          := true            {product}
+@@ -470 +470 @@
+-    uintx ReservedCodeCacheSize                     = 50331648        {pd product}
++    uintx ReservedCodeCacheSize                     = 251658240       {pd product}
+@@ -572 +572 @@
+-    uintx TypeProfileLevel                          = 111             {pd product}
++    uintx TypeProfileLevel                          = 0               {pd product}
+@@ -579,3 +579,3 @@
+-     bool UseAES                                    = false           {product}
+-     bool UseAESIntrinsics                          = false           {product}
+-     intx UseAVX                                    = 99              {ARCH product}
++     bool UseAES                                    = true            {product}
++     bool UseAESIntrinsics                          = true            {product}
++     intx UseAVX                                    = 2               {ARCH product}
+@@ -590 +590 @@
+-     bool UseAddressNop                             = false           {ARCH product}
++     bool UseAddressNop                             = true            {ARCH product}
+@@ -597 +597 @@
+-     bool UseCLMUL                                  = false           {ARCH product}
++     bool UseCLMUL                                  = true            {ARCH product}
+@@ -602 +602 @@
+-     bool UseCRC32Intrinsics                        = false           {product}
++     bool UseCRC32Intrinsics                        = true            {product}
+@@ -606,2 +606,2 @@
+-     bool UseCompressedClassPointers                = false           {lp64_product}
+-     bool UseCompressedOops                         = false           {lp64_product}
++     bool UseCompressedClassPointers               := true            {lp64_product}
++     bool UseCompressedOops                        := true            {lp64_product}
+@@ -615,2 +615,2 @@
+-     bool UseFastAccessorMethods                    = true            {product}
+-     bool UseFastEmptyMethods                       = true            {product}
++     bool UseFastAccessorMethods                    = false           {product}
++     bool UseFastEmptyMethods                       = false           {product}
+@@ -618 +618 @@
+-     bool UseFastStosb                              = false           {ARCH product}
++     bool UseFastStosb                              = true            {ARCH product}
+@@ -650,2 +650,2 @@
+-     bool UseParallelGC                             = false           {product}
+-     bool UseParallelOldGC                          = false           {product}
++     bool UseParallelGC                            := true            {product}
++     bool UseParallelOldGC                          = true            {product}
+@@ -653 +653 @@
+-     bool UsePopCountInstruction                    = false           {product}
++     bool UsePopCountInstruction                    = true            {product}
+@@ -656,2 +656,2 @@
+-     intx UseSSE                                    = 99              {product}
+-     bool UseSSE42Intrinsics                        = false           {product}
++     intx UseSSE                                    = 4               {product}
++     bool UseSSE42Intrinsics                        = true            {product}
+@@ -659 +659 @@
+-     bool UseSharedSpaces                           = true            {product}
++     bool UseSharedSpaces                           = false           {product}
+@@ -661 +661 @@
+-     bool UseStoreImmI16                            = true            {ARCH product}
++     bool UseStoreImmI16                            = false           {ARCH product}
+@@ -666 +666 @@
+-     bool UseUnalignedLoadStores                    = false           {ARCH product}
++     bool UseUnalignedLoadStores                    = true            {ARCH product}
+@@ -668 +668 @@
+-     bool UseXMMForArrayCopy                        = false           {product}
++     bool UseXMMForArrayCopy                        = true            {product}
+@@ -672 +672 @@
+-     bool UseXmmRegToRegMoveAll                     = false           {ARCH product}
++     bool UseXmmRegToRegMoveAll                     = true            {ARCH product}
+@@ -686,0 +687,3 @@
++java version &amp;quot;1.8.0_11&amp;quot;
++Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
++Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あれ、&lt;code&gt;:=&lt;/code&gt;以外にも初期値と違うOptionがある&amp;hellip;なんでだろう&amp;hellip;&lt;br /&gt;
+あとでしらべる。&lt;/p&gt;
+
+&lt;h3 id=&#34;xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt; Option&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintCommandLineFlags -version
+-XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
+java version &amp;quot;1.8.0_11&amp;quot;
+Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;馴染みのある見た目で表示される。&lt;/p&gt;
+
+&lt;p&gt;ところで、&lt;code&gt;~Initial&lt;/code&gt;だけexit statusが違うのは何故なんだろう。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial &amp;gt;&amp;amp; /dev/null; echo $?
+0
+$ java -XX:+PrintFlagsFinal &amp;gt;&amp;amp; /dev/null; echo $?
+1
+$ java -XX:+PrintCommandLineFlags &amp;gt;&amp;amp; /dev/null; echo $?
+1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;参考:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.javaworld.com/article/2073676/hotspot-jvm-options-displayed---xx--printflagsinitial-and--xx--printflagsfinal.html&#34;&gt;HotSpot JVM Options Displayed: -XX:+PrintFlagsInitial and -XX:+PrintFlagsFinal | JavaWorld&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&#34;&gt;Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>WindowsでUS配列&#43;親指IME ON/OFFするための設定</title>
       <link>http://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</link>
-      <pubDate>Sun, 23 Mar 2014 00:43:00 JST</pubDate>
+      <pubDate>Sun, 23 Mar 2014 00:43:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</guid>
       <description>
@@ -124,7 +396,7 @@ google IME &amp;gt; プロパティ &amp;gt; 一般 &amp;gt; キー設定 &amp;g
     <item>
       <title>MBAにpyenvを入れる</title>
       <link>http://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</link>
-      <pubDate>Sun, 24 Nov 2013 17:31:00 JST</pubDate>
+      <pubDate>Sun, 24 Nov 2013 17:31:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
@@ -234,7 +506,7 @@ setuptools (1.3.2)
     <item>
       <title>Github Pagesにカスタムドメインを割り当てる</title>
       <link>http://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</link>
-      <pubDate>Mon, 23 Sep 2013 21:39:00 JST</pubDate>
+      <pubDate>Mon, 23 Sep 2013 21:39:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</guid>
       <description>
@@ -308,7 +580,7 @@ blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
     <item>
       <title>Octopressのテーマを変更する</title>
       <link>http://kobtea.net/posts/2013/09/23/change-octopress-theme/</link>
-      <pubDate>Mon, 23 Sep 2013 14:56:00 JST</pubDate>
+      <pubDate>Mon, 23 Sep 2013 14:56:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/23/change-octopress-theme/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes&#34;&gt;3rd Party Octopress Themes&lt;/a&gt;で公開されているので気に入ったものを選ぶ。&lt;br /&gt;
@@ -456,7 +728,7 @@ Successfully generated site: source -&amp;gt; public
     <item>
       <title>Octopress &#43; Github Pagesな環境構築</title>
       <link>http://kobtea.net/posts/2013/09/23/setup-octopress/</link>
-      <pubDate>Mon, 23 Sep 2013 01:54:00 JST</pubDate>
+      <pubDate>Mon, 23 Sep 2013 01:54:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/23/setup-octopress/</guid>
       <description>
@@ -805,7 +1077,7 @@ $ rake deploy
     <item>
       <title>MBAにRuby環境を作る</title>
       <link>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</link>
-      <pubDate>Mon, 23 Sep 2013 00:17:00 JST</pubDate>
+      <pubDate>Mon, 23 Sep 2013 00:17:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
       <description>
@@ -1019,7 +1291,7 @@ $ gem --version
     <item>
       <title>irbで日本語が文字化けする</title>
       <link>http://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</link>
-      <pubDate>Sun, 22 Sep 2013 23:38:00 JST</pubDate>
+      <pubDate>Sun, 22 Sep 2013 23:38:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
       <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
@@ -1092,7 +1364,7 @@ irb(main):002:0&amp;gt; p &#39;ほげ&#39;
     <item>
       <title>VimでステキなMarkdownライフを送りたい</title>
       <link>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
-      <pubDate>Sun, 22 Sep 2013 22:57:00 JST</pubDate>
+      <pubDate>Sun, 22 Sep 2013 22:57:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
       <description>&lt;p&gt;インストールするもの。&lt;/p&gt;
@@ -1137,7 +1409,7 @@ autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype mkd
     <item>
       <title>こんにちはOctopress</title>
       <link>http://kobtea.net/posts/2013/09/22/hello-octopress/</link>
-      <pubDate>Sun, 22 Sep 2013 22:44:00 JST</pubDate>
+      <pubDate>Sun, 22 Sep 2013 22:44:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/22/hello-octopress/</guid>
       <description>&lt;p&gt;よろしくタコ出版！&lt;/p&gt;
