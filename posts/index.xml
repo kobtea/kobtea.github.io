@@ -6,8 +6,160 @@
     <description>Recent content in Posts on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 28 Mar 2015 01:23:54 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 18 May 2015 20:56:24 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>[Scala] Future#recoverを使って例外処理する</title>
+      <link>http://kobtea.net/posts/2015/05/18/scala-future-recover/</link>
+      <pubDate>Mon, 18 May 2015 20:56:24 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
+      <description>
+
+&lt;h3 id=&#34;環境:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;環境&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;➜  ~  scala
+Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11).
+Type in expressions to have them evaluated.
+Type :help for more information.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;やりたいこと&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;scala.concurrent.Future&lt;/code&gt;で例外が発生して&lt;code&gt;Failure&lt;/code&gt;になったとき、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;デフォルト値を適用して&lt;code&gt;Success&lt;/code&gt;で返したい！&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Failure&lt;/code&gt;のままでいいんだけど別の例外を投げたい！&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といったことをしたい。&lt;/p&gt;
+
+&lt;h3 id=&#34;recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverを使う&lt;/h3&gt;
+
+&lt;p&gt;そんなときのための&lt;code&gt;Future#recover&lt;/code&gt;。&lt;br /&gt;
+&lt;code&gt;Throwable&lt;/code&gt;をキャッチして新しい&lt;code&gt;Future&lt;/code&gt;を作ってくれる。&lt;/p&gt;
+
+&lt;p&gt;シグネチャは以下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;def recover[U &amp;gt;: T](pf: PartialFunction[Throwable, U])(implicit executor: ExecutionContext): Future[U]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ソースは&lt;a href=&#34;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L310-L326&#34;&gt;この辺&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;下準備&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scala&amp;gt; import scala.concurrent.Future
+import scala.concurrent.Future
+
+scala&amp;gt; import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.ExecutionContext.Implicits.global
+
+scala&amp;gt; case class MyException() extends Exception
+defined class MyException
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;サンプル&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;// まずはそのまま実行してみる
+scala&amp;gt; Future {
+     |   throw new IllegalArgumentException()
+     | }
+res0: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@b59d31
+
+scala&amp;gt; res0.value.get
+res1: scala.util.Try[Nothing] = Failure(java.lang.IllegalArgumentException)
+
+
+// デフォルト値を適用したい！
+scala&amp;gt; Future {
+     |   throw new IllegalArgumentException()
+     | } recover {
+     |   case e: IllegalArgumentException =&amp;gt; 0
+     | }
+res2: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@2e1d27ba
+
+scala&amp;gt; res2.value.get
+res3: scala.util.Try[Int] = Success(0)
+
+
+// 別の例外を投げたい！
+scala&amp;gt; Future {
+     |   throw new IllegalArgumentException()
+     | } recover {
+     |   case e: IllegalArgumentException =&amp;gt; throw MyException()
+     | }
+res4: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@3bcd05cb
+
+scala&amp;gt; res4.value.get
+res5: scala.util.Try[Nothing] = Failure(MyException)
+
+
+// Successなときはそのままの結果
+scala&amp;gt; Future {
+     |   10
+     | } recover {
+     |   case e: IllegalArgumentException =&amp;gt; throw MyException()
+     | }
+res6: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@56928307
+
+scala&amp;gt; res6.value.get
+res7: scala.util.Try[Int] = Success(10)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverWithを使う&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;Future#recoverWith&lt;/code&gt;なんていうのもある。&lt;br /&gt;
+&lt;code&gt;Future#recover&lt;/code&gt;とは部分関数の型が違って、&lt;code&gt;Throwable&lt;/code&gt;を受け取って&lt;code&gt;Future&lt;/code&gt;を返すようになる。&lt;/p&gt;
+
+&lt;p&gt;シグネチャは以下。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;def recoverWith[U &amp;gt;: T](pf: PartialFunction[Throwable, Future[U]])(implicit executor: ExecutionContext): Future[U]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ソースは&lt;a href=&#34;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L328-L348&#34;&gt;この辺&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;サンプル&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;// デフォルト値を適用したい！
+scala&amp;gt; Future {
+     |   throw new IllegalArgumentException()
+     | } recoverWith {
+     |   case e: IllegalArgumentException =&amp;gt; Future.successful(0)
+     | }
+res8: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@463b4ac8
+
+scala&amp;gt; res8.value.get
+res9: scala.util.Try[Int] = Success(0)
+
+
+// 別の例外を投げたい！
+// これは特に変わらず
+scala&amp;gt; Future {
+     |   throw new IllegalArgumentException()
+     | } recover {
+     |   case e: IllegalArgumentException =&amp;gt; throw MyException()
+     | }
+res10: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@4a3e3e8b
+
+scala&amp;gt; res10.value.get
+res11: scala.util.Try[Nothing] = Failure(MyException)
+
+
+// Successなときはそのままの結果
+scala&amp;gt; Future {
+     |   10
+     | } recoverWith {
+     |   case e: IllegalArgumentException =&amp;gt; Future.successful(0)
+     | }
+res12: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@6a1ebcff
+
+scala&amp;gt; res12.value.get
+res13: scala.util.Try[Int] = Success(10)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Java Optionの一覧表示</title>

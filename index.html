@@ -59,281 +59,158 @@
 
 <article class="container-fluid">
     <div class="page-header">
-        <h2><a href="http://kobtea.net/posts/2015/03/28/java-printflagsfinal/">Java Optionの一覧表示</a></h2>
-        <time pubdate datetime=" 2015-03-28 " title="2015-03-28">2015-03-28</time>
+        <h2><a href="http://kobtea.net/posts/2015/05/18/scala-future-recover/">[Scala] Future#recoverを使って例外処理する</a></h2>
+        <time pubdate datetime=" 2015-05-18 " title="2015-05-18">2015-05-18</time>
         
-        <a href="/tags/java">
-            <button type="button" class="btn btn-default btn-xs">java</button>
+        <a href="/tags/scala">
+            <button type="button" class="btn btn-default btn-xs">scala</button>
         </a>
         
     </div>
 
     
 
-<p>JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。<br />
-そんなときは<code>-XX:+PrintFlagsFinal</code>等を使うと幸せになれるかもしれない！<br />
-(しかしこのOptionも先の例に漏れず偶然知った)</p>
+<h3 id="環境:cc9eddef842a840aeffa4bd7bc9900a8">環境</h3>
 
-<p>Java Optionを表示するには3つのOptionがある。</p>
+<pre><code>➜  ~  scala
+Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11).
+Type in expressions to have them evaluated.
+Type :help for more information.
+</code></pre>
+
+<h3 id="やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8">やりたいこと</h3>
+
+<p><code>scala.concurrent.Future</code>で例外が発生して<code>Failure</code>になったとき、</p>
 
 <ul>
-<li><code>-XX:+PrintFlagsFinal</code>: 最終的な設定値</li>
-<li><code>-XX:+PrintFlagsInitial</code>: 初期値</li>
-<li><code>-XX:+PrintCommandLineFlags</code>: コマンドライン上で与えた設定値</li>
+<li>デフォルト値を適用して<code>Success</code>で返したい！</li>
+<li><code>Failure</code>のままでいいんだけど別の例外を投げたい！</li>
 </ul>
 
-<h3 id="xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8"><code>-XX:+PrintFlagsFinal</code> Option</h3>
+<p>といったことをしたい。</p>
 
-<pre><code class="language-bash">$ java -XX:+PrintFlagsFinal -version
-[Global flags]
-    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}
-    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}
-    uintx AdaptiveSizePausePolicy                   = 0               {product}
-    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}
-    uintx AdaptiveSizePolicyInitializingSteps       = 20              {product}
-    uintx AdaptiveSizePolicyOutputInterval          = 0               {product}
-    uintx AdaptiveSizePolicyWeight                  = 10              {product}
-    uintx AdaptiveSizeThroughPutPolicy              = 0               {product}
-    uintx AdaptiveTimeWeight                        = 25              {product}
-     bool AdjustConcurrency                         = false           {product}
-     bool AggressiveOpts                            = false           {product}
-     intx AliasLevel                                = 3               {C2 product}
-     bool AlignVector                               = false           {C2 product}
-     intx AllocateInstancePrefetchLines             = 1               {product}
-     intx AllocatePrefetchDistance                  = 192             {product}
-# ...
-     bool ZeroTLAB                                  = false           {product}
-     intx hashCode                                  = 5               {product}
-java version &quot;1.8.0_11&quot;
-Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
-Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+<h3 id="recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8">recoverを使う</h3>
+
+<p>そんなときのための<code>Future#recover</code>。<br />
+<code>Throwable</code>をキャッチして新しい<code>Future</code>を作ってくれる。</p>
+
+<p>シグネチャは以下。</p>
+
+<pre><code class="language-scala">def recover[U &gt;: T](pf: PartialFunction[Throwable, U])(implicit executor: ExecutionContext): Future[U]
 </code></pre>
 
-<p>どしゃっとOption一覧とその設定値が表示される。</p>
+<p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L310-L326">この辺</a>。</p>
 
-<p>どうやら<code>=</code>は初期値で、<code>:=</code>は設定された値ぽい。</p>
+<p>下準備</p>
 
-<pre><code class="language-bash">$ java -XX:+PrintFlagsFinal -version | grep :=
-    uintx InitialHeapSize                          := 134217728       {product}
-    uintx MaxHeapSize                              := 2147483648      {product}
-    uintx MaxNewSize                               := 715653120       {product}
-    uintx MinHeapDeltaBytes                        := 524288          {product}
-    uintx NewSize                                  := 1572864         {product}
-    uintx OldSize                                  := 132644864       {product}
-     bool PrintFlagsFinal                          := true            {product}
-     bool UseCompressedClassPointers               := true            {lp64_product}
-     bool UseCompressedOops                        := true            {lp64_product}
-     bool UseParallelGC                            := true            {product}
-java version &quot;1.8.0_11&quot;
-Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
-Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+<pre><code class="language-scala">scala&gt; import scala.concurrent.Future
+import scala.concurrent.Future
+
+scala&gt; import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.ExecutionContext.Implicits.global
+
+scala&gt; case class MyException() extends Exception
+defined class MyException
 </code></pre>
 
-<p>ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。</p>
+<p>サンプル</p>
 
-<h3 id="xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8"><code>-XX:+PrintFlagsInitial</code> Option</h3>
+<pre><code class="language-scala">// まずはそのまま実行してみる
+scala&gt; Future {
+     |   throw new IllegalArgumentException()
+     | }
+res0: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@b59d31
 
-<pre><code class="language-bash">$ java -XX:+PrintFlagsInitial
-[Global flags]
-    uintx AdaptiveSizeDecrementScaleFactor          = 4               {product}
-    uintx AdaptiveSizeMajorGCDecayTimeScale         = 10              {product}
-    uintx AdaptiveSizePausePolicy                   = 0               {product}
-    uintx AdaptiveSizePolicyCollectionCostMargin    = 50              {product}
-    uintx AdaptiveSizePolicyInitializingSteps       = 20              {product}
-    uintx AdaptiveSizePolicyOutputInterval          = 0               {product}
-    uintx AdaptiveSizePolicyWeight                  = 10              {product}
-    uintx AdaptiveSizeThroughPutPolicy              = 0               {product}
-    uintx AdaptiveTimeWeight                        = 25              {product}
-     bool AdjustConcurrency                         = false           {product}
-     bool AggressiveOpts                            = false           {product}
-     intx AliasLevel                                = 3               {C2 product}
-     bool AlignVector                               = true            {C2 product}
-     intx AllocateInstancePrefetchLines             = 1               {product}
-     intx AllocatePrefetchDistance                  = -1              {product}
-# ...
-     bool ZeroTLAB                                  = false           {product}
-     intx hashCode                                  = 5               {product}
+scala&gt; res0.value.get
+res1: scala.util.Try[Nothing] = Failure(java.lang.IllegalArgumentException)
+
+
+// デフォルト値を適用したい！
+scala&gt; Future {
+     |   throw new IllegalArgumentException()
+     | } recover {
+     |   case e: IllegalArgumentException =&gt; 0
+     | }
+res2: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@2e1d27ba
+
+scala&gt; res2.value.get
+res3: scala.util.Try[Int] = Success(0)
+
+
+// 別の例外を投げたい！
+scala&gt; Future {
+     |   throw new IllegalArgumentException()
+     | } recover {
+     |   case e: IllegalArgumentException =&gt; throw MyException()
+     | }
+res4: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@3bcd05cb
+
+scala&gt; res4.value.get
+res5: scala.util.Try[Nothing] = Failure(MyException)
+
+
+// Successなときはそのままの結果
+scala&gt; Future {
+     |   10
+     | } recover {
+     |   case e: IllegalArgumentException =&gt; throw MyException()
+     | }
+res6: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@56928307
+
+scala&gt; res6.value.get
+res7: scala.util.Try[Int] = Success(10)
 </code></pre>
 
-<p>こちらもどしゃっと表示される。</p>
+<h3 id="recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8">recoverWithを使う</h3>
 
-<p>せっかくなので<code>~Initial</code>と<code>~Final</code>でdiffをとってみる。</p>
+<p><code>Future#recoverWith</code>なんていうのもある。<br />
+<code>Future#recover</code>とは部分関数の型が違って、<code>Throwable</code>を受け取って<code>Future</code>を返すようになる。</p>
 
-<pre><code class="language-bash">$ java -XX:+PrintFlagsInitial &gt;&amp; PrintFlagsInitial
-$ java -XX:+PrintFlagsFinal -version &gt;&amp; PrintFlagsFinal
-$ diff -U0 PrintFlagsInitial PrintFlagsFinal
---- PrintFlagsInitial	2015-03-28 02:16:40.000000000 +0900
-+++ PrintFlagsFinal	2015-03-28 02:17:15.000000000 +0900
-@@ -14 +14 @@
--     bool AlignVector                               = true            {C2 product}
-+     bool AlignVector                               = false           {C2 product}
-@@ -16 +16 @@
--     intx AllocatePrefetchDistance                  = -1              {product}
-+     intx AllocatePrefetchDistance                  = 192             {product}
-@@ -18,2 +18,2 @@
--     intx AllocatePrefetchLines                     = 3               {product}
--     intx AllocatePrefetchStepSize                  = 16              {product}
-+     intx AllocatePrefetchLines                     = 4               {product}
-+     intx AllocatePrefetchStepSize                  = 64              {product}
-@@ -58 +58 @@
--     bool CICompilerCountPerCPU                     = false           {product}
-+     bool CICompilerCountPerCPU                     = true            {product}
-@@ -144 +144 @@
--     intx CompilationPolicyChoice                   = 0               {product}
-+     intx CompilationPolicyChoice                   = 3               {product}
-@@ -251 +251 @@
--    uintx InitialHeapSize                           = 0               {product}
-+    uintx InitialHeapSize                          := 134217728       {product}
-@@ -257 +257 @@
--     intx InlineSmallCode                           = 1000            {pd product}
-+     intx InlineSmallCode                           = 2000            {pd product}
-@@ -289 +289 @@
--    uintx MarkSweepDeadRatio                        = 5               {product}
-+    uintx MarkSweepDeadRatio                        = 1               {product}
-@@ -297 +297 @@
--    uintx MaxHeapSize                               = 130862280       {product}
-+    uintx MaxHeapSize                              := 2147483648      {product}
-@@ -304,2 +304,2 @@
--     intx MaxLoopPad                                = 15              {C2 product}
--    uintx MaxMetaspaceExpansion                     = 5452592         {product}
-+     intx MaxLoopPad                                = 11              {C2 product}
-+    uintx MaxMetaspaceExpansion                     = 5451776         {product}
-@@ -307,3 +307,3 @@
--    uintx MaxMetaspaceSize                          = 18446744073709551615{product}
--    uintx MaxNewSize                                = 18446744073709551615{product}
--     intx MaxNodeLimit                              = 80000           {C2 product}
-+    uintx MaxMetaspaceSize                          = 18446744073709547520{product}
-+    uintx MaxNewSize                               := 715653120       {product}
-+     intx MaxNodeLimit                              = 75000           {C2 product}
-@@ -315,2 +315,2 @@
--     intx MaxVectorSize                             = 32              {C2 product}
--    uintx MetaspaceSize                             = 21810376        {pd product}
-+     intx MaxVectorSize                             = 16              {C2 product}
-+    uintx MetaspaceSize                             = 21807104        {pd product}
-@@ -318 +318 @@
--    uintx MinHeapDeltaBytes                         = 170392          {product}
-+    uintx MinHeapDeltaBytes                        := 524288          {product}
-@@ -322 +322 @@
--    uintx MinMetaspaceExpansion                     = 340784          {product}
-+    uintx MinMetaspaceExpansion                     = 339968          {product}
-@@ -344 +344 @@
--    uintx NewSize                                   = 1363144         {product}
-+    uintx NewSize                                  := 1572864         {product}
-@@ -355 +355 @@
--    uintx OldSize                                   = 5452592         {product}
-+    uintx OldSize                                  := 132644864       {product}
-@@ -373 +373 @@
--    uintx ParallelGCThreads                         = 0               {product}
-+    uintx ParallelGCThreads                         = 4               {product}
-@@ -397,3 +397,3 @@
--     intx PrefetchCopyIntervalInBytes               = -1              {product}
--     intx PrefetchFieldsAhead                       = -1              {product}
--     intx PrefetchScanIntervalInBytes               = -1              {product}
-+     intx PrefetchCopyIntervalInBytes               = 576             {product}
-+     intx PrefetchFieldsAhead                       = 1               {product}
-+     intx PrefetchScanIntervalInBytes               = 576             {product}
-@@ -415 +415 @@
--     bool PrintFlagsFinal                           = false           {product}
-+     bool PrintFlagsFinal                          := true            {product}
-@@ -470 +470 @@
--    uintx ReservedCodeCacheSize                     = 50331648        {pd product}
-+    uintx ReservedCodeCacheSize                     = 251658240       {pd product}
-@@ -572 +572 @@
--    uintx TypeProfileLevel                          = 111             {pd product}
-+    uintx TypeProfileLevel                          = 0               {pd product}
-@@ -579,3 +579,3 @@
--     bool UseAES                                    = false           {product}
--     bool UseAESIntrinsics                          = false           {product}
--     intx UseAVX                                    = 99              {ARCH product}
-+     bool UseAES                                    = true            {product}
-+     bool UseAESIntrinsics                          = true            {product}
-+     intx UseAVX                                    = 2               {ARCH product}
-@@ -590 +590 @@
--     bool UseAddressNop                             = false           {ARCH product}
-+     bool UseAddressNop                             = true            {ARCH product}
-@@ -597 +597 @@
--     bool UseCLMUL                                  = false           {ARCH product}
-+     bool UseCLMUL                                  = true            {ARCH product}
-@@ -602 +602 @@
--     bool UseCRC32Intrinsics                        = false           {product}
-+     bool UseCRC32Intrinsics                        = true            {product}
-@@ -606,2 +606,2 @@
--     bool UseCompressedClassPointers                = false           {lp64_product}
--     bool UseCompressedOops                         = false           {lp64_product}
-+     bool UseCompressedClassPointers               := true            {lp64_product}
-+     bool UseCompressedOops                        := true            {lp64_product}
-@@ -615,2 +615,2 @@
--     bool UseFastAccessorMethods                    = true            {product}
--     bool UseFastEmptyMethods                       = true            {product}
-+     bool UseFastAccessorMethods                    = false           {product}
-+     bool UseFastEmptyMethods                       = false           {product}
-@@ -618 +618 @@
--     bool UseFastStosb                              = false           {ARCH product}
-+     bool UseFastStosb                              = true            {ARCH product}
-@@ -650,2 +650,2 @@
--     bool UseParallelGC                             = false           {product}
--     bool UseParallelOldGC                          = false           {product}
-+     bool UseParallelGC                            := true            {product}
-+     bool UseParallelOldGC                          = true            {product}
-@@ -653 +653 @@
--     bool UsePopCountInstruction                    = false           {product}
-+     bool UsePopCountInstruction                    = true            {product}
-@@ -656,2 +656,2 @@
--     intx UseSSE                                    = 99              {product}
--     bool UseSSE42Intrinsics                        = false           {product}
-+     intx UseSSE                                    = 4               {product}
-+     bool UseSSE42Intrinsics                        = true            {product}
-@@ -659 +659 @@
--     bool UseSharedSpaces                           = true            {product}
-+     bool UseSharedSpaces                           = false           {product}
-@@ -661 +661 @@
--     bool UseStoreImmI16                            = true            {ARCH product}
-+     bool UseStoreImmI16                            = false           {ARCH product}
-@@ -666 +666 @@
--     bool UseUnalignedLoadStores                    = false           {ARCH product}
-+     bool UseUnalignedLoadStores                    = true            {ARCH product}
-@@ -668 +668 @@
--     bool UseXMMForArrayCopy                        = false           {product}
-+     bool UseXMMForArrayCopy                        = true            {product}
-@@ -672 +672 @@
--     bool UseXmmRegToRegMoveAll                     = false           {ARCH product}
-+     bool UseXmmRegToRegMoveAll                     = true            {ARCH product}
-@@ -686,0 +687,3 @@
-+java version &quot;1.8.0_11&quot;
-+Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
-+Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+<p>シグネチャは以下。</p>
+
+<pre><code class="language-scala">def recoverWith[U &gt;: T](pf: PartialFunction[Throwable, Future[U]])(implicit executor: ExecutionContext): Future[U]
 </code></pre>
 
-<p>あれ、<code>:=</code>以外にも初期値と違うOptionがある&hellip;なんでだろう&hellip;<br />
-あとでしらべる。</p>
+<p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L328-L348">この辺</a>。</p>
 
-<h3 id="xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8"><code>-XX:+PrintCommandLineFlags</code> Option</h3>
+<p>サンプル</p>
 
-<pre><code class="language-bash">$ java -XX:+PrintCommandLineFlags -version
--XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
-java version &quot;1.8.0_11&quot;
-Java(TM) SE Runtime Environment (build 1.8.0_11-b12)
-Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
+<pre><code class="language-scala">// デフォルト値を適用したい！
+scala&gt; Future {
+     |   throw new IllegalArgumentException()
+     | } recoverWith {
+     |   case e: IllegalArgumentException =&gt; Future.successful(0)
+     | }
+res8: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@463b4ac8
+
+scala&gt; res8.value.get
+res9: scala.util.Try[Int] = Success(0)
+
+
+// 別の例外を投げたい！
+// これは特に変わらず
+scala&gt; Future {
+     |   throw new IllegalArgumentException()
+     | } recover {
+     |   case e: IllegalArgumentException =&gt; throw MyException()
+     | }
+res10: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@4a3e3e8b
+
+scala&gt; res10.value.get
+res11: scala.util.Try[Nothing] = Failure(MyException)
+
+
+// Successなときはそのままの結果
+scala&gt; Future {
+     |   10
+     | } recoverWith {
+     |   case e: IllegalArgumentException =&gt; Future.successful(0)
+     | }
+res12: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@6a1ebcff
+
+scala&gt; res12.value.get
+res13: scala.util.Try[Int] = Success(10)
 </code></pre>
-
-<p>馴染みのある見た目で表示される。</p>
-
-<p>ところで、<code>~Initial</code>だけexit statusが違うのは何故なんだろう。</p>
-
-<pre><code class="language-bash">$ java -XX:+PrintFlagsInitial &gt;&amp; /dev/null; echo $?
-0
-$ java -XX:+PrintFlagsFinal &gt;&amp; /dev/null; echo $?
-1
-$ java -XX:+PrintCommandLineFlags &gt;&amp; /dev/null; echo $?
-1
-</code></pre>
-
-<p>参考:</p>
-
-<ul>
-<li><a href="http://www.javaworld.com/article/2073676/hotspot-jvm-options-displayed---xx--printflagsinitial-and--xx--printflagsfinal.html">HotSpot JVM Options Displayed: -XX:+PrintFlagsInitial and -XX:+PrintFlagsFinal | JavaWorld</a></li>
-<li><a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/">Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog</a></li>
-</ul>
 
 
     <hr/>
@@ -358,7 +235,7 @@ $ java -XX:+PrintCommandLineFlags &gt;&amp; /dev/null; echo $?
         
 
         
-        <li class="next"><a href="http://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/">WindowsでUS配列&#43;親指IME ON/OFFするための設定 <i class="fa fa-caret-right"></i></a></li>
+        <li class="next"><a href="http://kobtea.net/posts/2015/03/28/java-printflagsfinal/">Java Optionの一覧表示 <i class="fa fa-caret-right"></i></a></li>
         
     </ul>
 </nav>
@@ -401,6 +278,8 @@ $ java -XX:+PrintCommandLineFlags &gt;&amp; /dev/null; echo $?
                 <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
                 
                 <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                
+                <a href="/tags/scala"><button type="button" class="btn btn-default btn-xs">scala</button></a>
                 
                 <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
                 
