@@ -6,8 +6,169 @@
     <description>Recent content in Posts on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 18 May 2015 20:56:24 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2015 19:19:11 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>YAPC::Asia Tokyo 2015 「ISUCONの勝ち方」メモ</title>
+      <link>http://kobtea.net/posts/2015/08/22/yapc-isucon/</link>
+      <pubDate>Sat, 22 Aug 2015 19:19:11 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2015/08/22/yapc-isucon/</guid>
+      <description>
+
+&lt;p&gt;インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。&lt;br /&gt;
+そのうちスライドも公開して頂けるらしいが自分のために。&lt;/p&gt;
+
+&lt;p&gt;リンク&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://isucon.net/&#34;&gt;[公式]ISUCON&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://yapcasia.org/2015/talk/show/86ebd212-fab3-11e4-8f5a-8ab37d574c3a&#34;&gt;[公式]トーク情報&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://togetter.com/li/863801&#34;&gt;togetter&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;時間配分:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;時間配分&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;競技全体では7時間&lt;/li&gt;
+&lt;li&gt;最初の1時間
+
+&lt;ul&gt;
+&lt;li&gt;まだ慌てるような時間じゃない&lt;/li&gt;
+&lt;li&gt;課題の理解、プロファイリング・チューニングの方向性を決める&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;最後の30分
+
+&lt;ul&gt;
+&lt;li&gt;再起動テストだけに使う&lt;/li&gt;
+&lt;li&gt;再起動の失敗はよくある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;上記を考慮すると、実際の作業時間は5時間ほど&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;事前準備:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;事前準備&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;chatroom&lt;/li&gt;
+&lt;li&gt;(private) git repository
+
+&lt;ul&gt;
+&lt;li&gt;当日作業のリビジョン管理&lt;/li&gt;
+&lt;li&gt;見えてもいいならpublic&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;wiki
+
+&lt;ul&gt;
+&lt;li&gt;すぐにペッと貼れて使える&lt;code&gt;my.cnf&lt;/code&gt;などの設定ファイルを書いておく&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sysctl&lt;/code&gt;の設定方法などもググらなくて済むように書いておく&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;技術選択
+
+&lt;ul&gt;
+&lt;li&gt;言語は何つかおうとか&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;過去問
+
+&lt;ul&gt;
+&lt;li&gt;過去問大事&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://isucon.net/archives/40724693.html&#34;&gt;ISUCON4 予選問題の解説と講評 ＆ AMIの公開&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://d.hatena.ne.jp/tmatsuu/20150815/1439643715&#34;&gt;ISUCON予選突破の鍵は過去問を解くことなので無料で試せるようにした(Vagrant+Ansible)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;チューニングの進め方:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングの進め方&lt;/h3&gt;
+
+&lt;h4 id=&#34;1-課題の理解:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;1. 課題の理解&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;レギュレーションや説明をよく読む
+
+&lt;ul&gt;
+&lt;li&gt;スコアの算出方法、失格条件は特に注意&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;実際に動いているアプリケーションを見てみる&lt;/li&gt;
+&lt;li&gt;とりあえずベンチ動かす
+
+&lt;ul&gt;
+&lt;li&gt;チューニングしていなくてもベンチ取る&lt;/li&gt;
+&lt;li&gt;ちゃんと動いているかを確認する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;2-プロファイリング:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;2. プロファイリング&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ログ解析や負荷確認&lt;/li&gt;
+&lt;li&gt;ベンチツールの挙動を把握する
+
+&lt;ul&gt;
+&lt;li&gt;アクセス頻度の高い所を優先的にチューニングする&lt;/li&gt;
+&lt;li&gt;重いけどスコアに関係ない部分は無視できるかも&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tagomoris/Apache-Log-Parser/blob/master/bin/analyze_apache_logs&#34;&gt;analyze_apache_logs&lt;/a&gt;や&lt;a href=&#34;https://github.com/matsuu/kataribe&#34;&gt;kataribe&lt;/a&gt;を利用する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;mysql slow log解析
+
+&lt;ul&gt;
+&lt;li&gt;クエリの実行回数と頻度を見る&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.percona.com/doc/percona-toolkit/2.2/pt-query-digest.html&#34;&gt;pt-query-digest&lt;/a&gt;を使う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;アプリケーションのプロファイリング
+
+&lt;ul&gt;
+&lt;li&gt;straceでシステムコールレベルの解析&lt;/li&gt;
+&lt;li&gt;tcpdumpで通信の解析&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;サーバの負荷
+
+&lt;ul&gt;
+&lt;li&gt;top, iftop, iotop, dstat, &amp;hellip;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;3-サーバ構成の把握:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;3. サーバ構成の把握&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;どんなミドルウェアがいるのか&lt;/li&gt;
+&lt;li&gt;どのポートが使われているのか&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;4-チューニングの方向性を決める:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;4. チューニングの方向性を決める&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPUの気持ちになり、コンテキストスイッチを減らす
+
+&lt;ul&gt;
+&lt;li&gt;不要な参照・通信・プロセスをとにかく減らす&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;チューニングのヒント:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングのヒント&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;重い処理を把握し、減らせないか考える
+
+&lt;ul&gt;
+&lt;li&gt;外部プロセス&lt;/li&gt;
+&lt;li&gt;HTML Templateレンダリング&lt;/li&gt;
+&lt;li&gt;Text, Image変換処理&lt;/li&gt;
+&lt;li&gt;DB, Cacheへの接続&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;B-Treeを意識しながらDBのチューニングをする
+
+&lt;ul&gt;
+&lt;li&gt;Primary keyとSecondary keyの挙動を把握しておく&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;不要なデータのioを最小限にする
+
+&lt;ul&gt;
+&lt;li&gt;すぐに捨てるようなデータはなるべく読み込まない&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.slideshare.net/kazeburo/isucon-summerclass2014action2final&#34;&gt;ISUCONで学ぶ Webアプリケーションのパフォーマンス向上のコツ 実践編 完全版&lt;/a&gt;のP49あたりの話&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>[Scala] Future#recoverを使って例外処理する</title>

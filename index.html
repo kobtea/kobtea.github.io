@@ -9,7 +9,7 @@
 
     
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://kobtea.net//css/capybara-style.css">
+    <link rel="stylesheet" href="http://kobtea.net/css/capybara-style.css">
     <style>
         .container-fluid {
             margin-right: auto;
@@ -37,7 +37,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://kobtea.net/">kobtea.net</a>
+                <a class="navbar-brand" href="http://kobtea.net">kobtea.net</a>
 
                 <p class="navbar-text">eternal jojaku</p>
             </div>
@@ -59,158 +59,167 @@
 
 <article class="container-fluid">
     <div class="page-header">
-        <h2><a href="http://kobtea.net/posts/2015/05/18/scala-future-recover/">[Scala] Future#recoverを使って例外処理する</a></h2>
-        <time pubdate datetime=" 2015-05-18 " title="2015-05-18">2015-05-18</time>
+        <h2><a href="http://kobtea.net/posts/2015/08/22/yapc-isucon/">YAPC::Asia Tokyo 2015 「ISUCONの勝ち方」メモ</a></h2>
+        <time pubdate datetime=" 2015-08-22 " title="2015-08-22">2015-08-22</time>
         
-        <a href="/tags/scala">
-            <button type="button" class="btn btn-default btn-xs">scala</button>
+        <a href="/tags/conference">
+            <button type="button" class="btn btn-default btn-xs">conference</button>
         </a>
         
     </div>
 
     
 
-<h3 id="環境:cc9eddef842a840aeffa4bd7bc9900a8">環境</h3>
+<p>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。<br />
+そのうちスライドも公開して頂けるらしいが自分のために。</p>
 
-<pre><code>➜  ~  scala
-Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11).
-Type in expressions to have them evaluated.
-Type :help for more information.
-</code></pre>
-
-<h3 id="やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8">やりたいこと</h3>
-
-<p><code>scala.concurrent.Future</code>で例外が発生して<code>Failure</code>になったとき、</p>
+<p>リンク</p>
 
 <ul>
-<li>デフォルト値を適用して<code>Success</code>で返したい！</li>
-<li><code>Failure</code>のままでいいんだけど別の例外を投げたい！</li>
+<li><a href="http://isucon.net/">[公式]ISUCON</a></li>
+<li><a href="http://yapcasia.org/2015/talk/show/86ebd212-fab3-11e4-8f5a-8ab37d574c3a">[公式]トーク情報</a></li>
+<li><a href="http://togetter.com/li/863801">togetter</a></li>
 </ul>
 
-<p>といったことをしたい。</p>
+<h3 id="時間配分:4cfb701cf836bbc5c7516541bfb56f95">時間配分</h3>
 
-<h3 id="recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8">recoverを使う</h3>
+<ul>
+<li>競技全体では7時間</li>
+<li>最初の1時間
 
-<p>そんなときのための<code>Future#recover</code>。<br />
-<code>Throwable</code>をキャッチして新しい<code>Future</code>を作ってくれる。</p>
+<ul>
+<li>まだ慌てるような時間じゃない</li>
+<li>課題の理解、プロファイリング・チューニングの方向性を決める</li>
+</ul></li>
+<li>最後の30分
 
-<p>シグネチャは以下。</p>
+<ul>
+<li>再起動テストだけに使う</li>
+<li>再起動の失敗はよくある</li>
+</ul></li>
+<li>上記を考慮すると、実際の作業時間は5時間ほど</li>
+</ul>
 
-<pre><code class="language-scala">def recover[U &gt;: T](pf: PartialFunction[Throwable, U])(implicit executor: ExecutionContext): Future[U]
-</code></pre>
+<h3 id="事前準備:4cfb701cf836bbc5c7516541bfb56f95">事前準備</h3>
 
-<p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L310-L326">この辺</a>。</p>
+<ul>
+<li>chatroom</li>
+<li>(private) git repository
 
-<p>下準備</p>
+<ul>
+<li>当日作業のリビジョン管理</li>
+<li>見えてもいいならpublic</li>
+</ul></li>
+<li>wiki
 
-<pre><code class="language-scala">scala&gt; import scala.concurrent.Future
-import scala.concurrent.Future
+<ul>
+<li>すぐにペッと貼れて使える<code>my.cnf</code>などの設定ファイルを書いておく</li>
+<li><code>sysctl</code>の設定方法などもググらなくて済むように書いておく</li>
+</ul></li>
+<li>技術選択
 
-scala&gt; import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.ExecutionContext.Implicits.global
+<ul>
+<li>言語は何つかおうとか</li>
+</ul></li>
+<li>過去問
 
-scala&gt; case class MyException() extends Exception
-defined class MyException
-</code></pre>
+<ul>
+<li>過去問大事</li>
+<li><a href="http://isucon.net/archives/40724693.html">ISUCON4 予選問題の解説と講評 ＆ AMIの公開</a></li>
+<li><a href="http://d.hatena.ne.jp/tmatsuu/20150815/1439643715">ISUCON予選突破の鍵は過去問を解くことなので無料で試せるようにした(Vagrant+Ansible)</a></li>
+<li>EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ</li>
+</ul></li>
+</ul>
 
-<p>サンプル</p>
+<h3 id="チューニングの進め方:4cfb701cf836bbc5c7516541bfb56f95">チューニングの進め方</h3>
 
-<pre><code class="language-scala">// まずはそのまま実行してみる
-scala&gt; Future {
-     |   throw new IllegalArgumentException()
-     | }
-res0: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@b59d31
+<h4 id="1-課題の理解:4cfb701cf836bbc5c7516541bfb56f95">1. 課題の理解</h4>
 
-scala&gt; res0.value.get
-res1: scala.util.Try[Nothing] = Failure(java.lang.IllegalArgumentException)
+<ul>
+<li>レギュレーションや説明をよく読む
 
+<ul>
+<li>スコアの算出方法、失格条件は特に注意</li>
+</ul></li>
+<li>実際に動いているアプリケーションを見てみる</li>
+<li>とりあえずベンチ動かす
 
-// デフォルト値を適用したい！
-scala&gt; Future {
-     |   throw new IllegalArgumentException()
-     | } recover {
-     |   case e: IllegalArgumentException =&gt; 0
-     | }
-res2: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@2e1d27ba
+<ul>
+<li>チューニングしていなくてもベンチ取る</li>
+<li>ちゃんと動いているかを確認する</li>
+</ul></li>
+</ul>
 
-scala&gt; res2.value.get
-res3: scala.util.Try[Int] = Success(0)
+<h4 id="2-プロファイリング:4cfb701cf836bbc5c7516541bfb56f95">2. プロファイリング</h4>
 
+<ul>
+<li>ログ解析や負荷確認</li>
+<li>ベンチツールの挙動を把握する
 
-// 別の例外を投げたい！
-scala&gt; Future {
-     |   throw new IllegalArgumentException()
-     | } recover {
-     |   case e: IllegalArgumentException =&gt; throw MyException()
-     | }
-res4: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@3bcd05cb
+<ul>
+<li>アクセス頻度の高い所を優先的にチューニングする</li>
+<li>重いけどスコアに関係ない部分は無視できるかも</li>
+<li><a href="https://github.com/tagomoris/Apache-Log-Parser/blob/master/bin/analyze_apache_logs">analyze_apache_logs</a>や<a href="https://github.com/matsuu/kataribe">kataribe</a>を利用する</li>
+</ul></li>
+<li>mysql slow log解析
 
-scala&gt; res4.value.get
-res5: scala.util.Try[Nothing] = Failure(MyException)
+<ul>
+<li>クエリの実行回数と頻度を見る</li>
+<li><a href="https://www.percona.com/doc/percona-toolkit/2.2/pt-query-digest.html">pt-query-digest</a>を使う</li>
+</ul></li>
+<li>アプリケーションのプロファイリング
 
+<ul>
+<li>straceでシステムコールレベルの解析</li>
+<li>tcpdumpで通信の解析</li>
+</ul></li>
+<li>サーバの負荷
 
-// Successなときはそのままの結果
-scala&gt; Future {
-     |   10
-     | } recover {
-     |   case e: IllegalArgumentException =&gt; throw MyException()
-     | }
-res6: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@56928307
+<ul>
+<li>top, iftop, iotop, dstat, &hellip;</li>
+</ul></li>
+</ul>
 
-scala&gt; res6.value.get
-res7: scala.util.Try[Int] = Success(10)
-</code></pre>
+<h4 id="3-サーバ構成の把握:4cfb701cf836bbc5c7516541bfb56f95">3. サーバ構成の把握</h4>
 
-<h3 id="recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8">recoverWithを使う</h3>
+<ul>
+<li>どんなミドルウェアがいるのか</li>
+<li>どのポートが使われているのか</li>
+</ul>
 
-<p><code>Future#recoverWith</code>なんていうのもある。<br />
-<code>Future#recover</code>とは部分関数の型が違って、<code>Throwable</code>を受け取って<code>Future</code>を返すようになる。</p>
+<h4 id="4-チューニングの方向性を決める:4cfb701cf836bbc5c7516541bfb56f95">4. チューニングの方向性を決める</h4>
 
-<p>シグネチャは以下。</p>
+<ul>
+<li>CPUの気持ちになり、コンテキストスイッチを減らす
 
-<pre><code class="language-scala">def recoverWith[U &gt;: T](pf: PartialFunction[Throwable, Future[U]])(implicit executor: ExecutionContext): Future[U]
-</code></pre>
+<ul>
+<li>不要な参照・通信・プロセスをとにかく減らす</li>
+</ul></li>
+</ul>
 
-<p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L328-L348">この辺</a>。</p>
+<h3 id="チューニングのヒント:4cfb701cf836bbc5c7516541bfb56f95">チューニングのヒント</h3>
 
-<p>サンプル</p>
+<ul>
+<li>重い処理を把握し、減らせないか考える
 
-<pre><code class="language-scala">// デフォルト値を適用したい！
-scala&gt; Future {
-     |   throw new IllegalArgumentException()
-     | } recoverWith {
-     |   case e: IllegalArgumentException =&gt; Future.successful(0)
-     | }
-res8: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@463b4ac8
+<ul>
+<li>外部プロセス</li>
+<li>HTML Templateレンダリング</li>
+<li>Text, Image変換処理</li>
+<li>DB, Cacheへの接続</li>
+</ul></li>
+<li>B-Treeを意識しながらDBのチューニングをする
 
-scala&gt; res8.value.get
-res9: scala.util.Try[Int] = Success(0)
+<ul>
+<li>Primary keyとSecondary keyの挙動を把握しておく</li>
+</ul></li>
+<li>不要なデータのioを最小限にする
 
-
-// 別の例外を投げたい！
-// これは特に変わらず
-scala&gt; Future {
-     |   throw new IllegalArgumentException()
-     | } recover {
-     |   case e: IllegalArgumentException =&gt; throw MyException()
-     | }
-res10: scala.concurrent.Future[Nothing] = scala.concurrent.impl.Promise$DefaultPromise@4a3e3e8b
-
-scala&gt; res10.value.get
-res11: scala.util.Try[Nothing] = Failure(MyException)
-
-
-// Successなときはそのままの結果
-scala&gt; Future {
-     |   10
-     | } recoverWith {
-     |   case e: IllegalArgumentException =&gt; Future.successful(0)
-     | }
-res12: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@6a1ebcff
-
-scala&gt; res12.value.get
-res13: scala.util.Try[Int] = Success(10)
-</code></pre>
+<ul>
+<li>すぐに捨てるようなデータはなるべく読み込まない</li>
+<li><a href="http://www.slideshare.net/kazeburo/isucon-summerclass2014action2final">ISUCONで学ぶ Webアプリケーションのパフォーマンス向上のコツ 実践編 完全版</a>のP49あたりの話</li>
+</ul></li>
+</ul>
 
 
     <hr/>
@@ -235,7 +244,7 @@ res13: scala.util.Try[Int] = Success(10)
         
 
         
-        <li class="next"><a href="http://kobtea.net/posts/2015/03/28/java-printflagsfinal/">Java Optionの一覧表示 <i class="fa fa-caret-right"></i></a></li>
+        <li class="next"><a href="http://kobtea.net/posts/2015/05/18/scala-future-recover/">[Scala] Future#recoverを使って例外処理する <i class="fa fa-caret-right"></i></a></li>
         
     </ul>
 </nav>
@@ -267,6 +276,8 @@ res13: scala.util.Try[Int] = Success(10)
             <div class="col-md-8">
                 <strong> Tags </strong><br/><br/>
                 
+                <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
+                
                 <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
                 
                 <a href="/tags/java"><button type="button" class="btn btn-default btn-xs">java</button></a>
@@ -292,7 +303,7 @@ res13: scala.util.Try[Int] = Success(10)
                 href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
-<script src="http://kobtea.net//js/highlight.pack.js"></script>
+<script src="http://kobtea.net/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <script>
