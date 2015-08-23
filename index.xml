@@ -6,8 +6,264 @@
     <description>Recent content on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 22 Aug 2015 19:19:11 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Aug 2015 22:59:36 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>YAPC::Asia Tokyo 2015 で聴いたセッションのメモや感想</title>
+      <link>http://kobtea.net/posts/2015/08/23/yapc/</link>
+      <pubDate>Sun, 23 Aug 2015 22:59:36 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2015/08/23/yapc/</guid>
+      <description>
+
+&lt;p&gt;最初で最後のYAPC。&lt;br /&gt;
+聴いたセッションのメモとか感想とかをぽつぽつと。&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h3 id=&#34;前夜祭:a2d086c5b4dcd024688714d5925c094e&#34;&gt;前夜祭&lt;/h3&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版:a2d086c5b4dcd024688714d5925c094e&#34;&gt;PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Hackとの速度勝負
+
+&lt;ul&gt;
+&lt;li&gt;Hackが前に流行ったけどPHP7では基本速度は大差無い&lt;/li&gt;
+&lt;li&gt;コミニュティが安定しているPHP7を使ったほうが無難&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;PHP使う&amp;hellip;?
+
+&lt;ul&gt;
+&lt;li&gt;スタートアップなどスピード勝負でガリガリ書きたいときは適している&lt;/li&gt;
+&lt;li&gt;SlackもPHP使ってるしまだまだオワコンじゃないよ！&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;はてなブックマークのトピックページの裏側:a2d086c5b4dcd024688714d5925c094e&#34;&gt;はてなブックマークのトピックページの裏側&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Elasticsearchって重要語句抽出の機能あるのかしゅごい&lt;/li&gt;
+&lt;li&gt;トピックタイトルは短く誤解のないように作成するというのがなかなか定量的に検査しづらそうだなぁ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;我々にできるossとそのコミュニティの育てかた:a2d086c5b4dcd024688714d5925c094e&#34;&gt;我々にできるOSSとそのコミュニティの育てかた&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;とにかく全部英語
+
+&lt;ul&gt;
+&lt;li&gt;コミニュティの母数を大きくするためには公用語の英語を使う&lt;/li&gt;
+&lt;li&gt;ロシア語のissueを日本人が読みたくないように、日本語のissueを海外の人は読みたくない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;最低限の機能だけを実装した不完全な状態で公開する
+
+&lt;ul&gt;
+&lt;li&gt;issueやpatchを送ってくれる人が出てきて自然とコミュニティが形成される&lt;/li&gt;
+&lt;li&gt;完璧すぎるとissueやpatchがなくて使われてる感が無い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h3 id=&#34;1日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;1日目&lt;/h3&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;メリークリスマス:a2d086c5b4dcd024688714d5925c094e&#34;&gt;メリークリスマス！&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;perlの父ラリーさんのありがたいお話&lt;/li&gt;
+&lt;li&gt;肉声で聴きたかったので、翻訳機なしで挑んだらほとんど理解できなかった(´；ω；｀)ﾌﾞﾜｯ
+
+&lt;ul&gt;
+&lt;li&gt;そもそもHobitとLoad of the Ring読んだことなかった&amp;hellip;&lt;/li&gt;
+&lt;li&gt;でもすごい聞き取りやすい発音と速度(ついでに髪サラッサラ)で惚れた&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;基本自分語り？&lt;/li&gt;
+&lt;li&gt;perl5をHobit、perl6をLoad of the Ringに対応させて、見た目は違うけど根底にあるものは同じだよという話&lt;/li&gt;
+&lt;li&gt;文脈把握できなかったけど&amp;rdquo;&lt;code&gt;-Ofun&lt;/code&gt; (Optimize fun)&amp;ldquo;と&amp;rdquo;I FAIL GOOD (正しく失敗する)&amp;ldquo;がとても印象的だった&lt;/li&gt;
+&lt;li&gt;ラリーさんはLinux Mintを使っていて&lt;code&gt;alias p=&#39;perl&#39;&lt;/code&gt;だった&lt;/li&gt;
+&lt;li&gt;perl6は今年のクリスマスに(なるべく)出すらしい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;managing-containers-at-scale-with-coreos-and-kubernetes:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Managing Containers at Scale with CoreOS and Kubernetes&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;k8sのイントロダクション&lt;/li&gt;
+&lt;li&gt;サービスの無停止デプロイのデモ
+
+&lt;ul&gt;
+&lt;li&gt;proxyから少数nodeを抜く&lt;/li&gt;
+&lt;li&gt;抜いたnodeのアプリケーションをupgrade&lt;/li&gt;
+&lt;li&gt;proxyに戻す&lt;/li&gt;
+&lt;li&gt;の繰り返し&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;dashboardのデザインがオサレ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;tbd:a2d086c5b4dcd024688714d5925c094e&#34;&gt;TBD&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;rubyの父matzさんのありがたいお話&lt;/li&gt;
+&lt;li&gt;rubyをdisって一番コミニュティに角が立たないのはわしじゃ
+
+&lt;ul&gt;
+&lt;li&gt;rubyの最disりポイントはperlの影響を受けたこと&lt;/li&gt;
+&lt;li&gt;2番目はlispの影響を受けたこと&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;言語アーキテクチャは振り子のように移り変わる
+
+&lt;ul&gt;
+&lt;li&gt;遠い昔に発表されたものが、時間が経って再評価されたりする&lt;/li&gt;
+&lt;li&gt;GCはかつてプロセスが重くなるからと避けられていたが、JVMが採用し再評価された&lt;/li&gt;
+&lt;li&gt;処理速度重視から、OOPのようなデザイン重視?へ移り、また速度重視になりつつある&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;streemはピタゴラスイッチみたいで楽しいよ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;perlの上にも三年-ずっとイケてるサービスを作り続ける技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;はてなブログのとても生々しい話&lt;/li&gt;
+&lt;li&gt;かつてはてなブログはModel層, View層, Controller層, コピペ層で形成されていた
+
+&lt;ul&gt;
+&lt;li&gt;3回コピペされたコードはDRYの精神に基づきコピペ層へ配置される&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;オブジェクト指向入門, DDD本などを輪読してリファクタリング&lt;/li&gt;
+&lt;li&gt;大規模な改修を続けられるって健全な環境だなぁ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;electron-building-desktop-apps-with-web-technologies:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Electron: Building desktop apps with web technologies&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;electronの紹介&lt;/li&gt;
+&lt;li&gt;electronの開発チームは現状1人らしい&lt;/li&gt;
+&lt;li&gt;既存のjsライブラリを使えてとてもエコな印象&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;esa-io-趣味から育てたwebサービスで生きていく:a2d086c5b4dcd024688714d5925c094e&#34;&gt;esa.io - 趣味から育てたWebサービスで生きていく&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;自分で使いたいサービスを作っていたら会社になってた話&lt;/li&gt;
+&lt;li&gt;かわいいは正義&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h3 id=&#34;2日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;2日目&lt;/h3&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;isuconの勝ち方:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ISUCONの勝ち方&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://kobtea.net/posts/2015/08/22/yapc-isucon/&#34;&gt;別記事書いた&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;実はホットでオープンな-microsoft-azure:a2d086c5b4dcd024688714d5925c094e&#34;&gt;実はホットでオープンな Microsoft Azure&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;azureは1regionあたり16datacenterあってサーバは60万台&lt;/li&gt;
+&lt;li&gt;サーバを詰め込んだコンテナ(物理)でDCを構築している&lt;/li&gt;
+&lt;li&gt;壊れたサーバは使わずに放っておいて、一定数壊れたらコンテナごと破棄する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;mysqlで2億件のシリアルデータと格闘したチューニングの話:a2d086c5b4dcd024688714d5925c094e&#34;&gt;MySQLで2億件のシリアルデータと格闘したチューニングの話&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;CPU 2core, memory 8GBでレコード2億件のDBを運用する&lt;/li&gt;
+&lt;li&gt;countクエリが1分超え&lt;/li&gt;
+&lt;li&gt;primary keyをランダム値にしていると痛い目に遭う&lt;/li&gt;
+&lt;li&gt;indexの再構築をなめてはいけない&lt;/li&gt;
+&lt;li&gt;scale up,outできない環境がただただつらそうだった&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;データ分析基盤を支える技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;データ分析基盤を支える技術&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;データ分析周りのOSS, XaaSの俯瞰的な紹介&lt;/li&gt;
+&lt;li&gt;データ分析周りで出てくるETLはExtract Transformation Load(抽出, 変換, 登録)の略&lt;/li&gt;
+&lt;li&gt;分析基盤の構築・運用はとてもしんどいのでSaaS使ったほうが楽&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;ソーシャルゲームにおける-aws-移行事例:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ソーシャルゲームにおける AWS 移行事例&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;2011年頃にラック契約していたオンプレミス環境がEOLを迎えるにあたってAWSへ移行した&lt;/li&gt;
+&lt;li&gt;大体1月2,3人での移行作業&lt;/li&gt;
+&lt;li&gt;RDS
+
+&lt;ul&gt;
+&lt;li&gt;たまにネットワーク断が発生するからアプリケーションで要フォロー&lt;/li&gt;
+&lt;li&gt;create tableやindex, 外部キー制約などを除外しておくとdump dataのimportは早くなる
+
+&lt;ul&gt;
+&lt;li&gt;perconaのmysqldumpにはそんなオプションがあるらしい&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;timezone変更できないのでtimezone関係の関数を使っている場合は要注意&lt;/li&gt;
+&lt;li&gt;移行時のwrite timeを短縮するためにmulti-azからsingle-azへ一時的に変更&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;session storageとしてyrmcdsを使っている&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;　&lt;/p&gt;
+
+&lt;h4 id=&#34;辛いことをやめる-から始まる業務改善とinfrastructure-as-code:a2d086c5b4dcd024688714d5925c094e&#34;&gt;辛いことをやめる！から始まる業務改善とInfrastructure as Code&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;hb-acnsを導入した時の話
+
+&lt;ul&gt;
+&lt;li&gt;nagios, cactiの設定を登録するシステム&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;全方位の社員を説得して味方を増やす
+
+&lt;ul&gt;
+&lt;li&gt;CTOを味方につけて、個人の思想・プロジェクトではないことをアピールする&lt;/li&gt;
+&lt;li&gt;メリットをとにかく主張する&lt;/li&gt;
+&lt;li&gt;トラブルシュートは最優先で行う
+
+&lt;ul&gt;
+&lt;li&gt;ユーザは一度でもつまずくと離脱してしまう&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;布教活動をする
+
+&lt;ul&gt;
+&lt;li&gt;ドキュメントを残す&lt;/li&gt;
+&lt;li&gt;ハンズオンをして強制的に試す環境を作る&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;効果を定量的に計測しておくと良い&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;とても楽しかったですまる&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>YAPC::Asia Tokyo 2015 「ISUCONの勝ち方」メモ</title>
