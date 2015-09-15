@@ -6,8 +6,137 @@
     <description>Recent content in Posts on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 23 Aug 2015 22:59:36 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 15 Sep 2015 22:10:55 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</title>
+      <link>http://kobtea.net/posts/2015/09/15/sbt-console-quit/</link>
+      <pubDate>Tue, 15 Sep 2015 22:10:55 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
+      <description>
+
+&lt;h3 id=&#34;環境:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;環境&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scalaVersion := &amp;quot;2.11.6&amp;quot;
+
+libraryDependencies += &amp;quot;com.typesafe.akka&amp;quot; %% &amp;quot;akka-actor&amp;quot; % &amp;quot;2.3.11&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;悩み:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;悩み&lt;/h3&gt;
+
+&lt;p&gt;akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scala&amp;gt; import scala.concurrent.Future
+scala&amp;gt; import akka.actor.ActorSystem
+
+scala&amp;gt; implicit val ec = ActorSystem().dispatcher
+ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher]
+
+scala&amp;gt; Future(1)(ec)
+res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d
+
+scala&amp;gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;akkaが原因かな？と思い、ExecutorServiceを使ってみたけど同じくconsoleを抜けられない。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scala&amp;gt; import scala.concurrent.{Future, ExecutionContext}
+scala&amp;gt; import java.util.concurrent.Executors
+
+scala&amp;gt; implicit val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(1))
+ec: scala.concurrent.ExecutionContextExecutorService = scala.concurrent.impl.ExecutionContextImpl$$anon$1@8a0f6d7
+
+scala&amp;gt; Future(1)(ec)
+res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@64918adb
+
+scala&amp;gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;はそんなことないんだけどなぁ&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scala&amp;gt; import scala.concurrent.{Future, ExecutionContext}
+
+scala&amp;gt; implicit val ec = ExecutionContext.Implicits.global
+ec: scala.concurrent.ExecutionContextExecutor = scala.concurrent.impl.ExecutionContextImpl@73be4237
+
+scala&amp;gt; Future(1)(ec)
+res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@42ea62b5
+
+scala&amp;gt; :q
+
+[success] Total time: 77 s, completed 2015/09/15 22:23:06
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;threadをdaemonにすると解決するよ:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;threadをdaemonにすると解決するよ&lt;/h3&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Javaはデーモンスレッド以外のスレッドが終了したとき、プログラムを終了します。このとき、デーモンが処理をしているかどうかは関係ありません。なので、処理が途中でぶった切られる可能性があります。それがまずい場合はやっぱり自前でシャットダウンする機構を作るしかないのですが。。。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://nodamushi.hatenablog.com/entry/20130907/1378554253&#34;&gt;Javaでマルチスレッドするときの注意をまとめてみた&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;作成したthreadがdaemonでないから、メインのthreadを止めたあとも動き続けてしまっているらしい。&lt;br /&gt;
+threadをdaemonにして再挑戦。&lt;/p&gt;
+
+&lt;p&gt;akka版&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scala&amp;gt; import scala.concurrent.Future
+scala&amp;gt; import com.typesafe.config.ConfigFactory
+scala&amp;gt; import akka.actor.ActorSystem
+
+scala&amp;gt; val config = ConfigFactory.parseString(&amp;quot;akka.daemonic = on&amp;quot;)
+config: com.typesafe.config.Config = Config(SimpleConfigObject({&amp;quot;akka&amp;quot;:{&amp;quot;daemonic&amp;quot;:&amp;quot;on&amp;quot;}}))
+
+scala&amp;gt; implicit val ec = ActorSystem(&amp;quot;default&amp;quot;, config).dispatcher
+ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher]
+
+scala&amp;gt; Future(1)(ec)
+res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@70f8e6ab
+
+scala&amp;gt; :q
+
+[success] Total time: 101 s, completed 2015/09/15 23:07:48
+&amp;gt; // (∩´∀｀)∩ﾜｰｲ
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ExecutorService版&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scala&amp;gt; import java.util.concurrent.{Executors, ThreadFactory}
+scala&amp;gt; import scala.concurrent.{ExecutionContext, Future}
+
+scala&amp;gt; val factory = new ThreadFactory() {
+     |   def newThread(r: Runnable) = {
+     |     val t = new Thread(r)
+     |     t.setDaemon(true)
+     |     t
+     |   }
+     | }
+factory: java.util.concurrent.ThreadFactory = $anon$1@765df09a
+
+scala&amp;gt; implicit val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(1, factory))
+ec: scala.concurrent.ExecutionContextExecutorService = scala.concurrent.impl.ExecutionContextImpl$$anon$1@623404ab
+
+scala&amp;gt; Future(1)(ec)
+res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@5b37f8e0
+
+scala&amp;gt; :q
+
+[success] Total time: 42 s, completed 2015/09/15 23:41:56
+&amp;gt; // (∩´∀｀)∩ﾜｰｲ
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;もdaemonみたい。
+&lt;a href=&#34;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&#34;&gt;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;そもそもdaemonとnon-daemonどっちがいいんです:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;そもそもdaemonとnon-daemonどっちがいいんです？&lt;/h3&gt;
+
+&lt;p&gt;Java力低いので、&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;がdaemonだしdaemonでいいじゃん！程度にしか考えてない。&lt;br /&gt;
+今回みたいなthread poolで使うケースだと、親のthreadが終了したら残っていても仕方ないのでdaemonで良いかな。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>YAPC::Asia Tokyo 2015 で聴いたセッションのメモや感想</title>

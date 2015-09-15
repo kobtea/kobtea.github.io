@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://kobtea.net/</loc>
-    <lastmod>2015-08-23T22:59:36+09:00</lastmod>
+    <lastmod>2015-09-15T22:10:55+09:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://kobtea.net/posts/2015/09/15/sbt-console-quit/</loc>
+    <lastmod>2015-09-15T22:10:55+09:00</lastmod>
   </url>
   
   <url>
