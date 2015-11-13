@@ -29,7 +29,7 @@
 &lt;li&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt;: コマンドライン上で与えた設定値&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h3&gt;
+&lt;h2 id=&#34;xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsFinal -version
 [Global flags]
@@ -78,7 +78,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
 
 &lt;p&gt;ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。&lt;/p&gt;
 
-&lt;h3 id=&#34;xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt; Option&lt;/h3&gt;
+&lt;h2 id=&#34;xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial
 [Global flags]
@@ -254,7 +254,7 @@ $ diff -U0 PrintFlagsInitial PrintFlagsFinal
 &lt;p&gt;あれ、&lt;code&gt;:=&lt;/code&gt;以外にも初期値と違うOptionがある&amp;hellip;なんでだろう&amp;hellip;&lt;br /&gt;
 あとでしらべる。&lt;/p&gt;
 
-&lt;h3 id=&#34;xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt; Option&lt;/h3&gt;
+&lt;h2 id=&#34;xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintCommandLineFlags -version
 -XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC

@@ -8,21 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://kobtea.net/css/capybara-style.css">
-    <style>
-        .container-fluid {
-            margin-right: auto;
-            margin-left: auto;
-            max-width: 960px;
-        }
-    </style>
+    <link rel="stylesheet" href="http://kobtea.net/css/capybara.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -58,7 +50,7 @@
 
 <article class="container-fluid">
     <div class="page-header">
-        <h2><a href="http://kobtea.net/posts/2015/09/15/sbt-console-quit/">[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</a></h2>
+        <h1><a href="http://kobtea.net/posts/2015/09/15/sbt-console-quit/">[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</a></h1>
         <time pubdate datetime=" 2015-09-15 " title="2015-09-15">2015-09-15</time>
         
         <a href="/tags/scala">
@@ -69,14 +61,14 @@
 
     
 
-<h3 id="環境:21f51cd4372a33bf03ce9044b814c9d3">環境</h3>
+<h2 id="環境:21f51cd4372a33bf03ce9044b814c9d3">環境</h2>
 
 <pre><code class="language-scala">scalaVersion := &quot;2.11.6&quot;
 
 libraryDependencies += &quot;com.typesafe.akka&quot; %% &quot;akka-actor&quot; % &quot;2.3.11&quot;
 </code></pre>
 
-<h3 id="悩み:21f51cd4372a33bf03ce9044b814c9d3">悩み</h3>
+<h2 id="悩み:21f51cd4372a33bf03ce9044b814c9d3">悩み</h2>
 
 <p>akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。</p>
 
@@ -122,7 +114,7 @@ scala&gt; :q
 &gt;
 </code></pre>
 
-<h3 id="threadをdaemonにすると解決するよ:21f51cd4372a33bf03ce9044b814c9d3">threadをdaemonにすると解決するよ</h3>
+<h2 id="threadをdaemonにすると解決するよ:21f51cd4372a33bf03ce9044b814c9d3">threadをdaemonにすると解決するよ</h2>
 
 <blockquote>
 <p>Javaはデーモンスレッド以外のスレッドが終了したとき、プログラムを終了します。このとき、デーモンが処理をしているかどうかは関係ありません。なので、処理が途中でぶった切られる可能性があります。それがまずい場合はやっぱり自前でシャットダウンする機構を作るしかないのですが。。。</p>
@@ -183,7 +175,7 @@ scala&gt; :q
 <p><code>scala.concurrent.ExecutionContext.Implicits.global</code>もdaemonみたい。
 <a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74">https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74</a></p>
 
-<h3 id="そもそもdaemonとnon-daemonどっちがいいんです:21f51cd4372a33bf03ce9044b814c9d3">そもそもdaemonとnon-daemonどっちがいいんです？</h3>
+<h2 id="そもそもdaemonとnon-daemonどっちがいいんです:21f51cd4372a33bf03ce9044b814c9d3">そもそもdaemonとnon-daemonどっちがいいんです？</h2>
 
 <p>Java力低いので、<code>scala.concurrent.ExecutionContext.Implicits.global</code>がdaemonだしdaemonでいいじゃん！程度にしか考えてない。<br />
 今回みたいなthread poolで使うケースだと、親のthreadが終了したら残っていても仕方ないのでdaemonで良いかな。</p>

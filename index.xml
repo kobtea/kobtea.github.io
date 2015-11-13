@@ -17,14 +17,14 @@
       <guid>http://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
       <description>
 
-&lt;h3 id=&#34;環境:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;環境&lt;/h3&gt;
+&lt;h2 id=&#34;環境:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;環境&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scalaVersion := &amp;quot;2.11.6&amp;quot;
 
 libraryDependencies += &amp;quot;com.typesafe.akka&amp;quot; %% &amp;quot;akka-actor&amp;quot; % &amp;quot;2.3.11&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;悩み:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;悩み&lt;/h3&gt;
+&lt;h2 id=&#34;悩み:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;悩み&lt;/h2&gt;
 
 &lt;p&gt;akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。&lt;/p&gt;
 
@@ -70,7 +70,7 @@ scala&amp;gt; :q
 &amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;threadをdaemonにすると解決するよ:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;threadをdaemonにすると解決するよ&lt;/h3&gt;
+&lt;h2 id=&#34;threadをdaemonにすると解決するよ:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;threadをdaemonにすると解決するよ&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Javaはデーモンスレッド以外のスレッドが終了したとき、プログラムを終了します。このとき、デーモンが処理をしているかどうかは関係ありません。なので、処理が途中でぶった切られる可能性があります。それがまずい場合はやっぱり自前でシャットダウンする機構を作るしかないのですが。。。&lt;/p&gt;
@@ -131,7 +131,7 @@ scala&amp;gt; :q
 &lt;p&gt;&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;もdaemonみたい。
 &lt;a href=&#34;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&#34;&gt;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;そもそもdaemonとnon-daemonどっちがいいんです:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;そもそもdaemonとnon-daemonどっちがいいんです？&lt;/h3&gt;
+&lt;h2 id=&#34;そもそもdaemonとnon-daemonどっちがいいんです:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;そもそもdaemonとnon-daemonどっちがいいんです？&lt;/h2&gt;
 
 &lt;p&gt;Java力低いので、&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;がdaemonだしdaemonでいいじゃん！程度にしか考えてない。&lt;br /&gt;
 今回みたいなthread poolで使うケースだと、親のthreadが終了したら残っていても仕方ないのでdaemonで良いかな。&lt;/p&gt;
@@ -149,13 +149,9 @@ scala&amp;gt; :q
 &lt;p&gt;最初で最後のYAPC。&lt;br /&gt;
 聴いたセッションのメモとか感想とかをぽつぽつと。&lt;/p&gt;
 
-&lt;p&gt;　&lt;/p&gt;
+&lt;h2 id=&#34;前夜祭:a2d086c5b4dcd024688714d5925c094e&#34;&gt;前夜祭&lt;/h2&gt;
 
-&lt;h3 id=&#34;前夜祭:a2d086c5b4dcd024688714d5925c094e&#34;&gt;前夜祭&lt;/h3&gt;
-
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版:a2d086c5b4dcd024688714d5925c094e&#34;&gt;PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）&lt;/h4&gt;
+&lt;h3 id=&#34;php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版:a2d086c5b4dcd024688714d5925c094e&#34;&gt;PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Hackとの速度勝負
@@ -172,18 +168,14 @@ scala&amp;gt; :q
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;はてなブックマークのトピックページの裏側:a2d086c5b4dcd024688714d5925c094e&#34;&gt;はてなブックマークのトピックページの裏側&lt;/h4&gt;
+&lt;h3 id=&#34;はてなブックマークのトピックページの裏側:a2d086c5b4dcd024688714d5925c094e&#34;&gt;はてなブックマークのトピックページの裏側&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Elasticsearchって重要語句抽出の機能あるのかしゅごい&lt;/li&gt;
 &lt;li&gt;トピックタイトルは短く誤解のないように作成するというのがなかなか定量的に検査しづらそうだなぁ&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;我々にできるossとそのコミュニティの育てかた:a2d086c5b4dcd024688714d5925c094e&#34;&gt;我々にできるOSSとそのコミュニティの育てかた&lt;/h4&gt;
+&lt;h3 id=&#34;我々にできるossとそのコミュニティの育てかた:a2d086c5b4dcd024688714d5925c094e&#34;&gt;我々にできるOSSとそのコミュニティの育てかた&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;とにかく全部英語
@@ -200,13 +192,9 @@ scala&amp;gt; :q
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
+&lt;h2 id=&#34;1日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;1日目&lt;/h2&gt;
 
-&lt;h3 id=&#34;1日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;1日目&lt;/h3&gt;
-
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;メリークリスマス:a2d086c5b4dcd024688714d5925c094e&#34;&gt;メリークリスマス！&lt;/h4&gt;
+&lt;h3 id=&#34;メリークリスマス:a2d086c5b4dcd024688714d5925c094e&#34;&gt;メリークリスマス！&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;perlの父ラリーさんのありがたいお話&lt;/li&gt;
@@ -223,9 +211,7 @@ scala&amp;gt; :q
 &lt;li&gt;perl6は今年のクリスマスに(なるべく)出すらしい&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;managing-containers-at-scale-with-coreos-and-kubernetes:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Managing Containers at Scale with CoreOS and Kubernetes&lt;/h4&gt;
+&lt;h3 id=&#34;managing-containers-at-scale-with-coreos-and-kubernetes:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Managing Containers at Scale with CoreOS and Kubernetes&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;k8sのイントロダクション&lt;/li&gt;
@@ -240,9 +226,7 @@ scala&amp;gt; :q
 &lt;li&gt;dashboardのデザインがオサレ&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;tbd:a2d086c5b4dcd024688714d5925c094e&#34;&gt;TBD&lt;/h4&gt;
+&lt;h3 id=&#34;tbd:a2d086c5b4dcd024688714d5925c094e&#34;&gt;TBD&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;rubyの父matzさんのありがたいお話&lt;/li&gt;
@@ -262,9 +246,7 @@ scala&amp;gt; :q
 &lt;li&gt;streemはピタゴラスイッチみたいで楽しいよ&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;perlの上にも三年-ずっとイケてるサービスを作り続ける技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜&lt;/h4&gt;
+&lt;h3 id=&#34;perlの上にも三年-ずっとイケてるサービスを作り続ける技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;はてなブログのとても生々しい話&lt;/li&gt;
@@ -277,9 +259,7 @@ scala&amp;gt; :q
 &lt;li&gt;大規模な改修を続けられるって健全な環境だなぁ&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;electron-building-desktop-apps-with-web-technologies:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Electron: Building desktop apps with web technologies&lt;/h4&gt;
+&lt;h3 id=&#34;electron-building-desktop-apps-with-web-technologies:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Electron: Building desktop apps with web technologies&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;electronの紹介&lt;/li&gt;
@@ -287,28 +267,20 @@ scala&amp;gt; :q
 &lt;li&gt;既存のjsライブラリを使えてとてもエコな印象&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;esa-io-趣味から育てたwebサービスで生きていく:a2d086c5b4dcd024688714d5925c094e&#34;&gt;esa.io - 趣味から育てたWebサービスで生きていく&lt;/h4&gt;
+&lt;h3 id=&#34;esa-io-趣味から育てたwebサービスで生きていく:a2d086c5b4dcd024688714d5925c094e&#34;&gt;esa.io - 趣味から育てたWebサービスで生きていく&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;自分で使いたいサービスを作っていたら会社になってた話&lt;/li&gt;
 &lt;li&gt;かわいいは正義&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
+&lt;h2 id=&#34;2日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;2日目&lt;/h2&gt;
 
-&lt;h3 id=&#34;2日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;2日目&lt;/h3&gt;
-
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;isuconの勝ち方:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ISUCONの勝ち方&lt;/h4&gt;
+&lt;h3 id=&#34;isuconの勝ち方:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ISUCONの勝ち方&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://kobtea.net/posts/2015/08/22/yapc-isucon/&#34;&gt;別記事書いた&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;実はホットでオープンな-microsoft-azure:a2d086c5b4dcd024688714d5925c094e&#34;&gt;実はホットでオープンな Microsoft Azure&lt;/h4&gt;
+&lt;h3 id=&#34;実はホットでオープンな-microsoft-azure:a2d086c5b4dcd024688714d5925c094e&#34;&gt;実はホットでオープンな Microsoft Azure&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;azureは1regionあたり16datacenterあってサーバは60万台&lt;/li&gt;
@@ -316,9 +288,7 @@ scala&amp;gt; :q
 &lt;li&gt;壊れたサーバは使わずに放っておいて、一定数壊れたらコンテナごと破棄する&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;mysqlで2億件のシリアルデータと格闘したチューニングの話:a2d086c5b4dcd024688714d5925c094e&#34;&gt;MySQLで2億件のシリアルデータと格闘したチューニングの話&lt;/h4&gt;
+&lt;h3 id=&#34;mysqlで2億件のシリアルデータと格闘したチューニングの話:a2d086c5b4dcd024688714d5925c094e&#34;&gt;MySQLで2億件のシリアルデータと格闘したチューニングの話&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;CPU 2core, memory 8GBでレコード2億件のDBを運用する&lt;/li&gt;
@@ -328,9 +298,7 @@ scala&amp;gt; :q
 &lt;li&gt;scale up,outできない環境がただただつらそうだった&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;データ分析基盤を支える技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;データ分析基盤を支える技術&lt;/h4&gt;
+&lt;h3 id=&#34;データ分析基盤を支える技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;データ分析基盤を支える技術&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;データ分析周りのOSS, XaaSの俯瞰的な紹介&lt;/li&gt;
@@ -338,9 +306,7 @@ scala&amp;gt; :q
 &lt;li&gt;分析基盤の構築・運用はとてもしんどいのでSaaS使ったほうが楽&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;ソーシャルゲームにおける-aws-移行事例:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ソーシャルゲームにおける AWS 移行事例&lt;/h4&gt;
+&lt;h3 id=&#34;ソーシャルゲームにおける-aws-移行事例:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ソーシャルゲームにおける AWS 移行事例&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;2011年頃にラック契約していたオンプレミス環境がEOLを迎えるにあたってAWSへ移行した&lt;/li&gt;
@@ -360,9 +326,7 @@ scala&amp;gt; :q
 &lt;li&gt;session storageとしてyrmcdsを使っている&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;　&lt;/p&gt;
-
-&lt;h4 id=&#34;辛いことをやめる-から始まる業務改善とinfrastructure-as-code:a2d086c5b4dcd024688714d5925c094e&#34;&gt;辛いことをやめる！から始まる業務改善とInfrastructure as Code&lt;/h4&gt;
+&lt;h3 id=&#34;辛いことをやめる-から始まる業務改善とinfrastructure-as-code:a2d086c5b4dcd024688714d5925c094e&#34;&gt;辛いことをやめる！から始まる業務改善とInfrastructure as Code&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;hb-acnsを導入した時の話
@@ -415,7 +379,7 @@ scala&amp;gt; :q
 
 &lt;p&gt;スピーカー: @kazeburo さん&lt;/p&gt;
 
-&lt;h3 id=&#34;時間配分:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;時間配分&lt;/h3&gt;
+&lt;h2 id=&#34;時間配分:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;時間配分&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;競技全体では7時間&lt;/li&gt;
@@ -434,7 +398,7 @@ scala&amp;gt; :q
 &lt;li&gt;上記を考慮すると、実際の作業時間は5時間ほど&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;事前準備:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;事前準備&lt;/h3&gt;
+&lt;h2 id=&#34;事前準備:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;事前準備&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;chatroom&lt;/li&gt;
@@ -465,9 +429,9 @@ scala&amp;gt; :q
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;チューニングの進め方:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングの進め方&lt;/h3&gt;
+&lt;h2 id=&#34;チューニングの進め方:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングの進め方&lt;/h2&gt;
 
-&lt;h4 id=&#34;1-課題の理解:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;1. 課題の理解&lt;/h4&gt;
+&lt;h3 id=&#34;1-課題の理解:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;1. 課題の理解&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;レギュレーションや説明をよく読む
@@ -484,7 +448,7 @@ scala&amp;gt; :q
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;2-プロファイリング:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;2. プロファイリング&lt;/h4&gt;
+&lt;h3 id=&#34;2-プロファイリング:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;2. プロファイリング&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ログ解析や負荷確認&lt;/li&gt;
@@ -514,14 +478,14 @@ scala&amp;gt; :q
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;3-サーバ構成の把握:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;3. サーバ構成の把握&lt;/h4&gt;
+&lt;h3 id=&#34;3-サーバ構成の把握:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;3. サーバ構成の把握&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;どんなミドルウェアがいるのか&lt;/li&gt;
 &lt;li&gt;どのポートが使われているのか&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;4-チューニングの方向性を決める:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;4. チューニングの方向性を決める&lt;/h4&gt;
+&lt;h3 id=&#34;4-チューニングの方向性を決める:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;4. チューニングの方向性を決める&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;CPUの気持ちになり、コンテキストスイッチを減らす
@@ -531,7 +495,7 @@ scala&amp;gt; :q
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;チューニングのヒント:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングのヒント&lt;/h3&gt;
+&lt;h2 id=&#34;チューニングのヒント:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングのヒント&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;重い処理を把握し、減らせないか考える
@@ -565,7 +529,7 @@ scala&amp;gt; :q
       <guid>http://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
       <description>
 
-&lt;h3 id=&#34;環境:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;環境&lt;/h3&gt;
+&lt;h2 id=&#34;環境:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;環境&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;➜  ~  scala
 Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11).
@@ -573,7 +537,7 @@ Type in expressions to have them evaluated.
 Type :help for more information.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;やりたいこと&lt;/h3&gt;
+&lt;h2 id=&#34;やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;やりたいこと&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;scala.concurrent.Future&lt;/code&gt;で例外が発生して&lt;code&gt;Failure&lt;/code&gt;になったとき、&lt;/p&gt;
 
@@ -584,7 +548,7 @@ Type :help for more information.
 
 &lt;p&gt;といったことをしたい。&lt;/p&gt;
 
-&lt;h3 id=&#34;recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverを使う&lt;/h3&gt;
+&lt;h2 id=&#34;recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverを使う&lt;/h2&gt;
 
 &lt;p&gt;そんなときのための&lt;code&gt;Future#recover&lt;/code&gt;。&lt;br /&gt;
 &lt;code&gt;Throwable&lt;/code&gt;をキャッチして新しい&lt;code&gt;Future&lt;/code&gt;を作ってくれる。&lt;/p&gt;
@@ -656,7 +620,7 @@ scala&amp;gt; res6.value.get
 res7: scala.util.Try[Int] = Success(10)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverWithを使う&lt;/h3&gt;
+&lt;h2 id=&#34;recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverWithを使う&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;Future#recoverWith&lt;/code&gt;なんていうのもある。&lt;br /&gt;
 &lt;code&gt;Future#recover&lt;/code&gt;とは部分関数の型が違って、&lt;code&gt;Throwable&lt;/code&gt;を受け取って&lt;code&gt;Future&lt;/code&gt;を返すようになる。&lt;/p&gt;
@@ -729,7 +693,7 @@ res13: scala.util.Try[Int] = Success(10)
 &lt;li&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt;: コマンドライン上で与えた設定値&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h3&gt;
+&lt;h2 id=&#34;xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsFinal -version
 [Global flags]
@@ -778,7 +742,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
 
 &lt;p&gt;ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。&lt;/p&gt;
 
-&lt;h3 id=&#34;xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt; Option&lt;/h3&gt;
+&lt;h2 id=&#34;xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial
 [Global flags]
@@ -954,7 +918,7 @@ $ diff -U0 PrintFlagsInitial PrintFlagsFinal
 &lt;p&gt;あれ、&lt;code&gt;:=&lt;/code&gt;以外にも初期値と違うOptionがある&amp;hellip;なんでだろう&amp;hellip;&lt;br /&gt;
 あとでしらべる。&lt;/p&gt;
 
-&lt;h3 id=&#34;xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt; Option&lt;/h3&gt;
+&lt;h2 id=&#34;xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintCommandLineFlags -version
 -XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
