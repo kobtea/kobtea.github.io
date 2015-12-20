@@ -252,15 +252,16 @@ irb(main):001:0&amp;gt; p &#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&#39;
 &lt;p&gt;色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこと。&lt;/p&gt;
 
 &lt;blockquote&gt;
-&lt;p&gt;irb で日本語を使うならば、下記でインストール。&lt;br /&gt;
-&lt;code&gt;bash
-CONFIGURE_OPTS=&amp;quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&amp;quot; rbenv install 2.0.0-p247
-&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;irb で日本語を使うならば、下記でインストール。&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://www.d-wood.com/blog/2013/08/06_4453.html&#34;&gt;[Ruby on Rails] RUBY_CONFIGURE_OPTS, readline, openssl&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; CONFIGURE_OPTS=&amp;quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&amp;quot; rbenv install 2.0.0-p247
+&amp;gt; ```
+&amp;gt;
+&amp;gt; [[Ruby on Rails] RUBY_CONFIGURE_OPTS, readline, openssl](http://www.d-wood.com/blog/2013/08/06_4453.html)
 
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# readlineとopensslをインストールする
+
+```bash
+# readlineとopensslをインストールする
 $ brew install readline
 $ brew install openssl
 
@@ -279,6 +280,7 @@ Parsing documentation for bundler-1.3.5
 Installing ri documentation for bundler-1.3.5
 1 gem installed
 &lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
 
 &lt;p&gt;どきどき&amp;hellip;&lt;/p&gt;
 

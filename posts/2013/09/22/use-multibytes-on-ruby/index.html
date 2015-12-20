@@ -82,15 +82,16 @@ irb(main):001:0&gt; p '\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA'
 <p>色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこと。</p>
 
 <blockquote>
-<p>irb で日本語を使うならば、下記でインストール。<br />
-<code>bash
-CONFIGURE_OPTS=&quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&quot; rbenv install 2.0.0-p247
-</code></p>
+<p>irb で日本語を使うならば、下記でインストール。</p>
 
-<p><a href="http://www.d-wood.com/blog/2013/08/06_4453.html">[Ruby on Rails] RUBY_CONFIGURE_OPTS, readline, openssl</a></p>
-</blockquote>
+<pre><code class="language-bash">&gt; CONFIGURE_OPTS=&quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&quot; rbenv install 2.0.0-p247
+&gt; ```
+&gt;
+&gt; [[Ruby on Rails] RUBY_CONFIGURE_OPTS, readline, openssl](http://www.d-wood.com/blog/2013/08/06_4453.html)
 
-<pre><code class="language-bash"># readlineとopensslをインストールする
+
+```bash
+# readlineとopensslをインストールする
 $ brew install readline
 $ brew install openssl
 
@@ -109,6 +110,7 @@ Parsing documentation for bundler-1.3.5
 Installing ri documentation for bundler-1.3.5
 1 gem installed
 </code></pre>
+</blockquote>
 
 <p>どきどき&hellip;</p>
 
@@ -183,6 +185,8 @@ irb(main):002:0&gt; p 'ほげ'
                 <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 
                 <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                
+                <a href="/tags/hardware"><button type="button" class="btn btn-default btn-xs">hardware</button></a>
                 
                 <a href="/tags/java"><button type="button" class="btn btn-default btn-xs">java</button></a>
                 
