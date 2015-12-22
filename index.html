@@ -299,7 +299,7 @@
 
 <p>下記のコマンドをタスクスケジューラに登録してdailyで実行させる。</p>
 
-<pre><code class="language-bat">$ robocopy %SRC% %DST% /MIR /R:3 /W:5 /XD &quot;System Volume Information&quot; /XJ /TEE /LOG:&quot;/PATH/TO/LOG.log&quot;
+<pre><code class="language-bat">$ robocopy %SRC% %DST% /MIR /R:3 /W:5 /XD &quot;System Volume Information&quot; &quot;$RECYCLE.BIN&quot; /XJ /TEE /LOG:&quot;/PATH/TO/LOG.log&quot;
 </code></pre>
 
 <ul>

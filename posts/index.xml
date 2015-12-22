@@ -250,7 +250,7 @@
 
 &lt;p&gt;下記のコマンドをタスクスケジューラに登録してdailyで実行させる。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-bat&#34;&gt;$ robocopy %SRC% %DST% /MIR /R:3 /W:5 /XD &amp;quot;System Volume Information&amp;quot; /XJ /TEE /LOG:&amp;quot;/PATH/TO/LOG.log&amp;quot;
+&lt;pre&gt;&lt;code class=&#34;language-bat&#34;&gt;$ robocopy %SRC% %DST% /MIR /R:3 /W:5 /XD &amp;quot;System Volume Information&amp;quot; &amp;quot;$RECYCLE.BIN&amp;quot; /XJ /TEE /LOG:&amp;quot;/PATH/TO/LOG.log&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
