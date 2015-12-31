@@ -6,8 +6,79 @@
     <description>Recent content in Posts on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 20 Dec 2015 18:19:02 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 31 Dec 2015 22:00:48 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>2015年の振り返り</title>
+      <link>http://kobtea.net/posts/2015/12/31/inventory-of-2015/</link>
+      <pubDate>Thu, 31 Dec 2015 22:00:48 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2015/12/31/inventory-of-2015/</guid>
+      <description>
+
+&lt;p&gt;こたつでぬくぬく。&lt;br /&gt;
+思いつくキーワードを拾いつつ、だらだら思い返す。&lt;/p&gt;
+
+&lt;h2 id=&#34;技術的なこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;技術的なこと&lt;/h2&gt;
+
+&lt;p&gt;もう少し頑張りましょう&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2015/12/31/2015_contribute.jpg&#34;/&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;ossコントリビュート:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;OSSコントリビュート&lt;/h3&gt;
+
+&lt;p&gt;パッチを投げて初コントリビュートした。
+メンテナの方が深夜にもかかわらず素早くレスポンスをくれたり、&amp;rdquo;このコミット1つにまとめてね&amp;rdquo;とか手取り足取り教えてくれた。
+GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
+
+&lt;h3 id=&#34;scala:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;Scala&lt;/h3&gt;
+
+&lt;p&gt;ここ1年くらいscalaをたくさん書いていた。
+関数型言語をまともに触ったのはこれが初めてだけど、ずっとオブジェクト指向で関数型初めてです＞＜という僕のような人にはとても良い言語だと思う。
+ただし、学習コストは高い。
+オブジェクト指向と関数型の両側面を持ち合わせているので、どちらに対しても理解を必要とする。
+関数型を知るためにhaskell触ってみようかな&amp;hellip;とかアクター知るためにerlang触ってみようかな&amp;hellip;とか、その辺を楽しめる人にとっては知見を広げてくれる良い言語。&lt;/p&gt;
+
+&lt;p&gt;scalaで&lt;code&gt;map&lt;/code&gt;をたくさん書いたあと、rubyのブロック構文に対する見え方が変わったし、&lt;code&gt;xargs&lt;/code&gt;で脳汁が出るようになった。scalaとの出会いに感謝。&lt;/p&gt;
+
+&lt;h3 id=&#34;isucon5:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;ISUCON5&lt;/h3&gt;
+
+&lt;p&gt;予選落ちだけど。
+面白そうだなーﾁﾗﾁﾗと毎年横目で見ていたけど、今年は思い切って参加した。
+チームの温度感としては記念受験程度で、事前準備も各自が好きなことポツポツやる程度だった。
+おやつの時間くらいに一瞬だけ上位に行けたのがとても嬉しかった。
+決勝とか予選とかではなく、「よっしゃ！バリバリにチューニングしたったで！！」という達成感があまり無かったので、来年もリベンジしたいなぁ。&lt;/p&gt;
+
+&lt;h2 id=&#34;私生活なこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;私生活なこと&lt;/h2&gt;
+
+&lt;h3 id=&#34;お遍路:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;お遍路&lt;/h3&gt;
+
+&lt;p&gt;2014年から年に1回ペースで四国へ行ってお遍路参りを始めた。
+1年目は原付きをレンタルしてお寺周りをした。
+が、原付き限定の特別ルールを意識するのが嫌だったので、今年は二輪免許をとって挑んだ。
+おかげさまで徳島23箇所を2年で回りきった。
+田舎道をトコトコ走るのはとても楽しいのでおすすめ。
+来年の高知どうしよ&amp;hellip;&lt;/p&gt;
+
+&lt;h3 id=&#34;健康管理:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;健康管理&lt;/h3&gt;
+
+&lt;p&gt;体重計を買った。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B00GRP609C/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B00GRP609C&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;Withings Smart Body Analyzer ネットワーク対応 体重計 WS-50&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;特別何か運動はしなかったけど、毎日体重計に乗って眺める&amp;rdquo;体重計乗るだけダイエット&amp;rdquo;をやった。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2015/12/31/weight.jpg&#34; class=&#34;img-responsive&#34; width=&#34;50%&#34; height=&#34;50%&#34;/&gt;&lt;/p&gt;
+
+&lt;p&gt;7月くらいまでは意外にも成果あって、体脂肪が落ちていった。
+その後は仕事で色々あってやさぐれてしまい、たくさん食べたり、そもそも体重計乗らなくなってしまった。見事なV字回復である。来年から体重計乗るだけダイエットを復活させたい。&lt;/p&gt;
+
+&lt;h2 id=&#34;来年がんばりたいこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;来年がんばりたいこと&lt;/h2&gt;
+
+&lt;p&gt;今年が終わっちゃうので来年考えよう＞＜&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>RAID組もうとしたけどrsync(robocopy)で済ませた話</title>
@@ -2359,16 +2430,6 @@ autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype mkd
 &lt;p&gt;mkdファイルを良い感じに編集して、&lt;code&gt;:PrevimOpen&lt;/code&gt;するといい感じにプレビューが出る。&lt;br /&gt;
 ファイル保存すると、自動で更新される。&lt;br /&gt;
 ステキやん。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>こんにちはOctopress</title>
-      <link>http://kobtea.net/posts/2013/09/22/hello-octopress/</link>
-      <pubDate>Sun, 22 Sep 2013 22:44:00 +0900</pubDate>
-      
-      <guid>http://kobtea.net/posts/2013/09/22/hello-octopress/</guid>
-      <description>&lt;p&gt;よろしくタコ出版！&lt;/p&gt;
 </description>
     </item>
     

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Github Pagesにカスタムドメインを割り当てる - kobtea.net</title>
+    <title>2015年の振り返り - kobtea.net</title>
     <meta name="description" content="eternal jojaku">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,84 +50,77 @@
 
 <article class="container-fluid">
     <div class="page-header">
-        <h1><a href="http://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/">Github Pagesにカスタムドメインを割り当てる</a></h1>
-        <time pubdate datetime=" 2013-09-23 " title="2013-09-23">2013-09-23</time>
+        <h1><a href="http://kobtea.net/posts/2015/12/31/inventory-of-2015/">2015年の振り返り</a></h1>
+        <time pubdate datetime=" 2015-12-31 " title="2015-12-31">2015-12-31</time>
         
-        <a href="/tags/github-pages">
-            <button type="button" class="btn btn-default btn-xs">Github Pages</button>
-        </a>
-        
-        <a href="/tags/octopress">
-            <button type="button" class="btn btn-default btn-xs">Octopress</button>
+        <a href="/tags/misc">
+            <button type="button" class="btn btn-default btn-xs">misc</button>
         </a>
         
     </div>
 
     
 
-<p>参考:</p>
+<p>こたつでぬくぬく。<br />
+思いつくキーワードを拾いつつ、だらだら思い返す。</p>
 
-<ul>
-<li><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></li>
-<li><a href="http://octopress.org/docs/deploying/github/#custom_domains">Custom Domains - Octopress</a></li>
-</ul>
+<h2 id="技術的なこと:48b9f7ad40438182c91e1e17d945a5bc">技術的なこと</h2>
 
-<p>リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。</p>
+<p>もう少し頑張りましょう</p>
 
-<blockquote>
-<p>Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&rsquo;t build successfully, you&rsquo;ll receive a notification from GitHub.</p>
+<p><img src="/img/2015/12/31/2015_contribute.jpg"/></p>
 
-<p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></p>
-</blockquote>
+<h3 id="ossコントリビュート:48b9f7ad40438182c91e1e17d945a5bc">OSSコントリビュート</h3>
 
-<p>反映されるのに10分くらい待ってね、とのこと。<br />
-反映されたらメールをくれるらしい。</p>
+<p>パッチを投げて初コントリビュートした。
+メンテナの方が深夜にもかかわらず素早くレスポンスをくれたり、&rdquo;このコミット1つにまとめてね&rdquo;とか手取り足取り教えてくれた。
+GitHubはカジュアルにパッチが投げられていいなー</p>
 
-<h2 id="octopress側の設定:012f76cf3e52873906c9239002dbb318">Octopress側の設定</h2>
+<h3 id="scala:48b9f7ad40438182c91e1e17d945a5bc">Scala</h3>
 
-<p><code>source/CNAME</code>に割り当てるドメインを設定する。</p>
+<p>ここ1年くらいscalaをたくさん書いていた。
+関数型言語をまともに触ったのはこれが初めてだけど、ずっとオブジェクト指向で関数型初めてです＞＜という僕のような人にはとても良い言語だと思う。
+ただし、学習コストは高い。
+オブジェクト指向と関数型の両側面を持ち合わせているので、どちらに対しても理解を必要とする。
+関数型を知るためにhaskell触ってみようかな&hellip;とかアクター知るためにerlang触ってみようかな&hellip;とか、その辺を楽しめる人にとっては知見を広げてくれる良い言語。</p>
 
-<pre><code class="language-bash">$ echo 'blog.kobtea.net' &gt;&gt; source/CNAME
-</code></pre>
+<p>scalaで<code>map</code>をたくさん書いたあと、rubyのブロック構文に対する見え方が変わったし、<code>xargs</code>で脳汁が出るようになった。scalaとの出会いに感謝。</p>
 
-<p><code>_config.yml</code>のurlも変更しておく。</p>
+<h3 id="isucon5:48b9f7ad40438182c91e1e17d945a5bc">ISUCON5</h3>
 
-<p>source: <code>_config.yml</code></p>
+<p>予選落ちだけど。
+面白そうだなーﾁﾗﾁﾗと毎年横目で見ていたけど、今年は思い切って参加した。
+チームの温度感としては記念受験程度で、事前準備も各自が好きなことポツポツやる程度だった。
+おやつの時間くらいに一瞬だけ上位に行けたのがとても嬉しかった。
+決勝とか予選とかではなく、「よっしゃ！バリバリにチューニングしたったで！！」という達成感があまり無かったので、来年もリベンジしたいなぁ。</p>
 
-<pre><code class="language-yml"># ----------------------- #
-#      Main Configs       #
-# ----------------------- #
+<h2 id="私生活なこと:48b9f7ad40438182c91e1e17d945a5bc">私生活なこと</h2>
 
-url: http://blog.kobtea.net
-title: blog.kobtea.net
-subtitle: 咳をしても情弱
-author: kobtea
-simple_search: http://google.com/search
-description:
-</code></pre>
+<h3 id="お遍路:48b9f7ad40438182c91e1e17d945a5bc">お遍路</h3>
 
-<h2 id="dns設定:012f76cf3e52873906c9239002dbb318">DNS設定</h2>
+<p>2014年から年に1回ペースで四国へ行ってお遍路参りを始めた。
+1年目は原付きをレンタルしてお寺周りをした。
+が、原付き限定の特別ルールを意識するのが嫌だったので、今年は二輪免許をとって挑んだ。
+おかげさまで徳島23箇所を2年で回りきった。
+田舎道をトコトコ走るのはとても楽しいのでおすすめ。
+来年の高知どうしよ&hellip;</p>
 
-<p>お名前.comを使っているので、そちらで設定する。</p>
+<h3 id="健康管理:48b9f7ad40438182c91e1e17d945a5bc">健康管理</h3>
 
-<pre><code>ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
-</code></pre>
+<p>体重計を買った。</p>
 
-<p><img src="/img/2013/09/23/dns-setting-onamae.png" class="img-responsive"/></p>
+<p><a href="http://www.amazon.co.jp/gp/product/B00GRP609C/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B00GRP609C&amp;linkCode=as2&amp;tag=culofgrasslan-22">Withings Smart Body Analyzer ネットワーク対応 体重計 WS-50</a></p>
 
-<p>で適用。
-適用されたよメールが届くまでのんびり待つ。</p>
+<p>特別何か運動はしなかったけど、毎日体重計に乗って眺める&rdquo;体重計乗るだけダイエット&rdquo;をやった。</p>
 
-<h2 id="確認:012f76cf3e52873906c9239002dbb318">確認</h2>
+<p><img src="/img/2015/12/31/weight.jpg" class="img-responsive" width="50%" height="50%"/></p>
 
-<p>digしてみる。</p>
+<p>7月くらいまでは意外にも成果あって、体脂肪が落ちていった。
+その後は仕事で色々あってやさぐれてしまい、たくさん食べたり、そもそも体重計乗らなくなってしまった。見事なV字回復である。来年から体重計乗るだけダイエットを復活させたい。</p>
 
-<pre><code class="language-bash">$ dig +noall +answer blog.kobtea.net CNAME
-blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
-</code></pre>
+<h2 id="来年がんばりたいこと:48b9f7ad40438182c91e1e17d945a5bc">来年がんばりたいこと</h2>
 
-<p>できてるぽい。<br />
-最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。</p>
+<p>今年が終わっちゃうので来年考えよう＞＜</p>
 
 
     <hr/>
@@ -150,11 +143,9 @@ blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
 <nav class="container-fluid">
     <ul class="pager">
         
-        <li class="previous"><a href="http://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/"><i class="fa fa-caret-left"></i> MBAにpyenvを入れる</a></li>
-        
 
         
-        <li class="next"><a href="http://kobtea.net/posts/2013/09/23/change-octopress-theme/">Octopressのテーマを変更する <i class="fa fa-caret-right"></i></a></li>
+        <li class="next"><a href="http://kobtea.net/posts/2015/12/20/rsync-instead-raid/">RAID組もうとしたけどrsync(robocopy)で済ませた話 <i class="fa fa-caret-right"></i></a></li>
         
     </ul>
 </nav>
