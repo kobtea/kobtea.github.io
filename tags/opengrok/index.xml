@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Opengrok on kobtea.net</title>
+    <link>http://kobtea.net/tags/opengrok/</link>
+    <description>Recent content in Opengrok on kobtea.net</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <lastBuildDate>Tue, 03 May 2016 03:16:25 +0900</lastBuildDate>
+    <atom:link href="http://kobtea.net/tags/opengrok/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Ubuntu trustyにOpenGrokをインストールする</title>
+      <link>http://kobtea.net/posts/2016/05/03/setup-opengrok/</link>
+      <pubDate>Tue, 03 May 2016 03:16:25 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2016/05/03/setup-opengrok/</guid>
+      <description>
+
+&lt;p&gt;tomcat力低いけどOpenGrok使ってみたいんや！&lt;br /&gt;
+お試しにvagrantで立ててみる。&lt;/p&gt;
+
+&lt;p&gt;参考:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/How-to-install-OpenGrok&#34;&gt;How to install OpenGrok&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats&#34;&gt;Supported Languages and Formats&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;環境:d7f76f7fae14046b96455df9547ca844&#34;&gt;環境&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Ubuntu 14.04.4&lt;/li&gt;
+&lt;li&gt;OpenJDK 1.7.0_95&lt;/li&gt;
+&lt;li&gt;OpenGrok 0.12.1.5&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;setup:d7f76f7fae14046b96455df9547ca844&#34;&gt;Setup&lt;/h2&gt;
+
+&lt;p&gt;必要なpackageをインストールする。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~$ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y
+~$ sudo apt-get install openjdk-7-jdk tomcat7 exuberant-ctags git subversion mercurial
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;OpenGrokのarchiveを落としてくる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~$ wget -O - https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.5.tar.gz | tar xvzf -
+~$ ./opengrok-0.12.1.5/bin/OpenGrok --help
+Loading the default instance configuration ...
+
+Usage: OpenGrok &amp;lt;deploy|derby|update|updateQuietly|usage|help&amp;gt;
+       OpenGrok index [&amp;lt;directory&amp;gt;]
+       OpenGrok indexpart &amp;lt;src_root&amp;gt; &amp;lt;directory1&amp;gt; [..]
+       OpenGrok clearHistory [&amp;lt;repository_name&amp;gt;]
+
+  Optional environment variables:
+    OPENGROK_CONFIGURATION - location of your configuration
+      e.g. $ OPENGROK_CONFIGURATION=/var/opengrok/myog.conf ./opengrok-0.12.1.5/bin/OpenGrok ...
+
+    See the code for more information on configuration options / variables
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;See the code for more information on configuration options / variables&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Oh&amp;hellip;軟弱者にとても厳しい。&lt;br /&gt;
+と思ったけど、&lt;code&gt;bin/OpenGrok&lt;/code&gt;自体はただのshell scriptなので頑張れば大丈夫そう。&lt;/p&gt;
+
+&lt;p&gt;tomcatにデプロイするぞ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;~$ sudo service tomcat7 status
+ * Tomcat servlet engine is running with pid 10477
+~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
+Loading the default instance configuration ...
+Installing /home/vagrant/opengrok-0.12.1.5/bin/../lib/source.war to /var/lib/tomcat7/webapps ...
+
+Start your application server (Tomcat),  if it is not already
+running, or wait until it loads the just installed web  application.
+
+OpenGrok should be available on &amp;lt;HOST&amp;gt;:&amp;lt;PORT&amp;gt;/source
+  where HOST and PORT are configured in Tomcat.
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;http://&amp;lt;HOST&amp;gt;:8080/source/&lt;/code&gt;にアクセスしてOpenGrokが表示されたら喜ぶ。&lt;/p&gt;
+
+&lt;h2 id=&#34;リファレンス用のコードを配置:d7f76f7fae14046b96455df9547ca844&#34;&gt;リファレンス用のコードを配置&lt;/h2&gt;
+
+&lt;p&gt;リファレンス用のコードとは、リポジトリやプロジェクトと同義。&lt;br /&gt;
+OpenGrokではプロジェクトという単語を使っている。&lt;/p&gt;
+
+&lt;p&gt;このときに最低限知っておいたほうがいい環境変数。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;OPENGROK_INSTANCE_BASE&lt;/code&gt;:
+
+&lt;ul&gt;
+&lt;li&gt;default &lt;code&gt;/var/opengrok&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;OpenGrokのベースディレクトリ&lt;/li&gt;
+&lt;li&gt;この配下にetc, log等色々掘られる&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;SRC_ROOT&lt;/code&gt;:
+
+&lt;ul&gt;
+&lt;li&gt;default &lt;code&gt;OPENGROK_INSTANCE_BASE/src&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;リファレンス用コードを置くディレクトリ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;DATA_ROOT&lt;/code&gt;:
+
+&lt;ul&gt;
+&lt;li&gt;default &lt;code&gt;OPENGROK_INSTANCE_BASE/data&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;リファレンス用コードの解析結果が置かれるディレクトリ&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;適当に&lt;a href=&#34;https://github.com/kobtea/akka-goat-mail&#34;&gt;kobtea/akka-goat-mail&lt;/a&gt;とかでいいや&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# SRC_ROOTは$HOME/srcにしてみよう
+~$ mkdir src
+~$ cd src/
+~/src$ git clone https://github.com/kobtea/akka-goat-mail.git
+~/src$ cd
+
+# indexを張る
+# デフォルト以外のSRC_ROOTの場合は絶対パスを与える
+~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok index $HOME/src
+Loading the default instance configuration ...
+WARNING: OpenGrok generated data path /var/opengrok/data doesn&#39;t exist
+  Attempting to create generated data directory ...
+WARNING: OpenGrok generated etc path /var/opengrok/etc  doesn&#39;t exist
+  Attempting to create generated etc directory ...
+  Creating default /var/opengrok/logging.properties ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ブラウザでプロジェクトが追加されたことを確認する。&lt;/p&gt;
+
+&lt;p&gt;ここでちょっと寄り道。&lt;br /&gt;
+indexを張ったあとの&lt;code&gt;OPENGROK_INSTANCE_BASE&lt;/code&gt;を眺めてみる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;~$ tree /var/opengrok/
+/var/opengrok/
+├── data
+│   ├── historycache
+│   │   └── akka-goat-mail
+│   │       ├── build.sbt.gz
+│   │       ├── LICENSE.gz
+│   │       ├── OpenGroklatestRev
+│   │       ├── project
+│   │       │   ├── build.properties.gz
+│   │       │   └── plugins.sbt.gz
+│   │       ├── README.md.gz
+│   │       └── src
+│   │           └── main
+│   │               └── scala
+│   │                   └── GoatMail.scala.gz
+│   ├── index
+│   │   └── akka-goat-mail
+│   │       ├── _1.fdt
+│   │       ├── _1.fdx
+│   │       ├── _1.fnm
+│   │       ├── _1_Lucene41_0.doc
+│   │       ├── _1_Lucene41_0.pos
+│   │       ├── _1_Lucene41_0.tim
+│   │       ├── _1_Lucene41_0.tip
+│   │       ├── _1.nvd
+│   │       ├── _1.nvm
+│   │       ├── _1.si
+│   │       ├── segments_3
+│   │       └── segments.gen
+│   ├── timestamp
+│   └── xref
+│       └── akka-goat-mail
+│           ├── build.sbt.gz
+│           ├── LICENSE.gz
+│           ├── project
+│           │   ├── build.properties.gz
+│           │   └── plugins.sbt.gz
+│           ├── README.md.gz
+│           └── src
+│               └── main
+│                   └── scala
+│                       └── GoatMail.scala.gz
+├── etc
+│   └── configuration.xml
+├── log
+│   └── opengrok0.0.log
+└── logging.properties
+
+17 directories, 29 files
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;logもここにあるのね。&lt;br /&gt;
+loggerを変更する場合は、&lt;code&gt;opengrok-0.12.1.5/doc/logging.properties&lt;/code&gt;を参考にして&lt;code&gt;OPENGROK_LOGGER_CONFIG_PATH&lt;/code&gt;に渡せば良い。&lt;/p&gt;
+
+&lt;p&gt;etcにはコマンドパスなどのマッピング情報が記載されている。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;void method=&amp;quot;put&amp;quot;&amp;gt;
+ &amp;lt;string&amp;gt;org.opensolaris.opengrok.history.GitRepository&amp;lt;/string&amp;gt;
+ &amp;lt;string&amp;gt;/usr/bin/git&amp;lt;/string&amp;gt;
+&amp;lt;/void&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;こんな感じ。&lt;br /&gt;
+indexコマンドで生成しているわけだし、これは手でいじらないほうが良さそう。&lt;/p&gt;
+
+&lt;h2 id=&#34;運用:d7f76f7fae14046b96455df9547ca844&#34;&gt;運用&lt;/h2&gt;
+
+&lt;p&gt;基本的な運用自体は、読みたいソースを見つけて&lt;code&gt;SRC_ROOT&lt;/code&gt;へ逐一追加、indexの貼り直しかな。&lt;br /&gt;
+常にupstreamを追い続けたいのであれば、リポジトリ更新、index貼り直しをするcronでも作れば良い。&lt;br /&gt;
+サイトのデザインを変えたい場合はどうすればいいんだろう&amp;hellip;folkして魔改造するのかな&amp;hellip;それはつらそうだな&amp;hellip;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
