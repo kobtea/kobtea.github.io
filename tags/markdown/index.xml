@@ -18,20 +18,20 @@
       <description>&lt;p&gt;インストールするもの。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/plasticboy/vim-markdown&#34;&gt;https://github.com/plasticboy/vim-markdown&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/plasticboy/vim-markdown&#34;&gt;https://github.com/plasticboy/vim-markdown&lt;/a&gt;&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;markdown用シンタックスハイライト&lt;/li&gt;
+&lt;li&gt;markdown用シンタックスハイライト&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kannokanno/previm&#34;&gt;https://github.com/kannokanno/previm&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/kannokanno/previm&#34;&gt;https://github.com/kannokanno/previm&lt;/a&gt;&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;markdownのプレビュー&lt;/li&gt;
+&lt;li&gt;markdownのプレビュー&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tyru/open-browser.vim&#34;&gt;https://github.com/tyru/open-browser.vim&lt;/a&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/tyru/open-browser.vim&#34;&gt;https://github.com/tyru/open-browser.vim&lt;/a&gt;&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;URIをブラウザで開く&lt;/li&gt;
+&lt;li&gt;URIをブラウザで開く&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 

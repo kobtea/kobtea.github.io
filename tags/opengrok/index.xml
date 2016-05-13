@@ -6,8 +6,156 @@
     <description>Recent content in Opengrok on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 03 May 2016 03:16:25 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 14 May 2016 04:21:57 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/tags/opengrok/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OpenGrokのデザインを変更する</title>
+      <link>http://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/</link>
+      <pubDate>Sat, 14 May 2016 04:21:57 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/</guid>
+      <description>
+
+&lt;p&gt;以前&lt;a href=&#34;http://kobtea.net/posts/2016/05/03/setup-opengrok/&#34;&gt;Ubuntu trustyにOpenGrokをインストールする&lt;/a&gt;で、&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;サイトのデザインを変えたい場合はどうすればいいんだろう…folkして魔改造するのかな…それはつらそうだな…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;と書いたけど、方法がわかったのでメモ。&lt;br /&gt;
+標準でいくつかのデザインテーマが提供されていた。&lt;/p&gt;
+
+&lt;h2 id=&#34;web-site-look-feel-option:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;Web Site Look &amp;amp; Feel Option&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;OpenGrok&lt;/code&gt; wrapper scriptを眺めていたら&lt;code&gt;SKIN&lt;/code&gt;なんて環境変数を見つけた。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281&#34;&gt;https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;標準で&lt;code&gt;default&lt;/code&gt;, &lt;code&gt;offwhite&lt;/code&gt;, &lt;code&gt;polished&lt;/code&gt;の3種類のスキンが提供されている。&lt;br /&gt;
+「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。&lt;/p&gt;
+
+&lt;h2 id=&#34;スキン:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;スキン&lt;/h2&gt;
+
+&lt;p&gt;どれもJavaを感じるデザイン。&lt;/p&gt;
+
+&lt;h3 id=&#34;default:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;default&lt;/h3&gt;
+
+&lt;p&gt;
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/05/14/default01.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+&lt;br /&gt;
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/05/14/default02.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+&lt;/p&gt;
+
+&lt;h3 id=&#34;offwhite:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;offwhite&lt;/h3&gt;
+
+&lt;p&gt;
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/05/14/offwhite01.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+&lt;br /&gt;
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/05/14/offwhite02.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+&lt;/p&gt;
+
+&lt;h3 id=&#34;polished:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;polished&lt;/h3&gt;
+
+&lt;p&gt;
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/05/14/polished01.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+&lt;br /&gt;
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/05/14/polished02.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+&lt;/p&gt;
+
+&lt;h2 id=&#34;変更方法:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;変更方法&lt;/h2&gt;
+
+&lt;p&gt;スキンを変更するには、&lt;code&gt;update&lt;/code&gt;, &lt;code&gt;index&lt;/code&gt;する際に&lt;code&gt;SKIN&lt;/code&gt;を指定しておけばいいだけ。&lt;/p&gt;
+
+&lt;p&gt;tomcatに既にdeployしている場合。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo SKIN=&#39;-L offwhite&#39; ./opengrok-0.12.1.5/bin/OpenGrok update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;tomcatにこれからdeployする場合、&lt;code&gt;deploy&lt;/code&gt;ではスキン設定されないので&lt;code&gt;update&lt;/code&gt;もすること。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
+$ sudo SKIN=&#39;-L offwhite&#39; ./opengrok-0.12.1.5/bin/OpenGrok update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;プロジェクトを追加してindexを張るときにも&lt;code&gt;SKIN&lt;/code&gt;の指定は必要。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sudo SKIN=&#39;-L offwhite&#39; ./opengrok-0.12.1.5/bin/OpenGrok index
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;毎回環境変数指定するの面倒くさいので、&lt;code&gt;OpenGrok&lt;/code&gt; wrapper scriptを直にいじっちゃってもいいかも。&lt;br /&gt;
+あるいは環境変数書き込んだrcファイル作って、&lt;code&gt;source&lt;/code&gt;するとか。&lt;/p&gt;
+
+&lt;p&gt;スキンを変えても反映されない場合は、ブラウザキャッシュを消すこと。&lt;/p&gt;
+
+&lt;h2 id=&#34;フルカスタマイズする場合:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;フルカスタマイズする場合&lt;/h2&gt;
+
+&lt;p&gt;標準のスキンを参考に自作すればいいんじゃないかな。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/default&#34;&gt;default&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/offwhite&#34;&gt;offwhite&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/polished&#34;&gt;polished&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;自作スキンを作って&lt;code&gt;.war&lt;/code&gt;に追加した後、&lt;code&gt;SKIN&lt;/code&gt;で指定すればいいだけなはず(実際作ってないけど&amp;hellip;)。&lt;br /&gt;
+Java力低いので&lt;code&gt;jar&lt;/code&gt;コマンドを使ってファイルを抽出・追加する方法についてメモメモ。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 任意のディレクトリ・ファイルを抽出する
+$ jar xf source.war offwhite
+$ ls -l offwhite/
+total 44
+drwxrwxr-x 2 vagrant vagrant  4096 Apr 29  2014 img
+-rw-rw-r-- 1 vagrant vagrant   803 Apr 29  2014 jquery.autocomplete.css
+-rw-rw-r-- 1 vagrant vagrant  1135 Apr 29  2014 jquery.combo.css
+-rw-rw-r-- 1 vagrant vagrant   192 Apr 29  2014 jquery.tooltip.css
+-rw-rw-r-- 1 vagrant vagrant  9534 Apr 29  2014 print.css
+-rw-rw-r-- 1 vagrant vagrant 13976 Mar 24  2015 style.css
+
+# 試しにファイルを仕込んでwar更新してみる
+$ touch offwhite/hogehoge
+$ jar uf source.war offwhite
+
+# お掃除した後に、warを展開する
+$ rm -rf offwhite
+$ jar xf source.war
+
+# ちゃんと追加されているんだなも
+$ ls offwhite/hogehoge
+offwhite/hogehoge
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;自分でスキンを作った場合にはこの要領で。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ jar uf opengrok-0.12.1.5/lib/source.war myskin
+$ sudo SKIN=&#39;-L myskin&#39; ./opengrok-0.12.1.5/bin/OpenGrok update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ちなみに&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/README.txt#L357-L404&#34;&gt;README&lt;/a&gt;には、&lt;code&gt;jar&lt;/code&gt;ではなく&lt;code&gt;unzip&lt;/code&gt;を使った方法が紹介されている。&lt;br /&gt;
+お好きな方で。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Ubuntu trustyにOpenGrokをインストールする</title>
@@ -23,16 +171,16 @@
 &lt;p&gt;参考:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/How-to-install-OpenGrok&#34;&gt;How to install OpenGrok&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats&#34;&gt;Supported Languages and Formats&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/How-to-install-OpenGrok&#34;&gt;How to install OpenGrok&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats&#34;&gt;Supported Languages and Formats&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;環境:d7f76f7fae14046b96455df9547ca844&#34;&gt;環境&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Ubuntu 14.04.4&lt;/li&gt;
-&lt;li&gt;OpenJDK 1.7.0_95&lt;/li&gt;
-&lt;li&gt;OpenGrok 0.12.1.5&lt;/li&gt;
+&lt;li&gt;Ubuntu 14.04.4&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;OpenJDK 1.7.0_95&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;OpenGrok 0.12.1.5&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;setup:d7f76f7fae14046b96455df9547ca844&#34;&gt;Setup&lt;/h2&gt;
@@ -94,24 +242,24 @@ OpenGrokではプロジェクトという単語を使っている。&lt;/p&gt;
 &lt;p&gt;このときに最低限知っておいたほうがいい環境変数。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;OPENGROK_INSTANCE_BASE&lt;/code&gt;:
+&lt;li&gt;&lt;code&gt;OPENGROK_INSTANCE_BASE&lt;/code&gt;:&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;default &lt;code&gt;/var/opengrok&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;OpenGrokのベースディレクトリ&lt;/li&gt;
-&lt;li&gt;この配下にetc, log等色々掘られる&lt;/li&gt;
+&lt;li&gt;default &lt;code&gt;/var/opengrok&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;OpenGrokのベースディレクトリ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;この配下にetc, log等色々掘られる&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;SRC_ROOT&lt;/code&gt;:
+&lt;li&gt;&lt;code&gt;SRC_ROOT&lt;/code&gt;:&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;default &lt;code&gt;OPENGROK_INSTANCE_BASE/src&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;リファレンス用コードを置くディレクトリ&lt;/li&gt;
+&lt;li&gt;default &lt;code&gt;OPENGROK_INSTANCE_BASE/src&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;リファレンス用コードを置くディレクトリ&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;DATA_ROOT&lt;/code&gt;:
+&lt;li&gt;&lt;code&gt;DATA_ROOT&lt;/code&gt;:&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;default &lt;code&gt;OPENGROK_INSTANCE_BASE/data&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;リファレンス用コードの解析結果が置かれるディレクトリ&lt;/li&gt;
+&lt;li&gt;default &lt;code&gt;OPENGROK_INSTANCE_BASE/data&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;リファレンス用コードの解析結果が置かれるディレクトリ&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 

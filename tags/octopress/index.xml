@@ -20,8 +20,8 @@
 &lt;p&gt;参考:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#34;&gt;Setting up a custom domain with Pages - Github Pages&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/#custom_domains&#34;&gt;Custom Domains - Octopress&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#34;&gt;Setting up a custom domain with Pages - Github Pages&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/#custom_domains&#34;&gt;Custom Domains - Octopress&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。&lt;/p&gt;
@@ -67,7 +67,7 @@ description:
 
 &lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2013/09/23/dns-setting-onamae.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
 
-&lt;p&gt;で適用。
+&lt;p&gt;で適用。&lt;br /&gt;
 適用されたよメールが届くまでのんびり待つ。&lt;/p&gt;
 
 &lt;h2 id=&#34;確認:012f76cf3e52873906c9239002dbb318&#34;&gt;確認&lt;/h2&gt;
@@ -335,7 +335,7 @@ identical public/stylesheets/screen.css
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;ブラウザでlocalhost:4000にアクセス。&lt;br /&gt;
-&lt;img src=&#34;http://kobtea.net/img/2013/09/23/hello-octopress.png&#34; class=&#34;img-responsive&#34;/&gt;
+&lt;img src=&#34;http://kobtea.net/img/2013/09/23/hello-octopress.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;br /&gt;
 わーお&lt;/p&gt;
 
 &lt;h2 id=&#34;github-pagesへデプロイ:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;Github Pagesへデプロイ&lt;/h2&gt;
@@ -343,8 +343,8 @@ identical public/stylesheets/screen.css
 &lt;p&gt;参考 :&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/&#34;&gt;Deploying to Github Pages&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/&#34;&gt;Octopressのインストールから運用管理まで&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/&#34;&gt;Deploying to Github Pages&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/&#34;&gt;Octopressのインストールから運用管理まで&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;githubにUSERNAME.github.ioでリポジトリを作成しておく。&lt;/p&gt;

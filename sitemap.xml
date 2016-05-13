@@ -3,8 +3,13 @@
   
   <url>
     <loc>http://kobtea.net/</loc>
-    <lastmod>2016-05-03T03:16:25+09:00</lastmod>
+    <lastmod>2016-05-14T04:21:57+09:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/</loc>
+    <lastmod>2016-05-14T04:21:57+09:00</lastmod>
   </url>
   
   <url>

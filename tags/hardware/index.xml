@@ -24,17 +24,17 @@
 &lt;h2 id=&#34;自宅の環境:00fd6aa5576bb15357667faf913fdf48&#34;&gt;自宅の環境&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;デスクトップPC (Windows)
+&lt;li&gt;デスクトップPC (Windows)&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;常時起動していて自宅サーバ状態&lt;/li&gt;
-&lt;li&gt;意識低いことする用&lt;/li&gt;
+&lt;li&gt;常時起動していて自宅サーバ状態&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;意識低いことする用&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Macbook Air
+&lt;li&gt;Macbook Air&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;コード書いたりする&lt;/li&gt;
-&lt;li&gt;意識高いことする用&lt;/li&gt;
+&lt;li&gt;コード書いたりする&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;意識高いことする用&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -43,14 +43,14 @@
 &lt;p&gt;RAIDを組めるストレージといえばNASということで、NASを買うかどうかも含め考えられるプランは3つ。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;アプライアンスNAS案&lt;/li&gt;
-&lt;li&gt;自作NAS案&lt;/li&gt;
-&lt;li&gt;Windows機でがんばる案&lt;/li&gt;
+&lt;li&gt;アプライアンスNAS案&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;自作NAS案&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Windows機でがんばる案&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;アプライアンスnas案:00fd6aa5576bb15357667faf913fdf48&#34;&gt;アプライアンスNAS案&lt;/h3&gt;
 
-&lt;p&gt;箱物のNASを買う案。
+&lt;p&gt;箱物のNASを買う案。&lt;br /&gt;
 買うからにはスロット4本以上ほしい。&lt;/p&gt;
 
 &lt;p&gt;QNAP評判良いけど、結構良いお値段するんだなー。&lt;br /&gt;
@@ -62,15 +62,15 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;アプライアンスなので楽&lt;/li&gt;
-&lt;li&gt;メディアサーバとしても使える&lt;/li&gt;
+&lt;li&gt;アプライアンスなので楽&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;メディアサーバとしても使える&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;しっかりしたものを買おうとすると結構高い&lt;/li&gt;
-&lt;li&gt;Firmwareで駄目パッチが来ると色々辛い&lt;/li&gt;
+&lt;li&gt;しっかりしたものを買おうとすると結構高い&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Firmwareで駄目パッチが来ると色々辛い&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;自作nas案:00fd6aa5576bb15357667faf913fdf48&#34;&gt;自作NAS案&lt;/h3&gt;
@@ -78,13 +78,13 @@
 &lt;p&gt;zfs(w/Linux)が気になるので、RAID-Z2で組むことを主軸に考えた。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;自作するならディスク5本位挿したいな
+&lt;li&gt;自作するならディスク5本位挿したいな&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;RAID-Z2は現状あとからディスクを増やせないので、始めから多めに挿しておく&lt;/li&gt;
-&lt;li&gt;ディスク4本だとRAID10と実効容量変わらずで負けた気がする&lt;/li&gt;
+&lt;li&gt;RAID-Z2は現状あとからディスクを増やせないので、始めから多めに挿しておく&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;ディスク4本だとRAID10と実効容量変わらずで負けた気がする&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;小さいほうがいいよねってことでMini-ITX&lt;/li&gt;
+&lt;li&gt;小さいほうがいいよねってことでMini-ITX&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;といった要件を満たすケースを探しながらキャッキャウフフしてた。&lt;/p&gt;
@@ -92,17 +92,17 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Linuxなのでお勉強にもなる&lt;/li&gt;
+&lt;li&gt;Linuxなのでお勉強にもなる&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Skylake出たばっかりでかなり時期が悪い感
+&lt;li&gt;Skylake出たばっかりでかなり時期が悪い感&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;駆け込み需要でHaswell以前のM/Bが品薄状態&lt;/li&gt;
-&lt;li&gt;メモリの規格も変わっちゃったし&amp;hellip;&lt;/li&gt;
+&lt;li&gt;駆け込み需要でHaswell以前のM/Bが品薄状態&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;メモリの規格も変わっちゃったし&amp;hellip;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -114,29 +114,29 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;一番お手頃価格&lt;/li&gt;
+&lt;li&gt;一番お手頃価格&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Windows&amp;hellip;&lt;/li&gt;
+&lt;li&gt;Windows&amp;hellip;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;結局どれにしたの:00fd6aa5576bb15357667faf913fdf48&#34;&gt;結局どれにしたの&lt;/h3&gt;
 
-&lt;p&gt;今回おさいふ事情が芳しくなかったので、WindowsでRAID1を作ることにした。
-とりあえずディスク2本買うだけで良いし、小さく始めるにはちょうどいい感じ。
+&lt;p&gt;今回おさいふ事情が芳しくなかったので、WindowsでRAID1を作ることにした。&lt;br /&gt;
+とりあえずディスク2本買うだけで良いし、小さく始めるにはちょうどいい感じ。&lt;br /&gt;
 時期が来たらNAS機自作するのも楽しそうだな。&lt;/p&gt;
 
 &lt;p&gt;買ってきたもの&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B013HNYVCE/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B013HNYVCE&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;Western Digital Corporation WD60EZRZ-RT&lt;/a&gt; * 2&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B007903F7E/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B007903F7E&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;エアリア Raid JET PCI Express X1 接続 Raidボード Raid0 1対応 SD-PESA3-2RL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B013HNYVCE/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B013HNYVCE&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;Western Digital Corporation WD60EZRZ-RT&lt;/a&gt; * 2&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B007903F7E/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B007903F7E&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;エアリア Raid JET PCI Express X1 接続 Raidボード Raid0 1対応 SD-PESA3-2RL&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;SATAポート足りなかったので拡張カード買いに行ったら、RAID有りモデルと無しモデルで同じ値段だったので有りなやつを買ってみた。
+&lt;p&gt;SATAポート足りなかったので拡張カード買いに行ったら、RAID有りモデルと無しモデルで同じ値段だったので有りなやつを買ってみた。&lt;br /&gt;
 ふわっとRAIDカードを買ってきたら、今度はHardware RAIDとSoftware RAIDどっちにしようかという話になった。&lt;/p&gt;
 
 &lt;h2 id=&#34;hardware-raid1-v-s-software-raid1:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Hardware RAID1 v.s. Software RAID1&lt;/h2&gt;
@@ -144,8 +144,8 @@
 &lt;p&gt;ファイ！&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Hardware RAIDは、Marvellチップ搭載の上記RAIDカード&lt;/li&gt;
-&lt;li&gt;Software RAIDは、Windows標準のミラーボリューム&lt;/li&gt;
+&lt;li&gt;Hardware RAIDは、Marvellチップ搭載の上記RAIDカード&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Software RAIDは、Windows標準のミラーボリューム&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;CrystalDiskInfoとCrystalDiskMarkで見比べてみる。&lt;/p&gt;
@@ -175,15 +175,15 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Software RAIDに比べればCPU負荷は低いんじゃないかな(測ってないけど^p^)&lt;/li&gt;
+&lt;li&gt;Software RAIDに比べればCPU負荷は低いんじゃないかな(測ってないけど^p^)&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;smart見れない(´・ω・｀)&lt;/li&gt;
-&lt;li&gt;rebuildはBIOS上で行うため、rebuild中はWindowsを使用できない&lt;/li&gt;
-&lt;li&gt;RAIDコントローラのベンダロックイン&lt;/li&gt;
+&lt;li&gt;smart見れない(´・ω・｀)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;rebuildはBIOS上で行うため、rebuild中はWindowsを使用できない&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;RAIDコントローラのベンダロックイン&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;software-raid1-windows-mirrored-volume:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Software RAID1 (Windows Mirrored Volume)&lt;/h3&gt;
@@ -197,33 +197,33 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;rebuildはWindows上で行うため、rebuild中もWindowsが利用できる&lt;/li&gt;
+&lt;li&gt;rebuildはWindows上で行うため、rebuild中もWindowsが利用できる&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Windowsのベンダロックイン&lt;/li&gt;
+&lt;li&gt;Windowsのベンダロックイン&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&#34;結局どっちにしたの:00fd6aa5576bb15357667faf913fdf48&#34;&gt;結局どっちにしたの&lt;/h3&gt;
 
 &lt;p&gt;どっちにもしてない＞＜&lt;br /&gt;
-当初smart見れないのは辛いので、ミラーボリュームを使ったSoftware RAID1にしようと決めた。
-このミラーボリューム、ダイナミックディスクという形式でフォーマットする必要がある。
+当初smart見れないのは辛いので、ミラーボリュームを使ったSoftware RAID1にしようと決めた。&lt;br /&gt;
+このミラーボリューム、ダイナミックディスクという形式でフォーマットする必要がある。&lt;br /&gt;
 そしてこのダイナミックディスクの評判が芳しくない様子。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://aikotobaha.blogspot.jp/2011/05/windows7.html&#34;&gt;Windows7 無効になったダイナミックディスクを復旧する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.pc-every.com/TIPS/tips09.html&#34;&gt;ダイナミックディスクがアクセス不能になった場合の修復方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://aikotobaha.blogspot.jp/2011/05/windows7.html&#34;&gt;Windows7 無効になったダイナミックディスクを復旧する&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.pc-every.com/TIPS/tips09.html&#34;&gt;ダイナミックディスクがアクセス不能になった場合の修復方法&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;めっちゃ怖い。&lt;/p&gt;
 
 &lt;h2 id=&#34;もう定期バックアップだけでいいんじゃなかろうか:00fd6aa5576bb15357667faf913fdf48&#34;&gt;もう定期バックアップだけでいいんじゃなかろうか&lt;/h2&gt;
 
-&lt;p&gt;なんかもう疲れちゃって、RAID自体微妙な気がしてきた。
-自宅環境ならもう定期バックアップだけ取っていればいいんじゃないかな。
+&lt;p&gt;なんかもう疲れちゃって、RAID自体微妙な気がしてきた。&lt;br /&gt;
+自宅環境ならもう定期バックアップだけ取っていればいいんじゃないかな。&lt;br /&gt;
 目的はデータ自体の冗長化(バックアップ)であって、高可用性ではない。&lt;/p&gt;
 
 &lt;p&gt;と考えだしたら&lt;code&gt;rsync&lt;/code&gt;が輝きだした。&lt;/p&gt;
@@ -231,15 +231,15 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;ベンダロックインがない&lt;/li&gt;
-&lt;li&gt;復旧がめっちゃ楽&lt;/li&gt;
+&lt;li&gt;ベンダロックインがない&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;復旧がめっちゃ楽&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;バッチによる非同期処理のため一時的に差分が生まれる&lt;/li&gt;
-&lt;li&gt;ディスクは当然2本見えるので、&amp;rdquo;mirror側は絶対に触らない&amp;rdquo;という&amp;rdquo;運用でカバー&amp;rdquo;が発生する&lt;/li&gt;
+&lt;li&gt;バッチによる非同期処理のため一時的に差分が生まれる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;ディスクは当然2本見えるので、&amp;rdquo;mirror側は絶対に触らない&amp;rdquo;という&amp;rdquo;運用でカバー&amp;rdquo;が発生する&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;ええやん！&lt;/p&gt;
@@ -254,13 +254,13 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/MIR&lt;/code&gt; ミラーリング(削除もしてくれる)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/R:n&lt;/code&gt; コピー失敗時のリトライ数&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/W:n&lt;/code&gt; コピー失敗時のリトライまでの待ち時間&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/XD &amp;lt;DIR&amp;gt;&lt;/code&gt; 指定ディレクトリを除外&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/XJ&lt;/code&gt; ジャンクションポイント(シンボリックリンクのようなもの)を除外&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/TEE&lt;/code&gt; 標準出力にも出力する&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/LOG&lt;/code&gt; ログの出力先&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/MIR&lt;/code&gt; ミラーリング(削除もしてくれる)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/R:n&lt;/code&gt; コピー失敗時のリトライ数&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/W:n&lt;/code&gt; コピー失敗時のリトライまでの待ち時間&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/XD &amp;lt;DIR&amp;gt;&lt;/code&gt; 指定ディレクトリを除外&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/XJ&lt;/code&gt; ジャンクションポイント(シンボリックリンクのようなもの)を除外&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/TEE&lt;/code&gt; 標準出力にも出力する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/LOG&lt;/code&gt; ログの出力先&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;勝った！これで大勝利や！&lt;/p&gt;
@@ -270,30 +270,30 @@
 &lt;p&gt;お金のこと&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;お金に余裕があるなら
+&lt;li&gt;お金に余裕があるなら&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;QNAPとかアプライアンスNAS買えばいいと思う&lt;/li&gt;
-&lt;li&gt;Linuxのお勉強したいなら自作NASアリだと思う&lt;/li&gt;
+&lt;li&gt;QNAPとかアプライアンスNAS買えばいいと思う&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Linuxのお勉強したいなら自作NASアリだと思う&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;お金に余裕が無いからといって、Windowsのダイナミックディスクに手を出してはいけない&lt;/li&gt;
+&lt;li&gt;お金に余裕が無いからといって、Windowsのダイナミックディスクに手を出してはいけない&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;冗長化のこと&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;欲しいのは本当に高可用性(RAID)なのかよく考える&lt;/li&gt;
-&lt;li&gt;データ自身をバックアップしていれば、可用性は低くても大丈夫なケース
+&lt;li&gt;欲しいのは本当に高可用性(RAID)なのかよく考える&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;データ自身をバックアップしていれば、可用性は低くても大丈夫なケース&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;サービスをホスティングしていない&lt;/li&gt;
-&lt;li&gt;一人暮らしなど、利用者=運用者な状況(困るの自分だけだし&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;サービスをホスティングしていない&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;一人暮らしなど、利用者=運用者な状況(困るの自分だけだし&amp;hellip;)&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;可用性高くしたいケース
+&lt;li&gt;可用性高くしたいケース&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;サービスをホスティングしている&lt;/li&gt;
-&lt;li&gt;家族など自分以外の利用者がいる状況&lt;/li&gt;
+&lt;li&gt;サービスをホスティングしている&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;家族など自分以外の利用者がいる状況&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>

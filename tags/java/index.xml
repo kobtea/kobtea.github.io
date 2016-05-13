@@ -24,9 +24,9 @@
 &lt;p&gt;Java Optionを表示するには3つのOptionがある。&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt;: 最終的な設定値&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt;: 初期値&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt;: コマンドライン上で与えた設定値&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt;: 最終的な設定値&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt;: 初期値&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt;: コマンドライン上で与えた設定値&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h2&gt;
@@ -278,8 +278,8 @@ $ java -XX:+PrintCommandLineFlags &amp;gt;&amp;amp; /dev/null; echo $?
 &lt;p&gt;参考:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.javaworld.com/article/2073676/hotspot-jvm-options-displayed---xx--printflagsinitial-and--xx--printflagsfinal.html&#34;&gt;HotSpot JVM Options Displayed: -XX:+PrintFlagsInitial and -XX:+PrintFlagsFinal | JavaWorld&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&#34;&gt;Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.javaworld.com/article/2073676/hotspot-jvm-options-displayed---xx--printflagsinitial-and--xx--printflagsfinal.html&#34;&gt;HotSpot JVM Options Displayed: -XX:+PrintFlagsInitial and -XX:+PrintFlagsFinal | JavaWorld&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&#34;&gt;Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>

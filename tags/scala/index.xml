@@ -128,7 +128,7 @@ scala&amp;gt; :q
 &amp;gt; // (∩´∀｀)∩ﾜｰｲ
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;もdaemonみたい。
+&lt;p&gt;&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;もdaemonみたい。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&#34;&gt;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;そもそもdaemonとnon-daemonどっちがいいんです:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;そもそもdaemonとnon-daemonどっちがいいんです？&lt;/h2&gt;
@@ -159,8 +159,8 @@ Type :help for more information.
 &lt;p&gt;&lt;code&gt;scala.concurrent.Future&lt;/code&gt;で例外が発生して&lt;code&gt;Failure&lt;/code&gt;になったとき、&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;デフォルト値を適用して&lt;code&gt;Success&lt;/code&gt;で返したい！&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Failure&lt;/code&gt;のままでいいんだけど別の例外を投げたい！&lt;/li&gt;
+&lt;li&gt;デフォルト値を適用して&lt;code&gt;Success&lt;/code&gt;で返したい！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Failure&lt;/code&gt;のままでいいんだけど別の例外を投げたい！&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;といったことをしたい。&lt;/p&gt;
