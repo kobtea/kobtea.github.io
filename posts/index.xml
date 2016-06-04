@@ -6,8 +6,419 @@
     <description>Recent content in Posts on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 14 May 2016 04:21:57 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 04 Jun 2016 21:59:34 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Google Stackdriverを眺める</title>
+      <link>http://kobtea.net/posts/2016/06/04/try-google-stackdriver/</link>
+      <pubDate>Sat, 04 Jun 2016 21:59:34 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2016/06/04/try-google-stackdriver/</guid>
+      <description>
+
+&lt;p&gt;以前話題になった&lt;a href=&#34;https://cloud.google.com/stackdriver/&#34;&gt;Stackdriver&lt;/a&gt;をbetaのうちに触っておこうそうしよう。&lt;br /&gt;
+AWSがCloudWatchなら、GCPはStackdriverや！！&lt;/p&gt;
+
+&lt;h2 id=&#34;stackdriverの提供する機能:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriverの提供する機能&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/stackdriver/docs/&#34;&gt;Document&lt;/a&gt;を眺めてみると機能はこんな感じ。&lt;br /&gt;
+正直下3つはまだ触れていないのでわりと適当。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Monitoring&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;監視と計測のためのサービス&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Agentをリソースに仕込んでメトリックを取得する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Agentを使わなくても、GCP APIを使って簡単なメトリックは取得してくれる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;みんな大好きアラート発砲もできる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;GCPだけでなく、AWSにも対応している&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Logging&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;syslogや任意のログを収集して管理・分析ができる&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Error Reporting&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;どのエラーがいつ何回起きたか&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Debug&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;コードに埋め込むあのデバッガ&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Trace&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;パフォーマンスチューニングのためのサービス&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;どの処理にどれだけ時間がかかっているのかが計測できる&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;今回はMonitoringを眺めてみようかな。&lt;/p&gt;
+
+&lt;h2 id=&#34;準備:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;準備&lt;/h2&gt;
+
+&lt;p&gt;監視対象のInstanceを立ち上げて、Agentを仕込むぞー。&lt;br /&gt;
+今回はOpengrokサーバを構築してみようかな。&lt;br /&gt;
+前段にNginx、バックエンドにTomcatがいる構成。&lt;br /&gt;
+Stackdriverに関係ない部分はざっくり省略していく(それでも長ったらしくなってしまったあばば)。&lt;/p&gt;
+
+&lt;h3 id=&#34;gce-instanceを作成する:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;GCE Instanceを作成する&lt;/h3&gt;
+
+&lt;p&gt;参考:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/agent/install-agent#authorizing&#34;&gt;Installing the Monitoring Agent - Authorizing the monitoring agent&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;はじめにWeb consoleからGoogle Monitoring APIを有効にしておくこと。&lt;br /&gt;
+あとは普通に作成すればいいんだけど、Service Accountの権限だけ注意する。&lt;br /&gt;
+最低限&lt;code&gt;monitoring.write&lt;/code&gt;があれば良さそう。&lt;br /&gt;
+Service Accountの確認方法は&lt;a href=&#34;https://cloud.google.com/monitoring/agent/install-agent#authorizing&#34;&gt;Document&lt;/a&gt;にある通り。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ curl --silent -f -H &amp;quot;Metadata-Flavor: Google&amp;quot; http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
+https://www.googleapis.com/auth/cloud.useraccounts.readonly
+https://www.googleapis.com/auth/devstorage.read_only
+https://www.googleapis.com/auth/logging.write
+https://www.googleapis.com/auth/monitoring
+https://www.googleapis.com/auth/service.management
+https://www.googleapis.com/auth/servicecontrol
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;stackdriver-agentを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriver Agentを入れる&lt;/h3&gt;
+
+&lt;p&gt;参考:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/agent/install-agent&#34;&gt;Installing the Monitoring Agent&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Documentに記載のinstall scriptを打つだけ、だと思ってました。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;kobtea@opengrok:~$ curl -O https://repo.stackdriver.com/stack-install.sh
+kobtea@opengrok:~$ sudo bash stack-install.sh --write-gcm
+Installing agents for Debian or Ubuntu.
+# ...
+Setting up stackdriver-agent (5.5.0-269.trusty) ...
+ * Starting Stackdriver metrics collection agent stackdriver-agent
+ * Need to set STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+ * not starting, configuration error
+                                                                                                                                                                                          [fail]
+# ...
+Setting up stackdriver-extractor (92-1.trusty) ...
+ * Starting Stackdriver metadata extractor stackdriver-extractor
+ * Please set STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+                                                                                                                                                                                          [fail]
+# ...
+Restarting services
+ * Restarting Stackdriver metrics collection agent stackdriver-agent
+ * Need to set STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+ * not starting, configuration error
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;インストール失敗してる&amp;hellip;&lt;br /&gt;
+&lt;code&gt;STACKDRIVER_API_KEY&lt;/code&gt;がないぞって、Documentでは特に言及されてないんだけどなぁ&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;stack-install.sh&lt;/code&gt;を見てみると&lt;code&gt;--write-gcm&lt;/code&gt;オプションなんてものは書かれていない。な、なんだってー&lt;br /&gt;
+代わりにproject metadataを使う方法は書いてある&amp;hellip;どういうことや&amp;hellip;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# Install and start the Google monitoring agent.
+#
+# Usage:
+#
+#   curl -O https://.../stack-install.sh
+#   bash stack-install.sh [--api-key=...]
+#
+# The API key can be omitted on a GCE instance if it is available in the
+# project metadata as the value of &amp;quot;stackdriver-agent-key&amp;quot;.
+#
+# This script does the following:
+#
+#   1. Configure the required apt-get or yum repository.
+#   2. Install the agent package.
+#   3. Invoke /opt/stackdriver/stack-config to do the following:
+#      a. Optionally configure the agent with the API key.
+#      b. Start the agent services.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;よくわからんので、API Keyをセットして試す。&lt;br /&gt;
+API Keyは以下のurlから確認できる。&lt;br /&gt;
+&lt;a href=&#34;https://app.google.stackdriver.com/settings/accounts/agent/&#34;&gt;https://app.google.stackdriver.com/settings/accounts/agent/&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;kobtea@opengrok:~$ sudo bash stack-install.sh --api-key=&amp;lt;MY_API_KEY&amp;gt;
+Installing agents for Debian or Ubuntu.
+# ...
+Restarting services
+ * Restarting Stackdriver metrics collection agent stackdriver-agent
+
+# 入った！
+# stackdriver-agentはinstall時に立ち上がる
+kobtea@opengrok:~$ sudo service stackdriver-agent status
+ * stackdriver-agent is running
+
+# stackdriver-extractorは手動で
+kobtea@opengrok:~$ sudo service stackdriver-extractor start
+ * Starting Stackdriver metadata extractor stackdriver-extractor                                                                                                                          [ OK ]
+
+# stack-configでも問題なさそう
+kobtea@opengrok:~$ /opt/stackdriver/stack-config info
+Stackdriver Host Info Dump
+Resource Id: xxxx
+API Key: xxxx
+Error talking to Stackdriver gateway No JSON object could be decoded
+ * stackdriver-agent is running
+Agent status:  Agent config snippets:
+ * stackdriver-extractor is running
+Extractor status:  Extractor sample data:
+{
+  &amp;quot;interfaces&amp;quot;: [
+    {
+      &amp;quot;name&amp;quot;: &amp;quot;lo&amp;quot;,
+      &amp;quot;address_families&amp;quot;: [
+# ...
+      ]
+    }
+  ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;(∩´∀｀)∩ﾜｰｲ&lt;/p&gt;
+
+&lt;h3 id=&#34;stackdriver-agent-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriver Agent pluginを入れる&lt;/h3&gt;
+
+&lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/#supported_plugins&#34;&gt;Monitoring Agent Configuration - Supported plugins&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Agent pluginは標準で色々なミドルウェアに対応している。&lt;br /&gt;
+標準pluginはconfigを書くだけで楽ちん。&lt;/p&gt;
+
+&lt;h4 id=&#34;nginx-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Nginx pluginを入れる&lt;/h4&gt;
+
+&lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/nginx&#34;&gt;Nginx Plugin&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Nginx pluginは&lt;code&gt;stub_status&lt;/code&gt;の値を計測する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# stub_statusの準備
+kobtea@opengrok:~$ sudo touch /etc/nginx/sites-available/status
+kobtea@opengrok:~$ cat /etc/nginx/sites-available/status
+server {
+	listen 80;
+	server_name local-stackdriver-agent.stackdriver.com;
+	location /nginx_status {
+		stub_status on;
+		access_log   off;
+		allow 127.0.0.1;
+		deny all;
+	}
+	location / {
+		root /dev/null;
+	}
+}
+kobtea@opengrok:~$ sudo ln -s /etc/nginx/sites-available/status /etc/nginx/sites-enabled/
+kobtea@opengrok:~$ sudo service nginx reload
+kobtea@opengrok:~$ curl http://local-stackdriver-agent.stackdriver.com/nginx_status
+Active connections: 2
+server accepts handled requests
+ 315 315 3601
+Reading: 0 Writing: 1 Waiting: 1
+
+# Stackdriver Nginx pluginの設定
+kobtea@opengrok:~$ sudo touch /opt/stackdriver/collectd/etc/collectd.d/nginx.conf
+kobtea@opengrok:~$ cat /opt/stackdriver/collectd/etc/collectd.d/nginx.conf
+LoadPlugin &amp;quot;nginx&amp;quot;
+&amp;lt;Plugin &amp;quot;nginx&amp;quot;&amp;gt;
+  URL &amp;quot;http://local-stackdriver-agent.stackdriver.com/nginx_status&amp;quot;
+&amp;lt;/Plugin&amp;gt;
+kobtea@opengrok:~$ sudo service stackdriver-agent restart
+# ...
+Created new plugin context.
+                                                                                                                                                                                          [ OK ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;tomcat-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Tomcat pluginを入れる&lt;/h4&gt;
+
+&lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/tomcat&#34;&gt;Tomcat Plugin&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Tomcat, JVM系はJMXを使って計測する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# JMXの設定
+kobtea@opengrok:~$ diff -u /etc/default/tomcat7{.orig,}
+--- /etc/default/tomcat7.orig	2016-05-12 16:50:51.872516414 +0000
++++ /etc/default/tomcat7	2016-05-12 17:02:53.180519725 +0000
+@@ -19,6 +19,7 @@
+ # exactly one CPU chip that contains one or two cores, you should also add
+ # the &amp;quot;-XX:+CMSIncrementalMode&amp;quot; option.
+ JAVA_OPTS=&amp;quot;-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC&amp;quot;
++JAVA_OPTS=&amp;quot;${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom&amp;quot;
+
+ # To enable remote debugging uncomment the following line.
+ # You will then be able to use a java debugger on port 8000.
+@@ -45,3 +46,7 @@
+ # NOTE: authbind works only with IPv4.  Do not enable it when using IPv6.
+ # (yes/no, default: no)
+ #AUTHBIND=no
++CATALINA_OPTS=&amp;quot;${CATALINA_OPTS} -Dcom.sun.management.jmxremote&amp;quot;
++CATALINA_OPTS=&amp;quot;${CATALINA_OPTS} -Dcom.sun.management.jmxremote.port=9012&amp;quot;
++CATALINA_OPTS=&amp;quot;${CATALINA_OPTS} -Dcom.sun.management.jmxremote.ssl=false&amp;quot;
++CATALINA_OPTS=&amp;quot;${CATALINA_OPTS} -Dcom.sun.management.jmxremote.authenticate=false&amp;quot;
+
+kobtea@opengrok:~$ sudo service tomcat7 restart
+
+# Stackdriver Tomcat pluginの設定
+kobtea@opengrok:~$ cd /opt/stackdriver/collectd/etc/collectd.d/ &amp;amp;&amp;amp; sudo curl -O https://raw.githubusercontent.com/Stackdriver/stackdriver-agent-service-configs/master/etc/collectd.d/tomcat-7.conf
+kobtea@opengrok:~$ sudo service stackdriver-agent restart
+# ...
+Created new plugin context.
+                                                                                                                                                                                          [ OK ]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;web-consoleを眺める:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Web consoleを眺める&lt;/h2&gt;
+
+&lt;p&gt;IndexページはAlert周りの機能が多い印象、すぐに反応したいしね。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/01.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;p&gt;メニューごとにふわっと眺めようかな。&lt;/p&gt;
+
+&lt;h3 id=&#34;resources:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Resources&lt;/h3&gt;
+
+&lt;p&gt;GCP/AWSのサービスや、Agent pluginごとにいい感じにグルーピングされている。&lt;br /&gt;
+インスタンス単位ではなくリソースタイプ単位でまとめて管理する設計なんだな。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/02.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;p&gt;各リソースページ。&lt;br /&gt;
+リソースグループに紐付いたIncidentやメトリックが確認できる。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/03.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;h3 id=&#34;alerting:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Alerting&lt;/h3&gt;
+
+&lt;p&gt;みんな大好きアラート。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/04.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;p&gt;メトリックの閾値などなど結構柔軟に設定できる。&lt;br /&gt;
+通知先はEmail, Pagerduty, Webhook, Slackなど。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/05.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;p&gt;IncidentsではPagerduty likeに状態管理ができる。&lt;br /&gt;
+コメントも書けたりする。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/06.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;p&gt;Uptime Checksは複数拠点からチェックしてくれる。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/07.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;p&gt;Events、「最近調子悪いけど何かしたっけかなー」とか「最近Alert減ってきていい傾向だなー」とか。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/08.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;h3 id=&#34;groups:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Groups&lt;/h3&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/09.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;p&gt;先の勝手に分類してくれるResourcesではなく、自分でグルーピングしたい！ときに使う。&lt;br /&gt;
+項目はResourcesと同じ。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/10.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;h3 id=&#34;dashboards:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Dashboards&lt;/h3&gt;
+
+&lt;p&gt;君だけの最強のDashboardを作ろう。&lt;br /&gt;
+しかし残念、折れ線グラフしか使えない！&lt;br /&gt;
+CPUとか積み上げグラフにしたいな&amp;hellip;&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/11.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;h3 id=&#34;logs:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Logs&lt;/h3&gt;
+
+&lt;p&gt;ログの全文検索、リソースタイプ別、ログレベル別なんでもござれ。しゅごい。&lt;br /&gt;
+データフォーマットはjson。&lt;/p&gt;
+
+
+
+
+&lt;img src=&#34;http://kobtea.net/img/2016/06/04/12.png&#34; class=&#34;img-responsive img-thumbnail&#34;/&gt;
+
+
+
+&lt;h2 id=&#34;感想:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;感想&lt;/h2&gt;
+
+&lt;p&gt;まだまだbetaだなーと強く思ったのはグラフかな。折れ線グラフ以外も欲しい。&lt;br /&gt;
+Custom Dashboardはgrafanaレベルになったら嬉しいな。&lt;br /&gt;
+複数メトリック組み合わせて四則演算できるとかなり嬉しいけど、これはagent pluginで頑張れと言われても仕方ないかなぁ。&lt;/p&gt;
+
+&lt;p&gt;UIは好みの問題かもしれないけど、Resourcesのグラフは縦に並べただけでとにかく見づらい。&lt;/p&gt;
+
+&lt;p&gt;グラフ以外のAlert, Log周りはとても使いやすい印象。&lt;br /&gt;
+個人サービス程度なら今の状態でも十分お世話になれると思う。&lt;/p&gt;
+
+&lt;p&gt;たのしかったです。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>OpenGrokのデザインを変更する</title>
@@ -2448,220 +2859,6 @@ $ rake deploy
 
 &lt;p&gt;反映に時間がかかることもあるからのんびり待つ。&lt;br /&gt;
 記事が投稿されたら喜んでおしまい。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MBAにRuby環境を作る</title>
-      <link>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</link>
-      <pubDate>Mon, 23 Sep 2013 00:17:00 +0900</pubDate>
-      
-      <guid>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
-      <description>
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
-ProductName:    Mac OS X
-ProductVersion: 10.8.4
-BuildVersion:   12E3067
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt;のreadmeにそってやる。&lt;br /&gt;
-PATHについて解説までしてくれるとかマジ天使。&lt;/p&gt;
-
-&lt;h2 id=&#34;rbenvのインストール:02efbb982949a3203f0d32f585df492a&#34;&gt;rbenvのインストール&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# homebrewを最新の状態に
-$ brew update
-$ brew upgrade
-
-# rbenvをインストール
-$ brew install rbenv
-==&amp;gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
-######################################################################## 100.0%
-==&amp;gt; Caveats
-To use Homebrew&#39;s directories rather than ~/.rbenv add to your profile:
-  export RBENV_ROOT=/usr/local/var/rbenv
-
-To enable shims and autocompletion add to your profile:
-  if which rbenv &amp;gt; /dev/null; then eval &amp;quot;$(rbenv init -)&amp;quot;; fi
-==&amp;gt; Summary
-🍺  /usr/local/Cellar/rbenv/0.4.0: 31 files, 152K, built in 2 seconds
-
-# ruby-buildをインストール
-$ brew install ruby-build
-######################################################################## 100.0%
-==&amp;gt; ./configure --prefix=/usr/local/Cellar/autoconf/2.69
-==&amp;gt; make install
-🍺  /usr/local/Cellar/autoconf/2.69: 69 files, 2.0M, built in 8 seconds
-==&amp;gt; Installing ruby-build
-==&amp;gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
-######################################################################## 100.0%
-==&amp;gt; ./install.sh
-🍺  /usr/local/Cellar/ruby-build/20130907: 83 files, 368K, built in 2 seconds
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;profileとかrcに以下を追記する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;if which rbenv &amp;gt; /dev/null; then eval &amp;quot;$(rbenv init -)&amp;quot;; fi&#39; &amp;gt;&amp;gt; ~/.zprofile
-$ source ~/.zprofile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv --help
-rbenv 0.4.0
-Usage: rbenv &amp;lt;command&amp;gt; [&amp;lt;args&amp;gt;]
-
-Some useful rbenv commands are:
-   commands    List all available rbenv commands
-   local       Set or show the local application-specific Ruby version
-   global      Set or show the global Ruby version
-   shell       Set or show the shell-specific Ruby version
-   install     Install a Ruby version using the ruby-build plugin
-   uninstall   Uninstall a specific Ruby version
-   rehash      Rehash rbenv shims (run this after installing executables)
-   version     Show the current Ruby version and its origin
-   versions    List all Ruby versions available to rbenv
-   which       Display the full path to an executable
-   whence      List all Ruby versions that contain the given executable
-
-See `rbenv help &amp;lt;command&amp;gt;&#39; for information on a specific command.
-For full documentation, see: https://github.com/sstephenson/rbenv#readme
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;rbenv-default-gemsをインストール:02efbb982949a3203f0d32f585df492a&#34;&gt;rbenv-default-gemsをインストール&lt;/h2&gt;
-
-&lt;p&gt;ついでに&lt;a href=&#34;https://github.com/sstephenson/rbenv-default-gems&#34;&gt;rbenv-default-gems&lt;/a&gt;を入れておく。&lt;br /&gt;
-&lt;code&gt;rbenv install &amp;lt;version&amp;gt;&lt;/code&gt;でRubyをインストールする際に、一緒に必要なgemを入れてくれる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;bundler&#39; &amp;gt;&amp;gt; ~/.rbenv/default-gems
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ひとまずbundlerだけでいいかな。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 一応homebrewを再度更新
-$ brew update
-$ brew upgrade
-
-# ruby 2.0をインストール
-$ rbenv install 2.0.0-p247
-Downloading openssl-1.0.1e.tar.gz...
--&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-
-BUILD FAILED
-
-Inspect or clean up the working tree at /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114
-Results logged to /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114.log
-
-Last 10 log lines:
-RANLIB        =true
-ARFLAGS       =
-PERL          =/usr/bin/perl
-SIXTY_FOUR_BIT_LONG mode
-DES_UNROLL used
-DES_INT used
-RC4 uses uchar
-RC4_CHUNK is unsigned long
-sh: make: command not found
-/usr/local/bin/ruby-build: line 387: make: command not found
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;makeコマンドがないぽい。&lt;br /&gt;
-command line toolsが入ってなかった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Xcode -&amp;gt; Preferences -&amp;gt; Downloads -&amp;gt; Command Line Tools -&amp;gt; Install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;リトライ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv install 2.0.0-p247
-Downloading openssl-1.0.1e.tar.gz...
--&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Downloading ruby-2.0.0-p247.tar.gz...
--&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-Installing ruby-2.0.0-p247...
-Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-ERROR:  While executing gem ... (Gem::FilePermissionError)
-    You don&#39;t have write permissions into the /Library/Ruby/Gems/1.8 directory.
-rbenv: error installing gem `bundler&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;今度は権限がない。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/sstephenson/rbenv-default-gems/issues/7&#34;&gt;Issue&lt;/a&gt;に載っていた。&lt;br /&gt;
-どうやら環境変数に&lt;code&gt;$RBENV_ROOT&lt;/code&gt;が必要らしい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv root
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;で表示されたパスを.zprofileとかに書く。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;export RBENV_ROOT=$HOME/.rbenv&#39; &amp;gt;&amp;gt; ~/.zprofile
-$ source ~/.zprofile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;リトライ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv install 2.0.0-p247
-rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
-continue with installation? (y/N) y
-Downloading openssl-1.0.1e.tar.gz...
--&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Downloading ruby-2.0.0-p247.tar.gz...
--&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-Installing ruby-2.0.0-p247...
-Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Fetching: bundler-1.3.5.gem (100%)
-Successfully installed bundler-1.3.5
-Parsing documentation for bundler-1.3.5
-Installing ri documentation for bundler-1.3.5
-1 gem installed
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;できた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# ruby, gemのパスが$RBENV_ROOT以下に向いているか確認
-$ rbenv rehash
-$ rbenv versions
-* system (set by /Users/kobtea/.rbenv/version)
-  2.0.0-p247
-$ which ruby
-/Users/kobtea/.rbenv/shims/ruby
-$ which gem
-/Users/kobtea/.rbenv/shims/gem
-
-# システムデフォルトのバージョン確認
-$ ruby --version
-ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
-$ gem --version
-1.3.6
-
-# デフォルトのバージョンを2.0に変更
-$ rbenv global 2.0.0-p247
-$ rbenv versions
-  system
-* 2.0.0-p247 (set by /Users/kobtea/.rbenv/version)
-
-$ ruby --version
-ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
-$ gem --version
-2.0.3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こんにちはRuby。&lt;/p&gt;
-
-&lt;h2 id=&#34;追記:02efbb982949a3203f0d32f585df492a&#34;&gt;追記&lt;/h2&gt;
-
-&lt;p&gt;Macデフォルトのreadlineは使わないほうがいいらしい。&lt;br /&gt;
-&lt;code&gt;rbenv install&lt;/code&gt;する際にはhomebrewで入れたreadline, opensslを指定する。&lt;br /&gt;
-指定しない場合、Macだとirbでマルチバイトが使えない。&lt;br /&gt;
-&lt;a href=&#34;http://kobtea.net/blog/2013/09/22/use-multibytes-on-ruby&#34;&gt;irbで日本語が文字化けする&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
