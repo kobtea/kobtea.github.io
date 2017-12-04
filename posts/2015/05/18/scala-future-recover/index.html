@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="header-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li><a href="/posts/">archives</a></li>
+                    <li><a href="/posts">archives</a></li>
                     
                     <li><a href="/posts/index.xml">rss</a></li>
                     
@@ -62,10 +62,10 @@
 <ul>
 <li>
 <ul>
-<li><a href="#環境:cc9eddef842a840aeffa4bd7bc9900a8">環境</a></li>
-<li><a href="#やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8">やりたいこと</a></li>
-<li><a href="#recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8">recoverを使う</a></li>
-<li><a href="#recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8">recoverWithを使う</a></li>
+<li><a href="#環境">環境</a></li>
+<li><a href="#やりたいこと">やりたいこと</a></li>
+<li><a href="#recoverを使う">recoverを使う</a></li>
+<li><a href="#recoverwithを使う">recoverWithを使う</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -74,7 +74,7 @@
 
     
 
-<h2 id="環境:cc9eddef842a840aeffa4bd7bc9900a8">環境</h2>
+<h2 id="環境">環境</h2>
 
 <pre><code>➜  ~  scala
 Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11).
@@ -82,18 +82,19 @@ Type in expressions to have them evaluated.
 Type :help for more information.
 </code></pre>
 
-<h2 id="やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8">やりたいこと</h2>
+<h2 id="やりたいこと">やりたいこと</h2>
 
 <p><code>scala.concurrent.Future</code>で例外が発生して<code>Failure</code>になったとき、</p>
 
 <ul>
 <li>デフォルト値を適用して<code>Success</code>で返したい！<br /></li>
-<li><code>Failure</code>のままでいいんだけど別の例外を投げたい！<br /></li>
+<li><code>Failure</code>のままでいいんだけど別の例外を投げたい！<br />
+<br /></li>
 </ul>
 
 <p>といったことをしたい。</p>
 
-<h2 id="recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8">recoverを使う</h2>
+<h2 id="recoverを使う">recoverを使う</h2>
 
 <p>そんなときのための<code>Future#recover</code>。<br />
 <code>Throwable</code>をキャッチして新しい<code>Future</code>を作ってくれる。</p>
@@ -165,7 +166,7 @@ scala&gt; res6.value.get
 res7: scala.util.Try[Int] = Success(10)
 </code></pre>
 
-<h2 id="recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8">recoverWithを使う</h2>
+<h2 id="recoverwithを使う">recoverWithを使う</h2>
 
 <p><code>Future#recoverWith</code>なんていうのもある。<br />
 <code>Future#recover</code>とは部分関数の型が違って、<code>Throwable</code>を受け取って<code>Future</code>を返すようになる。</p>
@@ -271,6 +272,8 @@ res13: scala.util.Try[Int] = Success(10)
 
             <div class="col-md-8">
                 <strong> Tags </strong><br/><br/>
+                
+                <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
                 <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 

@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github Pages on kobtea.net</title>
-    <link>http://kobtea.net/tags/github-pages/</link>
+    <link>http://kobtea.net/tags/github-pages/index.xml</link>
     <description>Recent content in Github Pages on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 23 Sep 2013 21:39:00 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
     <atom:link href="http://kobtea.net/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -21,7 +21,8 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#34;&gt;Setting up a custom domain with Pages - Github Pages&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/#custom_domains&#34;&gt;Custom Domains - Octopress&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/#custom_domains&#34;&gt;Custom Domains - Octopress&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。&lt;/p&gt;
@@ -35,7 +36,7 @@
 &lt;p&gt;反映されるのに10分くらい待ってね、とのこと。&lt;br /&gt;
 反映されたらメールをくれるらしい。&lt;/p&gt;
 
-&lt;h2 id=&#34;octopress側の設定:012f76cf3e52873906c9239002dbb318&#34;&gt;Octopress側の設定&lt;/h2&gt;
+&lt;h2 id=&#34;octopress側の設定&#34;&gt;Octopress側の設定&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;source/CNAME&lt;/code&gt;に割り当てるドメインを設定する。&lt;/p&gt;
 
@@ -58,7 +59,7 @@ simple_search: http://google.com/search
 description:
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;dns設定:012f76cf3e52873906c9239002dbb318&#34;&gt;DNS設定&lt;/h2&gt;
+&lt;h2 id=&#34;dns設定&#34;&gt;DNS設定&lt;/h2&gt;
 
 &lt;p&gt;お名前.comを使っているので、そちらで設定する。&lt;/p&gt;
 
@@ -70,7 +71,7 @@ description:
 &lt;p&gt;で適用。&lt;br /&gt;
 適用されたよメールが届くまでのんびり待つ。&lt;/p&gt;
 
-&lt;h2 id=&#34;確認:012f76cf3e52873906c9239002dbb318&#34;&gt;確認&lt;/h2&gt;
+&lt;h2 id=&#34;確認&#34;&gt;確認&lt;/h2&gt;
 
 &lt;p&gt;digしてみる。&lt;/p&gt;
 

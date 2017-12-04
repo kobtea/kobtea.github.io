@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scala on kobtea.net</title>
-    <link>http://kobtea.net/tags/scala/</link>
+    <link>http://kobtea.net/tags/scala/index.xml</link>
     <description>Recent content in Scala on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Tue, 15 Sep 2015 22:10:55 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
     <atom:link href="http://kobtea.net/tags/scala/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -17,14 +17,14 @@
       <guid>http://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
       <description>
 
-&lt;h2 id=&#34;環境:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;環境&lt;/h2&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scalaVersion := &amp;quot;2.11.6&amp;quot;
 
 libraryDependencies += &amp;quot;com.typesafe.akka&amp;quot; %% &amp;quot;akka-actor&amp;quot; % &amp;quot;2.3.11&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;悩み:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;悩み&lt;/h2&gt;
+&lt;h2 id=&#34;悩み&#34;&gt;悩み&lt;/h2&gt;
 
 &lt;p&gt;akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。&lt;/p&gt;
 
@@ -70,7 +70,7 @@ scala&amp;gt; :q
 &amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;threadをdaemonにすると解決するよ:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;threadをdaemonにすると解決するよ&lt;/h2&gt;
+&lt;h2 id=&#34;threadをdaemonにすると解決するよ&#34;&gt;threadをdaemonにすると解決するよ&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Javaはデーモンスレッド以外のスレッドが終了したとき、プログラムを終了します。このとき、デーモンが処理をしているかどうかは関係ありません。なので、処理が途中でぶった切られる可能性があります。それがまずい場合はやっぱり自前でシャットダウンする機構を作るしかないのですが。。。&lt;/p&gt;
@@ -131,7 +131,7 @@ scala&amp;gt; :q
 &lt;p&gt;&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;もdaemonみたい。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&#34;&gt;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;そもそもdaemonとnon-daemonどっちがいいんです:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;そもそもdaemonとnon-daemonどっちがいいんです？&lt;/h2&gt;
+&lt;h2 id=&#34;そもそもdaemonとnon-daemonどっちがいいんです&#34;&gt;そもそもdaemonとnon-daemonどっちがいいんです？&lt;/h2&gt;
 
 &lt;p&gt;Java力低いので、&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;がdaemonだしdaemonでいいじゃん！程度にしか考えてない。&lt;br /&gt;
 今回みたいなthread poolで使うケースだと、親のthreadが終了したら残っていても仕方ないのでdaemonで良いかな。&lt;/p&gt;
@@ -146,7 +146,7 @@ scala&amp;gt; :q
       <guid>http://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
       <description>
 
-&lt;h2 id=&#34;環境:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;環境&lt;/h2&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;➜  ~  scala
 Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11).
@@ -154,18 +154,19 @@ Type in expressions to have them evaluated.
 Type :help for more information.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;やりたいこと&lt;/h2&gt;
+&lt;h2 id=&#34;やりたいこと&#34;&gt;やりたいこと&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;scala.concurrent.Future&lt;/code&gt;で例外が発生して&lt;code&gt;Failure&lt;/code&gt;になったとき、&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;デフォルト値を適用して&lt;code&gt;Success&lt;/code&gt;で返したい！&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Failure&lt;/code&gt;のままでいいんだけど別の例外を投げたい！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Failure&lt;/code&gt;のままでいいんだけど別の例外を投げたい！&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;といったことをしたい。&lt;/p&gt;
 
-&lt;h2 id=&#34;recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverを使う&lt;/h2&gt;
+&lt;h2 id=&#34;recoverを使う&#34;&gt;recoverを使う&lt;/h2&gt;
 
 &lt;p&gt;そんなときのための&lt;code&gt;Future#recover&lt;/code&gt;。&lt;br /&gt;
 &lt;code&gt;Throwable&lt;/code&gt;をキャッチして新しい&lt;code&gt;Future&lt;/code&gt;を作ってくれる。&lt;/p&gt;
@@ -237,7 +238,7 @@ scala&amp;gt; res6.value.get
 res7: scala.util.Try[Int] = Success(10)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverWithを使う&lt;/h2&gt;
+&lt;h2 id=&#34;recoverwithを使う&#34;&gt;recoverWithを使う&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;Future#recoverWith&lt;/code&gt;なんていうのもある。&lt;br /&gt;
 &lt;code&gt;Future#recover&lt;/code&gt;とは部分関数の型が違って、&lt;code&gt;Throwable&lt;/code&gt;を受け取って&lt;code&gt;Future&lt;/code&gt;を返すようになる。&lt;/p&gt;

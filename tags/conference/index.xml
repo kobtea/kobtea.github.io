@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Conference on kobtea.net</title>
-    <link>http://kobtea.net/tags/conference/</link>
+    <link>http://kobtea.net/tags/conference/index.xml</link>
     <description>Recent content in Conference on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 23 Aug 2015 22:59:36 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
     <atom:link href="http://kobtea.net/tags/conference/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,9 +20,9 @@
 &lt;p&gt;最初で最後のYAPC。&lt;br /&gt;
 聴いたセッションのメモとか感想とかをぽつぽつと。&lt;/p&gt;
 
-&lt;h2 id=&#34;前夜祭:a2d086c5b4dcd024688714d5925c094e&#34;&gt;前夜祭&lt;/h2&gt;
+&lt;h2 id=&#34;前夜祭&#34;&gt;前夜祭&lt;/h2&gt;
 
-&lt;h3 id=&#34;php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版:a2d086c5b4dcd024688714d5925c094e&#34;&gt;PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）&lt;/h3&gt;
+&lt;h3 id=&#34;php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版&#34;&gt;PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Hackとの速度勝負&lt;br /&gt;
@@ -35,18 +35,20 @@
 
 &lt;ul&gt;
 &lt;li&gt;スタートアップなどスピード勝負でガリガリ書きたいときは適している&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;SlackもPHP使ってるしまだまだオワコンじゃないよ！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;SlackもPHP使ってるしまだまだオワコンじゃないよ！&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;はてなブックマークのトピックページの裏側:a2d086c5b4dcd024688714d5925c094e&#34;&gt;はてなブックマークのトピックページの裏側&lt;/h3&gt;
+&lt;h3 id=&#34;はてなブックマークのトピックページの裏側&#34;&gt;はてなブックマークのトピックページの裏側&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Elasticsearchって重要語句抽出の機能あるのかしゅごい&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;トピックタイトルは短く誤解のないように作成するというのがなかなか定量的に検査しづらそうだなぁ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;トピックタイトルは短く誤解のないように作成するというのがなかなか定量的に検査しづらそうだなぁ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;我々にできるossとそのコミュニティの育てかた:a2d086c5b4dcd024688714d5925c094e&#34;&gt;我々にできるOSSとそのコミュニティの育てかた&lt;/h3&gt;
+&lt;h3 id=&#34;我々にできるossとそのコミュニティの育てかた&#34;&gt;我々にできるOSSとそのコミュニティの育てかた&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;とにかく全部英語&lt;br /&gt;
@@ -59,13 +61,15 @@
 
 &lt;ul&gt;
 &lt;li&gt;issueやpatchを送ってくれる人が出てきて自然とコミュニティが形成される&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;完璧すぎるとissueやpatchがなくて使われてる感が無い&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;完璧すぎるとissueやpatchがなくて使われてる感が無い&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;1日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;1日目&lt;/h2&gt;
+&lt;h2 id=&#34;1日目&#34;&gt;1日目&lt;/h2&gt;
 
-&lt;h3 id=&#34;メリークリスマス:a2d086c5b4dcd024688714d5925c094e&#34;&gt;メリークリスマス！&lt;/h3&gt;
+&lt;h3 id=&#34;メリークリスマス&#34;&gt;メリークリスマス！&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;perlの父ラリーさんのありがたいお話&lt;br /&gt;&lt;/li&gt;
@@ -79,10 +83,11 @@
 &lt;li&gt;perl5をHobit、perl6をLoad of the Ringに対応させて、見た目は違うけど根底にあるものは同じだよという話&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;文脈把握できなかったけど&amp;rdquo;&lt;code&gt;-Ofun&lt;/code&gt; (Optimize fun)&amp;ldquo;と&amp;rdquo;I FAIL GOOD (正しく失敗する)&amp;ldquo;がとても印象的だった&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;ラリーさんはLinux Mintを使っていて&lt;code&gt;alias p=&#39;perl&#39;&lt;/code&gt;だった&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;perl6は今年のクリスマスに(なるべく)出すらしい&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;perl6は今年のクリスマスに(なるべく)出すらしい&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;managing-containers-at-scale-with-coreos-and-kubernetes:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Managing Containers at Scale with CoreOS and Kubernetes&lt;/h3&gt;
+&lt;h3 id=&#34;managing-containers-at-scale-with-coreos-and-kubernetes&#34;&gt;Managing Containers at Scale with CoreOS and Kubernetes&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;k8sのイントロダクション&lt;br /&gt;&lt;/li&gt;
@@ -94,10 +99,11 @@
 &lt;li&gt;proxyに戻す&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;の繰り返し&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;dashboardのデザインがオサレ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dashboardのデザインがオサレ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;tbd:a2d086c5b4dcd024688714d5925c094e&#34;&gt;TBD&lt;/h3&gt;
+&lt;h3 id=&#34;tbd&#34;&gt;TBD&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;rubyの父matzさんのありがたいお話&lt;br /&gt;&lt;/li&gt;
@@ -114,10 +120,11 @@
 &lt;li&gt;GCはかつてプロセスが重くなるからと避けられていたが、JVMが採用し再評価された&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;処理速度重視から、OOPのようなデザイン重視?へ移り、また速度重視になりつつある&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;streemはピタゴラスイッチみたいで楽しいよ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;streemはピタゴラスイッチみたいで楽しいよ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;perlの上にも三年-ずっとイケてるサービスを作り続ける技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜&lt;/h3&gt;
+&lt;h3 id=&#34;perlの上にも三年-ずっとイケてるサービスを作り続ける技術&#34;&gt;Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;はてなブログのとても生々しい話&lt;br /&gt;&lt;/li&gt;
@@ -127,57 +134,64 @@
 &lt;li&gt;3回コピペされたコードはDRYの精神に基づきコピペ層へ配置される&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;オブジェクト指向入門, DDD本などを輪読してリファクタリング&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;大規模な改修を続けられるって健全な環境だなぁ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;大規模な改修を続けられるって健全な環境だなぁ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;electron-building-desktop-apps-with-web-technologies:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Electron: Building desktop apps with web technologies&lt;/h3&gt;
+&lt;h3 id=&#34;electron-building-desktop-apps-with-web-technologies&#34;&gt;Electron: Building desktop apps with web technologies&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;electronの紹介&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;electronの開発チームは現状1人らしい&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;既存のjsライブラリを使えてとてもエコな印象&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;既存のjsライブラリを使えてとてもエコな印象&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;esa-io-趣味から育てたwebサービスで生きていく:a2d086c5b4dcd024688714d5925c094e&#34;&gt;esa.io - 趣味から育てたWebサービスで生きていく&lt;/h3&gt;
+&lt;h3 id=&#34;esa-io-趣味から育てたwebサービスで生きていく&#34;&gt;esa.io - 趣味から育てたWebサービスで生きていく&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;自分で使いたいサービスを作っていたら会社になってた話&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;かわいいは正義&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;かわいいは正義&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;2日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;2日目&lt;/h2&gt;
+&lt;h2 id=&#34;2日目&#34;&gt;2日目&lt;/h2&gt;
 
-&lt;h3 id=&#34;isuconの勝ち方:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ISUCONの勝ち方&lt;/h3&gt;
+&lt;h3 id=&#34;isuconの勝ち方&#34;&gt;ISUCONの勝ち方&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://kobtea.net/posts/2015/08/22/yapc-isucon/&#34;&gt;別記事書いた&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;実はホットでオープンな-microsoft-azure:a2d086c5b4dcd024688714d5925c094e&#34;&gt;実はホットでオープンな Microsoft Azure&lt;/h3&gt;
+&lt;h3 id=&#34;実はホットでオープンな-microsoft-azure&#34;&gt;実はホットでオープンな Microsoft Azure&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;azureは1regionあたり16datacenterあってサーバは60万台&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;サーバを詰め込んだコンテナ(物理)でDCを構築している&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;壊れたサーバは使わずに放っておいて、一定数壊れたらコンテナごと破棄する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;壊れたサーバは使わずに放っておいて、一定数壊れたらコンテナごと破棄する&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;mysqlで2億件のシリアルデータと格闘したチューニングの話:a2d086c5b4dcd024688714d5925c094e&#34;&gt;MySQLで2億件のシリアルデータと格闘したチューニングの話&lt;/h3&gt;
+&lt;h3 id=&#34;mysqlで2億件のシリアルデータと格闘したチューニングの話&#34;&gt;MySQLで2億件のシリアルデータと格闘したチューニングの話&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;CPU 2core, memory 8GBでレコード2億件のDBを運用する&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;countクエリが1分超え&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;primary keyをランダム値にしていると痛い目に遭う&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;indexの再構築をなめてはいけない&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;scale up,outできない環境がただただつらそうだった&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;scale up,outできない環境がただただつらそうだった&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;データ分析基盤を支える技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;データ分析基盤を支える技術&lt;/h3&gt;
+&lt;h3 id=&#34;データ分析基盤を支える技術&#34;&gt;データ分析基盤を支える技術&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;データ分析周りのOSS, XaaSの俯瞰的な紹介&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;データ分析周りで出てくるETLはExtract Transformation Load(抽出, 変換, 登録)の略&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;分析基盤の構築・運用はとてもしんどいのでSaaS使ったほうが楽&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;分析基盤の構築・運用はとてもしんどいのでSaaS使ったほうが楽&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;ソーシャルゲームにおける-aws-移行事例:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ソーシャルゲームにおける AWS 移行事例&lt;/h3&gt;
+&lt;h3 id=&#34;ソーシャルゲームにおける-aws-移行事例&#34;&gt;ソーシャルゲームにおける AWS 移行事例&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;2011年頃にラック契約していたオンプレミス環境がEOLを迎えるにあたってAWSへ移行した&lt;br /&gt;&lt;/li&gt;
@@ -194,10 +208,11 @@
 &lt;li&gt;timezone変更できないのでtimezone関係の関数を使っている場合は要注意&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;移行時のwrite timeを短縮するためにmulti-azからsingle-azへ一時的に変更&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;session storageとしてyrmcdsを使っている&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;session storageとしてyrmcdsを使っている&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;辛いことをやめる-から始まる業務改善とinfrastructure-as-code:a2d086c5b4dcd024688714d5925c094e&#34;&gt;辛いことをやめる！から始まる業務改善とInfrastructure as Code&lt;/h3&gt;
+&lt;h3 id=&#34;辛いことをやめる-から始まる業務改善とinfrastructure-as-code&#34;&gt;辛いことをやめる！から始まる業務改善とInfrastructure as Code&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;hb-acnsを導入した時の話&lt;br /&gt;
@@ -222,7 +237,9 @@
 &lt;li&gt;ドキュメントを残す&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;ハンズオンをして強制的に試す環境を作る&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;効果を定量的に計測しておくと良い&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;効果を定量的に計測しておくと良い&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;とても楽しかったですまる&lt;/p&gt;
@@ -245,12 +262,14 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://isucon.net/&#34;&gt;[公式]ISUCON&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://yapcasia.org/2015/talk/show/86ebd212-fab3-11e4-8f5a-8ab37d574c3a&#34;&gt;[公式]トーク情報&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://togetter.com/li/863801&#34;&gt;togetter&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://togetter.com/li/863801&#34;&gt;togetter&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;スピーカー: @kazeburo さん&lt;/p&gt;
 
-&lt;h2 id=&#34;時間配分:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;時間配分&lt;/h2&gt;
+&lt;h2 id=&#34;時間配分&#34;&gt;時間配分&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;競技全体では7時間&lt;br /&gt;&lt;/li&gt;
@@ -266,10 +285,11 @@
 &lt;li&gt;再起動テストだけに使う&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;再起動の失敗はよくある&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;上記を考慮すると、実際の作業時間は5時間ほど&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;上記を考慮すると、実際の作業時間は5時間ほど&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;事前準備:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;事前準備&lt;/h2&gt;
+&lt;h2 id=&#34;事前準備&#34;&gt;事前準備&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;chatroom&lt;br /&gt;&lt;/li&gt;
@@ -296,13 +316,14 @@
 &lt;li&gt;過去問大事&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://isucon.net/archives/40724693.html&#34;&gt;ISUCON4 予選問題の解説と講評 ＆ AMIの公開&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://d.hatena.ne.jp/tmatsuu/20150815/1439643715&#34;&gt;ISUCON予選突破の鍵は過去問を解くことなので無料で試せるようにした(Vagrant+Ansible)&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;チューニングの進め方:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングの進め方&lt;/h2&gt;
+&lt;h2 id=&#34;チューニングの進め方&#34;&gt;チューニングの進め方&lt;/h2&gt;
 
-&lt;h3 id=&#34;1-課題の理解:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;1. 課題の理解&lt;/h3&gt;
+&lt;h3 id=&#34;1-課題の理解&#34;&gt;1. 課題の理解&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;レギュレーションや説明をよく読む&lt;br /&gt;
@@ -315,11 +336,12 @@
 
 &lt;ul&gt;
 &lt;li&gt;チューニングしていなくてもベンチ取る&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;ちゃんと動いているかを確認する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;ちゃんと動いているかを確認する&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;2-プロファイリング:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;2. プロファイリング&lt;/h3&gt;
+&lt;h3 id=&#34;2-プロファイリング&#34;&gt;2. プロファイリング&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ログ解析や負荷確認&lt;br /&gt;&lt;/li&gt;
@@ -345,28 +367,32 @@
 &lt;li&gt;サーバの負荷&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;top, iftop, iotop, dstat, &amp;hellip;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;top, iftop, iotop, dstat, &amp;hellip;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;3-サーバ構成の把握:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;3. サーバ構成の把握&lt;/h3&gt;
+&lt;h3 id=&#34;3-サーバ構成の把握&#34;&gt;3. サーバ構成の把握&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;どんなミドルウェアがいるのか&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;どのポートが使われているのか&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;どのポートが使われているのか&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;4-チューニングの方向性を決める:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;4. チューニングの方向性を決める&lt;/h3&gt;
+&lt;h3 id=&#34;4-チューニングの方向性を決める&#34;&gt;4. チューニングの方向性を決める&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;CPUの気持ちになり、コンテキストスイッチを減らす&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;不要な参照・通信・プロセスをとにかく減らす&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;不要な参照・通信・プロセスをとにかく減らす&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;チューニングのヒント:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングのヒント&lt;/h2&gt;
+&lt;h2 id=&#34;チューニングのヒント&#34;&gt;チューニングのヒント&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;重い処理を把握し、減らせないか考える&lt;br /&gt;

@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Misc on kobtea.net</title>
-    <link>http://kobtea.net/tags/misc/</link>
+    <link>http://kobtea.net/tags/misc/index.xml</link>
     <description>Recent content in Misc on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Thu, 31 Dec 2015 22:00:48 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
     <atom:link href="http://kobtea.net/tags/misc/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,19 +20,19 @@
 &lt;p&gt;こたつでぬくぬく。&lt;br /&gt;
 思いつくキーワードを拾いつつ、だらだら思い返す。&lt;/p&gt;
 
-&lt;h2 id=&#34;技術的なこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;技術的なこと&lt;/h2&gt;
+&lt;h2 id=&#34;技術的なこと&#34;&gt;技術的なこと&lt;/h2&gt;
 
 &lt;p&gt;もう少し頑張りましょう&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2015/12/31/2015_contribute.jpg&#34;/&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;ossコントリビュート:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;OSSコントリビュート&lt;/h3&gt;
+&lt;h3 id=&#34;ossコントリビュート&#34;&gt;OSSコントリビュート&lt;/h3&gt;
 
 &lt;p&gt;パッチを投げて初コントリビュートした。&lt;br /&gt;
 メンテナの方が深夜にもかかわらず素早くレスポンスをくれたり、&amp;rdquo;このコミット1つにまとめてね&amp;rdquo;とか手取り足取り教えてくれた。&lt;br /&gt;
 GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
-&lt;h3 id=&#34;scala:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;Scala&lt;/h3&gt;
+&lt;h3 id=&#34;scala&#34;&gt;Scala&lt;/h3&gt;
 
 &lt;p&gt;ここ1年くらいscalaをたくさん書いていた。&lt;br /&gt;
 関数型言語をまともに触ったのはこれが初めてだけど、ずっとオブジェクト指向で関数型初めてです＞＜という僕のような人にはとても良い言語だと思う。&lt;br /&gt;
@@ -42,7 +42,7 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;p&gt;scalaで&lt;code&gt;map&lt;/code&gt;をたくさん書いたあと、rubyのブロック構文に対する見え方が変わったし、&lt;code&gt;xargs&lt;/code&gt;で脳汁が出るようになった。scalaとの出会いに感謝。&lt;/p&gt;
 
-&lt;h3 id=&#34;isucon5:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;ISUCON5&lt;/h3&gt;
+&lt;h3 id=&#34;isucon5&#34;&gt;ISUCON5&lt;/h3&gt;
 
 &lt;p&gt;予選落ちだけど。&lt;br /&gt;
 面白そうだなーﾁﾗﾁﾗと毎年横目で見ていたけど、今年は思い切って参加した。&lt;br /&gt;
@@ -50,9 +50,9 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 おやつの時間くらいに一瞬だけ上位に行けたのがとても嬉しかった。&lt;br /&gt;
 決勝とか予選とかではなく、「よっしゃ！バリバリにチューニングしたったで！！」という達成感があまり無かったので、来年もリベンジしたいなぁ。&lt;/p&gt;
 
-&lt;h2 id=&#34;私生活なこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;私生活なこと&lt;/h2&gt;
+&lt;h2 id=&#34;私生活なこと&#34;&gt;私生活なこと&lt;/h2&gt;
 
-&lt;h3 id=&#34;お遍路:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;お遍路&lt;/h3&gt;
+&lt;h3 id=&#34;お遍路&#34;&gt;お遍路&lt;/h3&gt;
 
 &lt;p&gt;2014年から年に1回ペースで四国へ行ってお遍路参りを始めた。&lt;br /&gt;
 1年目は原付きをレンタルしてお寺周りをした。&lt;br /&gt;
@@ -61,7 +61,7 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 田舎道をトコトコ走るのはとても楽しいのでおすすめ。&lt;br /&gt;
 来年の高知どうしよ&amp;hellip;&lt;/p&gt;
 
-&lt;h3 id=&#34;健康管理:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;健康管理&lt;/h3&gt;
+&lt;h3 id=&#34;健康管理&#34;&gt;健康管理&lt;/h3&gt;
 
 &lt;p&gt;体重計を買った。&lt;/p&gt;
 
@@ -74,7 +74,7 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;p&gt;7月くらいまでは意外にも成果あって、体脂肪が落ちていった。&lt;br /&gt;
 その後は仕事で色々あってやさぐれてしまい、たくさん食べたり、そもそも体重計乗らなくなってしまった。見事なV字回復である。来年から体重計乗るだけダイエットを復活させたい。&lt;/p&gt;
 
-&lt;h2 id=&#34;来年がんばりたいこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;来年がんばりたいこと&lt;/h2&gt;
+&lt;h2 id=&#34;来年がんばりたいこと&#34;&gt;来年がんばりたいこと&lt;/h2&gt;
 
 &lt;p&gt;今年が終わっちゃうので来年考えよう＞＜&lt;/p&gt;
 </description>

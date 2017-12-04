@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Monitoring on kobtea.net</title>
-    <link>http://kobtea.net/tags/monitoring/</link>
+    <link>http://kobtea.net/tags/monitoring/index.xml</link>
     <description>Recent content in Monitoring on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 04 Jun 2016 21:59:34 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
     <atom:link href="http://kobtea.net/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -20,7 +20,7 @@
 &lt;p&gt;以前話題になった&lt;a href=&#34;https://cloud.google.com/stackdriver/&#34;&gt;Stackdriver&lt;/a&gt;をbetaのうちに触っておこうそうしよう。&lt;br /&gt;
 AWSがCloudWatchなら、GCPはStackdriverや！！&lt;/p&gt;
 
-&lt;h2 id=&#34;stackdriverの提供する機能:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriverの提供する機能&lt;/h2&gt;
+&lt;h2 id=&#34;stackdriverの提供する機能&#34;&gt;Stackdriverの提供する機能&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://cloud.google.com/stackdriver/docs/&#34;&gt;Document&lt;/a&gt;を眺めてみると機能はこんな感じ。&lt;br /&gt;
 正直下3つはまだ触れていないのでわりと適当。&lt;/p&gt;
@@ -54,26 +54,28 @@ AWSがCloudWatchなら、GCPはStackdriverや！！&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;パフォーマンスチューニングのためのサービス&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;どの処理にどれだけ時間がかかっているのかが計測できる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;どの処理にどれだけ時間がかかっているのかが計測できる&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;今回はMonitoringを眺めてみようかな。&lt;/p&gt;
 
-&lt;h2 id=&#34;準備:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;準備&lt;/h2&gt;
+&lt;h2 id=&#34;準備&#34;&gt;準備&lt;/h2&gt;
 
 &lt;p&gt;監視対象のInstanceを立ち上げて、Agentを仕込むぞー。&lt;br /&gt;
 今回はOpengrokサーバを構築してみようかな。&lt;br /&gt;
 前段にNginx、バックエンドにTomcatがいる構成。&lt;br /&gt;
 Stackdriverに関係ない部分はざっくり省略していく(それでも長ったらしくなってしまったあばば)。&lt;/p&gt;
 
-&lt;h3 id=&#34;gce-instanceを作成する:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;GCE Instanceを作成する&lt;/h3&gt;
+&lt;h3 id=&#34;gce-instanceを作成する&#34;&gt;GCE Instanceを作成する&lt;/h3&gt;
 
 &lt;p&gt;参考:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/agent/install-agent#authorizing&#34;&gt;Installing the Monitoring Agent - Authorizing the monitoring agent&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;はじめにWeb consoleからGoogle Monitoring APIを有効にしておくこと。&lt;br /&gt;
@@ -90,13 +92,14 @@ https://www.googleapis.com/auth/service.management
 https://www.googleapis.com/auth/servicecontrol
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;stackdriver-agentを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriver Agentを入れる&lt;/h3&gt;
+&lt;h3 id=&#34;stackdriver-agentを入れる&#34;&gt;Stackdriver Agentを入れる&lt;/h3&gt;
 
 &lt;p&gt;参考:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/agent/install-agent&#34;&gt;Installing the Monitoring Agent&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Documentに記載のinstall scriptを打つだけ、だと思ってました。&lt;/p&gt;
@@ -190,14 +193,14 @@ Extractor status:  Extractor sample data:
 
 &lt;p&gt;(∩´∀｀)∩ﾜｰｲ&lt;/p&gt;
 
-&lt;h3 id=&#34;stackdriver-agent-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriver Agent pluginを入れる&lt;/h3&gt;
+&lt;h3 id=&#34;stackdriver-agent-pluginを入れる&#34;&gt;Stackdriver Agent pluginを入れる&lt;/h3&gt;
 
 &lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/#supported_plugins&#34;&gt;Monitoring Agent Configuration - Supported plugins&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Agent pluginは標準で色々なミドルウェアに対応している。&lt;br /&gt;
 標準pluginはconfigを書くだけで楽ちん。&lt;/p&gt;
 
-&lt;h4 id=&#34;nginx-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Nginx pluginを入れる&lt;/h4&gt;
+&lt;h4 id=&#34;nginx-pluginを入れる&#34;&gt;Nginx pluginを入れる&lt;/h4&gt;
 
 &lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/nginx&#34;&gt;Nginx Plugin&lt;/a&gt;&lt;/p&gt;
 
@@ -240,7 +243,7 @@ Created new plugin context.
                                                                                                                                                                                           [ OK ]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;tomcat-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Tomcat pluginを入れる&lt;/h4&gt;
+&lt;h4 id=&#34;tomcat-pluginを入れる&#34;&gt;Tomcat pluginを入れる&lt;/h4&gt;
 
 &lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/tomcat&#34;&gt;Tomcat Plugin&lt;/a&gt;&lt;/p&gt;
 
@@ -277,7 +280,7 @@ Created new plugin context.
                                                                                                                                                                                           [ OK ]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;web-consoleを眺める:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Web consoleを眺める&lt;/h2&gt;
+&lt;h2 id=&#34;web-consoleを眺める&#34;&gt;Web consoleを眺める&lt;/h2&gt;
 
 &lt;p&gt;IndexページはAlert周りの機能が多い印象、すぐに反応したいしね。&lt;/p&gt;
 
@@ -290,7 +293,7 @@ Created new plugin context.
 
 &lt;p&gt;メニューごとにふわっと眺めようかな。&lt;/p&gt;
 
-&lt;h3 id=&#34;resources:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Resources&lt;/h3&gt;
+&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
 
 &lt;p&gt;GCP/AWSのサービスや、Agent pluginごとにいい感じにグルーピングされている。&lt;br /&gt;
 インスタンス単位ではなくリソースタイプ単位でまとめて管理する設計なんだな。&lt;/p&gt;
@@ -312,7 +315,7 @@ Created new plugin context.
 
 
 
-&lt;h3 id=&#34;alerting:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Alerting&lt;/h3&gt;
+&lt;h3 id=&#34;alerting&#34;&gt;Alerting&lt;/h3&gt;
 
 &lt;p&gt;みんな大好きアラート。&lt;/p&gt;
 
@@ -361,7 +364,7 @@ Created new plugin context.
 
 
 
-&lt;h3 id=&#34;groups:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Groups&lt;/h3&gt;
+&lt;h3 id=&#34;groups&#34;&gt;Groups&lt;/h3&gt;
 
 
 
@@ -380,7 +383,7 @@ Created new plugin context.
 
 
 
-&lt;h3 id=&#34;dashboards:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Dashboards&lt;/h3&gt;
+&lt;h3 id=&#34;dashboards&#34;&gt;Dashboards&lt;/h3&gt;
 
 &lt;p&gt;君だけの最強のDashboardを作ろう。&lt;br /&gt;
 しかし残念、折れ線グラフしか使えない！&lt;br /&gt;
@@ -393,7 +396,7 @@ CPUとか積み上げグラフにしたいな&amp;hellip;&lt;/p&gt;
 
 
 
-&lt;h3 id=&#34;logs:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Logs&lt;/h3&gt;
+&lt;h3 id=&#34;logs&#34;&gt;Logs&lt;/h3&gt;
 
 &lt;p&gt;ログの全文検索、リソースタイプ別、ログレベル別なんでもござれ。しゅごい。&lt;br /&gt;
 データフォーマットはjson。&lt;/p&gt;
@@ -405,7 +408,7 @@ CPUとか積み上げグラフにしたいな&amp;hellip;&lt;/p&gt;
 
 
 
-&lt;h2 id=&#34;感想:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;感想&lt;/h2&gt;
+&lt;h2 id=&#34;感想&#34;&gt;感想&lt;/h2&gt;
 
 &lt;p&gt;まだまだbetaだなーと強く思ったのはグラフかな。折れ線グラフ以外も欲しい。&lt;br /&gt;
 Custom Dashboardはgrafanaレベルになったら嬉しいな。&lt;br /&gt;

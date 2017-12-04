@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="header-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li><a href="/posts/">archives</a></li>
+                    <li><a href="/posts">archives</a></li>
                     
                     <li><a href="/posts/index.xml">rss</a></li>
                     
@@ -62,15 +62,15 @@
 <ul>
 <li>
 <ul>
-<li><a href="#web-site-look-feel-option:c05a775354f0b35bd8ce66545cbd87e8">Web Site Look &amp; Feel Option</a></li>
-<li><a href="#スキン:c05a775354f0b35bd8ce66545cbd87e8">スキン</a>
+<li><a href="#web-site-look-feel-option">Web Site Look &amp; Feel Option</a></li>
+<li><a href="#スキン">スキン</a>
 <ul>
-<li><a href="#default:c05a775354f0b35bd8ce66545cbd87e8">default</a></li>
-<li><a href="#offwhite:c05a775354f0b35bd8ce66545cbd87e8">offwhite</a></li>
-<li><a href="#polished:c05a775354f0b35bd8ce66545cbd87e8">polished</a></li>
+<li><a href="#default">default</a></li>
+<li><a href="#offwhite">offwhite</a></li>
+<li><a href="#polished">polished</a></li>
 </ul></li>
-<li><a href="#変更方法:c05a775354f0b35bd8ce66545cbd87e8">変更方法</a></li>
-<li><a href="#フルカスタマイズする場合:c05a775354f0b35bd8ce66545cbd87e8">フルカスタマイズする場合</a></li>
+<li><a href="#変更方法">変更方法</a></li>
+<li><a href="#フルカスタマイズする場合">フルカスタマイズする場合</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -88,7 +88,7 @@
 <p>と書いたけど、方法がわかったのでメモ。<br />
 標準でいくつかのデザインテーマが提供されていた。</p>
 
-<h2 id="web-site-look-feel-option:c05a775354f0b35bd8ce66545cbd87e8">Web Site Look &amp; Feel Option</h2>
+<h2 id="web-site-look-feel-option">Web Site Look &amp; Feel Option</h2>
 
 <p><code>OpenGrok</code> wrapper scriptを眺めていたら<code>SKIN</code>なんて環境変数を見つけた。</p>
 
@@ -97,11 +97,11 @@
 <p>標準で<code>default</code>, <code>offwhite</code>, <code>polished</code>の3種類のスキンが提供されている。<br />
 「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。</p>
 
-<h2 id="スキン:c05a775354f0b35bd8ce66545cbd87e8">スキン</h2>
+<h2 id="スキン">スキン</h2>
 
 <p>どれもJavaを感じるデザイン。</p>
 
-<h3 id="default:c05a775354f0b35bd8ce66545cbd87e8">default</h3>
+<h3 id="default">default</h3>
 
 <p>
 
@@ -116,7 +116,7 @@
 
 </p>
 
-<h3 id="offwhite:c05a775354f0b35bd8ce66545cbd87e8">offwhite</h3>
+<h3 id="offwhite">offwhite</h3>
 
 <p>
 
@@ -131,7 +131,7 @@
 
 </p>
 
-<h3 id="polished:c05a775354f0b35bd8ce66545cbd87e8">polished</h3>
+<h3 id="polished">polished</h3>
 
 <p>
 
@@ -146,7 +146,7 @@
 
 </p>
 
-<h2 id="変更方法:c05a775354f0b35bd8ce66545cbd87e8">変更方法</h2>
+<h2 id="変更方法">変更方法</h2>
 
 <p>スキンを変更するには、<code>update</code>, <code>index</code>する際に<code>SKIN</code>を指定しておけばいいだけ。</p>
 
@@ -171,14 +171,15 @@ $ sudo SKIN='-L offwhite' ./opengrok-0.12.1.5/bin/OpenGrok update
 
 <p>スキンを変えても反映されない場合は、ブラウザキャッシュを消すこと。</p>
 
-<h2 id="フルカスタマイズする場合:c05a775354f0b35bd8ce66545cbd87e8">フルカスタマイズする場合</h2>
+<h2 id="フルカスタマイズする場合">フルカスタマイズする場合</h2>
 
 <p>標準のスキンを参考に自作すればいいんじゃないかな。</p>
 
 <ul>
 <li><a href="https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/default">default</a><br /></li>
 <li><a href="https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/offwhite">offwhite</a><br /></li>
-<li><a href="https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/polished">polished</a><br /></li>
+<li><a href="https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/polished">polished</a><br />
+<br /></li>
 </ul>
 
 <p>自作スキンを作って<code>.war</code>に追加した後、<code>SKIN</code>で指定すればいいだけなはず(実際作ってないけど&hellip;)。<br />
@@ -272,6 +273,8 @@ $ sudo SKIN='-L myskin' ./opengrok-0.12.1.5/bin/OpenGrok update
 
             <div class="col-md-8">
                 <strong> Tags </strong><br/><br/>
+                
+                <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
                 <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 

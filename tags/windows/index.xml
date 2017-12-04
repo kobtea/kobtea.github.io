@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on kobtea.net</title>
-    <link>http://kobtea.net/tags/windows/</link>
+    <link>http://kobtea.net/tags/windows/index.xml</link>
     <description>Recent content in Windows on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sun, 20 Dec 2015 18:19:02 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
     <atom:link href="http://kobtea.net/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -21,7 +21,7 @@
 写真とか自炊本を失う前にいい加減なんとかしようそうしよう。&lt;br /&gt;
 紆余曲折あったのでありのままの紆余曲折を書いていく。&lt;/p&gt;
 
-&lt;h2 id=&#34;自宅の環境:00fd6aa5576bb15357667faf913fdf48&#34;&gt;自宅の環境&lt;/h2&gt;
+&lt;h2 id=&#34;自宅の環境&#34;&gt;自宅の環境&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;デスクトップPC (Windows)&lt;br /&gt;
@@ -34,21 +34,25 @@
 
 &lt;ul&gt;
 &lt;li&gt;コード書いたりする&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;意識高いことする用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;意識高いことする用&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;プランをいくつか考えてみる:00fd6aa5576bb15357667faf913fdf48&#34;&gt;プランをいくつか考えてみる&lt;/h2&gt;
+&lt;h2 id=&#34;プランをいくつか考えてみる&#34;&gt;プランをいくつか考えてみる&lt;/h2&gt;
 
 &lt;p&gt;RAIDを組めるストレージといえばNASということで、NASを買うかどうかも含め考えられるプランは3つ。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;アプライアンスNAS案&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;自作NAS案&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Windows機でがんばる案&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Windows機でがんばる案&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;アプライアンスnas案:00fd6aa5576bb15357667faf913fdf48&#34;&gt;アプライアンスNAS案&lt;/h3&gt;
+&lt;h3 id=&#34;アプライアンスnas案&#34;&gt;アプライアンスNAS案&lt;/h3&gt;
 
 &lt;p&gt;箱物のNASを買う案。&lt;br /&gt;
 買うからにはスロット4本以上ほしい。&lt;/p&gt;
@@ -63,17 +67,20 @@
 
 &lt;ul&gt;
 &lt;li&gt;アプライアンスなので楽&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;メディアサーバとしても使える&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;メディアサーバとしても使える&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;しっかりしたものを買おうとすると結構高い&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Firmwareで駄目パッチが来ると色々辛い&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Firmwareで駄目パッチが来ると色々辛い&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;自作nas案:00fd6aa5576bb15357667faf913fdf48&#34;&gt;自作NAS案&lt;/h3&gt;
+&lt;h3 id=&#34;自作nas案&#34;&gt;自作NAS案&lt;/h3&gt;
 
 &lt;p&gt;zfs(w/Linux)が気になるので、RAID-Z2で組むことを主軸に考えた。&lt;/p&gt;
 
@@ -84,7 +91,8 @@
 &lt;li&gt;RAID-Z2は現状あとからディスクを増やせないので、始めから多めに挿しておく&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;ディスク4本だとRAID10と実効容量変わらずで負けた気がする&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;小さいほうがいいよねってことでMini-ITX&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;小さいほうがいいよねってことでMini-ITX&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;といった要件を満たすケースを探しながらキャッキャウフフしてた。&lt;/p&gt;
@@ -92,7 +100,8 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Linuxなのでお勉強にもなる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Linuxなのでお勉強にもなる&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
@@ -102,11 +111,13 @@
 
 &lt;ul&gt;
 &lt;li&gt;駆け込み需要でHaswell以前のM/Bが品薄状態&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;メモリの規格も変わっちゃったし&amp;hellip;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;メモリの規格も変わっちゃったし&amp;hellip;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;windows機でがんばる案:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Windows機でがんばる案&lt;/h3&gt;
+&lt;h3 id=&#34;windows機でがんばる案&#34;&gt;Windows機でがんばる案&lt;/h3&gt;
 
 &lt;p&gt;今時のWindowsはSoftware RAIDが組めてしまうすごい。&lt;br /&gt;
 この案ではお手軽に小さく始めるのが主軸なので、RAID1で最低限の冗長構成でいいかな。&lt;/p&gt;
@@ -114,16 +125,19 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;一番お手頃価格&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;一番お手頃価格&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Windows&amp;hellip;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Windows&amp;hellip;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;結局どれにしたの:00fd6aa5576bb15357667faf913fdf48&#34;&gt;結局どれにしたの&lt;/h3&gt;
+&lt;h3 id=&#34;結局どれにしたの&#34;&gt;結局どれにしたの&lt;/h3&gt;
 
 &lt;p&gt;今回おさいふ事情が芳しくなかったので、WindowsでRAID1を作ることにした。&lt;br /&gt;
 とりあえずディスク2本買うだけで良いし、小さく始めるにはちょうどいい感じ。&lt;br /&gt;
@@ -133,24 +147,26 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B013HNYVCE/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B013HNYVCE&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;Western Digital Corporation WD60EZRZ-RT&lt;/a&gt; * 2&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B007903F7E/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B007903F7E&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;エアリア Raid JET PCI Express X1 接続 Raidボード Raid0 1対応 SD-PESA3-2RL&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B007903F7E/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B007903F7E&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;エアリア Raid JET PCI Express X1 接続 Raidボード Raid0 1対応 SD-PESA3-2RL&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;SATAポート足りなかったので拡張カード買いに行ったら、RAID有りモデルと無しモデルで同じ値段だったので有りなやつを買ってみた。&lt;br /&gt;
 ふわっとRAIDカードを買ってきたら、今度はHardware RAIDとSoftware RAIDどっちにしようかという話になった。&lt;/p&gt;
 
-&lt;h2 id=&#34;hardware-raid1-v-s-software-raid1:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Hardware RAID1 v.s. Software RAID1&lt;/h2&gt;
+&lt;h2 id=&#34;hardware-raid1-v-s-software-raid1&#34;&gt;Hardware RAID1 v.s. Software RAID1&lt;/h2&gt;
 
 &lt;p&gt;ファイ！&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Hardware RAIDは、Marvellチップ搭載の上記RAIDカード&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Software RAIDは、Windows標準のミラーボリューム&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Software RAIDは、Windows標準のミラーボリューム&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;CrystalDiskInfoとCrystalDiskMarkで見比べてみる。&lt;/p&gt;
 
-&lt;h3 id=&#34;hdd単品:00fd6aa5576bb15357667faf913fdf48&#34;&gt;HDD単品&lt;/h3&gt;
+&lt;h3 id=&#34;hdd単品&#34;&gt;HDD単品&lt;/h3&gt;
 
 &lt;p&gt;RAID組まずにHDD(WD60EZRZ-RT)単品だとどうなんじゃろ。&lt;/p&gt;
 
@@ -160,7 +176,7 @@
 
 &lt;p&gt;これが比較の基準だな。&lt;/p&gt;
 
-&lt;h3 id=&#34;hardware-raid1-marvell-raid-volume:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Hardware RAID1 (Marvell RAID Volume)&lt;/h3&gt;
+&lt;h3 id=&#34;hardware-raid1-marvell-raid-volume&#34;&gt;Hardware RAID1 (Marvell RAID Volume)&lt;/h3&gt;
 
 &lt;p&gt;Amazonのレビューにも書いてあったけど、smart見れない(´・ω・｀)&lt;br /&gt;
 下調べせずにふわっと買ってきちゃったから仕方ないね。&lt;br /&gt;
@@ -175,7 +191,8 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Software RAIDに比べればCPU負荷は低いんじゃないかな(測ってないけど^p^)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Software RAIDに比べればCPU負荷は低いんじゃないかな(測ってないけど^p^)&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
@@ -183,10 +200,12 @@
 &lt;ul&gt;
 &lt;li&gt;smart見れない(´・ω・｀)&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;rebuildはBIOS上で行うため、rebuild中はWindowsを使用できない&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;RAIDコントローラのベンダロックイン&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;RAIDコントローラのベンダロックイン&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;software-raid1-windows-mirrored-volume:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Software RAID1 (Windows Mirrored Volume)&lt;/h3&gt;
+&lt;h3 id=&#34;software-raid1-windows-mirrored-volume&#34;&gt;Software RAID1 (Windows Mirrored Volume)&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2015/12/20/soft_info.jpg&#34; class=&#34;img-responsive&#34; width=&#34;50%&#34; height=&#34;50%&#34;/&gt;&lt;/p&gt;
 
@@ -197,16 +216,19 @@
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;rebuildはWindows上で行うため、rebuild中もWindowsが利用できる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;rebuildはWindows上で行うため、rebuild中もWindowsが利用できる&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Windowsのベンダロックイン&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Windowsのベンダロックイン&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;結局どっちにしたの:00fd6aa5576bb15357667faf913fdf48&#34;&gt;結局どっちにしたの&lt;/h3&gt;
+&lt;h3 id=&#34;結局どっちにしたの&#34;&gt;結局どっちにしたの&lt;/h3&gt;
 
 &lt;p&gt;どっちにもしてない＞＜&lt;br /&gt;
 当初smart見れないのは辛いので、ミラーボリュームを使ったSoftware RAID1にしようと決めた。&lt;br /&gt;
@@ -215,12 +237,13 @@
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://aikotobaha.blogspot.jp/2011/05/windows7.html&#34;&gt;Windows7 無効になったダイナミックディスクを復旧する&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.pc-every.com/TIPS/tips09.html&#34;&gt;ダイナミックディスクがアクセス不能になった場合の修復方法&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.pc-every.com/TIPS/tips09.html&#34;&gt;ダイナミックディスクがアクセス不能になった場合の修復方法&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;めっちゃ怖い。&lt;/p&gt;
 
-&lt;h2 id=&#34;もう定期バックアップだけでいいんじゃなかろうか:00fd6aa5576bb15357667faf913fdf48&#34;&gt;もう定期バックアップだけでいいんじゃなかろうか&lt;/h2&gt;
+&lt;h2 id=&#34;もう定期バックアップだけでいいんじゃなかろうか&#34;&gt;もう定期バックアップだけでいいんじゃなかろうか&lt;/h2&gt;
 
 &lt;p&gt;なんかもう疲れちゃって、RAID自体微妙な気がしてきた。&lt;br /&gt;
 自宅環境ならもう定期バックアップだけ取っていればいいんじゃないかな。&lt;br /&gt;
@@ -232,19 +255,22 @@
 
 &lt;ul&gt;
 &lt;li&gt;ベンダロックインがない&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;復旧がめっちゃ楽&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;復旧がめっちゃ楽&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;バッチによる非同期処理のため一時的に差分が生まれる&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;ディスクは当然2本見えるので、&amp;rdquo;mirror側は絶対に触らない&amp;rdquo;という&amp;rdquo;運用でカバー&amp;rdquo;が発生する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;ディスクは当然2本見えるので、&amp;rdquo;mirror側は絶対に触らない&amp;rdquo;という&amp;rdquo;運用でカバー&amp;rdquo;が発生する&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;ええやん！&lt;/p&gt;
 
-&lt;h2 id=&#34;robocopyでそそくさと設定する:00fd6aa5576bb15357667faf913fdf48&#34;&gt;robocopyでそそくさと設定する&lt;/h2&gt;
+&lt;h2 id=&#34;robocopyでそそくさと設定する&#34;&gt;robocopyでそそくさと設定する&lt;/h2&gt;
 
 &lt;p&gt;Windowsには&lt;code&gt;robocopy&lt;/code&gt;という&lt;code&gt;rsync&lt;/code&gt;相当のコマンドが存在する。&lt;/p&gt;
 
@@ -260,12 +286,14 @@
 &lt;li&gt;&lt;code&gt;/XD &amp;lt;DIR&amp;gt;&lt;/code&gt; 指定ディレクトリを除外&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;/XJ&lt;/code&gt; ジャンクションポイント(シンボリックリンクのようなもの)を除外&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;/TEE&lt;/code&gt; 標準出力にも出力する&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/LOG&lt;/code&gt; ログの出力先&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/LOG&lt;/code&gt; ログの出力先&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;勝った！これで大勝利や！&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:00fd6aa5576bb15357667faf913fdf48&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;お金のこと&lt;/p&gt;
 
@@ -276,7 +304,8 @@
 &lt;li&gt;QNAPとかアプライアンスNAS買えばいいと思う&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;Linuxのお勉強したいなら自作NASアリだと思う&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;お金に余裕が無いからといって、Windowsのダイナミックディスクに手を出してはいけない&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;お金に余裕が無いからといって、Windowsのダイナミックディスクに手を出してはいけない&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;冗長化のこと&lt;/p&gt;
@@ -310,27 +339,29 @@
 &lt;p&gt;macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。&lt;br /&gt;
 RealforceのUS配列を購入してwinに設定したこと。&lt;/p&gt;
 
-&lt;h2 id=&#34;環境:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;環境&lt;/h2&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;OS: Windows7 64bit&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Keyboard: Realforce 87U&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Keyboard: Realforce 87U&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;デスクトップ環境なので今回考えてないけど、ノートの場合は本体の配列がーとか考慮してあげないといけない。&lt;/p&gt;
 
-&lt;h2 id=&#34;やりたいこと:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;やりたいこと&lt;/h2&gt;
+&lt;h2 id=&#34;やりたいこと&#34;&gt;やりたいこと&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;[alt] [無変換] [space] [変換] [alt] みたいな配列にしたい&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;[半角/全角] みたいなトグルは使いたくない&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;[半角/全角] みたいなトグルは使いたくない&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;macのJIS配列みたいな感じ。&lt;/p&gt;
 
-&lt;h2 id=&#34;作業ログ:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;作業ログ&lt;/h2&gt;
+&lt;h2 id=&#34;作業ログ&#34;&gt;作業ログ&lt;/h2&gt;
 
-&lt;h3 id=&#34;英語キーボードとして認識させる:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;英語キーボードとして認識させる&lt;/h3&gt;
+&lt;h3 id=&#34;英語キーボードとして認識させる&#34;&gt;英語キーボードとして認識させる&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# レジストリエディタを起動
 Start &amp;gt; regedit
@@ -350,7 +381,7 @@ JIS, US両方あるうちにログインパスワード再設定をしておく�
 
 &lt;p&gt;参考 : &lt;a href=&#34;http://blog.heiichi.com/?eid=792239&#34;&gt;Windows 7 のキーボードを英語キーボードに変更 - へーいち の うぇぶろぐ&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;keyの配置を変える:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;Keyの配置を変える&lt;/h3&gt;
+&lt;h3 id=&#34;keyの配置を変える&#34;&gt;Keyの配置を変える&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.forest.impress.co.jp/library/software/changekey/&#34;&gt;Change Key&lt;/a&gt;を使う。&lt;br /&gt;
 winキーとaltキーをスワップさせる。&lt;/p&gt;
@@ -364,7 +395,7 @@ Right Win  -&amp;gt; Right Alt
 &lt;p&gt;登録して再起動する。&lt;br /&gt;
 Winキーを潰して代わりに変換/無変換キーにするよ。&lt;/p&gt;
 
-&lt;h3 id=&#34;変換-無変換キー候補に絶対使わないであろうショートカットを割り当てる:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる&lt;/h3&gt;
+&lt;h3 id=&#34;変換-無変換キー候補に絶対使わないであろうショートカットを割り当てる&#34;&gt;変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる&lt;/h3&gt;
 
 &lt;p&gt;US配列だと変換/無変換というキーは存在しない。&lt;br /&gt;
 ので、絶対使わないであろうショートカットをWinキーに割り当てて、IMEにはそのショートカットに変換/無変換をフックさせる。&lt;/p&gt;
@@ -383,7 +414,7 @@ LWin::^+Left
 &lt;p&gt;編集したら&lt;code&gt;Reload This Script&lt;/code&gt;。&lt;br /&gt;
 Win起動時に一緒に起動して欲しいなら、スタートアップフォルダの中に&lt;code&gt;AutoHotkey.ahk&lt;/code&gt;のショートカットを置いておく。&lt;/p&gt;
 
-&lt;h3 id=&#34;imeに変換-無変換の設定をする:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;IMEに変換/無変換の設定をする&lt;/h3&gt;
+&lt;h3 id=&#34;imeに変換-無変換の設定をする&#34;&gt;IMEに変換/無変換の設定をする&lt;/h3&gt;
 
 &lt;p&gt;google IMEを使っているのでその設定方法を。&lt;/p&gt;
 
@@ -401,7 +432,7 @@ google IME &amp;gt; プロパティ &amp;gt; 一般 &amp;gt; キー設定 &amp;g
 &lt;p&gt;これで大勝利。&lt;br /&gt;
 なんというまわりくどさ。&lt;/p&gt;
 
-&lt;h2 id=&#34;appendix:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;Appendix&lt;/h2&gt;
+&lt;h2 id=&#34;appendix&#34;&gt;Appendix&lt;/h2&gt;
 
 &lt;p&gt;トグルでもよければAX配列設定で、右Altに半角/全角相当が割り当てられる。&lt;br /&gt;
 参考 : &lt;a href=&#34;http://www.atmarkit.co.jp/fwin2k/win2ktips/041axkbd/axkbd.html&#34;&gt;右Altキーに［漢字］キーを割り当てる方法（AXキーボード設定を利用する方法）&lt;/a&gt;&lt;/p&gt;

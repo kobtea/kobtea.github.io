@@ -37,7 +37,7 @@
             <div class="collapse navbar-collapse" id="header-navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li><a href="/posts/">archives</a></li>
+                    <li><a href="/posts">archives</a></li>
                     
                     <li><a href="/posts/index.xml">rss</a></li>
                     
@@ -62,16 +62,16 @@
 <ul>
 <li>
 <ul>
-<li><a href="#時間配分:4cfb701cf836bbc5c7516541bfb56f95">時間配分</a></li>
-<li><a href="#事前準備:4cfb701cf836bbc5c7516541bfb56f95">事前準備</a></li>
-<li><a href="#チューニングの進め方:4cfb701cf836bbc5c7516541bfb56f95">チューニングの進め方</a>
+<li><a href="#時間配分">時間配分</a></li>
+<li><a href="#事前準備">事前準備</a></li>
+<li><a href="#チューニングの進め方">チューニングの進め方</a>
 <ul>
-<li><a href="#1-課題の理解:4cfb701cf836bbc5c7516541bfb56f95">1. 課題の理解</a></li>
-<li><a href="#2-プロファイリング:4cfb701cf836bbc5c7516541bfb56f95">2. プロファイリング</a></li>
-<li><a href="#3-サーバ構成の把握:4cfb701cf836bbc5c7516541bfb56f95">3. サーバ構成の把握</a></li>
-<li><a href="#4-チューニングの方向性を決める:4cfb701cf836bbc5c7516541bfb56f95">4. チューニングの方向性を決める</a></li>
+<li><a href="#1-課題の理解">1. 課題の理解</a></li>
+<li><a href="#2-プロファイリング">2. プロファイリング</a></li>
+<li><a href="#3-サーバ構成の把握">3. サーバ構成の把握</a></li>
+<li><a href="#4-チューニングの方向性を決める">4. チューニングの方向性を決める</a></li>
 </ul></li>
-<li><a href="#チューニングのヒント:4cfb701cf836bbc5c7516541bfb56f95">チューニングのヒント</a></li>
+<li><a href="#チューニングのヒント">チューニングのヒント</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -88,12 +88,14 @@
 <ul>
 <li><a href="http://isucon.net/">[公式]ISUCON</a><br /></li>
 <li><a href="http://yapcasia.org/2015/talk/show/86ebd212-fab3-11e4-8f5a-8ab37d574c3a">[公式]トーク情報</a><br /></li>
-<li><a href="http://togetter.com/li/863801">togetter</a><br /></li>
+<li><a href="http://togetter.com/li/863801">togetter</a><br />
+<br />
+<br /></li>
 </ul>
 
 <p>スピーカー: @kazeburo さん</p>
 
-<h2 id="時間配分:4cfb701cf836bbc5c7516541bfb56f95">時間配分</h2>
+<h2 id="時間配分">時間配分</h2>
 
 <ul>
 <li>競技全体では7時間<br /></li>
@@ -109,10 +111,11 @@
 <li>再起動テストだけに使う<br /></li>
 <li>再起動の失敗はよくある<br /></li>
 </ul></li>
-<li>上記を考慮すると、実際の作業時間は5時間ほど<br /></li>
+<li>上記を考慮すると、実際の作業時間は5時間ほど<br />
+<br /></li>
 </ul>
 
-<h2 id="事前準備:4cfb701cf836bbc5c7516541bfb56f95">事前準備</h2>
+<h2 id="事前準備">事前準備</h2>
 
 <ul>
 <li>chatroom<br /></li>
@@ -139,13 +142,14 @@
 <li>過去問大事<br /></li>
 <li><a href="http://isucon.net/archives/40724693.html">ISUCON4 予選問題の解説と講評 ＆ AMIの公開</a><br /></li>
 <li><a href="http://d.hatena.ne.jp/tmatsuu/20150815/1439643715">ISUCON予選突破の鍵は過去問を解くことなので無料で試せるようにした(Vagrant+Ansible)</a><br /></li>
-<li>EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ<br /></li>
+<li>EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ<br />
+<br /></li>
 </ul></li>
 </ul>
 
-<h2 id="チューニングの進め方:4cfb701cf836bbc5c7516541bfb56f95">チューニングの進め方</h2>
+<h2 id="チューニングの進め方">チューニングの進め方</h2>
 
-<h3 id="1-課題の理解:4cfb701cf836bbc5c7516541bfb56f95">1. 課題の理解</h3>
+<h3 id="1-課題の理解">1. 課題の理解</h3>
 
 <ul>
 <li>レギュレーションや説明をよく読む<br />
@@ -158,11 +162,12 @@
 
 <ul>
 <li>チューニングしていなくてもベンチ取る<br /></li>
-<li>ちゃんと動いているかを確認する<br /></li>
+<li>ちゃんと動いているかを確認する<br />
+<br /></li>
 </ul></li>
 </ul>
 
-<h3 id="2-プロファイリング:4cfb701cf836bbc5c7516541bfb56f95">2. プロファイリング</h3>
+<h3 id="2-プロファイリング">2. プロファイリング</h3>
 
 <ul>
 <li>ログ解析や負荷確認<br /></li>
@@ -188,28 +193,32 @@
 <li>サーバの負荷<br />
 
 <ul>
-<li>top, iftop, iotop, dstat, &hellip;<br /></li>
+<li>top, iftop, iotop, dstat, &hellip;<br />
+<br /></li>
 </ul></li>
 </ul>
 
-<h3 id="3-サーバ構成の把握:4cfb701cf836bbc5c7516541bfb56f95">3. サーバ構成の把握</h3>
+<h3 id="3-サーバ構成の把握">3. サーバ構成の把握</h3>
 
 <ul>
 <li>どんなミドルウェアがいるのか<br /></li>
-<li>どのポートが使われているのか<br /></li>
+<li>どのポートが使われているのか<br />
+<br /></li>
 </ul>
 
-<h3 id="4-チューニングの方向性を決める:4cfb701cf836bbc5c7516541bfb56f95">4. チューニングの方向性を決める</h3>
+<h3 id="4-チューニングの方向性を決める">4. チューニングの方向性を決める</h3>
 
 <ul>
 <li>CPUの気持ちになり、コンテキストスイッチを減らす<br />
 
 <ul>
-<li>不要な参照・通信・プロセスをとにかく減らす<br /></li>
+<li>不要な参照・通信・プロセスをとにかく減らす<br />
+<br />
+<br /></li>
 </ul></li>
 </ul>
 
-<h2 id="チューニングのヒント:4cfb701cf836bbc5c7516541bfb56f95">チューニングのヒント</h2>
+<h2 id="チューニングのヒント">チューニングのヒント</h2>
 
 <ul>
 <li>重い処理を把握し、減らせないか考える<br />
@@ -288,6 +297,8 @@
 
             <div class="col-md-8">
                 <strong> Tags </strong><br/><br/>
+                
+                <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
                 <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 

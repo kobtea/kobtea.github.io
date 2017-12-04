@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on kobtea.net</title>
-    <link>http://kobtea.net/tags/ruby/</link>
+    <link>http://kobtea.net/tags/ruby/index.xml</link>
     <description>Recent content in Ruby on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Mon, 23 Sep 2013 00:17:00 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
     <atom:link href="http://kobtea.net/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -26,7 +26,7 @@ BuildVersion:   12E3067
 &lt;p&gt;&lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt;のreadmeにそってやる。&lt;br /&gt;
 PATHについて解説までしてくれるとかマジ天使。&lt;/p&gt;
 
-&lt;h2 id=&#34;rbenvのインストール:02efbb982949a3203f0d32f585df492a&#34;&gt;rbenvのインストール&lt;/h2&gt;
+&lt;h2 id=&#34;rbenvのインストール&#34;&gt;rbenvのインストール&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# homebrewを最新の状態に
 $ brew update
@@ -85,7 +85,7 @@ See `rbenv help &amp;lt;command&amp;gt;&#39; for information on a specific comma
 For full documentation, see: https://github.com/sstephenson/rbenv#readme
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;rbenv-default-gemsをインストール:02efbb982949a3203f0d32f585df492a&#34;&gt;rbenv-default-gemsをインストール&lt;/h2&gt;
+&lt;h2 id=&#34;rbenv-default-gemsをインストール&#34;&gt;rbenv-default-gemsをインストール&lt;/h2&gt;
 
 &lt;p&gt;ついでに&lt;a href=&#34;https://github.com/sstephenson/rbenv-default-gems&#34;&gt;rbenv-default-gems&lt;/a&gt;を入れておく。&lt;br /&gt;
 &lt;code&gt;rbenv install &amp;lt;version&amp;gt;&lt;/code&gt;でRubyをインストールする際に、一緒に必要なgemを入れてくれる。&lt;/p&gt;
@@ -214,7 +214,7 @@ $ gem --version
 
 &lt;p&gt;こんにちはRuby。&lt;/p&gt;
 
-&lt;h2 id=&#34;追記:02efbb982949a3203f0d32f585df492a&#34;&gt;追記&lt;/h2&gt;
+&lt;h2 id=&#34;追記&#34;&gt;追記&lt;/h2&gt;
 
 &lt;p&gt;Macデフォルトのreadlineは使わないほうがいいらしい。&lt;br /&gt;
 &lt;code&gt;rbenv install&lt;/code&gt;する際にはhomebrewで入れたreadline, opensslを指定する。&lt;br /&gt;

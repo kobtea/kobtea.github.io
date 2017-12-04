@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Opengrok on kobtea.net</title>
-    <link>http://kobtea.net/tags/opengrok/</link>
+    <link>http://kobtea.net/tags/opengrok/index.xml</link>
     <description>Recent content in Opengrok on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 14 May 2016 04:21:57 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
     <atom:link href="http://kobtea.net/tags/opengrok/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
@@ -26,7 +26,7 @@
 &lt;p&gt;と書いたけど、方法がわかったのでメモ。&lt;br /&gt;
 標準でいくつかのデザインテーマが提供されていた。&lt;/p&gt;
 
-&lt;h2 id=&#34;web-site-look-feel-option:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;Web Site Look &amp;amp; Feel Option&lt;/h2&gt;
+&lt;h2 id=&#34;web-site-look-feel-option&#34;&gt;Web Site Look &amp;amp; Feel Option&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;OpenGrok&lt;/code&gt; wrapper scriptを眺めていたら&lt;code&gt;SKIN&lt;/code&gt;なんて環境変数を見つけた。&lt;/p&gt;
 
@@ -35,11 +35,11 @@
 &lt;p&gt;標準で&lt;code&gt;default&lt;/code&gt;, &lt;code&gt;offwhite&lt;/code&gt;, &lt;code&gt;polished&lt;/code&gt;の3種類のスキンが提供されている。&lt;br /&gt;
 「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。&lt;/p&gt;
 
-&lt;h2 id=&#34;スキン:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;スキン&lt;/h2&gt;
+&lt;h2 id=&#34;スキン&#34;&gt;スキン&lt;/h2&gt;
 
 &lt;p&gt;どれもJavaを感じるデザイン。&lt;/p&gt;
 
-&lt;h3 id=&#34;default:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;default&lt;/h3&gt;
+&lt;h3 id=&#34;default&#34;&gt;default&lt;/h3&gt;
 
 &lt;p&gt;
 
@@ -54,7 +54,7 @@
 
 &lt;/p&gt;
 
-&lt;h3 id=&#34;offwhite:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;offwhite&lt;/h3&gt;
+&lt;h3 id=&#34;offwhite&#34;&gt;offwhite&lt;/h3&gt;
 
 &lt;p&gt;
 
@@ -69,7 +69,7 @@
 
 &lt;/p&gt;
 
-&lt;h3 id=&#34;polished:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;polished&lt;/h3&gt;
+&lt;h3 id=&#34;polished&#34;&gt;polished&lt;/h3&gt;
 
 &lt;p&gt;
 
@@ -84,7 +84,7 @@
 
 &lt;/p&gt;
 
-&lt;h2 id=&#34;変更方法:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;変更方法&lt;/h2&gt;
+&lt;h2 id=&#34;変更方法&#34;&gt;変更方法&lt;/h2&gt;
 
 &lt;p&gt;スキンを変更するには、&lt;code&gt;update&lt;/code&gt;, &lt;code&gt;index&lt;/code&gt;する際に&lt;code&gt;SKIN&lt;/code&gt;を指定しておけばいいだけ。&lt;/p&gt;
 
@@ -109,14 +109,15 @@ $ sudo SKIN=&#39;-L offwhite&#39; ./opengrok-0.12.1.5/bin/OpenGrok update
 
 &lt;p&gt;スキンを変えても反映されない場合は、ブラウザキャッシュを消すこと。&lt;/p&gt;
 
-&lt;h2 id=&#34;フルカスタマイズする場合:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;フルカスタマイズする場合&lt;/h2&gt;
+&lt;h2 id=&#34;フルカスタマイズする場合&#34;&gt;フルカスタマイズする場合&lt;/h2&gt;
 
 &lt;p&gt;標準のスキンを参考に自作すればいいんじゃないかな。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/default&#34;&gt;default&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/offwhite&#34;&gt;offwhite&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/polished&#34;&gt;polished&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/polished&#34;&gt;polished&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;自作スキンを作って&lt;code&gt;.war&lt;/code&gt;に追加した後、&lt;code&gt;SKIN&lt;/code&gt;で指定すればいいだけなはず(実際作ってないけど&amp;hellip;)。&lt;br /&gt;
@@ -172,18 +173,22 @@ $ sudo SKIN=&#39;-L myskin&#39; ./opengrok-0.12.1.5/bin/OpenGrok update
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/How-to-install-OpenGrok&#34;&gt;How to install OpenGrok&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats&#34;&gt;Supported Languages and Formats&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats&#34;&gt;Supported Languages and Formats&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;環境:d7f76f7fae14046b96455df9547ca844&#34;&gt;環境&lt;/h2&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Ubuntu 14.04.4&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;OpenJDK 1.7.0_95&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;OpenGrok 0.12.1.5&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;OpenGrok 0.12.1.5&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;setup:d7f76f7fae14046b96455df9547ca844&#34;&gt;Setup&lt;/h2&gt;
+&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
 
 &lt;p&gt;必要なpackageをインストールする。&lt;/p&gt;
 
@@ -234,7 +239,7 @@ OpenGrok should be available on &amp;lt;HOST&amp;gt;:&amp;lt;PORT&amp;gt;/source
 
 &lt;p&gt;&lt;code&gt;http://&amp;lt;HOST&amp;gt;:8080/source/&lt;/code&gt;にアクセスしてOpenGrokが表示されたら喜ぶ。&lt;/p&gt;
 
-&lt;h2 id=&#34;リファレンス用のコードを配置:d7f76f7fae14046b96455df9547ca844&#34;&gt;リファレンス用のコードを配置&lt;/h2&gt;
+&lt;h2 id=&#34;リファレンス用のコードを配置&#34;&gt;リファレンス用のコードを配置&lt;/h2&gt;
 
 &lt;p&gt;リファレンス用のコードとは、リポジトリやプロジェクトと同義。&lt;br /&gt;
 OpenGrokではプロジェクトという単語を使っている。&lt;/p&gt;
@@ -259,7 +264,8 @@ OpenGrokではプロジェクトという単語を使っている。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;default &lt;code&gt;OPENGROK_INSTANCE_BASE/data&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;リファレンス用コードの解析結果が置かれるディレクトリ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;リファレンス用コードの解析結果が置かれるディレクトリ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -353,7 +359,7 @@ loggerを変更する場合は、&lt;code&gt;opengrok-0.12.1.5/doc/logging.prope
 &lt;p&gt;こんな感じ。&lt;br /&gt;
 indexコマンドで生成しているわけだし、これは手でいじらないほうが良さそう。&lt;/p&gt;
 
-&lt;h2 id=&#34;運用:d7f76f7fae14046b96455df9547ca844&#34;&gt;運用&lt;/h2&gt;
+&lt;h2 id=&#34;運用&#34;&gt;運用&lt;/h2&gt;
 
 &lt;p&gt;基本的な運用自体は、読みたいソースを見つけて&lt;code&gt;SRC_ROOT&lt;/code&gt;へ逐一追加、indexの貼り直しかな。&lt;br /&gt;
 常にupstreamを追い続けたいのであれば、リポジトリ更新、index貼り直しをするcronでも作れば良い。&lt;br /&gt;

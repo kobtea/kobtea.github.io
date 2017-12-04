@@ -2,12 +2,155 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>kobtea.net</title>
-    <link>http://kobtea.net/</link>
+    <link>http://kobtea.net/index.xml</link>
     <description>Recent content on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <lastBuildDate>Sat, 04 Jun 2016 21:59:34 +0900</lastBuildDate>
+    <copyright>2015 kobtea</copyright>
+    <lastBuildDate>Mon, 04 Dec 2017 21:26:45 +0900</lastBuildDate>
     <atom:link href="http://kobtea.net/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Google SRE本を読んだ</title>
+      <link>http://kobtea.net/posts/2017/12/04/google-sre-book/</link>
+      <pubDate>Mon, 04 Dec 2017 21:26:45 +0900</pubDate>
+      
+      <guid>http://kobtea.net/posts/2017/12/04/google-sre-book/</guid>
+      <description>
+
+&lt;p&gt;やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。&lt;/p&gt;
+
+&lt;h2 id=&#34;sreってなんだろう&#34;&gt;SREってなんだろう&lt;/h2&gt;
+
+&lt;p&gt;ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。&lt;br /&gt;
+価値を素早く提供するためには、インフラなどプロダクトチーム以外のリソースが制約事項になってはいけない。ということで人的リソースの制約を乗り越え、SREの価値をスケーラブルにするため自動化・自律化・マイクロサービス化などを積極的に行う。ナレッジに関してもスケールするよう明文化・定量化を徹底し、エンジニアが暗黙的・良心で行っていることを明らかにして組織的に取り組む。&lt;/p&gt;
+
+&lt;h3 id=&#34;インフラエンジニア-チームと何が違うのか&#34;&gt;インフラエンジニア・チームと何が違うのか&lt;/h3&gt;
+
+&lt;p&gt;企業文化や規模によって、インフラエンジニアの業務範囲は大きく異なるので一概には説明できない。既にインフラチームがSREとして機能している会社もあれば、ハードウェアの保守だけしている会社だってある。立ち上げ間もないベンチャーはミドルウェアから下のレイヤはすべて見ていることもあるし、そんな場合は大体SRE的な働き方をしているかもしれない。ただしそんなベンチャーの場合、スピード最優先なのでドキュメント化されていない暗黙知が満載だったり、がっつり属人化していたりするので人的リソースはスケールしていない。&lt;/p&gt;
+
+&lt;p&gt;仮にインフラチームを「ミドルウェアから下のレイヤを、全サービス横断して見る人達」として、SREは何が違うか考えてみる。&lt;br /&gt;
+プレイヤーなエンジニアは、開発する時間を捻出することに意識が向いている。運用と並行して開発を行うので、とにかく時間が足りない。小さな自働化から始め、減らせた運用コストを次の開発に当て更に自働化を拡大する。その先はベストプラクティスを実践するためのフレームワークだったりマイクロサービスだったりもする。&lt;br /&gt;
+マネージャは、人的リソースをスケールできるように組織をデザインし、チーム外との協力関係を獲得する。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;人的リソースのスケール&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ドキュメンテーションによるナレッジ共有&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;障害対応訓練などに使えるシミュレーション環境&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;SREエンジニアの開発時間の確保&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;割り込みを受けない時間の提供&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;プロダクトチームとの対等な関係の構築&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;定量的な指標を基にした利害の統一&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;エラーバジェットを利用した攻める機会の獲得&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;この辺りを意識する必要がある。マネジメントを考えると結構インフラチームとSREは違うなぁ。&lt;/p&gt;
+
+&lt;p&gt;では、SREはインフラエンジニアの上位互換かというとそうでもない気がする。雑に言えばSREはものすごい知識量のジェネラリストなので、特定分野のスペシャリストではない。ミドルウェアやネットワーク、ハードウェア、セキュリティなどなどスペシャリストがいるインフラって素敵じゃん。なので「SREの活躍でインフラエンジニア不要にするぞい！」というのは個人的には違うんじゃないかなと思う。&lt;/p&gt;
+
+&lt;h3 id=&#34;devopsと何が違うのか&#34;&gt;DevOpsと何が違うのか&lt;/h3&gt;
+
+&lt;p&gt;手段が同じということはあるけど目的が違う。DevOpsも定義がふわっとしているが、運用を楽にするというのが目的。SREはユーザにサービスを早く・継続的に提供するというのが目的。どちらも自動化はやるが、人的リソースのスケールやキャパシティプランニングはDevOpsでは扱わないんじゃないかな。&lt;/p&gt;
+
+&lt;h2 id=&#34;印象的だったこと&#34;&gt;印象的だったこと&lt;/h2&gt;
+
+&lt;h3 id=&#34;絶対に落とさない-からの脱却&#34;&gt;「絶対に落とさない」からの脱却&lt;/h3&gt;
+
+&lt;p&gt;サービスに関わる人間は絶対にサービスを落とさないという気持ちで日々運用している。が、障害は起きるものだし、仮に自社サービスが可用性100%だとしてもユーザへ届く経路上でどうしても可用性は落ちてしまう。&lt;br /&gt;
+ならばサービスで必要十分な可用性のレベル・SLOを定義して、貴重な人的リソースを過剰に消費しないようにしましょうという戦略がとられる。SLOは高ければ高いほど好ましいが、それだけコストがかかる。90%を99%にするコストに比べ、99.9%を99.99%にするコストはとても高い。&lt;/p&gt;
+
+&lt;p&gt;ここまでは一般的な話だが、SREでは可用性を過剰に達成しすぎてもダメだという考え方をしている。可用性を必要十分に抑えることで2つの利点が生まれる。&lt;/p&gt;
+
+&lt;p&gt;1つ目は過剰に達成している分を、「本来障害が起きるはずだったんだから、リスクのある挑戦をして障害が起きてもいいよね」と、挑戦の機会として扱えること。ミドルウェアのバージョンアップや依存システムの移行など、システムのレガシー化を防ぐことができ、メンテナンスコストの低下にもつながる。&lt;/p&gt;
+
+&lt;p&gt;2つ目は依存しているサービスに対して、依存元のSLOを織り込んだ設計を強制できること。依存先が依存元よりもSLOが低く、一蓮托生と割り切るのであればそれもよし。そうでないなら落ちることを織り込んだリトライ処理や、重要度の低いデータを破棄・遅延させるなど対策が必要になる。依存元は過剰な信頼をされることもなく、依存先の可用性も上がり、サービスも組織も健全になる。&lt;/p&gt;
+
+&lt;h3 id=&#34;アラートレベルを使い分ける&#34;&gt;アラートレベルを使い分ける&lt;/h3&gt;
+
+&lt;p&gt;モニタリングの出力は以下3種ある。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ページ: 即時対応が必要&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;チケット: 数日以内に対応が必要&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;ロギング: 対応不要だが記録だけ残す&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ページは日中深夜問わず鳴ったら最後、全ての作業を投げ捨て最優先で対応しなければならない。それだけに心身共に削られるページはむやみやたらに飛ばさない。&lt;br /&gt;
+大原則としてユーザ影響があるものはページを飛ばし、なければチケットなりログに落とすだけで良い。ユーザ影響を知るためにホワイトボックスモニタリングだけでなく、ブラックボックスでのモニタリングが重要になる。&lt;/p&gt;
+
+&lt;p&gt;サーバが落ちたらページを飛ばすのは一般的だが、冗長化されていてそこにリクエストが振られないのであればページを鳴らす必要はない。ウェブサーバのディスクが逼迫していても、ロードバランサから抜いてしまえば問題ない。&lt;/p&gt;
+
+&lt;p&gt;障害が起きたら再発防止を行って、着実にページを減らしていく。ホワイトボックスモニタリングで検知されるものは、システムを自動化・自律化させ排除していく。ただし、簡単なブラックボックスモニタリングではリクエスト先の引きの問題もあるので、各種ヘルスチェック機構も充実させる必要がある。もちろん観測できていないのは問題外。&lt;/p&gt;
+
+&lt;h3 id=&#34;sreとgcp&#34;&gt;SREとGCP&lt;/h3&gt;
+
+&lt;p&gt;GoogleはSREの価値を全力でスケールさせる。&lt;br /&gt;
+SREの価値をスケールさせる上で、SREエンジニアの人数に制限されてはいけない。最大公約数やベストプラクティスを見つけ出しドキュメント化する。そして実装可能なものに解釈し、ライブラリやフレームワーク、(マイクロ)サービスとして実装・提供する。それらを利用するだけでSREの価値を享受できる。そしてこれをさらにスケールさせて社外に飛び出したのがGCPになる。言ってしまえばGCPはSRE as a Serviceみたいな感じじゃなかろうか。&lt;/p&gt;
+
+&lt;p&gt;Googleで実際に使っているという点でGCPとAWSは思想が異なる。AWSも確かにAmazonで使われているが、全てのサービスを使っているかは怪しい気がする。ユーザリクエストを募集して、投票数の高いものをサービス化したりもしているわけだし。自社で利用しているものとユーザが求めたものが混在しているのがAWS。自社で利用しているものだけが存在しているのがGCP。という印象、実際は違うかもしれない。&lt;/p&gt;
+
+&lt;h2 id=&#34;sreを実践するとしたら考えること&#34;&gt;SREを実践するとしたら考えること&lt;/h2&gt;
+
+&lt;h3 id=&#34;sreを理解するためのシミュレーション&#34;&gt;SREを理解するためのシミュレーション&lt;/h3&gt;
+
+&lt;p&gt;本に書かれたことを始めから全てやるのは無理なので、優先度を付けて取り組んでいくことになる。&lt;br /&gt;
+仮に次のような状況を設定して、どうやって取り組んでいくか考えてみると具体的なアクションが見えてくるんじゃなかろうか。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;四半期毎に1サービスがローンチされる&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;台数規模は100台をベースとする&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;イベント・季節要因により負荷は随時変化する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;サービスクローズは考えないものとする&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;開始時点でSREエンジニアは1人&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;開始時点のSREエンジニアの能力は全能とする(すごい)&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;パワーワード感あるが、OSSや既存の社内ツールに関する調査のオーバーヘッドを無視する、という意味&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;サービスのビジネスロジックは無知とする&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;年に1人のペースでSREエンジニアが追加される&lt;br /&gt;
+
+&lt;ul&gt;
+&lt;li&gt;追加されるSREエンジニアは初期メンバのように全能ではない(ふつう)&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;小さく始めるsre&#34;&gt;小さく始めるSRE&lt;/h3&gt;
+
+&lt;p&gt;SREを始めるにあたってぶつかる最初の難題は、SLOとかエラーバジェットの定義が難しい点じゃなかろうか。全くSREに馴染みのない状態から、お試しでやってみるのであれば、ページ件数と対応時間を指標に使ってみるのも良いと思う。重要なのはSREとプロダクトチームで利害を一致させ、その利益をユーザが受ける構造にすること。自分たちのサービスレベルを知るために起きた障害の振り返りを定例化して確認していく。取り組み方や思想の共有ができてきてから、SLOやエラーバジェットは調整していけばいいんじゃないかな。&lt;/p&gt;
+
+&lt;p&gt;そもそもいきなりプロダクトチームを巻き込むのすら気が引ける、もっと小さく始めたいという場合、上記のページ件数を指標にしてインフラチーム内で実施してみるのも意味はあると思う。ミドルウェアなレイヤのページ削減や自動化・自律化はある程度インフラ内だけでも実施できる。ただし、独りよがりなエラーバジェットを掲げて「あいつらいつも障害起こしてんな」と見られる危険もあるので、やはりプロダクトチームと一緒にやったほうが良いのは変わらない。&lt;/p&gt;
+
+&lt;h2 id=&#34;最後に&#34;&gt;最後に&lt;/h2&gt;
+
+&lt;h3 id=&#34;sreを設立します-ってなんか流行に乗っているみたいで恥ずかしくない&#34;&gt;「SREを設立します!」ってなんか流行に乗っているみたいで恥ずかしくない?&lt;/h3&gt;
+
+&lt;p&gt;個人的にバズワードに乗っかっているミーハー感は感じつつも、個人で取り組むものではないので、組織としてアピールするのは間違ってはいないと思う。組織的にちゃんと取り組む、インフラエンジニアの良心に過剰に依存しないという宣言でもあるはず。少なくとも分析チームが既にあるのに「ビッグデータチームを設立します!!」よりはよっぽど意味がある。&lt;/p&gt;
+
+&lt;h3 id=&#34;インフラエンジニアの生存戦略として&#34;&gt;インフラエンジニアの生存戦略として&lt;/h3&gt;
+
+&lt;p&gt;インフラエンジニアであり、ソフトウェアエンジニアでありたいと願う人が健全に働くには、を組織的にデザインしたのがSREという印象。なのでそんな人にはとても魅力的な経験・環境なんじゃなかろうか。日中定常業務をして、人が減った夜に開発をするという黒い環境ではなく、日中に腰を据えて開発できる環境を一緒に捻出していきましょうとアプローチしてくれるのだから嬉しいったらないね!!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Google Stackdriverを眺める</title>
@@ -20,7 +163,7 @@
 &lt;p&gt;以前話題になった&lt;a href=&#34;https://cloud.google.com/stackdriver/&#34;&gt;Stackdriver&lt;/a&gt;をbetaのうちに触っておこうそうしよう。&lt;br /&gt;
 AWSがCloudWatchなら、GCPはStackdriverや！！&lt;/p&gt;
 
-&lt;h2 id=&#34;stackdriverの提供する機能:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriverの提供する機能&lt;/h2&gt;
+&lt;h2 id=&#34;stackdriverの提供する機能&#34;&gt;Stackdriverの提供する機能&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://cloud.google.com/stackdriver/docs/&#34;&gt;Document&lt;/a&gt;を眺めてみると機能はこんな感じ。&lt;br /&gt;
 正直下3つはまだ触れていないのでわりと適当。&lt;/p&gt;
@@ -54,26 +197,28 @@ AWSがCloudWatchなら、GCPはStackdriverや！！&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;パフォーマンスチューニングのためのサービス&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;どの処理にどれだけ時間がかかっているのかが計測できる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;どの処理にどれだけ時間がかかっているのかが計測できる&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;今回はMonitoringを眺めてみようかな。&lt;/p&gt;
 
-&lt;h2 id=&#34;準備:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;準備&lt;/h2&gt;
+&lt;h2 id=&#34;準備&#34;&gt;準備&lt;/h2&gt;
 
 &lt;p&gt;監視対象のInstanceを立ち上げて、Agentを仕込むぞー。&lt;br /&gt;
 今回はOpengrokサーバを構築してみようかな。&lt;br /&gt;
 前段にNginx、バックエンドにTomcatがいる構成。&lt;br /&gt;
 Stackdriverに関係ない部分はざっくり省略していく(それでも長ったらしくなってしまったあばば)。&lt;/p&gt;
 
-&lt;h3 id=&#34;gce-instanceを作成する:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;GCE Instanceを作成する&lt;/h3&gt;
+&lt;h3 id=&#34;gce-instanceを作成する&#34;&gt;GCE Instanceを作成する&lt;/h3&gt;
 
 &lt;p&gt;参考:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/agent/install-agent#authorizing&#34;&gt;Installing the Monitoring Agent - Authorizing the monitoring agent&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;はじめにWeb consoleからGoogle Monitoring APIを有効にしておくこと。&lt;br /&gt;
@@ -90,13 +235,14 @@ https://www.googleapis.com/auth/service.management
 https://www.googleapis.com/auth/servicecontrol
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;stackdriver-agentを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriver Agentを入れる&lt;/h3&gt;
+&lt;h3 id=&#34;stackdriver-agentを入れる&#34;&gt;Stackdriver Agentを入れる&lt;/h3&gt;
 
 &lt;p&gt;参考:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/agent/install-agent&#34;&gt;Installing the Monitoring Agent&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes&#34;&gt;Authorizing the Monitoring API&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Documentに記載のinstall scriptを打つだけ、だと思ってました。&lt;/p&gt;
@@ -190,14 +336,14 @@ Extractor status:  Extractor sample data:
 
 &lt;p&gt;(∩´∀｀)∩ﾜｰｲ&lt;/p&gt;
 
-&lt;h3 id=&#34;stackdriver-agent-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Stackdriver Agent pluginを入れる&lt;/h3&gt;
+&lt;h3 id=&#34;stackdriver-agent-pluginを入れる&#34;&gt;Stackdriver Agent pluginを入れる&lt;/h3&gt;
 
 &lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/#supported_plugins&#34;&gt;Monitoring Agent Configuration - Supported plugins&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;Agent pluginは標準で色々なミドルウェアに対応している。&lt;br /&gt;
 標準pluginはconfigを書くだけで楽ちん。&lt;/p&gt;
 
-&lt;h4 id=&#34;nginx-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Nginx pluginを入れる&lt;/h4&gt;
+&lt;h4 id=&#34;nginx-pluginを入れる&#34;&gt;Nginx pluginを入れる&lt;/h4&gt;
 
 &lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/nginx&#34;&gt;Nginx Plugin&lt;/a&gt;&lt;/p&gt;
 
@@ -240,7 +386,7 @@ Created new plugin context.
                                                                                                                                                                                           [ OK ]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;tomcat-pluginを入れる:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Tomcat pluginを入れる&lt;/h4&gt;
+&lt;h4 id=&#34;tomcat-pluginを入れる&#34;&gt;Tomcat pluginを入れる&lt;/h4&gt;
 
 &lt;p&gt;参考: &lt;a href=&#34;https://cloud.google.com/monitoring/agent/plugins/tomcat&#34;&gt;Tomcat Plugin&lt;/a&gt;&lt;/p&gt;
 
@@ -277,7 +423,7 @@ Created new plugin context.
                                                                                                                                                                                           [ OK ]
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;web-consoleを眺める:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Web consoleを眺める&lt;/h2&gt;
+&lt;h2 id=&#34;web-consoleを眺める&#34;&gt;Web consoleを眺める&lt;/h2&gt;
 
 &lt;p&gt;IndexページはAlert周りの機能が多い印象、すぐに反応したいしね。&lt;/p&gt;
 
@@ -290,7 +436,7 @@ Created new plugin context.
 
 &lt;p&gt;メニューごとにふわっと眺めようかな。&lt;/p&gt;
 
-&lt;h3 id=&#34;resources:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Resources&lt;/h3&gt;
+&lt;h3 id=&#34;resources&#34;&gt;Resources&lt;/h3&gt;
 
 &lt;p&gt;GCP/AWSのサービスや、Agent pluginごとにいい感じにグルーピングされている。&lt;br /&gt;
 インスタンス単位ではなくリソースタイプ単位でまとめて管理する設計なんだな。&lt;/p&gt;
@@ -312,7 +458,7 @@ Created new plugin context.
 
 
 
-&lt;h3 id=&#34;alerting:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Alerting&lt;/h3&gt;
+&lt;h3 id=&#34;alerting&#34;&gt;Alerting&lt;/h3&gt;
 
 &lt;p&gt;みんな大好きアラート。&lt;/p&gt;
 
@@ -361,7 +507,7 @@ Created new plugin context.
 
 
 
-&lt;h3 id=&#34;groups:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Groups&lt;/h3&gt;
+&lt;h3 id=&#34;groups&#34;&gt;Groups&lt;/h3&gt;
 
 
 
@@ -380,7 +526,7 @@ Created new plugin context.
 
 
 
-&lt;h3 id=&#34;dashboards:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Dashboards&lt;/h3&gt;
+&lt;h3 id=&#34;dashboards&#34;&gt;Dashboards&lt;/h3&gt;
 
 &lt;p&gt;君だけの最強のDashboardを作ろう。&lt;br /&gt;
 しかし残念、折れ線グラフしか使えない！&lt;br /&gt;
@@ -393,7 +539,7 @@ CPUとか積み上げグラフにしたいな&amp;hellip;&lt;/p&gt;
 
 
 
-&lt;h3 id=&#34;logs:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;Logs&lt;/h3&gt;
+&lt;h3 id=&#34;logs&#34;&gt;Logs&lt;/h3&gt;
 
 &lt;p&gt;ログの全文検索、リソースタイプ別、ログレベル別なんでもござれ。しゅごい。&lt;br /&gt;
 データフォーマットはjson。&lt;/p&gt;
@@ -405,7 +551,7 @@ CPUとか積み上げグラフにしたいな&amp;hellip;&lt;/p&gt;
 
 
 
-&lt;h2 id=&#34;感想:8dcfccb2404d325b5b3f3e422fce2915&#34;&gt;感想&lt;/h2&gt;
+&lt;h2 id=&#34;感想&#34;&gt;感想&lt;/h2&gt;
 
 &lt;p&gt;まだまだbetaだなーと強く思ったのはグラフかな。折れ線グラフ以外も欲しい。&lt;br /&gt;
 Custom Dashboardはgrafanaレベルになったら嬉しいな。&lt;br /&gt;
@@ -437,7 +583,7 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。&lt;br /&gt;
 &lt;p&gt;と書いたけど、方法がわかったのでメモ。&lt;br /&gt;
 標準でいくつかのデザインテーマが提供されていた。&lt;/p&gt;
 
-&lt;h2 id=&#34;web-site-look-feel-option:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;Web Site Look &amp;amp; Feel Option&lt;/h2&gt;
+&lt;h2 id=&#34;web-site-look-feel-option&#34;&gt;Web Site Look &amp;amp; Feel Option&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;OpenGrok&lt;/code&gt; wrapper scriptを眺めていたら&lt;code&gt;SKIN&lt;/code&gt;なんて環境変数を見つけた。&lt;/p&gt;
 
@@ -446,11 +592,11 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。&lt;br /&gt;
 &lt;p&gt;標準で&lt;code&gt;default&lt;/code&gt;, &lt;code&gt;offwhite&lt;/code&gt;, &lt;code&gt;polished&lt;/code&gt;の3種類のスキンが提供されている。&lt;br /&gt;
 「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。&lt;/p&gt;
 
-&lt;h2 id=&#34;スキン:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;スキン&lt;/h2&gt;
+&lt;h2 id=&#34;スキン&#34;&gt;スキン&lt;/h2&gt;
 
 &lt;p&gt;どれもJavaを感じるデザイン。&lt;/p&gt;
 
-&lt;h3 id=&#34;default:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;default&lt;/h3&gt;
+&lt;h3 id=&#34;default&#34;&gt;default&lt;/h3&gt;
 
 &lt;p&gt;
 
@@ -465,7 +611,7 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。&lt;br /&gt;
 
 &lt;/p&gt;
 
-&lt;h3 id=&#34;offwhite:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;offwhite&lt;/h3&gt;
+&lt;h3 id=&#34;offwhite&#34;&gt;offwhite&lt;/h3&gt;
 
 &lt;p&gt;
 
@@ -480,7 +626,7 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。&lt;br /&gt;
 
 &lt;/p&gt;
 
-&lt;h3 id=&#34;polished:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;polished&lt;/h3&gt;
+&lt;h3 id=&#34;polished&#34;&gt;polished&lt;/h3&gt;
 
 &lt;p&gt;
 
@@ -495,7 +641,7 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。&lt;br /&gt;
 
 &lt;/p&gt;
 
-&lt;h2 id=&#34;変更方法:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;変更方法&lt;/h2&gt;
+&lt;h2 id=&#34;変更方法&#34;&gt;変更方法&lt;/h2&gt;
 
 &lt;p&gt;スキンを変更するには、&lt;code&gt;update&lt;/code&gt;, &lt;code&gt;index&lt;/code&gt;する際に&lt;code&gt;SKIN&lt;/code&gt;を指定しておけばいいだけ。&lt;/p&gt;
 
@@ -520,14 +666,15 @@ $ sudo SKIN=&#39;-L offwhite&#39; ./opengrok-0.12.1.5/bin/OpenGrok update
 
 &lt;p&gt;スキンを変えても反映されない場合は、ブラウザキャッシュを消すこと。&lt;/p&gt;
 
-&lt;h2 id=&#34;フルカスタマイズする場合:c05a775354f0b35bd8ce66545cbd87e8&#34;&gt;フルカスタマイズする場合&lt;/h2&gt;
+&lt;h2 id=&#34;フルカスタマイズする場合&#34;&gt;フルカスタマイズする場合&lt;/h2&gt;
 
 &lt;p&gt;標準のスキンを参考に自作すればいいんじゃないかな。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/default&#34;&gt;default&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/offwhite&#34;&gt;offwhite&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/polished&#34;&gt;polished&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/polished&#34;&gt;polished&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;自作スキンを作って&lt;code&gt;.war&lt;/code&gt;に追加した後、&lt;code&gt;SKIN&lt;/code&gt;で指定すればいいだけなはず(実際作ってないけど&amp;hellip;)。&lt;br /&gt;
@@ -583,18 +730,22 @@ $ sudo SKIN=&#39;-L myskin&#39; ./opengrok-0.12.1.5/bin/OpenGrok update
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/How-to-install-OpenGrok&#34;&gt;How to install OpenGrok&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats&#34;&gt;Supported Languages and Formats&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats&#34;&gt;Supported Languages and Formats&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;環境:d7f76f7fae14046b96455df9547ca844&#34;&gt;環境&lt;/h2&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Ubuntu 14.04.4&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;OpenJDK 1.7.0_95&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;OpenGrok 0.12.1.5&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;OpenGrok 0.12.1.5&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;setup:d7f76f7fae14046b96455df9547ca844&#34;&gt;Setup&lt;/h2&gt;
+&lt;h2 id=&#34;setup&#34;&gt;Setup&lt;/h2&gt;
 
 &lt;p&gt;必要なpackageをインストールする。&lt;/p&gt;
 
@@ -645,7 +796,7 @@ OpenGrok should be available on &amp;lt;HOST&amp;gt;:&amp;lt;PORT&amp;gt;/source
 
 &lt;p&gt;&lt;code&gt;http://&amp;lt;HOST&amp;gt;:8080/source/&lt;/code&gt;にアクセスしてOpenGrokが表示されたら喜ぶ。&lt;/p&gt;
 
-&lt;h2 id=&#34;リファレンス用のコードを配置:d7f76f7fae14046b96455df9547ca844&#34;&gt;リファレンス用のコードを配置&lt;/h2&gt;
+&lt;h2 id=&#34;リファレンス用のコードを配置&#34;&gt;リファレンス用のコードを配置&lt;/h2&gt;
 
 &lt;p&gt;リファレンス用のコードとは、リポジトリやプロジェクトと同義。&lt;br /&gt;
 OpenGrokではプロジェクトという単語を使っている。&lt;/p&gt;
@@ -670,7 +821,8 @@ OpenGrokではプロジェクトという単語を使っている。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;default &lt;code&gt;OPENGROK_INSTANCE_BASE/data&lt;/code&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;リファレンス用コードの解析結果が置かれるディレクトリ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;リファレンス用コードの解析結果が置かれるディレクトリ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -764,7 +916,7 @@ loggerを変更する場合は、&lt;code&gt;opengrok-0.12.1.5/doc/logging.prope
 &lt;p&gt;こんな感じ。&lt;br /&gt;
 indexコマンドで生成しているわけだし、これは手でいじらないほうが良さそう。&lt;/p&gt;
 
-&lt;h2 id=&#34;運用:d7f76f7fae14046b96455df9547ca844&#34;&gt;運用&lt;/h2&gt;
+&lt;h2 id=&#34;運用&#34;&gt;運用&lt;/h2&gt;
 
 &lt;p&gt;基本的な運用自体は、読みたいソースを見つけて&lt;code&gt;SRC_ROOT&lt;/code&gt;へ逐一追加、indexの貼り直しかな。&lt;br /&gt;
 常にupstreamを追い続けたいのであれば、リポジトリ更新、index貼り直しをするcronでも作れば良い。&lt;br /&gt;
@@ -783,19 +935,19 @@ indexコマンドで生成しているわけだし、これは手でいじらな
 &lt;p&gt;こたつでぬくぬく。&lt;br /&gt;
 思いつくキーワードを拾いつつ、だらだら思い返す。&lt;/p&gt;
 
-&lt;h2 id=&#34;技術的なこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;技術的なこと&lt;/h2&gt;
+&lt;h2 id=&#34;技術的なこと&#34;&gt;技術的なこと&lt;/h2&gt;
 
 &lt;p&gt;もう少し頑張りましょう&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2015/12/31/2015_contribute.jpg&#34;/&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;ossコントリビュート:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;OSSコントリビュート&lt;/h3&gt;
+&lt;h3 id=&#34;ossコントリビュート&#34;&gt;OSSコントリビュート&lt;/h3&gt;
 
 &lt;p&gt;パッチを投げて初コントリビュートした。&lt;br /&gt;
 メンテナの方が深夜にもかかわらず素早くレスポンスをくれたり、&amp;rdquo;このコミット1つにまとめてね&amp;rdquo;とか手取り足取り教えてくれた。&lt;br /&gt;
 GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
-&lt;h3 id=&#34;scala:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;Scala&lt;/h3&gt;
+&lt;h3 id=&#34;scala&#34;&gt;Scala&lt;/h3&gt;
 
 &lt;p&gt;ここ1年くらいscalaをたくさん書いていた。&lt;br /&gt;
 関数型言語をまともに触ったのはこれが初めてだけど、ずっとオブジェクト指向で関数型初めてです＞＜という僕のような人にはとても良い言語だと思う。&lt;br /&gt;
@@ -805,7 +957,7 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;p&gt;scalaで&lt;code&gt;map&lt;/code&gt;をたくさん書いたあと、rubyのブロック構文に対する見え方が変わったし、&lt;code&gt;xargs&lt;/code&gt;で脳汁が出るようになった。scalaとの出会いに感謝。&lt;/p&gt;
 
-&lt;h3 id=&#34;isucon5:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;ISUCON5&lt;/h3&gt;
+&lt;h3 id=&#34;isucon5&#34;&gt;ISUCON5&lt;/h3&gt;
 
 &lt;p&gt;予選落ちだけど。&lt;br /&gt;
 面白そうだなーﾁﾗﾁﾗと毎年横目で見ていたけど、今年は思い切って参加した。&lt;br /&gt;
@@ -813,9 +965,9 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 おやつの時間くらいに一瞬だけ上位に行けたのがとても嬉しかった。&lt;br /&gt;
 決勝とか予選とかではなく、「よっしゃ！バリバリにチューニングしたったで！！」という達成感があまり無かったので、来年もリベンジしたいなぁ。&lt;/p&gt;
 
-&lt;h2 id=&#34;私生活なこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;私生活なこと&lt;/h2&gt;
+&lt;h2 id=&#34;私生活なこと&#34;&gt;私生活なこと&lt;/h2&gt;
 
-&lt;h3 id=&#34;お遍路:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;お遍路&lt;/h3&gt;
+&lt;h3 id=&#34;お遍路&#34;&gt;お遍路&lt;/h3&gt;
 
 &lt;p&gt;2014年から年に1回ペースで四国へ行ってお遍路参りを始めた。&lt;br /&gt;
 1年目は原付きをレンタルしてお寺周りをした。&lt;br /&gt;
@@ -824,7 +976,7 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 田舎道をトコトコ走るのはとても楽しいのでおすすめ。&lt;br /&gt;
 来年の高知どうしよ&amp;hellip;&lt;/p&gt;
 
-&lt;h3 id=&#34;健康管理:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;健康管理&lt;/h3&gt;
+&lt;h3 id=&#34;健康管理&#34;&gt;健康管理&lt;/h3&gt;
 
 &lt;p&gt;体重計を買った。&lt;/p&gt;
 
@@ -837,7 +989,7 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;p&gt;7月くらいまでは意外にも成果あって、体脂肪が落ちていった。&lt;br /&gt;
 その後は仕事で色々あってやさぐれてしまい、たくさん食べたり、そもそも体重計乗らなくなってしまった。見事なV字回復である。来年から体重計乗るだけダイエットを復活させたい。&lt;/p&gt;
 
-&lt;h2 id=&#34;来年がんばりたいこと:48b9f7ad40438182c91e1e17d945a5bc&#34;&gt;来年がんばりたいこと&lt;/h2&gt;
+&lt;h2 id=&#34;来年がんばりたいこと&#34;&gt;来年がんばりたいこと&lt;/h2&gt;
 
 &lt;p&gt;今年が終わっちゃうので来年考えよう＞＜&lt;/p&gt;
 </description>
@@ -855,7 +1007,7 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 写真とか自炊本を失う前にいい加減なんとかしようそうしよう。&lt;br /&gt;
 紆余曲折あったのでありのままの紆余曲折を書いていく。&lt;/p&gt;
 
-&lt;h2 id=&#34;自宅の環境:00fd6aa5576bb15357667faf913fdf48&#34;&gt;自宅の環境&lt;/h2&gt;
+&lt;h2 id=&#34;自宅の環境&#34;&gt;自宅の環境&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;デスクトップPC (Windows)&lt;br /&gt;
@@ -868,21 +1020,25 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;コード書いたりする&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;意識高いことする用&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;意識高いことする用&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;プランをいくつか考えてみる:00fd6aa5576bb15357667faf913fdf48&#34;&gt;プランをいくつか考えてみる&lt;/h2&gt;
+&lt;h2 id=&#34;プランをいくつか考えてみる&#34;&gt;プランをいくつか考えてみる&lt;/h2&gt;
 
 &lt;p&gt;RAIDを組めるストレージといえばNASということで、NASを買うかどうかも含め考えられるプランは3つ。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;アプライアンスNAS案&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;自作NAS案&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Windows機でがんばる案&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Windows機でがんばる案&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;アプライアンスnas案:00fd6aa5576bb15357667faf913fdf48&#34;&gt;アプライアンスNAS案&lt;/h3&gt;
+&lt;h3 id=&#34;アプライアンスnas案&#34;&gt;アプライアンスNAS案&lt;/h3&gt;
 
 &lt;p&gt;箱物のNASを買う案。&lt;br /&gt;
 買うからにはスロット4本以上ほしい。&lt;/p&gt;
@@ -897,17 +1053,20 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;アプライアンスなので楽&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;メディアサーバとしても使える&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;メディアサーバとしても使える&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;しっかりしたものを買おうとすると結構高い&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Firmwareで駄目パッチが来ると色々辛い&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Firmwareで駄目パッチが来ると色々辛い&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;自作nas案:00fd6aa5576bb15357667faf913fdf48&#34;&gt;自作NAS案&lt;/h3&gt;
+&lt;h3 id=&#34;自作nas案&#34;&gt;自作NAS案&lt;/h3&gt;
 
 &lt;p&gt;zfs(w/Linux)が気になるので、RAID-Z2で組むことを主軸に考えた。&lt;/p&gt;
 
@@ -918,7 +1077,8 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;li&gt;RAID-Z2は現状あとからディスクを増やせないので、始めから多めに挿しておく&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;ディスク4本だとRAID10と実効容量変わらずで負けた気がする&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;小さいほうがいいよねってことでMini-ITX&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;小さいほうがいいよねってことでMini-ITX&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;といった要件を満たすケースを探しながらキャッキャウフフしてた。&lt;/p&gt;
@@ -926,7 +1086,8 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Linuxなのでお勉強にもなる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Linuxなのでお勉強にもなる&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
@@ -936,11 +1097,13 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;駆け込み需要でHaswell以前のM/Bが品薄状態&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;メモリの規格も変わっちゃったし&amp;hellip;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;メモリの規格も変わっちゃったし&amp;hellip;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;windows機でがんばる案:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Windows機でがんばる案&lt;/h3&gt;
+&lt;h3 id=&#34;windows機でがんばる案&#34;&gt;Windows機でがんばる案&lt;/h3&gt;
 
 &lt;p&gt;今時のWindowsはSoftware RAIDが組めてしまうすごい。&lt;br /&gt;
 この案ではお手軽に小さく始めるのが主軸なので、RAID1で最低限の冗長構成でいいかな。&lt;/p&gt;
@@ -948,16 +1111,19 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;一番お手頃価格&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;一番お手頃価格&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Windows&amp;hellip;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Windows&amp;hellip;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;結局どれにしたの:00fd6aa5576bb15357667faf913fdf48&#34;&gt;結局どれにしたの&lt;/h3&gt;
+&lt;h3 id=&#34;結局どれにしたの&#34;&gt;結局どれにしたの&lt;/h3&gt;
 
 &lt;p&gt;今回おさいふ事情が芳しくなかったので、WindowsでRAID1を作ることにした。&lt;br /&gt;
 とりあえずディスク2本買うだけで良いし、小さく始めるにはちょうどいい感じ。&lt;br /&gt;
@@ -967,24 +1133,26 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B013HNYVCE/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B013HNYVCE&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;Western Digital Corporation WD60EZRZ-RT&lt;/a&gt; * 2&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B007903F7E/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B007903F7E&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;エアリア Raid JET PCI Express X1 接続 Raidボード Raid0 1対応 SD-PESA3-2RL&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.amazon.co.jp/gp/product/B007903F7E/ref=as_li_ss_tl?ie=UTF8&amp;amp;camp=247&amp;amp;creative=7399&amp;amp;creativeASIN=B007903F7E&amp;amp;linkCode=as2&amp;amp;tag=culofgrasslan-22&#34;&gt;エアリア Raid JET PCI Express X1 接続 Raidボード Raid0 1対応 SD-PESA3-2RL&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;SATAポート足りなかったので拡張カード買いに行ったら、RAID有りモデルと無しモデルで同じ値段だったので有りなやつを買ってみた。&lt;br /&gt;
 ふわっとRAIDカードを買ってきたら、今度はHardware RAIDとSoftware RAIDどっちにしようかという話になった。&lt;/p&gt;
 
-&lt;h2 id=&#34;hardware-raid1-v-s-software-raid1:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Hardware RAID1 v.s. Software RAID1&lt;/h2&gt;
+&lt;h2 id=&#34;hardware-raid1-v-s-software-raid1&#34;&gt;Hardware RAID1 v.s. Software RAID1&lt;/h2&gt;
 
 &lt;p&gt;ファイ！&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Hardware RAIDは、Marvellチップ搭載の上記RAIDカード&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Software RAIDは、Windows標準のミラーボリューム&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Software RAIDは、Windows標準のミラーボリューム&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;CrystalDiskInfoとCrystalDiskMarkで見比べてみる。&lt;/p&gt;
 
-&lt;h3 id=&#34;hdd単品:00fd6aa5576bb15357667faf913fdf48&#34;&gt;HDD単品&lt;/h3&gt;
+&lt;h3 id=&#34;hdd単品&#34;&gt;HDD単品&lt;/h3&gt;
 
 &lt;p&gt;RAID組まずにHDD(WD60EZRZ-RT)単品だとどうなんじゃろ。&lt;/p&gt;
 
@@ -994,7 +1162,7 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;p&gt;これが比較の基準だな。&lt;/p&gt;
 
-&lt;h3 id=&#34;hardware-raid1-marvell-raid-volume:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Hardware RAID1 (Marvell RAID Volume)&lt;/h3&gt;
+&lt;h3 id=&#34;hardware-raid1-marvell-raid-volume&#34;&gt;Hardware RAID1 (Marvell RAID Volume)&lt;/h3&gt;
 
 &lt;p&gt;Amazonのレビューにも書いてあったけど、smart見れない(´・ω・｀)&lt;br /&gt;
 下調べせずにふわっと買ってきちゃったから仕方ないね。&lt;br /&gt;
@@ -1009,7 +1177,8 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Software RAIDに比べればCPU負荷は低いんじゃないかな(測ってないけど^p^)&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Software RAIDに比べればCPU負荷は低いんじゃないかな(測ってないけど^p^)&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
@@ -1017,10 +1186,12 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;smart見れない(´・ω・｀)&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;rebuildはBIOS上で行うため、rebuild中はWindowsを使用できない&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;RAIDコントローラのベンダロックイン&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;RAIDコントローラのベンダロックイン&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;software-raid1-windows-mirrored-volume:00fd6aa5576bb15357667faf913fdf48&#34;&gt;Software RAID1 (Windows Mirrored Volume)&lt;/h3&gt;
+&lt;h3 id=&#34;software-raid1-windows-mirrored-volume&#34;&gt;Software RAID1 (Windows Mirrored Volume)&lt;/h3&gt;
 
 &lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2015/12/20/soft_info.jpg&#34; class=&#34;img-responsive&#34; width=&#34;50%&#34; height=&#34;50%&#34;/&gt;&lt;/p&gt;
 
@@ -1031,16 +1202,19 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;p&gt;Pros&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;rebuildはWindows上で行うため、rebuild中もWindowsが利用できる&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;rebuildはWindows上で行うため、rebuild中もWindowsが利用できる&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Windowsのベンダロックイン&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Windowsのベンダロックイン&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;結局どっちにしたの:00fd6aa5576bb15357667faf913fdf48&#34;&gt;結局どっちにしたの&lt;/h3&gt;
+&lt;h3 id=&#34;結局どっちにしたの&#34;&gt;結局どっちにしたの&lt;/h3&gt;
 
 &lt;p&gt;どっちにもしてない＞＜&lt;br /&gt;
 当初smart見れないのは辛いので、ミラーボリュームを使ったSoftware RAID1にしようと決めた。&lt;br /&gt;
@@ -1049,12 +1223,13 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://aikotobaha.blogspot.jp/2011/05/windows7.html&#34;&gt;Windows7 無効になったダイナミックディスクを復旧する&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.pc-every.com/TIPS/tips09.html&#34;&gt;ダイナミックディスクがアクセス不能になった場合の修復方法&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.pc-every.com/TIPS/tips09.html&#34;&gt;ダイナミックディスクがアクセス不能になった場合の修復方法&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;めっちゃ怖い。&lt;/p&gt;
 
-&lt;h2 id=&#34;もう定期バックアップだけでいいんじゃなかろうか:00fd6aa5576bb15357667faf913fdf48&#34;&gt;もう定期バックアップだけでいいんじゃなかろうか&lt;/h2&gt;
+&lt;h2 id=&#34;もう定期バックアップだけでいいんじゃなかろうか&#34;&gt;もう定期バックアップだけでいいんじゃなかろうか&lt;/h2&gt;
 
 &lt;p&gt;なんかもう疲れちゃって、RAID自体微妙な気がしてきた。&lt;br /&gt;
 自宅環境ならもう定期バックアップだけ取っていればいいんじゃないかな。&lt;br /&gt;
@@ -1066,19 +1241,22 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ベンダロックインがない&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;復旧がめっちゃ楽&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;復旧がめっちゃ楽&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;Cons&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;バッチによる非同期処理のため一時的に差分が生まれる&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;ディスクは当然2本見えるので、&amp;rdquo;mirror側は絶対に触らない&amp;rdquo;という&amp;rdquo;運用でカバー&amp;rdquo;が発生する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;ディスクは当然2本見えるので、&amp;rdquo;mirror側は絶対に触らない&amp;rdquo;という&amp;rdquo;運用でカバー&amp;rdquo;が発生する&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;ええやん！&lt;/p&gt;
 
-&lt;h2 id=&#34;robocopyでそそくさと設定する:00fd6aa5576bb15357667faf913fdf48&#34;&gt;robocopyでそそくさと設定する&lt;/h2&gt;
+&lt;h2 id=&#34;robocopyでそそくさと設定する&#34;&gt;robocopyでそそくさと設定する&lt;/h2&gt;
 
 &lt;p&gt;Windowsには&lt;code&gt;robocopy&lt;/code&gt;という&lt;code&gt;rsync&lt;/code&gt;相当のコマンドが存在する。&lt;/p&gt;
 
@@ -1094,12 +1272,14 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;li&gt;&lt;code&gt;/XD &amp;lt;DIR&amp;gt;&lt;/code&gt; 指定ディレクトリを除外&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;/XJ&lt;/code&gt; ジャンクションポイント(シンボリックリンクのようなもの)を除外&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;/TEE&lt;/code&gt; 標準出力にも出力する&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/LOG&lt;/code&gt; ログの出力先&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/LOG&lt;/code&gt; ログの出力先&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;勝った！これで大勝利や！&lt;/p&gt;
 
-&lt;h2 id=&#34;まとめ:00fd6aa5576bb15357667faf913fdf48&#34;&gt;まとめ&lt;/h2&gt;
+&lt;h2 id=&#34;まとめ&#34;&gt;まとめ&lt;/h2&gt;
 
 &lt;p&gt;お金のこと&lt;/p&gt;
 
@@ -1110,7 +1290,8 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
 &lt;li&gt;QNAPとかアプライアンスNAS買えばいいと思う&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;Linuxのお勉強したいなら自作NASアリだと思う&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;お金に余裕が無いからといって、Windowsのダイナミックディスクに手を出してはいけない&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;お金に余裕が無いからといって、Windowsのダイナミックディスクに手を出してはいけない&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;冗長化のこと&lt;/p&gt;
@@ -1141,14 +1322,14 @@ GitHubはカジュアルにパッチが投げられていいなー&lt;/p&gt;
       <guid>http://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
       <description>
 
-&lt;h2 id=&#34;環境:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;環境&lt;/h2&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-scala&#34;&gt;scalaVersion := &amp;quot;2.11.6&amp;quot;
 
 libraryDependencies += &amp;quot;com.typesafe.akka&amp;quot; %% &amp;quot;akka-actor&amp;quot; % &amp;quot;2.3.11&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;悩み:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;悩み&lt;/h2&gt;
+&lt;h2 id=&#34;悩み&#34;&gt;悩み&lt;/h2&gt;
 
 &lt;p&gt;akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。&lt;/p&gt;
 
@@ -1194,7 +1375,7 @@ scala&amp;gt; :q
 &amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;threadをdaemonにすると解決するよ:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;threadをdaemonにすると解決するよ&lt;/h2&gt;
+&lt;h2 id=&#34;threadをdaemonにすると解決するよ&#34;&gt;threadをdaemonにすると解決するよ&lt;/h2&gt;
 
 &lt;blockquote&gt;
 &lt;p&gt;Javaはデーモンスレッド以外のスレッドが終了したとき、プログラムを終了します。このとき、デーモンが処理をしているかどうかは関係ありません。なので、処理が途中でぶった切られる可能性があります。それがまずい場合はやっぱり自前でシャットダウンする機構を作るしかないのですが。。。&lt;/p&gt;
@@ -1255,7 +1436,7 @@ scala&amp;gt; :q
 &lt;p&gt;&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;もdaemonみたい。&lt;br /&gt;
 &lt;a href=&#34;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&#34;&gt;https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;そもそもdaemonとnon-daemonどっちがいいんです:21f51cd4372a33bf03ce9044b814c9d3&#34;&gt;そもそもdaemonとnon-daemonどっちがいいんです？&lt;/h2&gt;
+&lt;h2 id=&#34;そもそもdaemonとnon-daemonどっちがいいんです&#34;&gt;そもそもdaemonとnon-daemonどっちがいいんです？&lt;/h2&gt;
 
 &lt;p&gt;Java力低いので、&lt;code&gt;scala.concurrent.ExecutionContext.Implicits.global&lt;/code&gt;がdaemonだしdaemonでいいじゃん！程度にしか考えてない。&lt;br /&gt;
 今回みたいなthread poolで使うケースだと、親のthreadが終了したら残っていても仕方ないのでdaemonで良いかな。&lt;/p&gt;
@@ -1273,9 +1454,9 @@ scala&amp;gt; :q
 &lt;p&gt;最初で最後のYAPC。&lt;br /&gt;
 聴いたセッションのメモとか感想とかをぽつぽつと。&lt;/p&gt;
 
-&lt;h2 id=&#34;前夜祭:a2d086c5b4dcd024688714d5925c094e&#34;&gt;前夜祭&lt;/h2&gt;
+&lt;h2 id=&#34;前夜祭&#34;&gt;前夜祭&lt;/h2&gt;
 
-&lt;h3 id=&#34;php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版:a2d086c5b4dcd024688714d5925c094e&#34;&gt;PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）&lt;/h3&gt;
+&lt;h3 id=&#34;php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版&#34;&gt;PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Hackとの速度勝負&lt;br /&gt;
@@ -1288,18 +1469,20 @@ scala&amp;gt; :q
 
 &lt;ul&gt;
 &lt;li&gt;スタートアップなどスピード勝負でガリガリ書きたいときは適している&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;SlackもPHP使ってるしまだまだオワコンじゃないよ！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;SlackもPHP使ってるしまだまだオワコンじゃないよ！&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;はてなブックマークのトピックページの裏側:a2d086c5b4dcd024688714d5925c094e&#34;&gt;はてなブックマークのトピックページの裏側&lt;/h3&gt;
+&lt;h3 id=&#34;はてなブックマークのトピックページの裏側&#34;&gt;はてなブックマークのトピックページの裏側&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Elasticsearchって重要語句抽出の機能あるのかしゅごい&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;トピックタイトルは短く誤解のないように作成するというのがなかなか定量的に検査しづらそうだなぁ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;トピックタイトルは短く誤解のないように作成するというのがなかなか定量的に検査しづらそうだなぁ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;我々にできるossとそのコミュニティの育てかた:a2d086c5b4dcd024688714d5925c094e&#34;&gt;我々にできるOSSとそのコミュニティの育てかた&lt;/h3&gt;
+&lt;h3 id=&#34;我々にできるossとそのコミュニティの育てかた&#34;&gt;我々にできるOSSとそのコミュニティの育てかた&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;とにかく全部英語&lt;br /&gt;
@@ -1312,13 +1495,15 @@ scala&amp;gt; :q
 
 &lt;ul&gt;
 &lt;li&gt;issueやpatchを送ってくれる人が出てきて自然とコミュニティが形成される&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;完璧すぎるとissueやpatchがなくて使われてる感が無い&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;完璧すぎるとissueやpatchがなくて使われてる感が無い&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;1日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;1日目&lt;/h2&gt;
+&lt;h2 id=&#34;1日目&#34;&gt;1日目&lt;/h2&gt;
 
-&lt;h3 id=&#34;メリークリスマス:a2d086c5b4dcd024688714d5925c094e&#34;&gt;メリークリスマス！&lt;/h3&gt;
+&lt;h3 id=&#34;メリークリスマス&#34;&gt;メリークリスマス！&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;perlの父ラリーさんのありがたいお話&lt;br /&gt;&lt;/li&gt;
@@ -1332,10 +1517,11 @@ scala&amp;gt; :q
 &lt;li&gt;perl5をHobit、perl6をLoad of the Ringに対応させて、見た目は違うけど根底にあるものは同じだよという話&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;文脈把握できなかったけど&amp;rdquo;&lt;code&gt;-Ofun&lt;/code&gt; (Optimize fun)&amp;ldquo;と&amp;rdquo;I FAIL GOOD (正しく失敗する)&amp;ldquo;がとても印象的だった&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;ラリーさんはLinux Mintを使っていて&lt;code&gt;alias p=&#39;perl&#39;&lt;/code&gt;だった&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;perl6は今年のクリスマスに(なるべく)出すらしい&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;perl6は今年のクリスマスに(なるべく)出すらしい&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;managing-containers-at-scale-with-coreos-and-kubernetes:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Managing Containers at Scale with CoreOS and Kubernetes&lt;/h3&gt;
+&lt;h3 id=&#34;managing-containers-at-scale-with-coreos-and-kubernetes&#34;&gt;Managing Containers at Scale with CoreOS and Kubernetes&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;k8sのイントロダクション&lt;br /&gt;&lt;/li&gt;
@@ -1347,10 +1533,11 @@ scala&amp;gt; :q
 &lt;li&gt;proxyに戻す&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;の繰り返し&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;dashboardのデザインがオサレ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;dashboardのデザインがオサレ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;tbd:a2d086c5b4dcd024688714d5925c094e&#34;&gt;TBD&lt;/h3&gt;
+&lt;h3 id=&#34;tbd&#34;&gt;TBD&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;rubyの父matzさんのありがたいお話&lt;br /&gt;&lt;/li&gt;
@@ -1367,10 +1554,11 @@ scala&amp;gt; :q
 &lt;li&gt;GCはかつてプロセスが重くなるからと避けられていたが、JVMが採用し再評価された&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;処理速度重視から、OOPのようなデザイン重視?へ移り、また速度重視になりつつある&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;streemはピタゴラスイッチみたいで楽しいよ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;streemはピタゴラスイッチみたいで楽しいよ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;perlの上にも三年-ずっとイケてるサービスを作り続ける技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜&lt;/h3&gt;
+&lt;h3 id=&#34;perlの上にも三年-ずっとイケてるサービスを作り続ける技術&#34;&gt;Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;はてなブログのとても生々しい話&lt;br /&gt;&lt;/li&gt;
@@ -1380,57 +1568,64 @@ scala&amp;gt; :q
 &lt;li&gt;3回コピペされたコードはDRYの精神に基づきコピペ層へ配置される&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;オブジェクト指向入門, DDD本などを輪読してリファクタリング&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;大規模な改修を続けられるって健全な環境だなぁ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;大規模な改修を続けられるって健全な環境だなぁ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;electron-building-desktop-apps-with-web-technologies:a2d086c5b4dcd024688714d5925c094e&#34;&gt;Electron: Building desktop apps with web technologies&lt;/h3&gt;
+&lt;h3 id=&#34;electron-building-desktop-apps-with-web-technologies&#34;&gt;Electron: Building desktop apps with web technologies&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;electronの紹介&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;electronの開発チームは現状1人らしい&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;既存のjsライブラリを使えてとてもエコな印象&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;既存のjsライブラリを使えてとてもエコな印象&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;esa-io-趣味から育てたwebサービスで生きていく:a2d086c5b4dcd024688714d5925c094e&#34;&gt;esa.io - 趣味から育てたWebサービスで生きていく&lt;/h3&gt;
+&lt;h3 id=&#34;esa-io-趣味から育てたwebサービスで生きていく&#34;&gt;esa.io - 趣味から育てたWebサービスで生きていく&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;自分で使いたいサービスを作っていたら会社になってた話&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;かわいいは正義&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;かわいいは正義&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;2日目:a2d086c5b4dcd024688714d5925c094e&#34;&gt;2日目&lt;/h2&gt;
+&lt;h2 id=&#34;2日目&#34;&gt;2日目&lt;/h2&gt;
 
-&lt;h3 id=&#34;isuconの勝ち方:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ISUCONの勝ち方&lt;/h3&gt;
+&lt;h3 id=&#34;isuconの勝ち方&#34;&gt;ISUCONの勝ち方&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://kobtea.net/posts/2015/08/22/yapc-isucon/&#34;&gt;別記事書いた&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;実はホットでオープンな-microsoft-azure:a2d086c5b4dcd024688714d5925c094e&#34;&gt;実はホットでオープンな Microsoft Azure&lt;/h3&gt;
+&lt;h3 id=&#34;実はホットでオープンな-microsoft-azure&#34;&gt;実はホットでオープンな Microsoft Azure&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;azureは1regionあたり16datacenterあってサーバは60万台&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;サーバを詰め込んだコンテナ(物理)でDCを構築している&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;壊れたサーバは使わずに放っておいて、一定数壊れたらコンテナごと破棄する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;壊れたサーバは使わずに放っておいて、一定数壊れたらコンテナごと破棄する&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;mysqlで2億件のシリアルデータと格闘したチューニングの話:a2d086c5b4dcd024688714d5925c094e&#34;&gt;MySQLで2億件のシリアルデータと格闘したチューニングの話&lt;/h3&gt;
+&lt;h3 id=&#34;mysqlで2億件のシリアルデータと格闘したチューニングの話&#34;&gt;MySQLで2億件のシリアルデータと格闘したチューニングの話&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;CPU 2core, memory 8GBでレコード2億件のDBを運用する&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;countクエリが1分超え&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;primary keyをランダム値にしていると痛い目に遭う&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;indexの再構築をなめてはいけない&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;scale up,outできない環境がただただつらそうだった&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;scale up,outできない環境がただただつらそうだった&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;データ分析基盤を支える技術:a2d086c5b4dcd024688714d5925c094e&#34;&gt;データ分析基盤を支える技術&lt;/h3&gt;
+&lt;h3 id=&#34;データ分析基盤を支える技術&#34;&gt;データ分析基盤を支える技術&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;データ分析周りのOSS, XaaSの俯瞰的な紹介&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;データ分析周りで出てくるETLはExtract Transformation Load(抽出, 変換, 登録)の略&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;分析基盤の構築・運用はとてもしんどいのでSaaS使ったほうが楽&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;分析基盤の構築・運用はとてもしんどいのでSaaS使ったほうが楽&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;ソーシャルゲームにおける-aws-移行事例:a2d086c5b4dcd024688714d5925c094e&#34;&gt;ソーシャルゲームにおける AWS 移行事例&lt;/h3&gt;
+&lt;h3 id=&#34;ソーシャルゲームにおける-aws-移行事例&#34;&gt;ソーシャルゲームにおける AWS 移行事例&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;2011年頃にラック契約していたオンプレミス環境がEOLを迎えるにあたってAWSへ移行した&lt;br /&gt;&lt;/li&gt;
@@ -1447,10 +1642,11 @@ scala&amp;gt; :q
 &lt;li&gt;timezone変更できないのでtimezone関係の関数を使っている場合は要注意&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;移行時のwrite timeを短縮するためにmulti-azからsingle-azへ一時的に変更&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;session storageとしてyrmcdsを使っている&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;session storageとしてyrmcdsを使っている&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;辛いことをやめる-から始まる業務改善とinfrastructure-as-code:a2d086c5b4dcd024688714d5925c094e&#34;&gt;辛いことをやめる！から始まる業務改善とInfrastructure as Code&lt;/h3&gt;
+&lt;h3 id=&#34;辛いことをやめる-から始まる業務改善とinfrastructure-as-code&#34;&gt;辛いことをやめる！から始まる業務改善とInfrastructure as Code&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;hb-acnsを導入した時の話&lt;br /&gt;
@@ -1475,7 +1671,9 @@ scala&amp;gt; :q
 &lt;li&gt;ドキュメントを残す&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;ハンズオンをして強制的に試す環境を作る&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;効果を定量的に計測しておくと良い&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;効果を定量的に計測しておくと良い&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;とても楽しかったですまる&lt;/p&gt;
@@ -1498,12 +1696,14 @@ scala&amp;gt; :q
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://isucon.net/&#34;&gt;[公式]ISUCON&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://yapcasia.org/2015/talk/show/86ebd212-fab3-11e4-8f5a-8ab37d574c3a&#34;&gt;[公式]トーク情報&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://togetter.com/li/863801&#34;&gt;togetter&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://togetter.com/li/863801&#34;&gt;togetter&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;スピーカー: @kazeburo さん&lt;/p&gt;
 
-&lt;h2 id=&#34;時間配分:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;時間配分&lt;/h2&gt;
+&lt;h2 id=&#34;時間配分&#34;&gt;時間配分&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;競技全体では7時間&lt;br /&gt;&lt;/li&gt;
@@ -1519,10 +1719,11 @@ scala&amp;gt; :q
 &lt;li&gt;再起動テストだけに使う&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;再起動の失敗はよくある&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;上記を考慮すると、実際の作業時間は5時間ほど&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;上記を考慮すると、実際の作業時間は5時間ほど&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;事前準備:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;事前準備&lt;/h2&gt;
+&lt;h2 id=&#34;事前準備&#34;&gt;事前準備&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;chatroom&lt;br /&gt;&lt;/li&gt;
@@ -1549,13 +1750,14 @@ scala&amp;gt; :q
 &lt;li&gt;過去問大事&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://isucon.net/archives/40724693.html&#34;&gt;ISUCON4 予選問題の解説と講評 ＆ AMIの公開&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://d.hatena.ne.jp/tmatsuu/20150815/1439643715&#34;&gt;ISUCON予選突破の鍵は過去問を解くことなので無料で試せるようにした(Vagrant+Ansible)&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;チューニングの進め方:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングの進め方&lt;/h2&gt;
+&lt;h2 id=&#34;チューニングの進め方&#34;&gt;チューニングの進め方&lt;/h2&gt;
 
-&lt;h3 id=&#34;1-課題の理解:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;1. 課題の理解&lt;/h3&gt;
+&lt;h3 id=&#34;1-課題の理解&#34;&gt;1. 課題の理解&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;レギュレーションや説明をよく読む&lt;br /&gt;
@@ -1568,11 +1770,12 @@ scala&amp;gt; :q
 
 &lt;ul&gt;
 &lt;li&gt;チューニングしていなくてもベンチ取る&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;ちゃんと動いているかを確認する&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;ちゃんと動いているかを確認する&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;2-プロファイリング:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;2. プロファイリング&lt;/h3&gt;
+&lt;h3 id=&#34;2-プロファイリング&#34;&gt;2. プロファイリング&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ログ解析や負荷確認&lt;br /&gt;&lt;/li&gt;
@@ -1598,28 +1801,32 @@ scala&amp;gt; :q
 &lt;li&gt;サーバの負荷&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;top, iftop, iotop, dstat, &amp;hellip;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;top, iftop, iotop, dstat, &amp;hellip;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;3-サーバ構成の把握:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;3. サーバ構成の把握&lt;/h3&gt;
+&lt;h3 id=&#34;3-サーバ構成の把握&#34;&gt;3. サーバ構成の把握&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;どんなミドルウェアがいるのか&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;どのポートが使われているのか&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;どのポートが使われているのか&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;4-チューニングの方向性を決める:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;4. チューニングの方向性を決める&lt;/h3&gt;
+&lt;h3 id=&#34;4-チューニングの方向性を決める&#34;&gt;4. チューニングの方向性を決める&lt;/h3&gt;
 
 &lt;ul&gt;
 &lt;li&gt;CPUの気持ちになり、コンテキストスイッチを減らす&lt;br /&gt;
 
 &lt;ul&gt;
-&lt;li&gt;不要な参照・通信・プロセスをとにかく減らす&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;不要な参照・通信・プロセスをとにかく減らす&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;チューニングのヒント:4cfb701cf836bbc5c7516541bfb56f95&#34;&gt;チューニングのヒント&lt;/h2&gt;
+&lt;h2 id=&#34;チューニングのヒント&#34;&gt;チューニングのヒント&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;重い処理を把握し、減らせないか考える&lt;br /&gt;
@@ -1653,7 +1860,7 @@ scala&amp;gt; :q
       <guid>http://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
       <description>
 
-&lt;h2 id=&#34;環境:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;環境&lt;/h2&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;➜  ~  scala
 Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11).
@@ -1661,18 +1868,19 @@ Type in expressions to have them evaluated.
 Type :help for more information.
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;やりたいこと:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;やりたいこと&lt;/h2&gt;
+&lt;h2 id=&#34;やりたいこと&#34;&gt;やりたいこと&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;scala.concurrent.Future&lt;/code&gt;で例外が発生して&lt;code&gt;Failure&lt;/code&gt;になったとき、&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;デフォルト値を適用して&lt;code&gt;Success&lt;/code&gt;で返したい！&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Failure&lt;/code&gt;のままでいいんだけど別の例外を投げたい！&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Failure&lt;/code&gt;のままでいいんだけど別の例外を投げたい！&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;といったことをしたい。&lt;/p&gt;
 
-&lt;h2 id=&#34;recoverを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverを使う&lt;/h2&gt;
+&lt;h2 id=&#34;recoverを使う&#34;&gt;recoverを使う&lt;/h2&gt;
 
 &lt;p&gt;そんなときのための&lt;code&gt;Future#recover&lt;/code&gt;。&lt;br /&gt;
 &lt;code&gt;Throwable&lt;/code&gt;をキャッチして新しい&lt;code&gt;Future&lt;/code&gt;を作ってくれる。&lt;/p&gt;
@@ -1744,7 +1952,7 @@ scala&amp;gt; res6.value.get
 res7: scala.util.Try[Int] = Success(10)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;recoverwithを使う:cc9eddef842a840aeffa4bd7bc9900a8&#34;&gt;recoverWithを使う&lt;/h2&gt;
+&lt;h2 id=&#34;recoverwithを使う&#34;&gt;recoverWithを使う&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;Future#recoverWith&lt;/code&gt;なんていうのもある。&lt;br /&gt;
 &lt;code&gt;Future#recover&lt;/code&gt;とは部分関数の型が違って、&lt;code&gt;Throwable&lt;/code&gt;を受け取って&lt;code&gt;Future&lt;/code&gt;を返すようになる。&lt;/p&gt;
@@ -1814,10 +2022,12 @@ res13: scala.util.Try[Int] = Success(10)
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt;: 最終的な設定値&lt;br /&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt;: 初期値&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt;: コマンドライン上で与えた設定値&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt;: コマンドライン上で与えた設定値&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;xx-printflagsfinal-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h2&gt;
+&lt;h2 id=&#34;xx-printflagsfinal-option&#34;&gt;&lt;code&gt;-XX:+PrintFlagsFinal&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsFinal -version
 [Global flags]
@@ -1866,7 +2076,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.11-b03, mixed mode)
 
 &lt;p&gt;ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。&lt;/p&gt;
 
-&lt;h2 id=&#34;xx-printflagsinitial-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt; Option&lt;/h2&gt;
+&lt;h2 id=&#34;xx-printflagsinitial-option&#34;&gt;&lt;code&gt;-XX:+PrintFlagsInitial&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintFlagsInitial
 [Global flags]
@@ -2042,7 +2252,7 @@ $ diff -U0 PrintFlagsInitial PrintFlagsFinal
 &lt;p&gt;あれ、&lt;code&gt;:=&lt;/code&gt;以外にも初期値と違うOptionがある&amp;hellip;なんでだろう&amp;hellip;&lt;br /&gt;
 あとでしらべる。&lt;/p&gt;
 
-&lt;h2 id=&#34;xx-printcommandlineflags-option:af24b7290ac4d0c5692f626b3c00eec8&#34;&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt; Option&lt;/h2&gt;
+&lt;h2 id=&#34;xx-printcommandlineflags-option&#34;&gt;&lt;code&gt;-XX:+PrintCommandLineFlags&lt;/code&gt; Option&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ java -XX:+PrintCommandLineFlags -version
 -XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
@@ -2067,7 +2277,8 @@ $ java -XX:+PrintCommandLineFlags &amp;gt;&amp;amp; /dev/null; echo $?
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.javaworld.com/article/2073676/hotspot-jvm-options-displayed---xx--printflagsinitial-and--xx--printflagsfinal.html&#34;&gt;HotSpot JVM Options Displayed: -XX:+PrintFlagsInitial and -XX:+PrintFlagsFinal | JavaWorld&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&#34;&gt;Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/&#34;&gt;Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
@@ -2083,27 +2294,29 @@ $ java -XX:+PrintCommandLineFlags &amp;gt;&amp;amp; /dev/null; echo $?
 &lt;p&gt;macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。&lt;br /&gt;
 RealforceのUS配列を購入してwinに設定したこと。&lt;/p&gt;
 
-&lt;h2 id=&#34;環境:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;環境&lt;/h2&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;OS: Windows7 64bit&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;Keyboard: Realforce 87U&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;Keyboard: Realforce 87U&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;デスクトップ環境なので今回考えてないけど、ノートの場合は本体の配列がーとか考慮してあげないといけない。&lt;/p&gt;
 
-&lt;h2 id=&#34;やりたいこと:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;やりたいこと&lt;/h2&gt;
+&lt;h2 id=&#34;やりたいこと&#34;&gt;やりたいこと&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;[alt] [無変換] [space] [変換] [alt] みたいな配列にしたい&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;[半角/全角] みたいなトグルは使いたくない&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;[半角/全角] みたいなトグルは使いたくない&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;macのJIS配列みたいな感じ。&lt;/p&gt;
 
-&lt;h2 id=&#34;作業ログ:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;作業ログ&lt;/h2&gt;
+&lt;h2 id=&#34;作業ログ&#34;&gt;作業ログ&lt;/h2&gt;
 
-&lt;h3 id=&#34;英語キーボードとして認識させる:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;英語キーボードとして認識させる&lt;/h3&gt;
+&lt;h3 id=&#34;英語キーボードとして認識させる&#34;&gt;英語キーボードとして認識させる&lt;/h3&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# レジストリエディタを起動
 Start &amp;gt; regedit
@@ -2123,7 +2336,7 @@ JIS, US両方あるうちにログインパスワード再設定をしておく�
 
 &lt;p&gt;参考 : &lt;a href=&#34;http://blog.heiichi.com/?eid=792239&#34;&gt;Windows 7 のキーボードを英語キーボードに変更 - へーいち の うぇぶろぐ&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;keyの配置を変える:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;Keyの配置を変える&lt;/h3&gt;
+&lt;h3 id=&#34;keyの配置を変える&#34;&gt;Keyの配置を変える&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.forest.impress.co.jp/library/software/changekey/&#34;&gt;Change Key&lt;/a&gt;を使う。&lt;br /&gt;
 winキーとaltキーをスワップさせる。&lt;/p&gt;
@@ -2137,7 +2350,7 @@ Right Win  -&amp;gt; Right Alt
 &lt;p&gt;登録して再起動する。&lt;br /&gt;
 Winキーを潰して代わりに変換/無変換キーにするよ。&lt;/p&gt;
 
-&lt;h3 id=&#34;変換-無変換キー候補に絶対使わないであろうショートカットを割り当てる:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる&lt;/h3&gt;
+&lt;h3 id=&#34;変換-無変換キー候補に絶対使わないであろうショートカットを割り当てる&#34;&gt;変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる&lt;/h3&gt;
 
 &lt;p&gt;US配列だと変換/無変換というキーは存在しない。&lt;br /&gt;
 ので、絶対使わないであろうショートカットをWinキーに割り当てて、IMEにはそのショートカットに変換/無変換をフックさせる。&lt;/p&gt;
@@ -2156,7 +2369,7 @@ LWin::^+Left
 &lt;p&gt;編集したら&lt;code&gt;Reload This Script&lt;/code&gt;。&lt;br /&gt;
 Win起動時に一緒に起動して欲しいなら、スタートアップフォルダの中に&lt;code&gt;AutoHotkey.ahk&lt;/code&gt;のショートカットを置いておく。&lt;/p&gt;
 
-&lt;h3 id=&#34;imeに変換-無変換の設定をする:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;IMEに変換/無変換の設定をする&lt;/h3&gt;
+&lt;h3 id=&#34;imeに変換-無変換の設定をする&#34;&gt;IMEに変換/無変換の設定をする&lt;/h3&gt;
 
 &lt;p&gt;google IMEを使っているのでその設定方法を。&lt;/p&gt;
 
@@ -2174,7 +2387,7 @@ google IME &amp;gt; プロパティ &amp;gt; 一般 &amp;gt; キー設定 &amp;g
 &lt;p&gt;これで大勝利。&lt;br /&gt;
 なんというまわりくどさ。&lt;/p&gt;
 
-&lt;h2 id=&#34;appendix:13c9658fbbb8dc59c2041dd8944ba6e1&#34;&gt;Appendix&lt;/h2&gt;
+&lt;h2 id=&#34;appendix&#34;&gt;Appendix&lt;/h2&gt;
 
 &lt;p&gt;トグルでもよければAX配列設定で、右Altに半角/全角相当が割り当てられる。&lt;br /&gt;
 参考 : &lt;a href=&#34;http://www.atmarkit.co.jp/fwin2k/win2ktips/041axkbd/axkbd.html&#34;&gt;右Altキーに［漢字］キーを割り当てる方法（AXキーボード設定を利用する方法）&lt;/a&gt;&lt;/p&gt;
@@ -2303,7 +2516,8 @@ setuptools (1.3.2)
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://help.github.com/articles/setting-up-a-custom-domain-with-pages&#34;&gt;Setting up a custom domain with Pages - Github Pages&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/#custom_domains&#34;&gt;Custom Domains - Octopress&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/#custom_domains&#34;&gt;Custom Domains - Octopress&lt;/a&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。&lt;/p&gt;
@@ -2317,7 +2531,7 @@ setuptools (1.3.2)
 &lt;p&gt;反映されるのに10分くらい待ってね、とのこと。&lt;br /&gt;
 反映されたらメールをくれるらしい。&lt;/p&gt;
 
-&lt;h2 id=&#34;octopress側の設定:012f76cf3e52873906c9239002dbb318&#34;&gt;Octopress側の設定&lt;/h2&gt;
+&lt;h2 id=&#34;octopress側の設定&#34;&gt;Octopress側の設定&lt;/h2&gt;
 
 &lt;p&gt;&lt;code&gt;source/CNAME&lt;/code&gt;に割り当てるドメインを設定する。&lt;/p&gt;
 
@@ -2340,7 +2554,7 @@ simple_search: http://google.com/search
 description:
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;dns設定:012f76cf3e52873906c9239002dbb318&#34;&gt;DNS設定&lt;/h2&gt;
+&lt;h2 id=&#34;dns設定&#34;&gt;DNS設定&lt;/h2&gt;
 
 &lt;p&gt;お名前.comを使っているので、そちらで設定する。&lt;/p&gt;
 
@@ -2352,7 +2566,7 @@ description:
 &lt;p&gt;で適用。&lt;br /&gt;
 適用されたよメールが届くまでのんびり待つ。&lt;/p&gt;
 
-&lt;h2 id=&#34;確認:012f76cf3e52873906c9239002dbb318&#34;&gt;確認&lt;/h2&gt;
+&lt;h2 id=&#34;確認&#34;&gt;確認&lt;/h2&gt;
 
 &lt;p&gt;digしてみる。&lt;/p&gt;
 
@@ -2510,355 +2724,6 @@ Successfully generated site: source -&amp;gt; public
 &lt;p&gt;&lt;img src=&#34;http://kobtea.net/img/2013/09/23/install-cleanpress2.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;/p&gt;
 
 &lt;p&gt;ちゃんと消えているね。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Octopress &#43; Github Pagesな環境構築</title>
-      <link>http://kobtea.net/posts/2013/09/23/setup-octopress/</link>
-      <pubDate>Mon, 23 Sep 2013 01:54:00 +0900</pubDate>
-      
-      <guid>http://kobtea.net/posts/2013/09/23/setup-octopress/</guid>
-      <description>
-
-&lt;p&gt;もはや様式美だけど自分のために。&lt;br /&gt;
-公式の&lt;a href=&#34;http://octopress.org/docs/&#34;&gt;Octopress Documentation&lt;/a&gt;を参考に。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
-ProductName:	Mac OS X
-ProductVersion:	10.8.4
-BuildVersion:	12E3067
-
-$ ruby -v
-ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
-
-$ gem -v
-2.0.3
-
-$ bundle -v
-Bundler version 1.3.5
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;octopressのセットアップ:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;Octopressのセットアップ&lt;/h2&gt;
-
-&lt;p&gt;参考 : &lt;a href=&#34;http://octopress.org/docs/setup/&#34;&gt;Octopress Setup&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# リポジトリをclone
-$ git clone git://github.com/imathis/octopress.git octopress
-$ cd octopress
-
-# 必要なgemを入れる
-$ bundle install
-$ rake install
-rake aborted!
-You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2. Using bundle exec may solve this.
-/Users/kobtea/Programs/octopress/Rakefile:2:in `&amp;lt;top (required)&amp;gt;&#39;
-(See full trace by running task with --trace)
-# 失敗した
-# 落ち着いてもう一度update
-$ bundle update
-$ rake install
-## Copying classic theme into ./source and ./sass
-mkdir -p source
-cp -r .themes/classic/source/. source
-mkdir -p sass
-cp -r .themes/classic/sass/. sass
-mkdir -p source/_posts
-mkdir -p public
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;rakeタスクを見てみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake -T
-rake clean                     # Clean out caches: .pygments-cache, .gist-cache, .sass-cache
-rake copydot[source,dest]      # copy dot files for deployment
-rake deploy                    # Default deploy task
-rake gen_deploy                # Generate website and deploy
-rake generate                  # Generate jekyll site
-rake install[theme]            # Initial setup for Octopress: copies the default theme into the path of Jekyll&#39;s generator.
-rake integrate                 # Move all stashed posts back into the posts directory, ready for site generation.
-rake isolate[filename]         # Move all other posts than the one currently being worked on to a temporary stash location (stash) so regenerating the site happens much more quickly.
-rake list                      # list tasks
-rake new_page[filename]        # Create a new page in source/(filename)/index.markdown
-rake new_post[title]           # Begin a new post in source/_posts
-rake preview                   # preview the site in a web browser
-rake push                      # deploy public directory to github pages
-rake rsync                     # Deploy website via rsync
-rake set_root_dir[dir]         # Update configurations to support publishing to root or sub directory
-rake setup_github_pages[repo]  # Set up _deploy folder and deploy branch for Github Pages deployment
-rake update_source[theme]      # Move source to source.old, install source theme updates, replace source/_includes/navigation.html with source.old&#39;s navigation
-rake update_style[theme]       # Move sass to sass.old, install sass theme updates, replace sass/custom with sass.old/custom
-rake watch                     # Watch the site and regenerate when it changes
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;試しに&lt;code&gt;rake preview&lt;/code&gt;してみる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake preview
-Stkobteang to watch source with Jekyll and Compass. Stkobteang Rack on port 4000
-directory source/stylesheets/
-   create source/stylesheets/screen.css
-Configuration from /Users/kobtea/Programs/octopress/_config.yml
-[2013-09-22 20:52:05] INFO  WEBrick 1.3.1
-[2013-09-22 20:52:05] INFO  ruby 2.0.0 (2013-06-27) [x86_64-darwin12.4.1]
-[2013-09-22 20:52:05] INFO  WEBrick::HTTPServer#start: pid=136 port=4000
-&amp;gt;&amp;gt;&amp;gt; Change detected at 20:52:05 to: screen.scss
-Auto-regenerating enabled: source -&amp;gt; public
-[2013-09-22 20:52:05] regeneration: 93 files changed
-identical public/stylesheets/screen.css
-&amp;gt;&amp;gt;&amp;gt; Compass is watching for changes. Press Ctrl-C to Stop.
-127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET / HTTP/1.1&amp;quot; 200 - 0.0207
-127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /stylesheets/screen.css HTTP/1.1&amp;quot; 200 - 0.0034
-127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /javascripts/modernizr-2.0.js HTTP/1.1&amp;quot; 200 - 0.0014
-127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /javascripts/octopress.js HTTP/1.1&amp;quot; 200 - 0.0015
-127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /images/line-tile.png?1379850683 HTTP/1.1&amp;quot; 200 - 0.0013
-127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /images/noise.png?1379850683 HTTP/1.1&amp;quot; 200 - 0.0025
-127.0.0.1 - - [22/Sep/2013 20:52:35] &amp;quot;GET /images/rss.png?1379850683 HTTP/1.1&amp;quot; 200 - 0.0010
-127.0.0.1 - - [22/Sep/2013 20:52:36] &amp;quot;GET /favicon.png HTTP/1.1&amp;quot; 200 - 0.0015
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ブラウザでlocalhost:4000にアクセス。&lt;br /&gt;
-&lt;img src=&#34;http://kobtea.net/img/2013/09/23/hello-octopress.png&#34; class=&#34;img-responsive&#34;/&gt;&lt;br /&gt;
-わーお&lt;/p&gt;
-
-&lt;h2 id=&#34;github-pagesへデプロイ:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;Github Pagesへデプロイ&lt;/h2&gt;
-
-&lt;p&gt;参考 :&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://octopress.org/docs/deploying/github/&#34;&gt;Deploying to Github Pages&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://tokkonopapa.github.io/blog/2011/12/30/octopress-on-github-and-bitbucket/&#34;&gt;Octopressのインストールから運用管理まで&lt;/a&gt;&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;githubにUSERNAME.github.ioでリポジトリを作成しておく。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 途中でgithub pagesのリポジトリを入力する
-$ rake setup_github_pages
-Enter the read/write url for your repository
-(For example, &#39;git@github.com:your_username/your_username.github.io.git)
-           or &#39;https://github.com/your_username/your_username.github.io&#39;)
-Repository url: git@github.com:kobtea/kobtea.github.io.git
-rm -rf _deploy
-mkdir _deploy
-cd _deploy
-Initialized empty Git repository in /Users/kobtea/Programs/octopress/_deploy/.git/
-[master (root-commit) d1ed656] Octopress init
- 1 file changed, 1 insertion(+)
- create mode 100644 index.html
-cd -
-
----
-## Now you can deploy to git@github.com:kobtea/kobtea.github.io.git with `rake deploy` ##
-
-# とりあえずdeploy
-$ rake deploy
-## Deploying branch to Github Pages
-## Pulling any updates from Github Pages
-cd _deploy
-There is no tracking information for the current branch.
-Please specify which branch you want to merge with.
-See git-pull(1) for details
-
-    git pull &amp;lt;remote&amp;gt; &amp;lt;branch&amp;gt;
-
-If you wish to set tracking information for this branch you can do so with:
-
-    git branch --set-upstream master origin/&amp;lt;branch&amp;gt;
-
-cd -
-rm -rf _deploy/index.html
-
-## Copying public to _deploy
-cp -r public/. _deploy
-cd _deploy
-
-## Commiting: Site updated at 2013-09-22 12:50:23 UTC
-[master 29f0918] Site updated at 2013-09-22 12:50:23 UTC
- 61 files changed, 1118 insertions(+), 1 deletion(-)
- create mode 100644 assets/jwplayer/glow/controlbar/background.png
- create mode 100644 assets/jwplayer/glow/controlbar/blankButton.png
- create mode 100644 assets/jwplayer/glow/controlbar/divider.png
- create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButton.png
- create mode 100644 assets/jwplayer/glow/controlbar/fullscreenButtonOver.png
- create mode 100644 assets/jwplayer/glow/controlbar/muteButton.png
- create mode 100644 assets/jwplayer/glow/controlbar/muteButtonOver.png
- create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButton.png
- create mode 100644 assets/jwplayer/glow/controlbar/normalscreenButtonOver.png
- create mode 100644 assets/jwplayer/glow/controlbar/pauseButton.png
- create mode 100644 assets/jwplayer/glow/controlbar/pauseButtonOver.png
- create mode 100644 assets/jwplayer/glow/controlbar/playButton.png
- create mode 100644 assets/jwplayer/glow/controlbar/playButtonOver.png
- create mode 100644 assets/jwplayer/glow/controlbar/timeSliderBuffer.png
- create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapLeft.png
- create mode 100644 assets/jwplayer/glow/controlbar/timeSliderCapRight.png
- create mode 100644 assets/jwplayer/glow/controlbar/timeSliderProgress.png
- create mode 100644 assets/jwplayer/glow/controlbar/timeSliderRail.png
- create mode 100644 assets/jwplayer/glow/controlbar/unmuteButton.png
- create mode 100644 assets/jwplayer/glow/controlbar/unmuteButtonOver.png
- create mode 100644 assets/jwplayer/glow/display/background.png
- create mode 100644 assets/jwplayer/glow/display/bufferIcon.png
- create mode 100644 assets/jwplayer/glow/display/muteIcon.png
- create mode 100644 assets/jwplayer/glow/display/playIcon.png
- create mode 100644 assets/jwplayer/glow/dock/button.png
- create mode 100644 assets/jwplayer/glow/glow.xml
- create mode 100644 assets/jwplayer/glow/playlist/item.png
- create mode 100644 assets/jwplayer/glow/playlist/itemOver.png
- create mode 100644 assets/jwplayer/glow/playlist/sliderCapBottom.png
- create mode 100644 assets/jwplayer/glow/playlist/sliderCapTop.png
- create mode 100644 assets/jwplayer/glow/playlist/sliderRail.png
- create mode 100644 assets/jwplayer/glow/playlist/sliderThumb.png
- create mode 100644 assets/jwplayer/glow/sharing/embedIcon.png
- create mode 100644 assets/jwplayer/glow/sharing/embedScreen.png
- create mode 100644 assets/jwplayer/glow/sharing/shareIcon.png
- create mode 100644 assets/jwplayer/glow/sharing/shareScreen.png
- create mode 100644 assets/jwplayer/player.swf
- create mode 100644 atom.xml
- create mode 100644 blog/archives/index.html
- create mode 100644 favicon.png
- create mode 100644 images/bird_32_gray.png
- create mode 100644 images/bird_32_gray_fail.png
- create mode 100644 images/code_bg.png
- create mode 100644 images/dotted-border.png
- create mode 100644 images/email.png
- create mode 100644 images/line-tile.png
- create mode 100644 images/noise.png
- create mode 100644 images/rss.png
- create mode 100644 images/search.png
- rewrite index.html (100%)
- create mode 100644 javascripts/github.js
- create mode 100644 javascripts/libs/jXHR.js
- create mode 100644 javascripts/libs/jquery.min.js
- create mode 100644 javascripts/libs/swfobject-dynamic.js
- create mode 100644 javascripts/modernizr-2.0.js
- create mode 100644 javascripts/octopress.js
- create mode 100644 javascripts/pinboard.js
- create mode 100644 javascripts/twitter.js
- create mode 100644 robots.txt
- create mode 100644 sitemap.xml
- create mode 100644 stylesheets/screen.css
-
-## Pushing generated _deploy website
-Counting objects: 79, done.
-Delta compression using up to 4 threads.
-Compressing objects: 100% (72/72), done.
-Writing objects: 100% (79/79), 186.46 KiB, done.
-Total 79 (delta 1), reused 0 (delta 0)
-To git@github.com:kobtea/kobtea.github.io.git
- * [new branch]      master -&amp;gt; master
-
-## Github Pages deploy complete
-cd -
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;で、10~20分くらいのんびり待つ。&lt;br /&gt;
-しばらくするとkobtea.github.ioにページが出来てる！すごい!&lt;/p&gt;
-
-&lt;p&gt;sourceブランチはBitbucketで管理する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ git remote add bitbucket git@bitbucket.org:kobtea/kobtea.github.io.git
-$ git push -u bitbucket source
-
-# ブランチはこんな感じになる
-$ git branch -a
-* source
-  remotes/bitbucket/source
-  remotes/octopress/2.5
-  remotes/octopress/2.5-simplify-rakefile
-  remotes/octopress/3.0
-  remotes/octopress/HEAD -&amp;gt; octopress/master
-  remotes/octopress/commander
-  remotes/octopress/gh-pages
-  remotes/octopress/guard
-  remotes/octopress/linklog
-  remotes/octopress/master
-  remotes/octopress/migrator
-  remotes/octopress/refactor_with_tests
-  remotes/octopress/rubygemcli
-  remotes/octopress/site
-  remotes/octopress/site-2.1
-  remotes/origin/master
-  remotes/origin/source
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;octopressの設定:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;Octopressの設定&lt;/h2&gt;
-
-&lt;p&gt;参考 : &lt;a href=&#34;http://octopress.org/docs/configuring/&#34;&gt;Configuring Octopress&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ブログの基本的な設定は&lt;code&gt;_config.yml&lt;/code&gt;で行う。&lt;br /&gt;
-とりあえず、title, subtitleだけ変更した。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;# ----------------------- #
-#      Main Configs       #
-# ----------------------- #
-
-url: http://kobtea.github.io
-title: blog.kobtea.net
-subtitle: 咳をしても情弱
-author: kobtea
-simple_search: http://google.com/search
-description:
-
-# Default date format is &amp;quot;ordinal&amp;quot; (resulting in &amp;quot;July 22nd 2007&amp;quot;)
-# You can customize the format as defined in
-# http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime
-# Additionally, %o will give you the ordinal representation of the day
-date_format: &amp;quot;ordinal&amp;quot;
-
-# RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
-subscribe_email:
-# RSS feeds can list your email address if you like
-email:
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Jekyll &amp;amp; Plugins, 3rd Party Settingsはまた今度いじる。&lt;/p&gt;
-
-&lt;h2 id=&#34;投稿:4a5f145a9902224d63225b1c2ea5b6fd&#34;&gt;投稿！&lt;/h2&gt;
-
-&lt;p&gt;参考 : &lt;a href=&#34;http://octopress.org/docs/blogging/&#34;&gt;Blogging Basics&lt;/a&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 記事を作成する
-$ rake new_post[&amp;quot;hello-octopress&amp;quot;]
-zsh: no matches found: new_post[hello-octopress]
-
-# zshだと[]はエスケープしないといけないのね
-$ rake new_post\[&amp;quot;hello-octopress&amp;quot;\]
-mkdir -p source/_posts
-Creating new post: source/_posts/2013-09-22-hello-octopress.markdown
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;markdownファイルが生成されるので編集する。&lt;/p&gt;
-
-&lt;p&gt;source: &lt;code&gt;source/_posts/2013-09-22-hello-octopress.markdown&lt;/code&gt;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;---
-layout: post
-title: &amp;quot;こんにちはOctopress&amp;quot;
-date: 2013-09-22 22:44
-comments: true
-categories:
----
-
-よろしくタコ出版！
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;---&lt;/code&gt;で囲まれたブロック内にはポストのメタデータを書く。&lt;br /&gt;
-カテゴリを複数登録するには2通りある。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-yml&#34;&gt;categories: [hoge, huga]
-
-categories:
-- hoge
-- huga
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;書けたら、generateしてdeploy!&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rake generate
-$ rake deploy
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;反映に時間がかかることもあるからのんびり待つ。&lt;br /&gt;
-記事が投稿されたら喜んでおしまい。&lt;/p&gt;
 </description>
     </item>
     
