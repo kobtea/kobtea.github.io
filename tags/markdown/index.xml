@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Markdown on kobtea.net</title>
-    <link>http://kobtea.net/tags/markdown/index.xml</link>
+    <link>http://kobtea.net/tags/markdown/</link>
     <description>Recent content in Markdown on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>2015 kobtea</copyright>
-    <atom:link href="http://kobtea.net/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 22 Sep 2013 22:57:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://kobtea.net/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>VimでステキなMarkdownライフを送りたい</title>
@@ -15,44 +17,7 @@
       <pubDate>Sun, 22 Sep 2013 22:57:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
-      <description>&lt;p&gt;インストールするもの。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/plasticboy/vim-markdown&#34;&gt;https://github.com/plasticboy/vim-markdown&lt;/a&gt;&lt;br /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;markdown用シンタックスハイライト&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/kannokanno/previm&#34;&gt;https://github.com/kannokanno/previm&lt;/a&gt;&lt;br /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;markdownのプレビュー&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/tyru/open-browser.vim&#34;&gt;https://github.com/tyru/open-browser.vim&lt;/a&gt;&lt;br /&gt;
-
-&lt;ul&gt;
-&lt;li&gt;URIをブラウザで開く&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;.vimrcに以下を追記する。&lt;br /&gt;
-NeoBundle使ってるよ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-vim&#34;&gt;&amp;quot; .vimrc
-
-NeoBundle &#39;plasticboy/vim-markdown&#39;
-NeoBundle &#39;kannokanno/previm&#39;
-NeoBundle &#39;tyru/open-browser.vim&#39;
-
-&amp;quot;g:previm_open_cmd   &amp;quot; open-browser使用時は不要
-autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype mkd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;mkdファイルを良い感じに編集して、&lt;code&gt;:PrevimOpen&lt;/code&gt;するといい感じにプレビューが出る。&lt;br /&gt;
-ファイル保存すると、自動で更新される。&lt;br /&gt;
-ステキやん。&lt;/p&gt;
-</description>
+      <description>インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追</description>
     </item>
     
   </channel>

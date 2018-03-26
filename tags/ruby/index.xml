@@ -2,12 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ruby on kobtea.net</title>
-    <link>http://kobtea.net/tags/ruby/index.xml</link>
+    <link>http://kobtea.net/tags/ruby/</link>
     <description>Recent content in Ruby on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>2015 kobtea</copyright>
-    <atom:link href="http://kobtea.net/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Sep 2013 00:17:00 +0900</lastBuildDate>
+    
+	<atom:link href="http://kobtea.net/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>MBAにRuby環境を作る</title>
@@ -15,212 +17,7 @@
       <pubDate>Mon, 23 Sep 2013 00:17:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
-      <description>
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
-ProductName:    Mac OS X
-ProductVersion: 10.8.4
-BuildVersion:   12E3067
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://github.com/sstephenson/rbenv&#34;&gt;rbenv&lt;/a&gt;のreadmeにそってやる。&lt;br /&gt;
-PATHについて解説までしてくれるとかマジ天使。&lt;/p&gt;
-
-&lt;h2 id=&#34;rbenvのインストール&#34;&gt;rbenvのインストール&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# homebrewを最新の状態に
-$ brew update
-$ brew upgrade
-
-# rbenvをインストール
-$ brew install rbenv
-==&amp;gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
-######################################################################## 100.0%
-==&amp;gt; Caveats
-To use Homebrew&#39;s directories rather than ~/.rbenv add to your profile:
-  export RBENV_ROOT=/usr/local/var/rbenv
-
-To enable shims and autocompletion add to your profile:
-  if which rbenv &amp;gt; /dev/null; then eval &amp;quot;$(rbenv init -)&amp;quot;; fi
-==&amp;gt; Summary
-🍺  /usr/local/Cellar/rbenv/0.4.0: 31 files, 152K, built in 2 seconds
-
-# ruby-buildをインストール
-$ brew install ruby-build
-######################################################################## 100.0%
-==&amp;gt; ./configure --prefix=/usr/local/Cellar/autoconf/2.69
-==&amp;gt; make install
-🍺  /usr/local/Cellar/autoconf/2.69: 69 files, 2.0M, built in 8 seconds
-==&amp;gt; Installing ruby-build
-==&amp;gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
-######################################################################## 100.0%
-==&amp;gt; ./install.sh
-🍺  /usr/local/Cellar/ruby-build/20130907: 83 files, 368K, built in 2 seconds
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;profileとかrcに以下を追記する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;if which rbenv &amp;gt; /dev/null; then eval &amp;quot;$(rbenv init -)&amp;quot;; fi&#39; &amp;gt;&amp;gt; ~/.zprofile
-$ source ~/.zprofile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv --help
-rbenv 0.4.0
-Usage: rbenv &amp;lt;command&amp;gt; [&amp;lt;args&amp;gt;]
-
-Some useful rbenv commands are:
-   commands    List all available rbenv commands
-   local       Set or show the local application-specific Ruby version
-   global      Set or show the global Ruby version
-   shell       Set or show the shell-specific Ruby version
-   install     Install a Ruby version using the ruby-build plugin
-   uninstall   Uninstall a specific Ruby version
-   rehash      Rehash rbenv shims (run this after installing executables)
-   version     Show the current Ruby version and its origin
-   versions    List all Ruby versions available to rbenv
-   which       Display the full path to an executable
-   whence      List all Ruby versions that contain the given executable
-
-See `rbenv help &amp;lt;command&amp;gt;&#39; for information on a specific command.
-For full documentation, see: https://github.com/sstephenson/rbenv#readme
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;rbenv-default-gemsをインストール&#34;&gt;rbenv-default-gemsをインストール&lt;/h2&gt;
-
-&lt;p&gt;ついでに&lt;a href=&#34;https://github.com/sstephenson/rbenv-default-gems&#34;&gt;rbenv-default-gems&lt;/a&gt;を入れておく。&lt;br /&gt;
-&lt;code&gt;rbenv install &amp;lt;version&amp;gt;&lt;/code&gt;でRubyをインストールする際に、一緒に必要なgemを入れてくれる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;bundler&#39; &amp;gt;&amp;gt; ~/.rbenv/default-gems
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ひとまずbundlerだけでいいかな。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# 一応homebrewを再度更新
-$ brew update
-$ brew upgrade
-
-# ruby 2.0をインストール
-$ rbenv install 2.0.0-p247
-Downloading openssl-1.0.1e.tar.gz...
--&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-
-BUILD FAILED
-
-Inspect or clean up the working tree at /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114
-Results logged to /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114.log
-
-Last 10 log lines:
-RANLIB        =true
-ARFLAGS       =
-PERL          =/usr/bin/perl
-SIXTY_FOUR_BIT_LONG mode
-DES_UNROLL used
-DES_INT used
-RC4 uses uchar
-RC4_CHUNK is unsigned long
-sh: make: command not found
-/usr/local/bin/ruby-build: line 387: make: command not found
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;makeコマンドがないぽい。&lt;br /&gt;
-command line toolsが入ってなかった。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;Xcode -&amp;gt; Preferences -&amp;gt; Downloads -&amp;gt; Command Line Tools -&amp;gt; Install
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;リトライ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv install 2.0.0-p247
-Downloading openssl-1.0.1e.tar.gz...
--&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Downloading ruby-2.0.0-p247.tar.gz...
--&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-Installing ruby-2.0.0-p247...
-Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-ERROR:  While executing gem ... (Gem::FilePermissionError)
-    You don&#39;t have write permissions into the /Library/Ruby/Gems/1.8 directory.
-rbenv: error installing gem `bundler&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;今度は権限がない。&lt;br /&gt;
-&lt;a href=&#34;https://github.com/sstephenson/rbenv-default-gems/issues/7&#34;&gt;Issue&lt;/a&gt;に載っていた。&lt;br /&gt;
-どうやら環境変数に&lt;code&gt;$RBENV_ROOT&lt;/code&gt;が必要らしい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv root
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;で表示されたパスを.zprofileとかに書く。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ echo &#39;export RBENV_ROOT=$HOME/.rbenv&#39; &amp;gt;&amp;gt; ~/.zprofile
-$ source ~/.zprofile
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;リトライ。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ rbenv install 2.0.0-p247
-rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
-continue with installation? (y/N) y
-Downloading openssl-1.0.1e.tar.gz...
--&amp;gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Downloading ruby-2.0.0-p247.tar.gz...
--&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-Installing ruby-2.0.0-p247...
-Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Fetching: bundler-1.3.5.gem (100%)
-Successfully installed bundler-1.3.5
-Parsing documentation for bundler-1.3.5
-Installing ri documentation for bundler-1.3.5
-1 gem installed
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;できた。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;# ruby, gemのパスが$RBENV_ROOT以下に向いているか確認
-$ rbenv rehash
-$ rbenv versions
-* system (set by /Users/kobtea/.rbenv/version)
-  2.0.0-p247
-$ which ruby
-/Users/kobtea/.rbenv/shims/ruby
-$ which gem
-/Users/kobtea/.rbenv/shims/gem
-
-# システムデフォルトのバージョン確認
-$ ruby --version
-ruby 1.8.7 (2012-02-08 patchlevel 358) [universal-darwin12.0]
-$ gem --version
-1.3.6
-
-# デフォルトのバージョンを2.0に変更
-$ rbenv global 2.0.0-p247
-$ rbenv versions
-  system
-* 2.0.0-p247 (set by /Users/kobtea/.rbenv/version)
-
-$ ruby --version
-ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
-$ gem --version
-2.0.3
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;こんにちはRuby。&lt;/p&gt;
-
-&lt;h2 id=&#34;追記&#34;&gt;追記&lt;/h2&gt;
-
-&lt;p&gt;Macデフォルトのreadlineは使わないほうがいいらしい。&lt;br /&gt;
-&lt;code&gt;rbenv install&lt;/code&gt;する際にはhomebrewで入れたreadline, opensslを指定する。&lt;br /&gt;
-指定しない場合、Macだとirbでマルチバイトが使えない。&lt;br /&gt;
-&lt;a href=&#34;http://kobtea.net/blog/2013/09/22/use-multibytes-on-ruby&#34;&gt;irbで日本語が文字化けする&lt;/a&gt;&lt;/p&gt;
-</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのreadmeにそってやる。 PATHについて解説までしてくれるとかマジ天使。 rbenvのインストール # home</description>
     </item>
     
     <item>
@@ -229,73 +26,7 @@ $ gem --version
       <pubDate>Sun, 22 Sep 2013 23:38:00 +0900</pubDate>
       
       <guid>http://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
-      <description>&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;$ sw_vers
-ProductName:    Mac OS X
-ProductVersion: 10.8.4
-BuildVersion:   12E3067
-
-$ ruby --version
-ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1]
-
-$ irb --version
-irb 0.9.6(09/06/30)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&amp;lsquo;日本語&amp;rsquo;と打とうとするとこうなる。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;$ irb
-irb(main):001:0&amp;gt; p &#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&#39;
-&amp;quot;&amp;quot;
-=&amp;gt; &amp;quot;&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこと。&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;irb で日本語を使うならば、下記でインストール。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-bash&#34;&gt;&amp;gt; CONFIGURE_OPTS=&amp;quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&amp;quot; rbenv install 2.0.0-p247
-&amp;gt; ```
-&amp;gt;
-&amp;gt; [[Ruby on Rails] RUBY_CONFIGURE_OPTS, readline, openssl](http://www.d-wood.com/blog/2013/08/06_4453.html)
-
-
-```bash
-# readlineとopensslをインストールする
-$ brew install readline
-$ brew install openssl
-
-# 参考通りにやってみる
-$ CONFIGURE_OPTS=&amp;quot;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&amp;quot; rbenv install 2.0.0-p247
-rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
-continue with installation? (y/N) y
-Downloading ruby-2.0.0-p247.tar.gz...
--&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-Installing ruby-2.0.0-p247...
-Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Fetching: bundler-1.3.5.gem (100%)
-Successfully installed bundler-1.3.5
-Parsing documentation for bundler-1.3.5
-Installing ri documentation for bundler-1.3.5
-1 gem installed
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;どきどき&amp;hellip;&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-ruby&#34;&gt;$ irb
-irb(main):001:0&amp;gt; puts &#39;ほげ&#39;
-ほげ
-=&amp;gt; nil
-irb(main):002:0&amp;gt; p &#39;ほげ&#39;
-&amp;quot;ほげ&amp;quot;
-=&amp;gt; &amp;quot;ほげ&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;やったあ！！！！！！！！！！！&lt;br /&gt;
-本当にありがとうございます。&lt;/p&gt;
-</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby --version ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ irb --version irb 0.9.6(09/06/30) &amp;lsquo;日本語&amp;rsquo;と打とうとするとこうなる。 $ irb irb(main):001:0&amp;gt; p &#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&#39; &amp;quot;&amp;quot; =&amp;gt; &amp;quot;&amp;quot; 色々調べてみたら</description>
     </item>
     
   </channel>

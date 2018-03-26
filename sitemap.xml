@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
     <loc>http://kobtea.net/posts/2017/12/04/google-sre-book/</loc>
@@ -126,6 +127,11 @@
   </url>
   
   <url>
+    <loc>http://kobtea.net/groups/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://kobtea.net/tags/hardware/</loc>
     <lastmod>2015-12-20T18:19:02+09:00</lastmod>
     <priority>0</priority>
@@ -193,6 +199,7 @@
   
   <url>
     <loc>http://kobtea.net/tags/</loc>
+    <lastmod>2017-12-04T21:26:45+09:00</lastmod>
     <priority>0</priority>
   </url>
   
