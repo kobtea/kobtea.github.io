@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on kobtea.net</title>
-    <link>http://kobtea.net/tags/vim/</link>
+    <link>https://kobtea.net/tags/vim/</link>
     <description>Recent content in Vim on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sun, 22 Sep 2013 22:57:00 +0900</lastBuildDate>
     
-	<atom:link href="http://kobtea.net/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kobtea.net/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>VimでステキなMarkdownライフを送りたい</title>
-      <link>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
+      <link>https://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
       <pubDate>Sun, 22 Sep 2013 22:57:00 +0900</pubDate>
       
-      <guid>http://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
+      <guid>https://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
       <description>インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追</description>
     </item>
     

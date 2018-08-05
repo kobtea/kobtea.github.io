@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Java on kobtea.net</title>
-    <link>http://kobtea.net/tags/java/</link>
+    <link>https://kobtea.net/tags/java/</link>
     <description>Recent content in Java on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Sat, 28 Mar 2015 01:23:54 +0900</lastBuildDate>
     
-	<atom:link href="http://kobtea.net/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kobtea.net/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java Optionの一覧表示</title>
-      <link>http://kobtea.net/posts/2015/03/28/java-printflagsfinal/</link>
+      <link>https://kobtea.net/posts/2015/03/28/java-printflagsfinal/</link>
       <pubDate>Sat, 28 Mar 2015 01:23:54 +0900</pubDate>
       
-      <guid>http://kobtea.net/posts/2015/03/28/java-printflagsfinal/</guid>
+      <guid>https://kobtea.net/posts/2015/03/28/java-printflagsfinal/</guid>
       <description>JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。 そんなときは-XX:+PrintFlags</description>
     </item>
     

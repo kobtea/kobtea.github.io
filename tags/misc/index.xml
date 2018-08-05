@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Misc on kobtea.net</title>
-    <link>http://kobtea.net/tags/misc/</link>
+    <link>https://kobtea.net/tags/misc/</link>
     <description>Recent content in Misc on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Thu, 31 Dec 2015 22:00:48 +0900</lastBuildDate>
     
-	<atom:link href="http://kobtea.net/tags/misc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kobtea.net/tags/misc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2015年の振り返り</title>
-      <link>http://kobtea.net/posts/2015/12/31/inventory-of-2015/</link>
+      <link>https://kobtea.net/posts/2015/12/31/inventory-of-2015/</link>
       <pubDate>Thu, 31 Dec 2015 22:00:48 +0900</pubDate>
       
-      <guid>http://kobtea.net/posts/2015/12/31/inventory-of-2015/</guid>
+      <guid>https://kobtea.net/posts/2015/12/31/inventory-of-2015/</guid>
       <description>こたつでぬくぬく。 思いつくキーワードを拾いつつ、だらだら思い返す。 技術的なこと もう少し頑張りましょう OSSコントリビュート パッチを投げて初コ</description>
     </item>
     

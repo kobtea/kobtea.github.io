@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Scala on kobtea.net</title>
-    <link>http://kobtea.net/tags/scala/</link>
+    <link>https://kobtea.net/tags/scala/</link>
     <description>Recent content in Scala on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Tue, 15 Sep 2015 22:10:55 +0900</lastBuildDate>
     
-	<atom:link href="http://kobtea.net/tags/scala/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kobtea.net/tags/scala/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</title>
-      <link>http://kobtea.net/posts/2015/09/15/sbt-console-quit/</link>
+      <link>https://kobtea.net/posts/2015/09/15/sbt-console-quit/</link>
       <pubDate>Tue, 15 Sep 2015 22:10:55 +0900</pubDate>
       
-      <guid>http://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
+      <guid>https://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
       <description>環境 scalaVersion := &amp;quot;2.11.6&amp;quot; libraryDependencies += &amp;quot;com.typesafe.akka&amp;quot; %% &amp;quot;akka-actor&amp;quot; % &amp;quot;2.3.11&amp;quot; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&amp;gt; import scala.concurrent.Future scala&amp;gt; import</description>
     </item>
     
     <item>
       <title>[Scala] Future#recoverを使って例外処理する</title>
-      <link>http://kobtea.net/posts/2015/05/18/scala-future-recover/</link>
+      <link>https://kobtea.net/posts/2015/05/18/scala-future-recover/</link>
       <pubDate>Mon, 18 May 2015 20:56:24 +0900</pubDate>
       
-      <guid>http://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
+      <guid>https://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
       <description>環境 ➜ ~ scala Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11). Type in expressions to have them evaluated. Type :help for more information. やりたいこと scala.concurrent.Futureで例外が発生してFail</description>
     </item>
     
