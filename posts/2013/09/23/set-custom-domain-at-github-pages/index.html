@@ -6,6 +6,10 @@
     <title>Github Pagesにカスタムドメインを割り当てる - kobtea.net</title>
     <meta name="description" content="eternal jojaku">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Github Pagesにカスタムドメインを割り当てる"/>
+<meta name="twitter:description" content="参考: Setting up a custom domain with Pages - Github Pages Custom Domains - Octopress リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。 Tip: After creating the file, it"/>
+
 
     
     <link rel="stylesheet" href="https://kobtea.net/css/capybara.css">
@@ -163,11 +167,11 @@ blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
 <nav class="container-fluid">
     <ul class="pager">
         
-        <li class="previous"><a href="https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/"><i class="fa fa-caret-left"></i> MBAにpyenvを入れる</a></li>
+        <li class="previous"><a href="https://kobtea.net/posts/2013/09/23/change-octopress-theme/"><i class="fa fa-caret-left"></i> Octopressのテーマを変更する</a></li>
         
 
         
-        <li class="next"><a href="https://kobtea.net/posts/2013/09/23/change-octopress-theme/">Octopressのテーマを変更する <i class="fa fa-caret-right"></i></a></li>
+        <li class="next"><a href="https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/">MBAにpyenvを入れる <i class="fa fa-caret-right"></i></a></li>
         
     </ul>
 </nav>
@@ -201,6 +205,8 @@ blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
                 <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
                 <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
+                
+                <a href="/tags/gadget"><button type="button" class="btn btn-default btn-xs">gadget</button></a>
                 
                 <a href="/tags/gcp"><button type="button" class="btn btn-default btn-xs">gcp</button></a>
                 
@@ -240,15 +246,19 @@ blog.kobtea.net.    3600    IN  CNAME   kobtea.github.io.
 <script src="https://kobtea.net/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-60750954-1', 'auto');
-    ga('send', 'pageview');
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-60750954-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 
 </body>
 </html>

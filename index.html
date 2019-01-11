@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="generator" content="Hugo 0.46" />
+	<meta name="generator" content="Hugo 0.53" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>kobtea.net - kobtea.net</title>
     <meta name="description" content="eternal jojaku">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="kobtea.net"/>
+<meta name="twitter:description" content="eternal jojaku"/>
+
 
     
     <link rel="stylesheet" href="https://kobtea.net/css/capybara.css">
@@ -52,11 +56,11 @@
 
 <article class="container-fluid">
     <div class="page-header">
-        <h1><a href="https://kobtea.net/posts/2017/12/04/google-sre-book/">Google SRE本を読んだ</a></h1>
-        <time pubdate datetime=" 2017-12-04 " title="2017-12-04">2017-12-04</time>
+        <h1><a href="https://kobtea.net/posts/2019/01/11/tex-yoda-2/">TEX Yoda IIを作る</a></h1>
+        <time pubdate datetime=" 2019-01-11 " title="2019-01-11">2019-01-11</time>
         
-        <a href="/tags/book">
-            <button type="button" class="btn btn-default btn-xs">book</button>
+        <a href="/tags/gadget">
+            <button type="button" class="btn btn-default btn-xs">gadget</button>
         </a>
         
         <div class="toc">
@@ -64,27 +68,22 @@
 <ul>
 <li>
 <ul>
-<li><a href="#sreってなんだろう">SREってなんだろう</a>
+<li><a href="#tex-yoda-ii">TEX Yoda II</a></li>
+<li><a href="#開封の儀">開封の儀</a></li>
+<li><a href="#build">Build</a>
 <ul>
-<li><a href="#インフラエンジニア-チームと何が違うのか">インフラエンジニア・チームと何が違うのか</a></li>
-<li><a href="#devopsと何が違うのか">DevOpsと何が違うのか</a></li>
+<li><a href="#step-0-plate-and-pcb-removal-remove-case">Step 0: Plate and PCB Removal, Remove Case</a></li>
+<li><a href="#step-1-install-switches">Step 1: Install switches</a></li>
+<li><a href="#step-2-install-stabilizers">Step 2: Install stabilizers</a></li>
+<li><a href="#step-3-soldering">Step 3: Soldering</a></li>
+<li><a href="#step-4-install-trackpoint-module">Step 4: Install Trackpoint module</a></li>
+<li><a href="#step-5-keyboard-module-pre-test">Step 5: Keyboard module pre-test</a></li>
+<li><a href="#step-6-assembly">Step 6: Assembly</a></li>
+<li><a href="#step-7-install-keycaps">Step 7: Install keycaps</a></li>
+<li><a href="#step-8-tex-yoda-2-web-configurator">Step 8: TEX Yoda 2 Web Configurator</a></li>
 </ul></li>
-<li><a href="#印象的だったこと">印象的だったこと</a>
-<ul>
-<li><a href="#絶対に落とさない-からの脱却">「絶対に落とさない」からの脱却</a></li>
-<li><a href="#アラートレベルを使い分ける">アラートレベルを使い分ける</a></li>
-<li><a href="#sreとgcp">SREとGCP</a></li>
-</ul></li>
-<li><a href="#sreを実践するとしたら考えること">SREを実践するとしたら考えること</a>
-<ul>
-<li><a href="#sreを理解するためのシミュレーション">SREを理解するためのシミュレーション</a></li>
-<li><a href="#小さく始めるsre">小さく始めるSRE</a></li>
-</ul></li>
-<li><a href="#最後に">最後に</a>
-<ul>
-<li><a href="#sreを設立します-ってなんか流行に乗っているみたいで恥ずかしくない">「SREを設立します!」ってなんか流行に乗っているみたいで恥ずかしくない?</a></li>
-<li><a href="#インフラエンジニアの生存戦略として">インフラエンジニアの生存戦略として</a></li>
-</ul></li>
+<li><a href="#雑感">雑感</a></li>
+<li><a href="#参考">参考</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -93,137 +92,509 @@
 
     
 
-<p>やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。</p>
+<p>TEX Yoda IIというキーボードキットを買ったのでビルドログを残しておく。</p>
 
-<h2 id="sreってなんだろう">SREってなんだろう</h2>
+<h2 id="tex-yoda-ii">TEX Yoda II</h2>
 
-<p>ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。<br />
-価値を素早く提供するためには、インフラなどプロダクトチーム以外のリソースが制約事項になってはいけない。ということで人的リソースの制約を乗り越え、SREの価値をスケーラブルにするため自動化・自律化・マイクロサービス化などを積極的に行う。ナレッジに関してもスケールするよう明文化・定量化を徹底し、エンジニアが暗黙的・良心で行っていることを明らかにして組織的に取り組む。</p>
+<p>(個人的には)魅力はトラックポイントが付いているというただ一点、でもそれで十分ポチれる魅力がある。<br />
+キーマップを自由にいじれたり、マクロを組み込んだりとイマドキな機能も付いている。<br />
+見た目もステキ。</p>
 
-<h3 id="インフラエンジニア-チームと何が違うのか">インフラエンジニア・チームと何が違うのか</h3>
 
-<p>企業文化や規模によって、インフラエンジニアの業務範囲は大きく異なるので一概には説明できない。既にインフラチームがSREとして機能している会社もあれば、ハードウェアの保守だけしている会社だってある。立ち上げ間もないベンチャーはミドルウェアから下のレイヤはすべて見ていることもあるし、そんな場合は大体SRE的な働き方をしているかもしれない。ただしそんなベンチャーの場合、スピード最優先なのでドキュメント化されていない暗黙知が満載だったり、がっつり属人化していたりするので人的リソースはスケールしていない。</p>
 
-<p>仮にインフラチームを「ミドルウェアから下のレイヤを、全サービス横断して見る人達」として、SREは何が違うか考えてみる。<br />
-プレイヤーなエンジニアは、開発する時間を捻出することに意識が向いている。運用と並行して開発を行うので、とにかく時間が足りない。小さな自働化から始め、減らせた運用コストを次の開発に当て更に自働化を拡大する。その先はベストプラクティスを実践するためのフレームワークだったりマイクロサービスだったりもする。<br />
-マネージャは、人的リソースをスケールできるように組織をデザインし、チーム外との協力関係を獲得する。</p>
 
-<ul>
-<li>人的リソースのスケール<br />
 
-<ul>
-<li>ドキュメンテーションによるナレッジ共有<br /></li>
-<li>障害対応訓練などに使えるシミュレーション環境<br /></li>
-</ul></li>
-<li>SREエンジニアの開発時間の確保<br />
 
-<ul>
-<li>割り込みを受けない時間の提供<br /></li>
-</ul></li>
-<li>プロダクトチームとの対等な関係の構築<br />
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/001_hu4d772ee9d2f6605cfe827f927adb3772_3084735_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
 
-<ul>
-<li>定量的な指標を基にした利害の統一<br /></li>
-<li>エラーバジェットを利用した攻める機会の獲得<br />
+
+
+<p>キーボードキットなので自分で組み立てる必要がある、いわゆる自作キーボード。<br />
+自分は<a href="https://www.massdrop.com/buy/tex-yoda-ii-mechanical-keyboard-kit">Massdrop</a>で買った。時期によるかもしれないけど、<a href="https://mechanicalkeyboards.com/shop/index.php?l=product_list&amp;c=205">mechanicalkeyboards.com</a>で買ったほうが今は安いらしい。ちなみにmechanicalkeyboards.comなら組み立て済みのも売っている。自分のときはキットは売っていなかった(気がする)ので、自作キーボードにも興味あったしまぁいいかという感じでMassdropで買った。<br />
+9月にポチって12月に受け取って、年末年始の休暇でやっと組み立てた。実に半年越しである。</p>
+
+<h2 id="開封の儀">開封の儀</h2>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/002_huda038e1b3c8de19a8dc53be7e28c303a_3902503_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/003_hu034f2d9572b4b922a7afffeb614e5063_3617009_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+GHBキーに期待高まる削りがある。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/004_hua0044818e20b86b32dbd0d148a4ea15b_4329672_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+キーキャップ層の下には、手順が書いてあった。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/005_hue248a3acd270520fdb406409fcbf44aa_3297870_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+赤いのはステッカーだった。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/006_hub72854ce6bf3e5d0ef52536cfa560a40_3678737_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/007_hu6be5fed31cf0add7762f68972ee332fd_2887692_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+トラックポイントの部品、これに数万払った感しかない。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/008_hudc2db996899c1e72fc25258d54fda09a_4011409_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+USBケーブルはtype A to C。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/009_huc5f379c38f6aac9585e7cc851706a49d_2775442_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+先のダンボールとは別にキースイッチが1袋付いてきた。</p>
+
+<h2 id="build">Build</h2>
+
+<p><a href="https://www.massdrop.com/buy/tex-yoda">古いモデルの方</a>にはbuild guideがあったけどデットリンクなのでInternet Archiveからサルベージしたのがここ。<br />
+<a href="https://web.archive.org/web/20150928191236/https://keyboard-configurator.massdrop.com/ext/yoda/assembly">TEX Yoda Assembly Instructions - Massdrop</a><br />
+Webの手順的には以下。ただし、現行のモデルとは若干仕様が異なるのでよしなに雰囲気を読む。</p>
+
+<ol>
+<li>Plate and PCB Removal<br /></li>
+<li>Remove Case<br /></li>
+<li>Plate Mount Cherry MX Switches<br /></li>
+<li>Solder Switches to PCB<br /></li>
+<li>Re-assemble Yoda<br /></li>
+<li>Place Stabilizers and Keycaps<br />
 <br /></li>
-</ul></li>
-</ul>
+</ol>
 
-<p>この辺りを意識する必要がある。マネジメントを考えると結構インフラチームとSREは違うなぁ。</p>
+<p>箱に記載の手順的には以下。</p>
 
-<p>では、SREはインフラエンジニアの上位互換かというとそうでもない気がする。雑に言えばSREはものすごい知識量のジェネラリストなので、特定分野のスペシャリストではない。ミドルウェアやネットワーク、ハードウェア、セキュリティなどなどスペシャリストがいるインフラって素敵じゃん。なので「SREの活躍でインフラエンジニア不要にするぞい！」というのは個人的には違うんじゃないかなと思う。</p>
-
-<h3 id="devopsと何が違うのか">DevOpsと何が違うのか</h3>
-
-<p>手段が同じということはあるけど目的が違う。DevOpsも定義がふわっとしているが、運用を楽にするというのが目的。SREはユーザにサービスを早く・継続的に提供するというのが目的。どちらも自動化はやるが、人的リソースのスケールやキャパシティプランニングはDevOpsでは扱わないんじゃないかな。</p>
-
-<h2 id="印象的だったこと">印象的だったこと</h2>
-
-<h3 id="絶対に落とさない-からの脱却">「絶対に落とさない」からの脱却</h3>
-
-<p>サービスに関わる人間は絶対にサービスを落とさないという気持ちで日々運用している。が、障害は起きるものだし、仮に自社サービスが可用性100%だとしてもユーザへ届く経路上でどうしても可用性は落ちてしまう。<br />
-ならばサービスで必要十分な可用性のレベル・SLOを定義して、貴重な人的リソースを過剰に消費しないようにしましょうという戦略がとられる。SLOは高ければ高いほど好ましいが、それだけコストがかかる。90%を99%にするコストに比べ、99.9%を99.99%にするコストはとても高い。</p>
-
-<p>ここまでは一般的な話だが、SREでは可用性を過剰に達成しすぎてもダメだという考え方をしている。可用性を必要十分に抑えることで2つの利点が生まれる。</p>
-
-<p>1つ目は過剰に達成している分を、「本来障害が起きるはずだったんだから、リスクのある挑戦をして障害が起きてもいいよね」と、挑戦の機会として扱えること。ミドルウェアのバージョンアップや依存システムの移行など、システムのレガシー化を防ぐことができ、メンテナンスコストの低下にもつながる。</p>
-
-<p>2つ目は依存しているサービスに対して、依存元のSLOを織り込んだ設計を強制できること。依存先が依存元よりもSLOが低く、一蓮托生と割り切るのであればそれもよし。そうでないなら落ちることを織り込んだリトライ処理や、重要度の低いデータを破棄・遅延させるなど対策が必要になる。依存元は過剰な信頼をされることもなく、依存先の可用性も上がり、サービスも組織も健全になる。</p>
-
-<h3 id="アラートレベルを使い分ける">アラートレベルを使い分ける</h3>
-
-<p>モニタリングの出力は以下3種ある。</p>
-
-<ul>
-<li>ページ: 即時対応が必要<br /></li>
-<li>チケット: 数日以内に対応が必要<br /></li>
-<li>ロギング: 対応不要だが記録だけ残す<br />
+<ol>
+<li>Install switches<br /></li>
+<li>Install stabilizers<br /></li>
+<li>Soldering<br /></li>
+<li>Install Trackpoint module<br /></li>
+<li>Keyboard module pre-test<br /></li>
+<li>Assembly<br /></li>
+<li>Install keycaps<br /></li>
+<li>TEX Yoda 2 Web Configurator<br />
 <br /></li>
-</ul>
+</ol>
 
-<p>ページは日中深夜問わず鳴ったら最後、全ての作業を投げ捨て最優先で対応しなければならない。それだけに心身共に削られるページはむやみやたらに飛ばさない。<br />
-大原則としてユーザ影響があるものはページを飛ばし、なければチケットなりログに落とすだけで良い。ユーザ影響を知るためにホワイトボックスモニタリングだけでなく、ブラックボックスでのモニタリングが重要になる。</p>
+<p>これを良い感じに組み合わせるとこんな感じかな。</p>
 
-<p>サーバが落ちたらページを飛ばすのは一般的だが、冗長化されていてそこにリクエストが振られないのであればページを鳴らす必要はない。ウェブサーバのディスクが逼迫していても、ロードバランサから抜いてしまえば問題ない。</p>
-
-<p>障害が起きたら再発防止を行って、着実にページを減らしていく。ホワイトボックスモニタリングで検知されるものは、システムを自動化・自律化させ排除していく。ただし、簡単なブラックボックスモニタリングではリクエスト先の引きの問題もあるので、各種ヘルスチェック機構も充実させる必要がある。もちろん観測できていないのは問題外。</p>
-
-<h3 id="sreとgcp">SREとGCP</h3>
-
-<p>GoogleはSREの価値を全力でスケールさせる。<br />
-SREの価値をスケールさせる上で、SREエンジニアの人数に制限されてはいけない。最大公約数やベストプラクティスを見つけ出しドキュメント化する。そして実装可能なものに解釈し、ライブラリやフレームワーク、(マイクロ)サービスとして実装・提供する。それらを利用するだけでSREの価値を享受できる。そしてこれをさらにスケールさせて社外に飛び出したのがGCPになる。言ってしまえばGCPはSRE as a Serviceみたいな感じじゃなかろうか。</p>
-
-<p>Googleで実際に使っているという点でGCPとAWSは思想が異なる。AWSも確かにAmazonで使われているが、全てのサービスを使っているかは怪しい気がする。ユーザリクエストを募集して、投票数の高いものをサービス化したりもしているわけだし。自社で利用しているものとユーザが求めたものが混在しているのがAWS。自社で利用しているものだけが存在しているのがGCP。という印象、実際は違うかもしれない。</p>
-
-<h2 id="sreを実践するとしたら考えること">SREを実践するとしたら考えること</h2>
-
-<h3 id="sreを理解するためのシミュレーション">SREを理解するためのシミュレーション</h3>
-
-<p>本に書かれたことを始めから全てやるのは無理なので、優先度を付けて取り組んでいくことになる。<br />
-仮に次のような状況を設定して、どうやって取り組んでいくか考えてみると具体的なアクションが見えてくるんじゃなかろうか。</p>
-
-<ul>
-<li>四半期毎に1サービスがローンチされる<br />
-
-<ul>
-<li>台数規模は100台をベースとする<br /></li>
-<li>イベント・季節要因により負荷は随時変化する<br /></li>
-<li>サービスクローズは考えないものとする<br /></li>
-</ul></li>
-<li>開始時点でSREエンジニアは1人<br />
-
-<ul>
-<li>開始時点のSREエンジニアの能力は全能とする(すごい)<br />
-
-<ul>
-<li>パワーワード感あるが、OSSや既存の社内ツールに関する調査のオーバーヘッドを無視する、という意味<br /></li>
-</ul></li>
-<li>サービスのビジネスロジックは無知とする<br /></li>
-</ul></li>
-<li>年に1人のペースでSREエンジニアが追加される<br />
-
-<ul>
-<li>追加されるSREエンジニアは初期メンバのように全能ではない(ふつう)<br />
+<ol>
+<li>Plate and PCB Removal, Remove Case<br /></li>
+<li>Install switches<br /></li>
+<li>Install stabilizers<br /></li>
+<li>Soldering<br /></li>
+<li>Install Trackpoint module<br /></li>
+<li>Keyboard module pre-test<br /></li>
+<li>Assembly<br /></li>
+<li>Install keycaps<br /></li>
+<li>TEX Yoda 2 Web Configurator<br />
 <br />
 <br /></li>
+</ol>
+
+<h3 id="step-0-plate-and-pcb-removal-remove-case">Step 0: Plate and PCB Removal, Remove Case</h3>
+
+<p>裏面に6箇所あるネジを外してプレートをPCBを分離する。<br />
+で、実は表面にも1箇所ネジ止めされているので、それをちゃんと外す。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/010_huaaaafc29f02ac2035b62f6be195ed7b8_2501598_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/011_hu69ac8ab3867474e573606da4bd10cdc2_3662061_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+この表面のネジを外すと、PCBとケースが分離する。</p>
+
+<h3 id="step-1-install-switches">Step 1: Install switches</h3>
+
+<p>スイッチをパチパチとはめていく。<br />
+自分はプレートとPCBを重ねながらはめた。</p>
+
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/012_hubfd0c01d319d9111e08698bc1a1ee61b_3480997_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+
+
+<h3 id="step-2-install-stabilizers">Step 2: Install stabilizers</h3>
+
+<p>ちょうどよい写真を撮っていなかったのでポイントだけいくつか。</p>
+
+<ul>
+<li>スタビライザには向きがあるので注意する<br />
+
+<ul>
+<li>底の穴を見ると大小どちらのパーツも一角だけ形が違うので、これを揃える<br /></li>
+<li>前後にも向きがあるので、針金が入るように気をつける<br /></li>
 </ul></li>
+<li>うまいこといくと針金がぱちっと固定される<br /></li>
+<li>スタビライザを固定する向きも決まっている<br />
+
+<ul>
+<li>PCBに空いている穴の大きさが違うので、爪がある方を大きな穴に通す<br /></li>
+</ul></li>
+<li>針金はPCBとプレートの間に配置される<br />
+<br /></li>
 </ul>
 
-<h3 id="小さく始めるsre">小さく始めるSRE</h3>
+<p>
 
-<p>SREを始めるにあたってぶつかる最初の難題は、SLOとかエラーバジェットの定義が難しい点じゃなかろうか。全くSREに馴染みのない状態から、お試しでやってみるのであれば、ページ件数と対応時間を指標に使ってみるのも良いと思う。重要なのはSREとプロダクトチームで利害を一致させ、その利益をユーザが受ける構造にすること。自分たちのサービスレベルを知るために起きた障害の振り返りを定例化して確認していく。取り組み方や思想の共有ができてきてから、SLOやエラーバジェットは調整していけばいいんじゃないかな。</p>
 
-<p>そもそもいきなりプロダクトチームを巻き込むのすら気が引ける、もっと小さく始めたいという場合、上記のページ件数を指標にしてインフラチーム内で実施してみるのも意味はあると思う。ミドルウェアなレイヤのページ削減や自動化・自律化はある程度インフラ内だけでも実施できる。ただし、独りよがりなエラーバジェットを掲げて「あいつらいつも障害起こしてんな」と見られる危険もあるので、やはりプロダクトチームと一緒にやったほうが良いのは変わらない。</p>
 
-<h2 id="最後に">最後に</h2>
 
-<h3 id="sreを設立します-ってなんか流行に乗っているみたいで恥ずかしくない">「SREを設立します!」ってなんか流行に乗っているみたいで恥ずかしくない?</h3>
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/013_hu6c9200b118d388c2e14fd41fd98db1fa_3399184_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
 
-<p>個人的にバズワードに乗っかっているミーハー感は感じつつも、個人で取り組むものではないので、組織としてアピールするのは間違ってはいないと思う。組織的にちゃんと取り組む、インフラエンジニアの良心に過剰に依存しないという宣言でもあるはず。少なくとも分析チームが既にあるのに「ビッグデータチームを設立します!!」よりはよっぽど意味がある。</p>
+<br />
 
-<h3 id="インフラエンジニアの生存戦略として">インフラエンジニアの生存戦略として</h3>
 
-<p>インフラエンジニアであり、ソフトウェアエンジニアでありたいと願う人が健全に働くには、を組織的にデザインしたのがSREという印象。なのでそんな人にはとても魅力的な経験・環境なんじゃなかろうか。日中定常業務をして、人が減った夜に開発をするという黒い環境ではなく、日中に腰を据えて開発できる環境を一緒に捻出していきましょうとアプローチしてくれるのだから嬉しいったらないね!!</p>
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/014_hucc71ad9438e0dfb60e08d7ecf2b0d0da_3005298_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/015_hu68eab1b7b2d6ad7ba4bb1301f1a53d21_3060338_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/016_hufc6858d571d73bc2fda20711ede7927a_2920873_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/017_hu733638121cf2b31a0b075961f2c4e9ca_3299468_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+</p>
+
+<p>最初はだいぶ戸惑ったけど、色々と工夫されていて助かった。</p>
+
+<h3 id="step-3-soldering">Step 3: Soldering</h3>
+
+<p>キースイッチをはんだ付けする。<br />
+で、その後にLEDを差し込んでこちらもはんだ付けする。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/018_hu780cf2ff5e94c68389cd4614d910c9d0_3049990_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/019_hu122d0188e2dece3260f8eb74a2d819ab_3505775_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+LEDは+-間違えないように気をつける。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/020_hu1e587e3c4ef5a0a3dc503412998f08db_3848684_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+わらわら。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/021_huc99b17da26affb37f9733b9d1d45e7ec_3700135_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+はんだ付け後はLED足の不要分をカット。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/022_hu087f99cbcbaa34261ed583b364802cfb_3699585_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+かこいい&hellip;</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/023_huf0b1bd1f4fcca91d7b7af85685af6bf3_2047112_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+かこいい!!</p>
+
+<p>普段光らせないしLEDつけようか悩んだけど、動作確認で点灯したらまぁテンション上がるよね。<br />
+つけてよかった、普段は光らせないけど、自分を鼓舞するときにでも光らせよう。<br />
+ここでだいぶ撮影会した。</p>
+
+<h3 id="step-4-install-trackpoint-module">Step 4: Install Trackpoint module</h3>
+
+<p>ついにアイデンティティのトラックポイントをつける。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/024_hu5f68cdd44ae8488d5d2859b4fc2e5dcc_2864149_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+裏から差し込む。<br />
+コネクタのメス側にある黒いパーツは開閉するので差し込んで挟む感じ。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/025_hubde708a21f4e040245545be9ea08daf6_3321491_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+こんにちは。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/026_hu2005e3c84071ba1774e99b3c6e68c39b_1459117_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+ThinkPadのトラックポイントそのまんまのやつが付いてくる。しかも3種類。</p>
+
+<h3 id="step-5-keyboard-module-pre-test">Step 5: Keyboard module pre-test</h3>
+
+<p>PCに繋いで一通りキーが反応するか確認する。</p>
+
+<h3 id="step-6-assembly">Step 6: Assembly</h3>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/027_hu6abac3a351848177284774ccc541c83d_3593911_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+3キーのモジュールをつける。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/028_hu193e1231c3a3cfcd15e20608cfdf8ff7_3567881_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+ケースにはめて。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/029_hu0663b68a4f2431c9f970e59e6671ad5b_3144056_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+ネジ止めをする。表の1箇所を忘れない。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/030_hub70948e3ec571281701378d928379914_2768176_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+先にPCBとプレートをネジ止めしていたけど、このネジでケースも固定することにこのタイミングで気づいた。<br />
+一回外してケース裏から固定し直す。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/031_hu47772101895c872b66258bf6020c610a_2543430_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/032_hu8dbb8a2a12b031751846dd00d425d2a0_3887162_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+</p>
+
+<h3 id="step-7-install-keycaps">Step 7: Install keycaps</h3>
+
+<p>キーキャップをパチパチはめていく。<br />
+自分はタイプ音結構うるさい方なので、静音化リングを買って取り付けた。<br />
+<a href="https://amzn.to/2Cf7AzP">サイズ Cherry MX軸対応 静音化リング MXORDP</a></p>
+
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/033_hu902c0d3132b6b4a3089ec754ab9766b8_3671937_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+
+
+<p>ついでに足裏用のゴムシールも貼っていく。</p>
+
+<p>
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/034_hu71c39480a3ec096df4e9adcd4cb3cb7f_3267481_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+<br />
+
+
+
+
+
+<img src="https://kobtea.net/posts/2019/01/11/tex-yoda-2/035_hu0efdc14f476fada118f787daa4a9f7da_2615522_960x0_resize_q75_box.jpg" class="img-responsive img-thumbnail"/>
+
+</p>
+
+<h3 id="step-8-tex-yoda-2-web-configurator">Step 8: TEX Yoda 2 Web Configurator</h3>
+
+<p><a href="https://yoda2.tex-design.com.tw/">TEX Yoda 2 Web Configurator</a>でキー設定をする。</p>
+
+<p>ディップスイッチの役割はどうやら</p>
+
+<ol>
+<li>profile 1<br /></li>
+<li>profile 2<br /></li>
+<li>profile 3<br /></li>
+<li>未使用?<br /></li>
+<li>未使用?<br /></li>
+<li>storage mode on/off (config配置用)<br />
+<br /></li>
+</ol>
+
+<p>という感じらしい。</p>
+
+<h2 id="雑感">雑感</h2>
+
+<p>キー配置は癖がないので使いやすい。Bキーをタイプするとき、たまに指にトラックポイントが引っかかるのが気になるけど慣れの問題かな。マウスボタン用の3キーだけど、5キーにして両サイドをFnできたりすると夢が広がりそうだなと思った。</p>
+
+<p>トラックポイントはだいぶ感度が良いので要調整。中ボタンはスクロールには使えるけど、クリックとしては使えない様子、設定次第でいけるのかな。ThinkPadだとブラウザのリンクを中ボタンクリックすると新規タブで開けるので、これができると嬉しい。</p>
+
+<p>重量感はだいぶある。MacBook Airよりも重いんじゃないかな&hellip;持ち運びはしんどい、しないけど。</p>
+
+<p>正直この値段だったらHHKB買うわと何度か思ったけど、実物触ったら満足感高まったので結果オーライ。HHKBにトラックポイントつかないかなーと思ったことのある人は満足できると思う。</p>
+
+<p>家ではThinkPad, 職場ではMacBookな環境なのでこれを持ち込んでトラックポイントで統一したいな。<br />
+キーコンフィグを模索する旅に出ます。</p>
+
+<h2 id="参考">参考</h2>
+
+<p>公式, 販売</p>
+
+<ul>
+<li><a href="https://www.tex-design.com.tw/us-en/products.php?act=view&amp;id=82">Mechanical keyboard with TrackPoint | TEX - 鈦思科技</a><br /></li>
+<li><a href="https://www.massdrop.com/buy/tex-yoda-ii-mechanical-keyboard-kit">Massdrop</a><br /></li>
+<li><a href="https://mechanicalkeyboards.com/shop/index.php?l=product_list&amp;c=205">mechanicalkeyboards.com</a><br />
+<br /></li>
+</ul>
+
+<p>Yoda 1</p>
+
+<ul>
+<li><a href="https://docs.google.com/file/d/0B7TuRf3KQe7GdjJwNXMwdHZIUm8/edit">TKB-600i-Datasheet_14-0603-Rev 1.0.pdf - Google ドライブ</a><br /></li>
+<li><a href="https://web.archive.org/web/20150928191236/https://keyboard-configurator.massdrop.com/ext/yoda/assembly">TEX Yoda Assembly Instructions - Massdrop</a><br /></li>
+<li><a href="https://geekhack.org/index.php?topic=58458.0">TEX Yoda, mini keyboard with trackpoint</a><br />
+<br /></li>
+</ul>
+
+<p>Yoda 2 (旧モデル)</p>
+
+<ul>
+<li><a href="https://www.youtube.com/watch?v=iYwvPDBpo2A">Tex Yoda II Build Stream (MX Silent Reds) <sup>1</sup>&frasl;<sub>2</sub> - THE DRAMA (YouTube)</a><br /></li>
+<li><a href="https://geekhack.org/index.php?topic=92681.0">TEX YODA II - DIY kit (Special Edition)</a><br /></li>
+</ul>
 
 
     <hr/>
@@ -246,9 +617,9 @@ SREの価値をスケールさせる上で、SREエンジニアの人数に制�
 <nav class="container-fluid">
     <ul class="pager">
         
-
+        <li class="previous"><a href="https://kobtea.net/posts/2017/12/04/google-sre-book/"><i class="fa fa-caret-left"></i> Google SRE本を読んだ</a></li>
         
-        <li class="next"><a href="https://kobtea.net/posts/2016/06/04/try-google-stackdriver/">Google Stackdriverを眺める <i class="fa fa-caret-right"></i></a></li>
+
         
     </ul>
 </nav>
@@ -283,6 +654,8 @@ SREの価値をスケールさせる上で、SREエンジニアの人数に制�
                 <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
                 <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
+                
+                <a href="/tags/gadget"><button type="button" class="btn btn-default btn-xs">gadget</button></a>
                 
                 <a href="/tags/gcp"><button type="button" class="btn btn-default btn-xs">gcp</button></a>
                 
@@ -322,15 +695,19 @@ SREの価値をスケールさせる上で、SREエンジニアの人数に制�
 <script src="https://kobtea.net/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-60750954-1', 'auto');
-    ga('send', 'pageview');
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-60750954-1', 'auto');
+	
+	ga('send', 'pageview');
+}
 </script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
 
 </body>
 </html>
