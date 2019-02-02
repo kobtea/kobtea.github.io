@@ -6,6 +6,7 @@
     <description>Recent content in Book on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright © 2013-2019, kobtea</copyright>
     <lastBuildDate>Mon, 04 Dec 2017 21:26:45 +0900</lastBuildDate>
     
 	<atom:link href="https://kobtea.net/tags/book/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +18,7 @@
       <pubDate>Mon, 04 Dec 2017 21:26:45 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2017/12/04/google-sre-book/</guid>
-      <description>やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。 SREってなんだろう ユーザに価値を最速かつ継続的に提供する</description>
+      <description>やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。 SREってなんだろう ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。 価値を素早く提供す</description>
     </item>
     
   </channel>

@@ -8,120 +8,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="MBAにpyenvを入れる"/>
-<meta name="twitter:description" content="$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。 Simple Python Version Management: pyenvを参考に。"/>
+<meta name="twitter:description" content="$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。 Simple Python Version Management: pyenvを参考に。 Macでhomebrew使っているなら、brewで入れるのが"/>
 
 
-    
-    <link rel="stylesheet" href="https://kobtea.net/css/capybara.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.netjs/main.js"></script>
 </head>
 
 <body>
 <header>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#header-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://kobtea.net">kobtea.net</a>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net"><strong>kobtea.net</strong></a>
 
-                <p class="navbar-text">eternal jojaku</p>
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="header-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
                     
-                    <li><a href="/posts">archives</a></li>
+                    <a class="navbar-item" href="/posts">archives</a>
                     
-                    <li><a href="/posts/index.xml">rss</a></li>
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
                     
-                </ul>
+                </div>
             </div>
         </div>
     </nav>
 </header>
 
-
-<article class="container-fluid">
-    <div class="page-header">
-        <h1><a href="https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/">MBAにpyenvを入れる</a></h1>
-        <time pubdate datetime=" 2013-11-24 " title="2013-11-24">2013-11-24</time>
-        
-        <a href="/tags/python">
-            <button type="button" class="btn btn-default btn-xs">python</button>
-        </a>
-        
-        <div class="toc">
-            
+<section id="wrapper">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">MBAにpyenvを入れる</h1>
         </div>
-    </div>
+    </section>
 
-    <pre><code class="language-bash">$ sw_vers
+    <i class="fas fa-calendar-alt"></i>
+    <time>2013-11-24 17:31</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/python">#python</a>
+    
+    <aside>
+        
+    </aside>
+
+    <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sw_vers
 ProductName:    Mac OS X
-ProductVersion: 10.8.4
-BuildVersion:   12E3067
-</code></pre>
-
+ProductVersion: <span class="m">10</span>.8.4
+BuildVersion:   12E3067</code></pre></div>
 <p>rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。<br />
 <a href="https://github.com/yyuu/pyenv">Simple Python Version Management: pyenv</a>を参考に。</p>
 
 <p>Macでhomebrew使っているなら、brewで入れるのがらくちん。</p>
-
-<pre><code class="language-bash"># brewを最新の状態にする
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># brewを最新の状態にする</span>
 $ brew update
 $ brew upgrade
 
 $ brew search pyenv
 pyenv		   pyenv-virtualenv
 $ brew install pyenv
-Warning: Your Xcode (4.6.3) is outdated
-Please update to Xcode 5.0.1.
+Warning: Your Xcode <span class="o">(</span><span class="m">4</span>.6.3<span class="o">)</span> is outdated
+Please update to Xcode <span class="m">5</span>.0.1.
 Xcode can be updated from the App Store.
-==&gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
-######################################################################## 100.0%
-==&gt; Caveats
-To enable shims and autocompletion add to your profile:
-  if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi
+<span class="o">==</span>&gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
+<span class="c1">######################################################################## 100.0%</span>
+<span class="o">==</span>&gt; Caveats
+To <span class="nb">enable</span> shims and autocompletion add to your profile:
+  <span class="k">if</span> which pyenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span>
 
-To use Homebrew's directories rather than ~/.pyenv add to your profile:
-  export PYENV_ROOT=/usr/local/opt/pyenv
-==&gt; Summary
-🍺  /usr/local/Cellar/pyenv/20131116: 199 files, 2.2M, built in 5 seconds
-</code></pre>
-
+To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.pyenv add to your profile:
+  <span class="nb">export</span> <span class="nv">PYENV_ROOT</span><span class="o">=</span>/usr/local/opt/pyenv
+<span class="o">==</span>&gt; Summary
+🍺  /usr/local/Cellar/pyenv/20131116: <span class="m">199</span> files, <span class="m">2</span>.2M, built in <span class="m">5</span> seconds</code></pre></div>
 <p><code>.profile</code>とかに以下を追記する。</p>
 
 <pre><code>if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi
 </code></pre>
 
 <p>profileを再読み込み。</p>
-
-<pre><code class="language-bash">$ source ~/.zprofile
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/.zprofile</code></pre></div>
 <p>使えるか試してみる。</p>
-
-<pre><code class="language-bash">$ pyenv versions
-* system (set by /Users/kobtea/.pyenv/version)
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pyenv versions
+* system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span>
 $ pyenv global
 system
 $ python --version
-Python 2.7.2
-</code></pre>
-
+Python <span class="m">2</span>.7.2</code></pre></div>
 <p>試しに3.3.2を入れてみる。</p>
-
-<pre><code class="language-bash">$ pyenv install 3.3.2
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pyenv install <span class="m">3</span>.3.2
 Downloading Python-3.3.2.tgz...
 -&gt; http://yyuu.github.io/pythons/0a2ea57f6184baf45b150aee53c0c8da
 Installing Python-3.3.2...
@@ -140,135 +126,127 @@ Installed pip-1.4.1 to /Users/kobtea/.pyenv/versions/3.3.2
 
 $ pyenv rehash
 $ pyenv versions
-* system (set by /Users/kobtea/.pyenv/version)
-  3.3.2
-$ pyenv global 3.3.2
+* system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span>
+  <span class="m">3</span>.3.2
+$ pyenv global <span class="m">3</span>.3.2
 $ pyenv version
-3.3.2 (set by /Users/kobtea/.pyenv/version)
-</code></pre>
-
-<pre><code class="language-bash">$ pip --version
-pip 1.4.1 from /Users/kobtea/.pyenv/versions/3.3.2/lib/python3.3/site-packages/pip-1.4.1-py3.3.egg (python 3.3)
-</code></pre>
-
+<span class="m">3</span>.3.2 <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pip --version
+pip <span class="m">1</span>.4.1 from /Users/kobtea/.pyenv/versions/3.3.2/lib/python3.3/site-packages/pip-1.4.1-py3.3.egg <span class="o">(</span>python <span class="m">3</span>.3<span class="o">)</span></code></pre></div>
 <p>すごいpipがもう使えるようになってる！！ステキ！！<br />
 ついでにipythonを入れてみる。</p>
-
-<pre><code class="language-bash">$ pip install ipython
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pip install ipython
 Downloading/unpacking ipython
-  Downloading ipython-1.1.0.tar.gz (8.7MB): 8.7MB downloaded
-  Running setup.py egg_info for package ipython
+  Downloading ipython-1.1.0.tar.gz <span class="o">(</span><span class="m">8</span>.7MB<span class="o">)</span>: <span class="m">8</span>.7MB downloaded
+  Running setup.py egg_info <span class="k">for</span> package ipython
 ...
 
 $ pip list
-ipython (1.1.0)
-pip (1.4.1)
-setuptools (1.3.2)
-</code></pre>
-
+ipython <span class="o">(</span><span class="m">1</span>.1.0<span class="o">)</span>
+pip <span class="o">(</span><span class="m">1</span>.4.1<span class="o">)</span>
+setuptools <span class="o">(</span><span class="m">1</span>.3.2<span class="o">)</span></code></pre></div>
 <p>らくちん。</p>
 
 
-    <hr/>
-
     <div id="disqus_thread"></div>
-    <script type="text/javascript">
-         
-        var disqus_shortname = 'kobtea';
-
-         
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </article>
-
-<nav class="container-fluid">
-    <ul class="pager">
-        
-        <li class="previous"><a href="https://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/"><i class="fa fa-caret-left"></i> Github Pagesにカスタムドメインを割り当てる</a></li>
-        
-
-        
-        <li class="next"><a href="https://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/">WindowsでUS配列&#43;親指IME ON/OFFするための設定 <i class="fa fa-caret-right"></i></a></li>
-        
-    </ul>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/"><i class="fas fa-caret-left"></i>&nbsp;Github Pagesにカスタムドメインを割り当てる</a>
+    
+    
+    <a class="pagination-next" href="https://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/">WindowsでUS配列&#43;親指IME ON/OFFするための設定&nbsp;<i class="fas fa-caret-right"></i></a>
+    
 </nav>
 
-
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-md-4">
-                <strong>Author</strong>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
                 <div class="media">
-                    <div class="media-left media-top">
+                    <figure class="media-left">
                         <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
-                    </div>
-                    <div class="media-body">
-                        <strong class="media-heading">kobtea</strong>
-                        <a href="https://twitter.com/kobtea"><i class="fa fa-twitter-square fa-lg"></i></a>
-                        <a href="https://github.com/kobtea"><i class="fa fa-github-square fa-lg"></i></a>
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
                         <br/>
                         <small>カピバラと暮らしたい</small>
                     </div>
                 </div>
             </div>
-
-            
-
-            <div class="col-md-8">
-                <strong> Tags </strong><br/><br/>
+            <div class="column is-8">
                 
-                <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
-                <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 
-                <a href="/tags/gadget"><button type="button" class="btn btn-default btn-xs">gadget</button></a>
                 
-                <a href="/tags/gcp"><button type="button" class="btn btn-default btn-xs">gcp</button></a>
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
                 
-                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                <a class="cp-tag" href="/tags/book">#book</a>
                 
-                <a href="/tags/hardware"><button type="button" class="btn btn-default btn-xs">hardware</button></a>
+                <a class="cp-tag" href="/tags/conference">#conference</a>
                 
-                <a href="/tags/java"><button type="button" class="btn btn-default btn-xs">java</button></a>
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
                 
-                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
                 
-                <a href="/tags/misc"><button type="button" class="btn btn-default btn-xs">misc</button></a>
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
-                <a href="/tags/monitoring"><button type="button" class="btn btn-default btn-xs">monitoring</button></a>
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
-                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
+                <a class="cp-tag" href="/tags/java">#java</a>
                 
-                <a href="/tags/opengrok"><button type="button" class="btn btn-default btn-xs">opengrok</button></a>
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
                 
-                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
+                <a class="cp-tag" href="/tags/misc">#misc</a>
                 
-                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
                 
-                <a href="/tags/scala"><button type="button" class="btn btn-default btn-xs">scala</button></a>
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
-                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
                 
-                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
                 
             </div>
-
         </div>
-        <p>&copy; 2015 kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a
-                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
-<script src="https://kobtea.net/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
-    
+
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

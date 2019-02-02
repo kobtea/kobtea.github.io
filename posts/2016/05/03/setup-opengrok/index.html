@@ -8,73 +8,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Ubuntu trustyにOpenGrokをインストールする"/>
-<meta name="twitter:description" content="tomcat力低いけどOpenGrok使ってみたいんや！ お試しにvagrantで立ててみる。 参考: How to install OpenGrok Supported Languages and Formats 環境 Ubuntu 14.04.4 OpenJDK 1.7.0_95 OpenGrok 0.12.1.5 Setup 必要なp"/>
+<meta name="twitter:description" content="tomcat力低いけどOpenGrok使ってみたいんや！ お試しにvagrantで立ててみる。 参考: How to install OpenGrok Supported Languages and Formats 環境 Ubuntu 14.04.4 OpenJDK 1.7.0_95 OpenGrok 0.12.1.5 Setup 必要なpackageをインストールする。 ~$ sudo apt-get update &amp;&amp; sudo apt-get upgrade -y ~$ sudo apt-get install openjdk-7-jdk"/>
 
 
-    
-    <link rel="stylesheet" href="https://kobtea.net/css/capybara.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.netjs/main.js"></script>
 </head>
 
 <body>
 <header>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#header-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://kobtea.net">kobtea.net</a>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net"><strong>kobtea.net</strong></a>
 
-                <p class="navbar-text">eternal jojaku</p>
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="header-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
                     
-                    <li><a href="/posts">archives</a></li>
+                    <a class="navbar-item" href="/posts">archives</a>
                     
-                    <li><a href="/posts/index.xml">rss</a></li>
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
                     
-                </ul>
+                </div>
             </div>
         </div>
     </nav>
 </header>
 
+<section id="wrapper">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">Ubuntu trustyにOpenGrokをインストールする</h1>
+        </div>
+    </section>
 
-<article class="container-fluid">
-    <div class="page-header">
-        <h1><a href="https://kobtea.net/posts/2016/05/03/setup-opengrok/">Ubuntu trustyにOpenGrokをインストールする</a></h1>
-        <time pubdate datetime=" 2016-05-03 " title="2016-05-03">2016-05-03</time>
-        
-        <a href="/tags/opengrok">
-            <button type="button" class="btn btn-default btn-xs">opengrok</button>
-        </a>
-        
-        <div class="toc">
-            <nav id="TableOfContents">
-<ul>
-<li>
+    <i class="fas fa-calendar-alt"></i>
+    <time>2016-05-03 03:16</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+    
+    <aside>
+        <nav id="TableOfContents">
 <ul>
 <li><a href="#環境">環境</a></li>
 <li><a href="#setup">Setup</a></li>
 <li><a href="#リファレンス用のコードを配置">リファレンス用のコードを配置</a></li>
 <li><a href="#運用">運用</a></li>
-</ul></li>
 </ul>
 </nav>
-        </div>
-    </div>
+    </aside>
 
     
 
@@ -86,7 +81,6 @@
 <ul>
 <li><a href="https://github.com/OpenGrok/OpenGrok/wiki/How-to-install-OpenGrok">How to install OpenGrok</a><br /></li>
 <li><a href="https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats">Supported Languages and Formats</a><br />
-<br />
 <br /></li>
 </ul>
 
@@ -103,29 +97,23 @@
 <h2 id="setup">Setup</h2>
 
 <p>必要なpackageをインストールする。</p>
-
-<pre><code class="language-bash">~$ sudo apt-get update &amp;&amp; sudo apt-get upgrade -y
-~$ sudo apt-get install openjdk-7-jdk tomcat7 exuberant-ctags git subversion mercurial
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">~$ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade -y
+~$ sudo apt-get install openjdk-7-jdk tomcat7 exuberant-ctags git subversion mercurial</code></pre></div>
 <p>OpenGrokのarchiveを落としてくる。</p>
-
-<pre><code class="language-bash">~$ wget -O - https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.5.tar.gz | tar xvzf -
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">~$ wget -O - https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.5.tar.gz <span class="p">|</span> tar xvzf -
 ~$ ./opengrok-0.12.1.5/bin/OpenGrok --help
 Loading the default instance configuration ...
 
-Usage: OpenGrok &lt;deploy|derby|update|updateQuietly|usage|help&gt;
-       OpenGrok index [&lt;directory&gt;]
-       OpenGrok indexpart &lt;src_root&gt; &lt;directory1&gt; [..]
-       OpenGrok clearHistory [&lt;repository_name&gt;]
+Usage: OpenGrok &lt;deploy<span class="p">|</span>derby<span class="p">|</span>update<span class="p">|</span>updateQuietly<span class="p">|</span>usage<span class="p">|</span>help&gt;
+       OpenGrok index <span class="o">[</span>&lt;directory&gt;<span class="o">]</span>
+       OpenGrok indexpart &lt;src_root&gt; &lt;directory1&gt; <span class="o">[</span>..<span class="o">]</span>
+       OpenGrok clearHistory <span class="o">[</span>&lt;repository_name&gt;<span class="o">]</span>
 
   Optional environment variables:
     OPENGROK_CONFIGURATION - location of your configuration
-      e.g. $ OPENGROK_CONFIGURATION=/var/opengrok/myog.conf ./opengrok-0.12.1.5/bin/OpenGrok ...
+      e.g. $ <span class="nv">OPENGROK_CONFIGURATION</span><span class="o">=</span>/var/opengrok/myog.conf ./opengrok-0.12.1.5/bin/OpenGrok ...
 
-    See the code for more information on configuration options / variables
-</code></pre>
-
+    See the code <span class="k">for</span> more information on configuration options / variables</code></pre></div>
 <blockquote>
 <p>See the code for more information on configuration options / variables</p>
 </blockquote>
@@ -134,21 +122,17 @@ Usage: OpenGrok &lt;deploy|derby|update|updateQuietly|usage|help&gt;
 と思ったけど、<code>bin/OpenGrok</code>自体はただのshell scriptなので頑張れば大丈夫そう。</p>
 
 <p>tomcatにデプロイするぞ。</p>
-
-<pre><code class="language-bash">~$ sudo service tomcat7 status
- * Tomcat servlet engine is running with pid 10477
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">~$ sudo service tomcat7 status
+ * Tomcat servlet engine is running with pid <span class="m">10477</span>
 ~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
 Loading the default instance configuration ...
 Installing /home/vagrant/opengrok-0.12.1.5/bin/../lib/source.war to /var/lib/tomcat7/webapps ...
 
-Start your application server (Tomcat),  if it is not already
-running, or wait until it loads the just installed web  application.
+Start your application server <span class="o">(</span>Tomcat<span class="o">)</span>,  <span class="k">if</span> it is not already
+running, or <span class="nb">wait</span> <span class="k">until</span> it loads the just installed web  application.
 
 OpenGrok should be available on &lt;HOST&gt;:&lt;PORT&gt;/source
-  where HOST and PORT are configured in Tomcat.
-
-</code></pre>
-
+  where HOST and PORT are configured in Tomcat.</code></pre></div>
 <p><code>http://&lt;HOST&gt;:8080/source/</code>にアクセスしてOpenGrokが表示されたら喜ぶ。</p>
 
 <h2 id="リファレンス用のコードを配置">リファレンス用のコードを配置</h2>
@@ -182,24 +166,21 @@ OpenGrokではプロジェクトという単語を使っている。</p>
 </ul>
 
 <p>適当に<a href="https://github.com/kobtea/akka-goat-mail">kobtea/akka-goat-mail</a>とかでいいや&hellip;</p>
-
-<pre><code class="language-bash"># SRC_ROOTは$HOME/srcにしてみよう
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># SRC_ROOTは$HOME/srcにしてみよう</span>
 ~$ mkdir src
-~$ cd src/
+~$ <span class="nb">cd</span> src/
 ~/src$ git clone https://github.com/kobtea/akka-goat-mail.git
-~/src$ cd
+~/src$ <span class="nb">cd</span>
 
-# indexを張る
-# デフォルト以外のSRC_ROOTの場合は絶対パスを与える
-~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok index $HOME/src
+<span class="c1"># indexを張る</span>
+<span class="c1"># デフォルト以外のSRC_ROOTの場合は絶対パスを与える</span>
+~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok index <span class="nv">$HOME</span>/src
 Loading the default instance configuration ...
-WARNING: OpenGrok generated data path /var/opengrok/data doesn't exist
-  Attempting to create generated data directory ...
-WARNING: OpenGrok generated etc path /var/opengrok/etc  doesn't exist
+WARNING: OpenGrok generated data path /var/opengrok/data doesn<span class="s1">&#39;t exist
+</span><span class="s1">  Attempting to create generated data directory ...
+</span><span class="s1">WARNING: OpenGrok generated etc path /var/opengrok/etc  doesn&#39;</span>t exist
   Attempting to create generated etc directory ...
-  Creating default /var/opengrok/logging.properties ...
-</code></pre>
-
+  Creating default /var/opengrok/logging.properties ...</code></pre></div>
 <p>ブラウザでプロジェクトが追加されたことを確認する。</p>
 
 <p>ここでちょっと寄り道。<br />
@@ -261,13 +242,10 @@ indexを張ったあとの<code>OPENGROK_INSTANCE_BASE</code>を眺めてみる�
 loggerを変更する場合は、<code>opengrok-0.12.1.5/doc/logging.properties</code>を参考にして<code>OPENGROK_LOGGER_CONFIG_PATH</code>に渡せば良い。</p>
 
 <p>etcにはコマンドパスなどのマッピング情報が記載されている。</p>
-
-<pre><code class="language-xml">&lt;void method=&quot;put&quot;&gt;
- &lt;string&gt;org.opensolaris.opengrok.history.GitRepository&lt;/string&gt;
- &lt;string&gt;/usr/bin/git&lt;/string&gt;
-&lt;/void&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;void</span> <span class="na">method=</span><span class="s">&#34;put&#34;</span><span class="nt">&gt;</span>
+ <span class="nt">&lt;string&gt;</span>org.opensolaris.opengrok.history.GitRepository<span class="nt">&lt;/string&gt;</span>
+ <span class="nt">&lt;string&gt;</span>/usr/bin/git<span class="nt">&lt;/string&gt;</span>
+<span class="nt">&lt;/void&gt;</span></code></pre></div>
 <p>こんな感じ。<br />
 indexコマンドで生成しているわけだし、これは手でいじらないほうが良さそう。</p>
 
@@ -278,106 +256,106 @@ indexコマンドで生成しているわけだし、これは手でいじらな
 サイトのデザインを変えたい場合はどうすればいいんだろう&hellip;folkして魔改造するのかな&hellip;それはつらそうだな&hellip;</p>
 
 
-    <hr/>
-
     <div id="disqus_thread"></div>
-    <script type="text/javascript">
-         
-        var disqus_shortname = 'kobtea';
-
-         
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </article>
-
-<nav class="container-fluid">
-    <ul class="pager">
-        
-        <li class="previous"><a href="https://kobtea.net/posts/2015/12/31/inventory-of-2015/"><i class="fa fa-caret-left"></i> 2015年の振り返り</a></li>
-        
-
-        
-        <li class="next"><a href="https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/">OpenGrokのデザインを変更する <i class="fa fa-caret-right"></i></a></li>
-        
-    </ul>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2015/12/31/inventory-of-2015/"><i class="fas fa-caret-left"></i>&nbsp;2015年の振り返り</a>
+    
+    
+    <a class="pagination-next" href="https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/">OpenGrokのデザインを変更する&nbsp;<i class="fas fa-caret-right"></i></a>
+    
 </nav>
 
-
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-md-4">
-                <strong>Author</strong>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
                 <div class="media">
-                    <div class="media-left media-top">
+                    <figure class="media-left">
                         <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
-                    </div>
-                    <div class="media-body">
-                        <strong class="media-heading">kobtea</strong>
-                        <a href="https://twitter.com/kobtea"><i class="fa fa-twitter-square fa-lg"></i></a>
-                        <a href="https://github.com/kobtea"><i class="fa fa-github-square fa-lg"></i></a>
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
                         <br/>
                         <small>カピバラと暮らしたい</small>
                     </div>
                 </div>
             </div>
-
-            
-
-            <div class="col-md-8">
-                <strong> Tags </strong><br/><br/>
+            <div class="column is-8">
                 
-                <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
-                <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 
-                <a href="/tags/gadget"><button type="button" class="btn btn-default btn-xs">gadget</button></a>
                 
-                <a href="/tags/gcp"><button type="button" class="btn btn-default btn-xs">gcp</button></a>
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
                 
-                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                <a class="cp-tag" href="/tags/book">#book</a>
                 
-                <a href="/tags/hardware"><button type="button" class="btn btn-default btn-xs">hardware</button></a>
+                <a class="cp-tag" href="/tags/conference">#conference</a>
                 
-                <a href="/tags/java"><button type="button" class="btn btn-default btn-xs">java</button></a>
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
                 
-                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
                 
-                <a href="/tags/misc"><button type="button" class="btn btn-default btn-xs">misc</button></a>
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
-                <a href="/tags/monitoring"><button type="button" class="btn btn-default btn-xs">monitoring</button></a>
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
-                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
+                <a class="cp-tag" href="/tags/java">#java</a>
                 
-                <a href="/tags/opengrok"><button type="button" class="btn btn-default btn-xs">opengrok</button></a>
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
                 
-                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
+                <a class="cp-tag" href="/tags/misc">#misc</a>
                 
-                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
                 
-                <a href="/tags/scala"><button type="button" class="btn btn-default btn-xs">scala</button></a>
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
-                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
                 
-                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
                 
             </div>
-
         </div>
-        <p>&copy; 2015 kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a
-                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
-<script src="https://kobtea.net/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
-    
+
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

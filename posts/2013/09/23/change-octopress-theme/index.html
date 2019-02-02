@@ -8,99 +8,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Octopressのテーマを変更する"/>
-<meta name="twitter:description" content="3rd Party Octopress Themesで公開されているので気に入ったものを選ぶ。 CleanPressがステキ。 # テーマのディレクトリまで行ってテーマのリポジトリ"/>
+<meta name="twitter:description" content="3rd Party Octopress Themesで公開されているので気に入ったものを選ぶ。 CleanPressがステキ。 # テーマのディレクトリまで行ってテーマのリポジトリをclone $ cd octopress/.theme $ git clone git@github.com:macjasp/cleanpress.git Cloning into &#39;cleanpress&#39;... remote: Counting objects: 273, done. remote: Compressing objects: 100% (248/248), done. remote: Total 273"/>
 
 
-    
-    <link rel="stylesheet" href="https://kobtea.net/css/capybara.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.netjs/main.js"></script>
 </head>
 
 <body>
 <header>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#header-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://kobtea.net">kobtea.net</a>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net"><strong>kobtea.net</strong></a>
 
-                <p class="navbar-text">eternal jojaku</p>
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="header-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
                     
-                    <li><a href="/posts">archives</a></li>
+                    <a class="navbar-item" href="/posts">archives</a>
                     
-                    <li><a href="/posts/index.xml">rss</a></li>
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
                     
-                </ul>
+                </div>
             </div>
         </div>
     </nav>
 </header>
 
-
-<article class="container-fluid">
-    <div class="page-header">
-        <h1><a href="https://kobtea.net/posts/2013/09/23/change-octopress-theme/">Octopressのテーマを変更する</a></h1>
-        <time pubdate datetime=" 2013-09-23 " title="2013-09-23">2013-09-23</time>
-        
-        <a href="/tags/octopress">
-            <button type="button" class="btn btn-default btn-xs">Octopress</button>
-        </a>
-        
-        <div class="toc">
-            
+<section id="wrapper">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">Octopressのテーマを変更する</h1>
         </div>
-    </div>
+    </section>
+
+    <i class="fas fa-calendar-alt"></i>
+    <time>2013-09-23 14:56</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/octopress">#Octopress</a>
+    
+    <aside>
+        
+    </aside>
 
     <p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a>で公開されているので気に入ったものを選ぶ。<br />
 <a href="https://github.com/macjasp/cleanpress">CleanPress</a>がステキ。</p>
-
-<pre><code class="language-bash"># テーマのディレクトリまで行ってテーマのリポジトリをclone
-$ cd octopress/.theme
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># テーマのディレクトリまで行ってテーマのリポジトリをclone</span>
+$ <span class="nb">cd</span> octopress/.theme
 $ git clone git@github.com:macjasp/cleanpress.git
-Cloning into 'cleanpress'...
-remote: Counting objects: 273, done.
-remote: Compressing objects: 100% (248/248), done.
-remote: Total 273 (delta 30), reused 229 (delta 16)
-Receiving objects: 100% (273/273), 1.09 MiB | 554 KiB/s, done.
-Resolving deltas: 100% (30/30), done.
+Cloning into <span class="s1">&#39;cleanpress&#39;</span>...
+remote: Counting objects: <span class="m">273</span>, <span class="k">done</span>.
+remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">248</span>/248<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">273</span> <span class="o">(</span>delta <span class="m">30</span><span class="o">)</span>, reused <span class="m">229</span> <span class="o">(</span>delta <span class="m">16</span><span class="o">)</span>
+Receiving objects: <span class="m">100</span>% <span class="o">(</span><span class="m">273</span>/273<span class="o">)</span>, <span class="m">1</span>.09 MiB <span class="p">|</span> <span class="m">554</span> KiB/s, <span class="k">done</span>.
+Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">30</span>/30<span class="o">)</span>, <span class="k">done</span>.
 
-# テーマを適用する
-$ rake install\[cleanpress\]
-(in /Users/kobtea/Programs/octopress)
-A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y
-## Copying cleanpress theme into ./source and ./sass
-mkdir -p source
-cp -r .themes/cleanpress/source/. source
+<span class="c1"># テーマを適用する</span>
+$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
+<span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
+A theme is already installed, proceeding will overwrite existing files. Are you sure? <span class="o">[</span>y/n<span class="o">]</span> y
+<span class="c1">## Copying cleanpress theme into ./source and ./sass</span>
+mkdir -p <span class="nb">source</span>
+cp -r .themes/cleanpress/source/. <span class="nb">source</span>
 mkdir -p sass
 cp -r .themes/cleanpress/sass/. sass
 mkdir -p source/_posts
 mkdir -p public
 
-# generate!
+<span class="c1"># generate!</span>
 $ rake generate
-(in /Users/kobtea/Programs/octopress)
-## Generating Site with Jekyll
+<span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
+<span class="c1">## Generating Site with Jekyll</span>
 unchanged sass/screen.scss
 Configuration from /Users/kobtea/Programs/octopress/_config.yml
-Building site: source -&gt; public
-Successfully generated site: source -&gt; public
-</code></pre>
-
+Building site: <span class="nb">source</span> -&gt; public
+Successfully generated site: <span class="nb">source</span> -&gt; public</code></pre></div>
 <p><code>rake preview</code>してちゃんと反映されているかを確認する。</p>
 
 <p><img src="/img/2013/09/23/install-cleanpress.png" class="img-responsive"/></p>
@@ -108,205 +103,193 @@ Successfully generated site: source -&gt; public
 <p>おおん、ページ作っていないAboutとかPortfolioがおる&hellip;</p>
 
 <p>どのへんで定義されているか探してみる。</p>
-
-<pre><code class="language-bash">$ find . -type f | xargs grep Portfolio
-./.themes/cleanpress/source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a href=&quot;{{ root_url }}/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/404.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/404.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/archives/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/archives/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
-./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/hello-octopress/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/hello-octopress/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/change-octopress-theme/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/change-octopress-theme/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/change-octopress-theme/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
-./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/setup-octopress/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/setup-octopress/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/archives/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/archives/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/etc/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/etc/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/markdown/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/markdown/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/octopress/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
-./public/blog/categories/octopress/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/octopress/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/ruby/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/ruby/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/vim/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/vim/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
-./public/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/index.html:	&lt;li&gt;&lt;a href=&quot;/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる&amp;hellip;&lt;br/&gt;
-./source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a href=&quot;{{ root_url }}/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ find . -type f <span class="p">|</span> xargs grep Portfolio
+./.themes/cleanpress/source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;{{ root_url }}/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/404.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/404.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/hello-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/hello-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/change-octopress-theme/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/setup-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/2013/09/23/setup-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/etc/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/etc/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/markdown/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/markdown/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/octopress/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+./public/blog/categories/octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/categories/vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/blog/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+./public/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+./public/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+./source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;{{ root_url }}/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 Binary file ./source/_posts/.2013-09-23-change-octopress-theme.markdown.swp matches
-./source/_posts/2013-09-23-change-octopress-theme.markdown:おおん、ページ作っていないAboutとかPortfolioがおる...
-</code></pre>
-
+./source/_posts/2013-09-23-change-octopress-theme.markdown:おおん、ページ作っていないAboutとかPortfolioがおる...</code></pre></div>
 <p><code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code>あたりがくさい。<br />
 ブランチ切って編集する。</p>
-
-<pre><code class="language-bash">$ cd .themes/cleanpress
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> .themes/cleanpress
 $ git branch
 * master
 $ git checkout -b edit-contents-links
-Switched to a new branch 'edit-contents-links'
+Switched to a new branch <span class="s1">&#39;edit-contents-links&#39;</span>
 $ git branch
 * edit-contents-links
-  master
-</code></pre>
-
+  master</code></pre></div>
 <p>ひとまずコメントアウトしておく。</p>
 
 <p>source: <code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code></p>
-
-<pre><code class="language-html">&lt;ul&gt;
-	&lt;li&gt;&lt;a href=&quot;{{ root_url }}/&quot;&gt;Blog&lt;/a&gt;&lt;/li&gt;
-	&lt;!--li&gt;&lt;a href=&quot;{{ root_url }}/about&quot;&gt;About&lt;/a&gt;&lt;/li--&gt;
-	&lt;!--li&gt;&lt;a href=&quot;{{ root_url }}/portfolio&quot;&gt;Portfolio&lt;/a&gt;&lt;/li--&gt;
-	&lt;li&gt;&lt;a href=&quot;{{ root_url }}/archives&quot;&gt;Archive&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/&#34;</span><span class="p">&gt;</span>Blog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/about&#34;&gt;About&lt;/a&gt;&lt;/li--&gt;</span>
+	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/portfolio&#34;&gt;Portfolio&lt;/a&gt;&lt;/li--&gt;</span>
+	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/archives&#34;</span><span class="p">&gt;</span>Archive<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></code></pre></div>
 <p>再度テーマをインストールする。</p>
-
-<pre><code class="language-bash">$ rake install\[cleanpress\]
-(in /Users/kobtea/Programs/octopress)
-A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y
-## Copying cleanpress theme into ./source and ./sass
-mkdir -p source
-cp -r .themes/cleanpress/source/. source
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
+<span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
+A theme is already installed, proceeding will overwrite existing files. Are you sure? <span class="o">[</span>y/n<span class="o">]</span> y
+<span class="c1">## Copying cleanpress theme into ./source and ./sass</span>
+mkdir -p <span class="nb">source</span>
+cp -r .themes/cleanpress/source/. <span class="nb">source</span>
 mkdir -p sass
 cp -r .themes/cleanpress/sass/. sass
 mkdir -p source/_posts
 mkdir -p public
 
 $ rake generate
-(in /Users/kobtea/Programs/octopress)
-## Generating Site with Jekyll
+<span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
+<span class="c1">## Generating Site with Jekyll</span>
 unchanged sass/screen.scss
 Configuration from /Users/kobtea/Programs/octopress/_config.yml
-Building site: source -&gt; public
-Successfully generated site: source -&gt; public
-</code></pre>
-
+Building site: <span class="nb">source</span> -&gt; public
+Successfully generated site: <span class="nb">source</span> -&gt; public</code></pre></div>
 <p><img src="/img/2013/09/23/install-cleanpress2.png" class="img-responsive"/></p>
 
 <p>ちゃんと消えているね。</p>
 
 
-    <hr/>
-
     <div id="disqus_thread"></div>
-    <script type="text/javascript">
-         
-        var disqus_shortname = 'kobtea';
-
-         
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </article>
-
-<nav class="container-fluid">
-    <ul class="pager">
-        
-        <li class="previous"><a href="https://kobtea.net/posts/2013/09/23/setup-octopress/"><i class="fa fa-caret-left"></i> Octopress &#43; Github Pagesな環境構築</a></li>
-        
-
-        
-        <li class="next"><a href="https://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/">Github Pagesにカスタムドメインを割り当てる <i class="fa fa-caret-right"></i></a></li>
-        
-    </ul>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2013/09/23/setup-octopress/"><i class="fas fa-caret-left"></i>&nbsp;Octopress &#43; Github Pagesな環境構築</a>
+    
+    
+    <a class="pagination-next" href="https://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/">Github Pagesにカスタムドメインを割り当てる&nbsp;<i class="fas fa-caret-right"></i></a>
+    
 </nav>
 
-
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-md-4">
-                <strong>Author</strong>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
                 <div class="media">
-                    <div class="media-left media-top">
+                    <figure class="media-left">
                         <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
-                    </div>
-                    <div class="media-body">
-                        <strong class="media-heading">kobtea</strong>
-                        <a href="https://twitter.com/kobtea"><i class="fa fa-twitter-square fa-lg"></i></a>
-                        <a href="https://github.com/kobtea"><i class="fa fa-github-square fa-lg"></i></a>
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
                         <br/>
                         <small>カピバラと暮らしたい</small>
                     </div>
                 </div>
             </div>
-
-            
-
-            <div class="col-md-8">
-                <strong> Tags </strong><br/><br/>
+            <div class="column is-8">
                 
-                <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
-                <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 
-                <a href="/tags/gadget"><button type="button" class="btn btn-default btn-xs">gadget</button></a>
                 
-                <a href="/tags/gcp"><button type="button" class="btn btn-default btn-xs">gcp</button></a>
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
                 
-                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                <a class="cp-tag" href="/tags/book">#book</a>
                 
-                <a href="/tags/hardware"><button type="button" class="btn btn-default btn-xs">hardware</button></a>
+                <a class="cp-tag" href="/tags/conference">#conference</a>
                 
-                <a href="/tags/java"><button type="button" class="btn btn-default btn-xs">java</button></a>
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
                 
-                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
                 
-                <a href="/tags/misc"><button type="button" class="btn btn-default btn-xs">misc</button></a>
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
-                <a href="/tags/monitoring"><button type="button" class="btn btn-default btn-xs">monitoring</button></a>
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
-                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
+                <a class="cp-tag" href="/tags/java">#java</a>
                 
-                <a href="/tags/opengrok"><button type="button" class="btn btn-default btn-xs">opengrok</button></a>
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
                 
-                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
+                <a class="cp-tag" href="/tags/misc">#misc</a>
                 
-                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
                 
-                <a href="/tags/scala"><button type="button" class="btn btn-default btn-xs">scala</button></a>
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
-                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
                 
-                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
                 
             </div>
-
         </div>
-        <p>&copy; 2015 kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a
-                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
-<script src="https://kobtea.net/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
-    
+
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

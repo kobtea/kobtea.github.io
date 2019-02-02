@@ -6,6 +6,7 @@
     <description>Recent content in Ruby on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright © 2013-2019, kobtea</copyright>
     <lastBuildDate>Mon, 23 Sep 2013 00:17:00 +0900</lastBuildDate>
     
 	<atom:link href="https://kobtea.net/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +18,7 @@
       <pubDate>Mon, 23 Sep 2013 00:17:00 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
-      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのreadmeにそってやる。 PATHについて解説までしてくれるとかマジ天使。 rbenvのインストール # home</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのreadmeにそってやる。 PATHについて解説までしてくれるとかマジ天使。 rbenvのインストール # homebrewを最新の状態に $ brew update $ brew upgrade # rbenvをインストール</description>
     </item>
     
     <item>
@@ -26,7 +27,7 @@
       <pubDate>Sun, 22 Sep 2013 23:38:00 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
-      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby --version ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ irb --version irb 0.9.6(09/06/30) &amp;lsquo;日本語&amp;rsquo;と打とうとするとこうなる。 $ irb irb(main):001:0&amp;gt; p &#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&#39; &amp;quot;&amp;quot; =&amp;gt; &amp;quot;&amp;quot; 色々調べてみたら</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby --version ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ irb --version irb 0.9.6(09/06/30) &amp;lsquo;日本語&amp;rsquo;と打とうとするとこうなる。 $ irb irb(main):001:0&amp;gt; p &amp;#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&amp;#39; &amp;#34;&amp;#34; =&amp;gt; &amp;#34;&amp;#34; 色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこ</description>
     </item>
     
   </channel>

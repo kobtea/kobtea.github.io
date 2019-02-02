@@ -6,6 +6,7 @@
     <description>Recent content in Conference on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright © 2013-2019, kobtea</copyright>
     <lastBuildDate>Sun, 23 Aug 2015 22:59:36 +0900</lastBuildDate>
     
 	<atom:link href="https://kobtea.net/tags/conference/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +18,7 @@
       <pubDate>Sun, 23 Aug 2015 22:59:36 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2015/08/23/yapc/</guid>
-      <description>最初で最後のYAPC。 聴いたセッションのメモとか感想とかをぽつぽつと。 前夜祭 PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについての</description>
+      <description>最初で最後のYAPC。 聴いたセッションのメモとか感想とかをぽつぽつと。 前夜祭 PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版） Hackとの速度勝負 Hackが</description>
     </item>
     
     <item>
@@ -26,7 +27,7 @@
       <pubDate>Sat, 22 Aug 2015 19:19:11 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2015/08/22/yapc-isucon/</guid>
-      <description>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。 そのうちスライドも公開して頂けるらしいが自分のために</description>
+      <description>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。 そのうちスライドも公開して頂けるらしいが自分のために。 リンク [公式]ISUCON [公式]トーク情報 togetter スピーカー:</description>
     </item>
     
   </channel>

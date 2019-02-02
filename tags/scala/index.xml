@@ -6,6 +6,7 @@
     <description>Recent content in Scala on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright © 2013-2019, kobtea</copyright>
     <lastBuildDate>Tue, 15 Sep 2015 22:10:55 +0900</lastBuildDate>
     
 	<atom:link href="https://kobtea.net/tags/scala/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +18,7 @@
       <pubDate>Tue, 15 Sep 2015 22:10:55 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
-      <description>環境 scalaVersion := &amp;quot;2.11.6&amp;quot; libraryDependencies += &amp;quot;com.typesafe.akka&amp;quot; %% &amp;quot;akka-actor&amp;quot; % &amp;quot;2.3.11&amp;quot; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&amp;gt; import scala.concurrent.Future scala&amp;gt; import</description>
+      <description>環境 scalaVersion := &amp;#34;2.11.6&amp;#34; libraryDependencies += &amp;#34;com.typesafe.akka&amp;#34; %% &amp;#34;akka-actor&amp;#34; % &amp;#34;2.3.11&amp;#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&amp;gt; import scala.concurrent.Future scala&amp;gt; import akka.actor.ActorSystem scala&amp;gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&amp;gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&amp;gt; :q // consoleから抜</description>
     </item>
     
     <item>
@@ -26,7 +27,7 @@
       <pubDate>Mon, 18 May 2015 20:56:24 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
-      <description>環境 ➜ ~ scala Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11). Type in expressions to have them evaluated. Type :help for more information. やりたいこと scala.concurrent.Futureで例外が発生してFail</description>
+      <description>環境 ➜ ~ scala Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11). Type in expressions to have them evaluated. Type :help for more information. やりたいこと scala.concurrent.Futureで例外が発生してFailureになったとき、 デフォルト値を適用してSuccessで返</description>
     </item>
     
   </channel>

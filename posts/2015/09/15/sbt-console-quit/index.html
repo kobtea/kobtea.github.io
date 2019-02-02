@@ -8,129 +8,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う"/>
-<meta name="twitter:description" content="環境 scalaVersion := &quot;2.11.6&quot; libraryDependencies &#43;= &quot;com.typesafe.akka&quot; %% &quot;akka-actor&quot; % &quot;2.3.11&quot; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&gt; import scala.concurrent.Future scala&gt; import"/>
+<meta name="twitter:description" content="環境 scalaVersion := &#34;2.11.6&#34; libraryDependencies &#43;= &#34;com.typesafe.akka&#34; %% &#34;akka-actor&#34; % &#34;2.3.11&#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&gt; import scala.concurrent.Future scala&gt; import akka.actor.ActorSystem scala&gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&gt; :q // consoleから抜"/>
 
 
-    
-    <link rel="stylesheet" href="https://kobtea.net/css/capybara.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.netjs/main.js"></script>
 </head>
 
 <body>
 <header>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#header-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://kobtea.net">kobtea.net</a>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net"><strong>kobtea.net</strong></a>
 
-                <p class="navbar-text">eternal jojaku</p>
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="header-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
                     
-                    <li><a href="/posts">archives</a></li>
+                    <a class="navbar-item" href="/posts">archives</a>
                     
-                    <li><a href="/posts/index.xml">rss</a></li>
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
                     
-                </ul>
+                </div>
             </div>
         </div>
     </nav>
 </header>
 
+<section id="wrapper">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</h1>
+        </div>
+    </section>
 
-<article class="container-fluid">
-    <div class="page-header">
-        <h1><a href="https://kobtea.net/posts/2015/09/15/sbt-console-quit/">[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</a></h1>
-        <time pubdate datetime=" 2015-09-15 " title="2015-09-15">2015-09-15</time>
-        
-        <a href="/tags/scala">
-            <button type="button" class="btn btn-default btn-xs">scala</button>
-        </a>
-        
-        <div class="toc">
-            <nav id="TableOfContents">
-<ul>
-<li>
+    <i class="fas fa-calendar-alt"></i>
+    <time>2015-09-15 22:10</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/scala">#scala</a>
+    
+    <aside>
+        <nav id="TableOfContents">
 <ul>
 <li><a href="#環境">環境</a></li>
 <li><a href="#悩み">悩み</a></li>
 <li><a href="#threadをdaemonにすると解決するよ">threadをdaemonにすると解決するよ</a></li>
 <li><a href="#そもそもdaemonとnon-daemonどっちがいいんです">そもそもdaemonとnon-daemonどっちがいいんです？</a></li>
-</ul></li>
 </ul>
 </nav>
-        </div>
-    </div>
+    </aside>
 
     
 
 <h2 id="環境">環境</h2>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scalaVersion</span> <span class="k">:</span><span class="o">=</span> <span class="s">&#34;2.11.6&#34;</span>
 
-<pre><code class="language-scala">scalaVersion := &quot;2.11.6&quot;
-
-libraryDependencies += &quot;com.typesafe.akka&quot; %% &quot;akka-actor&quot; % &quot;2.3.11&quot;
-</code></pre>
-
+<span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">&#34;com.typesafe.akka&#34;</span> <span class="o">%%</span> <span class="s">&#34;akka-actor&#34;</span> <span class="o">%</span> <span class="s">&#34;2.3.11&#34;</span></code></pre></div>
 <h2 id="悩み">悩み</h2>
 
 <p>akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">akka.actor.ActorSystem</span>
 
-<pre><code class="language-scala">scala&gt; import scala.concurrent.Future
-scala&gt; import akka.actor.ActorSystem
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">ec</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">().</span><span class="n">dispatcher</span>
+<span class="n">ec</span><span class="k">:</span> <span class="kt">scala.concurrent.ExecutionContextExecutor</span> <span class="o">=</span> <span class="nc">Dispatcher</span><span class="o">[</span><span class="kt">akka.actor.default-dispatcher</span><span class="o">]</span>
 
-scala&gt; implicit val ec = ActorSystem().dispatcher
-ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher]
+<span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span><span class="o">(</span><span class="mi">1</span><span class="o">)(</span><span class="n">ec</span><span class="o">)</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">9</span><span class="n">ccb14d</span>
 
-scala&gt; Future(1)(ec)
-res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d
-
-scala&gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ
-</code></pre>
-
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">:</span><span class="kt">q</span> <span class="kt">//</span> <span class="kt">consoleから抜けられない</span><span class="o">(</span><span class="err">´；</span><span class="kt">ω</span><span class="err">；｀</span><span class="o">)</span><span class="kt">ﾌ</span><span class="err">ﾞ</span><span class="kt">ﾜｯ</span></code></pre></div>
 <p>akkaが原因かな？と思い、ExecutorServiceを使ってみたけど同じくconsoleを抜けられない。</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.</span><span class="o">{</span><span class="nc">Future</span><span class="o">,</span> <span class="nc">ExecutionContext</span><span class="o">}</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">java.util.concurrent.Executors</span>
 
-<pre><code class="language-scala">scala&gt; import scala.concurrent.{Future, ExecutionContext}
-scala&gt; import java.util.concurrent.Executors
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">ec</span> <span class="k">=</span> <span class="nc">ExecutionContext</span><span class="o">.</span><span class="n">fromExecutorService</span><span class="o">(</span><span class="nc">Executors</span><span class="o">.</span><span class="n">newFixedThreadPool</span><span class="o">(</span><span class="mi">1</span><span class="o">))</span>
+<span class="n">ec</span><span class="k">:</span> <span class="kt">scala.concurrent.ExecutionContextExecutorService</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">ExecutionContextImpl$$anon$1</span><span class="k">@</span><span class="mi">8</span><span class="n">a0f6d7</span>
 
-scala&gt; implicit val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(1))
-ec: scala.concurrent.ExecutionContextExecutorService = scala.concurrent.impl.ExecutionContextImpl$$anon$1@8a0f6d7
+<span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span><span class="o">(</span><span class="mi">1</span><span class="o">)(</span><span class="n">ec</span><span class="o">)</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">64918</span><span class="n">adb</span>
 
-scala&gt; Future(1)(ec)
-res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@64918adb
-
-scala&gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ
-</code></pre>
-
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">:</span><span class="kt">q</span> <span class="kt">//</span> <span class="kt">consoleから抜けられない</span><span class="o">(</span><span class="err">´；</span><span class="kt">ω</span><span class="err">；｀</span><span class="o">)</span><span class="kt">ﾌ</span><span class="err">ﾞ</span><span class="kt">ﾜｯ</span></code></pre></div>
 <p><code>scala.concurrent.ExecutionContext.Implicits.global</code>はそんなことないんだけどなぁ</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.</span><span class="o">{</span><span class="nc">Future</span><span class="o">,</span> <span class="nc">ExecutionContext</span><span class="o">}</span>
 
-<pre><code class="language-scala">scala&gt; import scala.concurrent.{Future, ExecutionContext}
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">ec</span> <span class="k">=</span> <span class="nc">ExecutionContext</span><span class="o">.</span><span class="nc">Implicits</span><span class="o">.</span><span class="n">global</span>
+<span class="n">ec</span><span class="k">:</span> <span class="kt">scala.concurrent.ExecutionContextExecutor</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">ExecutionContextImpl</span><span class="k">@</span><span class="mi">73</span><span class="n">be4237</span>
 
-scala&gt; implicit val ec = ExecutionContext.Implicits.global
-ec: scala.concurrent.ExecutionContextExecutor = scala.concurrent.impl.ExecutionContextImpl@73be4237
+<span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span><span class="o">(</span><span class="mi">1</span><span class="o">)(</span><span class="n">ec</span><span class="o">)</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">42</span><span class="n">ea62b5</span>
 
-scala&gt; Future(1)(ec)
-res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@42ea62b5
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">:</span><span class="kt">q</span>
 
-scala&gt; :q
-
-[success] Total time: 77 s, completed 2015/09/15 22:23:06
-&gt;
-</code></pre>
-
+<span class="o">[</span><span class="kt">success</span><span class="o">]</span> <span class="nc">Total</span> <span class="n">time</span><span class="k">:</span> <span class="err">77</span> <span class="kt">s</span><span class="o">,</span> <span class="n">completed</span> <span class="mi">2015</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">22</span><span class="k">:</span><span class="err">23</span><span class="kt">:</span><span class="err">06</span>
+<span class="kt">&gt;</span></code></pre></div>
 <h2 id="threadをdaemonにすると解決するよ">threadをdaemonにすると解決するよ</h2>
 
 <blockquote>
@@ -143,52 +126,46 @@ scala&gt; :q
 threadをdaemonにして再挑戦。</p>
 
 <p>akka版</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">com.typesafe.config.ConfigFactory</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">akka.actor.ActorSystem</span>
 
-<pre><code class="language-scala">scala&gt; import scala.concurrent.Future
-scala&gt; import com.typesafe.config.ConfigFactory
-scala&gt; import akka.actor.ActorSystem
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">config</span> <span class="k">=</span> <span class="nc">ConfigFactory</span><span class="o">.</span><span class="n">parseString</span><span class="o">(</span><span class="s">&#34;akka.daemonic = on&#34;</span><span class="o">)</span>
+<span class="n">config</span><span class="k">:</span> <span class="kt">com.</span><span class="k">type</span><span class="kt">safe.config.Config</span> <span class="o">=</span> <span class="nc">Config</span><span class="o">(</span><span class="nc">SimpleConfigObject</span><span class="o">({</span><span class="s">&#34;akka&#34;</span><span class="k">:</span><span class="o">{</span><span class="err">&#34;</span><span class="kt">daemonic</span><span class="err">&#34;</span><span class="kt">:</span><span class="err">&#34;</span><span class="kt">on</span><span class="err">&#34;</span><span class="o">}}))</span>
 
-scala&gt; val config = ConfigFactory.parseString(&quot;akka.daemonic = on&quot;)
-config: com.typesafe.config.Config = Config(SimpleConfigObject({&quot;akka&quot;:{&quot;daemonic&quot;:&quot;on&quot;}}))
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">ec</span> <span class="k">=</span> <span class="nc">ActorSystem</span><span class="o">(</span><span class="s">&#34;default&#34;</span><span class="o">,</span> <span class="n">config</span><span class="o">).</span><span class="n">dispatcher</span>
+<span class="n">ec</span><span class="k">:</span> <span class="kt">scala.concurrent.ExecutionContextExecutor</span> <span class="o">=</span> <span class="nc">Dispatcher</span><span class="o">[</span><span class="kt">akka.actor.default-dispatcher</span><span class="o">]</span>
 
-scala&gt; implicit val ec = ActorSystem(&quot;default&quot;, config).dispatcher
-ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher]
+<span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span><span class="o">(</span><span class="mi">1</span><span class="o">)(</span><span class="n">ec</span><span class="o">)</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">70</span><span class="n">f8e6ab</span>
 
-scala&gt; Future(1)(ec)
-res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@70f8e6ab
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">:</span><span class="kt">q</span>
 
-scala&gt; :q
-
-[success] Total time: 101 s, completed 2015/09/15 23:07:48
-&gt; // (∩´∀｀)∩ﾜｰｲ
-</code></pre>
-
+<span class="o">[</span><span class="kt">success</span><span class="o">]</span> <span class="nc">Total</span> <span class="n">time</span><span class="k">:</span> <span class="err">101</span> <span class="kt">s</span><span class="o">,</span> <span class="n">completed</span> <span class="mi">2015</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">23</span><span class="k">:</span><span class="err">07</span><span class="kt">:</span><span class="err">48</span>
+<span class="kt">&gt;</span> <span class="kt">//</span> <span class="o">(</span><span class="kt">∩</span><span class="err">´</span><span class="kt">∀</span><span class="err">｀</span><span class="o">)</span><span class="kt">∩ﾜ</span><span class="err">ｰ</span><span class="kt">ｲ</span></code></pre></div>
 <p>ExecutorService版</p>
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">java.util.concurrent.</span><span class="o">{</span><span class="nc">Executors</span><span class="o">,</span> <span class="nc">ThreadFactory</span><span class="o">}</span>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.</span><span class="o">{</span><span class="nc">ExecutionContext</span><span class="o">,</span> <span class="nc">Future</span><span class="o">}</span>
 
-<pre><code class="language-scala">scala&gt; import java.util.concurrent.{Executors, ThreadFactory}
-scala&gt; import scala.concurrent.{ExecutionContext, Future}
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">factory</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ThreadFactory</span><span class="o">()</span> <span class="o">{</span>
+     <span class="o">|</span>   <span class="k">def</span> <span class="n">newThread</span><span class="o">(</span><span class="n">r</span><span class="k">:</span> <span class="kt">Runnable</span><span class="o">)</span> <span class="k">=</span> <span class="o">{</span>
+     <span class="o">|</span>     <span class="k">val</span> <span class="n">t</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(</span><span class="n">r</span><span class="o">)</span>
+     <span class="o">|</span>     <span class="n">t</span><span class="o">.</span><span class="n">setDaemon</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+     <span class="o">|</span>     <span class="n">t</span>
+     <span class="o">|</span>   <span class="o">}</span>
+     <span class="o">|</span> <span class="o">}</span>
+<span class="n">factory</span><span class="k">:</span> <span class="kt">java.util.concurrent.ThreadFactory</span> <span class="o">=</span> <span class="nc">$anon$1</span><span class="k">@</span><span class="mi">765</span><span class="n">df09a</span>
 
-scala&gt; val factory = new ThreadFactory() {
-     |   def newThread(r: Runnable) = {
-     |     val t = new Thread(r)
-     |     t.setDaemon(true)
-     |     t
-     |   }
-     | }
-factory: java.util.concurrent.ThreadFactory = $anon$1@765df09a
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">implicit</span> <span class="k">val</span> <span class="n">ec</span> <span class="k">=</span> <span class="nc">ExecutionContext</span><span class="o">.</span><span class="n">fromExecutorService</span><span class="o">(</span><span class="nc">Executors</span><span class="o">.</span><span class="n">newFixedThreadPool</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">factory</span><span class="o">))</span>
+<span class="n">ec</span><span class="k">:</span> <span class="kt">scala.concurrent.ExecutionContextExecutorService</span> <span class="o">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">ExecutionContextImpl$$anon$1</span><span class="k">@</span><span class="mi">623404</span><span class="n">ab</span>
 
-scala&gt; implicit val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(1, factory))
-ec: scala.concurrent.ExecutionContextExecutorService = scala.concurrent.impl.ExecutionContextImpl$$anon$1@623404ab
+<span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span><span class="o">(</span><span class="mi">1</span><span class="o">)(</span><span class="n">ec</span><span class="o">)</span>
+<span class="n">res0</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">5</span><span class="n">b37f8e0</span>
 
-scala&gt; Future(1)(ec)
-res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@5b37f8e0
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">:</span><span class="kt">q</span>
 
-scala&gt; :q
-
-[success] Total time: 42 s, completed 2015/09/15 23:41:56
-&gt; // (∩´∀｀)∩ﾜｰｲ
-</code></pre>
-
+<span class="o">[</span><span class="kt">success</span><span class="o">]</span> <span class="nc">Total</span> <span class="n">time</span><span class="k">:</span> <span class="err">42</span> <span class="kt">s</span><span class="o">,</span> <span class="n">completed</span> <span class="mi">2015</span><span class="o">/</span><span class="mi">09</span><span class="o">/</span><span class="mi">15</span> <span class="mi">23</span><span class="k">:</span><span class="err">41</span><span class="kt">:</span><span class="err">56</span>
+<span class="kt">&gt;</span> <span class="kt">//</span> <span class="o">(</span><span class="kt">∩</span><span class="err">´</span><span class="kt">∀</span><span class="err">｀</span><span class="o">)</span><span class="kt">∩ﾜ</span><span class="err">ｰ</span><span class="kt">ｲ</span></code></pre></div>
 <p><code>scala.concurrent.ExecutionContext.Implicits.global</code>もdaemonみたい。<br />
 <a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74">https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/impl/ExecutionContextImpl.scala#L74</a></p>
 
@@ -198,106 +175,106 @@ scala&gt; :q
 今回みたいなthread poolで使うケースだと、親のthreadが終了したら残っていても仕方ないのでdaemonで良いかな。</p>
 
 
-    <hr/>
-
     <div id="disqus_thread"></div>
-    <script type="text/javascript">
-         
-        var disqus_shortname = 'kobtea';
-
-         
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </article>
-
-<nav class="container-fluid">
-    <ul class="pager">
-        
-        <li class="previous"><a href="https://kobtea.net/posts/2015/08/23/yapc/"><i class="fa fa-caret-left"></i> YAPC::Asia Tokyo 2015 で聴いたセッションのメモや感想</a></li>
-        
-
-        
-        <li class="next"><a href="https://kobtea.net/posts/2015/12/20/rsync-instead-raid/">RAID組もうとしたけどrsync(robocopy)で済ませた話 <i class="fa fa-caret-right"></i></a></li>
-        
-    </ul>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2015/08/23/yapc/"><i class="fas fa-caret-left"></i>&nbsp;YAPC::Asia Tokyo 2015 で聴いたセッションのメモや感想</a>
+    
+    
+    <a class="pagination-next" href="https://kobtea.net/posts/2015/12/20/rsync-instead-raid/">RAID組もうとしたけどrsync(robocopy)で済ませた話&nbsp;<i class="fas fa-caret-right"></i></a>
+    
 </nav>
 
-
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-md-4">
-                <strong>Author</strong>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
                 <div class="media">
-                    <div class="media-left media-top">
+                    <figure class="media-left">
                         <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
-                    </div>
-                    <div class="media-body">
-                        <strong class="media-heading">kobtea</strong>
-                        <a href="https://twitter.com/kobtea"><i class="fa fa-twitter-square fa-lg"></i></a>
-                        <a href="https://github.com/kobtea"><i class="fa fa-github-square fa-lg"></i></a>
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
                         <br/>
                         <small>カピバラと暮らしたい</small>
                     </div>
                 </div>
             </div>
-
-            
-
-            <div class="col-md-8">
-                <strong> Tags </strong><br/><br/>
+            <div class="column is-8">
                 
-                <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
-                <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 
-                <a href="/tags/gadget"><button type="button" class="btn btn-default btn-xs">gadget</button></a>
                 
-                <a href="/tags/gcp"><button type="button" class="btn btn-default btn-xs">gcp</button></a>
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
                 
-                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                <a class="cp-tag" href="/tags/book">#book</a>
                 
-                <a href="/tags/hardware"><button type="button" class="btn btn-default btn-xs">hardware</button></a>
+                <a class="cp-tag" href="/tags/conference">#conference</a>
                 
-                <a href="/tags/java"><button type="button" class="btn btn-default btn-xs">java</button></a>
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
                 
-                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
                 
-                <a href="/tags/misc"><button type="button" class="btn btn-default btn-xs">misc</button></a>
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
-                <a href="/tags/monitoring"><button type="button" class="btn btn-default btn-xs">monitoring</button></a>
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
-                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
+                <a class="cp-tag" href="/tags/java">#java</a>
                 
-                <a href="/tags/opengrok"><button type="button" class="btn btn-default btn-xs">opengrok</button></a>
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
                 
-                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
+                <a class="cp-tag" href="/tags/misc">#misc</a>
                 
-                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
                 
-                <a href="/tags/scala"><button type="button" class="btn btn-default btn-xs">scala</button></a>
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
-                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
                 
-                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
                 
             </div>
-
         </div>
-        <p>&copy; 2015 kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a
-                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
-<script src="https://kobtea.net/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
-    
+
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

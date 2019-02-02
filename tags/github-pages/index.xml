@@ -6,6 +6,7 @@
     <description>Recent content in Github Pages on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright © 2013-2019, kobtea</copyright>
     <lastBuildDate>Mon, 23 Sep 2013 21:39:00 +0900</lastBuildDate>
     
 	<atom:link href="https://kobtea.net/tags/github-pages/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +18,7 @@
       <pubDate>Mon, 23 Sep 2013 21:39:00 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</guid>
-      <description>参考: Setting up a custom domain with Pages - Github Pages Custom Domains - Octopress リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。 Tip: After creating the file, it</description>
+      <description>参考: Setting up a custom domain with Pages - Github Pages Custom Domains - Octopress リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。 Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step.</description>
     </item>
     
   </channel>

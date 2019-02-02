@@ -8,67 +8,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Google Stackdriverを眺める"/>
-<meta name="twitter:description" content="以前話題になったStackdriverをbetaのうちに触っておこうそうしよう。 AWSがCloudWatchなら、GCPはStackdriv"/>
+<meta name="twitter:description" content="以前話題になったStackdriverをbetaのうちに触っておこうそうしよう。 AWSがCloudWatchなら、GCPはStackdriverや！！ Stackdriverの提供する機能 Documen"/>
 
 
-    
-    <link rel="stylesheet" href="https://kobtea.net/css/capybara.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.netjs/main.js"></script>
 </head>
 
 <body>
 <header>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#header-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://kobtea.net">kobtea.net</a>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net"><strong>kobtea.net</strong></a>
 
-                <p class="navbar-text">eternal jojaku</p>
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
             </div>
 
-            <div class="collapse navbar-collapse" id="header-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
                     
-                    <li><a href="/posts">archives</a></li>
+                    <a class="navbar-item" href="/posts">archives</a>
                     
-                    <li><a href="/posts/index.xml">rss</a></li>
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
                     
-                </ul>
+                </div>
             </div>
         </div>
     </nav>
 </header>
 
+<section id="wrapper">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">Google Stackdriverを眺める</h1>
+        </div>
+    </section>
 
-<article class="container-fluid">
-    <div class="page-header">
-        <h1><a href="https://kobtea.net/posts/2016/06/04/try-google-stackdriver/">Google Stackdriverを眺める</a></h1>
-        <time pubdate datetime=" 2016-06-04 " title="2016-06-04">2016-06-04</time>
-        
-        <a href="/tags/gcp">
-            <button type="button" class="btn btn-default btn-xs">gcp</button>
-        </a>
-        
-        <a href="/tags/monitoring">
-            <button type="button" class="btn btn-default btn-xs">monitoring</button>
-        </a>
-        
-        <div class="toc">
-            <nav id="TableOfContents">
-<ul>
-<li>
+    <i class="fas fa-calendar-alt"></i>
+    <time>2016-06-04 21:59</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/gcp">#gcp</a>
+    
+    <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+    
+    <aside>
+        <nav id="TableOfContents">
 <ul>
 <li><a href="#stackdriverの提供する機能">Stackdriverの提供する機能</a></li>
 <li><a href="#準備">準備</a>
@@ -80,7 +75,6 @@
 <li><a href="#nginx-pluginを入れる">Nginx pluginを入れる</a></li>
 <li><a href="#tomcat-pluginを入れる">Tomcat pluginを入れる</a></li>
 </ul></li>
-</ul></li>
 <li><a href="#web-consoleを眺める">Web consoleを眺める</a>
 <ul>
 <li><a href="#resources">Resources</a></li>
@@ -90,11 +84,9 @@
 <li><a href="#logs">Logs</a></li>
 </ul></li>
 <li><a href="#感想">感想</a></li>
-</ul></li>
 </ul>
 </nav>
-        </div>
-    </div>
+    </aside>
 
     
 
@@ -163,16 +155,13 @@ Stackdriverに関係ない部分はざっくり省略していく(それでも�
 あとは普通に作成すればいいんだけど、Service Accountの権限だけ注意する。<br />
 最低限<code>monitoring.write</code>があれば良さそう。<br />
 Service Accountの確認方法は<a href="https://cloud.google.com/monitoring/agent/install-agent#authorizing">Document</a>にある通り。</p>
-
-<pre><code class="language-bash">$ curl --silent -f -H &quot;Metadata-Flavor: Google&quot; http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --silent -f -H <span class="s2">&#34;Metadata-Flavor: Google&#34;</span> http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
 https://www.googleapis.com/auth/cloud.useraccounts.readonly
 https://www.googleapis.com/auth/devstorage.read_only
 https://www.googleapis.com/auth/logging.write
 https://www.googleapis.com/auth/monitoring
 https://www.googleapis.com/auth/service.management
-https://www.googleapis.com/auth/servicecontrol
-</code></pre>
-
+https://www.googleapis.com/auth/servicecontrol</code></pre></div>
 <h3 id="stackdriver-agentを入れる">Stackdriver Agentを入れる</h3>
 
 <p>参考:</p>
@@ -184,73 +173,66 @@ https://www.googleapis.com/auth/servicecontrol
 </ul>
 
 <p>Documentに記載のinstall scriptを打つだけ、だと思ってました。</p>
-
-<pre><code class="language-bash">kobtea@opengrok:~$ curl -O https://repo.stackdriver.com/stack-install.sh
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ curl -O https://repo.stackdriver.com/stack-install.sh
 kobtea@opengrok:~$ sudo bash stack-install.sh --write-gcm
-Installing agents for Debian or Ubuntu.
-# ...
-Setting up stackdriver-agent (5.5.0-269.trusty) ...
+Installing agents <span class="k">for</span> Debian or Ubuntu.
+<span class="c1"># ...</span>
+Setting up stackdriver-agent <span class="o">(</span><span class="m">5</span>.5.0-269.trusty<span class="o">)</span> ...
  * Starting Stackdriver metrics collection agent stackdriver-agent
- * Need to set STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+ * Need to <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
  * not starting, configuration error
-                                                                                                                                                                                          [fail]
-# ...
-Setting up stackdriver-extractor (92-1.trusty) ...
+                                                                                                                                                                                          <span class="o">[</span>fail<span class="o">]</span>
+<span class="c1"># ...</span>
+Setting up stackdriver-extractor <span class="o">(</span><span class="m">92</span>-1.trusty<span class="o">)</span> ...
  * Starting Stackdriver metadata extractor stackdriver-extractor
- * Please set STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
-                                                                                                                                                                                          [fail]
-# ...
+ * Please <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+                                                                                                                                                                                          <span class="o">[</span>fail<span class="o">]</span>
+<span class="c1"># ...</span>
 Restarting services
  * Restarting Stackdriver metrics collection agent stackdriver-agent
- * Need to set STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
- * not starting, configuration error
-</code></pre>
-
+ * Need to <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+ * not starting, configuration error</code></pre></div>
 <p>インストール失敗してる&hellip;<br />
 <code>STACKDRIVER_API_KEY</code>がないぞって、Documentでは特に言及されてないんだけどなぁ&hellip;</p>
 
 <p><code>stack-install.sh</code>を見てみると<code>--write-gcm</code>オプションなんてものは書かれていない。な、なんだってー<br />
 代わりにproject metadataを使う方法は書いてある&hellip;どういうことや&hellip;</p>
-
-<pre><code class="language-bash"># Install and start the Google monitoring agent.
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install and start the Google monitoring agent.</span>
 #
-# Usage:
+<span class="c1"># Usage:</span>
 #
-#   curl -O https://.../stack-install.sh
-#   bash stack-install.sh [--api-key=...]
+<span class="c1">#   curl -O https://.../stack-install.sh</span>
+<span class="c1">#   bash stack-install.sh [--api-key=...]</span>
 #
-# The API key can be omitted on a GCE instance if it is available in the
-# project metadata as the value of &quot;stackdriver-agent-key&quot;.
+<span class="c1"># The API key can be omitted on a GCE instance if it is available in the</span>
+<span class="c1"># project metadata as the value of &#34;stackdriver-agent-key&#34;.</span>
 #
-# This script does the following:
+<span class="c1"># This script does the following:</span>
 #
-#   1. Configure the required apt-get or yum repository.
-#   2. Install the agent package.
-#   3. Invoke /opt/stackdriver/stack-config to do the following:
-#      a. Optionally configure the agent with the API key.
-#      b. Start the agent services.
-</code></pre>
-
+<span class="c1">#   1. Configure the required apt-get or yum repository.</span>
+<span class="c1">#   2. Install the agent package.</span>
+<span class="c1">#   3. Invoke /opt/stackdriver/stack-config to do the following:</span>
+<span class="c1">#      a. Optionally configure the agent with the API key.</span>
+<span class="c1">#      b. Start the agent services.</span></code></pre></div>
 <p>よくわからんので、API Keyをセットして試す。<br />
 API Keyは以下のurlから確認できる。<br />
 <a href="https://app.google.stackdriver.com/settings/accounts/agent/">https://app.google.stackdriver.com/settings/accounts/agent/</a></p>
-
-<pre><code class="language-bash">kobtea@opengrok:~$ sudo bash stack-install.sh --api-key=&lt;MY_API_KEY&gt;
-Installing agents for Debian or Ubuntu.
-# ...
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ sudo bash stack-install.sh --api-key<span class="o">=</span>&lt;MY_API_KEY&gt;
+Installing agents <span class="k">for</span> Debian or Ubuntu.
+<span class="c1"># ...</span>
 Restarting services
  * Restarting Stackdriver metrics collection agent stackdriver-agent
 
-# 入った！
-# stackdriver-agentはinstall時に立ち上がる
+<span class="c1"># 入った！</span>
+<span class="c1"># stackdriver-agentはinstall時に立ち上がる</span>
 kobtea@opengrok:~$ sudo service stackdriver-agent status
  * stackdriver-agent is running
 
-# stackdriver-extractorは手動で
+<span class="c1"># stackdriver-extractorは手動で</span>
 kobtea@opengrok:~$ sudo service stackdriver-extractor start
- * Starting Stackdriver metadata extractor stackdriver-extractor                                                                                                                          [ OK ]
+ * Starting Stackdriver metadata extractor stackdriver-extractor                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
 
-# stack-configでも問題なさそう
+<span class="c1"># stack-configでも問題なさそう</span>
 kobtea@opengrok:~$ /opt/stackdriver/stack-config info
 Stackdriver Host Info Dump
 Resource Id: xxxx
@@ -260,18 +242,16 @@ Error talking to Stackdriver gateway No JSON object could be decoded
 Agent status:  Agent config snippets:
  * stackdriver-extractor is running
 Extractor status:  Extractor sample data:
-{
-  &quot;interfaces&quot;: [
-    {
-      &quot;name&quot;: &quot;lo&quot;,
-      &quot;address_families&quot;: [
-# ...
-      ]
-    }
-  ]
-}
-</code></pre>
-
+<span class="o">{</span>
+  <span class="s2">&#34;interfaces&#34;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">&#34;name&#34;</span>: <span class="s2">&#34;lo&#34;</span>,
+      <span class="s2">&#34;address_families&#34;</span>: <span class="o">[</span>
+<span class="c1"># ...</span>
+      <span class="o">]</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span></code></pre></div>
 <p>(∩´∀｀)∩ﾜｰｲ</p>
 
 <h3 id="stackdriver-agent-pluginを入れる">Stackdriver Agent pluginを入れる</h3>
@@ -286,81 +266,75 @@ Extractor status:  Extractor sample data:
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/nginx">Nginx Plugin</a></p>
 
 <p>Nginx pluginは<code>stub_status</code>の値を計測する。</p>
-
-<pre><code class="language-bash"># stub_statusの準備
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># stub_statusの準備</span>
 kobtea@opengrok:~$ sudo touch /etc/nginx/sites-available/status
 kobtea@opengrok:~$ cat /etc/nginx/sites-available/status
-server {
-	listen 80;
-	server_name local-stackdriver-agent.stackdriver.com;
-	location /nginx_status {
-		stub_status on;
-		access_log   off;
-		allow 127.0.0.1;
-		deny all;
-	}
-	location / {
-		root /dev/null;
-	}
-}
+server <span class="o">{</span>
+	listen <span class="m">80</span><span class="p">;</span>
+	server_name local-stackdriver-agent.stackdriver.com<span class="p">;</span>
+	location /nginx_status <span class="o">{</span>
+		stub_status on<span class="p">;</span>
+		access_log   off<span class="p">;</span>
+		allow <span class="m">127</span>.0.0.1<span class="p">;</span>
+		deny all<span class="p">;</span>
+	<span class="o">}</span>
+	location / <span class="o">{</span>
+		root /dev/null<span class="p">;</span>
+	<span class="o">}</span>
+<span class="o">}</span>
 kobtea@opengrok:~$ sudo ln -s /etc/nginx/sites-available/status /etc/nginx/sites-enabled/
 kobtea@opengrok:~$ sudo service nginx reload
 kobtea@opengrok:~$ curl http://local-stackdriver-agent.stackdriver.com/nginx_status
-Active connections: 2
+Active connections: <span class="m">2</span>
 server accepts handled requests
- 315 315 3601
-Reading: 0 Writing: 1 Waiting: 1
+ <span class="m">315</span> <span class="m">315</span> <span class="m">3601</span>
+Reading: <span class="m">0</span> Writing: <span class="m">1</span> Waiting: <span class="m">1</span>
 
-# Stackdriver Nginx pluginの設定
+<span class="c1"># Stackdriver Nginx pluginの設定</span>
 kobtea@opengrok:~$ sudo touch /opt/stackdriver/collectd/etc/collectd.d/nginx.conf
 kobtea@opengrok:~$ cat /opt/stackdriver/collectd/etc/collectd.d/nginx.conf
-LoadPlugin &quot;nginx&quot;
-&lt;Plugin &quot;nginx&quot;&gt;
-  URL &quot;http://local-stackdriver-agent.stackdriver.com/nginx_status&quot;
+LoadPlugin <span class="s2">&#34;nginx&#34;</span>
+&lt;Plugin <span class="s2">&#34;nginx&#34;</span>&gt;
+  URL <span class="s2">&#34;http://local-stackdriver-agent.stackdriver.com/nginx_status&#34;</span>
 &lt;/Plugin&gt;
 kobtea@opengrok:~$ sudo service stackdriver-agent restart
-# ...
+<span class="c1"># ...</span>
 Created new plugin context.
-                                                                                                                                                                                          [ OK ]
-</code></pre>
-
+                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span></code></pre></div>
 <h4 id="tomcat-pluginを入れる">Tomcat pluginを入れる</h4>
 
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/tomcat">Tomcat Plugin</a></p>
 
 <p>Tomcat, JVM系はJMXを使って計測する。</p>
-
-<pre><code class="language-bash"># JMXの設定
-kobtea@opengrok:~$ diff -u /etc/default/tomcat7{.orig,}
---- /etc/default/tomcat7.orig	2016-05-12 16:50:51.872516414 +0000
-+++ /etc/default/tomcat7	2016-05-12 17:02:53.180519725 +0000
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JMXの設定</span>
+kobtea@opengrok:~$ diff -u /etc/default/tomcat7<span class="o">{</span>.orig,<span class="o">}</span>
+--- /etc/default/tomcat7.orig	<span class="m">2016</span>-05-12 <span class="m">16</span>:50:51.872516414 +0000
++++ /etc/default/tomcat7	<span class="m">2016</span>-05-12 <span class="m">17</span>:02:53.180519725 +0000
 @@ -19,6 +19,7 @@
- # exactly one CPU chip that contains one or two cores, you should also add
- # the &quot;-XX:+CMSIncrementalMode&quot; option.
- JAVA_OPTS=&quot;-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC&quot;
-+JAVA_OPTS=&quot;${JAVA_OPTS} -Djava.security.egd=file:/dev/./urandom&quot;
+ <span class="c1"># exactly one CPU chip that contains one or two cores, you should also add</span>
+ <span class="c1"># the &#34;-XX:+CMSIncrementalMode&#34; option.</span>
+ <span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">&#34;-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC&#34;</span>
++JAVA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">JAVA_OPTS</span><span class="si">}</span><span class="s2"> -Djava.security.egd=file:/dev/./urandom&#34;</span>
 
- # To enable remote debugging uncomment the following line.
- # You will then be able to use a java debugger on port 8000.
+ <span class="c1"># To enable remote debugging uncomment the following line.</span>
+ <span class="c1"># You will then be able to use a java debugger on port 8000.</span>
 @@ -45,3 +46,7 @@
- # NOTE: authbind works only with IPv4.  Do not enable it when using IPv6.
- # (yes/no, default: no)
- #AUTHBIND=no
-+CATALINA_OPTS=&quot;${CATALINA_OPTS} -Dcom.sun.management.jmxremote&quot;
-+CATALINA_OPTS=&quot;${CATALINA_OPTS} -Dcom.sun.management.jmxremote.port=9012&quot;
-+CATALINA_OPTS=&quot;${CATALINA_OPTS} -Dcom.sun.management.jmxremote.ssl=false&quot;
-+CATALINA_OPTS=&quot;${CATALINA_OPTS} -Dcom.sun.management.jmxremote.authenticate=false&quot;
+ <span class="c1"># NOTE: authbind works only with IPv4.  Do not enable it when using IPv6.</span>
+ <span class="c1"># (yes/no, default: no)</span>
+ <span class="c1">#AUTHBIND=no</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.port=9012&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.ssl=false&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.authenticate=false&#34;</span>
 
 kobtea@opengrok:~$ sudo service tomcat7 restart
 
-# Stackdriver Tomcat pluginの設定
-kobtea@opengrok:~$ cd /opt/stackdriver/collectd/etc/collectd.d/ &amp;&amp; sudo curl -O https://raw.githubusercontent.com/Stackdriver/stackdriver-agent-service-configs/master/etc/collectd.d/tomcat-7.conf
+<span class="c1"># Stackdriver Tomcat pluginの設定</span>
+kobtea@opengrok:~$ <span class="nb">cd</span> /opt/stackdriver/collectd/etc/collectd.d/ <span class="o">&amp;&amp;</span> sudo curl -O https://raw.githubusercontent.com/Stackdriver/stackdriver-agent-service-configs/master/etc/collectd.d/tomcat-7.conf
 kobtea@opengrok:~$ sudo service stackdriver-agent restart
-# ...
+<span class="c1"># ...</span>
 Created new plugin context.
-                                                                                                                                                                                          [ OK ]
-</code></pre>
-
+                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span></code></pre></div>
 <h2 id="web-consoleを眺める">Web consoleを眺める</h2>
 
 <p>IndexページはAlert周りの機能が多い印象、すぐに反応したいしね。</p>
@@ -368,10 +342,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/01.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/01.png"  />
+    
+</figure>
 
 
 <p>メニューごとにふわっと眺めようかな。</p>
@@ -384,10 +358,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/02.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/02.png"  />
+    
+</figure>
 
 
 <p>各リソースページ。<br />
@@ -396,10 +370,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/03.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/03.png"  />
+    
+</figure>
 
 
 <h3 id="alerting">Alerting</h3>
@@ -409,10 +383,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/04.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/04.png"  />
+    
+</figure>
 
 
 <p>メトリックの閾値などなど結構柔軟に設定できる。<br />
@@ -421,10 +395,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/05.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/05.png"  />
+    
+</figure>
 
 
 <p>IncidentsではPagerduty likeに状態管理ができる。<br />
@@ -433,10 +407,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/06.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/06.png"  />
+    
+</figure>
 
 
 <p>Uptime Checksは複数拠点からチェックしてくれる。</p>
@@ -444,10 +418,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/07.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/07.png"  />
+    
+</figure>
 
 
 <p>Events、「最近調子悪いけど何かしたっけかなー」とか「最近Alert減ってきていい傾向だなー」とか。</p>
@@ -455,10 +429,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/08.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/08.png"  />
+    
+</figure>
 
 
 <h3 id="groups">Groups</h3>
@@ -466,10 +440,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/09.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/09.png"  />
+    
+</figure>
 
 
 <p>先の勝手に分類してくれるResourcesではなく、自分でグルーピングしたい！ときに使う。<br />
@@ -478,10 +452,10 @@ Created new plugin context.
 
 
 
-
-
-<img src="/img/2016/06/04/10.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/10.png"  />
+    
+</figure>
 
 
 <h3 id="dashboards">Dashboards</h3>
@@ -493,10 +467,10 @@ CPUとか積み上げグラフにしたいな&hellip;</p>
 
 
 
-
-
-<img src="/img/2016/06/04/11.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/11.png"  />
+    
+</figure>
 
 
 <h3 id="logs">Logs</h3>
@@ -507,10 +481,10 @@ CPUとか積み上げグラフにしたいな&hellip;</p>
 
 
 
-
-
-<img src="/img/2016/06/04/12.png" class="img-responsive img-thumbnail"/>
-
+<figure class="capy-img">
+    <img src="/img/2016/06/04/12.png"  />
+    
+</figure>
 
 
 <h2 id="感想">感想</h2>
@@ -527,106 +501,106 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br />
 <p>たのしかったです。</p>
 
 
-    <hr/>
-
     <div id="disqus_thread"></div>
-    <script type="text/javascript">
-         
-        var disqus_shortname = 'kobtea';
-
-         
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 </article>
-
-<nav class="container-fluid">
-    <ul class="pager">
-        
-        <li class="previous"><a href="https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/"><i class="fa fa-caret-left"></i> OpenGrokのデザインを変更する</a></li>
-        
-
-        
-        <li class="next"><a href="https://kobtea.net/posts/2017/12/04/google-sre-book/">Google SRE本を読んだ <i class="fa fa-caret-right"></i></a></li>
-        
-    </ul>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/"><i class="fas fa-caret-left"></i>&nbsp;OpenGrokのデザインを変更する</a>
+    
+    
+    <a class="pagination-next" href="https://kobtea.net/posts/2017/12/04/google-sre-book/">Google SRE本を読んだ&nbsp;<i class="fas fa-caret-right"></i></a>
+    
 </nav>
 
-
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-
-            <div class="col-md-4">
-                <strong>Author</strong>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
                 <div class="media">
-                    <div class="media-left media-top">
+                    <figure class="media-left">
                         <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
-                    </div>
-                    <div class="media-body">
-                        <strong class="media-heading">kobtea</strong>
-                        <a href="https://twitter.com/kobtea"><i class="fa fa-twitter-square fa-lg"></i></a>
-                        <a href="https://github.com/kobtea"><i class="fa fa-github-square fa-lg"></i></a>
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
                         <br/>
                         <small>カピバラと暮らしたい</small>
                     </div>
                 </div>
             </div>
-
-            
-
-            <div class="col-md-8">
-                <strong> Tags </strong><br/><br/>
+            <div class="column is-8">
                 
-                <a href="/tags/book"><button type="button" class="btn btn-default btn-xs">book</button></a>
                 
-                <a href="/tags/conference"><button type="button" class="btn btn-default btn-xs">conference</button></a>
                 
-                <a href="/tags/gadget"><button type="button" class="btn btn-default btn-xs">gadget</button></a>
                 
-                <a href="/tags/gcp"><button type="button" class="btn btn-default btn-xs">gcp</button></a>
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
                 
-                <a href="/tags/github-pages"><button type="button" class="btn btn-default btn-xs">github-pages</button></a>
+                <a class="cp-tag" href="/tags/book">#book</a>
                 
-                <a href="/tags/hardware"><button type="button" class="btn btn-default btn-xs">hardware</button></a>
+                <a class="cp-tag" href="/tags/conference">#conference</a>
                 
-                <a href="/tags/java"><button type="button" class="btn btn-default btn-xs">java</button></a>
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
                 
-                <a href="/tags/markdown"><button type="button" class="btn btn-default btn-xs">markdown</button></a>
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
                 
-                <a href="/tags/misc"><button type="button" class="btn btn-default btn-xs">misc</button></a>
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
-                <a href="/tags/monitoring"><button type="button" class="btn btn-default btn-xs">monitoring</button></a>
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
-                <a href="/tags/octopress"><button type="button" class="btn btn-default btn-xs">octopress</button></a>
+                <a class="cp-tag" href="/tags/java">#java</a>
                 
-                <a href="/tags/opengrok"><button type="button" class="btn btn-default btn-xs">opengrok</button></a>
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
                 
-                <a href="/tags/python"><button type="button" class="btn btn-default btn-xs">python</button></a>
+                <a class="cp-tag" href="/tags/misc">#misc</a>
                 
-                <a href="/tags/ruby"><button type="button" class="btn btn-default btn-xs">ruby</button></a>
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
                 
-                <a href="/tags/scala"><button type="button" class="btn btn-default btn-xs">scala</button></a>
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
-                <a href="/tags/vim"><button type="button" class="btn btn-default btn-xs">vim</button></a>
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
                 
-                <a href="/tags/windows"><button type="button" class="btn btn-default btn-xs">windows</button></a>
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
                 
             </div>
-
         </div>
-        <p>&copy; 2015 kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a
-                href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
-<script src="https://kobtea.net/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
 
-    
+
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {

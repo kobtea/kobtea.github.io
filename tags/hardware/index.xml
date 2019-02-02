@@ -6,6 +6,7 @@
     <description>Recent content in Hardware on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
+    <copyright>Copyright © 2013-2019, kobtea</copyright>
     <lastBuildDate>Sun, 20 Dec 2015 18:19:02 +0900</lastBuildDate>
     
 	<atom:link href="https://kobtea.net/tags/hardware/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +18,7 @@
       <pubDate>Sun, 20 Dec 2015 18:19:02 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2015/12/20/rsync-instead-raid/</guid>
-      <description>ちょびちょびバックアップはとっていたけど、まともな冗長構成の取れたストレージが自宅になかった。 写真とか自炊本を失う前にいい加減なんとかしよう</description>
+      <description>ちょびちょびバックアップはとっていたけど、まともな冗長構成の取れたストレージが自宅になかった。 写真とか自炊本を失う前にいい加減なんとかしようそうしよう。 紆余曲折あったのでありのままの紆余曲折を書いてい</description>
     </item>
     
   </channel>
