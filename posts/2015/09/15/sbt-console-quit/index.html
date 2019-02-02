@@ -11,10 +11,10 @@
 <meta name="twitter:description" content="環境 scalaVersion := &#34;2.11.6&#34; libraryDependencies &#43;= &#34;com.typesafe.akka&#34; %% &#34;akka-actor&#34; % &#34;2.3.11&#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&gt; import scala.concurrent.Future scala&gt; import akka.actor.ActorSystem scala&gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&gt; :q // consoleから抜"/>
 
 
-    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/main.css">
-    <link type="text/css" rel="stylesheet" href="https://kobtea.netcss/syntax.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/syntax.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://kobtea.netjs/main.js"></script>
+    <script src="https://kobtea.net/js/main.js"></script>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
     <nav class="navbar is-primary">
         <div class="container">
             <div class="navbar-brand">
-                <a class="navbar-item" href="https://kobtea.net"><strong>kobtea.net</strong></a>
+                <a class="navbar-item" href="https://kobtea.net/"><strong>kobtea.net</strong></a>
 
                 <a class="navbar-burger burger" data-target="navigation">
                     <span></span>
