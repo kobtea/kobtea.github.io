@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TEX Yoda IIをmacOSで使った - kobtea.net</title>
+    <meta name="description" content="eternal jojaku">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="TEX Yoda IIをmacOSで使った"/>
+<meta name="twitter:description" content="前回: TEX Yoda IIを作る 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。 キーマップ 最終的にキーマップはこんな感じになった。 そんな特殊なマップにはしていない。"/>
+
+
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.net/js/main.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net/"><strong>kobtea.net</strong></a>
+
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
+                    
+                    <a class="navbar-item" href="/posts">archives</a>
+                    
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="wrapper" class="section">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">TEX Yoda IIをmacOSで使った</h1>
+        </div>
+    </section>
+
+    <i class="fas fa-calendar-alt"></i>
+    <time>2019-02-03 17:25</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/gadget">#gadget</a>
+    
+    <aside>
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#キーマップ">キーマップ</a></li>
+<li><a href="#マウスキー">マウスキー</a></li>
+<li><a href="#トラックポイント">トラックポイント</a></li>
+<li><a href="#おわりに">おわりに</a></li>
+</ul>
+</nav>
+    </aside>
+
+    
+
+<p>前回: <a href="https://kobtea.net/posts/2019/01/11/tex-yoda-2/">TEX Yoda IIを作る</a><br />
+1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。</p>
+
+<h2 id="キーマップ">キーマップ</h2>
+
+<p>最終的にキーマップはこんな感じになった。<br />
+そんな特殊なマップにはしていない。</p>
+
+<p>
+
+
+<figure class="capy-img">
+    <img src="https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/001_hu75e12cc93cc99df01577f8cddb49f32e_27839_960x0_resize_box_2.png"  />
+    
+</figure>
+<br />
+
+
+
+<figure class="capy-img">
+    <img src="https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/002_hu5e4780126628c7bc2e45f8fea49c11f8_24091_960x0_resize_box_2.png"  />
+    
+</figure>
+</p>
+
+<p>中クリックが<code>fn</code>なのでサクサク<code>fn</code>押せて便利。<br />
+<code>fn</code> + <code>wasd</code>で方向キーは昔FPSしていたこともあり、<code>hjkl</code>とか<code>ijkm</code>よりも上下については直感的で良い。音量・メディア周りも手前に配置されているので、ありがとうデフォルト配列という感じに使っている。</p>
+
+<p>概ね満足しているけど、今までは<code>1</code>の左にあった<code>`</code>, <code>~</code>が<code>fn</code>レイヤに行ったのが地味に辛い。<br />
+「<code>fn</code> + <code>esc</code>で<code>`</code>だっけ、<code>~</code>だっけ&hellip;」とちょいちょい悩んだりする。Karabiner-Elementsで<code>esc</code>押下時間で<code>esc</code>, <code>`</code>の挙動を変えるなんてこともできるらしい。しばらくすれば慣れるっしょの精神でしばらく頑張るが、無理そうならKarabinerのお世話になろう。</p>
+
+<p><code>~</code>についてはterminalで<code>shift</code>+<code>backspace</code>で<code>~</code>がでるという謎挙動を見つけた。<br />
+chrome等他環境では再現しないので、自分が使っているiTerm2の設定ということも考えられる。深追いしてないけど。まぁ<code>del</code>は<code>ctrl</code>+<code>d</code>使ってるからいいんだけども&hellip;</p>
+
+<h2 id="マウスキー">マウスキー</h2>
+
+<p>一番悩んだのが、中クリックの挙動。<br />
+中クリックには<code>fn</code>か<code>mid click</code>を割り当てることになると思うが、中クリック + トラックポイントでドラッグができるのは<code>fn</code>のみ。自分はブラウザでタブをたくさん開く方で、ThinkPadだったら中クリックで新規タブを開いているが、これが<code>fn</code>ではできない。つまり一長一短あって</p>
+
+<ul>
+<li><code>fn</code>の場合<br />
+
+<ul>
+<li>トラックポイントと組み合わせてマウスホイールできる<br /></li>
+<li><code>mid click</code>の挙動はできない<br /></li>
+<li>キーコードも送られないのでKarabinerで制御できない<br /></li>
+</ul></li>
+<li><code>mid click</code>の場合<br />
+
+<ul>
+<li>中クリックができる<br /></li>
+<li>トラックポイントと組み合わせたマウスホイールができなくなる<br /></li>
+<li>キーコードは送られるがKarabinerのfrom eventで<code>mouse_key</code>が使えないので、マウスホイールが定義できない<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<p>非常に悩ましい。最終的には中クリックは諦めて<code>fn</code>のまま使っている。</p>
+
+<p>あとは好みだけどマウスキーは背を少し低くして他キーと差別化したい、角が少し鋭利なのも気になるのでキーキャップ変えるかも。</p>
+
+<h2 id="トラックポイント">トラックポイント</h2>
+
+<p>売りのトラックポイントはやはり素晴らしかった。が、マウスホイールの挙動が少し怪しいことがある。<br />
+マウスホイール途中でスクロールが止まると、<code>fn</code>再押下してホイールさせるという状況がたまにある。また、右移動してから上といったグニャグニャしたホイール捌きは苦手みたいで、左右から上下のホイールへ切り替えるときは<code>fn</code>再押下が必要になる。<br />
+この辺の挙動を見ているとやっぱりThinkPadはすごいんだなぁ、という気持ちになる。</p>
+
+<p>あとはMacBookのトラックパットとスクロール方向を逆にしたかったので、Scroll Reverserというソフトで対処した。</p>
+
+<h2 id="おわりに">おわりに</h2>
+
+<p>ちょいちょいマイナスポイントを挙げたけど、基本的には大満足なので良い製品だと思う。<br />
+macOSであれば大正義Karabiner-Elementsで大抵なんとかなる。</p>
+
+
+    <hr/>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2019/01/11/tex-yoda-2/"><i class="fas fa-caret-left"></i>&nbsp;TEX Yoda IIを作る</a>
+    
+    
+</nav>
+
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
+                <div class="media">
+                    <figure class="media-left">
+                        <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
+                        <br/>
+                        <small>カピバラと暮らしたい</small>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-8">
+                
+                
+                
+                
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
+                
+                <a class="cp-tag" href="/tags/book">#book</a>
+                
+                <a class="cp-tag" href="/tags/conference">#conference</a>
+                
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
+                
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
+                
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
+                
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
+                
+                <a class="cp-tag" href="/tags/java">#java</a>
+                
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
+                
+                <a class="cp-tag" href="/tags/misc">#misc</a>
+                
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+                
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
+                
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
+                
+            </div>
+        </div>
+        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+    </div>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-60750954-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
