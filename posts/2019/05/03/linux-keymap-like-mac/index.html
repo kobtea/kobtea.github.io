@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>LinuxでKeymapをmacOSぽくする - kobtea.net</title>
+    <meta name="description" content="eternal jojaku">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="LinuxでKeymapをmacOSぽくする"/>
+<meta name="twitter:description" content="macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。 shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu macos - Efficient key bindings using both"/>
+
+
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.net/js/main.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net/"><strong>kobtea.net</strong></a>
+
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
+                    
+                    <a class="navbar-item" href="/posts">archives</a>
+                    
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="wrapper" class="section">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">LinuxでKeymapをmacOSぽくする</h1>
+        </div>
+    </section>
+
+    <i class="fas fa-calendar-alt"></i>
+    <time>2019-05-03 19:47</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/linux">#linux</a>
+    
+    <aside>
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#macosぽいキーマップとは">macOSぽいキーマップとは</a></li>
+<li><a href="#環境">環境</a></li>
+<li><a href="#目指すキーマップ">目指すキーマップ</a></li>
+<li><a href="#設定">設定</a>
+<ul>
+<li><a href="#dconf">dconf</a></li>
+<li><a href="#xkeysnail">xkeysnail</a></li>
+<li><a href="#jetbrains-tools">JetBrains Tools</a></li>
+</ul></li>
+<li><a href="#おわりに">おわりに</a></li>
+<li><a href="#余談-xkbを諦めた話">余談: xkbを諦めた話</a>
+<ul>
+<li><a href="#キーマップの変更が非推奨">キーマップの変更が非推奨</a></li>
+<li><a href="#fcitxが設定をロールバックする">Fcitxが設定をロールバックする</a></li>
+</ul></li>
+</ul>
+</nav>
+    </aside>
+
+    
+
+<p>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。<br />
+みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。</p>
+
+<ul>
+<li><a href="https://askubuntu.com/questions/10008/how-to-make-keyboard-work-like-osx-system-wide">shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu</a><br /></li>
+<li><a href="https://superuser.com/questions/426515/efficient-key-bindings-using-both-mac-and-linux">macos - Efficient key bindings using both Mac and Linux - Super User</a><br /></li>
+<li><a href="https://www.reddit.com/r/linux/comments/pv3ts/is_it_possible_to_have_an_os_xlike_key_map_in/">Is it possible to have an OS X-like key map in Gnome (Ubuntu)? : linux</a><br />
+<br /></li>
+</ul>
+
+<p>自分もその1人だけど、今回だいぶ満足できる環境になったのでメモしておく。</p>
+
+<h2 id="macosぽいキーマップとは">macOSぽいキーマップとは</h2>
+
+<p>macOSでは<code>command</code>と<code>ctrl</code>で役割がちゃんと分離されている。<br />
+<code>command</code>キーを使ったショートカットは、全て選択・カット・ペースト・ウィンドウを閉じる、といったよくある操作が設定されている。一方<code>ctrl</code>キーを使ったショートカットは、行の先頭/末尾に移動する・行を移動する、といったemacsライクな操作が設定されている。この住み分けが非常に使いやすく、矢印キーまで手を伸ばす必要がなくホームポジションを維持しやすい。</p>
+
+<p>macOSのキーマップに慣れてしまうと、他OSで文章入力中に<code>C-a</code>とか<code>C-n</code>を打ったときのストレスが地味に蓄積する。慣れてしまえばOS毎にショートカットは使い分けできるが、文章入力に関してはどうしてもカーソル移動に不便を感じてしまう。それくらいにmacOSのキーマップは素晴らしく、一度経験すると他OSのキーマップに不満を感じてしまうほどに依存性が高い。</p>
+
+<h2 id="環境">環境</h2>
+
+<p>ハードウェアはThinkPad X1 Carbon 2017。<br />
+Ubuntu 18.04でデスクトップ環境はGnomeを使っている。<br />
+使用しているアプリケーションでキーマップの検討に関わるものは以下。</p>
+
+<ul>
+<li>IntelliJ等JetBrains系IDE<br /></li>
+<li>Fcitx<br />
+<br /></li>
+</ul>
+
+<p>このあたりかな。</p>
+
+<h2 id="目指すキーマップ">目指すキーマップ</h2>
+
+<p>デフォルトの状態はこんな感じ。<br />
+ちなみに<code>win</code>キーは<code>super</code>キーとして扱われる(厳密にはこの言い方は正しくないんだろうけど簡単のため)。</p>
+
+<pre><code>[tab]
+[caps]
+[shift]
+[fn][ctrl][super][alt][space][alt]
+</code></pre>
+
+<p>これを以下の様にする。</p>
+
+<pre><code>[tab]
+[ctrl]
+[shift]
+[fn][caps][meta][alt][space][alt]
+</code></pre>
+
+<p>ただし、JetBrains系ツールでは<code>left_alt</code>と<code>left_meta</code>をswapさせる。</p>
+
+<pre><code>[tab]
+[ctrl]
+[shift]
+[fn][caps][alt][meta][space][alt]
+</code></pre>
+
+<p>JetBrainsユーザ向けのポイントとしては</p>
+
+<ul>
+<li><code>super</code>でなく<code>meta</code>を使う<br /></li>
+<li><code>left_alt</code>と<code>left_meta</code>をswapする<br />
+<br /></li>
+</ul>
+
+<p>の2点。</p>
+
+<p>JetBrainsツールのキーマップに&rdquo;Mac OS X&rdquo;という設定があり、これが<code>meta</code>を中心に構成されている。いちいち自分でキーマップ設定を作るよりも、既存の設定を使いまわせるほうがお手軽なのでこんなことをしている。<br />
+JetBrainsユーザではない場合は、この辺考えなくていいのでもっと楽に設定できると思う。</p>
+
+<h2 id="設定">設定</h2>
+
+<p>やることざっくり書くと。</p>
+
+<ul>
+<li>dconf:<br />
+
+<ul>
+<li><code>super</code>を<code>meta</code>にする<br /></li>
+<li>アプリケーション切り替えのキーマップを追加<br /></li>
+</ul></li>
+<li>xkeysnail:<br />
+
+<ul>
+<li><code>ctrl</code>と<code>caps</code>をswapする<br /></li>
+<li>アプリケーション毎にキーマップの設定をする<br /></li>
+</ul></li>
+<li>JetBrains Tools: キーマップを&rdquo;Mac OS X&rdquo;にする<br />
+<br /></li>
+</ul>
+
+<p><a href="https://github.com/mooz/xkeysnail">xkeysnail</a>で頑張るスタイル。</p>
+
+<h3 id="dconf">dconf</h3>
+
+<p><code>super</code>を<code>meta</code>にする。<code>gsettings</code>コマンドでもgnome tweaksでも好きな方で。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gsettings <span class="nb">set</span> org.gnome.desktop.input-sources xkb-options <span class="s2">&#34;[&#39;altwin:meta_win&#39;]&#34;</span></code></pre></div>
+<p>gnome tweaksの場合、&rdquo;Meta is mapped to Win&rdquo;というのが、<code>altwin(meta_win)</code>に対応している。</p>
+
+<p>自分の環境ではこんな感じになる。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ setxkbmap -print
+xkb_keymap <span class="o">{</span>
+	xkb_keycodes  <span class="o">{</span> include <span class="s2">&#34;evdev+aliases(qwerty)&#34;</span>	<span class="o">}</span><span class="p">;</span>
+	xkb_types     <span class="o">{</span> include <span class="s2">&#34;complete&#34;</span>	<span class="o">}</span><span class="p">;</span>
+	xkb_compat    <span class="o">{</span> include <span class="s2">&#34;complete&#34;</span>	<span class="o">}</span><span class="p">;</span>
+	xkb_symbols   <span class="o">{</span> include <span class="s2">&#34;pc+us+us:2+inet(evdev)+altwin(meta_win)&#34;</span>	<span class="o">}</span><span class="p">;</span>
+	xkb_geometry  <span class="o">{</span> include <span class="s2">&#34;pc(pc105)&#34;</span>	<span class="o">}</span><span class="p">;</span>
+<span class="o">}</span><span class="p">;</span></code></pre></div>
+<p>dconf(xkb)側では<code>ctrl</code>と<code>caps</code>のswapは設定しない。xkeysnailを使う場合、そちらでswapの設定を入れないと意図したキーマップにならないため。</p>
+
+<p>次に、アプリケーション切り替えのキーマップを追加する。<br />
+これはJetBrainsツール使用時のみ<code>alt</code>が<code>meta</code>になっているため。<code>meta+tab</code>でもアプリケーションを切り替えられるようにする。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gsettings get org.gnome.desktop.wm.keybindings switch-applications
+<span class="o">[</span><span class="s1">&#39;&lt;Alt&gt;Tab&#39;</span><span class="o">]</span>
+$ gsettings get org.gnome.desktop.wm.keybindings switch-applications
+<span class="o">[</span><span class="s1">&#39;&lt;Alt&gt;Tab&#39;</span>, <span class="s1">&#39;&lt;Super&gt;Tab&#39;</span><span class="o">]</span>
+
+$ gsettings get org.gnome.desktop.wm.keybindings switch-applications-backward
+<span class="o">[</span><span class="s1">&#39;&lt;Shift&gt;&lt;Alt&gt;Tab&#39;</span><span class="o">]</span>
+$ gsettings <span class="nb">set</span> org.gnome.desktop.wm.keybindings switch-applications-backward <span class="s2">&#34;[&#39;&lt;Shift&gt;&lt;Alt&gt;Tab&#39;, &#39;&lt;Shift&gt;&lt;Super&gt;Tab&#39;]&#34;</span></code></pre></div>
+<h3 id="xkeysnail">xkeysnail</h3>
+
+<p>あんまりよくないけど、sudoで入れちゃう。</p>
+
+<pre><code>$ suso pip3 install xkeysnail
+</code></pre>
+
+<p>ちゃんとするなら<code>xkeysnail</code>ユーザ作った後にそのユーザスペースにインストールする方がお行儀良いかな。</p>
+
+<p>設定はこちらを参照。</p>
+
+<p><a href="https://github.com/kobtea/dotfiles/blob/c2ae3342f2e895b75bb8d9b8db0bc7e6dd4a89fe/xkeysnail.py">https://github.com/kobtea/dotfiles/blob/c2ae3342f2e895b75bb8d9b8db0bc7e6dd4a89fe/xkeysnail.py</a></p>
+
+<p><code>ctrl</code>と<code>caps</code>をswapしたり、アプリケーションごとにキーマップを設定している。あんまりスマートではないけど、漏れがあったら随時追加していくスタイル。ちなみに<code>FocusProxy</code>というのがJetBrainsツール。</p>
+
+<p>rootで実行は避けたいので、専用ユーザを作成する。<br />
+参考: <a href="https://qiita.com/miy4/items/dd0e2aec388138f803c5">xkeysnailでキーリマップする - Qiita</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo groupadd uinput
+$ sudo useradd -G input,uinput -M -s /usr/bin/nologin xkeysnail
+$ cat /etc/udev/rules.d/40-udev-xkeysnail.rules
+<span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&#34;uinput&#34;</span>, <span class="nv">GROUP</span><span class="o">=</span><span class="s2">&#34;uinput&#34;</span>
+$ cat /etc/modules-load.d/uinput.conf
+uinput</code></pre></div>
+<p>起動スクリプトを準備して、gnome startup applicationsに登録する。</p>
+
+<p><a href="https://github.com/kobtea/dotfiles/blob/c2ae3342f2e895b75bb8d9b8db0bc7e6dd4a89fe/xkeysnail.sh">https://github.com/kobtea/dotfiles/blob/c2ae3342f2e895b75bb8d9b8db0bc7e6dd4a89fe/xkeysnail.sh</a></p>
+
+<h3 id="jetbrains-tools">JetBrains Tools</h3>
+
+<p>各ツールのKeymapで&rdquo;Mac OS X&rdquo;を選択するだけ。</p>
+
+<h2 id="おわりに">おわりに</h2>
+
+<p>今回の設定で自分は満足する環境を手に入れたけど、まぁ面倒くさいこと。macOSのキーマップを完全に再現できるのは結局の所macOSだけなので、ハードウェアに不満がなければMacBook買えばいいと思う。自分はペチペチキーボードがどうにも合わないので、当分ThinkPadとUbuntuにお世話になるつもり。</p>
+
+<h2 id="余談-xkbを諦めた話">余談: xkbを諦めた話</h2>
+
+<p>xkeysnailを使う前はxkbでなんとかできないかなーと試行錯誤していたけど結局無理だった。<br />
+そんな挫折ポイントを2つほど書き残しておく。</p>
+
+<h3 id="キーマップの変更が非推奨">キーマップの変更が非推奨</h3>
+
+<p>参考: <a href="https://wiki.archlinux.jp/index.php/X_KeyBoard_extension">X KeyBoard extension - ArchWiki</a></p>
+
+<p>xkbの設定には2種類ある。</p>
+
+<ul>
+<li>ルールを使う<br />
+
+<ul>
+<li><code>/etc</code>以下に設定を記載できるが、custom optionの定義はサポートされていない<br /></li>
+</ul></li>
+<li>キーマップを使う(非推奨)<br />
+
+<ul>
+<li>非推奨のため<code>/etc</code>に書く等カスタマイズする方法は提供されていない<br />
+<br /></li>
+</ul></li>
+</ul>
+
+<p>悲しいことに<code>altwin(meta_win)</code>などのsymbolを自分で定義する方法は、非推奨なキーマップ編集でのみ可能。そして、そのキーマップは<code>/usr/share/X11/xkb/</code>のみを参照し、<code>$HOME/.xkb</code>といったユーザ固有のパスは提供されていない。symbolをカスタマイズする場合は、強い気持ちで<code>/usr/share/X11/xkb</code>を編集していく必要がある。</p>
+
+<h3 id="fcitxが設定をロールバックする">Fcitxが設定をロールバックする</h3>
+
+<p>自分は<code>/usr</code>以下をいじりたくなかったので、自前の設定とそれを読み込む以下のスクリプトを作成し、gnome startup applicationsに登録した。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>sleep <span class="m">10</span>
+<span class="nb">test</span> -f <span class="nv">$HOME</span>/.xkb/keymap/mykbd.xkb <span class="o">&amp;&amp;</span> xkbcomp -I<span class="nv">$HOME</span>/.xkb <span class="nv">$HOME</span>/.xkb/keymap/mykbd.xkb <span class="nv">$DISPLAY</span> <span class="m">2</span>&gt; /dev/null</code></pre></div>
+<p>これで任意のsymbolを適用できるようにはなったが、Fcitxのキー設定を変更すると<code>/usr</code>で定義されたデフォルトの状態へとロールバックされてしまう。</p>
+
+<p>ここでxkbは挫折した。もっと柔軟に設定できると嬉しいなー。</p>
+
+
+    <hr/>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/"><i class="fas fa-caret-left"></i>&nbsp;TEX Yoda IIをmacOSで使った</a>
+    
+    
+</nav>
+
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
+                <div class="media">
+                    <figure class="media-left">
+                        <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
+                        <br/>
+                        <small>カピバラと暮らしたい</small>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-8">
+                
+                
+                
+                
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
+                
+                <a class="cp-tag" href="/tags/book">#book</a>
+                
+                <a class="cp-tag" href="/tags/conference">#conference</a>
+                
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
+                
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
+                
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
+                
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
+                
+                <a class="cp-tag" href="/tags/java">#java</a>
+                
+                <a class="cp-tag" href="/tags/linux">#linux</a>
+                
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
+                
+                <a class="cp-tag" href="/tags/misc">#misc</a>
+                
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+                
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
+                
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
+                
+            </div>
+        </div>
+        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+    </div>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-60750954-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>

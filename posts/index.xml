@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2013-2019, kobtea</copyright>
-    <lastBuildDate>Sun, 03 Feb 2019 17:25:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 03 May 2019 19:47:00 +0900</lastBuildDate>
     
 	<atom:link href="https://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>LinuxでKeymapをmacOSぽくする</title>
+      <link>https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/</link>
+      <pubDate>Fri, 03 May 2019 19:47:00 +0900</pubDate>
+      
+      <guid>https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/</guid>
+      <description>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。 shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu macos - Efficient key bindings using both</description>
+    </item>
     
     <item>
       <title>TEX Yoda IIをmacOSで使った</title>
