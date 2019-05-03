@@ -201,8 +201,7 @@ xkb_keymap <span class="o">{</span>
 これはJetBrainsツール使用時のみ<code>alt</code>が<code>meta</code>になっているため。<code>meta+tab</code>でもアプリケーションを切り替えられるようにする。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gsettings get org.gnome.desktop.wm.keybindings switch-applications
 <span class="o">[</span><span class="s1">&#39;&lt;Alt&gt;Tab&#39;</span><span class="o">]</span>
-$ gsettings get org.gnome.desktop.wm.keybindings switch-applications
-<span class="o">[</span><span class="s1">&#39;&lt;Alt&gt;Tab&#39;</span>, <span class="s1">&#39;&lt;Super&gt;Tab&#39;</span><span class="o">]</span>
+$ gsettings <span class="nb">set</span> org.gnome.desktop.wm.keybindings switch-applications <span class="s2">&#34;[&#39;&lt;Alt&gt;Tab&#39;, &#39;&lt;Super&gt;Tab&#39;]&#34;</span>
 
 $ gsettings get org.gnome.desktop.wm.keybindings switch-applications-backward
 <span class="o">[</span><span class="s1">&#39;&lt;Shift&gt;&lt;Alt&gt;Tab&#39;</span><span class="o">]</span>
