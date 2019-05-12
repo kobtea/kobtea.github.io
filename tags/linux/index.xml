@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2013-2019, kobtea</copyright>
-    <lastBuildDate>Fri, 03 May 2019 19:47:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 12 May 2019 17:01:00 +0900</lastBuildDate>
     
 	<atom:link href="https://kobtea.net/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linuxで辞書引き環境作る</title>
+      <link>https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/</link>
+      <pubDate>Sun, 12 May 2019 17:01:00 +0900</pubDate>
+      
+      <guid>https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/</guid>
+      <description>linuxでもお手軽に辞書を引きたい。 探した所GoldenDictというのがあったのでこれ使う。 環境 $ lsb_release -d Description: Ubuntu 18.04.2 LTS $ dpkg -l | egrep &amp;#39;goldendict|albert&amp;#39; ii albert 0.16.1 amd64 A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt ii goldendict 1.5.0~rc2+git20170908+ds-1 amd64 feature-rich dictionary lookup program GoldenDict aptで入れる。 $ sudo apt install goldendict 辞書</description>
+    </item>
     
     <item>
       <title>LinuxでKeymapをmacOSぽくする</title>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Linuxで辞書引き環境作る - kobtea.net</title>
+    <meta name="description" content="eternal jojaku">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Linuxで辞書引き環境作る"/>
+<meta name="twitter:description" content="linuxでもお手軽に辞書を引きたい。 探した所GoldenDictというのがあったのでこれ使う。 環境 $ lsb_release -d Description: Ubuntu 18.04.2 LTS $ dpkg -l | egrep &#39;goldendict|albert&#39; ii albert 0.16.1 amd64 A sophisticated, plugin-based, standalone keyboard launcher written in C&#43;&#43;/Qt ii goldendict 1.5.0~rc2&#43;git20170908&#43;ds-1 amd64 feature-rich dictionary lookup program GoldenDict aptで入れる。 $ sudo apt install goldendict 辞書"/>
+
+
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.net/js/main.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net/"><strong>kobtea.net</strong></a>
+
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
+                    
+                    <a class="navbar-item" href="/posts">archives</a>
+                    
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="wrapper" class="section">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">Linuxで辞書引き環境作る</h1>
+        </div>
+    </section>
+
+    <i class="fas fa-calendar-alt"></i>
+    <time>2019-05-12 17:01</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/linux">#linux</a>
+    
+    <aside>
+        <nav id="TableOfContents">
+<ul>
+<li><a href="#環境">環境</a></li>
+<li><a href="#goldendict">GoldenDict</a></li>
+<li><a href="#albert連携">Albert連携</a></li>
+</ul>
+</nav>
+    </aside>
+
+    
+
+<p>linuxでもお手軽に辞書を引きたい。<br />
+探した所<a href="http://goldendict.org/">GoldenDict</a>というのがあったのでこれ使う。</p>
+
+<h2 id="環境">環境</h2>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ lsb_release -d
+Description:    Ubuntu <span class="m">18</span>.04.2 LTS
+
+$ dpkg -l <span class="p">|</span> egrep <span class="s1">&#39;goldendict|albert&#39;</span>
+ii  albert                                     <span class="m">0</span>.16.1                                       amd64        A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt
+ii  goldendict                                 <span class="m">1</span>.5.0~rc2+git20170908+ds-1                   amd64        feature-rich dictionary lookup program</code></pre></div>
+<h2 id="goldendict">GoldenDict</h2>
+
+<p>aptで入れる。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install goldendict</code></pre></div>
+<p>辞書データは自分で入れるスタイルらしい。<br />
+<a href="http://goldendict.org/dictionaries.php">公式のリンク</a>から英和・和英辞書を探す。Babylon良さそう。</p>
+
+<ul>
+<li><a href="https://www.babylon-software.com/free-dictionaries/languages/Babylon-English-Japanese/907.html">Babylon English-Japanese Dictionary - Babylon</a><br /></li>
+<li><a href="https://www.babylon-software.com/free-dictionaries/languages/Babylon-Japanese-English/1257.html">Babylon Japanese-English Dictionary - Babylon</a><br />
+<br /></li>
+</ul>
+
+<p>dotfile下に辞書用のディレクトリを作って、&rdquo;辞書ファイルを検索するパス&rdquo;に登録しておく。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mkdir <span class="nv">$HOME</span>/.goldendict/dict
+$ mv <span class="nv">$HOME</span>/Downloads/Babylon-* <span class="nv">$HOME</span>/.goldendict/dict</code></pre></div>
+<h2 id="albert連携">Albert連携</h2>
+
+<p>ランチャにalbertを使っているので、これで気軽に検索できると嬉しい。</p>
+
+<p>albertはpythonで拡張が書ける。<br />
+<a href="https://albertlauncher.github.io/docs/extensions/python/">Albert - Python extension</a></p>
+
+<p>そんな公式の拡張用リポジトリにGoldenDict用スクリプトがあるので、cloneして有効にする。<br />
+<a href="https://github.com/albertlauncher/python">albertlauncher/python: A repository for the official Python extensions</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/albertlauncher/python.git ~/.local/share/albert/org.albert.extension.python/modules</code></pre></div>
+<p><code>gd foobar</code>みたいな感じで辞書が引けるようになって幸せ。</p>
+
+
+    <hr/>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/"><i class="fas fa-caret-left"></i>&nbsp;LinuxでKeymapをmacOSぽくする</a>
+    
+    
+</nav>
+
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
+                <div class="media">
+                    <figure class="media-left">
+                        <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
+                        <br/>
+                        <small>カピバラと暮らしたい</small>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-8">
+                
+                
+                
+                
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
+                
+                <a class="cp-tag" href="/tags/book">#book</a>
+                
+                <a class="cp-tag" href="/tags/conference">#conference</a>
+                
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
+                
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
+                
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
+                
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
+                
+                <a class="cp-tag" href="/tags/java">#java</a>
+                
+                <a class="cp-tag" href="/tags/linux">#linux</a>
+                
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
+                
+                <a class="cp-tag" href="/tags/misc">#misc</a>
+                
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+                
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
+                
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
+                
+            </div>
+        </div>
+        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+    </div>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-60750954-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
