@@ -62,25 +62,20 @@
     
     <aside>
         <nav id="TableOfContents">
-<ul>
-<li><a href="#キーマップ">キーマップ</a></li>
-<li><a href="#マウスキー">マウスキー</a></li>
-<li><a href="#トラックポイント">トラックポイント</a></li>
-<li><a href="#おわりに">おわりに</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">キーマップ</a></li>
+    <li><a href="#heading-1">マウスキー</a></li>
+    <li><a href="#heading-2">トラックポイント</a></li>
+    <li><a href="#heading-3">おわりに</a></li>
+  </ul>
 </nav>
     </aside>
 
-    
-
-<p>前回: <a href="https://kobtea.net/posts/2019/01/11/tex-yoda-2/">TEX Yoda IIを作る</a><br />
+    <p>前回: <a href="https://kobtea.net/posts/2019/01/11/tex-yoda-2/">TEX Yoda IIを作る</a><br>
 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。</p>
-
-<h2 id="キーマップ">キーマップ</h2>
-
-<p>最終的にキーマップはこんな感じになった。<br />
+<h2 id="heading">キーマップ</h2>
+<p>最終的にキーマップはこんな感じになった。<br>
 そんな特殊なマップにはしていない。</p>
-
 <p>
 
 
@@ -88,7 +83,7 @@
     <img src="https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/001_hu75e12cc93cc99df01577f8cddb49f32e_27839_960x0_resize_box_2.png"  />
     
 </figure>
-<br />
+
 
 
 
@@ -97,53 +92,39 @@
     
 </figure>
 </p>
-
-<p>中クリックが<code>fn</code>なのでサクサク<code>fn</code>押せて便利。<br />
+<p>中クリックが<code>fn</code>なのでサクサク<code>fn</code>押せて便利。<br>
 <code>fn</code> + <code>wasd</code>で方向キーは昔FPSしていたこともあり、<code>hjkl</code>とか<code>ijkm</code>よりも上下については直感的で良い。音量・メディア周りも手前に配置されているので、ありがとうデフォルト配列という感じに使っている。</p>
-
-<p>概ね満足しているけど、今までは<code>1</code>の左にあった<code>`</code>, <code>~</code>が<code>fn</code>レイヤに行ったのが地味に辛い。<br />
+<p>概ね満足しているけど、今までは<code>1</code>の左にあった<code>`</code>, <code>~</code>が<code>fn</code>レイヤに行ったのが地味に辛い。<br>
 「<code>fn</code> + <code>esc</code>で<code>`</code>だっけ、<code>~</code>だっけ&hellip;」とちょいちょい悩んだりする。Karabiner-Elementsで<code>esc</code>押下時間で<code>esc</code>, <code>`</code>の挙動を変えるなんてこともできるらしい。しばらくすれば慣れるっしょの精神でしばらく頑張るが、無理そうならKarabinerのお世話になろう。</p>
-
-<p><code>~</code>についてはterminalで<del><code>shift</code>+<code>backspace</code></del>(訂正: <code>fn</code>+<code>backspace</code>)で<code>~</code>がでるという謎挙動を見つけた。<br />
+<p><code>~</code>についてはterminalで<del><code>shift</code>+<code>backspace</code></del>(訂正: <code>fn</code>+<code>backspace</code>)で<code>~</code>がでるという謎挙動を見つけた。<br>
 chrome等他環境では再現しないので、自分が使っているiTerm2の設定ということも考えられる。深追いしてないけど。まぁ<code>del</code>は<code>ctrl</code>+<code>d</code>使ってるからいいんだけども&hellip;</p>
-
-<h2 id="マウスキー">マウスキー</h2>
-
-<p>一番悩んだのが、中クリックの挙動。<br />
+<h2 id="heading-1">マウスキー</h2>
+<p>一番悩んだのが、中クリックの挙動。<br>
 中クリックには<code>fn</code>か<code>mid click</code>を割り当てることになると思うが、中クリック + トラックポイントでドラッグができるのは<code>fn</code>のみ。自分はブラウザでタブをたくさん開く方で、ThinkPadだったら中クリックで新規タブを開いているが、これが<code>fn</code>ではできない。つまり一長一短あって</p>
-
 <ul>
-<li><code>fn</code>の場合<br />
-
+<li><code>fn</code>の場合
 <ul>
-<li>トラックポイントと組み合わせてマウスホイールできる<br /></li>
-<li><code>mid click</code>の挙動はできない<br /></li>
-<li>キーコードも送られないのでKarabinerで制御できない<br /></li>
-</ul></li>
-<li><code>mid click</code>の場合<br />
-
-<ul>
-<li>中クリックができる<br /></li>
-<li>トラックポイントと組み合わせたマウスホイールができなくなる<br /></li>
-<li>キーコードは送られるがKarabinerのfrom eventで<code>mouse_key</code>が使えないので、マウスホイールが定義できない<br />
-<br /></li>
-</ul></li>
+<li>トラックポイントと組み合わせてマウスホイールできる</li>
+<li><code>mid click</code>の挙動はできない</li>
+<li>キーコードも送られないのでKarabinerで制御できない</li>
 </ul>
-
+</li>
+<li><code>mid click</code>の場合
+<ul>
+<li>中クリックができる</li>
+<li>トラックポイントと組み合わせたマウスホイールができなくなる</li>
+<li>キーコードは送られるがKarabinerのfrom eventで<code>mouse_key</code>が使えないので、マウスホイールが定義できない</li>
+</ul>
+</li>
+</ul>
 <p>非常に悩ましい。最終的には中クリックは諦めて<code>fn</code>のまま使っている。</p>
-
 <p>あとは好みだけどマウスキーは背を少し低くして他キーと差別化したい、角が少し鋭利なのも気になるのでキーキャップ変えるかも。</p>
-
-<h2 id="トラックポイント">トラックポイント</h2>
-
-<p>売りのトラックポイントはやはり素晴らしかった。が、マウスホイールの挙動が少し怪しいことがある。<br />
+<h2 id="heading-2">トラックポイント</h2>
+<p>売りのトラックポイントはやはり素晴らしかった。が、マウスホイールの挙動が少し怪しいことがある。<br>
 マウスホイール途中でスクロールが止まると、<code>fn</code>再押下してホイールさせるという状況がたまにある。また、右移動してから上といったグニャグニャしたホイール捌きは苦手みたいで、左右から上下のホイールへ切り替えるときは<code>fn</code>再押下が必要な場面がちょいちょいある。この辺の挙動を見ているとやっぱりThinkPadはすごいんだなぁ、という気持ちになる。</p>
-
 <p>あとはMacBookのトラックパットとスクロール方向を逆にしたかったので、Scroll Reverserというソフトで対処した。</p>
-
-<h2 id="おわりに">おわりに</h2>
-
-<p>ちょいちょいマイナスポイントを挙げたけど、基本的には大満足なので良い製品だと思う。<br />
+<h2 id="heading-3">おわりに</h2>
+<p>ちょいちょいマイナスポイントを挙げたけど、基本的には大満足なので良い製品だと思う。<br>
 macOSであれば大正義Karabiner-Elementsで大抵なんとかなる。</p>
 
 

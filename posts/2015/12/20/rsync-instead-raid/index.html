@@ -64,335 +64,269 @@
     
     <aside>
         <nav id="TableOfContents">
-<ul>
-<li><a href="#自宅の環境">自宅の環境</a></li>
-<li><a href="#プランをいくつか考えてみる">プランをいくつか考えてみる</a>
-<ul>
-<li><a href="#アプライアンスnas案">アプライアンスNAS案</a></li>
-<li><a href="#自作nas案">自作NAS案</a></li>
-<li><a href="#windows機でがんばる案">Windows機でがんばる案</a></li>
-<li><a href="#結局どれにしたの">結局どれにしたの</a></li>
-</ul></li>
-<li><a href="#hardware-raid1-v-s-software-raid1">Hardware RAID1 v.s. Software RAID1</a>
-<ul>
-<li><a href="#hdd単品">HDD単品</a></li>
-<li><a href="#hardware-raid1-marvell-raid-volume">Hardware RAID1 (Marvell RAID Volume)</a></li>
-<li><a href="#software-raid1-windows-mirrored-volume">Software RAID1 (Windows Mirrored Volume)</a></li>
-<li><a href="#結局どっちにしたの">結局どっちにしたの</a></li>
-</ul></li>
-<li><a href="#もう定期バックアップだけでいいんじゃなかろうか">もう定期バックアップだけでいいんじゃなかろうか</a></li>
-<li><a href="#robocopyでそそくさと設定する">robocopyでそそくさと設定する</a></li>
-<li><a href="#まとめ">まとめ</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">自宅の環境</a></li>
+    <li><a href="#heading-1">プランをいくつか考えてみる</a>
+      <ul>
+        <li><a href="#nas">アプライアンスNAS案</a></li>
+        <li><a href="#nas-1">自作NAS案</a></li>
+        <li><a href="#windows">Windows機でがんばる案</a></li>
+        <li><a href="#heading-2">結局どれにしたの</a></li>
+      </ul>
+    </li>
+    <li><a href="#hardware-raid1-vs-software-raid1">Hardware RAID1 v.s. Software RAID1</a>
+      <ul>
+        <li><a href="#hdd">HDD単品</a></li>
+        <li><a href="#hardware-raid1-marvell-raid-volume">Hardware RAID1 (Marvell RAID Volume)</a></li>
+        <li><a href="#software-raid1-windows-mirrored-volume">Software RAID1 (Windows Mirrored Volume)</a></li>
+        <li><a href="#heading-3">結局どっちにしたの</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-4">もう定期バックアップだけでいいんじゃなかろうか</a></li>
+    <li><a href="#robocopy">robocopyでそそくさと設定する</a></li>
+    <li><a href="#heading-5">まとめ</a></li>
+  </ul>
 </nav>
     </aside>
 
-    
-
-<p>ちょびちょびバックアップはとっていたけど、まともな冗長構成の取れたストレージが自宅になかった。<br />
-写真とか自炊本を失う前にいい加減なんとかしようそうしよう。<br />
+    <p>ちょびちょびバックアップはとっていたけど、まともな冗長構成の取れたストレージが自宅になかった。<br>
+写真とか自炊本を失う前にいい加減なんとかしようそうしよう。<br>
 紆余曲折あったのでありのままの紆余曲折を書いていく。</p>
-
-<h2 id="自宅の環境">自宅の環境</h2>
-
+<h2 id="heading">自宅の環境</h2>
 <ul>
-<li>デスクトップPC (Windows)<br />
-
+<li>デスクトップPC (Windows)
 <ul>
-<li>常時起動していて自宅サーバ状態<br /></li>
-<li>意識低いことする用<br /></li>
-</ul></li>
-<li>Macbook Air<br />
-
-<ul>
-<li>コード書いたりする<br /></li>
-<li>意識高いことする用<br />
-<br />
-<br /></li>
-</ul></li>
+<li>常時起動していて自宅サーバ状態</li>
+<li>意識低いことする用</li>
 </ul>
-
-<h2 id="プランをいくつか考えてみる">プランをいくつか考えてみる</h2>
-
+</li>
+<li>Macbook Air
+<ul>
+<li>コード書いたりする</li>
+<li>意識高いことする用</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-1">プランをいくつか考えてみる</h2>
 <p>RAIDを組めるストレージといえばNASということで、NASを買うかどうかも含め考えられるプランは3つ。</p>
-
 <ul>
-<li>アプライアンスNAS案<br /></li>
-<li>自作NAS案<br /></li>
-<li>Windows機でがんばる案<br />
-<br />
-<br /></li>
+<li>アプライアンスNAS案</li>
+<li>自作NAS案</li>
+<li>Windows機でがんばる案</li>
 </ul>
-
-<h3 id="アプライアンスnas案">アプライアンスNAS案</h3>
-
-<p>箱物のNASを買う案。<br />
+<h3 id="nas">アプライアンスNAS案</h3>
+<p>箱物のNASを買う案。
 買うからにはスロット4本以上ほしい。</p>
-
-<p>QNAP評判良いけど、結構良いお値段するんだなー。<br />
+<p>QNAP評判良いけど、結構良いお値段するんだなー。<br>
 <a href="http://www.amazon.co.jp/gp/product/B00O3Y7E2G/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B00O3Y7E2G&amp;linkCode=as2&amp;tag=culofgrasslan-22">QNAP TurboNAS デュアルコアCPU 512MBメモリ 4ベイ 2年保証 多機能NAS TS-431</a></p>
-
-<p>お手頃価格ではReadyNASだけどFirmwareが不評。<br />
+<p>お手頃価格ではReadyNASだけどFirmwareが不評。<br>
 <a href="http://www.amazon.co.jp/gp/product/B00CHABREE/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B00CHABREE&amp;linkCode=as2&amp;tag=culofgrasslan-22">NETGEAR ReadyNAS 104 4ベイ Diskless 3年保証 ネットワークストレージ 個人/SOHO RN10400-100AJS</a></p>
-
 <p>Pros</p>
-
 <ul>
-<li>アプライアンスなので楽<br /></li>
-<li>メディアサーバとしても使える<br />
-<br /></li>
+<li>アプライアンスなので楽</li>
+<li>メディアサーバとしても使える</li>
 </ul>
-
 <p>Cons</p>
-
 <ul>
-<li>しっかりしたものを買おうとすると結構高い<br /></li>
-<li>Firmwareで駄目パッチが来ると色々辛い<br />
-<br />
-<br /></li>
+<li>しっかりしたものを買おうとすると結構高い</li>
+<li>Firmwareで駄目パッチが来ると色々辛い</li>
 </ul>
-
-<h3 id="自作nas案">自作NAS案</h3>
-
+<h3 id="nas-1">自作NAS案</h3>
 <p>zfs(w/Linux)が気になるので、RAID-Z2で組むことを主軸に考えた。</p>
-
 <ul>
-<li>自作するならディスク5本位挿したいな<br />
-
+<li>自作するならディスク5本位挿したいな
 <ul>
-<li>RAID-Z2は現状あとからディスクを増やせないので、始めから多めに挿しておく<br /></li>
-<li>ディスク4本だとRAID10と実効容量変わらずで負けた気がする<br /></li>
-</ul></li>
-<li>小さいほうがいいよねってことでMini-ITX<br />
-<br /></li>
+<li>RAID-Z2は現状あとからディスクを増やせないので、始めから多めに挿しておく</li>
+<li>ディスク4本だとRAID10と実効容量変わらずで負けた気がする</li>
 </ul>
-
+</li>
+<li>小さいほうがいいよねってことでMini-ITX</li>
+</ul>
 <p>といった要件を満たすケースを探しながらキャッキャウフフしてた。</p>
-
 <p>Pros</p>
-
 <ul>
-<li>Linuxなのでお勉強にもなる<br />
-<br /></li>
+<li>Linuxなのでお勉強にもなる</li>
 </ul>
-
 <p>Cons</p>
-
 <ul>
-<li>Skylake出たばっかりでかなり時期が悪い感<br />
-
+<li>Skylake出たばっかりでかなり時期が悪い感
 <ul>
-<li>駆け込み需要でHaswell以前のM/Bが品薄状態<br /></li>
-<li>メモリの規格も変わっちゃったし&hellip;<br />
-<br />
-<br /></li>
-</ul></li>
+<li>駆け込み需要でHaswell以前のM/Bが品薄状態</li>
+<li>メモリの規格も変わっちゃったし&hellip;</li>
 </ul>
-
-<h3 id="windows機でがんばる案">Windows機でがんばる案</h3>
-
-<p>今時のWindowsはSoftware RAIDが組めてしまうすごい。<br />
+</li>
+</ul>
+<h3 id="windows">Windows機でがんばる案</h3>
+<p>今時のWindowsはSoftware RAIDが組めてしまうすごい。<br>
 この案ではお手軽に小さく始めるのが主軸なので、RAID1で最低限の冗長構成でいいかな。</p>
-
 <p>Pros</p>
-
 <ul>
-<li>一番お手頃価格<br />
-<br /></li>
+<li>一番お手頃価格</li>
 </ul>
-
 <p>Cons</p>
-
 <ul>
-<li>Windows&hellip;<br />
-<br />
-<br /></li>
+<li>Windows&hellip;</li>
 </ul>
-
-<h3 id="結局どれにしたの">結局どれにしたの</h3>
-
-<p>今回おさいふ事情が芳しくなかったので、WindowsでRAID1を作ることにした。<br />
-とりあえずディスク2本買うだけで良いし、小さく始めるにはちょうどいい感じ。<br />
+<h3 id="heading-2">結局どれにしたの</h3>
+<p>今回おさいふ事情が芳しくなかったので、WindowsでRAID1を作ることにした。
+とりあえずディスク2本買うだけで良いし、小さく始めるにはちょうどいい感じ。
 時期が来たらNAS機自作するのも楽しそうだな。</p>
-
 <p>買ってきたもの</p>
-
 <ul>
-<li><a href="http://www.amazon.co.jp/gp/product/B013HNYVCE/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B013HNYVCE&amp;linkCode=as2&amp;tag=culofgrasslan-22">Western Digital Corporation WD60EZRZ-RT</a> * 2<br /></li>
-<li><a href="http://www.amazon.co.jp/gp/product/B007903F7E/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B007903F7E&amp;linkCode=as2&amp;tag=culofgrasslan-22">エアリア Raid JET PCI Express X1 接続 Raidボード Raid0 1対応 SD-PESA3-2RL</a><br />
-<br /></li>
+<li><a href="http://www.amazon.co.jp/gp/product/B013HNYVCE/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B013HNYVCE&amp;linkCode=as2&amp;tag=culofgrasslan-22">Western Digital Corporation WD60EZRZ-RT</a> * 2</li>
+<li><a href="http://www.amazon.co.jp/gp/product/B007903F7E/ref=as_li_ss_tl?ie=UTF8&amp;camp=247&amp;creative=7399&amp;creativeASIN=B007903F7E&amp;linkCode=as2&amp;tag=culofgrasslan-22">エアリア Raid JET PCI Express X1 接続 Raidボード Raid0 1対応 SD-PESA3-2RL</a></li>
 </ul>
-
-<p>SATAポート足りなかったので拡張カード買いに行ったら、RAID有りモデルと無しモデルで同じ値段だったので有りなやつを買ってみた。<br />
+<p>SATAポート足りなかったので拡張カード買いに行ったら、RAID有りモデルと無しモデルで同じ値段だったので有りなやつを買ってみた。
 ふわっとRAIDカードを買ってきたら、今度はHardware RAIDとSoftware RAIDどっちにしようかという話になった。</p>
-
-<h2 id="hardware-raid1-v-s-software-raid1">Hardware RAID1 v.s. Software RAID1</h2>
-
+<h2 id="hardware-raid1-vs-software-raid1">Hardware RAID1 v.s. Software RAID1</h2>
 <p>ファイ！</p>
-
 <ul>
-<li>Hardware RAIDは、Marvellチップ搭載の上記RAIDカード<br /></li>
-<li>Software RAIDは、Windows標準のミラーボリューム<br />
-<br /></li>
+<li>Hardware RAIDは、Marvellチップ搭載の上記RAIDカード</li>
+<li>Software RAIDは、Windows標準のミラーボリューム</li>
 </ul>
-
 <p>CrystalDiskInfoとCrystalDiskMarkで見比べてみる。</p>
-
-<h3 id="hdd単品">HDD単品</h3>
-
+<h3 id="hdd">HDD単品</h3>
 <p>RAID組まずにHDD(WD60EZRZ-RT)単品だとどうなんじゃろ。</p>
 
-<p><img src="/img/2015/12/20/bare_info.jpg" class="img-responsive" width="50%" height="50%"/></p>
 
-<p><img src="/img/2015/12/20/bare_mark.jpg" class="img-responsive"/></p>
+
+<figure class="capy-img">
+    <img src="/img/2015/12/20/bare_info.jpg"  />
+    
+</figure>
+
+
+
+
+<figure class="capy-img">
+    <img src="/img/2015/12/20/bare_mark.jpg"  />
+    
+</figure>
 
 <p>これが比較の基準だな。</p>
-
 <h3 id="hardware-raid1-marvell-raid-volume">Hardware RAID1 (Marvell RAID Volume)</h3>
-
-<p>Amazonのレビューにも書いてあったけど、smart見れない(´・ω・｀)<br />
-下調べせずにふわっと買ってきちゃったから仕方ないね。<br />
+<p>Amazonのレビューにも書いてあったけど、smart見れない(´・ω・｀)<br>
+下調べせずにふわっと買ってきちゃったから仕方ないね。<br>
 もともとお高いRAIDカードは買うつもりなかったから悔しくないもん。</p>
 
-<p><img src="/img/2015/12/20/hard_info.jpg" class="img-responsive" width="50%" height="50%"/></p>
+
+
+<figure class="capy-img">
+    <img src="/img/2015/12/20/hard_info.jpg"  />
+    
+</figure>
 
 <p>やっぱりwriteは落ちちゃう。</p>
 
-<p><img src="/img/2015/12/20/hard_mark.jpg" class="img-responsive"/></p>
+
+
+<figure class="capy-img">
+    <img src="/img/2015/12/20/hard_mark.jpg"  />
+    
+</figure>
 
 <p>Pros</p>
-
 <ul>
-<li>Software RAIDに比べればCPU負荷は低いんじゃないかな(測ってないけど^p^)<br />
-<br /></li>
+<li>Software RAIDに比べればCPU負荷は低いんじゃないかな(測ってないけど^p^)</li>
 </ul>
-
 <p>Cons</p>
-
 <ul>
-<li>smart見れない(´・ω・｀)<br /></li>
-<li>rebuildはBIOS上で行うため、rebuild中はWindowsを使用できない<br /></li>
-<li>RAIDコントローラのベンダロックイン<br />
-<br />
-<br /></li>
+<li>smart見れない(´・ω・｀)</li>
+<li>rebuildはBIOS上で行うため、rebuild中はWindowsを使用できない</li>
+<li>RAIDコントローラのベンダロックイン</li>
 </ul>
-
 <h3 id="software-raid1-windows-mirrored-volume">Software RAID1 (Windows Mirrored Volume)</h3>
 
-<p><img src="/img/2015/12/20/soft_info.jpg" class="img-responsive" width="50%" height="50%"/></p>
+
+
+<figure class="capy-img">
+    <img src="/img/2015/12/20/soft_info.jpg"  />
+    
+</figure>
 
 <p>writeはHardware RAID1と同じくらい。</p>
 
-<p><img src="/img/2015/12/20/hard_mark.jpg" class="img-responsive"/></p>
+
+
+<figure class="capy-img">
+    <img src="/img/2015/12/20/hard_mark.jpg"  />
+    
+</figure>
 
 <p>Pros</p>
-
 <ul>
-<li>rebuildはWindows上で行うため、rebuild中もWindowsが利用できる<br />
-<br /></li>
+<li>rebuildはWindows上で行うため、rebuild中もWindowsが利用できる</li>
 </ul>
-
 <p>Cons</p>
-
 <ul>
-<li>Windowsのベンダロックイン<br />
-<br />
-<br /></li>
+<li>Windowsのベンダロックイン</li>
 </ul>
-
-<h3 id="結局どっちにしたの">結局どっちにしたの</h3>
-
-<p>どっちにもしてない＞＜<br />
-当初smart見れないのは辛いので、ミラーボリュームを使ったSoftware RAID1にしようと決めた。<br />
-このミラーボリューム、ダイナミックディスクという形式でフォーマットする必要がある。<br />
+<h3 id="heading-3">結局どっちにしたの</h3>
+<p>どっちにもしてない＞＜<br>
+当初smart見れないのは辛いので、ミラーボリュームを使ったSoftware RAID1にしようと決めた。
+このミラーボリューム、ダイナミックディスクという形式でフォーマットする必要がある。
 そしてこのダイナミックディスクの評判が芳しくない様子。</p>
-
 <ul>
-<li><a href="http://aikotobaha.blogspot.jp/2011/05/windows7.html">Windows7 無効になったダイナミックディスクを復旧する</a><br /></li>
-<li><a href="http://www.pc-every.com/TIPS/tips09.html">ダイナミックディスクがアクセス不能になった場合の修復方法</a><br />
-<br /></li>
+<li><a href="http://aikotobaha.blogspot.jp/2011/05/windows7.html">Windows7 無効になったダイナミックディスクを復旧する</a></li>
+<li><a href="http://www.pc-every.com/TIPS/tips09.html">ダイナミックディスクがアクセス不能になった場合の修復方法</a></li>
 </ul>
-
 <p>めっちゃ怖い。</p>
-
-<h2 id="もう定期バックアップだけでいいんじゃなかろうか">もう定期バックアップだけでいいんじゃなかろうか</h2>
-
-<p>なんかもう疲れちゃって、RAID自体微妙な気がしてきた。<br />
-自宅環境ならもう定期バックアップだけ取っていればいいんじゃないかな。<br />
+<h2 id="heading-4">もう定期バックアップだけでいいんじゃなかろうか</h2>
+<p>なんかもう疲れちゃって、RAID自体微妙な気がしてきた。
+自宅環境ならもう定期バックアップだけ取っていればいいんじゃないかな。
 目的はデータ自体の冗長化(バックアップ)であって、高可用性ではない。</p>
-
 <p>と考えだしたら<code>rsync</code>が輝きだした。</p>
-
 <p>Pros</p>
-
 <ul>
-<li>ベンダロックインがない<br /></li>
-<li>復旧がめっちゃ楽<br />
-<br /></li>
+<li>ベンダロックインがない</li>
+<li>復旧がめっちゃ楽</li>
 </ul>
-
 <p>Cons</p>
-
 <ul>
-<li>バッチによる非同期処理のため一時的に差分が生まれる<br /></li>
-<li>ディスクは当然2本見えるので、&rdquo;mirror側は絶対に触らない&rdquo;という&rdquo;運用でカバー&rdquo;が発生する<br />
-<br />
-<br /></li>
+<li>バッチによる非同期処理のため一時的に差分が生まれる</li>
+<li>ディスクは当然2本見えるので、&ldquo;mirror側は絶対に触らない&quot;という&quot;運用でカバー&quot;が発生する</li>
 </ul>
-
 <p>ええやん！</p>
-
-<h2 id="robocopyでそそくさと設定する">robocopyでそそくさと設定する</h2>
-
+<h2 id="robocopy">robocopyでそそくさと設定する</h2>
 <p>Windowsには<code>robocopy</code>という<code>rsync</code>相当のコマンドが存在する。</p>
-
 <p>下記のコマンドをタスクスケジューラに登録してdailyで実行させる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat">$ robocopy <span class="nv">%SRC%</span> <span class="nv">%DST%</span> /MIR /R:3 /W:5 /XD <span class="s2">&#34;System Volume Information&#34;</span> <span class="s2">&#34;$RECYCLE.BIN&#34;</span> /XJ /TEE /LOG:<span class="s2">&#34;/PATH/TO/LOG.log&#34;</span></code></pre></div>
-<ul>
-<li><code>/MIR</code> ミラーリング(削除もしてくれる)<br /></li>
-<li><code>/R:n</code> コピー失敗時のリトライ数<br /></li>
-<li><code>/W:n</code> コピー失敗時のリトライまでの待ち時間<br /></li>
-<li><code>/XD &lt;DIR&gt;</code> 指定ディレクトリを除外<br /></li>
-<li><code>/XJ</code> ジャンクションポイント(シンボリックリンクのようなもの)を除外<br /></li>
-<li><code>/TEE</code> 標準出力にも出力する<br /></li>
-<li><code>/LOG</code> ログの出力先<br />
-<br />
-<br /></li>
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat">$ robocopy <span class="nv">%SRC%</span> <span class="nv">%DST%</span> /MIR /R:3 /W:5 /XD <span class="s2">&#34;</span><span class="s2">System Volume Information</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="s2">$RECYCLE.BIN</span><span class="s2">&#34;</span> /XJ /TEE /LOG:<span class="s2">&#34;</span><span class="s2">/PATH/TO/LOG.log</span><span class="s2">&#34;</span>
+</code></pre></div><ul>
+<li><code>/MIR</code> ミラーリング(削除もしてくれる)</li>
+<li><code>/R:n</code> コピー失敗時のリトライ数</li>
+<li><code>/W:n</code> コピー失敗時のリトライまでの待ち時間</li>
+<li><code>/XD &lt;DIR&gt;</code> 指定ディレクトリを除外</li>
+<li><code>/XJ</code> ジャンクションポイント(シンボリックリンクのようなもの)を除外</li>
+<li><code>/TEE</code> 標準出力にも出力する</li>
+<li><code>/LOG</code> ログの出力先</li>
 </ul>
-
 <p>勝った！これで大勝利や！</p>
-
-<h2 id="まとめ">まとめ</h2>
-
+<h2 id="heading-5">まとめ</h2>
 <p>お金のこと</p>
-
 <ul>
-<li>お金に余裕があるなら<br />
-
+<li>お金に余裕があるなら
 <ul>
-<li>QNAPとかアプライアンスNAS買えばいいと思う<br /></li>
-<li>Linuxのお勉強したいなら自作NASアリだと思う<br /></li>
-</ul></li>
-<li>お金に余裕が無いからといって、Windowsのダイナミックディスクに手を出してはいけない<br />
-<br /></li>
+<li>QNAPとかアプライアンスNAS買えばいいと思う</li>
+<li>Linuxのお勉強したいなら自作NASアリだと思う</li>
 </ul>
-
+</li>
+<li>お金に余裕が無いからといって、Windowsのダイナミックディスクに手を出してはいけない</li>
+</ul>
 <p>冗長化のこと</p>
-
 <ul>
-<li>欲しいのは本当に高可用性(RAID)なのかよく考える<br /></li>
-<li>データ自身をバックアップしていれば、可用性は低くても大丈夫なケース<br />
-
+<li>欲しいのは本当に高可用性(RAID)なのかよく考える</li>
+<li>データ自身をバックアップしていれば、可用性は低くても大丈夫なケース
 <ul>
-<li>サービスをホスティングしていない<br /></li>
-<li>一人暮らしなど、利用者=運用者な状況(困るの自分だけだし&hellip;)<br /></li>
-</ul></li>
-<li>可用性高くしたいケース<br />
-
+<li>サービスをホスティングしていない</li>
+<li>一人暮らしなど、利用者=運用者な状況(困るの自分だけだし&hellip;)</li>
+</ul>
+</li>
+<li>可用性高くしたいケース
 <ul>
-<li>サービスをホスティングしている<br /></li>
-<li>家族など自分以外の利用者がいる状況<br /></li>
-</ul></li>
+<li>サービスをホスティングしている</li>
+<li>家族など自分以外の利用者がいる状況</li>
+</ul>
+</li>
 </ul>
 
 

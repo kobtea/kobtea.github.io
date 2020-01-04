@@ -64,96 +64,81 @@
     
     <aside>
         <nav id="TableOfContents">
-<ul>
-<li><a href="#stackdriverの提供する機能">Stackdriverの提供する機能</a></li>
-<li><a href="#準備">準備</a>
-<ul>
-<li><a href="#gce-instanceを作成する">GCE Instanceを作成する</a></li>
-<li><a href="#stackdriver-agentを入れる">Stackdriver Agentを入れる</a></li>
-<li><a href="#stackdriver-agent-pluginを入れる">Stackdriver Agent pluginを入れる</a>
-<ul>
-<li><a href="#nginx-pluginを入れる">Nginx pluginを入れる</a></li>
-<li><a href="#tomcat-pluginを入れる">Tomcat pluginを入れる</a></li>
-</ul></li>
-<li><a href="#web-consoleを眺める">Web consoleを眺める</a>
-<ul>
-<li><a href="#resources">Resources</a></li>
-<li><a href="#alerting">Alerting</a></li>
-<li><a href="#groups">Groups</a></li>
-<li><a href="#dashboards">Dashboards</a></li>
-<li><a href="#logs">Logs</a></li>
-</ul></li>
-<li><a href="#感想">感想</a></li>
-</ul>
+  <ul>
+    <li><a href="#stackdriver">Stackdriverの提供する機能</a></li>
+    <li><a href="#heading">準備</a>
+      <ul>
+        <li><a href="#gce-instance">GCE Instanceを作成する</a></li>
+        <li><a href="#stackdriver-agent">Stackdriver Agentを入れる</a></li>
+        <li><a href="#stackdriver-agent-plugin">Stackdriver Agent pluginを入れる</a></li>
+      </ul>
+    </li>
+    <li><a href="#web-console">Web consoleを眺める</a>
+      <ul>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#alerting">Alerting</a></li>
+        <li><a href="#groups">Groups</a></li>
+        <li><a href="#dashboards">Dashboards</a></li>
+        <li><a href="#logs">Logs</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-1">感想</a></li>
+  </ul>
 </nav>
     </aside>
 
-    
-
-<p>以前話題になった<a href="https://cloud.google.com/stackdriver/">Stackdriver</a>をbetaのうちに触っておこうそうしよう。<br />
+    <p>以前話題になった<a href="https://cloud.google.com/stackdriver/">Stackdriver</a>をbetaのうちに触っておこうそうしよう。
 AWSがCloudWatchなら、GCPはStackdriverや！！</p>
-
-<h2 id="stackdriverの提供する機能">Stackdriverの提供する機能</h2>
-
-<p><a href="https://cloud.google.com/stackdriver/docs/">Document</a>を眺めてみると機能はこんな感じ。<br />
+<h2 id="stackdriver">Stackdriverの提供する機能</h2>
+<p><a href="https://cloud.google.com/stackdriver/docs/">Document</a>を眺めてみると機能はこんな感じ。
 正直下3つはまだ触れていないのでわりと適当。</p>
-
 <ul>
-<li>Monitoring<br />
-
+<li>Monitoring
 <ul>
-<li>監視と計測のためのサービス<br /></li>
-<li>Agentをリソースに仕込んでメトリックを取得する<br /></li>
-<li>Agentを使わなくても、GCP APIを使って簡単なメトリックは取得してくれる<br /></li>
-<li>みんな大好きアラート発砲もできる<br /></li>
-<li>GCPだけでなく、AWSにも対応している<br /></li>
-</ul></li>
-<li>Logging<br />
-
-<ul>
-<li>syslogや任意のログを収集して管理・分析ができる<br /></li>
-</ul></li>
-<li>Error Reporting<br />
-
-<ul>
-<li>どのエラーがいつ何回起きたか<br /></li>
-</ul></li>
-<li>Debug<br />
-
-<ul>
-<li>コードに埋め込むあのデバッガ<br /></li>
-</ul></li>
-<li>Trace<br />
-
-<ul>
-<li>パフォーマンスチューニングのためのサービス<br /></li>
-<li>どの処理にどれだけ時間がかかっているのかが計測できる<br />
-<br /></li>
-</ul></li>
+<li>監視と計測のためのサービス</li>
+<li>Agentをリソースに仕込んでメトリックを取得する</li>
+<li>Agentを使わなくても、GCP APIを使って簡単なメトリックは取得してくれる</li>
+<li>みんな大好きアラート発砲もできる</li>
+<li>GCPだけでなく、AWSにも対応している</li>
 </ul>
-
+</li>
+<li>Logging
+<ul>
+<li>syslogや任意のログを収集して管理・分析ができる</li>
+</ul>
+</li>
+<li>Error Reporting
+<ul>
+<li>どのエラーがいつ何回起きたか</li>
+</ul>
+</li>
+<li>Debug
+<ul>
+<li>コードに埋め込むあのデバッガ</li>
+</ul>
+</li>
+<li>Trace
+<ul>
+<li>パフォーマンスチューニングのためのサービス</li>
+<li>どの処理にどれだけ時間がかかっているのかが計測できる</li>
+</ul>
+</li>
+</ul>
 <p>今回はMonitoringを眺めてみようかな。</p>
-
-<h2 id="準備">準備</h2>
-
-<p>監視対象のInstanceを立ち上げて、Agentを仕込むぞー。<br />
-今回はOpengrokサーバを構築してみようかな。<br />
-前段にNginx、バックエンドにTomcatがいる構成。<br />
+<h2 id="heading">準備</h2>
+<p>監視対象のInstanceを立ち上げて、Agentを仕込むぞー。<br>
+今回はOpengrokサーバを構築してみようかな。<br>
+前段にNginx、バックエンドにTomcatがいる構成。<br>
 Stackdriverに関係ない部分はざっくり省略していく(それでも長ったらしくなってしまったあばば)。</p>
-
-<h3 id="gce-instanceを作成する">GCE Instanceを作成する</h3>
-
+<h3 id="gce-instance">GCE Instanceを作成する</h3>
 <p>参考:</p>
-
 <ul>
-<li><a href="https://cloud.google.com/monitoring/agent/install-agent#authorizing">Installing the Monitoring Agent - Authorizing the monitoring agent</a><br /></li>
-<li><a href="https://cloud.google.com/monitoring/api/authentication">Authorizing the Monitoring API</a><br />
-<br /></li>
+<li><a href="https://cloud.google.com/monitoring/agent/install-agent#authorizing">Installing the Monitoring Agent - Authorizing the monitoring agent</a></li>
+<li><a href="https://cloud.google.com/monitoring/api/authentication">Authorizing the Monitoring API</a></li>
 </ul>
-
-<p>はじめにWeb consoleからGoogle Monitoring APIを有効にしておくこと。<br />
-あとは普通に作成すればいいんだけど、Service Accountの権限だけ注意する。<br />
-最低限<code>monitoring.write</code>があれば良さそう。<br />
+<p>はじめにWeb consoleからGoogle Monitoring APIを有効にしておくこと。<br>
+あとは普通に作成すればいいんだけど、Service Accountの権限だけ注意する。<br>
+最低限<code>monitoring.write</code>があれば良さそう。<br>
 Service Accountの確認方法は<a href="https://cloud.google.com/monitoring/agent/install-agent#authorizing">Document</a>にある通り。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --silent -f -H <span class="s2">&#34;Metadata-Flavor: Google&#34;</span> http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
 https://www.googleapis.com/auth/cloud.useraccounts.readonly
@@ -161,29 +146,25 @@ https://www.googleapis.com/auth/devstorage.read_only
 https://www.googleapis.com/auth/logging.write
 https://www.googleapis.com/auth/monitoring
 https://www.googleapis.com/auth/service.management
-https://www.googleapis.com/auth/servicecontrol</code></pre></div>
-<h3 id="stackdriver-agentを入れる">Stackdriver Agentを入れる</h3>
-
+https://www.googleapis.com/auth/servicecontrol
+</code></pre></div><h3 id="stackdriver-agent">Stackdriver Agentを入れる</h3>
 <p>参考:</p>
-
 <ul>
-<li><a href="https://cloud.google.com/monitoring/agent/install-agent">Installing the Monitoring Agent</a><br /></li>
-<li><a href="https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes">Authorizing the Monitoring API</a><br />
-<br /></li>
+<li><a href="https://cloud.google.com/monitoring/agent/install-agent">Installing the Monitoring Agent</a></li>
+<li><a href="https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes">Authorizing the Monitoring API</a></li>
 </ul>
-
 <p>Documentに記載のinstall scriptを打つだけ、だと思ってました。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ curl -O https://repo.stackdriver.com/stack-install.sh
 kobtea@opengrok:~$ sudo bash stack-install.sh --write-gcm
 Installing agents <span class="k">for</span> Debian or Ubuntu.
 <span class="c1"># ...</span>
-Setting up stackdriver-agent <span class="o">(</span><span class="m">5</span>.5.0-269.trusty<span class="o">)</span> ...
+Setting up stackdriver-agent <span class="o">(</span>5.5.0-269.trusty<span class="o">)</span> ...
  * Starting Stackdriver metrics collection agent stackdriver-agent
  * Need to <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
  * not starting, configuration error
                                                                                                                                                                                           <span class="o">[</span>fail<span class="o">]</span>
 <span class="c1"># ...</span>
-Setting up stackdriver-extractor <span class="o">(</span><span class="m">92</span>-1.trusty<span class="o">)</span> ...
+Setting up stackdriver-extractor <span class="o">(</span>92-1.trusty<span class="o">)</span> ...
  * Starting Stackdriver metadata extractor stackdriver-extractor
  * Please <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
                                                                                                                                                                                           <span class="o">[</span>fail<span class="o">]</span>
@@ -191,11 +172,10 @@ Setting up stackdriver-extractor <span class="o">(</span><span class="m">92</spa
 Restarting services
  * Restarting Stackdriver metrics collection agent stackdriver-agent
  * Need to <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
- * not starting, configuration error</code></pre></div>
-<p>インストール失敗してる&hellip;<br />
+ * not starting, configuration error
+</code></pre></div><p>インストール失敗してる&hellip;<br>
 <code>STACKDRIVER_API_KEY</code>がないぞって、Documentでは特に言及されてないんだけどなぁ&hellip;</p>
-
-<p><code>stack-install.sh</code>を見てみると<code>--write-gcm</code>オプションなんてものは書かれていない。な、なんだってー<br />
+<p><code>stack-install.sh</code>を見てみると<code>--write-gcm</code>オプションなんてものは書かれていない。な、なんだってー<br>
 代わりにproject metadataを使う方法は書いてある&hellip;どういうことや&hellip;</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install and start the Google monitoring agent.</span>
 #
@@ -213,9 +193,9 @@ Restarting services
 <span class="c1">#   2. Install the agent package.</span>
 <span class="c1">#   3. Invoke /opt/stackdriver/stack-config to do the following:</span>
 <span class="c1">#      a. Optionally configure the agent with the API key.</span>
-<span class="c1">#      b. Start the agent services.</span></code></pre></div>
-<p>よくわからんので、API Keyをセットして試す。<br />
-API Keyは以下のurlから確認できる。<br />
+<span class="c1">#      b. Start the agent services.</span>
+</code></pre></div><p>よくわからんので、API Keyをセットして試す。
+API Keyは以下のurlから確認できる。
 <a href="https://app.google.stackdriver.com/settings/accounts/agent/">https://app.google.stackdriver.com/settings/accounts/agent/</a></p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ sudo bash stack-install.sh --api-key<span class="o">=</span>&lt;MY_API_KEY&gt;
 Installing agents <span class="k">for</span> Debian or Ubuntu.
@@ -251,31 +231,25 @@ Extractor status:  Extractor sample data:
       <span class="o">]</span>
     <span class="o">}</span>
   <span class="o">]</span>
-<span class="o">}</span></code></pre></div>
-<p>(∩´∀｀)∩ﾜｰｲ</p>
-
-<h3 id="stackdriver-agent-pluginを入れる">Stackdriver Agent pluginを入れる</h3>
-
+<span class="o">}</span>
+</code></pre></div><p>(∩´∀｀)∩ﾜｰｲ</p>
+<h3 id="stackdriver-agent-plugin">Stackdriver Agent pluginを入れる</h3>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/#supported_plugins">Monitoring Agent Configuration - Supported plugins</a></p>
-
-<p>Agent pluginは標準で色々なミドルウェアに対応している。<br />
+<p>Agent pluginは標準で色々なミドルウェアに対応している。
 標準pluginはconfigを書くだけで楽ちん。</p>
-
-<h4 id="nginx-pluginを入れる">Nginx pluginを入れる</h4>
-
+<h4 id="nginx-plugin">Nginx pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/nginx">Nginx Plugin</a></p>
-
 <p>Nginx pluginは<code>stub_status</code>の値を計測する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># stub_statusの準備</span>
 kobtea@opengrok:~$ sudo touch /etc/nginx/sites-available/status
 kobtea@opengrok:~$ cat /etc/nginx/sites-available/status
 server <span class="o">{</span>
-	listen <span class="m">80</span><span class="p">;</span>
+	listen 80<span class="p">;</span>
 	server_name local-stackdriver-agent.stackdriver.com<span class="p">;</span>
 	location /nginx_status <span class="o">{</span>
 		stub_status on<span class="p">;</span>
 		access_log   off<span class="p">;</span>
-		allow <span class="m">127</span>.0.0.1<span class="p">;</span>
+		allow 127.0.0.1<span class="p">;</span>
 		deny all<span class="p">;</span>
 	<span class="o">}</span>
 	location / <span class="o">{</span>
@@ -300,21 +274,19 @@ LoadPlugin <span class="s2">&#34;nginx&#34;</span>
 kobtea@opengrok:~$ sudo service stackdriver-agent restart
 <span class="c1"># ...</span>
 Created new plugin context.
-                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span></code></pre></div>
-<h4 id="tomcat-pluginを入れる">Tomcat pluginを入れる</h4>
-
+                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
+</code></pre></div><h4 id="tomcat-plugin">Tomcat pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/tomcat">Tomcat Plugin</a></p>
-
 <p>Tomcat, JVM系はJMXを使って計測する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JMXの設定</span>
 kobtea@opengrok:~$ diff -u /etc/default/tomcat7<span class="o">{</span>.orig,<span class="o">}</span>
---- /etc/default/tomcat7.orig	<span class="m">2016</span>-05-12 <span class="m">16</span>:50:51.872516414 +0000
-+++ /etc/default/tomcat7	<span class="m">2016</span>-05-12 <span class="m">17</span>:02:53.180519725 +0000
+--- /etc/default/tomcat7.orig	2016-05-12 16:50:51.872516414 +0000
++++ /etc/default/tomcat7	2016-05-12 17:02:53.180519725 +0000
 @@ -19,6 +19,7 @@
  <span class="c1"># exactly one CPU chip that contains one or two cores, you should also add</span>
  <span class="c1"># the &#34;-XX:+CMSIncrementalMode&#34; option.</span>
  <span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">&#34;-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC&#34;</span>
-+JAVA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">JAVA_OPTS</span><span class="si">}</span><span class="s2"> -Djava.security.egd=file:/dev/./urandom&#34;</span>
++JAVA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">JAVA_OPTS</span><span class="si">}</span><span class="s2"> -Djava.security.egd=file:/dev/./urandom</span><span class="s2">&#34;</span>
 
  <span class="c1"># To enable remote debugging uncomment the following line.</span>
  <span class="c1"># You will then be able to use a java debugger on port 8000.</span>
@@ -322,10 +294,10 @@ kobtea@opengrok:~$ diff -u /etc/default/tomcat7<span class="o">{</span>.orig,<sp
  <span class="c1"># NOTE: authbind works only with IPv4.  Do not enable it when using IPv6.</span>
  <span class="c1"># (yes/no, default: no)</span>
  <span class="c1">#AUTHBIND=no</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.port=9012&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.ssl=false&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.authenticate=false&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote</span><span class="s2">&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.port=9012</span><span class="s2">&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.ssl=false</span><span class="s2">&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.authenticate=false</span><span class="s2">&#34;</span>
 
 kobtea@opengrok:~$ sudo service tomcat7 restart
 
@@ -334,11 +306,9 @@ kobtea@opengrok:~$ <span class="nb">cd</span> /opt/stackdriver/collectd/etc/coll
 kobtea@opengrok:~$ sudo service stackdriver-agent restart
 <span class="c1"># ...</span>
 Created new plugin context.
-                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span></code></pre></div>
-<h2 id="web-consoleを眺める">Web consoleを眺める</h2>
-
+                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
+</code></pre></div><h2 id="web-console">Web consoleを眺める</h2>
 <p>IndexページはAlert周りの機能が多い印象、すぐに反応したいしね。</p>
-
 
 
 
@@ -347,14 +317,10 @@ Created new plugin context.
     
 </figure>
 
-
 <p>メニューごとにふわっと眺めようかな。</p>
-
 <h3 id="resources">Resources</h3>
-
-<p>GCP/AWSのサービスや、Agent pluginごとにいい感じにグルーピングされている。<br />
+<p>GCP/AWSのサービスや、Agent pluginごとにいい感じにグルーピングされている。<br>
 インスタンス単位ではなくリソースタイプ単位でまとめて管理する設計なんだな。</p>
-
 
 
 
@@ -363,10 +329,8 @@ Created new plugin context.
     
 </figure>
 
-
-<p>各リソースページ。<br />
+<p>各リソースページ。<br>
 リソースグループに紐付いたIncidentやメトリックが確認できる。</p>
-
 
 
 
@@ -375,11 +339,8 @@ Created new plugin context.
     
 </figure>
 
-
 <h3 id="alerting">Alerting</h3>
-
 <p>みんな大好きアラート。</p>
-
 
 
 
@@ -388,10 +349,8 @@ Created new plugin context.
     
 </figure>
 
-
-<p>メトリックの閾値などなど結構柔軟に設定できる。<br />
+<p>メトリックの閾値などなど結構柔軟に設定できる。<br>
 通知先はEmail, Pagerduty, Webhook, Slackなど。</p>
-
 
 
 
@@ -400,10 +359,8 @@ Created new plugin context.
     
 </figure>
 
-
-<p>IncidentsではPagerduty likeに状態管理ができる。<br />
+<p>IncidentsではPagerduty likeに状態管理ができる。<br>
 コメントも書けたりする。</p>
-
 
 
 
@@ -412,9 +369,7 @@ Created new plugin context.
     
 </figure>
 
-
 <p>Uptime Checksは複数拠点からチェックしてくれる。</p>
-
 
 
 
@@ -423,9 +378,7 @@ Created new plugin context.
     
 </figure>
 
-
 <p>Events、「最近調子悪いけど何かしたっけかなー」とか「最近Alert減ってきていい傾向だなー」とか。</p>
-
 
 
 
@@ -434,9 +387,7 @@ Created new plugin context.
     
 </figure>
 
-
 <h3 id="groups">Groups</h3>
-
 
 
 
@@ -445,10 +396,8 @@ Created new plugin context.
     
 </figure>
 
-
-<p>先の勝手に分類してくれるResourcesではなく、自分でグルーピングしたい！ときに使う。<br />
+<p>先の勝手に分類してくれるResourcesではなく、自分でグルーピングしたい！ときに使う。<br>
 項目はResourcesと同じ。</p>
-
 
 
 
@@ -457,13 +406,10 @@ Created new plugin context.
     
 </figure>
 
-
 <h3 id="dashboards">Dashboards</h3>
-
-<p>君だけの最強のDashboardを作ろう。<br />
-しかし残念、折れ線グラフしか使えない！<br />
+<p>君だけの最強のDashboardを作ろう。<br>
+しかし残念、折れ線グラフしか使えない！<br>
 CPUとか積み上げグラフにしたいな&hellip;</p>
-
 
 
 
@@ -472,12 +418,9 @@ CPUとか積み上げグラフにしたいな&hellip;</p>
     
 </figure>
 
-
 <h3 id="logs">Logs</h3>
-
-<p>ログの全文検索、リソースタイプ別、ログレベル別なんでもござれ。しゅごい。<br />
+<p>ログの全文検索、リソースタイプ別、ログレベル別なんでもござれ。しゅごい。<br>
 データフォーマットはjson。</p>
-
 
 
 
@@ -486,18 +429,13 @@ CPUとか積み上げグラフにしたいな&hellip;</p>
     
 </figure>
 
-
-<h2 id="感想">感想</h2>
-
-<p>まだまだbetaだなーと強く思ったのはグラフかな。折れ線グラフ以外も欲しい。<br />
-Custom Dashboardはgrafanaレベルになったら嬉しいな。<br />
+<h2 id="heading-1">感想</h2>
+<p>まだまだbetaだなーと強く思ったのはグラフかな。折れ線グラフ以外も欲しい。<br>
+Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
 複数メトリック組み合わせて四則演算できるとかなり嬉しいけど、これはagent pluginで頑張れと言われても仕方ないかなぁ。</p>
-
 <p>UIは好みの問題かもしれないけど、Resourcesのグラフは縦に並べただけでとにかく見づらい。</p>
-
-<p>グラフ以外のAlert, Log周りはとても使いやすい印象。<br />
+<p>グラフ以外のAlert, Log周りはとても使いやすい印象。<br>
 個人サービス程度なら今の状態でも十分お世話になれると思う。</p>
-
 <p>たのしかったです。</p>
 
 

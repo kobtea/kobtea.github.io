@@ -62,262 +62,210 @@
     
     <aside>
         <nav id="TableOfContents">
-<ul>
-<li><a href="#前夜祭">前夜祭</a>
-<ul>
-<li><a href="#php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版">PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）</a></li>
-<li><a href="#はてなブックマークのトピックページの裏側">はてなブックマークのトピックページの裏側</a></li>
-<li><a href="#我々にできるossとそのコミュニティの育てかた">我々にできるOSSとそのコミュニティの育てかた</a></li>
-</ul></li>
-<li><a href="#1日目">1日目</a>
-<ul>
-<li><a href="#メリークリスマス">メリークリスマス！</a></li>
-<li><a href="#managing-containers-at-scale-with-coreos-and-kubernetes">Managing Containers at Scale with CoreOS and Kubernetes</a></li>
-<li><a href="#tbd">TBD</a></li>
-<li><a href="#perlの上にも三年-ずっとイケてるサービスを作り続ける技術">Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜</a></li>
-<li><a href="#electron-building-desktop-apps-with-web-technologies">Electron: Building desktop apps with web technologies</a></li>
-<li><a href="#esa-io-趣味から育てたwebサービスで生きていく">esa.io - 趣味から育てたWebサービスで生きていく</a></li>
-</ul></li>
-<li><a href="#2日目">2日目</a>
-<ul>
-<li><a href="#isuconの勝ち方">ISUCONの勝ち方</a></li>
-<li><a href="#実はホットでオープンな-microsoft-azure">実はホットでオープンな Microsoft Azure</a></li>
-<li><a href="#mysqlで2億件のシリアルデータと格闘したチューニングの話">MySQLで2億件のシリアルデータと格闘したチューニングの話</a></li>
-<li><a href="#データ分析基盤を支える技術">データ分析基盤を支える技術</a></li>
-<li><a href="#ソーシャルゲームにおける-aws-移行事例">ソーシャルゲームにおける AWS 移行事例</a></li>
-<li><a href="#辛いことをやめる-から始まる業務改善とinfrastructure-as-code">辛いことをやめる！から始まる業務改善とInfrastructure as Code</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#heading">前夜祭</a>
+      <ul>
+        <li><a href="#phpphperphp-php7">PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）</a></li>
+        <li><a href="#heading-1">はてなブックマークのトピックページの裏側</a></li>
+        <li><a href="#oss">我々にできるOSSとそのコミュニティの育てかた</a></li>
+      </ul>
+    </li>
+    <li><a href="#1">1日目</a>
+      <ul>
+        <li><a href="#heading-2">メリークリスマス！</a></li>
+        <li><a href="#managing-containers-at-scale-with-coreos-and-kubernetes">Managing Containers at Scale with CoreOS and Kubernetes</a></li>
+        <li><a href="#tbd">TBD</a></li>
+        <li><a href="#perl---">Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜</a></li>
+        <li><a href="#electron-building-desktop-apps-with-web-technologies">Electron: Building desktop apps with web technologies</a></li>
+        <li><a href="#esaio---web">esa.io - 趣味から育てたWebサービスで生きていく</a></li>
+      </ul>
+    </li>
+    <li><a href="#2">2日目</a>
+      <ul>
+        <li><a href="#isucon">ISUCONの勝ち方</a></li>
+        <li><a href="#-microsoft-azure">実はホットでオープンな Microsoft Azure</a></li>
+        <li><a href="#mysql2">MySQLで2億件のシリアルデータと格闘したチューニングの話</a></li>
+        <li><a href="#heading-3">データ分析基盤を支える技術</a></li>
+        <li><a href="#-aws-">ソーシャルゲームにおける AWS 移行事例</a></li>
+        <li><a href="#infrastructure-as-code">辛いことをやめる！から始まる業務改善とInfrastructure as Code</a></li>
+      </ul>
 </nav>
     </aside>
 
-    
-
-<p>最初で最後のYAPC。<br />
+    <p>最初で最後のYAPC。<br>
 聴いたセッションのメモとか感想とかをぽつぽつと。</p>
-
-<h2 id="前夜祭">前夜祭</h2>
-
-<h3 id="php帝国の逆襲-を願うphperが話す最近のphpについてのクイックツアー-php7対応版">PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）</h3>
-
+<h2 id="heading">前夜祭</h2>
+<h3 id="phpphperphp-php7">PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版）</h3>
 <ul>
-<li>Hackとの速度勝負<br />
-
+<li>Hackとの速度勝負
 <ul>
-<li>Hackが前に流行ったけどPHP7では基本速度は大差無い<br /></li>
-<li>コミニュティが安定しているPHP7を使ったほうが無難<br /></li>
-</ul></li>
-<li>PHP使う&hellip;?<br />
-
-<ul>
-<li>スタートアップなどスピード勝負でガリガリ書きたいときは適している<br /></li>
-<li>SlackもPHP使ってるしまだまだオワコンじゃないよ！<br />
-<br /></li>
-</ul></li>
+<li>Hackが前に流行ったけどPHP7では基本速度は大差無い</li>
+<li>コミニュティが安定しているPHP7を使ったほうが無難</li>
 </ul>
-
-<h3 id="はてなブックマークのトピックページの裏側">はてなブックマークのトピックページの裏側</h3>
-
+</li>
+<li>PHP使う&hellip;?
 <ul>
-<li>Elasticsearchって重要語句抽出の機能あるのかしゅごい<br /></li>
-<li>トピックタイトルは短く誤解のないように作成するというのがなかなか定量的に検査しづらそうだなぁ<br />
-<br /></li>
+<li>スタートアップなどスピード勝負でガリガリ書きたいときは適している</li>
+<li>SlackもPHP使ってるしまだまだオワコンじゃないよ！</li>
 </ul>
-
-<h3 id="我々にできるossとそのコミュニティの育てかた">我々にできるOSSとそのコミュニティの育てかた</h3>
-
-<ul>
-<li>とにかく全部英語<br />
-
-<ul>
-<li>コミニュティの母数を大きくするためには公用語の英語を使う<br /></li>
-<li>ロシア語のissueを日本人が読みたくないように、日本語のissueを海外の人は読みたくない<br /></li>
-</ul></li>
-<li>最低限の機能だけを実装した不完全な状態で公開する<br />
-
-<ul>
-<li>issueやpatchを送ってくれる人が出てきて自然とコミュニティが形成される<br /></li>
-<li>完璧すぎるとissueやpatchがなくて使われてる感が無い<br />
-<br />
-<br /></li>
-</ul></li>
+</li>
 </ul>
-
-<h2 id="1日目">1日目</h2>
-
-<h3 id="メリークリスマス">メリークリスマス！</h3>
-
+<h3 id="heading-1">はてなブックマークのトピックページの裏側</h3>
 <ul>
-<li>perlの父ラリーさんのありがたいお話<br /></li>
-<li>肉声で聴きたかったので、翻訳機なしで挑んだらほとんど理解できなかった(´；ω；｀)ﾌﾞﾜｯ<br />
-
-<ul>
-<li>そもそもHobitとLoad of the Ring読んだことなかった&hellip;<br /></li>
-<li>でもすごい聞き取りやすい発音と速度(ついでに髪サラッサラ)で惚れた<br /></li>
-</ul></li>
-<li>基本自分語り？<br /></li>
-<li>perl5をHobit、perl6をLoad of the Ringに対応させて、見た目は違うけど根底にあるものは同じだよという話<br /></li>
-<li>文脈把握できなかったけど&rdquo;<code>-Ofun</code> (Optimize fun)&ldquo;と&rdquo;I FAIL GOOD (正しく失敗する)&ldquo;がとても印象的だった<br /></li>
-<li>ラリーさんはLinux Mintを使っていて<code>alias p='perl'</code>だった<br /></li>
-<li>perl6は今年のクリスマスに(なるべく)出すらしい<br />
-<br /></li>
+<li>Elasticsearchって重要語句抽出の機能あるのかしゅごい</li>
+<li>トピックタイトルは短く誤解のないように作成するというのがなかなか定量的に検査しづらそうだなぁ</li>
 </ul>
-
+<h3 id="oss">我々にできるOSSとそのコミュニティの育てかた</h3>
+<ul>
+<li>とにかく全部英語
+<ul>
+<li>コミニュティの母数を大きくするためには公用語の英語を使う</li>
+<li>ロシア語のissueを日本人が読みたくないように、日本語のissueを海外の人は読みたくない</li>
+</ul>
+</li>
+<li>最低限の機能だけを実装した不完全な状態で公開する
+<ul>
+<li>issueやpatchを送ってくれる人が出てきて自然とコミュニティが形成される</li>
+<li>完璧すぎるとissueやpatchがなくて使われてる感が無い</li>
+</ul>
+</li>
+</ul>
+<h2 id="1">1日目</h2>
+<h3 id="heading-2">メリークリスマス！</h3>
+<ul>
+<li>perlの父ラリーさんのありがたいお話</li>
+<li>肉声で聴きたかったので、翻訳機なしで挑んだらほとんど理解できなかった(´；ω；｀)ﾌﾞﾜｯ
+<ul>
+<li>そもそもHobitとLoad of the Ring読んだことなかった&hellip;</li>
+<li>でもすごい聞き取りやすい発音と速度(ついでに髪サラッサラ)で惚れた</li>
+</ul>
+</li>
+<li>基本自分語り？</li>
+<li>perl5をHobit、perl6をLoad of the Ringに対応させて、見た目は違うけど根底にあるものは同じだよという話</li>
+<li>文脈把握できなかったけど&quot;<code>-Ofun</code> (Optimize fun)&ldquo;と&quot;I FAIL GOOD (正しく失敗する)&ldquo;がとても印象的だった</li>
+<li>ラリーさんはLinux Mintを使っていて<code>alias p='perl'</code>だった</li>
+<li>perl6は今年のクリスマスに(なるべく)出すらしい</li>
+</ul>
 <h3 id="managing-containers-at-scale-with-coreos-and-kubernetes">Managing Containers at Scale with CoreOS and Kubernetes</h3>
-
 <ul>
-<li>k8sのイントロダクション<br /></li>
-<li>サービスの無停止デプロイのデモ<br />
-
+<li>k8sのイントロダクション</li>
+<li>サービスの無停止デプロイのデモ
 <ul>
-<li>proxyから少数nodeを抜く<br /></li>
-<li>抜いたnodeのアプリケーションをupgrade<br /></li>
-<li>proxyに戻す<br /></li>
-<li>の繰り返し<br /></li>
-</ul></li>
-<li>dashboardのデザインがオサレ<br />
-<br /></li>
+<li>proxyから少数nodeを抜く</li>
+<li>抜いたnodeのアプリケーションをupgrade</li>
+<li>proxyに戻す</li>
+<li>の繰り返し</li>
 </ul>
-
+</li>
+<li>dashboardのデザインがオサレ</li>
+</ul>
 <h3 id="tbd">TBD</h3>
-
 <ul>
-<li>rubyの父matzさんのありがたいお話<br /></li>
-<li>rubyをdisって一番コミニュティに角が立たないのはわしじゃ<br />
-
+<li>rubyの父matzさんのありがたいお話</li>
+<li>rubyをdisって一番コミニュティに角が立たないのはわしじゃ
 <ul>
-<li>rubyの最disりポイントはperlの影響を受けたこと<br /></li>
-<li>2番目はlispの影響を受けたこと<br /></li>
-</ul></li>
-<li>言語アーキテクチャは振り子のように移り変わる<br />
-
-<ul>
-<li>遠い昔に発表されたものが、時間が経って再評価されたりする<br /></li>
-<li>GCはかつてプロセスが重くなるからと避けられていたが、JVMが採用し再評価された<br /></li>
-<li>処理速度重視から、OOPのようなデザイン重視?へ移り、また速度重視になりつつある<br /></li>
-</ul></li>
-<li>streemはピタゴラスイッチみたいで楽しいよ<br />
-<br /></li>
+<li>rubyの最disりポイントはperlの影響を受けたこと</li>
+<li>2番目はlispの影響を受けたこと</li>
 </ul>
-
-<h3 id="perlの上にも三年-ずっとイケてるサービスを作り続ける技術">Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜</h3>
-
+</li>
+<li>言語アーキテクチャは振り子のように移り変わる
 <ul>
-<li>はてなブログのとても生々しい話<br /></li>
-<li>かつてはてなブログはModel層, View層, Controller層, コピペ層で形成されていた<br />
-
-<ul>
-<li>3回コピペされたコードはDRYの精神に基づきコピペ層へ配置される<br /></li>
-</ul></li>
-<li>オブジェクト指向入門, DDD本などを輪読してリファクタリング<br /></li>
-<li>大規模な改修を続けられるって健全な環境だなぁ<br />
-<br /></li>
+<li>遠い昔に発表されたものが、時間が経って再評価されたりする</li>
+<li>GCはかつてプロセスが重くなるからと避けられていたが、JVMが採用し再評価された</li>
+<li>処理速度重視から、OOPのようなデザイン重視?へ移り、また速度重視になりつつある</li>
 </ul>
-
+</li>
+<li>streemはピタゴラスイッチみたいで楽しいよ</li>
+</ul>
+<h3 id="perl---">Perlの上にも三年 〜 ずっとイケてるサービスを作り続ける技術 〜</h3>
+<ul>
+<li>はてなブログのとても生々しい話</li>
+<li>かつてはてなブログはModel層, View層, Controller層, コピペ層で形成されていた
+<ul>
+<li>3回コピペされたコードはDRYの精神に基づきコピペ層へ配置される</li>
+</ul>
+</li>
+<li>オブジェクト指向入門, DDD本などを輪読してリファクタリング</li>
+<li>大規模な改修を続けられるって健全な環境だなぁ</li>
+</ul>
 <h3 id="electron-building-desktop-apps-with-web-technologies">Electron: Building desktop apps with web technologies</h3>
-
 <ul>
-<li>electronの紹介<br /></li>
-<li>electronの開発チームは現状1人らしい<br /></li>
-<li>既存のjsライブラリを使えてとてもエコな印象<br />
-<br /></li>
+<li>electronの紹介</li>
+<li>electronの開発チームは現状1人らしい</li>
+<li>既存のjsライブラリを使えてとてもエコな印象</li>
 </ul>
-
-<h3 id="esa-io-趣味から育てたwebサービスで生きていく">esa.io - 趣味から育てたWebサービスで生きていく</h3>
-
+<h3 id="esaio---web">esa.io - 趣味から育てたWebサービスで生きていく</h3>
 <ul>
-<li>自分で使いたいサービスを作っていたら会社になってた話<br /></li>
-<li>かわいいは正義<br />
-<br />
-<br /></li>
+<li>自分で使いたいサービスを作っていたら会社になってた話</li>
+<li>かわいいは正義</li>
 </ul>
-
-<h2 id="2日目">2日目</h2>
-
-<h3 id="isuconの勝ち方">ISUCONの勝ち方</h3>
-
+<h2 id="2">2日目</h2>
+<h3 id="isucon">ISUCONの勝ち方</h3>
 <p><a href="https://kobtea.net/posts/2015/08/22/yapc-isucon/">別記事書いた</a></p>
-
-<h3 id="実はホットでオープンな-microsoft-azure">実はホットでオープンな Microsoft Azure</h3>
-
+<h3 id="-microsoft-azure">実はホットでオープンな Microsoft Azure</h3>
 <ul>
-<li>azureは1regionあたり16datacenterあってサーバは60万台<br /></li>
-<li>サーバを詰め込んだコンテナ(物理)でDCを構築している<br /></li>
-<li>壊れたサーバは使わずに放っておいて、一定数壊れたらコンテナごと破棄する<br />
-<br /></li>
+<li>azureは1regionあたり16datacenterあってサーバは60万台</li>
+<li>サーバを詰め込んだコンテナ(物理)でDCを構築している</li>
+<li>壊れたサーバは使わずに放っておいて、一定数壊れたらコンテナごと破棄する</li>
 </ul>
-
-<h3 id="mysqlで2億件のシリアルデータと格闘したチューニングの話">MySQLで2億件のシリアルデータと格闘したチューニングの話</h3>
-
+<h3 id="mysql2">MySQLで2億件のシリアルデータと格闘したチューニングの話</h3>
 <ul>
-<li>CPU 2core, memory 8GBでレコード2億件のDBを運用する<br /></li>
-<li>countクエリが1分超え<br /></li>
-<li>primary keyをランダム値にしていると痛い目に遭う<br /></li>
-<li>indexの再構築をなめてはいけない<br /></li>
-<li>scale up,outできない環境がただただつらそうだった<br />
-<br /></li>
+<li>CPU 2core, memory 8GBでレコード2億件のDBを運用する</li>
+<li>countクエリが1分超え</li>
+<li>primary keyをランダム値にしていると痛い目に遭う</li>
+<li>indexの再構築をなめてはいけない</li>
+<li>scale up,outできない環境がただただつらそうだった</li>
 </ul>
-
-<h3 id="データ分析基盤を支える技術">データ分析基盤を支える技術</h3>
-
+<h3 id="heading-3">データ分析基盤を支える技術</h3>
 <ul>
-<li>データ分析周りのOSS, XaaSの俯瞰的な紹介<br /></li>
-<li>データ分析周りで出てくるETLはExtract Transformation Load(抽出, 変換, 登録)の略<br /></li>
-<li>分析基盤の構築・運用はとてもしんどいのでSaaS使ったほうが楽<br />
-<br /></li>
+<li>データ分析周りのOSS, XaaSの俯瞰的な紹介</li>
+<li>データ分析周りで出てくるETLはExtract Transformation Load(抽出, 変換, 登録)の略</li>
+<li>分析基盤の構築・運用はとてもしんどいのでSaaS使ったほうが楽</li>
 </ul>
-
-<h3 id="ソーシャルゲームにおける-aws-移行事例">ソーシャルゲームにおける AWS 移行事例</h3>
-
+<h3 id="-aws-">ソーシャルゲームにおける AWS 移行事例</h3>
 <ul>
-<li>2011年頃にラック契約していたオンプレミス環境がEOLを迎えるにあたってAWSへ移行した<br /></li>
-<li>大体1月2,3人での移行作業<br /></li>
-<li>RDS<br />
-
+<li>2011年頃にラック契約していたオンプレミス環境がEOLを迎えるにあたってAWSへ移行した</li>
+<li>大体1月2,3人での移行作業</li>
+<li>RDS
 <ul>
-<li>たまにネットワーク断が発生するからアプリケーションで要フォロー<br /></li>
-<li>create tableやindex, 外部キー制約などを除外しておくとdump dataのimportは早くなる<br />
-
+<li>たまにネットワーク断が発生するからアプリケーションで要フォロー</li>
+<li>create tableやindex, 外部キー制約などを除外しておくとdump dataのimportは早くなる
 <ul>
-<li>perconaのmysqldumpにはそんなオプションがあるらしい<br /></li>
-</ul></li>
-<li>timezone変更できないのでtimezone関係の関数を使っている場合は要注意<br /></li>
-<li>移行時のwrite timeを短縮するためにmulti-azからsingle-azへ一時的に変更<br /></li>
-</ul></li>
-<li>session storageとしてyrmcdsを使っている<br />
-<br /></li>
+<li>perconaのmysqldumpにはそんなオプションがあるらしい</li>
 </ul>
-
-<h3 id="辛いことをやめる-から始まる業務改善とinfrastructure-as-code">辛いことをやめる！から始まる業務改善とInfrastructure as Code</h3>
-
-<ul>
-<li>hb-acnsを導入した時の話<br />
-
-<ul>
-<li>nagios, cactiの設定を登録するシステム<br /></li>
-</ul></li>
-<li>全方位の社員を説得して味方を増やす<br />
-
-<ul>
-<li>CTOを味方につけて、個人の思想・プロジェクトではないことをアピールする<br /></li>
-<li>メリットをとにかく主張する<br /></li>
-<li>トラブルシュートは最優先で行う<br />
-
-<ul>
-<li>ユーザは一度でもつまずくと離脱してしまう<br /></li>
-</ul></li>
-</ul></li>
-<li>布教活動をする<br />
-
-<ul>
-<li>ドキュメントを残す<br /></li>
-<li>ハンズオンをして強制的に試す環境を作る<br /></li>
-</ul></li>
-<li>効果を定量的に計測しておくと良い<br />
-<br />
-<br /></li>
+</li>
+<li>timezone変更できないのでtimezone関係の関数を使っている場合は要注意</li>
+<li>移行時のwrite timeを短縮するためにmulti-azからsingle-azへ一時的に変更</li>
 </ul>
-
+</li>
+<li>session storageとしてyrmcdsを使っている</li>
+</ul>
+<h3 id="infrastructure-as-code">辛いことをやめる！から始まる業務改善とInfrastructure as Code</h3>
+<ul>
+<li>hb-acnsを導入した時の話
+<ul>
+<li>nagios, cactiの設定を登録するシステム</li>
+</ul>
+</li>
+<li>全方位の社員を説得して味方を増やす
+<ul>
+<li>CTOを味方につけて、個人の思想・プロジェクトではないことをアピールする</li>
+<li>メリットをとにかく主張する</li>
+<li>トラブルシュートは最優先で行う
+<ul>
+<li>ユーザは一度でもつまずくと離脱してしまう</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>布教活動をする
+<ul>
+<li>ドキュメントを残す</li>
+<li>ハンズオンをして強制的に試す環境を作る</li>
+</ul>
+</li>
+<li>効果を定量的に計測しておくと良い</li>
+</ul>
 <p>とても楽しかったですまる</p>
 
 

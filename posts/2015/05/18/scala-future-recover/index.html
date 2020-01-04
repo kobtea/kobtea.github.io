@@ -62,46 +62,33 @@
     
     <aside>
         <nav id="TableOfContents">
-<ul>
-<li><a href="#環境">環境</a></li>
-<li><a href="#やりたいこと">やりたいこと</a></li>
-<li><a href="#recoverを使う">recoverを使う</a></li>
-<li><a href="#recoverwithを使う">recoverWithを使う</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">環境</a></li>
+    <li><a href="#heading-1">やりたいこと</a></li>
+    <li><a href="#recover">recoverを使う</a></li>
+    <li><a href="#recoverwith">recoverWithを使う</a></li>
+  </ul>
 </nav>
     </aside>
 
-    
-
-<h2 id="環境">環境</h2>
-
+    <h2 id="heading">環境</h2>
 <pre><code>➜  ~  scala
 Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11).
 Type in expressions to have them evaluated.
 Type :help for more information.
-</code></pre>
-
-<h2 id="やりたいこと">やりたいこと</h2>
-
+</code></pre><h2 id="heading-1">やりたいこと</h2>
 <p><code>scala.concurrent.Future</code>で例外が発生して<code>Failure</code>になったとき、</p>
-
 <ul>
-<li>デフォルト値を適用して<code>Success</code>で返したい！<br /></li>
-<li><code>Failure</code>のままでいいんだけど別の例外を投げたい！<br />
-<br /></li>
+<li>デフォルト値を適用して<code>Success</code>で返したい！</li>
+<li><code>Failure</code>のままでいいんだけど別の例外を投げたい！</li>
 </ul>
-
 <p>といったことをしたい。</p>
-
-<h2 id="recoverを使う">recoverを使う</h2>
-
-<p>そんなときのための<code>Future#recover</code>。<br />
+<h2 id="recover">recoverを使う</h2>
+<p>そんなときのための<code>Future#recover</code>。<br>
 <code>Throwable</code>をキャッチして新しい<code>Future</code>を作ってくれる。</p>
-
 <p>シグネチャは以下。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">recover</span><span class="o">[</span><span class="kt">U</span> <span class="k">&gt;:</span> <span class="kt">T</span><span class="o">](</span><span class="n">pf</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">U</span><span class="o">])(</span><span class="k">implicit</span> <span class="n">executor</span><span class="k">:</span> <span class="kt">ExecutionContext</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span></code></pre></div>
-<p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L310-L326">この辺</a>。</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">recover</span><span class="o">[</span><span class="kt">U</span> <span class="k">&gt;:</span> <span class="kt">T</span><span class="o">]</span><span class="o">(</span><span class="n">pf</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">U</span><span class="o">]</span><span class="o">)</span><span class="o">(</span><span class="k">implicit</span> <span class="n">executor</span><span class="k">:</span> <span class="kt">ExecutionContext</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span>
+</code></pre></div><p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L310-L326">この辺</a>。</p>
 <p>下準備</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
 <span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
@@ -109,12 +96,12 @@ Type :help for more information.
 <span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.ExecutionContext.Implicits.global</span>
 <span class="k">import</span> <span class="nn">scala.concurrent.ExecutionContext.Implicits.global</span>
 
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">MyException</span><span class="o">()</span> <span class="k">extends</span> <span class="nc">Exception</span>
-<span class="n">defined</span> <span class="k">class</span> <span class="nc">MyException</span></code></pre></div>
-<p>サンプル</p>
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">MyException</span><span class="o">(</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">Exception</span>
+<span class="n">defined</span> <span class="k">class</span> <span class="nc">MyException</span>
+</code></pre></div><p>サンプル</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="c1">// まずはそのまま実行してみる
 </span><span class="c1"></span><span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">()</span>
+     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span>
 <span class="n">res0</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Nothing</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="nd">@b59d31</span>
 
@@ -124,7 +111,7 @@ Type :help for more information.
 
 <span class="c1">// デフォルト値を適用したい！
 </span><span class="c1"></span><span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">()</span>
+     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span> <span class="n">recover</span> <span class="o">{</span>
      <span class="o">|</span>   <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">IllegalArgumentException</span> <span class="o">=&gt;</span> <span class="mi">0</span>
      <span class="o">|</span> <span class="o">}</span>
@@ -136,9 +123,9 @@ Type :help for more information.
 
 <span class="c1">// 別の例外を投げたい！
 </span><span class="c1"></span><span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">()</span>
+     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span> <span class="n">recover</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">IllegalArgumentException</span> <span class="o">=&gt;</span> <span class="k">throw</span> <span class="nc">MyException</span><span class="o">()</span>
+     <span class="o">|</span>   <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">IllegalArgumentException</span> <span class="o">=&gt;</span> <span class="k">throw</span> <span class="nc">MyException</span><span class="o">(</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span>
 <span class="n">res4</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Nothing</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">3</span><span class="n">bcd05cb</span>
 
@@ -150,25 +137,22 @@ Type :help for more information.
 </span><span class="c1"></span><span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span> <span class="o">{</span>
      <span class="o">|</span>   <span class="mi">10</span>
      <span class="o">|</span> <span class="o">}</span> <span class="n">recover</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">IllegalArgumentException</span> <span class="o">=&gt;</span> <span class="k">throw</span> <span class="nc">MyException</span><span class="o">()</span>
+     <span class="o">|</span>   <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">IllegalArgumentException</span> <span class="o">=&gt;</span> <span class="k">throw</span> <span class="nc">MyException</span><span class="o">(</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span>
 <span class="n">res6</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">56928307</span>
 
 <span class="n">scala</span><span class="o">&gt;</span> <span class="n">res6</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">get</span>
-<span class="n">res7</span><span class="k">:</span> <span class="kt">scala.util.Try</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Success</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span></code></pre></div>
-<h2 id="recoverwithを使う">recoverWithを使う</h2>
-
-<p><code>Future#recoverWith</code>なんていうのもある。<br />
+<span class="n">res7</span><span class="k">:</span> <span class="kt">scala.util.Try</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Success</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+</code></pre></div><h2 id="recoverwith">recoverWithを使う</h2>
+<p><code>Future#recoverWith</code>なんていうのもある。<br>
 <code>Future#recover</code>とは部分関数の型が違って、<code>Throwable</code>を受け取って<code>Future</code>を返すようになる。</p>
-
 <p>シグネチャは以下。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">recoverWith</span><span class="o">[</span><span class="kt">U</span> <span class="k">&gt;:</span> <span class="kt">T</span><span class="o">](</span><span class="n">pf</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]])(</span><span class="k">implicit</span> <span class="n">executor</span><span class="k">:</span> <span class="kt">ExecutionContext</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span></code></pre></div>
-<p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L328-L348">この辺</a>。</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">recoverWith</span><span class="o">[</span><span class="kt">U</span> <span class="k">&gt;:</span> <span class="kt">T</span><span class="o">]</span><span class="o">(</span><span class="n">pf</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span><span class="o">]</span><span class="o">)</span><span class="o">(</span><span class="k">implicit</span> <span class="n">executor</span><span class="k">:</span> <span class="kt">ExecutionContext</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span>
+</code></pre></div><p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L328-L348">この辺</a>。</p>
 <p>サンプル</p>
 <div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="c1">// デフォルト値を適用したい！
 </span><span class="c1"></span><span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">()</span>
+     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span> <span class="n">recoverWith</span> <span class="o">{</span>
      <span class="o">|</span>   <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">IllegalArgumentException</span> <span class="o">=&gt;</span> <span class="nc">Future</span><span class="o">.</span><span class="n">successful</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span>
@@ -179,11 +163,11 @@ Type :help for more information.
 
 
 <span class="c1">// 別の例外を投げたい！
-</span><span class="c1">// これは特に変わらず
+</span><span class="c1"></span><span class="c1">// これは特に変わらず
 </span><span class="c1"></span><span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">()</span>
+     <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">(</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span> <span class="n">recover</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">IllegalArgumentException</span> <span class="o">=&gt;</span> <span class="k">throw</span> <span class="nc">MyException</span><span class="o">()</span>
+     <span class="o">|</span>   <span class="k">case</span> <span class="n">e</span><span class="k">:</span> <span class="kt">IllegalArgumentException</span> <span class="o">=&gt;</span> <span class="k">throw</span> <span class="nc">MyException</span><span class="o">(</span><span class="o">)</span>
      <span class="o">|</span> <span class="o">}</span>
 <span class="n">res10</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Nothing</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">4</span><span class="n">a3e3e8b</span>
 
@@ -200,7 +184,8 @@ Type :help for more information.
 <span class="n">res12</span><span class="k">:</span> <span class="kt">scala.concurrent.Future</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="n">scala</span><span class="o">.</span><span class="n">concurrent</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="nc">Promise$DefaultPromise</span><span class="k">@</span><span class="mi">6</span><span class="n">a1ebcff</span>
 
 <span class="n">scala</span><span class="o">&gt;</span> <span class="n">res12</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">get</span>
-<span class="n">res13</span><span class="k">:</span> <span class="kt">scala.util.Try</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Success</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span></code></pre></div>
+<span class="n">res13</span><span class="k">:</span> <span class="kt">scala.util.Try</span><span class="o">[</span><span class="kt">Int</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Success</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
+</code></pre></div>
 
     <hr/>
     <div id="disqus_thread"></div>

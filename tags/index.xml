@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on kobtea.net</title>
@@ -76,20 +76,20 @@
     </item>
     
     <item>
-      <title>Windows</title>
-      <link>https://kobtea.net/tags/windows/</link>
-      <pubDate>Sun, 20 Dec 2015 18:19:02 +0900</pubDate>
-      
-      <guid>https://kobtea.net/tags/windows/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>hardware</title>
       <link>https://kobtea.net/tags/hardware/</link>
       <pubDate>Sun, 20 Dec 2015 18:19:02 +0900</pubDate>
       
       <guid>https://kobtea.net/tags/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://kobtea.net/tags/windows/</link>
+      <pubDate>Sun, 20 Dec 2015 18:19:02 +0900</pubDate>
+      
+      <guid>https://kobtea.net/tags/windows/</guid>
       <description></description>
     </item>
     

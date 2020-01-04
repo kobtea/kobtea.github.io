@@ -62,130 +62,94 @@
     
     <aside>
         <nav id="TableOfContents">
-<ul>
-<li><a href="#macosぽいキーマップとは">macOSぽいキーマップとは</a></li>
-<li><a href="#環境">環境</a></li>
-<li><a href="#目指すキーマップ">目指すキーマップ</a></li>
-<li><a href="#設定">設定</a>
-<ul>
-<li><a href="#dconf">dconf</a></li>
-<li><a href="#xkeysnail">xkeysnail</a></li>
-<li><a href="#jetbrains-tools">JetBrains Tools</a></li>
-</ul></li>
-<li><a href="#おわりに">おわりに</a></li>
-<li><a href="#余談-xkbを諦めた話">余談: xkbを諦めた話</a>
-<ul>
-<li><a href="#キーマップの変更が非推奨">キーマップの変更が非推奨</a></li>
-<li><a href="#fcitxが設定をロールバックする">Fcitxが設定をロールバックする</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#macos">macOSぽいキーマップとは</a></li>
+    <li><a href="#heading">環境</a></li>
+    <li><a href="#heading-1">目指すキーマップ</a></li>
+    <li><a href="#heading-2">設定</a>
+      <ul>
+        <li><a href="#dconf">dconf</a></li>
+        <li><a href="#xkeysnail">xkeysnail</a></li>
+        <li><a href="#jetbrains-tools">JetBrains Tools</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3">おわりに</a></li>
+    <li><a href="#-xkb">余談: xkbを諦めた話</a>
+      <ul>
+        <li><a href="#heading-4">キーマップの変更が非推奨</a></li>
+        <li><a href="#fcitx">Fcitxが設定をロールバックする</a></li>
+      </ul>
 </nav>
     </aside>
 
-    
-
-<p>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。<br />
+    <p>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。<br>
 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。</p>
-
 <ul>
-<li><a href="https://askubuntu.com/questions/10008/how-to-make-keyboard-work-like-osx-system-wide">shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu</a><br /></li>
-<li><a href="https://superuser.com/questions/426515/efficient-key-bindings-using-both-mac-and-linux">macos - Efficient key bindings using both Mac and Linux - Super User</a><br /></li>
-<li><a href="https://www.reddit.com/r/linux/comments/pv3ts/is_it_possible_to_have_an_os_xlike_key_map_in/">Is it possible to have an OS X-like key map in Gnome (Ubuntu)? : linux</a><br />
-<br /></li>
+<li><a href="https://askubuntu.com/questions/10008/how-to-make-keyboard-work-like-osx-system-wide">shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu</a></li>
+<li><a href="https://superuser.com/questions/426515/efficient-key-bindings-using-both-mac-and-linux">macos - Efficient key bindings using both Mac and Linux - Super User</a></li>
+<li><a href="https://www.reddit.com/r/linux/comments/pv3ts/is_it_possible_to_have_an_os_xlike_key_map_in/">Is it possible to have an OS X-like key map in Gnome (Ubuntu)? : linux</a></li>
 </ul>
-
 <p>自分もその1人だけど、今回だいぶ満足できる環境になったのでメモしておく。</p>
-
-<h2 id="macosぽいキーマップとは">macOSぽいキーマップとは</h2>
-
-<p>macOSでは<code>command</code>と<code>ctrl</code>で役割がちゃんと分離されている。<br />
+<h2 id="macos">macOSぽいキーマップとは</h2>
+<p>macOSでは<code>command</code>と<code>ctrl</code>で役割がちゃんと分離されている。<br>
 <code>command</code>キーを使ったショートカットは、全て選択・カット・ペースト・ウィンドウを閉じる、といったよくある操作が設定されている。一方<code>ctrl</code>キーを使ったショートカットは、行の先頭/末尾に移動する・行を移動する、といったemacsライクな操作が設定されている。この住み分けが非常に使いやすく、矢印キーまで手を伸ばす必要がなくホームポジションを維持しやすい。</p>
-
 <p>macOSのキーマップに慣れてしまうと、他OSで文章入力中に<code>C-a</code>とか<code>C-n</code>を打ったときのストレスが地味に蓄積する。慣れてしまえばOS毎にショートカットは使い分けできるが、文章入力に関してはどうしてもカーソル移動に不便を感じてしまう。それくらいにmacOSのキーマップは素晴らしく、一度経験すると他OSのキーマップに不満を感じてしまうほどに依存性が高い。</p>
-
-<h2 id="環境">環境</h2>
-
-<p>ハードウェアはThinkPad X1 Carbon 2017。<br />
-Ubuntu 18.04でデスクトップ環境はGnomeを使っている。<br />
+<h2 id="heading">環境</h2>
+<p>ハードウェアはThinkPad X1 Carbon 2017。<br>
+Ubuntu 18.04でデスクトップ環境はGnomeを使っている。<br>
 使用しているアプリケーションでキーマップの検討に関わるものは以下。</p>
-
 <ul>
-<li>IntelliJ等JetBrains系IDE<br /></li>
-<li>Fcitx<br />
-<br /></li>
+<li>IntelliJ等JetBrains系IDE</li>
+<li>Fcitx</li>
 </ul>
-
 <p>このあたりかな。</p>
-
-<h2 id="目指すキーマップ">目指すキーマップ</h2>
-
-<p>デフォルトの状態はこんな感じ。<br />
+<h2 id="heading-1">目指すキーマップ</h2>
+<p>デフォルトの状態はこんな感じ。<br>
 ちなみに<code>win</code>キーは<code>super</code>キーとして扱われる(厳密にはこの言い方は正しくないんだろうけど簡単のため)。</p>
-
 <pre><code>[tab]
 [caps]
 [shift]
 [fn][ctrl][super][alt][space][alt]
-</code></pre>
-
-<p>これを以下の様にする。</p>
-
+</code></pre><p>これを以下の様にする。</p>
 <pre><code>[tab]
 [ctrl]
 [shift]
 [fn][caps][meta][alt][space][alt]
-</code></pre>
-
-<p>ただし、JetBrains系ツールでは<code>left_alt</code>と<code>left_meta</code>をswapさせる。</p>
-
+</code></pre><p>ただし、JetBrains系ツールでは<code>left_alt</code>と<code>left_meta</code>をswapさせる。</p>
 <pre><code>[tab]
 [ctrl]
 [shift]
 [fn][caps][alt][meta][space][alt]
-</code></pre>
-
-<p>JetBrainsユーザ向けのポイントとしては</p>
-
+</code></pre><p>JetBrainsユーザ向けのポイントとしては</p>
 <ul>
-<li><code>super</code>でなく<code>meta</code>を使う<br /></li>
-<li><code>left_alt</code>と<code>left_meta</code>をswapする<br />
-<br /></li>
+<li><code>super</code>でなく<code>meta</code>を使う</li>
+<li><code>left_alt</code>と<code>left_meta</code>をswapする</li>
 </ul>
-
 <p>の2点。</p>
-
-<p>JetBrainsツールのキーマップに&rdquo;Mac OS X&rdquo;という設定があり、これが<code>meta</code>を中心に構成されている。いちいち自分でキーマップ設定を作るよりも、既存の設定を使いまわせるほうがお手軽なのでこんなことをしている。<br />
+<p>JetBrainsツールのキーマップに&quot;Mac OS X&quot;という設定があり、これが<code>meta</code>を中心に構成されている。いちいち自分でキーマップ設定を作るよりも、既存の設定を使いまわせるほうがお手軽なのでこんなことをしている。<br>
 JetBrainsユーザではない場合は、この辺考えなくていいのでもっと楽に設定できると思う。</p>
-
-<h2 id="設定">設定</h2>
-
+<h2 id="heading-2">設定</h2>
 <p>やることざっくり書くと。</p>
-
 <ul>
-<li>dconf:<br />
-
+<li>dconf:
 <ul>
-<li><code>super</code>を<code>meta</code>にする<br /></li>
-<li>アプリケーション切り替えのキーマップを追加<br /></li>
-</ul></li>
-<li>xkeysnail:<br />
-
-<ul>
-<li><code>ctrl</code>と<code>caps</code>をswapする<br /></li>
-<li>アプリケーション毎にキーマップの設定をする<br /></li>
-</ul></li>
-<li>JetBrains Tools: キーマップを&rdquo;Mac OS X&rdquo;にする<br />
-<br /></li>
+<li><code>super</code>を<code>meta</code>にする</li>
+<li>アプリケーション切り替えのキーマップを追加</li>
 </ul>
-
+</li>
+<li>xkeysnail:
+<ul>
+<li><code>ctrl</code>と<code>caps</code>をswapする</li>
+<li>アプリケーション毎にキーマップの設定をする</li>
+</ul>
+</li>
+<li>JetBrains Tools: キーマップを&quot;Mac OS X&quot;にする</li>
+</ul>
 <p><a href="https://github.com/mooz/xkeysnail">xkeysnail</a>で頑張るスタイル。</p>
-
 <h3 id="dconf">dconf</h3>
-
 <p><code>super</code>を<code>meta</code>にする。<code>gsettings</code>コマンドでもgnome tweaksでも好きな方で。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gsettings <span class="nb">set</span> org.gnome.desktop.input-sources xkb-options <span class="s2">&#34;[&#39;altwin:meta_win&#39;]&#34;</span></code></pre></div>
-<p>gnome tweaksの場合、&rdquo;Meta is mapped to Win&rdquo;というのが、<code>altwin(meta_win)</code>に対応している。</p>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gsettings <span class="nb">set</span> org.gnome.desktop.input-sources xkb-options <span class="s2">&#34;[&#39;altwin:meta_win&#39;]&#34;</span>
+</code></pre></div><p>gnome tweaksの場合、&ldquo;Meta is mapped to Win&quot;というのが、<code>altwin(meta_win)</code>に対応している。</p>
 <p>自分の環境ではこんな感じになる。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ setxkbmap -print
 xkb_keymap <span class="o">{</span>
@@ -194,10 +158,9 @@ xkb_keymap <span class="o">{</span>
 	xkb_compat    <span class="o">{</span> include <span class="s2">&#34;complete&#34;</span>	<span class="o">}</span><span class="p">;</span>
 	xkb_symbols   <span class="o">{</span> include <span class="s2">&#34;pc+us+us:2+inet(evdev)+altwin(meta_win)&#34;</span>	<span class="o">}</span><span class="p">;</span>
 	xkb_geometry  <span class="o">{</span> include <span class="s2">&#34;pc(pc105)&#34;</span>	<span class="o">}</span><span class="p">;</span>
-<span class="o">}</span><span class="p">;</span></code></pre></div>
-<p>dconf(xkb)側では<code>ctrl</code>と<code>caps</code>のswapは設定しない。xkeysnailを使う場合、そちらでswapの設定を入れないと意図したキーマップにならないため。</p>
-
-<p>次に、アプリケーション切り替えのキーマップを追加する。<br />
+<span class="o">}</span><span class="p">;</span>
+</code></pre></div><p>dconf(xkb)側では<code>ctrl</code>と<code>caps</code>のswapは設定しない。xkeysnailを使う場合、そちらでswapの設定を入れないと意図したキーマップにならないため。</p>
+<p>次に、アプリケーション切り替えのキーマップを追加する。<br>
 これはJetBrainsツール使用時のみ<code>alt</code>が<code>meta</code>になっているため。<code>meta+tab</code>でもアプリケーションを切り替えられるようにする。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gsettings get org.gnome.desktop.wm.keybindings switch-applications
 <span class="o">[</span><span class="s1">&#39;&lt;Alt&gt;Tab&#39;</span><span class="o">]</span>
@@ -205,77 +168,53 @@ $ gsettings <span class="nb">set</span> org.gnome.desktop.wm.keybindings switch-
 
 $ gsettings get org.gnome.desktop.wm.keybindings switch-applications-backward
 <span class="o">[</span><span class="s1">&#39;&lt;Shift&gt;&lt;Alt&gt;Tab&#39;</span><span class="o">]</span>
-$ gsettings <span class="nb">set</span> org.gnome.desktop.wm.keybindings switch-applications-backward <span class="s2">&#34;[&#39;&lt;Shift&gt;&lt;Alt&gt;Tab&#39;, &#39;&lt;Shift&gt;&lt;Super&gt;Tab&#39;]&#34;</span></code></pre></div>
-<h3 id="xkeysnail">xkeysnail</h3>
-
+$ gsettings <span class="nb">set</span> org.gnome.desktop.wm.keybindings switch-applications-backward <span class="s2">&#34;[&#39;&lt;Shift&gt;&lt;Alt&gt;Tab&#39;, &#39;&lt;Shift&gt;&lt;Super&gt;Tab&#39;]&#34;</span>
+</code></pre></div><h3 id="xkeysnail">xkeysnail</h3>
 <p>あんまりよくないけど、sudoで入れちゃう。</p>
-
 <pre><code>$ suso pip3 install xkeysnail
-</code></pre>
-
-<p>ちゃんとするなら<code>xkeysnail</code>ユーザ作った後にそのユーザスペースにインストールする方がお行儀良いかな。</p>
-
+</code></pre><p>ちゃんとするなら<code>xkeysnail</code>ユーザ作った後にそのユーザスペースにインストールする方がお行儀良いかな。</p>
 <p>設定はこちらを参照。</p>
-
 <p><a href="https://github.com/kobtea/dotfiles/blob/c2ae3342f2e895b75bb8d9b8db0bc7e6dd4a89fe/xkeysnail.py">https://github.com/kobtea/dotfiles/blob/c2ae3342f2e895b75bb8d9b8db0bc7e6dd4a89fe/xkeysnail.py</a></p>
-
 <p><code>ctrl</code>と<code>caps</code>をswapしたり、アプリケーションごとにキーマップを設定している。あんまりスマートではないけど、漏れがあったら随時追加していくスタイル。ちなみに<code>FocusProxy</code>というのがJetBrainsツール。</p>
-
-<p>rootで実行は避けたいので、専用ユーザを作成する。<br />
+<p>rootで実行は避けたいので、専用ユーザを作成する。<br>
 参考: <a href="https://qiita.com/miy4/items/dd0e2aec388138f803c5">xkeysnailでキーリマップする - Qiita</a></p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo groupadd uinput
 $ sudo useradd -G input,uinput -M -s /usr/bin/nologin xkeysnail
 $ cat /etc/udev/rules.d/40-udev-xkeysnail.rules
-<span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&#34;uinput&#34;</span>, <span class="nv">GROUP</span><span class="o">=</span><span class="s2">&#34;uinput&#34;</span>
+<span class="nv">KERNEL</span><span class="o">=</span><span class="o">=</span><span class="s2">&#34;uinput&#34;</span>, <span class="nv">GROUP</span><span class="o">=</span><span class="s2">&#34;uinput&#34;</span>
 $ cat /etc/modules-load.d/uinput.conf
-uinput</code></pre></div>
-<p>起動スクリプトを準備して、gnome startup applicationsに登録する。</p>
-
+uinput
+</code></pre></div><p>起動スクリプトを準備して、gnome startup applicationsに登録する。</p>
 <p><a href="https://github.com/kobtea/dotfiles/blob/c2ae3342f2e895b75bb8d9b8db0bc7e6dd4a89fe/xkeysnail.sh">https://github.com/kobtea/dotfiles/blob/c2ae3342f2e895b75bb8d9b8db0bc7e6dd4a89fe/xkeysnail.sh</a></p>
-
 <h3 id="jetbrains-tools">JetBrains Tools</h3>
-
-<p>各ツールのKeymapで&rdquo;Mac OS X&rdquo;を選択するだけ。</p>
-
-<h2 id="おわりに">おわりに</h2>
-
+<p>各ツールのKeymapで&quot;Mac OS X&quot;を選択するだけ。</p>
+<h2 id="heading-3">おわりに</h2>
 <p>今回の設定で自分は満足する環境を手に入れたけど、まぁ面倒くさいこと。macOSのキーマップを完全に再現できるのは結局の所macOSだけなので、ハードウェアに不満がなければMacBook買えばいいと思う。自分はペチペチキーボードがどうにも合わないので、当分ThinkPadとUbuntuにお世話になるつもり。</p>
-
-<h2 id="余談-xkbを諦めた話">余談: xkbを諦めた話</h2>
-
-<p>xkeysnailを使う前はxkbでなんとかできないかなーと試行錯誤していたけど結局無理だった。<br />
+<h2 id="-xkb">余談: xkbを諦めた話</h2>
+<p>xkeysnailを使う前はxkbでなんとかできないかなーと試行錯誤していたけど結局無理だった。<br>
 そんな挫折ポイントを2つほど書き残しておく。</p>
-
-<h3 id="キーマップの変更が非推奨">キーマップの変更が非推奨</h3>
-
+<h3 id="heading-4">キーマップの変更が非推奨</h3>
 <p>参考: <a href="https://wiki.archlinux.jp/index.php/X_KeyBoard_extension">X KeyBoard extension - ArchWiki</a></p>
-
 <p>xkbの設定には2種類ある。</p>
-
 <ul>
-<li>ルールを使う<br />
-
+<li>ルールを使う
 <ul>
-<li><code>/etc</code>以下に設定を記載できるが、custom optionの定義はサポートされていない<br /></li>
-</ul></li>
-<li>キーマップを使う(非推奨)<br />
-
-<ul>
-<li>非推奨のため<code>/etc</code>に書く等カスタマイズする方法は提供されていない<br />
-<br /></li>
-</ul></li>
+<li><code>/etc</code>以下に設定を記載できるが、custom optionの定義はサポートされていない</li>
 </ul>
-
+</li>
+<li>キーマップを使う(非推奨)
+<ul>
+<li>非推奨のため<code>/etc</code>に書く等カスタマイズする方法は提供されていない</li>
+</ul>
+</li>
+</ul>
 <p>悲しいことに<code>altwin(meta_win)</code>などのsymbolを自分で定義する方法は、非推奨なキーマップ編集でのみ可能。そして、そのキーマップは<code>/usr/share/X11/xkb/</code>のみを参照し、<code>$HOME/.xkb</code>といったユーザ固有のパスは提供されていない。symbolをカスタマイズする場合は、強い気持ちで<code>/usr/share/X11/xkb</code>を編集していく必要がある。</p>
-
-<h3 id="fcitxが設定をロールバックする">Fcitxが設定をロールバックする</h3>
-
+<h3 id="fcitx">Fcitxが設定をロールバックする</h3>
 <p>自分は<code>/usr</code>以下をいじりたくなかったので、自前の設定とそれを読み込む以下のスクリプトを作成し、gnome startup applicationsに登録した。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
 </span><span class="cp"></span>sleep <span class="m">10</span>
-<span class="nb">test</span> -f <span class="nv">$HOME</span>/.xkb/keymap/mykbd.xkb <span class="o">&amp;&amp;</span> xkbcomp -I<span class="nv">$HOME</span>/.xkb <span class="nv">$HOME</span>/.xkb/keymap/mykbd.xkb <span class="nv">$DISPLAY</span> <span class="m">2</span>&gt; /dev/null</code></pre></div>
-<p>これで任意のsymbolを適用できるようにはなったが、Fcitxのキー設定を変更すると<code>/usr</code>で定義されたデフォルトの状態へとロールバックされてしまう。</p>
-
+<span class="nb">test</span> -f <span class="nv">$HOME</span>/.xkb/keymap/mykbd.xkb <span class="o">&amp;&amp;</span> xkbcomp -I<span class="nv">$HOME</span>/.xkb <span class="nv">$HOME</span>/.xkb/keymap/mykbd.xkb <span class="nv">$DISPLAY</span> 2&gt; /dev/null
+</code></pre></div><p>これで任意のsymbolを適用できるようにはなったが、Fcitxのキー設定を変更すると<code>/usr</code>で定義されたデフォルトの状態へとロールバックされてしまう。</p>
 <p>ここでxkbは挫折した。もっと柔軟に設定できると嬉しいなー。</p>
 
 

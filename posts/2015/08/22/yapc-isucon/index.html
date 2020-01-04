@@ -62,183 +62,155 @@
     
     <aside>
         <nav id="TableOfContents">
-<ul>
-<li><a href="#時間配分">時間配分</a></li>
-<li><a href="#事前準備">事前準備</a></li>
-<li><a href="#チューニングの進め方">チューニングの進め方</a>
-<ul>
-<li><a href="#1-課題の理解">1. 課題の理解</a></li>
-<li><a href="#2-プロファイリング">2. プロファイリング</a></li>
-<li><a href="#3-サーバ構成の把握">3. サーバ構成の把握</a></li>
-<li><a href="#4-チューニングの方向性を決める">4. チューニングの方向性を決める</a></li>
-</ul></li>
-<li><a href="#チューニングのヒント">チューニングのヒント</a></li>
-</ul>
+  <ul>
+    <li><a href="#heading">時間配分</a></li>
+    <li><a href="#heading-1">事前準備</a></li>
+    <li><a href="#heading-2">チューニングの進め方</a>
+      <ul>
+        <li><a href="#1-">1. 課題の理解</a></li>
+        <li><a href="#2-">2. プロファイリング</a></li>
+        <li><a href="#3-">3. サーバ構成の把握</a></li>
+        <li><a href="#4-">4. チューニングの方向性を決める</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading-3">チューニングのヒント</a></li>
+  </ul>
 </nav>
     </aside>
 
-    
-
-<p>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。<br />
+    <p>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。<br>
 そのうちスライドも公開して頂けるらしいが自分のために。</p>
-
 <p>リンク</p>
-
 <ul>
-<li><a href="http://isucon.net/">[公式]ISUCON</a><br /></li>
-<li><a href="http://yapcasia.org/2015/talk/show/86ebd212-fab3-11e4-8f5a-8ab37d574c3a">[公式]トーク情報</a><br /></li>
-<li><a href="http://togetter.com/li/863801">togetter</a><br />
-<br />
-<br /></li>
+<li><a href="http://isucon.net/">[公式]ISUCON</a></li>
+<li><a href="http://yapcasia.org/2015/talk/show/86ebd212-fab3-11e4-8f5a-8ab37d574c3a">[公式]トーク情報</a></li>
+<li><a href="http://togetter.com/li/863801">togetter</a></li>
 </ul>
-
 <p>スピーカー: @kazeburo さん</p>
-
-<h2 id="時間配分">時間配分</h2>
-
+<h2 id="heading">時間配分</h2>
 <ul>
-<li>競技全体では7時間<br /></li>
-<li>最初の1時間<br />
-
+<li>競技全体では7時間</li>
+<li>最初の1時間
 <ul>
-<li>まだ慌てるような時間じゃない<br /></li>
-<li>課題の理解、プロファイリング・チューニングの方向性を決める<br /></li>
-</ul></li>
-<li>最後の30分<br />
-
-<ul>
-<li>再起動テストだけに使う<br /></li>
-<li>再起動の失敗はよくある<br /></li>
-</ul></li>
-<li>上記を考慮すると、実際の作業時間は5時間ほど<br />
-<br /></li>
+<li>まだ慌てるような時間じゃない</li>
+<li>課題の理解、プロファイリング・チューニングの方向性を決める</li>
 </ul>
-
-<h2 id="事前準備">事前準備</h2>
-
+</li>
+<li>最後の30分
 <ul>
-<li>chatroom<br /></li>
-<li>(private) git repository<br />
-
-<ul>
-<li>当日作業のリビジョン管理<br /></li>
-<li>見えてもいいならpublic<br /></li>
-</ul></li>
-<li>wiki<br />
-
-<ul>
-<li>すぐにペッと貼れて使える<code>my.cnf</code>などの設定ファイルを書いておく<br /></li>
-<li><code>sysctl</code>の設定方法などもググらなくて済むように書いておく<br /></li>
-</ul></li>
-<li>技術選択<br />
-
-<ul>
-<li>言語は何つかおうとか<br /></li>
-</ul></li>
-<li>過去問<br />
-
-<ul>
-<li>過去問大事<br /></li>
-<li><a href="http://isucon.net/archives/40724693.html">ISUCON4 予選問題の解説と講評 ＆ AMIの公開</a><br /></li>
-<li><a href="http://d.hatena.ne.jp/tmatsuu/20150815/1439643715">ISUCON予選突破の鍵は過去問を解くことなので無料で試せるようにした(Vagrant+Ansible)</a><br /></li>
-<li>EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ<br />
-<br /></li>
-</ul></li>
+<li>再起動テストだけに使う</li>
+<li>再起動の失敗はよくある</li>
 </ul>
-
-<h2 id="チューニングの進め方">チューニングの進め方</h2>
-
-<h3 id="1-課題の理解">1. 課題の理解</h3>
-
-<ul>
-<li>レギュレーションや説明をよく読む<br />
-
-<ul>
-<li>スコアの算出方法、失格条件は特に注意<br /></li>
-</ul></li>
-<li>実際に動いているアプリケーションを見てみる<br /></li>
-<li>とりあえずベンチ動かす<br />
-
-<ul>
-<li>チューニングしていなくてもベンチ取る<br /></li>
-<li>ちゃんと動いているかを確認する<br />
-<br /></li>
-</ul></li>
+</li>
+<li>上記を考慮すると、実際の作業時間は5時間ほど</li>
 </ul>
-
-<h3 id="2-プロファイリング">2. プロファイリング</h3>
-
+<h2 id="heading-1">事前準備</h2>
 <ul>
-<li>ログ解析や負荷確認<br /></li>
-<li>ベンチツールの挙動を把握する<br />
-
+<li>chatroom</li>
+<li>(private) git repository
 <ul>
-<li>アクセス頻度の高い所を優先的にチューニングする<br /></li>
-<li>重いけどスコアに関係ない部分は無視できるかも<br /></li>
-<li><a href="https://github.com/tagomoris/Apache-Log-Parser/blob/master/bin/analyze_apache_logs">analyze_apache_logs</a>や<a href="https://github.com/matsuu/kataribe">kataribe</a>を利用する<br /></li>
-</ul></li>
-<li>mysql slow log解析<br />
-
-<ul>
-<li>クエリの実行回数と頻度を見る<br /></li>
-<li><a href="https://www.percona.com/doc/percona-toolkit/2.2/pt-query-digest.html">pt-query-digest</a>を使う<br /></li>
-</ul></li>
-<li>アプリケーションのプロファイリング<br />
-
-<ul>
-<li>straceでシステムコールレベルの解析<br /></li>
-<li>tcpdumpで通信の解析<br /></li>
-</ul></li>
-<li>サーバの負荷<br />
-
-<ul>
-<li>top, iftop, iotop, dstat, &hellip;<br />
-<br /></li>
-</ul></li>
+<li>当日作業のリビジョン管理</li>
+<li>見えてもいいならpublic</li>
 </ul>
-
-<h3 id="3-サーバ構成の把握">3. サーバ構成の把握</h3>
-
+</li>
+<li>wiki
 <ul>
-<li>どんなミドルウェアがいるのか<br /></li>
-<li>どのポートが使われているのか<br />
-<br /></li>
+<li>すぐにペッと貼れて使える<code>my.cnf</code>などの設定ファイルを書いておく</li>
+<li><code>sysctl</code>の設定方法などもググらなくて済むように書いておく</li>
 </ul>
-
-<h3 id="4-チューニングの方向性を決める">4. チューニングの方向性を決める</h3>
-
+</li>
+<li>技術選択
 <ul>
-<li>CPUの気持ちになり、コンテキストスイッチを減らす<br />
-
-<ul>
-<li>不要な参照・通信・プロセスをとにかく減らす<br />
-<br />
-<br /></li>
-</ul></li>
+<li>言語は何つかおうとか</li>
 </ul>
-
-<h2 id="チューニングのヒント">チューニングのヒント</h2>
-
+</li>
+<li>過去問
 <ul>
-<li>重い処理を把握し、減らせないか考える<br />
-
+<li>過去問大事</li>
+<li><a href="http://isucon.net/archives/40724693.html">ISUCON4 予選問題の解説と講評 ＆ AMIの公開</a></li>
+<li><a href="http://d.hatena.ne.jp/tmatsuu/20150815/1439643715">ISUCON予選突破の鍵は過去問を解くことなので無料で試せるようにした(Vagrant+Ansible)</a></li>
+<li>EC2だとお金かかるけど、1日数百円程度なのでYouやっちゃいなよ！みたいな感じ</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-2">チューニングの進め方</h2>
+<h3 id="1-">1. 課題の理解</h3>
 <ul>
-<li>外部プロセス<br /></li>
-<li>HTML Templateレンダリング<br /></li>
-<li>Text, Image変換処理<br /></li>
-<li>DB, Cacheへの接続<br /></li>
-</ul></li>
-<li>B-Treeを意識しながらDBのチューニングをする<br />
-
+<li>レギュレーションや説明をよく読む
 <ul>
-<li>Primary keyとSecondary keyの挙動を把握しておく<br /></li>
-</ul></li>
-<li>不要なデータのioを最小限にする<br />
-
+<li>スコアの算出方法、失格条件は特に注意</li>
+</ul>
+</li>
+<li>実際に動いているアプリケーションを見てみる</li>
+<li>とりあえずベンチ動かす
 <ul>
-<li>すぐに捨てるようなデータはなるべく読み込まない<br /></li>
-<li><a href="http://www.slideshare.net/kazeburo/isucon-summerclass2014action2final">ISUCONで学ぶ Webアプリケーションのパフォーマンス向上のコツ 実践編 完全版</a>のP49あたりの話<br /></li>
-</ul></li>
+<li>チューニングしていなくてもベンチ取る</li>
+<li>ちゃんと動いているかを確認する</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-">2. プロファイリング</h3>
+<ul>
+<li>ログ解析や負荷確認</li>
+<li>ベンチツールの挙動を把握する
+<ul>
+<li>アクセス頻度の高い所を優先的にチューニングする</li>
+<li>重いけどスコアに関係ない部分は無視できるかも</li>
+<li><a href="https://github.com/tagomoris/Apache-Log-Parser/blob/master/bin/analyze_apache_logs">analyze_apache_logs</a>や<a href="https://github.com/matsuu/kataribe">kataribe</a>を利用する</li>
+</ul>
+</li>
+<li>mysql slow log解析
+<ul>
+<li>クエリの実行回数と頻度を見る</li>
+<li><a href="https://www.percona.com/doc/percona-toolkit/2.2/pt-query-digest.html">pt-query-digest</a>を使う</li>
+</ul>
+</li>
+<li>アプリケーションのプロファイリング
+<ul>
+<li>straceでシステムコールレベルの解析</li>
+<li>tcpdumpで通信の解析</li>
+</ul>
+</li>
+<li>サーバの負荷
+<ul>
+<li>top, iftop, iotop, dstat, &hellip;</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-">3. サーバ構成の把握</h3>
+<ul>
+<li>どんなミドルウェアがいるのか</li>
+<li>どのポートが使われているのか</li>
+</ul>
+<h3 id="4-">4. チューニングの方向性を決める</h3>
+<ul>
+<li>CPUの気持ちになり、コンテキストスイッチを減らす
+<ul>
+<li>不要な参照・通信・プロセスをとにかく減らす</li>
+</ul>
+</li>
+</ul>
+<h2 id="heading-3">チューニングのヒント</h2>
+<ul>
+<li>重い処理を把握し、減らせないか考える
+<ul>
+<li>外部プロセス</li>
+<li>HTML Templateレンダリング</li>
+<li>Text, Image変換処理</li>
+<li>DB, Cacheへの接続</li>
+</ul>
+</li>
+<li>B-Treeを意識しながらDBのチューニングをする
+<ul>
+<li>Primary keyとSecondary keyの挙動を把握しておく</li>
+</ul>
+</li>
+<li>不要なデータのioを最小限にする
+<ul>
+<li>すぐに捨てるようなデータはなるべく読み込まない</li>
+<li><a href="http://www.slideshare.net/kazeburo/isucon-summerclass2014action2final">ISUCONで学ぶ Webアプリケーションのパフォーマンス向上のコツ 実践編 完全版</a>のP49あたりの話</li>
+</ul>
+</li>
 </ul>
 
 

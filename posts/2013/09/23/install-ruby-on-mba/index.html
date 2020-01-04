@@ -62,56 +62,54 @@
     
     <aside>
         <nav id="TableOfContents">
-<ul>
-<li><a href="#rbenvのインストール">rbenvのインストール</a></li>
-<li><a href="#rbenv-default-gemsをインストール">rbenv-default-gemsをインストール</a></li>
-<li><a href="#追記">追記</a></li>
-</ul>
+  <ul>
+    <li><a href="#rbenv">rbenvのインストール</a></li>
+    <li><a href="#rbenv-default-gems">rbenv-default-gemsをインストール</a></li>
+    <li><a href="#heading">追記</a></li>
+  </ul>
 </nav>
     </aside>
 
-    
-
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sw_vers
+    <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sw_vers
 ProductName:    Mac OS X
-ProductVersion: <span class="m">10</span>.8.4
-BuildVersion:   12E3067</code></pre></div>
-<p><a href="https://github.com/sstephenson/rbenv">rbenv</a>のreadmeにそってやる。<br />
+ProductVersion: 10.8.4
+BuildVersion:   12E3067
+</code></pre></div><p><a href="https://github.com/sstephenson/rbenv">rbenv</a>のreadmeにそってやる。<br>
 PATHについて解説までしてくれるとかマジ天使。</p>
-
-<h2 id="rbenvのインストール">rbenvのインストール</h2>
+<h2 id="rbenv">rbenvのインストール</h2>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># homebrewを最新の状態に</span>
 $ brew update
 $ brew upgrade
 
 <span class="c1"># rbenvをインストール</span>
 $ brew install <span class="nv">rbenv</span>
-<span class="o">==</span>&gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
+<span class="o">=</span><span class="o">=</span>&gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
 <span class="c1">######################################################################## 100.0%</span>
-<span class="o">==</span>&gt; Caveats
+<span class="o">=</span><span class="o">=</span>&gt; Caveats
 To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.rbenv add to your profile:
   <span class="nb">export</span> <span class="nv">RBENV_ROOT</span><span class="o">=</span>/usr/local/var/rbenv
 
 To <span class="nb">enable</span> shims and autocompletion add to your profile:
   <span class="k">if</span> which rbenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>rbenv init -<span class="k">)</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span>
-<span class="o">==</span>&gt; Summary
+<span class="o">=</span><span class="o">=</span>&gt; Summary
 🍺  /usr/local/Cellar/rbenv/0.4.0: <span class="m">31</span> files, 152K, built in <span class="m">2</span> seconds
 
 <span class="c1"># ruby-buildをインストール</span>
 $ brew install ruby-build
 <span class="c1">######################################################################## 100.0%</span>
-<span class="o">==</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/autoconf/2.69
-<span class="o">==</span>&gt; make install
-🍺  /usr/local/Cellar/autoconf/2.69: <span class="m">69</span> files, <span class="m">2</span>.0M, built in <span class="m">8</span> <span class="nv">seconds</span>
-<span class="o">==</span>&gt; Installing ruby-build
-<span class="o">==</span>&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
+<span class="o">=</span><span class="o">=</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/autoconf/2.69
+<span class="o">=</span><span class="o">=</span>&gt; make install
+🍺  /usr/local/Cellar/autoconf/2.69: <span class="m">69</span> files, 2.0M, built in <span class="m">8</span> <span class="nv">seconds</span>
+<span class="o">=</span><span class="o">=</span>&gt; Installing ruby-build
+<span class="o">=</span><span class="o">=</span>&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
 <span class="c1">######################################################################## 100.0%</span>
-<span class="o">==</span>&gt; ./install.sh
-🍺  /usr/local/Cellar/ruby-build/20130907: <span class="m">83</span> files, 368K, built in <span class="m">2</span> seconds</code></pre></div>
-<p>profileとかrcに以下を追記する。</p>
+<span class="o">=</span><span class="o">=</span>&gt; ./install.sh
+🍺  /usr/local/Cellar/ruby-build/20130907: <span class="m">83</span> files, 368K, built in <span class="m">2</span> seconds
+</code></pre></div><p>profileとかrcに以下を追記する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &#34;$(rbenv init -)&#34;; fi&#39;</span> &gt;&gt; ~/.zprofile
-$ <span class="nb">source</span> ~/.zprofile</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rbenv --help
-rbenv <span class="m">0</span>.4.0
+$ <span class="nb">source</span> ~/.zprofile
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rbenv --help
+rbenv 0.4.0
 Usage: rbenv &lt;command&gt; <span class="o">[</span>&lt;args&gt;<span class="o">]</span>
 
 Some useful rbenv commands are:
@@ -128,19 +126,18 @@ Some useful rbenv commands are:
    whence      List all Ruby versions that contain the given executable
 
 See <span class="sb">`</span>rbenv <span class="nb">help</span> &lt;command&gt;<span class="err">&#39;</span> <span class="k">for</span> information on a specific command.
-For full documentation, see: https://github.com/sstephenson/rbenv#readme</code></pre></div>
-<h2 id="rbenv-default-gemsをインストール">rbenv-default-gemsをインストール</h2>
-
-<p>ついでに<a href="https://github.com/sstephenson/rbenv-default-gems">rbenv-default-gems</a>を入れておく。<br />
+For full documentation, see: https://github.com/sstephenson/rbenv#readme
+</code></pre></div><h2 id="rbenv-default-gems">rbenv-default-gemsをインストール</h2>
+<p>ついでに<a href="https://github.com/sstephenson/rbenv-default-gems">rbenv-default-gems</a>を入れておく。<br>
 <code>rbenv install &lt;version&gt;</code>でRubyをインストールする際に、一緒に必要なgemを入れてくれる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;bundler&#39;</span> &gt;&gt; ~/.rbenv/default-gems</code></pre></div>
-<p>ひとまずbundlerだけでいいかな。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;bundler&#39;</span> &gt;&gt; ~/.rbenv/default-gems
+</code></pre></div><p>ひとまずbundlerだけでいいかな。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 一応homebrewを再度更新</span>
 $ brew update
 $ brew upgrade
 
 <span class="c1"># ruby 2.0をインストール</span>
-$ rbenv install <span class="m">2</span>.0.0-p247
+$ rbenv install 2.0.0-p247
 Downloading openssl-1.0.1e.tar.gz...
 -&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
 Installing openssl-1.0.1e...
@@ -160,15 +157,12 @@ DES_INT used
 RC4 uses uchar
 RC4_CHUNK is unsigned long
 sh: make: <span class="nb">command</span> not found
-/usr/local/bin/ruby-build: line <span class="m">387</span>: make: <span class="nb">command</span> not found</code></pre></div>
-<p>makeコマンドがないぽい。<br />
+/usr/local/bin/ruby-build: line 387: make: <span class="nb">command</span> not found
+</code></pre></div><p>makeコマンドがないぽい。<br>
 command line toolsが入ってなかった。</p>
-
 <pre><code>Xcode -&gt; Preferences -&gt; Downloads -&gt; Command Line Tools -&gt; Install
-</code></pre>
-
-<p>リトライ。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rbenv install <span class="m">2</span>.0.0-p247
+</code></pre><p>リトライ。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rbenv install 2.0.0-p247
 Downloading openssl-1.0.1e.tar.gz...
 -&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
 Installing openssl-1.0.1e...
@@ -181,16 +175,16 @@ Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
 
 ERROR:  While executing gem ... <span class="o">(</span>Gem::FilePermissionError<span class="o">)</span>
     You don<span class="s1">&#39;t have write permissions into the /Library/Ruby/Gems/1.8 directory.
-</span><span class="s1">rbenv: error installing gem `bundler&#39;</span></code></pre></div>
-<p>今度は権限がない。<br />
-<a href="https://github.com/sstephenson/rbenv-default-gems/issues/7">Issue</a>に載っていた。<br />
+</span><span class="s1">rbenv: error installing gem `bundler&#39;</span>
+</code></pre></div><p>今度は権限がない。<br>
+<a href="https://github.com/sstephenson/rbenv-default-gems/issues/7">Issue</a>に載っていた。<br>
 どうやら環境変数に<code>$RBENV_ROOT</code>が必要らしい。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rbenv root</code></pre></div>
-<p>で表示されたパスを.zprofileとかに書く。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rbenv root
+</code></pre></div><p>で表示されたパスを.zprofileとかに書く。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=$HOME/.rbenv&#39;</span> &gt;&gt; ~/.zprofile
-$ <span class="nb">source</span> ~/.zprofile</code></pre></div>
-<p>リトライ。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rbenv install <span class="m">2</span>.0.0-p247
+$ <span class="nb">source</span> ~/.zprofile
+</code></pre></div><p>リトライ。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rbenv install 2.0.0-p247
 rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
 <span class="k">continue</span> with installation? <span class="o">(</span>y/N<span class="o">)</span> y
 Downloading openssl-1.0.1e.tar.gz...
@@ -203,17 +197,17 @@ Downloading ruby-2.0.0-p247.tar.gz...
 Installing ruby-2.0.0-p247...
 Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
 
-Fetching: bundler-1.3.5.gem <span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
+Fetching: bundler-1.3.5.gem <span class="o">(</span>100%<span class="o">)</span>
 Successfully installed bundler-1.3.5
 Parsing documentation <span class="k">for</span> bundler-1.3.5
 Installing ri documentation <span class="k">for</span> bundler-1.3.5
-<span class="m">1</span> gem installed</code></pre></div>
-<p>できた。</p>
+<span class="m">1</span> gem installed
+</code></pre></div><p>できた。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ruby, gemのパスが$RBENV_ROOT以下に向いているか確認</span>
 $ rbenv rehash
 $ rbenv versions
 * system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.rbenv/version<span class="o">)</span>
-  <span class="m">2</span>.0.0-p247
+  2.0.0-p247
 $ which ruby
 /Users/kobtea/.rbenv/shims/ruby
 $ which gem
@@ -221,27 +215,25 @@ $ which gem
 
 <span class="c1"># システムデフォルトのバージョン確認</span>
 $ ruby --version
-ruby <span class="m">1</span>.8.7 <span class="o">(</span><span class="m">2012</span>-02-08 patchlevel <span class="m">358</span><span class="o">)</span> <span class="o">[</span>universal-darwin12.0<span class="o">]</span>
+ruby 1.8.7 <span class="o">(</span>2012-02-08 patchlevel 358<span class="o">)</span> <span class="o">[</span>universal-darwin12.0<span class="o">]</span>
 $ gem --version
-<span class="m">1</span>.3.6
+1.3.6
 
 <span class="c1"># デフォルトのバージョンを2.0に変更</span>
-$ rbenv global <span class="m">2</span>.0.0-p247
+$ rbenv global 2.0.0-p247
 $ rbenv versions
   system
-* <span class="m">2</span>.0.0-p247 <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.rbenv/version<span class="o">)</span>
+* 2.0.0-p247 <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.rbenv/version<span class="o">)</span>
 
 $ ruby --version
-ruby <span class="m">2</span>.0.0p247 <span class="o">(</span><span class="m">2013</span>-06-27 revision <span class="m">41674</span><span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.1<span class="o">]</span>
+ruby 2.0.0p247 <span class="o">(</span>2013-06-27 revision 41674<span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.1<span class="o">]</span>
 $ gem --version
-<span class="m">2</span>.0.3</code></pre></div>
-<p>こんにちはRuby。</p>
-
-<h2 id="追記">追記</h2>
-
-<p>Macデフォルトのreadlineは使わないほうがいいらしい。<br />
-<code>rbenv install</code>する際にはhomebrewで入れたreadline, opensslを指定する。<br />
-指定しない場合、Macだとirbでマルチバイトが使えない。<br />
+2.0.3
+</code></pre></div><p>こんにちはRuby。</p>
+<h2 id="heading">追記</h2>
+<p>Macデフォルトのreadlineは使わないほうがいいらしい。<br>
+<code>rbenv install</code>する際にはhomebrewで入れたreadline, opensslを指定する。<br>
+指定しない場合、Macだとirbでマルチバイトが使えない。<br>
 <a href="/blog/2013/09/22/use-multibytes-on-ruby">irbで日本語が文字化けする</a></p>
 
 

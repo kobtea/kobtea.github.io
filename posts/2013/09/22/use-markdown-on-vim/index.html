@@ -63,42 +63,39 @@
     <a class="cp-tag" href="/tags/markdown">#Markdown</a>
     
     <aside>
-        
+        <nav id="TableOfContents"></nav>
     </aside>
 
     <p>インストールするもの。</p>
-
 <ul>
-<li><a href="https://github.com/plasticboy/vim-markdown">https://github.com/plasticboy/vim-markdown</a><br />
-
+<li><a href="https://github.com/plasticboy/vim-markdown">https://github.com/plasticboy/vim-markdown</a>
 <ul>
-<li>markdown用シンタックスハイライト<br /></li>
-</ul></li>
-<li><a href="https://github.com/kannokanno/previm">https://github.com/kannokanno/previm</a><br />
-
-<ul>
-<li>markdownのプレビュー<br /></li>
-</ul></li>
-<li><a href="https://github.com/tyru/open-browser.vim">https://github.com/tyru/open-browser.vim</a><br />
-
-<ul>
-<li>URIをブラウザで開く<br />
-<br /></li>
-</ul></li>
+<li>markdown用シンタックスハイライト</li>
 </ul>
-
-<p>.vimrcに以下を追記する。<br />
+</li>
+<li><a href="https://github.com/kannokanno/previm">https://github.com/kannokanno/previm</a>
+<ul>
+<li>markdownのプレビュー</li>
+</ul>
+</li>
+<li><a href="https://github.com/tyru/open-browser.vim">https://github.com/tyru/open-browser.vim</a>
+<ul>
+<li>URIをブラウザで開く</li>
+</ul>
+</li>
+</ul>
+<p>.vimrcに以下を追記する。<br>
 NeoBundle使ってるよ。</p>
 <div class="highlight"><pre class="chroma"><code class="language-vim" data-lang="vim"><span class="c">&#34; .vimrc</span><span class="err">
-</span><span class="err">
+</span><span class="err"></span><span class="err">
 </span><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;plasticboy/vim-markdown&#39;</span><span class="err">
 </span><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;kannokanno/previm&#39;</span><span class="err">
-</span><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;tyru/open-browser.vim&#39;</span><span class="c">
-</span><span class="c">
+</span><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;tyru/open-browser.vim&#39;</span><span class="err">
+</span><span class="err"></span><span class="c">
 </span><span class="c">&#34;g:previm_open_cmd   &#34; open-browser使用時は不要</span><span class="err">
-</span><span class="err"></span><span class="nx">autocmd</span> <span class="nx">BufNewFile</span><span class="p">,</span><span class="nx">BufRead</span> *.{<span class="nx">md</span><span class="p">,</span><span class="nx">mdwn</span><span class="p">,</span><span class="nx">mkd</span><span class="p">,</span><span class="nx">mkdn</span><span class="p">,</span><span class="nx">mark</span>*} <span class="nx">setfiletype</span> <span class="nx">mkd</span></code></pre></div>
-<p>mkdファイルを良い感じに編集して、<code>:PrevimOpen</code>するといい感じにプレビューが出る。<br />
-ファイル保存すると、自動で更新される。<br />
+</span><span class="err"></span><span class="nx">autocmd</span> <span class="nx">BufNewFile</span><span class="p">,</span><span class="nx">BufRead</span> *.{<span class="nx">md</span><span class="p">,</span><span class="nx">mdwn</span><span class="p">,</span><span class="nx">mkd</span><span class="p">,</span><span class="nx">mkdn</span><span class="p">,</span><span class="nx">mark</span>*} <span class="nx">setfiletype</span> <span class="nx">mkd</span><span class="err">
+</span></code></pre></div><p>mkdファイルを良い感じに編集して、<code>:PrevimOpen</code>するといい感じにプレビューが出る。<br>
+ファイル保存すると、自動で更新される。<br>
 ステキやん。</p>
 
 
