@@ -65,15 +65,15 @@
     <aside>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#stackdriver">Stackdriverの提供する機能</a></li>
-    <li><a href="#heading">準備</a>
+    <li><a href="#stackdriverの提供する機能">Stackdriverの提供する機能</a></li>
+    <li><a href="#準備">準備</a>
       <ul>
-        <li><a href="#gce-instance">GCE Instanceを作成する</a></li>
-        <li><a href="#stackdriver-agent">Stackdriver Agentを入れる</a></li>
-        <li><a href="#stackdriver-agent-plugin">Stackdriver Agent pluginを入れる</a></li>
+        <li><a href="#gce-instanceを作成する">GCE Instanceを作成する</a></li>
+        <li><a href="#stackdriver-agentを入れる">Stackdriver Agentを入れる</a></li>
+        <li><a href="#stackdriver-agent-pluginを入れる">Stackdriver Agent pluginを入れる</a></li>
       </ul>
     </li>
-    <li><a href="#web-console">Web consoleを眺める</a>
+    <li><a href="#web-consoleを眺める">Web consoleを眺める</a>
       <ul>
         <li><a href="#resources">Resources</a></li>
         <li><a href="#alerting">Alerting</a></li>
@@ -82,14 +82,14 @@
         <li><a href="#logs">Logs</a></li>
       </ul>
     </li>
-    <li><a href="#heading-1">感想</a></li>
+    <li><a href="#感想">感想</a></li>
   </ul>
 </nav>
     </aside>
 
     <p>以前話題になった<a href="https://cloud.google.com/stackdriver/">Stackdriver</a>をbetaのうちに触っておこうそうしよう。
 AWSがCloudWatchなら、GCPはStackdriverや！！</p>
-<h2 id="stackdriver">Stackdriverの提供する機能</h2>
+<h2 id="stackdriverの提供する機能">Stackdriverの提供する機能</h2>
 <p><a href="https://cloud.google.com/stackdriver/docs/">Document</a>を眺めてみると機能はこんな感じ。
 正直下3つはまだ触れていないのでわりと適当。</p>
 <ul>
@@ -125,12 +125,12 @@ AWSがCloudWatchなら、GCPはStackdriverや！！</p>
 </li>
 </ul>
 <p>今回はMonitoringを眺めてみようかな。</p>
-<h2 id="heading">準備</h2>
+<h2 id="準備">準備</h2>
 <p>監視対象のInstanceを立ち上げて、Agentを仕込むぞー。<br>
 今回はOpengrokサーバを構築してみようかな。<br>
 前段にNginx、バックエンドにTomcatがいる構成。<br>
 Stackdriverに関係ない部分はざっくり省略していく(それでも長ったらしくなってしまったあばば)。</p>
-<h3 id="gce-instance">GCE Instanceを作成する</h3>
+<h3 id="gce-instanceを作成する">GCE Instanceを作成する</h3>
 <p>参考:</p>
 <ul>
 <li><a href="https://cloud.google.com/monitoring/agent/install-agent#authorizing">Installing the Monitoring Agent - Authorizing the monitoring agent</a></li>
@@ -147,7 +147,7 @@ https://www.googleapis.com/auth/logging.write
 https://www.googleapis.com/auth/monitoring
 https://www.googleapis.com/auth/service.management
 https://www.googleapis.com/auth/servicecontrol
-</code></pre></div><h3 id="stackdriver-agent">Stackdriver Agentを入れる</h3>
+</code></pre></div><h3 id="stackdriver-agentを入れる">Stackdriver Agentを入れる</h3>
 <p>参考:</p>
 <ul>
 <li><a href="https://cloud.google.com/monitoring/agent/install-agent">Installing the Monitoring Agent</a></li>
@@ -233,11 +233,11 @@ Extractor status:  Extractor sample data:
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div><p>(∩´∀｀)∩ﾜｰｲ</p>
-<h3 id="stackdriver-agent-plugin">Stackdriver Agent pluginを入れる</h3>
+<h3 id="stackdriver-agent-pluginを入れる">Stackdriver Agent pluginを入れる</h3>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/#supported_plugins">Monitoring Agent Configuration - Supported plugins</a></p>
 <p>Agent pluginは標準で色々なミドルウェアに対応している。
 標準pluginはconfigを書くだけで楽ちん。</p>
-<h4 id="nginx-plugin">Nginx pluginを入れる</h4>
+<h4 id="nginx-pluginを入れる">Nginx pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/nginx">Nginx Plugin</a></p>
 <p>Nginx pluginは<code>stub_status</code>の値を計測する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># stub_statusの準備</span>
@@ -275,7 +275,7 @@ kobtea@opengrok:~$ sudo service stackdriver-agent restart
 <span class="c1"># ...</span>
 Created new plugin context.
                                                                                                                                                                                           <span class="o">[</span> OK <span class="o">]</span>
-</code></pre></div><h4 id="tomcat-plugin">Tomcat pluginを入れる</h4>
+</code></pre></div><h4 id="tomcat-pluginを入れる">Tomcat pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/tomcat">Tomcat Plugin</a></p>
 <p>Tomcat, JVM系はJMXを使って計測する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JMXの設定</span>
@@ -286,7 +286,7 @@ kobtea@opengrok:~$ diff -u /etc/default/tomcat7<span class="o">{</span>.orig,<sp
  <span class="c1"># exactly one CPU chip that contains one or two cores, you should also add</span>
  <span class="c1"># the &#34;-XX:+CMSIncrementalMode&#34; option.</span>
  <span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">&#34;-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC&#34;</span>
-+JAVA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">JAVA_OPTS</span><span class="si">}</span><span class="s2"> -Djava.security.egd=file:/dev/./urandom</span><span class="s2">&#34;</span>
++JAVA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">JAVA_OPTS</span><span class="si">}</span><span class="s2"> -Djava.security.egd=file:/dev/./urandom&#34;</span>
 
  <span class="c1"># To enable remote debugging uncomment the following line.</span>
  <span class="c1"># You will then be able to use a java debugger on port 8000.</span>
@@ -294,10 +294,10 @@ kobtea@opengrok:~$ diff -u /etc/default/tomcat7<span class="o">{</span>.orig,<sp
  <span class="c1"># NOTE: authbind works only with IPv4.  Do not enable it when using IPv6.</span>
  <span class="c1"># (yes/no, default: no)</span>
  <span class="c1">#AUTHBIND=no</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote</span><span class="s2">&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.port=9012</span><span class="s2">&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.ssl=false</span><span class="s2">&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.authenticate=false</span><span class="s2">&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.port=9012&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.ssl=false&#34;</span>
++CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.authenticate=false&#34;</span>
 
 kobtea@opengrok:~$ sudo service tomcat7 restart
 
@@ -307,7 +307,7 @@ kobtea@opengrok:~$ sudo service stackdriver-agent restart
 <span class="c1"># ...</span>
 Created new plugin context.
                                                                                                                                                                                           <span class="o">[</span> OK <span class="o">]</span>
-</code></pre></div><h2 id="web-console">Web consoleを眺める</h2>
+</code></pre></div><h2 id="web-consoleを眺める">Web consoleを眺める</h2>
 <p>IndexページはAlert周りの機能が多い印象、すぐに反応したいしね。</p>
 
 
@@ -429,7 +429,7 @@ CPUとか積み上げグラフにしたいな&hellip;</p>
     
 </figure>
 
-<h2 id="heading-1">感想</h2>
+<h2 id="感想">感想</h2>
 <p>まだまだbetaだなーと強く思ったのはグラフかな。折れ線グラフ以外も欲しい。<br>
 Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
 複数メトリック組み合わせて四則演算できるとかなり嬉しいけど、これはagent pluginで頑張れと言われても仕方ないかなぁ。</p>

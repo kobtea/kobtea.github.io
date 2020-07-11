@@ -65,9 +65,9 @@
     <aside>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#octopress">Octopress側の設定</a></li>
-    <li><a href="#dns">DNS設定</a></li>
-    <li><a href="#heading">確認</a></li>
+    <li><a href="#octopress側の設定">Octopress側の設定</a></li>
+    <li><a href="#dns設定">DNS設定</a></li>
+    <li><a href="#確認">確認</a></li>
   </ul>
 </nav>
     </aside>
@@ -79,12 +79,12 @@
 </ul>
 <p>リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。</p>
 <blockquote>
-<p>Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn't build successfully, you'll receive a notification from GitHub.</p>
+<p>Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&rsquo;t build successfully, you&rsquo;ll receive a notification from GitHub.</p>
 <p><a href="https://help.github.com/articles/setting-up-a-custom-domain-with-pages">Setting up a custom domain with Pages - Github Pages</a></p>
 </blockquote>
 <p>反映されるのに10分くらい待ってね、とのこと。<br>
 反映されたらメールをくれるらしい。</p>
-<h2 id="octopress">Octopress側の設定</h2>
+<h2 id="octopress側の設定">Octopress側の設定</h2>
 <p><code>source/CNAME</code>に割り当てるドメインを設定する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;blog.kobtea.net&#39;</span> &gt;&gt; source/CNAME
 </code></pre></div><p><code>_config.yml</code>のurlも変更しておく。</p>
@@ -93,13 +93,13 @@
 </span><span class="w"></span><span class="c">#      Main Configs       #</span><span class="w">
 </span><span class="w"></span><span class="c"># ----------------------- #</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span>url<span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//blog.kobtea.net<span class="w">
-</span><span class="w"></span>title<span class="p">:</span><span class="w"> </span>blog.kobtea.net<span class="w">
-</span><span class="w"></span>subtitle<span class="p">:</span><span class="w"> </span>咳をしても情弱<span class="w">
-</span><span class="w"></span>author<span class="p">:</span><span class="w"> </span>kobtea<span class="w">
-</span><span class="w"></span>simple_search<span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//google.com/search<span class="w">
-</span><span class="w"></span>description<span class="p">:</span><span class="w">
-</span></code></pre></div><h2 id="dns">DNS設定</h2>
+</span><span class="w"></span><span class="k">url</span><span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//blog.kobtea.net<span class="w">
+</span><span class="w"></span><span class="k">title</span><span class="p">:</span><span class="w"> </span>blog.kobtea.net<span class="w">
+</span><span class="w"></span><span class="k">subtitle</span><span class="p">:</span><span class="w"> </span>咳をしても情弱<span class="w">
+</span><span class="w"></span><span class="k">author</span><span class="p">:</span><span class="w"> </span>kobtea<span class="w">
+</span><span class="w"></span><span class="k">simple_search</span><span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//google.com/search<span class="w">
+</span><span class="w"></span><span class="k">description</span><span class="p">:</span><span class="w">
+</span></code></pre></div><h2 id="dns設定">DNS設定</h2>
 <p>お名前.comを使っているので、そちらで設定する。</p>
 <pre><code>ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
 </code></pre>
@@ -112,7 +112,7 @@
 
 <p>で適用。<br>
 適用されたよメールが届くまでのんびり待つ。</p>
-<h2 id="heading">確認</h2>
+<h2 id="確認">確認</h2>
 <p>digしてみる。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ dig +noall +answer blog.kobtea.net CNAME
 blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.

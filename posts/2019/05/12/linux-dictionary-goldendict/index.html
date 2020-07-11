@@ -63,16 +63,16 @@
     <aside>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">環境</a></li>
+    <li><a href="#環境">環境</a></li>
     <li><a href="#goldendict">GoldenDict</a></li>
-    <li><a href="#albert">Albert連携</a></li>
+    <li><a href="#albert連携">Albert連携</a></li>
   </ul>
 </nav>
     </aside>
 
     <p>linuxでもお手軽に辞書を引きたい。<br>
 探した所<a href="http://goldendict.org/">GoldenDict</a>というのがあったのでこれ使う。</p>
-<h2 id="heading">環境</h2>
+<h2 id="環境">環境</h2>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ lsb_release -d
 Description:    Ubuntu 18.04.2 LTS
 
@@ -91,7 +91,7 @@ ii  goldendict                                 1.5.0~rc2+git20170908+ds-1       
 <p>dotfile下に辞書用のディレクトリを作って、&ldquo;辞書ファイルを検索するパス&quot;に登録しておく。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mkdir <span class="nv">$HOME</span>/.goldendict/dict
 $ mv <span class="nv">$HOME</span>/Downloads/Babylon-* <span class="nv">$HOME</span>/.goldendict/dict
-</code></pre></div><h2 id="albert">Albert連携</h2>
+</code></pre></div><h2 id="albert連携">Albert連携</h2>
 <p>ランチャにalbertを使っているので、これで気軽に検索できると嬉しい。</p>
 <p>albertはpythonで拡張が書ける。<br>
 <a href="https://albertlauncher.github.io/docs/extensions/python/">Albert - Python extension</a></p>

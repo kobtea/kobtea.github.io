@@ -163,12 +163,12 @@ $ git branch
   master
 </code></pre></div><p>ひとまずコメントアウトしておく。</p>
 <p>source: <code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">ul</span><span class="p"></span><span class="p">&gt;</span>
-	<span class="p">&lt;</span><span class="nt">li</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/&#34;</span><span class="p"></span><span class="p">&gt;</span>Blog<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">li</span><span class="p">&gt;</span>
-	<span class="c">&lt;!--</span><span class="c">li&gt;&lt;a href=&#34;{{ root_url }}/about&#34;&gt;About&lt;/a&gt;&lt;/li</span><span class="c">--&gt;</span>
-	<span class="c">&lt;!--</span><span class="c">li&gt;&lt;a href=&#34;{{ root_url }}/portfolio&#34;&gt;Portfolio&lt;/a&gt;&lt;/li</span><span class="c">--&gt;</span>
-	<span class="p">&lt;</span><span class="nt">li</span><span class="p"></span><span class="p">&gt;</span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/archives&#34;</span><span class="p"></span><span class="p">&gt;</span>Archive<span class="p">&lt;</span><span class="p">/</span><span class="nt">a</span><span class="p">&gt;</span><span class="p">&lt;</span><span class="p">/</span><span class="nt">li</span><span class="p">&gt;</span>
-<span class="p">&lt;</span><span class="p">/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/&#34;</span><span class="p">&gt;</span>Blog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/about&#34;&gt;About&lt;/a&gt;&lt;/li--&gt;</span>
+	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/portfolio&#34;&gt;Portfolio&lt;/a&gt;&lt;/li--&gt;</span>
+	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/archives&#34;</span><span class="p">&gt;</span>Archive<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </code></pre></div><p>再度テーマをインストールする。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
 <span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>

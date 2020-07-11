@@ -63,16 +63,16 @@
     <aside>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#web-site-look--feel-option">Web Site Look & Feel Option</a></li>
-    <li><a href="#heading">スキン</a>
+    <li><a href="#web-site-look--feel-option">Web Site Look &amp; Feel Option</a></li>
+    <li><a href="#スキン">スキン</a>
       <ul>
         <li><a href="#default">default</a></li>
         <li><a href="#offwhite">offwhite</a></li>
         <li><a href="#polished">polished</a></li>
       </ul>
     </li>
-    <li><a href="#heading-1">変更方法</a></li>
-    <li><a href="#heading-2">フルカスタマイズする場合</a></li>
+    <li><a href="#変更方法">変更方法</a></li>
+    <li><a href="#フルカスタマイズする場合">フルカスタマイズする場合</a></li>
   </ul>
 </nav>
     </aside>
@@ -88,7 +88,7 @@
 <p><a href="https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281">https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281</a></p>
 <p>標準で<code>default</code>, <code>offwhite</code>, <code>polished</code>の3種類のスキンが提供されている。
 「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。</p>
-<h2 id="heading">スキン</h2>
+<h2 id="スキン">スキン</h2>
 <p>どれもJavaを感じるデザイン。</p>
 <h3 id="default">default</h3>
 <p>
@@ -141,7 +141,7 @@
     
 </figure>
 </p>
-<h2 id="heading-1">変更方法</h2>
+<h2 id="変更方法">変更方法</h2>
 <p>スキンを変更するには、<code>update</code>, <code>index</code>する際に<code>SKIN</code>を指定しておけばいいだけ。</p>
 <p>tomcatに既にdeployしている場合。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
@@ -153,7 +153,7 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
 </code></pre></div><p>毎回環境変数指定するの面倒くさいので、<code>OpenGrok</code> wrapper scriptを直にいじっちゃってもいいかも。
 あるいは環境変数書き込んだrcファイル作って、<code>source</code>するとか。</p>
 <p>スキンを変えても反映されない場合は、ブラウザキャッシュを消すこと。</p>
-<h2 id="heading-2">フルカスタマイズする場合</h2>
+<h2 id="フルカスタマイズする場合">フルカスタマイズする場合</h2>
 <p>標準のスキンを参考に自作すればいいんじゃないかな。</p>
 <ul>
 <li><a href="https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/default">default</a></li>

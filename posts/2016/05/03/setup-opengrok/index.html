@@ -63,10 +63,10 @@
     <aside>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">環境</a></li>
+    <li><a href="#環境">環境</a></li>
     <li><a href="#setup">Setup</a></li>
-    <li><a href="#heading-1">リファレンス用のコードを配置</a></li>
-    <li><a href="#heading-2">運用</a></li>
+    <li><a href="#リファレンス用のコードを配置">リファレンス用のコードを配置</a></li>
+    <li><a href="#運用">運用</a></li>
   </ul>
 </nav>
     </aside>
@@ -78,7 +78,7 @@
 <li><a href="https://github.com/OpenGrok/OpenGrok/wiki/How-to-install-OpenGrok">How to install OpenGrok</a></li>
 <li><a href="https://github.com/OpenGrok/OpenGrok/wiki/Supported-Languages-and-Formats">Supported Languages and Formats</a></li>
 </ul>
-<h2 id="heading">環境</h2>
+<h2 id="環境">環境</h2>
 <ul>
 <li>Ubuntu 14.04.4</li>
 <li>OpenJDK 1.7.0_95</li>
@@ -122,7 +122,7 @@ OpenGrok should be available on &lt;HOST&gt;:&lt;PORT&gt;/source
   where HOST and PORT are configured in Tomcat.
 
 </code></pre></div><p><code>http://&lt;HOST&gt;:8080/source/</code>にアクセスしてOpenGrokが表示されたら喜ぶ。</p>
-<h2 id="heading-1">リファレンス用のコードを配置</h2>
+<h2 id="リファレンス用のコードを配置">リファレンス用のコードを配置</h2>
 <p>リファレンス用のコードとは、リポジトリやプロジェクトと同義。<br>
 OpenGrokではプロジェクトという単語を使っている。</p>
 <p>このときに最低限知っておいたほうがいい環境変数。</p>
@@ -220,12 +220,12 @@ indexを張ったあとの<code>OPENGROK_INSTANCE_BASE</code>を眺めてみる�
 loggerを変更する場合は、<code>opengrok-0.12.1.5/doc/logging.properties</code>を参考にして<code>OPENGROK_LOGGER_CONFIG_PATH</code>に渡せば良い。</p>
 <p>etcにはコマンドパスなどのマッピング情報が記載されている。</p>
 <div class="highlight"><pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;void</span> <span class="na">method=</span><span class="s">&#34;put&#34;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;string</span><span class="nt">&gt;</span>org.opensolaris.opengrok.history.GitRepository<span class="nt">&lt;/string&gt;</span>
- <span class="nt">&lt;string</span><span class="nt">&gt;</span>/usr/bin/git<span class="nt">&lt;/string&gt;</span>
+ <span class="nt">&lt;string&gt;</span>org.opensolaris.opengrok.history.GitRepository<span class="nt">&lt;/string&gt;</span>
+ <span class="nt">&lt;string&gt;</span>/usr/bin/git<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/void&gt;</span>
 </code></pre></div><p>こんな感じ。<br>
 indexコマンドで生成しているわけだし、これは手でいじらないほうが良さそう。</p>
-<h2 id="heading-2">運用</h2>
+<h2 id="運用">運用</h2>
 <p>基本的な運用自体は、読みたいソースを見つけて<code>SRC_ROOT</code>へ逐一追加、indexの貼り直しかな。<br>
 常にupstreamを追い続けたいのであれば、リポジトリ更新、index貼り直しをするcronでも作れば良い。<br>
 サイトのデザインを変えたい場合はどうすればいいんだろう&hellip;folkして魔改造するのかな&hellip;それはつらそうだな&hellip;</p>

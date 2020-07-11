@@ -63,9 +63,9 @@
     <aside>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#rbenv">rbenvのインストール</a></li>
-    <li><a href="#rbenv-default-gems">rbenv-default-gemsをインストール</a></li>
-    <li><a href="#heading">追記</a></li>
+    <li><a href="#rbenvのインストール">rbenvのインストール</a></li>
+    <li><a href="#rbenv-default-gemsをインストール">rbenv-default-gemsをインストール</a></li>
+    <li><a href="#追記">追記</a></li>
   </ul>
 </nav>
     </aside>
@@ -76,34 +76,34 @@ ProductVersion: 10.8.4
 BuildVersion:   12E3067
 </code></pre></div><p><a href="https://github.com/sstephenson/rbenv">rbenv</a>のreadmeにそってやる。<br>
 PATHについて解説までしてくれるとかマジ天使。</p>
-<h2 id="rbenv">rbenvのインストール</h2>
+<h2 id="rbenvのインストール">rbenvのインストール</h2>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># homebrewを最新の状態に</span>
 $ brew update
 $ brew upgrade
 
 <span class="c1"># rbenvをインストール</span>
 $ brew install <span class="nv">rbenv</span>
-<span class="o">=</span><span class="o">=</span>&gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
+<span class="o">==</span>&gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
 <span class="c1">######################################################################## 100.0%</span>
-<span class="o">=</span><span class="o">=</span>&gt; Caveats
+<span class="o">==</span>&gt; Caveats
 To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.rbenv add to your profile:
   <span class="nb">export</span> <span class="nv">RBENV_ROOT</span><span class="o">=</span>/usr/local/var/rbenv
 
 To <span class="nb">enable</span> shims and autocompletion add to your profile:
   <span class="k">if</span> which rbenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>rbenv init -<span class="k">)</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span>
-<span class="o">=</span><span class="o">=</span>&gt; Summary
+<span class="o">==</span>&gt; Summary
 🍺  /usr/local/Cellar/rbenv/0.4.0: <span class="m">31</span> files, 152K, built in <span class="m">2</span> seconds
 
 <span class="c1"># ruby-buildをインストール</span>
 $ brew install ruby-build
 <span class="c1">######################################################################## 100.0%</span>
-<span class="o">=</span><span class="o">=</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/autoconf/2.69
-<span class="o">=</span><span class="o">=</span>&gt; make install
+<span class="o">==</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/autoconf/2.69
+<span class="o">==</span>&gt; make install
 🍺  /usr/local/Cellar/autoconf/2.69: <span class="m">69</span> files, 2.0M, built in <span class="m">8</span> <span class="nv">seconds</span>
-<span class="o">=</span><span class="o">=</span>&gt; Installing ruby-build
-<span class="o">=</span><span class="o">=</span>&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
+<span class="o">==</span>&gt; Installing ruby-build
+<span class="o">==</span>&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
 <span class="c1">######################################################################## 100.0%</span>
-<span class="o">=</span><span class="o">=</span>&gt; ./install.sh
+<span class="o">==</span>&gt; ./install.sh
 🍺  /usr/local/Cellar/ruby-build/20130907: <span class="m">83</span> files, 368K, built in <span class="m">2</span> seconds
 </code></pre></div><p>profileとかrcに以下を追記する。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &#34;$(rbenv init -)&#34;; fi&#39;</span> &gt;&gt; ~/.zprofile
@@ -127,7 +127,7 @@ Some useful rbenv commands are:
 
 See <span class="sb">`</span>rbenv <span class="nb">help</span> &lt;command&gt;<span class="err">&#39;</span> <span class="k">for</span> information on a specific command.
 For full documentation, see: https://github.com/sstephenson/rbenv#readme
-</code></pre></div><h2 id="rbenv-default-gems">rbenv-default-gemsをインストール</h2>
+</code></pre></div><h2 id="rbenv-default-gemsをインストール">rbenv-default-gemsをインストール</h2>
 <p>ついでに<a href="https://github.com/sstephenson/rbenv-default-gems">rbenv-default-gems</a>を入れておく。<br>
 <code>rbenv install &lt;version&gt;</code>でRubyをインストールする際に、一緒に必要なgemを入れてくれる。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;bundler&#39;</span> &gt;&gt; ~/.rbenv/default-gems
@@ -230,7 +230,7 @@ ruby 2.0.0p247 <span class="o">(</span>2013-06-27 revision 41674<span class="o">
 $ gem --version
 2.0.3
 </code></pre></div><p>こんにちはRuby。</p>
-<h2 id="heading">追記</h2>
+<h2 id="追記">追記</h2>
 <p>Macデフォルトのreadlineは使わないほうがいいらしい。<br>
 <code>rbenv install</code>する際にはhomebrewで入れたreadline, opensslを指定する。<br>
 指定しない場合、Macだとirbでマルチバイトが使えない。<br>

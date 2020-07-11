@@ -207,7 +207,7 @@
       <pubDate>Sun, 22 Sep 2013 23:38:00 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
-      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby --version ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ irb --version irb 0.9.6(09/06/30) &amp;lsquo;日本語&#39;と打とうとするとこうなる。 $ irb irb(main):001:0&amp;gt; p &amp;#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&amp;#39; &amp;#34;&amp;#34; =&amp;gt; &amp;#34;&amp;#34; 色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこと。 irb で日本</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby --version ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ irb --version irb 0.9.6(09/06/30) &amp;lsquo;日本語&amp;rsquo;と打とうとするとこうなる。 $ irb irb(main):001:0&amp;gt; p &amp;#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&amp;#39; &amp;#34;&amp;#34; =&amp;gt; &amp;#34;&amp;#34; 色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこ</description>
     </item>
     
     <item>

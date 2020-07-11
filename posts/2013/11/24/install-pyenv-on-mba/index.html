@@ -81,15 +81,15 @@ $ brew install pyenv
 Warning: Your Xcode <span class="o">(</span>4.6.3<span class="o">)</span> is outdated
 Please update to Xcode 5.0.1.
 Xcode can be updated from the App Store.
-<span class="o">=</span><span class="o">=</span>&gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
+<span class="o">==</span>&gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
 <span class="c1">######################################################################## 100.0%</span>
-<span class="o">=</span><span class="o">=</span>&gt; Caveats
+<span class="o">==</span>&gt; Caveats
 To <span class="nb">enable</span> shims and autocompletion add to your profile:
   <span class="k">if</span> which pyenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span>
 
 To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.pyenv add to your profile:
   <span class="nb">export</span> <span class="nv">PYENV_ROOT</span><span class="o">=</span>/usr/local/opt/pyenv
-<span class="o">=</span><span class="o">=</span>&gt; Summary
+<span class="o">==</span>&gt; Summary
 🍺  /usr/local/Cellar/pyenv/20131116: <span class="m">199</span> files, 2.2M, built in <span class="m">5</span> seconds
 </code></pre></div><p><code>.profile</code>とかに以下を追記する。</p>
 <pre><code>if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi

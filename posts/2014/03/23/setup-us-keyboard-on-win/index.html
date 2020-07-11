@@ -63,14 +63,14 @@
     <aside>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#heading">環境</a></li>
-    <li><a href="#heading-1">やりたいこと</a></li>
-    <li><a href="#heading-2">作業ログ</a>
+    <li><a href="#環境">環境</a></li>
+    <li><a href="#やりたいこと">やりたいこと</a></li>
+    <li><a href="#作業ログ">作業ログ</a>
       <ul>
-        <li><a href="#heading-3">英語キーボードとして認識させる</a></li>
-        <li><a href="#key">Keyの配置を変える</a></li>
-        <li><a href="#heading-4">変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる</a></li>
-        <li><a href="#ime">IMEに変換/無変換の設定をする</a></li>
+        <li><a href="#英語キーボードとして認識させる">英語キーボードとして認識させる</a></li>
+        <li><a href="#keyの配置を変える">Keyの配置を変える</a></li>
+        <li><a href="#変換無変換キー候補に絶対使わないであろうショートカットを割り当てる">変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる</a></li>
+        <li><a href="#imeに変換無変換の設定をする">IMEに変換/無変換の設定をする</a></li>
       </ul>
     </li>
     <li><a href="#appendix">Appendix</a></li>
@@ -80,20 +80,20 @@
 
     <p>macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。<br>
 RealforceのUS配列を購入してwinに設定したこと。</p>
-<h2 id="heading">環境</h2>
+<h2 id="環境">環境</h2>
 <ul>
 <li>OS: Windows7 64bit</li>
 <li>Keyboard: Realforce 87U</li>
 </ul>
 <p>デスクトップ環境なので今回考えてないけど、ノートの場合は本体の配列がーとか考慮してあげないといけない。</p>
-<h2 id="heading-1">やりたいこと</h2>
+<h2 id="やりたいこと">やりたいこと</h2>
 <ul>
 <li>[alt] [無変換] [space] [変換] [alt] みたいな配列にしたい</li>
 <li>[半角/全角] みたいなトグルは使いたくない</li>
 </ul>
 <p>macのJIS配列みたいな感じ。</p>
-<h2 id="heading-2">作業ログ</h2>
-<h3 id="heading-3">英語キーボードとして認識させる</h3>
+<h2 id="作業ログ">作業ログ</h2>
+<h3 id="英語キーボードとして認識させる">英語キーボードとして認識させる</h3>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># レジストリエディタを起動</span>
 Start &gt; regedit
 <span class="c1"># キーボード設定を開く</span>
@@ -108,7 +108,7 @@ OverrideKeyboardSubtype     : <span class="m">2</span>             -&gt; <span c
 スキャンコードか何かで識別していたのかなぁ&hellip;<br>
 JIS, US両方あるうちにログインパスワード再設定をしておく。</p>
 <p>参考 : <a href="http://blog.heiichi.com/?eid=792239">Windows 7 のキーボードを英語キーボードに変更 - へーいち の うぇぶろぐ</a></p>
-<h3 id="key">Keyの配置を変える</h3>
+<h3 id="keyの配置を変える">Keyの配置を変える</h3>
 <p><a href="http://www.forest.impress.co.jp/library/software/changekey/">Change Key</a>を使う。<br>
 winキーとaltキーをスワップさせる。</p>
 <pre><code>Left  Win  -&gt; Left  Alt
@@ -117,7 +117,7 @@ Right Alt  -&gt; Right Win
 Right Win  -&gt; Right Alt
 </code></pre><p>登録して再起動する。<br>
 Winキーを潰して代わりに変換/無変換キーにするよ。</p>
-<h3 id="heading-4">変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる</h3>
+<h3 id="変換無変換キー候補に絶対使わないであろうショートカットを割り当てる">変換/無変換キー候補に絶対使わないであろうショートカットを割り当てる</h3>
 <p>US配列だと変換/無変換というキーは存在しない。<br>
 ので、絶対使わないであろうショートカットをWinキーに割り当てて、IMEにはそのショートカットに変換/無変換をフックさせる。</p>
 <p><a href="http://www.autohotkey.com/">AutoHotkey</a>を使う。<br>
@@ -130,7 +130,7 @@ RWin::^+Right
 LWin::^+Left
 </code></pre></div><p>編集したら<code>Reload This Script</code>。<br>
 Win起動時に一緒に起動して欲しいなら、スタートアップフォルダの中に<code>AutoHotkey.ahk</code>のショートカットを置いておく。</p>
-<h3 id="ime">IMEに変換/無変換の設定をする</h3>
+<h3 id="imeに変換無変換の設定をする">IMEに変換/無変換の設定をする</h3>
 <p>google IMEを使っているのでその設定方法を。</p>
 <div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># キー設定を開く</span>
 google IME &gt; プロパティ &gt; 一般 &gt; キー設定 &gt; キー設定の選択 &gt; 編集
