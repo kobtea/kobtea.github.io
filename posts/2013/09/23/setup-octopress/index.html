@@ -320,24 +320,24 @@ $ git branch -a
 </span><span class="w"></span><span class="c">#      Main Configs       #</span><span class="w">
 </span><span class="w"></span><span class="c"># ----------------------- #</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">url</span><span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//kobtea.github.io<span class="w">
-</span><span class="w"></span><span class="k">title</span><span class="p">:</span><span class="w"> </span>blog.kobtea.net<span class="w">
-</span><span class="w"></span><span class="k">subtitle</span><span class="p">:</span><span class="w"> </span>咳をしても情弱<span class="w">
-</span><span class="w"></span><span class="k">author</span><span class="p">:</span><span class="w"> </span>kobtea<span class="w">
-</span><span class="w"></span><span class="k">simple_search</span><span class="p">:</span><span class="w"> </span>http<span class="p">:</span>//google.com/search<span class="w">
-</span><span class="w"></span><span class="k">description</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://kobtea.github.io</span><span class="w">
+</span><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">blog.kobtea.net</span><span class="w">
+</span><span class="w"></span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="l">咳をしても情弱</span><span class="w">
+</span><span class="w"></span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">kobtea</span><span class="w">
+</span><span class="w"></span><span class="nt">simple_search</span><span class="p">:</span><span class="w"> </span><span class="l">http://google.com/search</span><span class="w">
+</span><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c"># Default date format is &#34;ordinal&#34; (resulting in &#34;July 22nd 2007&#34;)</span><span class="w">
 </span><span class="w"></span><span class="c"># You can customize the format as defined in</span><span class="w">
 </span><span class="w"></span><span class="c"># http://www.ruby-doc.org/core-1.9.2/Time.html#method-i-strftime</span><span class="w">
 </span><span class="w"></span><span class="c"># Additionally, %o will give you the ordinal representation of the day</span><span class="w">
-</span><span class="w"></span><span class="k">date_format</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ordinal&#34;</span><span class="w">
+</span><span class="w"></span><span class="nt">date_format</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;ordinal&#34;</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c"># RSS / Email (optional) subscription links (change if using something like Feedburner)</span><span class="w">
-</span><span class="w"></span><span class="k">subscribe_rss</span><span class="p">:</span><span class="w"> </span>/atom.xml<span class="w">
-</span><span class="w"></span><span class="k">subscribe_email</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="nt">subscribe_rss</span><span class="p">:</span><span class="w"> </span><span class="l">/atom.xml</span><span class="w">
+</span><span class="w"></span><span class="nt">subscribe_email</span><span class="p">:</span><span class="w">
 </span><span class="w"></span><span class="c"># RSS feeds can list your email address if you like</span><span class="w">
-</span><span class="w"></span><span class="k">email</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="nt">email</span><span class="p">:</span><span class="w">
 </span></code></pre></div><p>Jekyll &amp; Plugins, 3rd Party Settingsはまた今度いじる。</p>
 <h2 id="投稿">投稿！</h2>
 <p>参考 : <a href="http://octopress.org/docs/blogging/">Blogging Basics</a></p>
@@ -351,22 +351,22 @@ mkdir -p source/_posts
 Creating new post: source/_posts/2013-09-22-hello-octopress.markdown
 </code></pre></div><p>markdownファイルが生成されるので編集する。</p>
 <p>source: <code>source/_posts/2013-09-22-hello-octopress.markdown</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml">---<span class="w">
-</span><span class="w"></span><span class="k">layout</span><span class="p">:</span><span class="w"> </span>post<span class="w">
-</span><span class="w"></span><span class="k">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;こんにちはOctopress&#34;</span><span class="w">
-</span><span class="w"></span><span class="k">date</span><span class="p">:</span><span class="w"> </span><span class="ld">2013-09-22</span><span class="w"> </span><span class="m">22</span><span class="p">:</span><span class="m">44</span><span class="w">
-</span><span class="w"></span><span class="k">comments</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w"></span><span class="k">categories</span><span class="p">:</span><span class="w">
-</span><span class="w"></span>---<span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nn">---</span><span class="w">
+</span><span class="w"></span><span class="nt">layout</span><span class="p">:</span><span class="w"> </span><span class="l">post</span><span class="w">
+</span><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;こんにちはOctopress&#34;</span><span class="w">
+</span><span class="w"></span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="ld">2013-09-22</span><span class="w"> </span><span class="m">22</span><span class="p">:</span><span class="m">44</span><span class="w">
+</span><span class="w"></span><span class="nt">comments</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w"></span><span class="nt">categories</span><span class="p">:</span><span class="w">
+</span><span class="w"></span><span class="nn">---</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span>よろしくタコ出版！<span class="w">
+</span><span class="w"></span><span class="l">よろしくタコ出版！</span><span class="w">
 </span></code></pre></div><p><code>---</code>で囲まれたブロック内にはポストのメタデータを書く。<br>
 カテゴリを複数登録するには2通りある。</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">categories</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>hoge<span class="p">,</span><span class="w"> </span>huga<span class="p">]</span><span class="w">
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="nt">categories</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">hoge, huga]</span><span class="w">
 </span><span class="w">
-</span><span class="w"></span><span class="k">categories</span><span class="p">:</span><span class="w">
-</span><span class="w"></span>- hoge<span class="w">
-</span><span class="w"></span>- huga<span class="w">
+</span><span class="w"></span><span class="nt">categories</span><span class="p">:</span><span class="w">
+</span><span class="w"></span>- <span class="l">hoge</span><span class="w">
+</span><span class="w"></span>- <span class="l">huga</span><span class="w">
 </span></code></pre></div><p>書けたら、generateしてdeploy!</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rake generate
 $ rake deploy

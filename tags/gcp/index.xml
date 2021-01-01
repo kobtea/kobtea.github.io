@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2013-2019, kobtea</copyright>
-    <lastBuildDate>Sat, 04 Jun 2016 21:59:34 +0900</lastBuildDate>
-    
-	<atom:link href="https://kobtea.net/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 04 Jun 2016 21:59:34 +0900</lastBuildDate><atom:link href="https://kobtea.net/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Google Stackdriverを眺める</title>
       <link>https://kobtea.net/posts/2016/06/04/try-google-stackdriver/</link>

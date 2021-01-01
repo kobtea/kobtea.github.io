@@ -178,17 +178,17 @@ Restarting services
 <p><code>stack-install.sh</code>を見てみると<code>--write-gcm</code>オプションなんてものは書かれていない。な、なんだってー<br>
 代わりにproject metadataを使う方法は書いてある&hellip;どういうことや&hellip;</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install and start the Google monitoring agent.</span>
-#
+<span class="c1">#</span>
 <span class="c1"># Usage:</span>
-#
+<span class="c1">#</span>
 <span class="c1">#   curl -O https://.../stack-install.sh</span>
 <span class="c1">#   bash stack-install.sh [--api-key=...]</span>
-#
+<span class="c1">#</span>
 <span class="c1"># The API key can be omitted on a GCE instance if it is available in the</span>
 <span class="c1"># project metadata as the value of &#34;stackdriver-agent-key&#34;.</span>
-#
+<span class="c1">#</span>
 <span class="c1"># This script does the following:</span>
-#
+<span class="c1">#</span>
 <span class="c1">#   1. Configure the required apt-get or yum repository.</span>
 <span class="c1">#   2. Install the agent package.</span>
 <span class="c1">#   3. Invoke /opt/stackdriver/stack-config to do the following:</span>
