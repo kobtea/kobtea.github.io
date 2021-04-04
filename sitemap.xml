@@ -1,234 +1,142 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://kobtea.net/</loc>
     <lastmod>2019-05-12T17:01:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/linux/</loc>
     <lastmod>2019-05-12T17:01:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/</loc>
     <lastmod>2019-05-12T17:01:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/</loc>
     <lastmod>2019-05-12T17:01:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/</loc>
     <lastmod>2019-05-12T17:01:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/</loc>
     <lastmod>2019-05-03T19:47:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/gadget/</loc>
     <lastmod>2019-02-03T17:25:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/</loc>
     <lastmod>2019-02-03T17:25:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2019/01/11/tex-yoda-2/</loc>
     <lastmod>2019-01-11T15:24:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/book/</loc>
     <lastmod>2017-12-04T21:26:45+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2017/12/04/google-sre-book/</loc>
     <lastmod>2017-12-04T21:26:45+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/gcp/</loc>
     <lastmod>2016-06-04T21:59:34+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2016/06/04/try-google-stackdriver/</loc>
     <lastmod>2016-06-04T21:59:34+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/monitoring/</loc>
     <lastmod>2016-06-04T21:59:34+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/opengrok/</loc>
     <lastmod>2016-05-14T04:21:57+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/</loc>
     <lastmod>2016-05-14T04:21:57+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2016/05/03/setup-opengrok/</loc>
     <lastmod>2016-05-03T03:16:25+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2015/12/31/inventory-of-2015/</loc>
     <lastmod>2015-12-31T22:00:48+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/misc/</loc>
     <lastmod>2015-12-31T22:00:48+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/hardware/</loc>
     <lastmod>2015-12-20T18:19:02+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2015/12/20/rsync-instead-raid/</loc>
     <lastmod>2015-12-20T18:19:02+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/windows/</loc>
     <lastmod>2015-12-20T18:19:02+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2015/09/15/sbt-console-quit/</loc>
     <lastmod>2015-09-15T22:10:55+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/scala/</loc>
     <lastmod>2015-09-15T22:10:55+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/conference/</loc>
     <lastmod>2015-08-23T22:59:36+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2015/08/23/yapc/</loc>
     <lastmod>2015-08-23T22:59:36+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2015/08/22/yapc-isucon/</loc>
     <lastmod>2015-08-22T19:19:11+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2015/05/18/scala-future-recover/</loc>
     <lastmod>2015-05-18T20:56:24+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/java/</loc>
     <lastmod>2015-03-28T01:23:54+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2015/03/28/java-printflagsfinal/</loc>
     <lastmod>2015-03-28T01:23:54+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</loc>
     <lastmod>2014-03-23T00:43:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</loc>
     <lastmod>2013-11-24T17:31:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/python/</loc>
     <lastmod>2013-11-24T17:31:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/github-pages/</loc>
     <lastmod>2013-09-23T21:39:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</loc>
     <lastmod>2013-09-23T21:39:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/octopress/</loc>
     <lastmod>2013-09-23T21:39:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2013/09/23/change-octopress-theme/</loc>
     <lastmod>2013-09-23T14:56:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2013/09/23/setup-octopress/</loc>
     <lastmod>2013-09-23T01:54:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</loc>
     <lastmod>2013-09-23T00:17:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/ruby/</loc>
     <lastmod>2013-09-23T00:17:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</loc>
     <lastmod>2013-09-22T23:38:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/markdown/</loc>
     <lastmod>2013-09-22T22:57:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/tags/vim/</loc>
     <lastmod>2013-09-22T22:57:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</loc>
     <lastmod>2013-09-22T22:57:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/posts/2013/09/22/hello-octopress/</loc>
     <lastmod>2013-09-22T22:44:00+09:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://kobtea.net/groups/</loc>
   </url>
-  
 </urlset>
