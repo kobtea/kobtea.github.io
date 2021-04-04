@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>gadget - kobtea.net</title>
+    <title>Jsonnetで複数ファイルへ出力する - kobtea.net</title>
     <meta name="description" content="eternal jojaku">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="gadget"/>
-<meta name="twitter:description" content="eternal jojaku"/>
+<meta name="twitter:title" content="Jsonnetで複数ファイルへ出力する"/>
+<meta name="twitter:description" content="jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &#39;a.json&#39;: { a: &#39;foo&#39;, }, &#39;b.json&#39;: { b: &#39;bar&#39;, }, } こんな感じで {&quot;FILE_NAME&quot;: &quot;OBJECT&quot;, ...} として記述するだけ。 -m オプションでファイル"/>
 
 
     <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
@@ -46,39 +46,121 @@
 
 <section id="wrapper" class="section">
     <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">Jsonnetで複数ファイルへ出力する</h1>
+        </div>
+    </section>
 
-<section class="hero">
-    <div class="hero-body">
-        <h1 class="title is-capitalized">
-            
-            tags /
-            
-            gadget
-        </h1>
-    </div>
-</section>
+    <i class="fas fa-calendar-alt"></i>
+    <time>2021-04-04 19:03</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
+    
+    <aside>
+        <nav id="TableOfContents"></nav>
+    </aside>
 
+    <p>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。<br>
+<a href="https://jsonnet.org/learning/getting_started.html">Getting Started</a>に思いっきり書いてあった。</p>
+<pre><code>$ cat multi.jsonnet
+{
+  'a.json': {
+    a: 'foo',
+  },
+  'b.json': {
+    b: 'bar',
+  },
+}
+</code></pre><p>こんな感じで <code>{&quot;FILE_NAME&quot;: &quot;OBJECT&quot;, ...}</code> として記述するだけ。<br>
+<code>-m</code> オプションでファイルごとに出力される。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ jsonnet -h <span class="p">|</span> grep -A1 multi
+  -m / --multi &lt;dir&gt;         Write multiple files to the directory, list files
+                             on stdout
 
-<p class="is-size-4"><a href="https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/">TEX Yoda IIをmacOSで使った</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2019-02-03 17:25</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
+$ jsonnet -m dist multi.jsonnet
+dist/a.json
+dist/b.json
 
-<a class="cp-tag" href="/tags/gadget">#gadget</a>
+$ cat dist/a.json
+<span class="o">{</span>
+   <span class="s2">&#34;a&#34;</span>: <span class="s2">&#34;foo&#34;</span>
+<span class="o">}</span>
 
-<br><br>
+$ cat dist/b.json
+<span class="o">{</span>
+   <span class="s2">&#34;b&#34;</span>: <span class="s2">&#34;bar&#34;</span>
+<span class="o">}</span>
+</code></pre></div><p>ちなみに <code>-c</code> オプションでtargetディレクトリが存在しない場合は作成してくれる。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ jsonnet -h <span class="p">|</span> grep -A1 cre
+  -c / --create-output-dirs  Automatically creates all parent directories <span class="k">for</span>
+                             files
 
-<p class="is-size-4"><a href="https://kobtea.net/posts/2019/01/11/tex-yoda-2/">TEX Yoda IIを作る</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2019-01-11 15:24</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
+$ jsonnet -c -m dist multi.jsonnet
+dist/a.json
+dist/b.json
+</code></pre></div><p>サブディレクトリも作成できる。</p>
+<pre><code>$ cat multi.jsonnet
+{
+  'a.json': {
+    a: 'foo',
+  },
+  'b/bb.json': {
+    b: 'bar',
+  },
+  'c/cc/ccc.json': {
+    c: 'baz',
+  },
+}
 
-<a class="cp-tag" href="/tags/gadget">#gadget</a>
+$ jsonnet -c -m dist multi.jsonnet
+dist/a.json
+dist/b/bb.json
+dist/c/cc/ccc.json
 
-<br><br>
+$ tree dist
+dist
+├── a.json
+├── b
+│   └── bb.json
+└── c
+    └── cc
+        └── ccc.json
 
+3 directories, 3 files
+</code></pre>
+
+    <hr/>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/"><i class="fas fa-caret-left"></i>&nbsp;Linuxで辞書引き環境作る</a>
+    
+    
+</nav>
 
     </div>
 </section>
