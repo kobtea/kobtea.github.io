@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>ArgoCDでHelmfileを使う - kobtea.net</title>
+    <meta name="description" content="eternal jojaku">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ArgoCDでHelmfileを使う"/>
+<meta name="twitter:description" content="ArgoCD上でHelmfileを使いたい。 概要 ArgoCDはmanifestの管理方法として下記ツールをサポートしている。 Kustomize Helm Ksonnet Yaml/Json/Jsonnet Helmfileなどその他ツールを利用したい場合、Config Management Pl"/>
+
+
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.net/js/main.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net/"><strong>kobtea.net</strong></a>
+
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
+                    
+                    <a class="navbar-item" href="/posts">archives</a>
+                    
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="wrapper" class="section">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">ArgoCDでHelmfileを使う</h1>
+        </div>
+    </section>
+
+    <i class="fas fa-calendar-alt"></i>
+    <time>2021-05-08 09:25</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/cicd">#cicd</a>
+    
+    <a class="cp-tag" href="/tags/kubernetes">#kubernetes</a>
+    
+    <aside>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概要">概要</a></li>
+    <li><a href="#やってみる">やってみる</a>
+      <ul>
+        <li><a href="#volume-mounts方式">Volume Mounts方式</a></li>
+        <li><a href="#byoi方式">BYOI方式</a></li>
+      </ul>
+    </li>
+    <li><a href="#どちらの方式が良いか">どちらの方式が良いか</a></li>
+    <li><a href="#refs">Refs</a></li>
+  </ul>
+</nav>
+    </aside>
+
+    <p>ArgoCD上でHelmfileを使いたい。</p>
+<h2 id="概要">概要</h2>
+<p>ArgoCDはmanifestの管理方法として下記ツールをサポートしている。</p>
+<ul>
+<li>Kustomize</li>
+<li>Helm</li>
+<li>Ksonnet</li>
+<li>Yaml/Json/Jsonnet</li>
+</ul>
+<p>Helmfileなどその他ツールを利用したい場合、Config Management Pluginにより実現する。<br>
+Config Management Pluginとは、manifest生成のために任意のバイナリやスクリプトを実行する機能のこと。<br>
+設定方法は2ステップ。</p>
+<p>Step1: argocd-repo-serverに該当ツールを配置する<br>
+manifest生成はargocd-repo-server上で行われるため、argocd-repo-serverのmanifestを変更する。<br>
+ツールの配置方法は2通り。</p>
+<ol>
+<li>Volume Mounts経由でツールを配置する</li>
+<li>BYOI (Build Your Own Image) を作成する</li>
+</ol>
+<p>Step2: pluginとして登録する<br>
+argocd-cmにプラグイン情報を追記する。</p>
+<h2 id="やってみる">やってみる</h2>
+<p>Volume Mounts方式とBYOI方式両方やってみる。<br>
+サンプルリポジトリはこちら、node-exporterを仕込むだけ。<br>
+<a href="https://github.com/kobtea/manifests/tree/298ea914831eac84f2e82c08a75566921efab1d2/helmfile/node-exporter">https://github.com/kobtea/manifests/tree/298ea914831eac84f2e82c08a75566921efab1d2/helmfile/node-exporter</a></p>
+<h3 id="volume-mounts方式">Volume Mounts方式</h3>
+<p>pluginを公開している方がいるので感謝しながら使う。<br>
+<a href="https://github.com/travisghansen/argo-cd-helmfile">https://github.com/travisghansen/argo-cd-helmfile</a><br>
+init containerでwrapper scriptとhelmfileをdownloadして、empty dir経由でargocd-repo-server podへ渡している。<br>
+manifestはREADMEをなぞるだけ。</p>
+<p>diffは主要な箇所のみ記載する。</p>
+<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">$ kubectl -n argocd diff -f argocd-repo-server.vm.yaml
+<span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-097769223/apps.v1.Deployment.argocd.argocd-repo-server /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-018972858/apps.v1.Deployment.argocd.argocd-repo-server
+</span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-097769223/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 08:44:57.000000000 +0900
+</span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-018972858/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 08:44:57.000000000 +0900
+</span><span class="gi"></span># ...
+<span class="gu">@@ -302,7 +334,31 @@
+</span><span class="gu"></span>           name: gpg-keyring
+         - mountPath: /app/config/reposerver/tls
+           name: argocd-repo-server-tls
+<span class="gi">+        - mountPath: /usr/local/bin/argo-cd-helmfile.sh
+</span><span class="gi">+          name: custom-tools
+</span><span class="gi">+          subPath: argo-cd-helmfile.sh
+</span><span class="gi">+        - mountPath: /usr/local/bin/helmfile
+</span><span class="gi">+          name: custom-tools
+</span><span class="gi">+          subPath: helmfile
+</span><span class="gi"></span>       dnsPolicy: ClusterFirst
+<span class="gi">+      initContainers:
+</span><span class="gi">+      - args:
+</span><span class="gi">+        - wget -qO /custom-tools/argo-cd-helmfile.sh https://raw.githubusercontent.com/travisghansen/argo-cd-helmfile/master/src/argo-cd-helmfile.sh
+</span><span class="gi">+          &amp;&amp; chmod +x /custom-tools/argo-cd-helmfile.sh &amp;&amp; wget -qO /custom-tools/helmfile
+</span><span class="gi">+          https://github.com/roboll/helmfile/releases/download/v0.138.7/helmfile_linux_amd64
+</span><span class="gi">+          &amp;&amp; chmod +x /custom-tools/helmfile
+</span><span class="gi">+        command:
+</span><span class="gi">+        - sh
+</span><span class="gi">+        - -c
+</span><span class="gi">+        image: alpine:3.8
+</span><span class="gi">+        imagePullPolicy: IfNotPresent
+</span><span class="gi">+        name: download-tools
+</span><span class="gi">+        resources: {}
+</span><span class="gi">+        terminationMessagePath: /dev/termination-log
+</span><span class="gi">+        terminationMessagePolicy: File
+</span><span class="gi">+        volumeMounts:
+</span><span class="gi">+        - mountPath: /custom-tools
+</span><span class="gi">+          name: custom-tools
+</span><span class="gi"></span>       restartPolicy: Always
+       schedulerName: default-scheduler
+       securityContext: {}
+<span class="gu">@@ -334,6 +390,8 @@
+</span><span class="gu"></span>             path: ca.crt
+           optional: true
+           secretName: argocd-repo-server-tls
+<span class="gi">+      - emptyDir: {}
+</span><span class="gi">+        name: custom-tools
+</span><span class="gi"></span> status:
+   availableReplicas: 1
+   conditions:
+
+
+$ kubectl -n argocd diff -f argocd-cm.vm.yaml | pbcopy
+<span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-351111144/v1.ConfigMap.argocd.argocd-cm /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-911034919/v1.ConfigMap.argocd.argocd-cm
+</span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-351111144/v1.ConfigMap.argocd.argocd-cm	2021-05-08 08:49:16.000000000 +0900
+</span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-911034919/v1.ConfigMap.argocd.argocd-cm	2021-05-08 08:49:17.000000000 +0900
+</span><span class="gi"></span><span class="gu">@@ -1,4 +1,13 @@
+</span><span class="gu"></span> apiVersion: v1
+<span class="gi">+data:
+</span><span class="gi">+  configManagementPlugins: |
+</span><span class="gi">+    - name: helmfile
+</span><span class="gi">+      init:                          # Optional command to initialize application source directory
+</span><span class="gi">+        command: [&#34;argo-cd-helmfile.sh&#34;]
+</span><span class="gi">+        args: [&#34;init&#34;]
+</span><span class="gi">+      generate:                      # Command to generate manifests YAML
+</span><span class="gi">+        command: [&#34;argo-cd-helmfile.sh&#34;]
+</span><span class="gi">+        args: [&#34;generate&#34;]
+</span><span class="gi"></span> kind: ConfigMap
+ metadata:
+   annotations:
+# ...
+</code></pre></div><p>appを作成してみる。</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ argocd app create node-exporter <span class="se">\
+</span><span class="se"></span>--repo https://github.com/kobtea/manifests.git <span class="se">\
+</span><span class="se"></span>--path helmfile/node-exporter <span class="se">\
+</span><span class="se"></span>--dest-namespace default <span class="se">\
+</span><span class="se"></span>--dest-server https://kubernetes.default.svc <span class="se">\
+</span><span class="se"></span>--config-management-plugin helmfile
+$ argocd app sync node-exporter
+$ argocd app list
+NAME           CLUSTER                         NAMESPACE  PROJECT  STATUS  HEALTH   SYNCPOLICY  CONDITIONS  REPO                                                 PATH                    TARGET
+guestbook      https://kubernetes.default.svc  default    default  Synced  Healthy  &lt;none&gt;      &lt;none&gt;      https://github.com/argoproj/argocd-example-apps.git  guestbook               HEAD
+node-exporter  https://kubernetes.default.svc  default    default  Synced  Healthy  &lt;none&gt;      &lt;none&gt;      https://github.com/kobtea/manifests.git              helmfile/node-exporter
+</code></pre></div><h3 id="byoi方式">BYOI方式</h3>
+<p>ChatworkがまさにそれなDocker Imageを公開しているので感謝しながら使う。<br>
+<a href="https://hub.docker.com/r/chatwork/argocd-helmfile">https://hub.docker.com/r/chatwork/argocd-helmfile</a><br>
+こちらもREADMEをなぞるだけ。</p>
+<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">$ kubectl -n argocd diff -f argocd-repo-server.byoi.yaml
+<span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-612236984/apps.v1.Deployment.argocd.argocd-repo-server /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-918040247/apps.v1.Deployment.argocd.argocd-repo-server
+</span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-612236984/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 09:10:24.000000000 +0900
+</span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-918040247/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 09:10:24.000000000 +0900
+</span><span class="gi"></span># ...
+<span class="gu">@@ -255,7 +244,7 @@
+</span><span class="gu"></span>         - argocd-repo-server
+         - --redis
+         - argocd-redis:6379
+<span class="gd">-        image: quay.io/argoproj/argocd:v2.0.0
+</span><span class="gd"></span><span class="gi">+        image: chatwork/argocd-helmfile:2.0.0-0.138.7
+</span><span class="gi"></span>         imagePullPolicy: Always
+         livenessProbe:
+           failureThreshold: 3
+
+
+$ kubectl -n argocd diff -f argocd-cm.byoi.yaml
+<span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-606675094/v1.ConfigMap.argocd.argocd-cm /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-293576957/v1.ConfigMap.argocd.argocd-cm
+</span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-606675094/v1.ConfigMap.argocd.argocd-cm	2021-05-08 09:12:08.000000000 +0900
+</span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-293576957/v1.ConfigMap.argocd.argocd-cm	2021-05-08 09:12:08.000000000 +0900
+</span><span class="gi"></span><span class="gu">@@ -1,4 +1,10 @@
+</span><span class="gu"></span> apiVersion: v1
+<span class="gi">+data:
+</span><span class="gi">+  configManagementPlugins: |
+</span><span class="gi">+    - name: helmfile
+</span><span class="gi">+      generate:
+</span><span class="gi">+        command: [&#34;/bin/sh&#34;, &#34;-c&#34;]
+</span><span class="gi">+        args: [&#34;helmfile --namespace $ARGOCD_APP_NAMESPACE template | sed -e &#39;1,/---/d&#39; | sed -e &#39;s|apiregistration.k8s.io/v1beta1|apiregistration.k8s.io/v1|g&#39;&#34;]
+</span><span class="gi"></span> kind: ConfigMap
+ metadata:
+   annotations:
+# ...
+</code></pre></div><p>appの作成方法は同じなので省略。</p>
+<h2 id="どちらの方式が良いか">どちらの方式が良いか</h2>
+<p>どちらの方式もOSSで公開されていて、お手軽に導入できるのでどちらでも良い。<br>
+ArgoCD自体をHelmで管理するにしても、Valuesはどちらのケースも想定されている。<br>
+<a href="https://github.com/argoproj/argo-helm/blob/master/charts/argo-cd/values.yaml">https://github.com/argoproj/argo-helm/blob/master/charts/argo-cd/values.yaml</a></p>
+<p>BYOI方式使いつつ、他のツールも仕込みたくなったらVolume Mounts方式にすればいいんじゃないかな。</p>
+<h2 id="refs">Refs</h2>
+<ul>
+<li><a href="https://github.com/argoproj/argo-cd/issues/2143">helmfile support · Issue #2143 · argoproj/argo-cd</a></li>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/user-guide/config-management-plugins/">Plugins - Argo CD - Declarative GitOps CD for Kubernetes</a></li>
+<li><a href="https://argo-cd.readthedocs.io/en/stable/operator-manual/custom_tools/">Custom Tooling - Argo CD - Declarative GitOps CD for Kubernetes</a></li>
+</ul>
+
+
+    <hr/>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/"><i class="fas fa-caret-left"></i>&nbsp;Jsonnetで複数ファイルへ出力する</a>
+    
+    
+</nav>
+
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
+                <div class="media">
+                    <figure class="media-left">
+                        <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
+                        <br/>
+                        <small>カピバラと暮らしたい</small>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-8">
+                
+                
+                
+                
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
+                
+                <a class="cp-tag" href="/tags/book">#book</a>
+                
+                <a class="cp-tag" href="/tags/cicd">#cicd</a>
+                
+                <a class="cp-tag" href="/tags/conference">#conference</a>
+                
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
+                
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
+                
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
+                
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
+                
+                <a class="cp-tag" href="/tags/java">#java</a>
+                
+                <a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
+                
+                <a class="cp-tag" href="/tags/kubernetes">#kubernetes</a>
+                
+                <a class="cp-tag" href="/tags/linux">#linux</a>
+                
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
+                
+                <a class="cp-tag" href="/tags/misc">#misc</a>
+                
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+                
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
+                
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
+                
+            </div>
+        </div>
+        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+    </div>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-60750954-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>

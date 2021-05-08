@@ -87,10 +87,10 @@
 </nav>
     </aside>
 
-    <p>以前話題になった<a href="https://cloud.google.com/stackdriver/">Stackdriver</a>をbetaのうちに触っておこうそうしよう。
+    <p>以前話題になった<a href="https://cloud.google.com/stackdriver/">Stackdriver</a>をbetaのうちに触っておこうそうしよう。<br>
 AWSがCloudWatchなら、GCPはStackdriverや！！</p>
 <h2 id="stackdriverの提供する機能">Stackdriverの提供する機能</h2>
-<p><a href="https://cloud.google.com/stackdriver/docs/">Document</a>を眺めてみると機能はこんな感じ。
+<p><a href="https://cloud.google.com/stackdriver/docs/">Document</a>を眺めてみると機能はこんな感じ。<br>
 正直下3つはまだ触れていないのでわりと適当。</p>
 <ul>
 <li>Monitoring
@@ -194,8 +194,8 @@ Restarting services
 <span class="c1">#   3. Invoke /opt/stackdriver/stack-config to do the following:</span>
 <span class="c1">#      a. Optionally configure the agent with the API key.</span>
 <span class="c1">#      b. Start the agent services.</span>
-</code></pre></div><p>よくわからんので、API Keyをセットして試す。
-API Keyは以下のurlから確認できる。
+</code></pre></div><p>よくわからんので、API Keyをセットして試す。<br>
+API Keyは以下のurlから確認できる。<br>
 <a href="https://app.google.stackdriver.com/settings/accounts/agent/">https://app.google.stackdriver.com/settings/accounts/agent/</a></p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ sudo bash stack-install.sh --api-key<span class="o">=</span>&lt;MY_API_KEY&gt;
 Installing agents <span class="k">for</span> Debian or Ubuntu.
@@ -235,7 +235,7 @@ Extractor status:  Extractor sample data:
 </code></pre></div><p>(∩´∀｀)∩ﾜｰｲ</p>
 <h3 id="stackdriver-agent-pluginを入れる">Stackdriver Agent pluginを入れる</h3>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/#supported_plugins">Monitoring Agent Configuration - Supported plugins</a></p>
-<p>Agent pluginは標準で色々なミドルウェアに対応している。
+<p>Agent pluginは標準で色々なミドルウェアに対応している。<br>
 標準pluginはconfigを書くだけで楽ちん。</p>
 <h4 id="nginx-pluginを入れる">Nginx pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/nginx">Nginx Plugin</a></p>
@@ -499,6 +499,8 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
                 
                 <a class="cp-tag" href="/tags/book">#book</a>
                 
+                <a class="cp-tag" href="/tags/cicd">#cicd</a>
+                
                 <a class="cp-tag" href="/tags/conference">#conference</a>
                 
                 <a class="cp-tag" href="/tags/gadget">#gadget</a>
@@ -512,6 +514,8 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
                 <a class="cp-tag" href="/tags/java">#java</a>
                 
                 <a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
+                
+                <a class="cp-tag" href="/tags/kubernetes">#kubernetes</a>
                 
                 <a class="cp-tag" href="/tags/linux">#linux</a>
                 
@@ -539,7 +543,7 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 

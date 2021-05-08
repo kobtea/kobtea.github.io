@@ -81,12 +81,12 @@
 <blockquote>
 <p>サイトのデザインを変えたい場合はどうすればいいんだろう…folkして魔改造するのかな…それはつらそうだな…</p>
 </blockquote>
-<p>と書いたけど、方法がわかったのでメモ。
+<p>と書いたけど、方法がわかったのでメモ。<br>
 標準でいくつかのデザインテーマが提供されていた。</p>
 <h2 id="web-site-look--feel-option">Web Site Look &amp; Feel Option</h2>
 <p><code>OpenGrok</code> wrapper scriptを眺めていたら<code>SKIN</code>なんて環境変数を見つけた。</p>
 <p><a href="https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281">https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281</a></p>
-<p>標準で<code>default</code>, <code>offwhite</code>, <code>polished</code>の3種類のスキンが提供されている。
+<p>標準で<code>default</code>, <code>offwhite</code>, <code>polished</code>の3種類のスキンが提供されている。<br>
 「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。</p>
 <h2 id="スキン">スキン</h2>
 <p>どれもJavaを感じるデザイン。</p>
@@ -98,7 +98,7 @@
     <img src="/img/2016/05/14/default01.png"  />
     
 </figure>
-
+<br>
 
 
 
@@ -115,7 +115,7 @@
     <img src="/img/2016/05/14/offwhite01.png"  />
     
 </figure>
-
+<br>
 
 
 
@@ -132,7 +132,7 @@
     <img src="/img/2016/05/14/polished01.png"  />
     
 </figure>
-
+<br>
 
 
 
@@ -150,7 +150,7 @@
 $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
 </code></pre></div><p>プロジェクトを追加してindexを張るときにも<code>SKIN</code>の指定は必要。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok index
-</code></pre></div><p>毎回環境変数指定するの面倒くさいので、<code>OpenGrok</code> wrapper scriptを直にいじっちゃってもいいかも。
+</code></pre></div><p>毎回環境変数指定するの面倒くさいので、<code>OpenGrok</code> wrapper scriptを直にいじっちゃってもいいかも。<br>
 あるいは環境変数書き込んだrcファイル作って、<code>source</code>するとか。</p>
 <p>スキンを変えても反映されない場合は、ブラウザキャッシュを消すこと。</p>
 <h2 id="フルカスタマイズする場合">フルカスタマイズする場合</h2>
@@ -160,7 +160,7 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
 <li><a href="https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/offwhite">offwhite</a></li>
 <li><a href="https://github.com/OpenGrok/OpenGrok/tree/0.12.1.5/web/polished">polished</a></li>
 </ul>
-<p>自作スキンを作って<code>.war</code>に追加した後、<code>SKIN</code>で指定すればいいだけなはず(実際作ってないけど&hellip;)。
+<p>自作スキンを作って<code>.war</code>に追加した後、<code>SKIN</code>で指定すればいいだけなはず(実際作ってないけど&hellip;)。<br>
 Java力低いので<code>jar</code>コマンドを使ってファイルを抽出・追加する方法についてメモメモ。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 任意のディレクトリ・ファイルを抽出する</span>
 $ jar xf source.war offwhite
@@ -187,7 +187,7 @@ offwhite/hogehoge
 </code></pre></div><p>自分でスキンを作った場合にはこの要領で。</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ jar uf opengrok-0.12.1.5/lib/source.war myskin
 $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L myskin&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
-</code></pre></div><p>ちなみに<a href="https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/README.txt#L357-L404">README</a>には、<code>jar</code>ではなく<code>unzip</code>を使った方法が紹介されている。
+</code></pre></div><p>ちなみに<a href="https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/README.txt#L357-L404">README</a>には、<code>jar</code>ではなく<code>unzip</code>を使った方法が紹介されている。<br>
 お好きな方で。</p>
 
 
@@ -251,6 +251,8 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
                 
                 <a class="cp-tag" href="/tags/book">#book</a>
                 
+                <a class="cp-tag" href="/tags/cicd">#cicd</a>
+                
                 <a class="cp-tag" href="/tags/conference">#conference</a>
                 
                 <a class="cp-tag" href="/tags/gadget">#gadget</a>
@@ -264,6 +266,8 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
                 <a class="cp-tag" href="/tags/java">#java</a>
                 
                 <a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
+                
+                <a class="cp-tag" href="/tags/kubernetes">#kubernetes</a>
                 
                 <a class="cp-tag" href="/tags/linux">#linux</a>
                 
@@ -291,7 +295,7 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2019, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
