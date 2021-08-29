@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>VimでステキなMarkdownライフを送りたい - kobtea.net</title>
+    <title>prometheus - kobtea.net</title>
     <meta name="description" content="eternal jojaku">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="VimでステキなMarkdownライフを送りたい"/>
-<meta name="twitter:description" content="インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追記する。 NeoBundle使ってるよ。 &#34; .vimrcNeoBundle &#39;plasticboy/vim-markdown&#39;NeoBundle &#39;kannokanno/previm&#39;NeoBundle &#39;tyru/open-browser.vim&#39;&#34;g:previm_open_cmd &#34; open-"/>
+<meta name="twitter:title" content="prometheus"/>
+<meta name="twitter:description" content="eternal jojaku"/>
 
 
     <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
@@ -46,89 +46,35 @@
 
 <section id="wrapper" class="section">
     <div class="container">
-<article>
-    <section class="hero">
-        <div class="hero-body">
-            <h1 class="title">VimでステキなMarkdownライフを送りたい</h1>
-        </div>
-    </section>
 
-    <i class="fas fa-calendar-alt"></i>
-    <time>2013-09-22 22:57</time>
-    <span>&nbsp;</span>
-    <i class="fas fa-tags"></i>
-    
-    <a class="cp-tag" href="/tags/vim">#Vim</a>
-    
-    <a class="cp-tag" href="/tags/markdown">#Markdown</a>
-    
-    <aside>
-        <nav id="TableOfContents"></nav>
-    </aside>
-
-    <p>インストールするもの。</p>
-<ul>
-<li><a href="https://github.com/plasticboy/vim-markdown">https://github.com/plasticboy/vim-markdown</a>
-<ul>
-<li>markdown用シンタックスハイライト</li>
-</ul>
-</li>
-<li><a href="https://github.com/kannokanno/previm">https://github.com/kannokanno/previm</a>
-<ul>
-<li>markdownのプレビュー</li>
-</ul>
-</li>
-<li><a href="https://github.com/tyru/open-browser.vim">https://github.com/tyru/open-browser.vim</a>
-<ul>
-<li>URIをブラウザで開く</li>
-</ul>
-</li>
-</ul>
-<p>.vimrcに以下を追記する。<br>
-NeoBundle使ってるよ。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="c">&#34; .vimrc</span><span class="err">
-</span><span class="err">
-</span><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;plasticboy/vim-markdown&#39;</span><span class="err">
-</span><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;kannokanno/previm&#39;</span><span class="err">
-</span><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;tyru/open-browser.vim&#39;</span><span class="err">
-</span><span class="err"></span><span class="c">
-</span><span class="c">&#34;g:previm_open_cmd   &#34; open-browser使用時は不要</span><span class="err">
-</span><span class="err"></span><span class="nx">autocmd</span> <span class="nx">BufNewFile</span><span class="p">,</span><span class="nx">BufRead</span> *.{<span class="nx">md</span><span class="p">,</span><span class="nx">mdwn</span><span class="p">,</span><span class="nx">mkd</span><span class="p">,</span><span class="nx">mkdn</span><span class="p">,</span><span class="nx">mark</span>*} <span class="nx">setfiletype</span> <span class="nx">mkd</span><span class="err">
-</span></code></pre></div><p>mkdファイルを良い感じに編集して、<code>:PrevimOpen</code>するといい感じにプレビューが出る。<br>
-ファイル保存すると、自動で更新される。<br>
-ステキやん。</p>
+<section class="hero">
+    <div class="hero-body">
+        <h1 class="title is-capitalized">
+            
+            tags /
+            
+            prometheus
+        </h1>
+    </div>
+</section>
 
 
-    <hr/>
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</article>
-<nav class="cp-pagination">
-    
-    <a class="pagination-previous" href="https://kobtea.net/posts/2013/09/22/hello-octopress/"><i class="fas fa-caret-left"></i>&nbsp;こんにちはOctopress</a>
-    
-    
-    <a class="pagination-next" href="https://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/">irbで日本語が文字化けする&nbsp;<i class="fas fa-caret-right"></i></a>
-    
-</nav>
+<p class="is-size-4"><a href="https://kobtea.net/posts/2021/08/29/monitoring-mixins/">Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する</a></p>
+<i class="fas fa-calendar-alt"></i>
+<time>2021-08-29 19:37</time>
+<span>&nbsp;</span>
+<i class="fas fa-tags"></i>
+
+<a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+
+<a class="cp-tag" href="/tags/prometheus">#prometheus</a>
+
+<a class="cp-tag" href="/tags/grafana">#grafana</a>
+
+<a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
+
+<br><br>
+
 
     </div>
 </section>

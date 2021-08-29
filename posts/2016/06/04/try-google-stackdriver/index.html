@@ -140,7 +140,7 @@ Stackdriverに関係ない部分はざっくり省略していく(それでも�
 あとは普通に作成すればいいんだけど、Service Accountの権限だけ注意する。<br>
 最低限<code>monitoring.write</code>があれば良さそう。<br>
 Service Accountの確認方法は<a href="https://cloud.google.com/monitoring/agent/install-agent#authorizing">Document</a>にある通り。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --silent -f -H <span class="s2">&#34;Metadata-Flavor: Google&#34;</span> http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ curl --silent -f -H <span class="s2">&#34;Metadata-Flavor: Google&#34;</span> http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
 https://www.googleapis.com/auth/cloud.useraccounts.readonly
 https://www.googleapis.com/auth/devstorage.read_only
 https://www.googleapis.com/auth/logging.write
@@ -154,7 +154,7 @@ https://www.googleapis.com/auth/servicecontrol
 <li><a href="https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes">Authorizing the Monitoring API</a></li>
 </ul>
 <p>Documentに記載のinstall scriptを打つだけ、だと思ってました。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ curl -O https://repo.stackdriver.com/stack-install.sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ curl -O https://repo.stackdriver.com/stack-install.sh
 kobtea@opengrok:~$ sudo bash stack-install.sh --write-gcm
 Installing agents <span class="k">for</span> Debian or Ubuntu.
 <span class="c1"># ...</span>
@@ -177,7 +177,7 @@ Restarting services
 <code>STACKDRIVER_API_KEY</code>がないぞって、Documentでは特に言及されてないんだけどなぁ&hellip;</p>
 <p><code>stack-install.sh</code>を見てみると<code>--write-gcm</code>オプションなんてものは書かれていない。な、なんだってー<br>
 代わりにproject metadataを使う方法は書いてある&hellip;どういうことや&hellip;</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install and start the Google monitoring agent.</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install and start the Google monitoring agent.</span>
 <span class="c1">#</span>
 <span class="c1"># Usage:</span>
 <span class="c1">#</span>
@@ -197,7 +197,7 @@ Restarting services
 </code></pre></div><p>よくわからんので、API Keyをセットして試す。<br>
 API Keyは以下のurlから確認できる。<br>
 <a href="https://app.google.stackdriver.com/settings/accounts/agent/">https://app.google.stackdriver.com/settings/accounts/agent/</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ sudo bash stack-install.sh --api-key<span class="o">=</span>&lt;MY_API_KEY&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ sudo bash stack-install.sh --api-key<span class="o">=</span>&lt;MY_API_KEY&gt;
 Installing agents <span class="k">for</span> Debian or Ubuntu.
 <span class="c1"># ...</span>
 Restarting services
@@ -240,7 +240,7 @@ Extractor status:  Extractor sample data:
 <h4 id="nginx-pluginを入れる">Nginx pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/nginx">Nginx Plugin</a></p>
 <p>Nginx pluginは<code>stub_status</code>の値を計測する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># stub_statusの準備</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># stub_statusの準備</span>
 kobtea@opengrok:~$ sudo touch /etc/nginx/sites-available/status
 kobtea@opengrok:~$ cat /etc/nginx/sites-available/status
 server <span class="o">{</span>
@@ -278,7 +278,7 @@ Created new plugin context.
 </code></pre></div><h4 id="tomcat-pluginを入れる">Tomcat pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/tomcat">Tomcat Plugin</a></p>
 <p>Tomcat, JVM系はJMXを使って計測する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JMXの設定</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JMXの設定</span>
 kobtea@opengrok:~$ diff -u /etc/default/tomcat7<span class="o">{</span>.orig,<span class="o">}</span>
 --- /etc/default/tomcat7.orig	2016-05-12 16:50:51.872516414 +0000
 +++ /etc/default/tomcat7	2016-05-12 17:02:53.180519725 +0000
@@ -509,6 +509,8 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -528,6 +530,8 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

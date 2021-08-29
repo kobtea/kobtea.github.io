@@ -144,12 +144,12 @@
 <h2 id="変更方法">変更方法</h2>
 <p>スキンを変更するには、<code>update</code>, <code>index</code>する際に<code>SKIN</code>を指定しておけばいいだけ。</p>
 <p>tomcatに既にdeployしている場合。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
 </code></pre></div><p>tomcatにこれからdeployする場合、<code>deploy</code>ではスキン設定されないので<code>update</code>もすること。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
 $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
 </code></pre></div><p>プロジェクトを追加してindexを張るときにも<code>SKIN</code>の指定は必要。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok index
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok index
 </code></pre></div><p>毎回環境変数指定するの面倒くさいので、<code>OpenGrok</code> wrapper scriptを直にいじっちゃってもいいかも。<br>
 あるいは環境変数書き込んだrcファイル作って、<code>source</code>するとか。</p>
 <p>スキンを変えても反映されない場合は、ブラウザキャッシュを消すこと。</p>
@@ -162,7 +162,7 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
 </ul>
 <p>自作スキンを作って<code>.war</code>に追加した後、<code>SKIN</code>で指定すればいいだけなはず(実際作ってないけど&hellip;)。<br>
 Java力低いので<code>jar</code>コマンドを使ってファイルを抽出・追加する方法についてメモメモ。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 任意のディレクトリ・ファイルを抽出する</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 任意のディレクトリ・ファイルを抽出する</span>
 $ jar xf source.war offwhite
 $ ls -l offwhite/
 total <span class="m">44</span>
@@ -185,7 +185,7 @@ $ jar xf source.war
 $ ls offwhite/hogehoge
 offwhite/hogehoge
 </code></pre></div><p>自分でスキンを作った場合にはこの要領で。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ jar uf opengrok-0.12.1.5/lib/source.war myskin
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ jar uf opengrok-0.12.1.5/lib/source.war myskin
 $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L myskin&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
 </code></pre></div><p>ちなみに<a href="https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/README.txt#L357-L404">README</a>には、<code>jar</code>ではなく<code>unzip</code>を使った方法が紹介されている。<br>
 お好きな方で。</p>
@@ -261,6 +261,8 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -280,6 +282,8 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

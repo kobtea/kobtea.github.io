@@ -290,7 +290,7 @@
 <h2 id="robocopyでそそくさと設定する">robocopyでそそくさと設定する</h2>
 <p>Windowsには<code>robocopy</code>という<code>rsync</code>相当のコマンドが存在する。</p>
 <p>下記のコマンドをタスクスケジューラに登録してdailyで実行させる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat">$ robocopy <span class="nv">%SRC%</span> <span class="nv">%DST%</span> /MIR /R:3 /W:5 /XD <span class="s2">&#34;System Volume Information&#34;</span> <span class="s2">&#34;$RECYCLE.BIN&#34;</span> /XJ /TEE /LOG:<span class="s2">&#34;/PATH/TO/LOG.log&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat">$ robocopy <span class="nv">%SRC%</span> <span class="nv">%DST%</span> /MIR /R:3 /W:5 /XD <span class="s2">&#34;System Volume Information&#34;</span> <span class="s2">&#34;$RECYCLE.BIN&#34;</span> /XJ /TEE /LOG:<span class="s2">&#34;/PATH/TO/LOG.log&#34;</span>
 </code></pre></div><ul>
 <li><code>/MIR</code> ミラーリング(削除もしてくれる)</li>
 <li><code>/R:n</code> コピー失敗時のリトライ数</li>
@@ -400,6 +400,8 @@
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -419,6 +421,8 @@
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

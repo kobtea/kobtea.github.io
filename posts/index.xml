@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2013-2021, kobtea</copyright>
-    <lastBuildDate>Sat, 08 May 2021 09:25:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Aug 2021 19:37:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する</title>
+      <link>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</link>
+      <pubDate>Sun, 29 Aug 2021 19:37:00 +0900</pubDate>
+      
+      <guid>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</guid>
+      <description>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitori</description>
+    </item>
+    
     <item>
       <title>ArgoCDでHelmfileを使う</title>
       <link>https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/</link>

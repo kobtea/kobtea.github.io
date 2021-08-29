@@ -2,26 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://kobtea.net/tags/grafana/</loc>
+    <lastmod>2021-08-29T19:37:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kobtea.net/tags/jsonnet/</loc>
+    <lastmod>2021-08-29T19:37:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</loc>
+    <lastmod>2021-08-29T19:37:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kobtea.net/</loc>
+    <lastmod>2021-08-29T19:37:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kobtea.net/tags/monitoring/</loc>
+    <lastmod>2021-08-29T19:37:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kobtea.net/posts/</loc>
+    <lastmod>2021-08-29T19:37:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kobtea.net/tags/prometheus/</loc>
+    <lastmod>2021-08-29T19:37:00+09:00</lastmod>
+  </url><url>
+    <loc>https://kobtea.net/tags/</loc>
+    <lastmod>2021-08-29T19:37:00+09:00</lastmod>
+  </url><url>
     <loc>https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/</loc>
     <lastmod>2021-05-08T09:25:00+09:00</lastmod>
   </url><url>
     <loc>https://kobtea.net/tags/cicd/</loc>
     <lastmod>2021-05-08T09:25:00+09:00</lastmod>
   </url><url>
-    <loc>https://kobtea.net/</loc>
-    <lastmod>2021-05-08T09:25:00+09:00</lastmod>
-  </url><url>
     <loc>https://kobtea.net/tags/kubernetes/</loc>
     <lastmod>2021-05-08T09:25:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kobtea.net/posts/</loc>
-    <lastmod>2021-05-08T09:25:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kobtea.net/tags/</loc>
-    <lastmod>2021-05-08T09:25:00+09:00</lastmod>
-  </url><url>
-    <loc>https://kobtea.net/tags/jsonnet/</loc>
-    <lastmod>2021-04-04T19:03:00+09:00</lastmod>
   </url><url>
     <loc>https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/</loc>
     <lastmod>2021-04-04T19:03:00+09:00</lastmod>
@@ -54,9 +66,6 @@
     <lastmod>2016-06-04T21:59:34+09:00</lastmod>
   </url><url>
     <loc>https://kobtea.net/posts/2016/06/04/try-google-stackdriver/</loc>
-    <lastmod>2016-06-04T21:59:34+09:00</lastmod>
-  </url><url>
-    <loc>https://kobtea.net/tags/monitoring/</loc>
     <lastmod>2016-06-04T21:59:34+09:00</lastmod>
   </url><url>
     <loc>https://kobtea.net/tags/opengrok/</loc>

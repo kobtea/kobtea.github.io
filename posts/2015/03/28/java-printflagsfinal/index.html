@@ -80,7 +80,7 @@
 <li><code>-XX:+PrintCommandLineFlags</code>: コマンドライン上で与えた設定値</li>
 </ul>
 <h2 id="-xxprintflagsfinal-option"><code>-XX:+PrintFlagsFinal</code> Option</h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsFinal -version
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsFinal -version
 <span class="o">[</span>Global flags<span class="o">]</span>
     uintx <span class="nv">AdaptiveSizeDecrementScaleFactor</span>          <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
     uintx <span class="nv">AdaptiveSizeMajorGCDecayTimeScale</span>         <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
@@ -105,7 +105,7 @@ Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <s
 Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
 </code></pre></div><p>どしゃっとOption一覧とその設定値が表示される。</p>
 <p>どうやら<code>=</code>は初期値で、<code>:=</code>は設定された値ぽい。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsFinal -version <span class="p">|</span> grep :<span class="o">=</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsFinal -version <span class="p">|</span> grep :<span class="o">=</span>
     uintx InitialHeapSize                          :<span class="o">=</span> <span class="m">134217728</span>       <span class="o">{</span>product<span class="o">}</span>
     uintx MaxHeapSize                              :<span class="o">=</span> <span class="m">2147483648</span>      <span class="o">{</span>product<span class="o">}</span>
     uintx MaxNewSize                               :<span class="o">=</span> <span class="m">715653120</span>       <span class="o">{</span>product<span class="o">}</span>
@@ -121,7 +121,7 @@ Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <s
 Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
 </code></pre></div><p>ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。</p>
 <h2 id="-xxprintflagsinitial-option"><code>-XX:+PrintFlagsInitial</code> Option</h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial
 <span class="o">[</span>Global flags<span class="o">]</span>
     uintx <span class="nv">AdaptiveSizeDecrementScaleFactor</span>          <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
     uintx <span class="nv">AdaptiveSizeMajorGCDecayTimeScale</span>         <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
@@ -143,7 +143,7 @@ Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM 
      intx <span class="nv">hashCode</span>                                  <span class="o">=</span> <span class="m">5</span>               <span class="o">{</span>product<span class="o">}</span>
 </code></pre></div><p>こちらもどしゃっと表示される。</p>
 <p>せっかくなので<code>~Initial</code>と<code>~Final</code>でdiffをとってみる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial &gt;<span class="p">&amp;</span> PrintFlagsInitial
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial &gt;<span class="p">&amp;</span> PrintFlagsInitial
 $ java -XX:+PrintFlagsFinal -version &gt;<span class="p">&amp;</span> PrintFlagsFinal
 $ diff -U0 PrintFlagsInitial PrintFlagsFinal
 --- PrintFlagsInitial	2015-03-28 02:16:40.000000000 +0900
@@ -289,14 +289,14 @@ $ diff -U0 PrintFlagsInitial PrintFlagsFinal
 </code></pre></div><p>あれ、<code>:=</code>以外にも初期値と違うOptionがある&hellip;なんでだろう&hellip;<br>
 あとでしらべる。</p>
 <h2 id="-xxprintcommandlineflags-option"><code>-XX:+PrintCommandLineFlags</code> Option</h2>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintCommandLineFlags -version
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintCommandLineFlags -version
 -XX:InitialHeapSize<span class="o">=</span><span class="m">134217728</span> -XX:MaxHeapSize<span class="o">=</span><span class="m">2147483648</span> -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
 java version <span class="s2">&#34;1.8.0_11&#34;</span>
 Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
 Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
 </code></pre></div><p>馴染みのある見た目で表示される。</p>
 <p>ところで、<code>~Initial</code>だけexit statusが違うのは何故なんだろう。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
 <span class="m">0</span>
 $ java -XX:+PrintFlagsFinal &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
 <span class="m">1</span>
@@ -379,6 +379,8 @@ $ java -XX:+PrintCommandLineFlags &gt;<span class="p">&amp;</span> /dev/null<spa
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -398,6 +400,8 @@ $ java -XX:+PrintCommandLineFlags &gt;<span class="p">&amp;</span> /dev/null<spa
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

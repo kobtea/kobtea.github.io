@@ -109,7 +109,7 @@ argocd-cmにプラグイン情報を追記する。</p>
 init containerでwrapper scriptとhelmfileをdownloadして、empty dir経由でargocd-repo-server podへ渡している。<br>
 manifestはREADMEをなぞるだけ。</p>
 <p>diffは主要な箇所のみ記載する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">$ kubectl -n argocd diff -f argocd-repo-server.vm.yaml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">$ kubectl -n argocd diff -f argocd-repo-server.vm.yaml
 <span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-097769223/apps.v1.Deployment.argocd.argocd-repo-server /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-018972858/apps.v1.Deployment.argocd.argocd-repo-server
 </span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-097769223/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 08:44:57.000000000 +0900
 </span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-018972858/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 08:44:57.000000000 +0900
@@ -177,7 +177,7 @@ $ kubectl -n argocd diff -f argocd-cm.vm.yaml | pbcopy
    annotations:
 # ...
 </code></pre></div><p>appを作成してみる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ argocd app create node-exporter <span class="se">\
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ argocd app create node-exporter <span class="se">\
 </span><span class="se"></span>--repo https://github.com/kobtea/manifests.git <span class="se">\
 </span><span class="se"></span>--path helmfile/node-exporter <span class="se">\
 </span><span class="se"></span>--dest-namespace default <span class="se">\
@@ -192,7 +192,7 @@ node-exporter  https://kubernetes.default.svc  default    default  Synced  Healt
 <p>ChatworkがまさにそれなDocker Imageを公開しているので感謝しながら使う。<br>
 <a href="https://hub.docker.com/r/chatwork/argocd-helmfile">https://hub.docker.com/r/chatwork/argocd-helmfile</a><br>
 こちらもREADMEをなぞるだけ。</p>
-<div class="highlight"><pre class="chroma"><code class="language-diff" data-lang="diff">$ kubectl -n argocd diff -f argocd-repo-server.byoi.yaml
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">$ kubectl -n argocd diff -f argocd-repo-server.byoi.yaml
 <span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-612236984/apps.v1.Deployment.argocd.argocd-repo-server /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-918040247/apps.v1.Deployment.argocd.argocd-repo-server
 </span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-612236984/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 09:10:24.000000000 +0900
 </span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-918040247/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 09:10:24.000000000 +0900
@@ -265,6 +265,8 @@ ArgoCD自体をHelmで管理するにしても、Valuesはどちらのケース�
     <a class="pagination-previous" href="https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/"><i class="fas fa-caret-left"></i>&nbsp;Jsonnetで複数ファイルへ出力する</a>
     
     
+    <a class="pagination-next" href="https://kobtea.net/posts/2021/08/29/monitoring-mixins/">Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する&nbsp;<i class="fas fa-caret-right"></i></a>
+    
 </nav>
 
     </div>
@@ -306,6 +308,8 @@ ArgoCD自体をHelmで管理するにしても、Valuesはどちらのケース�
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -325,6 +329,8 @@ ArgoCD自体をHelmで管理するにしても、Valuesはどちらのケース�
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

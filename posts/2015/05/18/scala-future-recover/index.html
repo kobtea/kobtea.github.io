@@ -87,10 +87,10 @@ Type :help for more information.
 <p>そんなときのための<code>Future#recover</code>。<br>
 <code>Throwable</code>をキャッチして新しい<code>Future</code>を作ってくれる。</p>
 <p>シグネチャは以下。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">recover</span><span class="o">[</span><span class="kt">U</span> <span class="k">&gt;:</span> <span class="kt">T</span><span class="o">](</span><span class="n">pf</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">U</span><span class="o">])(</span><span class="k">implicit</span> <span class="n">executor</span><span class="k">:</span> <span class="kt">ExecutionContext</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">recover</span><span class="o">[</span><span class="kt">U</span> <span class="k">&gt;:</span> <span class="kt">T</span><span class="o">](</span><span class="n">pf</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">U</span><span class="o">])(</span><span class="k">implicit</span> <span class="n">executor</span><span class="k">:</span> <span class="kt">ExecutionContext</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span>
 </code></pre></div><p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L310-L326">この辺</a>。</p>
 <p>下準備</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
 <span class="k">import</span> <span class="nn">scala.concurrent.Future</span>
 
 <span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">scala.concurrent.ExecutionContext.Implicits.global</span>
@@ -99,7 +99,7 @@ Type :help for more information.
 <span class="n">scala</span><span class="o">&gt;</span> <span class="k">case</span> <span class="k">class</span> <span class="nc">MyException</span><span class="o">()</span> <span class="k">extends</span> <span class="nc">Exception</span>
 <span class="n">defined</span> <span class="k">class</span> <span class="nc">MyException</span>
 </code></pre></div><p>サンプル</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="c1">// まずはそのまま実行してみる
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="c1">// まずはそのまま実行してみる
 </span><span class="c1"></span><span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span> <span class="o">{</span>
      <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">()</span>
      <span class="o">|</span> <span class="o">}</span>
@@ -147,10 +147,10 @@ Type :help for more information.
 <p><code>Future#recoverWith</code>なんていうのもある。<br>
 <code>Future#recover</code>とは部分関数の型が違って、<code>Throwable</code>を受け取って<code>Future</code>を返すようになる。</p>
 <p>シグネチャは以下。</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">recoverWith</span><span class="o">[</span><span class="kt">U</span> <span class="k">&gt;:</span> <span class="kt">T</span><span class="o">](</span><span class="n">pf</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]])(</span><span class="k">implicit</span> <span class="n">executor</span><span class="k">:</span> <span class="kt">ExecutionContext</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="k">def</span> <span class="n">recoverWith</span><span class="o">[</span><span class="kt">U</span> <span class="k">&gt;:</span> <span class="kt">T</span><span class="o">](</span><span class="n">pf</span><span class="k">:</span> <span class="kt">PartialFunction</span><span class="o">[</span><span class="kt">Throwable</span>, <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]])(</span><span class="k">implicit</span> <span class="n">executor</span><span class="k">:</span> <span class="kt">ExecutionContext</span><span class="o">)</span><span class="k">:</span> <span class="kt">Future</span><span class="o">[</span><span class="kt">U</span><span class="o">]</span>
 </code></pre></div><p>ソースは<a href="https://github.com/scala/scala/blob/v2.11.6/src/library/scala/concurrent/Future.scala#L328-L348">この辺</a>。</p>
 <p>サンプル</p>
-<div class="highlight"><pre class="chroma"><code class="language-scala" data-lang="scala"><span class="c1">// デフォルト値を適用したい！
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="c1">// デフォルト値を適用したい！
 </span><span class="c1"></span><span class="n">scala</span><span class="o">&gt;</span> <span class="nc">Future</span> <span class="o">{</span>
      <span class="o">|</span>   <span class="k">throw</span> <span class="k">new</span> <span class="nc">IllegalArgumentException</span><span class="o">()</span>
      <span class="o">|</span> <span class="o">}</span> <span class="n">recoverWith</span> <span class="o">{</span>
@@ -257,6 +257,8 @@ Type :help for more information.
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -276,6 +278,8 @@ Type :help for more information.
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

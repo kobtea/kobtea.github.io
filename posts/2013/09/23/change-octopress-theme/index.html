@@ -66,7 +66,7 @@
 
     <p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a>で公開されているので気に入ったものを選ぶ。<br>
 <a href="https://github.com/macjasp/cleanpress">CleanPress</a>がステキ。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># テーマのディレクトリまで行ってテーマのリポジトリをclone</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># テーマのディレクトリまで行ってテーマのリポジトリをclone</span>
 $ <span class="nb">cd</span> octopress/.theme
 $ git clone git@github.com:macjasp/cleanpress.git
 Cloning into <span class="s1">&#39;cleanpress&#39;</span>...
@@ -107,7 +107,7 @@ Successfully generated site: <span class="nb">source</span> -&gt; public
 
 <p>おおん、ページ作っていないAboutとかPortfolioがおる&hellip;</p>
 <p>どのへんで定義されているか探してみる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ find . -type f <span class="p">|</span> xargs grep Portfolio
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ find . -type f <span class="p">|</span> xargs grep Portfolio
 ./.themes/cleanpress/source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;{{ root_url }}/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 ./public/404.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
 ./public/404.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
@@ -153,7 +153,7 @@ Binary file ./source/_posts/.2013-09-23-change-octopress-theme.markdown.swp matc
 ./source/_posts/2013-09-23-change-octopress-theme.markdown:おおん、ページ作っていないAboutとかPortfolioがおる...
 </code></pre></div><p><code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code>あたりがくさい。<br>
 ブランチ切って編集する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> .themes/cleanpress
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> .themes/cleanpress
 $ git branch
 * master
 $ git checkout -b edit-contents-links
@@ -163,14 +163,14 @@ $ git branch
   master
 </code></pre></div><p>ひとまずコメントアウトしておく。</p>
 <p>source: <code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
 	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/&#34;</span><span class="p">&gt;</span>Blog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/about&#34;&gt;About&lt;/a&gt;&lt;/li--&gt;</span>
 	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/portfolio&#34;&gt;Portfolio&lt;/a&gt;&lt;/li--&gt;</span>
 	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/archives&#34;</span><span class="p">&gt;</span>Archive<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
 </code></pre></div><p>再度テーマをインストールする。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
 <span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
 A theme is already installed, proceeding will overwrite existing files. Are you sure? <span class="o">[</span>y/n<span class="o">]</span> y
 <span class="c1">## Copying cleanpress theme into ./source and ./sass</span>
@@ -269,6 +269,8 @@ Successfully generated site: <span class="nb">source</span> -&gt; public
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -288,6 +290,8 @@ Successfully generated site: <span class="nb">source</span> -&gt; public
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

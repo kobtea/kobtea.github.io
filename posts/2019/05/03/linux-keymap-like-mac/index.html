@@ -148,10 +148,10 @@ JetBrainsユーザではない場合は、この辺考えなくていいので�
 <p><a href="https://github.com/mooz/xkeysnail">xkeysnail</a>で頑張るスタイル。</p>
 <h3 id="dconf">dconf</h3>
 <p><code>super</code>を<code>meta</code>にする。<code>gsettings</code>コマンドでもgnome tweaksでも好きな方で。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gsettings <span class="nb">set</span> org.gnome.desktop.input-sources xkb-options <span class="s2">&#34;[&#39;altwin:meta_win&#39;]&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ gsettings <span class="nb">set</span> org.gnome.desktop.input-sources xkb-options <span class="s2">&#34;[&#39;altwin:meta_win&#39;]&#34;</span>
 </code></pre></div><p>gnome tweaksの場合、&ldquo;Meta is mapped to Win&quot;というのが、<code>altwin(meta_win)</code>に対応している。</p>
 <p>自分の環境ではこんな感じになる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ setxkbmap -print
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ setxkbmap -print
 xkb_keymap <span class="o">{</span>
 	xkb_keycodes  <span class="o">{</span> include <span class="s2">&#34;evdev+aliases(qwerty)&#34;</span>	<span class="o">}</span><span class="p">;</span>
 	xkb_types     <span class="o">{</span> include <span class="s2">&#34;complete&#34;</span>	<span class="o">}</span><span class="p">;</span>
@@ -162,7 +162,7 @@ xkb_keymap <span class="o">{</span>
 </code></pre></div><p>dconf(xkb)側では<code>ctrl</code>と<code>caps</code>のswapは設定しない。xkeysnailを使う場合、そちらでswapの設定を入れないと意図したキーマップにならないため。</p>
 <p>次に、アプリケーション切り替えのキーマップを追加する。<br>
 これはJetBrainsツール使用時のみ<code>alt</code>が<code>meta</code>になっているため。<code>meta+tab</code>でもアプリケーションを切り替えられるようにする。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ gsettings get org.gnome.desktop.wm.keybindings switch-applications
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ gsettings get org.gnome.desktop.wm.keybindings switch-applications
 <span class="o">[</span><span class="s1">&#39;&lt;Alt&gt;Tab&#39;</span><span class="o">]</span>
 $ gsettings <span class="nb">set</span> org.gnome.desktop.wm.keybindings switch-applications <span class="s2">&#34;[&#39;&lt;Alt&gt;Tab&#39;, &#39;&lt;Super&gt;Tab&#39;]&#34;</span>
 
@@ -178,7 +178,7 @@ $ gsettings <span class="nb">set</span> org.gnome.desktop.wm.keybindings switch-
 <p><code>ctrl</code>と<code>caps</code>をswapしたり、アプリケーションごとにキーマップを設定している。あんまりスマートではないけど、漏れがあったら随時追加していくスタイル。ちなみに<code>FocusProxy</code>というのがJetBrainsツール。</p>
 <p>rootで実行は避けたいので、専用ユーザを作成する。<br>
 参考: <a href="https://qiita.com/miy4/items/dd0e2aec388138f803c5">xkeysnailでキーリマップする - Qiita</a></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo groupadd uinput
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo groupadd uinput
 $ sudo useradd -G input,uinput -M -s /usr/bin/nologin xkeysnail
 $ cat /etc/udev/rules.d/40-udev-xkeysnail.rules
 <span class="nv">KERNEL</span><span class="o">==</span><span class="s2">&#34;uinput&#34;</span>, <span class="nv">GROUP</span><span class="o">=</span><span class="s2">&#34;uinput&#34;</span>
@@ -211,7 +211,7 @@ uinput
 <p>悲しいことに<code>altwin(meta_win)</code>などのsymbolを自分で定義する方法は、非推奨なキーマップ編集でのみ可能。そして、そのキーマップは<code>/usr/share/X11/xkb/</code>のみを参照し、<code>$HOME/.xkb</code>といったユーザ固有のパスは提供されていない。symbolをカスタマイズする場合は、強い気持ちで<code>/usr/share/X11/xkb</code>を編集していく必要がある。</p>
 <h3 id="fcitxが設定をロールバックする">Fcitxが設定をロールバックする</h3>
 <p>自分は<code>/usr</code>以下をいじりたくなかったので、自前の設定とそれを読み込む以下のスクリプトを作成し、gnome startup applicationsに登録した。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
 </span><span class="cp"></span>sleep <span class="m">10</span>
 <span class="nb">test</span> -f <span class="nv">$HOME</span>/.xkb/keymap/mykbd.xkb <span class="o">&amp;&amp;</span> xkbcomp -I<span class="nv">$HOME</span>/.xkb <span class="nv">$HOME</span>/.xkb/keymap/mykbd.xkb <span class="nv">$DISPLAY</span> 2&gt; /dev/null
 </code></pre></div><p>これで任意のsymbolを適用できるようにはなったが、Fcitxのキー設定を変更すると<code>/usr</code>で定義されたデフォルトの状態へとロールバックされてしまう。</p>
@@ -288,6 +288,8 @@ uinput
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -307,6 +309,8 @@ uinput
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

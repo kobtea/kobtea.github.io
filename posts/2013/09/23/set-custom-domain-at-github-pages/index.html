@@ -86,10 +86,10 @@
 反映されたらメールをくれるらしい。</p>
 <h2 id="octopress側の設定">Octopress側の設定</h2>
 <p><code>source/CNAME</code>に割り当てるドメインを設定する。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;blog.kobtea.net&#39;</span> &gt;&gt; source/CNAME
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;blog.kobtea.net&#39;</span> &gt;&gt; source/CNAME
 </code></pre></div><p><code>_config.yml</code>のurlも変更しておく。</p>
 <p>source: <code>_config.yml</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># ----------------------- #</span><span class="w">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># ----------------------- #</span><span class="w">
 </span><span class="w"></span><span class="c">#      Main Configs       #</span><span class="w">
 </span><span class="w"></span><span class="c"># ----------------------- #</span><span class="w">
 </span><span class="w">
@@ -114,7 +114,7 @@
 適用されたよメールが届くまでのんびり待つ。</p>
 <h2 id="確認">確認</h2>
 <p>digしてみる。</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ dig +noall +answer blog.kobtea.net CNAME
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ dig +noall +answer blog.kobtea.net CNAME
 blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.
 </code></pre></div><p>できてるぽい。<br>
 最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。</p>
@@ -190,6 +190,8 @@ blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.
                 
                 <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
                 
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
                 <a class="cp-tag" href="/tags/hardware">#hardware</a>
                 
                 <a class="cp-tag" href="/tags/java">#java</a>
@@ -209,6 +211,8 @@ blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.
                 <a class="cp-tag" href="/tags/octopress">#octopress</a>
                 
                 <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
                 
                 <a class="cp-tag" href="/tags/python">#python</a>
                 

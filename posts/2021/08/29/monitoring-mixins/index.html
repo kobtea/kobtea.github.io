@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する - kobtea.net</title>
+    <meta name="description" content="eternal jojaku">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する"/>
+<meta name="twitter:description" content="概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitori"/>
+
+
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
+    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/syntax.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://kobtea.net/js/main.js"></script>
+</head>
+
+<body>
+<header>
+    <nav class="navbar is-primary">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://kobtea.net/"><strong>kobtea.net</strong></a>
+
+                <a class="navbar-burger burger" data-target="navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+
+            <div id="navigation" class="navbar-menu">
+                <div class="navbar-end">
+                    
+                    <a class="navbar-item" href="/posts">archives</a>
+                    
+                    <a class="navbar-item" href="/posts/index.xml">rss</a>
+                    
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section id="wrapper" class="section">
+    <div class="container">
+<article>
+    <section class="hero">
+        <div class="hero-body">
+            <h1 class="title">Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する</h1>
+        </div>
+    </section>
+
+    <i class="fas fa-calendar-alt"></i>
+    <time>2021-08-29 19:37</time>
+    <span>&nbsp;</span>
+    <i class="fas fa-tags"></i>
+    
+    <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+    
+    <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
+    
+    <a class="cp-tag" href="/tags/grafana">#grafana</a>
+    
+    <a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
+    
+    <aside>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概要">概要</a></li>
+    <li><a href="#monitoring-mixins">Monitoring Mixins</a></li>
+    <li><a href="#mixinsの課題">Mixinsの課題</a></li>
+    <li><a href="#project-templateを作った">Project templateを作った</a>
+      <ul>
+        <li><a href="#workflowを分かりやすくする">Workflowを分かりやすくする</a></li>
+        <li><a href="#rule-dashboardの上書きを容易にする">Rule, Dashboardの上書きを容易にする</a></li>
+      </ul>
+    </li>
+    <li><a href="#jsonnet-vs-cue">Jsonnet vs CUE</a></li>
+  </ul>
+</nav>
+    </aside>
+
+    <h2 id="概要">概要</h2>
+<p>Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。<br>
+Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitoring Mixinsに焦点を当てる。</p>
+<h2 id="monitoring-mixins">Monitoring Mixins</h2>
+<p><a href="https://monitoring.mixins.dev/">Monitoring Mixins</a>はPrometheus rule, Grafana dashboardといった監視設定のPackagingを目指すプロジェクト。<br>
+ExporterのMetricsだけではなく、それを使って何を観測し可視化するかという知見を共有するのが目的。Out-of-the-boxでいい感じのアラート設定とダッシュボードがほしい、そんな需要に答える。コードはJsonnetとパッケージングツールのjsonnet-bundlerで管理される。<br>
+Mixins自体はyaml, jsonの管理までがスコープで、デプロイ方法はスコープ外としている。</p>
+<p>有名所としてはKubernetes-mixinがある。kube-prometheusを使っていると入ってくるアレの本家。<br>
+またExporter repositoryにしれっと存在していたりもする。</p>
+<ul>
+<li><a href="https://github.com/kubernetes-monitoring/kubernetes-mixin">https://github.com/kubernetes-monitoring/kubernetes-mixin</a></li>
+<li><a href="https://github.com/prometheus/node_exporter/tree/master/docs/node-mixin">https://github.com/prometheus/node_exporter/tree/master/docs/node-mixin</a></li>
+<li><a href="https://github.com/oliver006/redis_exporter/tree/master/contrib/redis-mixin">https://github.com/oliver006/redis_exporter/tree/master/contrib/redis-mixin</a></li>
+</ul>
+<h2 id="mixinsの課題">Mixinsの課題</h2>
+<p>Mixinsの課題は、自分でちょっと凝ったことをしようとしたときにworkflowが整備されていないこと。<br>
+凝ったことというのは、既存のMixinsの値を上書きしたり、自前でMixinsを書いたりすること。<br>
+kube-promtheusを利用する上で間接的にお世話になってるユーザは多いかもしれないが、そこまで直接的なユーザがいないんじゃないかという懸念がちょっとだけある。</p>
+<p>というのも<a href="https://monitoring.mixins.dev/">本家</a>の&quot;Generate config files&quot;では、mixinからyaml, jsonを生成する方法として、</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ make prometheus_alerts.yaml
+$ make prometheus_rules.yaml
+$ make dashboards_out
+</code></pre></div><p>と記述してるが、そのMakefileについては特に言及されていなかったりする。<br>
+このMakefile自体は <a href="https://github.com/kubernetes-monitoring/kubernetes-mixin/blob/master/Makefile">Kubernetes-mixin</a> のものだが、初見ではなかなか気づかない。</p>
+<p>MakefileではなくCLIとして <a href="https://github.com/monitoring-mixins/mixtool">mixtool</a> というのもあるので、これを使うのも良い。<br>
+lintは存在しない変数まで調べてくれるので便利。<br>
+serverなど一部道半ばぽいサブコマンドもあるので、lintとgenerateだけ使うくらいの気持ちで良いと思う。</p>
+<p>生成方法はmixtoolを使えば良いとして、複数のMixinsを組み合わせるにはどうしたらいいのか、式や値の一部をOverrideしたいがどうすればいいのか。というところで結局はworkflowが分かりづらかったりする。</p>
+<p>そもそもJsonnet自体高度なことやりだすと難しい、継承を考え始めたあたりで難易度が急上昇する。</p>
+<h2 id="project-templateを作った">Project templateを作った</h2>
+<p>先に課題として挙げた</p>
+<ul>
+<li>MixinsのWorkflowを分かりやすくする</li>
+<li>Rule, Dashboardの上書きを容易にする</li>
+</ul>
+<p>を解決するためのProject templateを作った。</p>
+<p><a href="https://github.com/kobtea/jsonnet-libs">https://github.com/kobtea/jsonnet-libs</a></p>
+<p>詳細はREADMEに書いたつもりなので、ブログでは先の課題に対する解決に焦点を当てる。</p>
+<h3 id="workflowを分かりやすくする">Workflowを分かりやすくする</h3>
+<p>Project templateなのでforkするなり好きにしてもらって、管理するためのリポジトリを準備する。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/kobtea/jsonnet-libs.git
+$ <span class="nb">cd</span> jsonnet-libs
+$ jb install
+</code></pre></div><p>例として <code>project-sample</code> という名前でk8s stackの監視を設定してみる。<br>
+Environmentというのはprod, dev, service1など任意の論理的なデプロイの単位を表す。<br>
+エントリポイントとなる <code>mixin.libsonnet</code> を作成し、利用するmixinをimportする。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mkdir env/project-sample
+
+<span class="c1"># install package</span>
+$ jb install https://github.com/kubernetes-monitoring/kubernetes-mixin
+
+$ vim env/project-sample/mixin.libsonnet
+$ cat env/project-sample/mixin.libsonnet
+<span class="nb">local</span> <span class="nv">sampleOne</span> <span class="o">=</span> import <span class="s1">&#39;../../mixin/sample-one-mixin/mixin.libsonnet&#39;</span><span class="p">;</span>
+<span class="nb">local</span> <span class="nv">k8s</span> <span class="o">=</span> import <span class="s1">&#39;kubernetes-mixin/mixin.libsonnet&#39;</span><span class="p">;</span>
+
+sampleOne + k8s
+</code></pre></div><p>各mixinで定義されている configの値を上書きする場合は以下のように書き換える。<br>
+config自体はmixinsの <code>config.libsonnet</code> に書くのが慣例ぽい。</p>
+<p><a href="https://github.com/kubernetes-monitoring/kubernetes-mixin/blob/master/config.libsonnet">https://github.com/kubernetes-monitoring/kubernetes-mixin/blob/master/config.libsonnet</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ cat env/project-sample/mixin.libsonnet
+<span class="nb">local</span> <span class="nv">sampleOne</span> <span class="o">=</span> import <span class="s1">&#39;../../mixin/sample-one-mixin/mixin.libsonnet&#39;</span><span class="p">;</span>
+<span class="nb">local</span> <span class="nv">k8s</span> <span class="o">=</span> import <span class="s1">&#39;kubernetes-mixin/mixin.libsonnet&#39;</span><span class="p">;</span>
+
+sampleOne <span class="o">{</span>
+  _config+:: <span class="o">{</span>
+    sampleOneSelector: <span class="s1">&#39;job=&#34;sample-one-mod&#34;&#39;</span>,
+  <span class="o">}</span>,
+<span class="o">}</span> +
+k8s <span class="o">{</span>
+  _config+:: <span class="o">{</span>
+    nodeExporterSelector: <span class="s1">&#39;job=&#34;node&#34;&#39;</span>,
+  <span class="o">}</span>,
+<span class="o">}</span>.
+</code></pre></div><p>envの作成ができたらsyntax checkをする。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ make fmt
+$ make lint
+</code></pre></div><p>問題なければいよいよyaml, jsonを生成する。<br>
+成果物はdist配下に作成される。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ make generate <span class="nv">ARG</span><span class="o">=</span>project-sample
+$ tree dist/project-sample
+dist/project-sample
+├── alerts.yml
+├── dashboards
+│   ├── apiserver.json
+│   ├── cluster-total.json
+│   ├── controller-manager.json
+│   ├── k8s-resources-cluster.json
+│   ├── k8s-resources-namespace.json
+│   ├── k8s-resources-node.json
+│   ├── k8s-resources-pod.json
+│   ├── k8s-resources-workload.json
+│   ├── k8s-resources-workloads-namespace.json
+│   ├── kubelet.json
+│   ├── namespace-by-pod.json
+│   ├── namespace-by-workload.json
+│   ├── persistentvolumesusage.json
+│   ├── pod-total.json
+│   ├── proxy.json
+│   ├── sample-one
+│   │   ├── sample-one-one.json
+│   │   └── sample-one-two.json
+│   ├── scheduler.json
+│   └── workload-total.json
+└── rules.yml
+
+<span class="m">2</span> directories, <span class="m">21</span> files
+</code></pre></div><p>成果物はおなじみのPrometheus ruleのyaml, Grafana dashboardのjsonなのでYour Favorite Deploymentでデプロイする。</p>
+<h3 id="rule-dashboardの上書きを容易にする">Rule, Dashboardの上書きを容易にする</h3>
+<p>Alert Ruleのintervalを上書きしたい、Dashboardの式をRecording ruleのMetricsに差し替えたい。configには出されていないが上書きしたい需要は常にある。</p>
+<p>式の上書きを補助する関数をライブラリとして準備している。</p>
+<pre><code class="language-jsonnet" data-lang="jsonnet">// include utils
+local utils = import '../../lib/utils.libsonnet';
+
+// override alert
+utils.overrideAlerts([
+  {
+    alert: 'SampleTwoUp',
+    expr: |||
+      up{%(sampleTwoSelector)s} == 0
+    ||| % $._config,
+  },
+]),
+
+// override rule
+utils.overrideRules([
+  {
+    record: 'instance_path:two_requests:rate5m',
+    expr: |||
+      rate(two_requests_total{%(sampleTwoSelector)s}[10m])
+    ||| % $._config,
+  },
+]),
+
+// override dashboard
+local dashboards = super.grafanaDashboards;
+local d1 = '%(sampleTwoGrafanaFolder)s/sample-two-one.json' % $._config;
+{
+  [d1]:
+    std.foldl(
+      function(acc, elm) acc + utils.overrideDashboardPanelTarget(elm.target, elm.title, acc),
+      [
+        {
+          title: 'Requests',
+          target: {
+            refId: 'A',
+            expr: 'avg(instance_path:one_requests:rate5m)',
+          },
+        },
+        {
+          title: 'Requests2',
+          target: {
+            refId: 'A',
+            expr: 'max(instance_path:one_requests:rate5m)',
+          },
+        },
+      ],
+      dashboards[d1],
+    )
+},
+</code></pre><p>具体的なサンプルは<a href="https://github.com/kobtea/jsonnet-libs/blob/main/env/project-foo/mixin.libsonnet">こちら</a>。<br>
+Dashboardに関してはRuleよりも複雑なのでまだ改善点が多い。けど、基本的なユースケースはカバーできている気がする。</p>
+<p>便利。</p>
+<h2 id="jsonnet-vs-cue">Jsonnet vs CUE</h2>
+<p>Jsonnetに言及しておいて何だけど、Monitoring Mixinsは終わりが近いかもしれない。<br>
+MixinsについてGrafana Labsの人が年始にブログで言及していた。</p>
+<p><a href="https://grafana.com/blog/2021/01/14/how-prometheus-monitoring-mixins-can-make-effective-observability-strategies-accessible-to-all/">How Prometheus monitoring mixins can make effective observability strategies accessible to all | Grafana Labs</a></p>
+<p>かいつまんで要約すると</p>
+<blockquote>
+<p>Observabilityの文脈ではMetricsだけではなく、それをつかって何を観測するかという知見も提供する必要がある。Mixinsはこのo11yの思想にマッチし、Kubernetes-mixinは象徴的な存在である。</p>
+<p>しかし、長期的な目で見るとMixinsは限界があるかもしれない。理由はメンテナ不足、Jsonnetがtext baseのため妥当性の検証にコストがかかること。そして、一般的なDashboards,Alerts,Rulesは&quot;一般的&quot;でしかないこと。これは各社様々な事情で存在するローカルルールや文化に対応しきれないということ。</p>
+<p>Mixinsの課題を踏まえ、新しいプロトタイピングを始めている。プロトタイピングではMixinsの思想はそのままに先の課題を改善する。そしてそれはJsonnetではなくなるかも。</p>
+</blockquote>
+<p>ということらしい。</p>
+<p>その移行先の言語として有力なのが<a href="https://cuelang.org/">CUE</a>。いまは過渡期でCUEベースでGrafanaを管理できるような実装が<a href="https://github.com/grafana/grafana/issues/33139">進められている</a>。<br>
+過渡期なのでどっち使えばいいんじゃいと悩むけど、<a href="https://github.com/grafana/grafonnet-lib/issues/332">Issue</a>にもある通りCUEベースのMixinsはまだまだエコシステムが成熟していないので今使うならJsonnetで良いと思う。<br>
+終りが近いと言いつつも明確に移行が宣言されたわけではないし、何年先の話になるかもわからない。既存のMixinを使いたいならJsonnetベースを使えばいいし、まっさらな状態で社内の設定を管理するぜ！というならCUEベースで始めても良いかもね。</p>
+<p>自分は主にKubernetes-mixinsに乗っかりたい動機でまだまだJsonnetベースで頑張るぞい。</p>
+
+
+    <hr/>
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</article>
+<nav class="cp-pagination">
+    
+    <a class="pagination-previous" href="https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/"><i class="fas fa-caret-left"></i>&nbsp;ArgoCDでHelmfileを使う</a>
+    
+    
+</nav>
+
+    </div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-4">
+                <strong class="is-size-5">Author</strong>
+                <div class="media">
+                    <figure class="media-left">
+                        <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
+                    </figure>
+                    <div class="media-content">
+                        <strong>kobtea</strong>
+                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
+                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
+                        <br/>
+                        <small>カピバラと暮らしたい</small>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-8">
+                
+                
+                
+                
+                <p><strong class="is-capitalized is-size-5">tags</strong></p>
+                
+                <a class="cp-tag" href="/tags/book">#book</a>
+                
+                <a class="cp-tag" href="/tags/cicd">#cicd</a>
+                
+                <a class="cp-tag" href="/tags/conference">#conference</a>
+                
+                <a class="cp-tag" href="/tags/gadget">#gadget</a>
+                
+                <a class="cp-tag" href="/tags/gcp">#gcp</a>
+                
+                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
+                
+                <a class="cp-tag" href="/tags/grafana">#grafana</a>
+                
+                <a class="cp-tag" href="/tags/hardware">#hardware</a>
+                
+                <a class="cp-tag" href="/tags/java">#java</a>
+                
+                <a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
+                
+                <a class="cp-tag" href="/tags/kubernetes">#kubernetes</a>
+                
+                <a class="cp-tag" href="/tags/linux">#linux</a>
+                
+                <a class="cp-tag" href="/tags/markdown">#markdown</a>
+                
+                <a class="cp-tag" href="/tags/misc">#misc</a>
+                
+                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+                
+                <a class="cp-tag" href="/tags/octopress">#octopress</a>
+                
+                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
+                
+                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
+                
+                <a class="cp-tag" href="/tags/python">#python</a>
+                
+                <a class="cp-tag" href="/tags/ruby">#ruby</a>
+                
+                <a class="cp-tag" href="/tags/scala">#scala</a>
+                
+                <a class="cp-tag" href="/tags/vim">#vim</a>
+                
+                <a class="cp-tag" href="/tags/windows">#windows</a>
+                
+                
+                
+            </div>
+        </div>
+        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+    </div>
+</footer>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-60750954-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
