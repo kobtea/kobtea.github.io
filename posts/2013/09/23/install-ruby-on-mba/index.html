@@ -70,166 +70,166 @@
 </nav>
     </aside>
 
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sw_vers
-ProductName:    Mac OS X
-ProductVersion: 10.8.4
-BuildVersion:   12E3067
-</code></pre></div><p><a href="https://github.com/sstephenson/rbenv">rbenv</a>のreadmeにそってやる。<br>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sw_vers
+</span></span><span class="line"><span class="cl">ProductName:    Mac OS X
+</span></span><span class="line"><span class="cl">ProductVersion: 10.8.4
+</span></span><span class="line"><span class="cl">BuildVersion:   12E3067
+</span></span></code></pre></div><p><a href="https://github.com/sstephenson/rbenv">rbenv</a>のreadmeにそってやる。<br>
 PATHについて解説までしてくれるとかマジ天使。</p>
 <h2 id="rbenvのインストール">rbenvのインストール</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># homebrewを最新の状態に</span>
-$ brew update
-$ brew upgrade
-
-<span class="c1"># rbenvをインストール</span>
-$ brew install <span class="nv">rbenv</span>
-<span class="o">==</span>&gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
-<span class="c1">######################################################################## 100.0%</span>
-<span class="o">==</span>&gt; Caveats
-To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.rbenv add to your profile:
-  <span class="nb">export</span> <span class="nv">RBENV_ROOT</span><span class="o">=</span>/usr/local/var/rbenv
-
-To <span class="nb">enable</span> shims and autocompletion add to your profile:
-  <span class="k">if</span> which rbenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>rbenv init -<span class="k">)</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span>
-<span class="o">==</span>&gt; Summary
-🍺  /usr/local/Cellar/rbenv/0.4.0: <span class="m">31</span> files, 152K, built in <span class="m">2</span> seconds
-
-<span class="c1"># ruby-buildをインストール</span>
-$ brew install ruby-build
-<span class="c1">######################################################################## 100.0%</span>
-<span class="o">==</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/autoconf/2.69
-<span class="o">==</span>&gt; make install
-🍺  /usr/local/Cellar/autoconf/2.69: <span class="m">69</span> files, 2.0M, built in <span class="m">8</span> <span class="nv">seconds</span>
-<span class="o">==</span>&gt; Installing ruby-build
-<span class="o">==</span>&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
-<span class="c1">######################################################################## 100.0%</span>
-<span class="o">==</span>&gt; ./install.sh
-🍺  /usr/local/Cellar/ruby-build/20130907: <span class="m">83</span> files, 368K, built in <span class="m">2</span> seconds
-</code></pre></div><p>profileとかrcに以下を追記する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &#34;$(rbenv init -)&#34;; fi&#39;</span> &gt;&gt; ~/.zprofile
-$ <span class="nb">source</span> ~/.zprofile
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rbenv --help
-rbenv 0.4.0
-Usage: rbenv &lt;command&gt; <span class="o">[</span>&lt;args&gt;<span class="o">]</span>
-
-Some useful rbenv commands are:
-   commands    List all available rbenv commands
-   <span class="nb">local</span>       Set or show the <span class="nb">local</span> application-specific Ruby version
-   global      Set or show the global Ruby version
-   shell       Set or show the shell-specific Ruby version
-   install     Install a Ruby version using the ruby-build plugin
-   uninstall   Uninstall a specific Ruby version
-   rehash      Rehash rbenv shims <span class="o">(</span>run this after installing executables<span class="o">)</span>
-   version     Show the current Ruby version and its origin
-   versions    List all Ruby versions available to rbenv
-   which       Display the full path to an executable
-   whence      List all Ruby versions that contain the given executable
-
-See <span class="sb">`</span>rbenv <span class="nb">help</span> &lt;command&gt;<span class="err">&#39;</span> <span class="k">for</span> information on a specific command.
-For full documentation, see: https://github.com/sstephenson/rbenv#readme
-</code></pre></div><h2 id="rbenv-default-gemsをインストール">rbenv-default-gemsをインストール</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># homebrewを最新の状態に</span>
+</span></span><span class="line"><span class="cl">$ brew update
+</span></span><span class="line"><span class="cl">$ brew upgrade
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># rbenvをインストール</span>
+</span></span><span class="line"><span class="cl">$ brew install <span class="nv">rbenv</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz
+</span></span><span class="line"><span class="cl"><span class="c1">######################################################################## 100.0%</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Caveats
+</span></span><span class="line"><span class="cl">To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.rbenv add to your profile:
+</span></span><span class="line"><span class="cl">  <span class="nb">export</span> <span class="nv">RBENV_ROOT</span><span class="o">=</span>/usr/local/var/rbenv
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To <span class="nb">enable</span> shims and autocompletion add to your profile:
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> which rbenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>rbenv init -<span class="k">)</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Summary
+</span></span><span class="line"><span class="cl">🍺  /usr/local/Cellar/rbenv/0.4.0: <span class="m">31</span> files, 152K, built in <span class="m">2</span> seconds
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ruby-buildをインストール</span>
+</span></span><span class="line"><span class="cl">$ brew install ruby-build
+</span></span><span class="line"><span class="cl"><span class="c1">######################################################################## 100.0%</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; ./configure --prefix<span class="o">=</span>/usr/local/Cellar/autoconf/2.69
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; make install
+</span></span><span class="line"><span class="cl">🍺  /usr/local/Cellar/autoconf/2.69: <span class="m">69</span> files, 2.0M, built in <span class="m">8</span> <span class="nv">seconds</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Installing ruby-build
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz
+</span></span><span class="line"><span class="cl"><span class="c1">######################################################################## 100.0%</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; ./install.sh
+</span></span><span class="line"><span class="cl">🍺  /usr/local/Cellar/ruby-build/20130907: <span class="m">83</span> files, 368K, built in <span class="m">2</span> seconds
+</span></span></code></pre></div><p>profileとかrcに以下を追記する。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s1">&#39;if which rbenv &gt; /dev/null; then eval &#34;$(rbenv init -)&#34;; fi&#39;</span> &gt;&gt; ~/.zprofile
+</span></span><span class="line"><span class="cl">$ <span class="nb">source</span> ~/.zprofile
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rbenv --help
+</span></span><span class="line"><span class="cl">rbenv 0.4.0
+</span></span><span class="line"><span class="cl">Usage: rbenv &lt;command&gt; <span class="o">[</span>&lt;args&gt;<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Some useful rbenv commands are:
+</span></span><span class="line"><span class="cl">   commands    List all available rbenv commands
+</span></span><span class="line"><span class="cl">   <span class="nb">local</span>       Set or show the <span class="nb">local</span> application-specific Ruby version
+</span></span><span class="line"><span class="cl">   global      Set or show the global Ruby version
+</span></span><span class="line"><span class="cl">   shell       Set or show the shell-specific Ruby version
+</span></span><span class="line"><span class="cl">   install     Install a Ruby version using the ruby-build plugin
+</span></span><span class="line"><span class="cl">   uninstall   Uninstall a specific Ruby version
+</span></span><span class="line"><span class="cl">   rehash      Rehash rbenv shims <span class="o">(</span>run this after installing executables<span class="o">)</span>
+</span></span><span class="line"><span class="cl">   version     Show the current Ruby version and its origin
+</span></span><span class="line"><span class="cl">   versions    List all Ruby versions available to rbenv
+</span></span><span class="line"><span class="cl">   which       Display the full path to an executable
+</span></span><span class="line"><span class="cl">   whence      List all Ruby versions that contain the given executable
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">See <span class="sb">`</span>rbenv <span class="nb">help</span> &lt;command&gt;<span class="err">&#39;</span> <span class="k">for</span> information on a specific command.
+</span></span><span class="line"><span class="cl">For full documentation, see: https://github.com/sstephenson/rbenv#readme
+</span></span></code></pre></div><h2 id="rbenv-default-gemsをインストール">rbenv-default-gemsをインストール</h2>
 <p>ついでに<a href="https://github.com/sstephenson/rbenv-default-gems">rbenv-default-gems</a>を入れておく。<br>
 <code>rbenv install &lt;version&gt;</code>でRubyをインストールする際に、一緒に必要なgemを入れてくれる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;bundler&#39;</span> &gt;&gt; ~/.rbenv/default-gems
-</code></pre></div><p>ひとまずbundlerだけでいいかな。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 一応homebrewを再度更新</span>
-$ brew update
-$ brew upgrade
-
-<span class="c1"># ruby 2.0をインストール</span>
-$ rbenv install 2.0.0-p247
-Downloading openssl-1.0.1e.tar.gz...
--&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-
-BUILD FAILED
-
-Inspect or clean up the working tree at /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114
-Results logged to /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114.log
-
-Last <span class="m">10</span> log lines:
-<span class="nv">RANLIB</span>        <span class="o">=</span><span class="nb">true</span>
-<span class="nv">ARFLAGS</span>       <span class="o">=</span>
-<span class="nv">PERL</span>          <span class="o">=</span>/usr/bin/perl
-SIXTY_FOUR_BIT_LONG mode
-DES_UNROLL used
-DES_INT used
-RC4 uses uchar
-RC4_CHUNK is unsigned long
-sh: make: <span class="nb">command</span> not found
-/usr/local/bin/ruby-build: line 387: make: <span class="nb">command</span> not found
-</code></pre></div><p>makeコマンドがないぽい。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s1">&#39;bundler&#39;</span> &gt;&gt; ~/.rbenv/default-gems
+</span></span></code></pre></div><p>ひとまずbundlerだけでいいかな。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 一応homebrewを再度更新</span>
+</span></span><span class="line"><span class="cl">$ brew update
+</span></span><span class="line"><span class="cl">$ brew upgrade
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ruby 2.0をインストール</span>
+</span></span><span class="line"><span class="cl">$ rbenv install 2.0.0-p247
+</span></span><span class="line"><span class="cl">Downloading openssl-1.0.1e.tar.gz...
+</span></span><span class="line"><span class="cl">-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+</span></span><span class="line"><span class="cl">Installing openssl-1.0.1e...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">BUILD FAILED
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Inspect or clean up the working tree at /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114
+</span></span><span class="line"><span class="cl">Results logged to /var/folders/fz/6spm20xn2n34zk3rhc5q1b6c0000gn/T/ruby-build.20130922145805.39114.log
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Last <span class="m">10</span> log lines:
+</span></span><span class="line"><span class="cl"><span class="nv">RANLIB</span>        <span class="o">=</span><span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ARFLAGS</span>       <span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">PERL</span>          <span class="o">=</span>/usr/bin/perl
+</span></span><span class="line"><span class="cl">SIXTY_FOUR_BIT_LONG mode
+</span></span><span class="line"><span class="cl">DES_UNROLL used
+</span></span><span class="line"><span class="cl">DES_INT used
+</span></span><span class="line"><span class="cl">RC4 uses uchar
+</span></span><span class="line"><span class="cl">RC4_CHUNK is unsigned long
+</span></span><span class="line"><span class="cl">sh: make: <span class="nb">command</span> not found
+</span></span><span class="line"><span class="cl">/usr/local/bin/ruby-build: line 387: make: <span class="nb">command</span> not found
+</span></span></code></pre></div><p>makeコマンドがないぽい。<br>
 command line toolsが入ってなかった。</p>
-<pre><code>Xcode -&gt; Preferences -&gt; Downloads -&gt; Command Line Tools -&gt; Install
+<pre tabindex="0"><code>Xcode -&gt; Preferences -&gt; Downloads -&gt; Command Line Tools -&gt; Install
 </code></pre><p>リトライ。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rbenv install 2.0.0-p247
-Downloading openssl-1.0.1e.tar.gz...
--&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Downloading ruby-2.0.0-p247.tar.gz...
--&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-Installing ruby-2.0.0-p247...
-Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-ERROR:  While executing gem ... <span class="o">(</span>Gem::FilePermissionError<span class="o">)</span>
-    You don<span class="s1">&#39;t have write permissions into the /Library/Ruby/Gems/1.8 directory.
-</span><span class="s1">rbenv: error installing gem `bundler&#39;</span>
-</code></pre></div><p>今度は権限がない。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rbenv install 2.0.0-p247
+</span></span><span class="line"><span class="cl">Downloading openssl-1.0.1e.tar.gz...
+</span></span><span class="line"><span class="cl">-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+</span></span><span class="line"><span class="cl">Installing openssl-1.0.1e...
+</span></span><span class="line"><span class="cl">Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Downloading ruby-2.0.0-p247.tar.gz...
+</span></span><span class="line"><span class="cl">-&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+</span></span><span class="line"><span class="cl">Installing ruby-2.0.0-p247...
+</span></span><span class="line"><span class="cl">Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ERROR:  While executing gem ... <span class="o">(</span>Gem::FilePermissionError<span class="o">)</span>
+</span></span><span class="line"><span class="cl">    You don<span class="s1">&#39;t have write permissions into the /Library/Ruby/Gems/1.8 directory.
+</span></span></span><span class="line"><span class="cl"><span class="s1">rbenv: error installing gem `bundler&#39;</span>
+</span></span></code></pre></div><p>今度は権限がない。<br>
 <a href="https://github.com/sstephenson/rbenv-default-gems/issues/7">Issue</a>に載っていた。<br>
 どうやら環境変数に<code>$RBENV_ROOT</code>が必要らしい。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rbenv root
-</code></pre></div><p>で表示されたパスを.zprofileとかに書く。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=$HOME/.rbenv&#39;</span> &gt;&gt; ~/.zprofile
-$ <span class="nb">source</span> ~/.zprofile
-</code></pre></div><p>リトライ。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rbenv install 2.0.0-p247
-rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
-<span class="k">continue</span> with installation? <span class="o">(</span>y/N<span class="o">)</span> y
-Downloading openssl-1.0.1e.tar.gz...
--&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
-Installing openssl-1.0.1e...
-Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Downloading ruby-2.0.0-p247.tar.gz...
--&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
-Installing ruby-2.0.0-p247...
-Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
-
-Fetching: bundler-1.3.5.gem <span class="o">(</span>100%<span class="o">)</span>
-Successfully installed bundler-1.3.5
-Parsing documentation <span class="k">for</span> bundler-1.3.5
-Installing ri documentation <span class="k">for</span> bundler-1.3.5
-<span class="m">1</span> gem installed
-</code></pre></div><p>できた。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># ruby, gemのパスが$RBENV_ROOT以下に向いているか確認</span>
-$ rbenv rehash
-$ rbenv versions
-* system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.rbenv/version<span class="o">)</span>
-  2.0.0-p247
-$ which ruby
-/Users/kobtea/.rbenv/shims/ruby
-$ which gem
-/Users/kobtea/.rbenv/shims/gem
-
-<span class="c1"># システムデフォルトのバージョン確認</span>
-$ ruby --version
-ruby 1.8.7 <span class="o">(</span>2012-02-08 patchlevel 358<span class="o">)</span> <span class="o">[</span>universal-darwin12.0<span class="o">]</span>
-$ gem --version
-1.3.6
-
-<span class="c1"># デフォルトのバージョンを2.0に変更</span>
-$ rbenv global 2.0.0-p247
-$ rbenv versions
-  system
-* 2.0.0-p247 <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.rbenv/version<span class="o">)</span>
-
-$ ruby --version
-ruby 2.0.0p247 <span class="o">(</span>2013-06-27 revision 41674<span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.1<span class="o">]</span>
-$ gem --version
-2.0.3
-</code></pre></div><p>こんにちはRuby。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rbenv root
+</span></span></code></pre></div><p>で表示されたパスを.zprofileとかに書く。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s1">&#39;export RBENV_ROOT=$HOME/.rbenv&#39;</span> &gt;&gt; ~/.zprofile
+</span></span><span class="line"><span class="cl">$ <span class="nb">source</span> ~/.zprofile
+</span></span></code></pre></div><p>リトライ。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rbenv install 2.0.0-p247
+</span></span><span class="line"><span class="cl">rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists
+</span></span><span class="line"><span class="cl"><span class="k">continue</span> with installation? <span class="o">(</span>y/N<span class="o">)</span> y
+</span></span><span class="line"><span class="cl">Downloading openssl-1.0.1e.tar.gz...
+</span></span><span class="line"><span class="cl">-&gt; https://www.openssl.org/source/openssl-1.0.1e.tar.gz
+</span></span><span class="line"><span class="cl">Installing openssl-1.0.1e...
+</span></span><span class="line"><span class="cl">Installed openssl-1.0.1e to /Users/kobtea/.rbenv/versions/2.0.0-p247
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Downloading ruby-2.0.0-p247.tar.gz...
+</span></span><span class="line"><span class="cl">-&gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz
+</span></span><span class="line"><span class="cl">Installing ruby-2.0.0-p247...
+</span></span><span class="line"><span class="cl">Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Fetching: bundler-1.3.5.gem <span class="o">(</span>100%<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Successfully installed bundler-1.3.5
+</span></span><span class="line"><span class="cl">Parsing documentation <span class="k">for</span> bundler-1.3.5
+</span></span><span class="line"><span class="cl">Installing ri documentation <span class="k">for</span> bundler-1.3.5
+</span></span><span class="line"><span class="cl"><span class="m">1</span> gem installed
+</span></span></code></pre></div><p>できた。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># ruby, gemのパスが$RBENV_ROOT以下に向いているか確認</span>
+</span></span><span class="line"><span class="cl">$ rbenv rehash
+</span></span><span class="line"><span class="cl">$ rbenv versions
+</span></span><span class="line"><span class="cl">* system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.rbenv/version<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  2.0.0-p247
+</span></span><span class="line"><span class="cl">$ which ruby
+</span></span><span class="line"><span class="cl">/Users/kobtea/.rbenv/shims/ruby
+</span></span><span class="line"><span class="cl">$ which gem
+</span></span><span class="line"><span class="cl">/Users/kobtea/.rbenv/shims/gem
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># システムデフォルトのバージョン確認</span>
+</span></span><span class="line"><span class="cl">$ ruby --version
+</span></span><span class="line"><span class="cl">ruby 1.8.7 <span class="o">(</span>2012-02-08 patchlevel 358<span class="o">)</span> <span class="o">[</span>universal-darwin12.0<span class="o">]</span>
+</span></span><span class="line"><span class="cl">$ gem --version
+</span></span><span class="line"><span class="cl">1.3.6
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># デフォルトのバージョンを2.0に変更</span>
+</span></span><span class="line"><span class="cl">$ rbenv global 2.0.0-p247
+</span></span><span class="line"><span class="cl">$ rbenv versions
+</span></span><span class="line"><span class="cl">  system
+</span></span><span class="line"><span class="cl">* 2.0.0-p247 <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.rbenv/version<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ ruby --version
+</span></span><span class="line"><span class="cl">ruby 2.0.0p247 <span class="o">(</span>2013-06-27 revision 41674<span class="o">)</span> <span class="o">[</span>x86_64-darwin12.4.1<span class="o">]</span>
+</span></span><span class="line"><span class="cl">$ gem --version
+</span></span><span class="line"><span class="cl">2.0.3
+</span></span></code></pre></div><p>こんにちはRuby。</p>
 <h2 id="追記">追記</h2>
 <p>Macデフォルトのreadlineは使わないほうがいいらしい。<br>
 <code>rbenv install</code>する際にはhomebrewで入れたreadline, opensslを指定する。<br>
@@ -240,7 +240,7 @@ $ gem --version
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -345,7 +345,7 @@ $ gem --version
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -354,7 +354,7 @@ $ gem --version
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

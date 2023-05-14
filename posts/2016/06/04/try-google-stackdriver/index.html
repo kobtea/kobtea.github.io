@@ -140,99 +140,99 @@ Stackdriverに関係ない部分はざっくり省略していく(それでも�
 あとは普通に作成すればいいんだけど、Service Accountの権限だけ注意する。<br>
 最低限<code>monitoring.write</code>があれば良さそう。<br>
 Service Accountの確認方法は<a href="https://cloud.google.com/monitoring/agent/install-agent#authorizing">Document</a>にある通り。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ curl --silent -f -H <span class="s2">&#34;Metadata-Flavor: Google&#34;</span> http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
-https://www.googleapis.com/auth/cloud.useraccounts.readonly
-https://www.googleapis.com/auth/devstorage.read_only
-https://www.googleapis.com/auth/logging.write
-https://www.googleapis.com/auth/monitoring
-https://www.googleapis.com/auth/service.management
-https://www.googleapis.com/auth/servicecontrol
-</code></pre></div><h3 id="stackdriver-agentを入れる">Stackdriver Agentを入れる</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ curl --silent -f -H <span class="s2">&#34;Metadata-Flavor: Google&#34;</span> http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/scopes
+</span></span><span class="line"><span class="cl">https://www.googleapis.com/auth/cloud.useraccounts.readonly
+</span></span><span class="line"><span class="cl">https://www.googleapis.com/auth/devstorage.read_only
+</span></span><span class="line"><span class="cl">https://www.googleapis.com/auth/logging.write
+</span></span><span class="line"><span class="cl">https://www.googleapis.com/auth/monitoring
+</span></span><span class="line"><span class="cl">https://www.googleapis.com/auth/service.management
+</span></span><span class="line"><span class="cl">https://www.googleapis.com/auth/servicecontrol
+</span></span></code></pre></div><h3 id="stackdriver-agentを入れる">Stackdriver Agentを入れる</h3>
 <p>参考:</p>
 <ul>
 <li><a href="https://cloud.google.com/monitoring/agent/install-agent">Installing the Monitoring Agent</a></li>
 <li><a href="https://cloud.google.com/monitoring/api/authentication#cloud_monitoring_scopes">Authorizing the Monitoring API</a></li>
 </ul>
 <p>Documentに記載のinstall scriptを打つだけ、だと思ってました。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ curl -O https://repo.stackdriver.com/stack-install.sh
-kobtea@opengrok:~$ sudo bash stack-install.sh --write-gcm
-Installing agents <span class="k">for</span> Debian or Ubuntu.
-<span class="c1"># ...</span>
-Setting up stackdriver-agent <span class="o">(</span>5.5.0-269.trusty<span class="o">)</span> ...
- * Starting Stackdriver metrics collection agent stackdriver-agent
- * Need to <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
- * not starting, configuration error
-                                                                                                                                                                                          <span class="o">[</span>fail<span class="o">]</span>
-<span class="c1"># ...</span>
-Setting up stackdriver-extractor <span class="o">(</span>92-1.trusty<span class="o">)</span> ...
- * Starting Stackdriver metadata extractor stackdriver-extractor
- * Please <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
-                                                                                                                                                                                          <span class="o">[</span>fail<span class="o">]</span>
-<span class="c1"># ...</span>
-Restarting services
- * Restarting Stackdriver metrics collection agent stackdriver-agent
- * Need to <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
- * not starting, configuration error
-</code></pre></div><p>インストール失敗してる&hellip;<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kobtea@opengrok:~$ curl -O https://repo.stackdriver.com/stack-install.sh
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo bash stack-install.sh --write-gcm
+</span></span><span class="line"><span class="cl">Installing agents <span class="k">for</span> Debian or Ubuntu.
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">Setting up stackdriver-agent <span class="o">(</span>5.5.0-269.trusty<span class="o">)</span> ...
+</span></span><span class="line"><span class="cl"> * Starting Stackdriver metrics collection agent stackdriver-agent
+</span></span><span class="line"><span class="cl"> * Need to <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+</span></span><span class="line"><span class="cl"> * not starting, configuration error
+</span></span><span class="line"><span class="cl">                                                                                                                                                                                          <span class="o">[</span>fail<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">Setting up stackdriver-extractor <span class="o">(</span>92-1.trusty<span class="o">)</span> ...
+</span></span><span class="line"><span class="cl"> * Starting Stackdriver metadata extractor stackdriver-extractor
+</span></span><span class="line"><span class="cl"> * Please <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+</span></span><span class="line"><span class="cl">                                                                                                                                                                                          <span class="o">[</span>fail<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">Restarting services
+</span></span><span class="line"><span class="cl"> * Restarting Stackdriver metrics collection agent stackdriver-agent
+</span></span><span class="line"><span class="cl"> * Need to <span class="nb">set</span> STACKDRIVER_API_KEY in /etc/default/stackdriver-agent
+</span></span><span class="line"><span class="cl"> * not starting, configuration error
+</span></span></code></pre></div><p>インストール失敗してる&hellip;<br>
 <code>STACKDRIVER_API_KEY</code>がないぞって、Documentでは特に言及されてないんだけどなぁ&hellip;</p>
 <p><code>stack-install.sh</code>を見てみると<code>--write-gcm</code>オプションなんてものは書かれていない。な、なんだってー<br>
 代わりにproject metadataを使う方法は書いてある&hellip;どういうことや&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Install and start the Google monitoring agent.</span>
-<span class="c1">#</span>
-<span class="c1"># Usage:</span>
-<span class="c1">#</span>
-<span class="c1">#   curl -O https://.../stack-install.sh</span>
-<span class="c1">#   bash stack-install.sh [--api-key=...]</span>
-<span class="c1">#</span>
-<span class="c1"># The API key can be omitted on a GCE instance if it is available in the</span>
-<span class="c1"># project metadata as the value of &#34;stackdriver-agent-key&#34;.</span>
-<span class="c1">#</span>
-<span class="c1"># This script does the following:</span>
-<span class="c1">#</span>
-<span class="c1">#   1. Configure the required apt-get or yum repository.</span>
-<span class="c1">#   2. Install the agent package.</span>
-<span class="c1">#   3. Invoke /opt/stackdriver/stack-config to do the following:</span>
-<span class="c1">#      a. Optionally configure the agent with the API key.</span>
-<span class="c1">#      b. Start the agent services.</span>
-</code></pre></div><p>よくわからんので、API Keyをセットして試す。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Install and start the Google monitoring agent.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Usage:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   curl -O https://.../stack-install.sh</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   bash stack-install.sh [--api-key=...]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># The API key can be omitted on a GCE instance if it is available in the</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># project metadata as the value of &#34;stackdriver-agent-key&#34;.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># This script does the following:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   1. Configure the required apt-get or yum repository.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   2. Install the agent package.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#   3. Invoke /opt/stackdriver/stack-config to do the following:</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#      a. Optionally configure the agent with the API key.</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#      b. Start the agent services.</span>
+</span></span></code></pre></div><p>よくわからんので、API Keyをセットして試す。<br>
 API Keyは以下のurlから確認できる。<br>
 <a href="https://app.google.stackdriver.com/settings/accounts/agent/">https://app.google.stackdriver.com/settings/accounts/agent/</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">kobtea@opengrok:~$ sudo bash stack-install.sh --api-key<span class="o">=</span>&lt;MY_API_KEY&gt;
-Installing agents <span class="k">for</span> Debian or Ubuntu.
-<span class="c1"># ...</span>
-Restarting services
- * Restarting Stackdriver metrics collection agent stackdriver-agent
-
-<span class="c1"># 入った！</span>
-<span class="c1"># stackdriver-agentはinstall時に立ち上がる</span>
-kobtea@opengrok:~$ sudo service stackdriver-agent status
- * stackdriver-agent is running
-
-<span class="c1"># stackdriver-extractorは手動で</span>
-kobtea@opengrok:~$ sudo service stackdriver-extractor start
- * Starting Stackdriver metadata extractor stackdriver-extractor                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
-
-<span class="c1"># stack-configでも問題なさそう</span>
-kobtea@opengrok:~$ /opt/stackdriver/stack-config info
-Stackdriver Host Info Dump
-Resource Id: xxxx
-API Key: xxxx
-Error talking to Stackdriver gateway No JSON object could be decoded
- * stackdriver-agent is running
-Agent status:  Agent config snippets:
- * stackdriver-extractor is running
-Extractor status:  Extractor sample data:
-<span class="o">{</span>
-  <span class="s2">&#34;interfaces&#34;</span>: <span class="o">[</span>
-    <span class="o">{</span>
-      <span class="s2">&#34;name&#34;</span>: <span class="s2">&#34;lo&#34;</span>,
-      <span class="s2">&#34;address_families&#34;</span>: <span class="o">[</span>
-<span class="c1"># ...</span>
-      <span class="o">]</span>
-    <span class="o">}</span>
-  <span class="o">]</span>
-<span class="o">}</span>
-</code></pre></div><p>(∩´∀｀)∩ﾜｰｲ</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kobtea@opengrok:~$ sudo bash stack-install.sh --api-key<span class="o">=</span>&lt;MY_API_KEY&gt;
+</span></span><span class="line"><span class="cl">Installing agents <span class="k">for</span> Debian or Ubuntu.
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">Restarting services
+</span></span><span class="line"><span class="cl"> * Restarting Stackdriver metrics collection agent stackdriver-agent
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 入った！</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># stackdriver-agentはinstall時に立ち上がる</span>
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo service stackdriver-agent status
+</span></span><span class="line"><span class="cl"> * stackdriver-agent is running
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># stackdriver-extractorは手動で</span>
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo service stackdriver-extractor start
+</span></span><span class="line"><span class="cl"> * Starting Stackdriver metadata extractor stackdriver-extractor                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># stack-configでも問題なさそう</span>
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ /opt/stackdriver/stack-config info
+</span></span><span class="line"><span class="cl">Stackdriver Host Info Dump
+</span></span><span class="line"><span class="cl">Resource Id: xxxx
+</span></span><span class="line"><span class="cl">API Key: xxxx
+</span></span><span class="line"><span class="cl">Error talking to Stackdriver gateway No JSON object could be decoded
+</span></span><span class="line"><span class="cl"> * stackdriver-agent is running
+</span></span><span class="line"><span class="cl">Agent status:  Agent config snippets:
+</span></span><span class="line"><span class="cl"> * stackdriver-extractor is running
+</span></span><span class="line"><span class="cl">Extractor status:  Extractor sample data:
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;interfaces&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;name&#34;</span>: <span class="s2">&#34;lo&#34;</span>,
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;address_families&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">      <span class="o">]</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>(∩´∀｀)∩ﾜｰｲ</p>
 <h3 id="stackdriver-agent-pluginを入れる">Stackdriver Agent pluginを入れる</h3>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/#supported_plugins">Monitoring Agent Configuration - Supported plugins</a></p>
 <p>Agent pluginは標準で色々なミドルウェアに対応している。<br>
@@ -240,74 +240,74 @@ Extractor status:  Extractor sample data:
 <h4 id="nginx-pluginを入れる">Nginx pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/nginx">Nginx Plugin</a></p>
 <p>Nginx pluginは<code>stub_status</code>の値を計測する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># stub_statusの準備</span>
-kobtea@opengrok:~$ sudo touch /etc/nginx/sites-available/status
-kobtea@opengrok:~$ cat /etc/nginx/sites-available/status
-server <span class="o">{</span>
-	listen 80<span class="p">;</span>
-	server_name local-stackdriver-agent.stackdriver.com<span class="p">;</span>
-	location /nginx_status <span class="o">{</span>
-		stub_status on<span class="p">;</span>
-		access_log   off<span class="p">;</span>
-		allow 127.0.0.1<span class="p">;</span>
-		deny all<span class="p">;</span>
-	<span class="o">}</span>
-	location / <span class="o">{</span>
-		root /dev/null<span class="p">;</span>
-	<span class="o">}</span>
-<span class="o">}</span>
-kobtea@opengrok:~$ sudo ln -s /etc/nginx/sites-available/status /etc/nginx/sites-enabled/
-kobtea@opengrok:~$ sudo service nginx reload
-kobtea@opengrok:~$ curl http://local-stackdriver-agent.stackdriver.com/nginx_status
-Active connections: <span class="m">2</span>
-server accepts handled requests
- <span class="m">315</span> <span class="m">315</span> <span class="m">3601</span>
-Reading: <span class="m">0</span> Writing: <span class="m">1</span> Waiting: <span class="m">1</span>
-
-<span class="c1"># Stackdriver Nginx pluginの設定</span>
-kobtea@opengrok:~$ sudo touch /opt/stackdriver/collectd/etc/collectd.d/nginx.conf
-kobtea@opengrok:~$ cat /opt/stackdriver/collectd/etc/collectd.d/nginx.conf
-LoadPlugin <span class="s2">&#34;nginx&#34;</span>
-&lt;Plugin <span class="s2">&#34;nginx&#34;</span>&gt;
-  URL <span class="s2">&#34;http://local-stackdriver-agent.stackdriver.com/nginx_status&#34;</span>
-&lt;/Plugin&gt;
-kobtea@opengrok:~$ sudo service stackdriver-agent restart
-<span class="c1"># ...</span>
-Created new plugin context.
-                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
-</code></pre></div><h4 id="tomcat-pluginを入れる">Tomcat pluginを入れる</h4>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># stub_statusの準備</span>
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo touch /etc/nginx/sites-available/status
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ cat /etc/nginx/sites-available/status
+</span></span><span class="line"><span class="cl">server <span class="o">{</span>
+</span></span><span class="line"><span class="cl">	listen 80<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	server_name local-stackdriver-agent.stackdriver.com<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	location /nginx_status <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		stub_status on<span class="p">;</span>
+</span></span><span class="line"><span class="cl">		access_log   off<span class="p">;</span>
+</span></span><span class="line"><span class="cl">		allow 127.0.0.1<span class="p">;</span>
+</span></span><span class="line"><span class="cl">		deny all<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl">	location / <span class="o">{</span>
+</span></span><span class="line"><span class="cl">		root /dev/null<span class="p">;</span>
+</span></span><span class="line"><span class="cl">	<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo ln -s /etc/nginx/sites-available/status /etc/nginx/sites-enabled/
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo service nginx reload
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ curl http://local-stackdriver-agent.stackdriver.com/nginx_status
+</span></span><span class="line"><span class="cl">Active connections: <span class="m">2</span>
+</span></span><span class="line"><span class="cl">server accepts handled requests
+</span></span><span class="line"><span class="cl"> <span class="m">315</span> <span class="m">315</span> <span class="m">3601</span>
+</span></span><span class="line"><span class="cl">Reading: <span class="m">0</span> Writing: <span class="m">1</span> Waiting: <span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Stackdriver Nginx pluginの設定</span>
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo touch /opt/stackdriver/collectd/etc/collectd.d/nginx.conf
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ cat /opt/stackdriver/collectd/etc/collectd.d/nginx.conf
+</span></span><span class="line"><span class="cl">LoadPlugin <span class="s2">&#34;nginx&#34;</span>
+</span></span><span class="line"><span class="cl">&lt;Plugin <span class="s2">&#34;nginx&#34;</span>&gt;
+</span></span><span class="line"><span class="cl">  URL <span class="s2">&#34;http://local-stackdriver-agent.stackdriver.com/nginx_status&#34;</span>
+</span></span><span class="line"><span class="cl">&lt;/Plugin&gt;
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo service stackdriver-agent restart
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">Created new plugin context.
+</span></span><span class="line"><span class="cl">                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
+</span></span></code></pre></div><h4 id="tomcat-pluginを入れる">Tomcat pluginを入れる</h4>
 <p>参考: <a href="https://cloud.google.com/monitoring/agent/plugins/tomcat">Tomcat Plugin</a></p>
 <p>Tomcat, JVM系はJMXを使って計測する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JMXの設定</span>
-kobtea@opengrok:~$ diff -u /etc/default/tomcat7<span class="o">{</span>.orig,<span class="o">}</span>
---- /etc/default/tomcat7.orig	2016-05-12 16:50:51.872516414 +0000
-+++ /etc/default/tomcat7	2016-05-12 17:02:53.180519725 +0000
-@@ -19,6 +19,7 @@
- <span class="c1"># exactly one CPU chip that contains one or two cores, you should also add</span>
- <span class="c1"># the &#34;-XX:+CMSIncrementalMode&#34; option.</span>
- <span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">&#34;-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC&#34;</span>
-+JAVA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">JAVA_OPTS</span><span class="si">}</span><span class="s2"> -Djava.security.egd=file:/dev/./urandom&#34;</span>
-
- <span class="c1"># To enable remote debugging uncomment the following line.</span>
- <span class="c1"># You will then be able to use a java debugger on port 8000.</span>
-@@ -45,3 +46,7 @@
- <span class="c1"># NOTE: authbind works only with IPv4.  Do not enable it when using IPv6.</span>
- <span class="c1"># (yes/no, default: no)</span>
- <span class="c1">#AUTHBIND=no</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.port=9012&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.ssl=false&#34;</span>
-+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.authenticate=false&#34;</span>
-
-kobtea@opengrok:~$ sudo service tomcat7 restart
-
-<span class="c1"># Stackdriver Tomcat pluginの設定</span>
-kobtea@opengrok:~$ <span class="nb">cd</span> /opt/stackdriver/collectd/etc/collectd.d/ <span class="o">&amp;&amp;</span> sudo curl -O https://raw.githubusercontent.com/Stackdriver/stackdriver-agent-service-configs/master/etc/collectd.d/tomcat-7.conf
-kobtea@opengrok:~$ sudo service stackdriver-agent restart
-<span class="c1"># ...</span>
-Created new plugin context.
-                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
-</code></pre></div><h2 id="web-consoleを眺める">Web consoleを眺める</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># JMXの設定</span>
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ diff -u /etc/default/tomcat7<span class="o">{</span>.orig,<span class="o">}</span>
+</span></span><span class="line"><span class="cl">--- /etc/default/tomcat7.orig	2016-05-12 16:50:51.872516414 +0000
+</span></span><span class="line"><span class="cl">+++ /etc/default/tomcat7	2016-05-12 17:02:53.180519725 +0000
+</span></span><span class="line"><span class="cl">@@ -19,6 +19,7 @@
+</span></span><span class="line"><span class="cl"> <span class="c1"># exactly one CPU chip that contains one or two cores, you should also add</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># the &#34;-XX:+CMSIncrementalMode&#34; option.</span>
+</span></span><span class="line"><span class="cl"> <span class="nv">JAVA_OPTS</span><span class="o">=</span><span class="s2">&#34;-Djava.awt.headless=true -Xmx128m -XX:+UseConcMarkSweepGC&#34;</span>
+</span></span><span class="line"><span class="cl">+JAVA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">JAVA_OPTS</span><span class="si">}</span><span class="s2"> -Djava.security.egd=file:/dev/./urandom&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> <span class="c1"># To enable remote debugging uncomment the following line.</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># You will then be able to use a java debugger on port 8000.</span>
+</span></span><span class="line"><span class="cl">@@ -45,3 +46,7 @@
+</span></span><span class="line"><span class="cl"> <span class="c1"># NOTE: authbind works only with IPv4.  Do not enable it when using IPv6.</span>
+</span></span><span class="line"><span class="cl"> <span class="c1"># (yes/no, default: no)</span>
+</span></span><span class="line"><span class="cl"> <span class="c1">#AUTHBIND=no</span>
+</span></span><span class="line"><span class="cl">+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote&#34;</span>
+</span></span><span class="line"><span class="cl">+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.port=9012&#34;</span>
+</span></span><span class="line"><span class="cl">+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.ssl=false&#34;</span>
+</span></span><span class="line"><span class="cl">+CATALINA_OPTS<span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">CATALINA_OPTS</span><span class="si">}</span><span class="s2"> -Dcom.sun.management.jmxremote.authenticate=false&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo service tomcat7 restart
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Stackdriver Tomcat pluginの設定</span>
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ <span class="nb">cd</span> /opt/stackdriver/collectd/etc/collectd.d/ <span class="o">&amp;&amp;</span> sudo curl -O https://raw.githubusercontent.com/Stackdriver/stackdriver-agent-service-configs/master/etc/collectd.d/tomcat-7.conf
+</span></span><span class="line"><span class="cl">kobtea@opengrok:~$ sudo service stackdriver-agent restart
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">Created new plugin context.
+</span></span><span class="line"><span class="cl">                                                                                                                                                                                          <span class="o">[</span> OK <span class="o">]</span>
+</span></span></code></pre></div><h2 id="web-consoleを眺める">Web consoleを眺める</h2>
 <p>IndexページはAlert周りの機能が多い印象、すぐに反応したいしね。</p>
 
 
@@ -442,7 +442,7 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -547,7 +547,7 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -556,7 +556,7 @@ Custom Dashboardはgrafanaレベルになったら嬉しいな。<br>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

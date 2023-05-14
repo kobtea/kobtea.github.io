@@ -66,53 +66,53 @@
 
     <p>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。<br>
 <a href="https://jsonnet.org/learning/getting_started.html">Getting Started</a>に思いっきり書いてあった。</p>
-<pre><code>$ cat multi.jsonnet
+<pre tabindex="0"><code>$ cat multi.jsonnet
 {
-  'a.json': {
-    a: 'foo',
+  &#39;a.json&#39;: {
+    a: &#39;foo&#39;,
   },
-  'b.json': {
-    b: 'bar',
+  &#39;b.json&#39;: {
+    b: &#39;bar&#39;,
   },
 }
 </code></pre><p>こんな感じで <code>{&quot;FILE_NAME&quot;: &quot;OBJECT&quot;, ...}</code> として記述するだけ。<br>
 <code>-m</code> オプションでファイルごとに出力される。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ jsonnet -h <span class="p">|</span> grep -A1 multi
-  -m / --multi &lt;dir&gt;         Write multiple files to the directory, list files
-                             on stdout
-
-$ jsonnet -m dist multi.jsonnet
-dist/a.json
-dist/b.json
-
-$ cat dist/a.json
-<span class="o">{</span>
-   <span class="s2">&#34;a&#34;</span>: <span class="s2">&#34;foo&#34;</span>
-<span class="o">}</span>
-
-$ cat dist/b.json
-<span class="o">{</span>
-   <span class="s2">&#34;b&#34;</span>: <span class="s2">&#34;bar&#34;</span>
-<span class="o">}</span>
-</code></pre></div><p>ちなみに <code>-c</code> オプションでtargetディレクトリが存在しない場合は作成してくれる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ jsonnet -h <span class="p">|</span> grep -A1 cre
-  -c / --create-output-dirs  Automatically creates all parent directories <span class="k">for</span>
-                             files
-
-$ jsonnet -c -m dist multi.jsonnet
-dist/a.json
-dist/b.json
-</code></pre></div><p>サブディレクトリも作成できる。</p>
-<pre><code>$ cat multi.jsonnet
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ jsonnet -h <span class="p">|</span> grep -A1 multi
+</span></span><span class="line"><span class="cl">  -m / --multi &lt;dir&gt;         Write multiple files to the directory, list files
+</span></span><span class="line"><span class="cl">                             on stdout
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ jsonnet -m dist multi.jsonnet
+</span></span><span class="line"><span class="cl">dist/a.json
+</span></span><span class="line"><span class="cl">dist/b.json
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ cat dist/a.json
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;a&#34;</span>: <span class="s2">&#34;foo&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ cat dist/b.json
+</span></span><span class="line"><span class="cl"><span class="o">{</span>
+</span></span><span class="line"><span class="cl">   <span class="s2">&#34;b&#34;</span>: <span class="s2">&#34;bar&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></div><p>ちなみに <code>-c</code> オプションでtargetディレクトリが存在しない場合は作成してくれる。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ jsonnet -h <span class="p">|</span> grep -A1 cre
+</span></span><span class="line"><span class="cl">  -c / --create-output-dirs  Automatically creates all parent directories <span class="k">for</span>
+</span></span><span class="line"><span class="cl">                             files
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ jsonnet -c -m dist multi.jsonnet
+</span></span><span class="line"><span class="cl">dist/a.json
+</span></span><span class="line"><span class="cl">dist/b.json
+</span></span></code></pre></div><p>サブディレクトリも作成できる。</p>
+<pre tabindex="0"><code>$ cat multi.jsonnet
 {
-  'a.json': {
-    a: 'foo',
+  &#39;a.json&#39;: {
+    a: &#39;foo&#39;,
   },
-  'b/bb.json': {
-    b: 'bar',
+  &#39;b/bb.json&#39;: {
+    b: &#39;bar&#39;,
   },
-  'c/cc/ccc.json': {
-    c: 'baz',
+  &#39;c/cc/ccc.json&#39;: {
+    c: &#39;baz&#39;,
   },
 }
 
@@ -136,7 +136,7 @@ dist
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -241,7 +241,7 @@ dist
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -250,7 +250,7 @@ dist
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

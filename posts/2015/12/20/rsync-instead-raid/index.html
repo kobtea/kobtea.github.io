@@ -290,8 +290,8 @@
 <h2 id="robocopyでそそくさと設定する">robocopyでそそくさと設定する</h2>
 <p>Windowsには<code>robocopy</code>という<code>rsync</code>相当のコマンドが存在する。</p>
 <p>下記のコマンドをタスクスケジューラに登録してdailyで実行させる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat">$ robocopy <span class="nv">%SRC%</span> <span class="nv">%DST%</span> /MIR /R:3 /W:5 /XD <span class="s2">&#34;System Volume Information&#34;</span> <span class="s2">&#34;$RECYCLE.BIN&#34;</span> /XJ /TEE /LOG:<span class="s2">&#34;/PATH/TO/LOG.log&#34;</span>
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bat" data-lang="bat"><span class="line"><span class="cl">$ robocopy <span class="nv">%SRC%</span> <span class="nv">%DST%</span> /MIR /R:3 /W:5 /XD <span class="s2">&#34;System Volume Information&#34;</span> <span class="s2">&#34;$RECYCLE.BIN&#34;</span> /XJ /TEE /LOG:<span class="s2">&#34;/PATH/TO/LOG.log&#34;</span>
+</span></span></code></pre></div><ul>
 <li><code>/MIR</code> ミラーリング(削除もしてくれる)</li>
 <li><code>/R:n</code> コピー失敗時のリトライ数</li>
 <li><code>/W:n</code> コピー失敗時のリトライまでの待ち時間</li>
@@ -333,7 +333,7 @@
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -438,7 +438,7 @@
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -447,7 +447,7 @@
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

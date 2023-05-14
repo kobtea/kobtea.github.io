@@ -109,122 +109,122 @@ argocd-cmにプラグイン情報を追記する。</p>
 init containerでwrapper scriptとhelmfileをdownloadして、empty dir経由でargocd-repo-server podへ渡している。<br>
 manifestはREADMEをなぞるだけ。</p>
 <p>diffは主要な箇所のみ記載する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">$ kubectl -n argocd diff -f argocd-repo-server.vm.yaml
-<span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-097769223/apps.v1.Deployment.argocd.argocd-repo-server /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-018972858/apps.v1.Deployment.argocd.argocd-repo-server
-</span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-097769223/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 08:44:57.000000000 +0900
-</span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-018972858/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 08:44:57.000000000 +0900
-</span><span class="gi"></span># ...
-<span class="gu">@@ -302,7 +334,31 @@
-</span><span class="gu"></span>           name: gpg-keyring
-         - mountPath: /app/config/reposerver/tls
-           name: argocd-repo-server-tls
-<span class="gi">+        - mountPath: /usr/local/bin/argo-cd-helmfile.sh
-</span><span class="gi">+          name: custom-tools
-</span><span class="gi">+          subPath: argo-cd-helmfile.sh
-</span><span class="gi">+        - mountPath: /usr/local/bin/helmfile
-</span><span class="gi">+          name: custom-tools
-</span><span class="gi">+          subPath: helmfile
-</span><span class="gi"></span>       dnsPolicy: ClusterFirst
-<span class="gi">+      initContainers:
-</span><span class="gi">+      - args:
-</span><span class="gi">+        - wget -qO /custom-tools/argo-cd-helmfile.sh https://raw.githubusercontent.com/travisghansen/argo-cd-helmfile/master/src/argo-cd-helmfile.sh
-</span><span class="gi">+          &amp;&amp; chmod +x /custom-tools/argo-cd-helmfile.sh &amp;&amp; wget -qO /custom-tools/helmfile
-</span><span class="gi">+          https://github.com/roboll/helmfile/releases/download/v0.138.7/helmfile_linux_amd64
-</span><span class="gi">+          &amp;&amp; chmod +x /custom-tools/helmfile
-</span><span class="gi">+        command:
-</span><span class="gi">+        - sh
-</span><span class="gi">+        - -c
-</span><span class="gi">+        image: alpine:3.8
-</span><span class="gi">+        imagePullPolicy: IfNotPresent
-</span><span class="gi">+        name: download-tools
-</span><span class="gi">+        resources: {}
-</span><span class="gi">+        terminationMessagePath: /dev/termination-log
-</span><span class="gi">+        terminationMessagePolicy: File
-</span><span class="gi">+        volumeMounts:
-</span><span class="gi">+        - mountPath: /custom-tools
-</span><span class="gi">+          name: custom-tools
-</span><span class="gi"></span>       restartPolicy: Always
-       schedulerName: default-scheduler
-       securityContext: {}
-<span class="gu">@@ -334,6 +390,8 @@
-</span><span class="gu"></span>             path: ca.crt
-           optional: true
-           secretName: argocd-repo-server-tls
-<span class="gi">+      - emptyDir: {}
-</span><span class="gi">+        name: custom-tools
-</span><span class="gi"></span> status:
-   availableReplicas: 1
-   conditions:
-
-
-$ kubectl -n argocd diff -f argocd-cm.vm.yaml | pbcopy
-<span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-351111144/v1.ConfigMap.argocd.argocd-cm /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-911034919/v1.ConfigMap.argocd.argocd-cm
-</span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-351111144/v1.ConfigMap.argocd.argocd-cm	2021-05-08 08:49:16.000000000 +0900
-</span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-911034919/v1.ConfigMap.argocd.argocd-cm	2021-05-08 08:49:17.000000000 +0900
-</span><span class="gi"></span><span class="gu">@@ -1,4 +1,13 @@
-</span><span class="gu"></span> apiVersion: v1
-<span class="gi">+data:
-</span><span class="gi">+  configManagementPlugins: |
-</span><span class="gi">+    - name: helmfile
-</span><span class="gi">+      init:                          # Optional command to initialize application source directory
-</span><span class="gi">+        command: [&#34;argo-cd-helmfile.sh&#34;]
-</span><span class="gi">+        args: [&#34;init&#34;]
-</span><span class="gi">+      generate:                      # Command to generate manifests YAML
-</span><span class="gi">+        command: [&#34;argo-cd-helmfile.sh&#34;]
-</span><span class="gi">+        args: [&#34;generate&#34;]
-</span><span class="gi"></span> kind: ConfigMap
- metadata:
-   annotations:
-# ...
-</code></pre></div><p>appを作成してみる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ argocd app create node-exporter <span class="se">\
-</span><span class="se"></span>--repo https://github.com/kobtea/manifests.git <span class="se">\
-</span><span class="se"></span>--path helmfile/node-exporter <span class="se">\
-</span><span class="se"></span>--dest-namespace default <span class="se">\
-</span><span class="se"></span>--dest-server https://kubernetes.default.svc <span class="se">\
-</span><span class="se"></span>--config-management-plugin helmfile
-$ argocd app sync node-exporter
-$ argocd app list
-NAME           CLUSTER                         NAMESPACE  PROJECT  STATUS  HEALTH   SYNCPOLICY  CONDITIONS  REPO                                                 PATH                    TARGET
-guestbook      https://kubernetes.default.svc  default    default  Synced  Healthy  &lt;none&gt;      &lt;none&gt;      https://github.com/argoproj/argocd-example-apps.git  guestbook               HEAD
-node-exporter  https://kubernetes.default.svc  default    default  Synced  Healthy  &lt;none&gt;      &lt;none&gt;      https://github.com/kobtea/manifests.git              helmfile/node-exporter
-</code></pre></div><h3 id="byoi方式">BYOI方式</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">$ kubectl -n argocd diff -f argocd-repo-server.vm.yaml
+</span></span><span class="line"><span class="cl"><span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-097769223/apps.v1.Deployment.argocd.argocd-repo-server /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-018972858/apps.v1.Deployment.argocd.argocd-repo-server
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-097769223/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 08:44:57.000000000 +0900
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-018972858/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 08:44:57.000000000 +0900
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span># ...
+</span></span><span class="line"><span class="cl"><span class="gu">@@ -302,7 +334,31 @@
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>           name: gpg-keyring
+</span></span><span class="line"><span class="cl">         - mountPath: /app/config/reposerver/tls
+</span></span><span class="line"><span class="cl">           name: argocd-repo-server-tls
+</span></span><span class="line"><span class="cl"><span class="gi">+        - mountPath: /usr/local/bin/argo-cd-helmfile.sh
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          name: custom-tools
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          subPath: argo-cd-helmfile.sh
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        - mountPath: /usr/local/bin/helmfile
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          name: custom-tools
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          subPath: helmfile
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>       dnsPolicy: ClusterFirst
+</span></span><span class="line"><span class="cl"><span class="gi">+      initContainers:
+</span></span></span><span class="line"><span class="cl"><span class="gi">+      - args:
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        - wget -qO /custom-tools/argo-cd-helmfile.sh https://raw.githubusercontent.com/travisghansen/argo-cd-helmfile/master/src/argo-cd-helmfile.sh
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          &amp;&amp; chmod +x /custom-tools/argo-cd-helmfile.sh &amp;&amp; wget -qO /custom-tools/helmfile
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          https://github.com/roboll/helmfile/releases/download/v0.138.7/helmfile_linux_amd64
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          &amp;&amp; chmod +x /custom-tools/helmfile
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        command:
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        - sh
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        - -c
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        image: alpine:3.8
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        imagePullPolicy: IfNotPresent
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        name: download-tools
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        resources: {}
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        terminationMessagePath: /dev/termination-log
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        terminationMessagePolicy: File
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        volumeMounts:
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        - mountPath: /custom-tools
+</span></span></span><span class="line"><span class="cl"><span class="gi">+          name: custom-tools
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>       restartPolicy: Always
+</span></span><span class="line"><span class="cl">       schedulerName: default-scheduler
+</span></span><span class="line"><span class="cl">       securityContext: {}
+</span></span><span class="line"><span class="cl"><span class="gu">@@ -334,6 +390,8 @@
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>             path: ca.crt
+</span></span><span class="line"><span class="cl">           optional: true
+</span></span><span class="line"><span class="cl">           secretName: argocd-repo-server-tls
+</span></span><span class="line"><span class="cl"><span class="gi">+      - emptyDir: {}
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        name: custom-tools
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span> status:
+</span></span><span class="line"><span class="cl">   availableReplicas: 1
+</span></span><span class="line"><span class="cl">   conditions:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ kubectl -n argocd diff -f argocd-cm.vm.yaml | pbcopy
+</span></span><span class="line"><span class="cl"><span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-351111144/v1.ConfigMap.argocd.argocd-cm /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-911034919/v1.ConfigMap.argocd.argocd-cm
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-351111144/v1.ConfigMap.argocd.argocd-cm	2021-05-08 08:49:16.000000000 +0900
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-911034919/v1.ConfigMap.argocd.argocd-cm	2021-05-08 08:49:17.000000000 +0900
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -1,4 +1,13 @@
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span> apiVersion: v1
+</span></span><span class="line"><span class="cl"><span class="gi">+data:
+</span></span></span><span class="line"><span class="cl"><span class="gi">+  configManagementPlugins: |
+</span></span></span><span class="line"><span class="cl"><span class="gi">+    - name: helmfile
+</span></span></span><span class="line"><span class="cl"><span class="gi">+      init:                          # Optional command to initialize application source directory
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        command: [&#34;argo-cd-helmfile.sh&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        args: [&#34;init&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="gi">+      generate:                      # Command to generate manifests YAML
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        command: [&#34;argo-cd-helmfile.sh&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        args: [&#34;generate&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span> kind: ConfigMap
+</span></span><span class="line"><span class="cl"> metadata:
+</span></span><span class="line"><span class="cl">   annotations:
+</span></span><span class="line"><span class="cl"># ...
+</span></span></code></pre></div><p>appを作成してみる。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ argocd app create node-exporter <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--repo https://github.com/kobtea/manifests.git <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--path helmfile/node-exporter <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--dest-namespace default <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--dest-server https://kubernetes.default.svc <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>--config-management-plugin helmfile
+</span></span><span class="line"><span class="cl">$ argocd app sync node-exporter
+</span></span><span class="line"><span class="cl">$ argocd app list
+</span></span><span class="line"><span class="cl">NAME           CLUSTER                         NAMESPACE  PROJECT  STATUS  HEALTH   SYNCPOLICY  CONDITIONS  REPO                                                 PATH                    TARGET
+</span></span><span class="line"><span class="cl">guestbook      https://kubernetes.default.svc  default    default  Synced  Healthy  &lt;none&gt;      &lt;none&gt;      https://github.com/argoproj/argocd-example-apps.git  guestbook               HEAD
+</span></span><span class="line"><span class="cl">node-exporter  https://kubernetes.default.svc  default    default  Synced  Healthy  &lt;none&gt;      &lt;none&gt;      https://github.com/kobtea/manifests.git              helmfile/node-exporter
+</span></span></code></pre></div><h3 id="byoi方式">BYOI方式</h3>
 <p>ChatworkがまさにそれなDocker Imageを公開しているので感謝しながら使う。<br>
 <a href="https://hub.docker.com/r/chatwork/argocd-helmfile">https://hub.docker.com/r/chatwork/argocd-helmfile</a><br>
 こちらもREADMEをなぞるだけ。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff">$ kubectl -n argocd diff -f argocd-repo-server.byoi.yaml
-<span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-612236984/apps.v1.Deployment.argocd.argocd-repo-server /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-918040247/apps.v1.Deployment.argocd.argocd-repo-server
-</span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-612236984/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 09:10:24.000000000 +0900
-</span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-918040247/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 09:10:24.000000000 +0900
-</span><span class="gi"></span># ...
-<span class="gu">@@ -255,7 +244,7 @@
-</span><span class="gu"></span>         - argocd-repo-server
-         - --redis
-         - argocd-redis:6379
-<span class="gd">-        image: quay.io/argoproj/argocd:v2.0.0
-</span><span class="gd"></span><span class="gi">+        image: chatwork/argocd-helmfile:2.0.0-0.138.7
-</span><span class="gi"></span>         imagePullPolicy: Always
-         livenessProbe:
-           failureThreshold: 3
-
-
-$ kubectl -n argocd diff -f argocd-cm.byoi.yaml
-<span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-606675094/v1.ConfigMap.argocd.argocd-cm /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-293576957/v1.ConfigMap.argocd.argocd-cm
-</span><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-606675094/v1.ConfigMap.argocd.argocd-cm	2021-05-08 09:12:08.000000000 +0900
-</span><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-293576957/v1.ConfigMap.argocd.argocd-cm	2021-05-08 09:12:08.000000000 +0900
-</span><span class="gi"></span><span class="gu">@@ -1,4 +1,10 @@
-</span><span class="gu"></span> apiVersion: v1
-<span class="gi">+data:
-</span><span class="gi">+  configManagementPlugins: |
-</span><span class="gi">+    - name: helmfile
-</span><span class="gi">+      generate:
-</span><span class="gi">+        command: [&#34;/bin/sh&#34;, &#34;-c&#34;]
-</span><span class="gi">+        args: [&#34;helmfile --namespace $ARGOCD_APP_NAMESPACE template | sed -e &#39;1,/---/d&#39; | sed -e &#39;s|apiregistration.k8s.io/v1beta1|apiregistration.k8s.io/v1|g&#39;&#34;]
-</span><span class="gi"></span> kind: ConfigMap
- metadata:
-   annotations:
-# ...
-</code></pre></div><p>appの作成方法は同じなので省略。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-diff" data-lang="diff"><span class="line"><span class="cl">$ kubectl -n argocd diff -f argocd-repo-server.byoi.yaml
+</span></span><span class="line"><span class="cl"><span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-612236984/apps.v1.Deployment.argocd.argocd-repo-server /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-918040247/apps.v1.Deployment.argocd.argocd-repo-server
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-612236984/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 09:10:24.000000000 +0900
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-918040247/apps.v1.Deployment.argocd.argocd-repo-server	2021-05-08 09:10:24.000000000 +0900
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span># ...
+</span></span><span class="line"><span class="cl"><span class="gu">@@ -255,7 +244,7 @@
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>         - argocd-repo-server
+</span></span><span class="line"><span class="cl">         - --redis
+</span></span><span class="line"><span class="cl">         - argocd-redis:6379
+</span></span><span class="line"><span class="cl"><span class="gd">-        image: quay.io/argoproj/argocd:v2.0.0
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+        image: chatwork/argocd-helmfile:2.0.0-0.138.7
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span>         imagePullPolicy: Always
+</span></span><span class="line"><span class="cl">         livenessProbe:
+</span></span><span class="line"><span class="cl">           failureThreshold: 3
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ kubectl -n argocd diff -f argocd-cm.byoi.yaml
+</span></span><span class="line"><span class="cl"><span class="gh">diff -u -N /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-606675094/v1.ConfigMap.argocd.argocd-cm /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-293576957/v1.ConfigMap.argocd.argocd-cm
+</span></span></span><span class="line"><span class="cl"><span class="gh"></span><span class="gd">--- /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/LIVE-606675094/v1.ConfigMap.argocd.argocd-cm	2021-05-08 09:12:08.000000000 +0900
+</span></span></span><span class="line"><span class="cl"><span class="gd"></span><span class="gi">+++ /var/folders/1x/4_hvvl5564v0rlnmdq1w4jcw0000gn/T/MERGED-293576957/v1.ConfigMap.argocd.argocd-cm	2021-05-08 09:12:08.000000000 +0900
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span><span class="gu">@@ -1,4 +1,10 @@
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span> apiVersion: v1
+</span></span><span class="line"><span class="cl"><span class="gi">+data:
+</span></span></span><span class="line"><span class="cl"><span class="gi">+  configManagementPlugins: |
+</span></span></span><span class="line"><span class="cl"><span class="gi">+    - name: helmfile
+</span></span></span><span class="line"><span class="cl"><span class="gi">+      generate:
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        command: [&#34;/bin/sh&#34;, &#34;-c&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="gi">+        args: [&#34;helmfile --namespace $ARGOCD_APP_NAMESPACE template | sed -e &#39;1,/---/d&#39; | sed -e &#39;s|apiregistration.k8s.io/v1beta1|apiregistration.k8s.io/v1|g&#39;&#34;]
+</span></span></span><span class="line"><span class="cl"><span class="gi"></span> kind: ConfigMap
+</span></span><span class="line"><span class="cl"> metadata:
+</span></span><span class="line"><span class="cl">   annotations:
+</span></span><span class="line"><span class="cl"># ...
+</span></span></code></pre></div><p>appの作成方法は同じなので省略。</p>
 <h2 id="どちらの方式が良いか">どちらの方式が良いか</h2>
 <p>どちらの方式もOSSで公開されていて、お手軽に導入できるのでどちらでも良い。<br>
 ArgoCD自体をHelmで管理するにしても、Valuesはどちらのケースも想定されている。<br>
@@ -241,7 +241,7 @@ ArgoCD自体をHelmで管理するにしても、Valuesはどちらのケース�
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -346,7 +346,7 @@ ArgoCD自体をHelmで管理するにしても、Valuesはどちらのケース�
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -355,7 +355,7 @@ ArgoCD自体をHelmで管理するにしても、Valuesはどちらのケース�
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

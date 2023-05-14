@@ -6,7 +6,7 @@
     <description>Recent content in prometheus on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2021, kobtea</copyright>
+    <copyright>Copyright © 2013-2023, kobtea</copyright>
     <lastBuildDate>Sun, 29 Aug 2021 19:37:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/tags/prometheus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する</title>

@@ -144,13 +144,13 @@
 <h2 id="変更方法">変更方法</h2>
 <p>スキンを変更するには、<code>update</code>, <code>index</code>する際に<code>SKIN</code>を指定しておけばいいだけ。</p>
 <p>tomcatに既にdeployしている場合。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
-</code></pre></div><p>tomcatにこれからdeployする場合、<code>deploy</code>ではスキン設定されないので<code>update</code>もすること。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
-$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
-</code></pre></div><p>プロジェクトを追加してindexを張るときにも<code>SKIN</code>の指定は必要。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok index
-</code></pre></div><p>毎回環境変数指定するの面倒くさいので、<code>OpenGrok</code> wrapper scriptを直にいじっちゃってもいいかも。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
+</span></span></code></pre></div><p>tomcatにこれからdeployする場合、<code>deploy</code>ではスキン設定されないので<code>update</code>もすること。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
+</span></span><span class="line"><span class="cl">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
+</span></span></code></pre></div><p>プロジェクトを追加してindexを張るときにも<code>SKIN</code>の指定は必要。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L offwhite&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok index
+</span></span></code></pre></div><p>毎回環境変数指定するの面倒くさいので、<code>OpenGrok</code> wrapper scriptを直にいじっちゃってもいいかも。<br>
 あるいは環境変数書き込んだrcファイル作って、<code>source</code>するとか。</p>
 <p>スキンを変えても反映されない場合は、ブラウザキャッシュを消すこと。</p>
 <h2 id="フルカスタマイズする場合">フルカスタマイズする場合</h2>
@@ -162,39 +162,39 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
 </ul>
 <p>自作スキンを作って<code>.war</code>に追加した後、<code>SKIN</code>で指定すればいいだけなはず(実際作ってないけど&hellip;)。<br>
 Java力低いので<code>jar</code>コマンドを使ってファイルを抽出・追加する方法についてメモメモ。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># 任意のディレクトリ・ファイルを抽出する</span>
-$ jar xf source.war offwhite
-$ ls -l offwhite/
-total <span class="m">44</span>
-drwxrwxr-x <span class="m">2</span> vagrant vagrant  <span class="m">4096</span> Apr <span class="m">29</span>  <span class="m">2014</span> img
--rw-rw-r-- <span class="m">1</span> vagrant vagrant   <span class="m">803</span> Apr <span class="m">29</span>  <span class="m">2014</span> jquery.autocomplete.css
--rw-rw-r-- <span class="m">1</span> vagrant vagrant  <span class="m">1135</span> Apr <span class="m">29</span>  <span class="m">2014</span> jquery.combo.css
--rw-rw-r-- <span class="m">1</span> vagrant vagrant   <span class="m">192</span> Apr <span class="m">29</span>  <span class="m">2014</span> jquery.tooltip.css
--rw-rw-r-- <span class="m">1</span> vagrant vagrant  <span class="m">9534</span> Apr <span class="m">29</span>  <span class="m">2014</span> print.css
--rw-rw-r-- <span class="m">1</span> vagrant vagrant <span class="m">13976</span> Mar <span class="m">24</span>  <span class="m">2015</span> style.css
-
-<span class="c1"># 試しにファイルを仕込んでwar更新してみる</span>
-$ touch offwhite/hogehoge
-$ jar uf source.war offwhite
-
-<span class="c1"># お掃除した後に、warを展開する</span>
-$ rm -rf offwhite
-$ jar xf source.war
-
-<span class="c1"># ちゃんと追加されているんだなも</span>
-$ ls offwhite/hogehoge
-offwhite/hogehoge
-</code></pre></div><p>自分でスキンを作った場合にはこの要領で。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ jar uf opengrok-0.12.1.5/lib/source.war myskin
-$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L myskin&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
-</code></pre></div><p>ちなみに<a href="https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/README.txt#L357-L404">README</a>には、<code>jar</code>ではなく<code>unzip</code>を使った方法が紹介されている。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># 任意のディレクトリ・ファイルを抽出する</span>
+</span></span><span class="line"><span class="cl">$ jar xf source.war offwhite
+</span></span><span class="line"><span class="cl">$ ls -l offwhite/
+</span></span><span class="line"><span class="cl">total <span class="m">44</span>
+</span></span><span class="line"><span class="cl">drwxrwxr-x <span class="m">2</span> vagrant vagrant  <span class="m">4096</span> Apr <span class="m">29</span>  <span class="m">2014</span> img
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> vagrant vagrant   <span class="m">803</span> Apr <span class="m">29</span>  <span class="m">2014</span> jquery.autocomplete.css
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> vagrant vagrant  <span class="m">1135</span> Apr <span class="m">29</span>  <span class="m">2014</span> jquery.combo.css
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> vagrant vagrant   <span class="m">192</span> Apr <span class="m">29</span>  <span class="m">2014</span> jquery.tooltip.css
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> vagrant vagrant  <span class="m">9534</span> Apr <span class="m">29</span>  <span class="m">2014</span> print.css
+</span></span><span class="line"><span class="cl">-rw-rw-r-- <span class="m">1</span> vagrant vagrant <span class="m">13976</span> Mar <span class="m">24</span>  <span class="m">2015</span> style.css
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 試しにファイルを仕込んでwar更新してみる</span>
+</span></span><span class="line"><span class="cl">$ touch offwhite/hogehoge
+</span></span><span class="line"><span class="cl">$ jar uf source.war offwhite
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># お掃除した後に、warを展開する</span>
+</span></span><span class="line"><span class="cl">$ rm -rf offwhite
+</span></span><span class="line"><span class="cl">$ jar xf source.war
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># ちゃんと追加されているんだなも</span>
+</span></span><span class="line"><span class="cl">$ ls offwhite/hogehoge
+</span></span><span class="line"><span class="cl">offwhite/hogehoge
+</span></span></code></pre></div><p>自分でスキンを作った場合にはこの要領で。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ jar uf opengrok-0.12.1.5/lib/source.war myskin
+</span></span><span class="line"><span class="cl">$ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39;-L myskin&#39;</span> ./opengrok-0.12.1.5/bin/OpenGrok update
+</span></span></code></pre></div><p>ちなみに<a href="https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/README.txt#L357-L404">README</a>には、<code>jar</code>ではなく<code>unzip</code>を使った方法が紹介されている。<br>
 お好きな方で。</p>
 
 
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -299,7 +299,7 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -308,7 +308,7 @@ $ sudo <span class="nv">SKIN</span><span class="o">=</span><span class="s1">&#39
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

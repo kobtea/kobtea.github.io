@@ -6,7 +6,7 @@
     <description>Recent content in Posts on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2021, kobtea</copyright>
+    <copyright>Copyright © 2013-2023, kobtea</copyright>
     <lastBuildDate>Sun, 29 Aug 2021 19:37:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する</title>
@@ -32,7 +32,7 @@
       <pubDate>Sun, 04 Apr 2021 19:03:00 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/</guid>
-      <description>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &#39;a.json&#39;: { a: &#39;foo&#39;, }, &#39;b.json&#39;: { b: &#39;bar&#39;, }, } こんな感じで {&amp;quot;FILE_NAME&amp;quot;: &amp;quot;OBJECT&amp;quot;, ...} として記述するだけ。 -m オプションでファイル</description>
+      <description>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &amp;#39;a.json&amp;#39;: { a: &amp;#39;foo&amp;#39;, }, &amp;#39;b.json&amp;#39;: { b: &amp;#39;bar&amp;#39;, }, } こんな感じで {&amp;quot;FILE_NAME&amp;quot;: &amp;quot;OBJECT&amp;quot;, ...} として記述するだけ。 -m オプションでファイル</description>
     </item>
     
     <item>
@@ -239,7 +239,7 @@
       <pubDate>Sun, 22 Sep 2013 22:57:00 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
-      <description>インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追記する。 NeoBundle使ってるよ。 &amp;#34; .vimrcNeoBundle &amp;#39;plasticboy/vim-markdown&amp;#39;NeoBundle &amp;#39;kannokanno/previm&amp;#39;NeoBundle &amp;#39;tyru/open-browser.vim&amp;#39;&amp;#34;g:previm_open_cmd &amp;#34; open-</description>
+      <description>インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追記する。 NeoBundle使ってるよ。 &amp;#34; .vimrc NeoBundle &amp;#39;plasticboy/vim-markdown&amp;#39; NeoBundle &amp;#39;kannokanno/previm&amp;#39; NeoBundle &amp;#39;tyru/open-browser.vim&amp;#39; &amp;#34;g:previm_open_cmd &amp;#34; o</description>
     </item>
     
     <item>

@@ -94,16 +94,16 @@ RealforceのUS配列を購入してwinに設定したこと。</p>
 <p>macのJIS配列みたいな感じ。</p>
 <h2 id="作業ログ">作業ログ</h2>
 <h3 id="英語キーボードとして認識させる">英語キーボードとして認識させる</h3>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># レジストリエディタを起動</span>
-Start &gt; regedit
-<span class="c1"># キーボード設定を開く</span>
-コンピュータ &gt; HKEY_LOCAL_MACHINE &gt; SYSTEM &gt; CurrentControlSet &gt; services &gt; i8042prt &gt; Parameters
-
-<span class="c1"># US配列の設定</span>
-LayerDriver JPN             : kbd106.dll    -&gt; kbd101.dll
-OverrideKeyboardIdentifier  : PCAT_106KEY   -&gt; PCAT_101KEY
-OverrideKeyboardSubtype     : <span class="m">2</span>             -&gt; <span class="m">0</span>
-</code></pre></div><p>再起動する。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># レジストリエディタを起動</span>
+</span></span><span class="line"><span class="cl">Start &gt; regedit
+</span></span><span class="line"><span class="cl"><span class="c1"># キーボード設定を開く</span>
+</span></span><span class="line"><span class="cl">コンピュータ &gt; HKEY_LOCAL_MACHINE &gt; SYSTEM &gt; CurrentControlSet &gt; services &gt; i8042prt &gt; Parameters
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># US配列の設定</span>
+</span></span><span class="line"><span class="cl">LayerDriver JPN             : kbd106.dll    -&gt; kbd101.dll
+</span></span><span class="line"><span class="cl">OverrideKeyboardIdentifier  : PCAT_106KEY   -&gt; PCAT_101KEY
+</span></span><span class="line"><span class="cl">OverrideKeyboardSubtype     : <span class="m">2</span>             -&gt; <span class="m">0</span>
+</span></span></code></pre></div><p>再起動する。<br>
 ログインパスワードを設定している場合、古いJISキーボードでないと弾かれる。<br>
 スキャンコードか何かで識別していたのかなぁ&hellip;<br>
 JIS, US両方あるうちにログインパスワード再設定をしておく。</p>
@@ -111,7 +111,7 @@ JIS, US両方あるうちにログインパスワード再設定をしておく�
 <h3 id="keyの配置を変える">Keyの配置を変える</h3>
 <p><a href="http://www.forest.impress.co.jp/library/software/changekey/">Change Key</a>を使う。<br>
 winキーとaltキーをスワップさせる。</p>
-<pre><code>Left  Win  -&gt; Left  Alt
+<pre tabindex="0"><code>Left  Win  -&gt; Left  Alt
 Left  Alt  -&gt; Left  Win
 Right Alt  -&gt; Right Win
 Right Win  -&gt; Right Alt
@@ -122,26 +122,26 @@ Winキーを潰して代わりに変換/無変換キーにするよ。</p>
 ので、絶対使わないであろうショートカットをWinキーに割り当てて、IMEにはそのショートカットに変換/無変換をフックさせる。</p>
 <p><a href="http://www.autohotkey.com/">AutoHotkey</a>を使う。<br>
 AutoHotkeyを起動して<code>Edit This Script</code>。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="p">;</span> AutoHotkey.ahk
-
-<span class="p">;</span> Right Winに Ctrl + Shift + Rightを割り当てる
-RWin::^+Right
-<span class="p">;</span> Left  Winに Ctrl + Shift + Left を割り当てる
-LWin::^+Left
-</code></pre></div><p>編集したら<code>Reload This Script</code>。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="p">;</span> AutoHotkey.ahk
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">;</span> Right Winに Ctrl + Shift + Rightを割り当てる
+</span></span><span class="line"><span class="cl">RWin::^+Right
+</span></span><span class="line"><span class="cl"><span class="p">;</span> Left  Winに Ctrl + Shift + Left を割り当てる
+</span></span><span class="line"><span class="cl">LWin::^+Left
+</span></span></code></pre></div><p>編集したら<code>Reload This Script</code>。<br>
 Win起動時に一緒に起動して欲しいなら、スタートアップフォルダの中に<code>AutoHotkey.ahk</code>のショートカットを置いておく。</p>
 <h3 id="imeに変換無変換の設定をする">IMEに変換/無変換の設定をする</h3>
 <p>google IMEを使っているのでその設定方法を。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># キー設定を開く</span>
-google IME &gt; プロパティ &gt; 一般 &gt; キー設定 &gt; キー設定の選択 &gt; 編集
-
-<span class="c1"># 変換</span>
-直接入力, Ctrl Shift Right, IMEを有効化
-入力文字なし, Ctrl Shift Right, IMEを有効化
-<span class="c1"># 無変換</span>
-直接入力, Ctrl Shift Left, IMEを無効化
-入力文字なし, Ctrl Shift Left, IMEを無効化
-</code></pre></div><p>これで大勝利。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># キー設定を開く</span>
+</span></span><span class="line"><span class="cl">google IME &gt; プロパティ &gt; 一般 &gt; キー設定 &gt; キー設定の選択 &gt; 編集
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># 変換</span>
+</span></span><span class="line"><span class="cl">直接入力, Ctrl Shift Right, IMEを有効化
+</span></span><span class="line"><span class="cl">入力文字なし, Ctrl Shift Right, IMEを有効化
+</span></span><span class="line"><span class="cl"><span class="c1"># 無変換</span>
+</span></span><span class="line"><span class="cl">直接入力, Ctrl Shift Left, IMEを無効化
+</span></span><span class="line"><span class="cl">入力文字なし, Ctrl Shift Left, IMEを無効化
+</span></span></code></pre></div><p>これで大勝利。<br>
 なんというまわりくどさ。</p>
 <h2 id="appendix">Appendix</h2>
 <p>トグルでもよければAX配列設定で、右Altに半角/全角相当が割り当てられる。<br>
@@ -151,7 +151,7 @@ google IME &gt; プロパティ &gt; 一般 &gt; キー設定 &gt; キー設定�
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -256,7 +256,7 @@ google IME &gt; プロパティ &gt; 一般 &gt; キー設定 &gt; キー設定�
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -265,7 +265,7 @@ google IME &gt; プロパティ &gt; 一般 &gt; キー設定 &gt; キー設定�
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

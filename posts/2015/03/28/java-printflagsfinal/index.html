@@ -80,229 +80,229 @@
 <li><code>-XX:+PrintCommandLineFlags</code>: コマンドライン上で与えた設定値</li>
 </ul>
 <h2 id="-xxprintflagsfinal-option"><code>-XX:+PrintFlagsFinal</code> Option</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsFinal -version
-<span class="o">[</span>Global flags<span class="o">]</span>
-    uintx <span class="nv">AdaptiveSizeDecrementScaleFactor</span>          <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizeMajorGCDecayTimeScale</span>         <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePausePolicy</span>                   <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePolicyCollectionCostMargin</span>    <span class="o">=</span> <span class="m">50</span>              <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePolicyInitializingSteps</span>       <span class="o">=</span> <span class="m">20</span>              <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePolicyOutputInterval</span>          <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePolicyWeight</span>                  <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizeThroughPutPolicy</span>              <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveTimeWeight</span>                        <span class="o">=</span> <span class="m">25</span>              <span class="o">{</span>product<span class="o">}</span>
-     bool <span class="nv">AdjustConcurrency</span>                         <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-     bool <span class="nv">AggressiveOpts</span>                            <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-     intx <span class="nv">AliasLevel</span>                                <span class="o">=</span> <span class="m">3</span>               <span class="o">{</span>C2 product<span class="o">}</span>
-     bool <span class="nv">AlignVector</span>                               <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>C2 product<span class="o">}</span>
-     intx <span class="nv">AllocateInstancePrefetchLines</span>             <span class="o">=</span> <span class="m">1</span>               <span class="o">{</span>product<span class="o">}</span>
-     intx <span class="nv">AllocatePrefetchDistance</span>                  <span class="o">=</span> <span class="m">192</span>             <span class="o">{</span>product<span class="o">}</span>
-<span class="c1"># ...</span>
-     bool <span class="nv">ZeroTLAB</span>                                  <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-     intx <span class="nv">hashCode</span>                                  <span class="o">=</span> <span class="m">5</span>               <span class="o">{</span>product<span class="o">}</span>
-java version <span class="s2">&#34;1.8.0_11&#34;</span>
-Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
-Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
-</code></pre></div><p>どしゃっとOption一覧とその設定値が表示される。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ java -XX:+PrintFlagsFinal -version
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Global flags<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizeDecrementScaleFactor</span>          <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizeMajorGCDecayTimeScale</span>         <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePausePolicy</span>                   <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePolicyCollectionCostMargin</span>    <span class="o">=</span> <span class="m">50</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePolicyInitializingSteps</span>       <span class="o">=</span> <span class="m">20</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePolicyOutputInterval</span>          <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePolicyWeight</span>                  <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizeThroughPutPolicy</span>              <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveTimeWeight</span>                        <span class="o">=</span> <span class="m">25</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool <span class="nv">AdjustConcurrency</span>                         <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool <span class="nv">AggressiveOpts</span>                            <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     intx <span class="nv">AliasLevel</span>                                <span class="o">=</span> <span class="m">3</span>               <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool <span class="nv">AlignVector</span>                               <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     intx <span class="nv">AllocateInstancePrefetchLines</span>             <span class="o">=</span> <span class="m">1</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     intx <span class="nv">AllocatePrefetchDistance</span>                  <span class="o">=</span> <span class="m">192</span>             <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">     bool <span class="nv">ZeroTLAB</span>                                  <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     intx <span class="nv">hashCode</span>                                  <span class="o">=</span> <span class="m">5</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">java version <span class="s2">&#34;1.8.0_11&#34;</span>
+</span></span><span class="line"><span class="cl">Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
+</span></span></code></pre></div><p>どしゃっとOption一覧とその設定値が表示される。</p>
 <p>どうやら<code>=</code>は初期値で、<code>:=</code>は設定された値ぽい。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsFinal -version <span class="p">|</span> grep :<span class="o">=</span>
-    uintx InitialHeapSize                          :<span class="o">=</span> <span class="m">134217728</span>       <span class="o">{</span>product<span class="o">}</span>
-    uintx MaxHeapSize                              :<span class="o">=</span> <span class="m">2147483648</span>      <span class="o">{</span>product<span class="o">}</span>
-    uintx MaxNewSize                               :<span class="o">=</span> <span class="m">715653120</span>       <span class="o">{</span>product<span class="o">}</span>
-    uintx MinHeapDeltaBytes                        :<span class="o">=</span> <span class="m">524288</span>          <span class="o">{</span>product<span class="o">}</span>
-    uintx NewSize                                  :<span class="o">=</span> <span class="m">1572864</span>         <span class="o">{</span>product<span class="o">}</span>
-    uintx OldSize                                  :<span class="o">=</span> <span class="m">132644864</span>       <span class="o">{</span>product<span class="o">}</span>
-     bool PrintFlagsFinal                          :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-     bool UseCompressedClassPointers               :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>lp64_product<span class="o">}</span>
-     bool UseCompressedOops                        :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>lp64_product<span class="o">}</span>
-     bool UseParallelGC                            :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-java version <span class="s2">&#34;1.8.0_11&#34;</span>
-Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
-Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
-</code></pre></div><p>ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ java -XX:+PrintFlagsFinal -version <span class="p">|</span> grep :<span class="o">=</span>
+</span></span><span class="line"><span class="cl">    uintx InitialHeapSize                          :<span class="o">=</span> <span class="m">134217728</span>       <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx MaxHeapSize                              :<span class="o">=</span> <span class="m">2147483648</span>      <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx MaxNewSize                               :<span class="o">=</span> <span class="m">715653120</span>       <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx MinHeapDeltaBytes                        :<span class="o">=</span> <span class="m">524288</span>          <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx NewSize                                  :<span class="o">=</span> <span class="m">1572864</span>         <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx OldSize                                  :<span class="o">=</span> <span class="m">132644864</span>       <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool PrintFlagsFinal                          :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool UseCompressedClassPointers               :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>lp64_product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool UseCompressedOops                        :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>lp64_product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool UseParallelGC                            :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">java version <span class="s2">&#34;1.8.0_11&#34;</span>
+</span></span><span class="line"><span class="cl">Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
+</span></span></code></pre></div><p>ヒープサイズは明示していないけど、JVMが勝手にマシンのスペックを察して設定してくれている。</p>
 <h2 id="-xxprintflagsinitial-option"><code>-XX:+PrintFlagsInitial</code> Option</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial
-<span class="o">[</span>Global flags<span class="o">]</span>
-    uintx <span class="nv">AdaptiveSizeDecrementScaleFactor</span>          <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizeMajorGCDecayTimeScale</span>         <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePausePolicy</span>                   <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePolicyCollectionCostMargin</span>    <span class="o">=</span> <span class="m">50</span>              <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePolicyInitializingSteps</span>       <span class="o">=</span> <span class="m">20</span>              <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePolicyOutputInterval</span>          <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizePolicyWeight</span>                  <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveSizeThroughPutPolicy</span>              <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-    uintx <span class="nv">AdaptiveTimeWeight</span>                        <span class="o">=</span> <span class="m">25</span>              <span class="o">{</span>product<span class="o">}</span>
-     bool <span class="nv">AdjustConcurrency</span>                         <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-     bool <span class="nv">AggressiveOpts</span>                            <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-     intx <span class="nv">AliasLevel</span>                                <span class="o">=</span> <span class="m">3</span>               <span class="o">{</span>C2 product<span class="o">}</span>
-     bool <span class="nv">AlignVector</span>                               <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>C2 product<span class="o">}</span>
-     intx <span class="nv">AllocateInstancePrefetchLines</span>             <span class="o">=</span> <span class="m">1</span>               <span class="o">{</span>product<span class="o">}</span>
-     intx <span class="nv">AllocatePrefetchDistance</span>                  <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
-<span class="c1"># ...</span>
-     bool <span class="nv">ZeroTLAB</span>                                  <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-     intx <span class="nv">hashCode</span>                                  <span class="o">=</span> <span class="m">5</span>               <span class="o">{</span>product<span class="o">}</span>
-</code></pre></div><p>こちらもどしゃっと表示される。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ java -XX:+PrintFlagsInitial
+</span></span><span class="line"><span class="cl"><span class="o">[</span>Global flags<span class="o">]</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizeDecrementScaleFactor</span>          <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizeMajorGCDecayTimeScale</span>         <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePausePolicy</span>                   <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePolicyCollectionCostMargin</span>    <span class="o">=</span> <span class="m">50</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePolicyInitializingSteps</span>       <span class="o">=</span> <span class="m">20</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePolicyOutputInterval</span>          <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizePolicyWeight</span>                  <span class="o">=</span> <span class="m">10</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveSizeThroughPutPolicy</span>              <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">    uintx <span class="nv">AdaptiveTimeWeight</span>                        <span class="o">=</span> <span class="m">25</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool <span class="nv">AdjustConcurrency</span>                         <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool <span class="nv">AggressiveOpts</span>                            <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     intx <span class="nv">AliasLevel</span>                                <span class="o">=</span> <span class="m">3</span>               <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     bool <span class="nv">AlignVector</span>                               <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     intx <span class="nv">AllocateInstancePrefetchLines</span>             <span class="o">=</span> <span class="m">1</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     intx <span class="nv">AllocatePrefetchDistance</span>                  <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># ...</span>
+</span></span><span class="line"><span class="cl">     bool <span class="nv">ZeroTLAB</span>                                  <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">     intx <span class="nv">hashCode</span>                                  <span class="o">=</span> <span class="m">5</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span></code></pre></div><p>こちらもどしゃっと表示される。</p>
 <p>せっかくなので<code>~Initial</code>と<code>~Final</code>でdiffをとってみる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial &gt;<span class="p">&amp;</span> PrintFlagsInitial
-$ java -XX:+PrintFlagsFinal -version &gt;<span class="p">&amp;</span> PrintFlagsFinal
-$ diff -U0 PrintFlagsInitial PrintFlagsFinal
---- PrintFlagsInitial	2015-03-28 02:16:40.000000000 +0900
-+++ PrintFlagsFinal	2015-03-28 02:17:15.000000000 +0900
-@@ -14 +14 @@
--     bool <span class="nv">AlignVector</span>                               <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>C2 product<span class="o">}</span>
-+     bool <span class="nv">AlignVector</span>                               <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>C2 product<span class="o">}</span>
-@@ -16 +16 @@
--     intx <span class="nv">AllocatePrefetchDistance</span>                  <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">AllocatePrefetchDistance</span>                  <span class="o">=</span> <span class="m">192</span>             <span class="o">{</span>product<span class="o">}</span>
-@@ -18,2 +18,2 @@
--     intx <span class="nv">AllocatePrefetchLines</span>                     <span class="o">=</span> <span class="m">3</span>               <span class="o">{</span>product<span class="o">}</span>
--     intx <span class="nv">AllocatePrefetchStepSize</span>                  <span class="o">=</span> <span class="m">16</span>              <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">AllocatePrefetchLines</span>                     <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">AllocatePrefetchStepSize</span>                  <span class="o">=</span> <span class="m">64</span>              <span class="o">{</span>product<span class="o">}</span>
-@@ -58 +58 @@
--     bool <span class="nv">CICompilerCountPerCPU</span>                     <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">CICompilerCountPerCPU</span>                     <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-@@ -144 +144 @@
--     intx <span class="nv">CompilationPolicyChoice</span>                   <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">CompilationPolicyChoice</span>                   <span class="o">=</span> <span class="m">3</span>               <span class="o">{</span>product<span class="o">}</span>
-@@ -251 +251 @@
--    uintx <span class="nv">InitialHeapSize</span>                           <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-+    uintx InitialHeapSize                          :<span class="o">=</span> <span class="m">134217728</span>       <span class="o">{</span>product<span class="o">}</span>
-@@ -257 +257 @@
--     intx <span class="nv">InlineSmallCode</span>                           <span class="o">=</span> <span class="m">1000</span>            <span class="o">{</span>pd product<span class="o">}</span>
-+     intx <span class="nv">InlineSmallCode</span>                           <span class="o">=</span> <span class="m">2000</span>            <span class="o">{</span>pd product<span class="o">}</span>
-@@ -289 +289 @@
--    uintx <span class="nv">MarkSweepDeadRatio</span>                        <span class="o">=</span> <span class="m">5</span>               <span class="o">{</span>product<span class="o">}</span>
-+    uintx <span class="nv">MarkSweepDeadRatio</span>                        <span class="o">=</span> <span class="m">1</span>               <span class="o">{</span>product<span class="o">}</span>
-@@ -297 +297 @@
--    uintx <span class="nv">MaxHeapSize</span>                               <span class="o">=</span> <span class="m">130862280</span>       <span class="o">{</span>product<span class="o">}</span>
-+    uintx MaxHeapSize                              :<span class="o">=</span> <span class="m">2147483648</span>      <span class="o">{</span>product<span class="o">}</span>
-@@ -304,2 +304,2 @@
--     intx <span class="nv">MaxLoopPad</span>                                <span class="o">=</span> <span class="m">15</span>              <span class="o">{</span>C2 product<span class="o">}</span>
--    uintx <span class="nv">MaxMetaspaceExpansion</span>                     <span class="o">=</span> <span class="m">5452592</span>         <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">MaxLoopPad</span>                                <span class="o">=</span> <span class="m">11</span>              <span class="o">{</span>C2 product<span class="o">}</span>
-+    uintx <span class="nv">MaxMetaspaceExpansion</span>                     <span class="o">=</span> <span class="m">5451776</span>         <span class="o">{</span>product<span class="o">}</span>
-@@ -307,3 +307,3 @@
--    uintx <span class="nv">MaxMetaspaceSize</span>                          <span class="o">=</span> 18446744073709551615<span class="o">{</span>product<span class="o">}</span>
--    uintx <span class="nv">MaxNewSize</span>                                <span class="o">=</span> 18446744073709551615<span class="o">{</span>product<span class="o">}</span>
--     intx <span class="nv">MaxNodeLimit</span>                              <span class="o">=</span> <span class="m">80000</span>           <span class="o">{</span>C2 product<span class="o">}</span>
-+    uintx <span class="nv">MaxMetaspaceSize</span>                          <span class="o">=</span> 18446744073709547520<span class="o">{</span>product<span class="o">}</span>
-+    uintx MaxNewSize                               :<span class="o">=</span> <span class="m">715653120</span>       <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">MaxNodeLimit</span>                              <span class="o">=</span> <span class="m">75000</span>           <span class="o">{</span>C2 product<span class="o">}</span>
-@@ -315,2 +315,2 @@
--     intx <span class="nv">MaxVectorSize</span>                             <span class="o">=</span> <span class="m">32</span>              <span class="o">{</span>C2 product<span class="o">}</span>
--    uintx <span class="nv">MetaspaceSize</span>                             <span class="o">=</span> <span class="m">21810376</span>        <span class="o">{</span>pd product<span class="o">}</span>
-+     intx <span class="nv">MaxVectorSize</span>                             <span class="o">=</span> <span class="m">16</span>              <span class="o">{</span>C2 product<span class="o">}</span>
-+    uintx <span class="nv">MetaspaceSize</span>                             <span class="o">=</span> <span class="m">21807104</span>        <span class="o">{</span>pd product<span class="o">}</span>
-@@ -318 +318 @@
--    uintx <span class="nv">MinHeapDeltaBytes</span>                         <span class="o">=</span> <span class="m">170392</span>          <span class="o">{</span>product<span class="o">}</span>
-+    uintx MinHeapDeltaBytes                        :<span class="o">=</span> <span class="m">524288</span>          <span class="o">{</span>product<span class="o">}</span>
-@@ -322 +322 @@
--    uintx <span class="nv">MinMetaspaceExpansion</span>                     <span class="o">=</span> <span class="m">340784</span>          <span class="o">{</span>product<span class="o">}</span>
-+    uintx <span class="nv">MinMetaspaceExpansion</span>                     <span class="o">=</span> <span class="m">339968</span>          <span class="o">{</span>product<span class="o">}</span>
-@@ -344 +344 @@
--    uintx <span class="nv">NewSize</span>                                   <span class="o">=</span> <span class="m">1363144</span>         <span class="o">{</span>product<span class="o">}</span>
-+    uintx NewSize                                  :<span class="o">=</span> <span class="m">1572864</span>         <span class="o">{</span>product<span class="o">}</span>
-@@ -355 +355 @@
--    uintx <span class="nv">OldSize</span>                                   <span class="o">=</span> <span class="m">5452592</span>         <span class="o">{</span>product<span class="o">}</span>
-+    uintx OldSize                                  :<span class="o">=</span> <span class="m">132644864</span>       <span class="o">{</span>product<span class="o">}</span>
-@@ -373 +373 @@
--    uintx <span class="nv">ParallelGCThreads</span>                         <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
-+    uintx <span class="nv">ParallelGCThreads</span>                         <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
-@@ -397,3 +397,3 @@
--     intx <span class="nv">PrefetchCopyIntervalInBytes</span>               <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
--     intx <span class="nv">PrefetchFieldsAhead</span>                       <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
--     intx <span class="nv">PrefetchScanIntervalInBytes</span>               <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">PrefetchCopyIntervalInBytes</span>               <span class="o">=</span> <span class="m">576</span>             <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">PrefetchFieldsAhead</span>                       <span class="o">=</span> <span class="m">1</span>               <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">PrefetchScanIntervalInBytes</span>               <span class="o">=</span> <span class="m">576</span>             <span class="o">{</span>product<span class="o">}</span>
-@@ -415 +415 @@
--     bool <span class="nv">PrintFlagsFinal</span>                           <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-+     bool PrintFlagsFinal                          :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-@@ -470 +470 @@
--    uintx <span class="nv">ReservedCodeCacheSize</span>                     <span class="o">=</span> <span class="m">50331648</span>        <span class="o">{</span>pd product<span class="o">}</span>
-+    uintx <span class="nv">ReservedCodeCacheSize</span>                     <span class="o">=</span> <span class="m">251658240</span>       <span class="o">{</span>pd product<span class="o">}</span>
-@@ -572 +572 @@
--    uintx <span class="nv">TypeProfileLevel</span>                          <span class="o">=</span> <span class="m">111</span>             <span class="o">{</span>pd product<span class="o">}</span>
-+    uintx <span class="nv">TypeProfileLevel</span>                          <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>pd product<span class="o">}</span>
-@@ -579,3 +579,3 @@
--     bool <span class="nv">UseAES</span>                                    <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
--     bool <span class="nv">UseAESIntrinsics</span>                          <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
--     intx <span class="nv">UseAVX</span>                                    <span class="o">=</span> <span class="m">99</span>              <span class="o">{</span>ARCH product<span class="o">}</span>
-+     bool <span class="nv">UseAES</span>                                    <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UseAESIntrinsics</span>                          <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">UseAVX</span>                                    <span class="o">=</span> <span class="m">2</span>               <span class="o">{</span>ARCH product<span class="o">}</span>
-@@ -590 +590 @@
--     bool <span class="nv">UseAddressNop</span>                             <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
-+     bool <span class="nv">UseAddressNop</span>                             <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
-@@ -597 +597 @@
--     bool <span class="nv">UseCLMUL</span>                                  <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
-+     bool <span class="nv">UseCLMUL</span>                                  <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
-@@ -602 +602 @@
--     bool <span class="nv">UseCRC32Intrinsics</span>                        <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UseCRC32Intrinsics</span>                        <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-@@ -606,2 +606,2 @@
--     bool <span class="nv">UseCompressedClassPointers</span>                <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>lp64_product<span class="o">}</span>
--     bool <span class="nv">UseCompressedOops</span>                         <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>lp64_product<span class="o">}</span>
-+     bool UseCompressedClassPointers               :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>lp64_product<span class="o">}</span>
-+     bool UseCompressedOops                        :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>lp64_product<span class="o">}</span>
-@@ -615,2 +615,2 @@
--     bool <span class="nv">UseFastAccessorMethods</span>                    <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
--     bool <span class="nv">UseFastEmptyMethods</span>                       <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UseFastAccessorMethods</span>                    <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UseFastEmptyMethods</span>                       <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-@@ -618 +618 @@
--     bool <span class="nv">UseFastStosb</span>                              <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
-+     bool <span class="nv">UseFastStosb</span>                              <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
-@@ -650,2 +650,2 @@
--     bool <span class="nv">UseParallelGC</span>                             <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
--     bool <span class="nv">UseParallelOldGC</span>                          <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-+     bool UseParallelGC                            :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UseParallelOldGC</span>                          <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-@@ -653 +653 @@
--     bool <span class="nv">UsePopCountInstruction</span>                    <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UsePopCountInstruction</span>                    <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-@@ -656,2 +656,2 @@
--     intx <span class="nv">UseSSE</span>                                    <span class="o">=</span> <span class="m">99</span>              <span class="o">{</span>product<span class="o">}</span>
--     bool <span class="nv">UseSSE42Intrinsics</span>                        <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-+     intx <span class="nv">UseSSE</span>                                    <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UseSSE42Intrinsics</span>                        <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-@@ -659 +659 @@
--     bool <span class="nv">UseSharedSpaces</span>                           <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UseSharedSpaces</span>                           <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-@@ -661 +661 @@
--     bool <span class="nv">UseStoreImmI16</span>                            <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
-+     bool <span class="nv">UseStoreImmI16</span>                            <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
-@@ -666 +666 @@
--     bool <span class="nv">UseUnalignedLoadStores</span>                    <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
-+     bool <span class="nv">UseUnalignedLoadStores</span>                    <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
-@@ -668 +668 @@
--     bool <span class="nv">UseXMMForArrayCopy</span>                        <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
-+     bool <span class="nv">UseXMMForArrayCopy</span>                        <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
-@@ -672 +672 @@
--     bool <span class="nv">UseXmmRegToRegMoveAll</span>                     <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
-+     bool <span class="nv">UseXmmRegToRegMoveAll</span>                     <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
-@@ -686,0 +687,3 @@
-+java version <span class="s2">&#34;1.8.0_11&#34;</span>
-+Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
-+Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
-</code></pre></div><p>あれ、<code>:=</code>以外にも初期値と違うOptionがある&hellip;なんでだろう&hellip;<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ java -XX:+PrintFlagsInitial &gt;<span class="p">&amp;</span> PrintFlagsInitial
+</span></span><span class="line"><span class="cl">$ java -XX:+PrintFlagsFinal -version &gt;<span class="p">&amp;</span> PrintFlagsFinal
+</span></span><span class="line"><span class="cl">$ diff -U0 PrintFlagsInitial PrintFlagsFinal
+</span></span><span class="line"><span class="cl">--- PrintFlagsInitial	2015-03-28 02:16:40.000000000 +0900
+</span></span><span class="line"><span class="cl">+++ PrintFlagsFinal	2015-03-28 02:17:15.000000000 +0900
+</span></span><span class="line"><span class="cl">@@ -14 +14 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">AlignVector</span>                               <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">AlignVector</span>                               <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -16 +16 @@
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">AllocatePrefetchDistance</span>                  <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">AllocatePrefetchDistance</span>                  <span class="o">=</span> <span class="m">192</span>             <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -18,2 +18,2 @@
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">AllocatePrefetchLines</span>                     <span class="o">=</span> <span class="m">3</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">AllocatePrefetchStepSize</span>                  <span class="o">=</span> <span class="m">16</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">AllocatePrefetchLines</span>                     <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">AllocatePrefetchStepSize</span>                  <span class="o">=</span> <span class="m">64</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -58 +58 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">CICompilerCountPerCPU</span>                     <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">CICompilerCountPerCPU</span>                     <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -144 +144 @@
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">CompilationPolicyChoice</span>                   <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">CompilationPolicyChoice</span>                   <span class="o">=</span> <span class="m">3</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -251 +251 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">InitialHeapSize</span>                           <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx InitialHeapSize                          :<span class="o">=</span> <span class="m">134217728</span>       <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -257 +257 @@
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">InlineSmallCode</span>                           <span class="o">=</span> <span class="m">1000</span>            <span class="o">{</span>pd product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">InlineSmallCode</span>                           <span class="o">=</span> <span class="m">2000</span>            <span class="o">{</span>pd product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -289 +289 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">MarkSweepDeadRatio</span>                        <span class="o">=</span> <span class="m">5</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx <span class="nv">MarkSweepDeadRatio</span>                        <span class="o">=</span> <span class="m">1</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -297 +297 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">MaxHeapSize</span>                               <span class="o">=</span> <span class="m">130862280</span>       <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx MaxHeapSize                              :<span class="o">=</span> <span class="m">2147483648</span>      <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -304,2 +304,2 @@
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">MaxLoopPad</span>                                <span class="o">=</span> <span class="m">15</span>              <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">MaxMetaspaceExpansion</span>                     <span class="o">=</span> <span class="m">5452592</span>         <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">MaxLoopPad</span>                                <span class="o">=</span> <span class="m">11</span>              <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx <span class="nv">MaxMetaspaceExpansion</span>                     <span class="o">=</span> <span class="m">5451776</span>         <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -307,3 +307,3 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">MaxMetaspaceSize</span>                          <span class="o">=</span> 18446744073709551615<span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">MaxNewSize</span>                                <span class="o">=</span> 18446744073709551615<span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">MaxNodeLimit</span>                              <span class="o">=</span> <span class="m">80000</span>           <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx <span class="nv">MaxMetaspaceSize</span>                          <span class="o">=</span> 18446744073709547520<span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx MaxNewSize                               :<span class="o">=</span> <span class="m">715653120</span>       <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">MaxNodeLimit</span>                              <span class="o">=</span> <span class="m">75000</span>           <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -315,2 +315,2 @@
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">MaxVectorSize</span>                             <span class="o">=</span> <span class="m">32</span>              <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">MetaspaceSize</span>                             <span class="o">=</span> <span class="m">21810376</span>        <span class="o">{</span>pd product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">MaxVectorSize</span>                             <span class="o">=</span> <span class="m">16</span>              <span class="o">{</span>C2 product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx <span class="nv">MetaspaceSize</span>                             <span class="o">=</span> <span class="m">21807104</span>        <span class="o">{</span>pd product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -318 +318 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">MinHeapDeltaBytes</span>                         <span class="o">=</span> <span class="m">170392</span>          <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx MinHeapDeltaBytes                        :<span class="o">=</span> <span class="m">524288</span>          <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -322 +322 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">MinMetaspaceExpansion</span>                     <span class="o">=</span> <span class="m">340784</span>          <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx <span class="nv">MinMetaspaceExpansion</span>                     <span class="o">=</span> <span class="m">339968</span>          <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -344 +344 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">NewSize</span>                                   <span class="o">=</span> <span class="m">1363144</span>         <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx NewSize                                  :<span class="o">=</span> <span class="m">1572864</span>         <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -355 +355 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">OldSize</span>                                   <span class="o">=</span> <span class="m">5452592</span>         <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx OldSize                                  :<span class="o">=</span> <span class="m">132644864</span>       <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -373 +373 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">ParallelGCThreads</span>                         <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx <span class="nv">ParallelGCThreads</span>                         <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -397,3 +397,3 @@
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">PrefetchCopyIntervalInBytes</span>               <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">PrefetchFieldsAhead</span>                       <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">PrefetchScanIntervalInBytes</span>               <span class="o">=</span> -1              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">PrefetchCopyIntervalInBytes</span>               <span class="o">=</span> <span class="m">576</span>             <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">PrefetchFieldsAhead</span>                       <span class="o">=</span> <span class="m">1</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">PrefetchScanIntervalInBytes</span>               <span class="o">=</span> <span class="m">576</span>             <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -415 +415 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">PrintFlagsFinal</span>                           <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool PrintFlagsFinal                          :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -470 +470 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">ReservedCodeCacheSize</span>                     <span class="o">=</span> <span class="m">50331648</span>        <span class="o">{</span>pd product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx <span class="nv">ReservedCodeCacheSize</span>                     <span class="o">=</span> <span class="m">251658240</span>       <span class="o">{</span>pd product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -572 +572 @@
+</span></span><span class="line"><span class="cl">-    uintx <span class="nv">TypeProfileLevel</span>                          <span class="o">=</span> <span class="m">111</span>             <span class="o">{</span>pd product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+    uintx <span class="nv">TypeProfileLevel</span>                          <span class="o">=</span> <span class="m">0</span>               <span class="o">{</span>pd product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -579,3 +579,3 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseAES</span>                                    <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseAESIntrinsics</span>                          <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">UseAVX</span>                                    <span class="o">=</span> <span class="m">99</span>              <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseAES</span>                                    <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseAESIntrinsics</span>                          <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">UseAVX</span>                                    <span class="o">=</span> <span class="m">2</span>               <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -590 +590 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseAddressNop</span>                             <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseAddressNop</span>                             <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -597 +597 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseCLMUL</span>                                  <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseCLMUL</span>                                  <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -602 +602 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseCRC32Intrinsics</span>                        <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseCRC32Intrinsics</span>                        <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -606,2 +606,2 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseCompressedClassPointers</span>                <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>lp64_product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseCompressedOops</span>                         <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>lp64_product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool UseCompressedClassPointers               :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>lp64_product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool UseCompressedOops                        :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>lp64_product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -615,2 +615,2 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseFastAccessorMethods</span>                    <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseFastEmptyMethods</span>                       <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseFastAccessorMethods</span>                    <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseFastEmptyMethods</span>                       <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -618 +618 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseFastStosb</span>                              <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseFastStosb</span>                              <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -650,2 +650,2 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseParallelGC</span>                             <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseParallelOldGC</span>                          <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool UseParallelGC                            :<span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseParallelOldGC</span>                          <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -653 +653 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UsePopCountInstruction</span>                    <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UsePopCountInstruction</span>                    <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -656,2 +656,2 @@
+</span></span><span class="line"><span class="cl">-     intx <span class="nv">UseSSE</span>                                    <span class="o">=</span> <span class="m">99</span>              <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseSSE42Intrinsics</span>                        <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     intx <span class="nv">UseSSE</span>                                    <span class="o">=</span> <span class="m">4</span>               <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseSSE42Intrinsics</span>                        <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -659 +659 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseSharedSpaces</span>                           <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseSharedSpaces</span>                           <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -661 +661 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseStoreImmI16</span>                            <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseStoreImmI16</span>                            <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -666 +666 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseUnalignedLoadStores</span>                    <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseUnalignedLoadStores</span>                    <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -668 +668 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseXMMForArrayCopy</span>                        <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseXMMForArrayCopy</span>                        <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -672 +672 @@
+</span></span><span class="line"><span class="cl">-     bool <span class="nv">UseXmmRegToRegMoveAll</span>                     <span class="o">=</span> <span class="nb">false</span>           <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">+     bool <span class="nv">UseXmmRegToRegMoveAll</span>                     <span class="o">=</span> <span class="nb">true</span>            <span class="o">{</span>ARCH product<span class="o">}</span>
+</span></span><span class="line"><span class="cl">@@ -686,0 +687,3 @@
+</span></span><span class="line"><span class="cl">+java version <span class="s2">&#34;1.8.0_11&#34;</span>
+</span></span><span class="line"><span class="cl">+Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
+</span></span><span class="line"><span class="cl">+Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
+</span></span></code></pre></div><p>あれ、<code>:=</code>以外にも初期値と違うOptionがある&hellip;なんでだろう&hellip;<br>
 あとでしらべる。</p>
 <h2 id="-xxprintcommandlineflags-option"><code>-XX:+PrintCommandLineFlags</code> Option</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintCommandLineFlags -version
--XX:InitialHeapSize<span class="o">=</span><span class="m">134217728</span> -XX:MaxHeapSize<span class="o">=</span><span class="m">2147483648</span> -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
-java version <span class="s2">&#34;1.8.0_11&#34;</span>
-Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
-Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
-</code></pre></div><p>馴染みのある見た目で表示される。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ java -XX:+PrintCommandLineFlags -version
+</span></span><span class="line"><span class="cl">-XX:InitialHeapSize<span class="o">=</span><span class="m">134217728</span> -XX:MaxHeapSize<span class="o">=</span><span class="m">2147483648</span> -XX:+PrintCommandLineFlags -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC
+</span></span><span class="line"><span class="cl">java version <span class="s2">&#34;1.8.0_11&#34;</span>
+</span></span><span class="line"><span class="cl">Java<span class="o">(</span>TM<span class="o">)</span> SE Runtime Environment <span class="o">(</span>build 1.8.0_11-b12<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Java HotSpot<span class="o">(</span>TM<span class="o">)</span> 64-Bit Server VM <span class="o">(</span>build 25.11-b03, mixed mode<span class="o">)</span>
+</span></span></code></pre></div><p>馴染みのある見た目で表示される。</p>
 <p>ところで、<code>~Initial</code>だけexit statusが違うのは何故なんだろう。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ java -XX:+PrintFlagsInitial &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
-<span class="m">0</span>
-$ java -XX:+PrintFlagsFinal &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
-<span class="m">1</span>
-$ java -XX:+PrintCommandLineFlags &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
-<span class="m">1</span>
-</code></pre></div><p>参考:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ java -XX:+PrintFlagsInitial &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="m">0</span>
+</span></span><span class="line"><span class="cl">$ java -XX:+PrintFlagsFinal &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span>
+</span></span><span class="line"><span class="cl">$ java -XX:+PrintCommandLineFlags &gt;<span class="p">&amp;</span> /dev/null<span class="p">;</span> <span class="nb">echo</span> <span class="nv">$?</span>
+</span></span><span class="line"><span class="cl"><span class="m">1</span>
+</span></span></code></pre></div><p>参考:</p>
 <ul>
 <li><a href="http://www.javaworld.com/article/2073676/hotspot-jvm-options-displayed---xx--printflagsinitial-and--xx--printflagsfinal.html">HotSpot JVM Options Displayed: -XX:+PrintFlagsInitial and -XX:+PrintFlagsFinal | JavaWorld</a></li>
 <li><a href="https://blog.codecentric.de/en/2012/07/useful-jvm-flags-part-3-printing-all-xx-flags-and-their-values/">Useful JVM Flags - Part 3 (Printing all XX Flags and their Values) - codecentric Blog</a></li>
@@ -312,7 +312,7 @@ $ java -XX:+PrintCommandLineFlags &gt;<span class="p">&amp;</span> /dev/null<spa
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -417,7 +417,7 @@ $ java -XX:+PrintCommandLineFlags &gt;<span class="p">&amp;</span> /dev/null<spa
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -426,7 +426,7 @@ $ java -XX:+PrintCommandLineFlags &gt;<span class="p">&amp;</span> /dev/null<spa
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

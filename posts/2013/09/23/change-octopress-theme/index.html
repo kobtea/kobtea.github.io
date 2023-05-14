@@ -66,37 +66,37 @@
 
     <p><a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">3rd Party Octopress Themes</a>で公開されているので気に入ったものを選ぶ。<br>
 <a href="https://github.com/macjasp/cleanpress">CleanPress</a>がステキ。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># テーマのディレクトリまで行ってテーマのリポジトリをclone</span>
-$ <span class="nb">cd</span> octopress/.theme
-$ git clone git@github.com:macjasp/cleanpress.git
-Cloning into <span class="s1">&#39;cleanpress&#39;</span>...
-remote: Counting objects: 273, <span class="k">done</span>.
-remote: Compressing objects: 100% <span class="o">(</span>248/248<span class="o">)</span>, <span class="k">done</span>.
-remote: Total <span class="m">273</span> <span class="o">(</span>delta 30<span class="o">)</span>, reused <span class="m">229</span> <span class="o">(</span>delta 16<span class="o">)</span>
-Receiving objects: 100% <span class="o">(</span>273/273<span class="o">)</span>, 1.09 MiB <span class="p">|</span> <span class="m">554</span> KiB/s, <span class="k">done</span>.
-Resolving deltas: 100% <span class="o">(</span>30/30<span class="o">)</span>, <span class="k">done</span>.
-
-<span class="c1"># テーマを適用する</span>
-$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
-<span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
-A theme is already installed, proceeding will overwrite existing files. Are you sure? <span class="o">[</span>y/n<span class="o">]</span> y
-<span class="c1">## Copying cleanpress theme into ./source and ./sass</span>
-mkdir -p <span class="nb">source</span>
-cp -r .themes/cleanpress/source/. <span class="nb">source</span>
-mkdir -p sass
-cp -r .themes/cleanpress/sass/. sass
-mkdir -p source/_posts
-mkdir -p public
-
-<span class="c1"># generate!</span>
-$ rake generate
-<span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
-<span class="c1">## Generating Site with Jekyll</span>
-unchanged sass/screen.scss
-Configuration from /Users/kobtea/Programs/octopress/_config.yml
-Building site: <span class="nb">source</span> -&gt; public
-Successfully generated site: <span class="nb">source</span> -&gt; public
-</code></pre></div><p><code>rake preview</code>してちゃんと反映されているかを確認する。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># テーマのディレクトリまで行ってテーマのリポジトリをclone</span>
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> octopress/.theme
+</span></span><span class="line"><span class="cl">$ git clone git@github.com:macjasp/cleanpress.git
+</span></span><span class="line"><span class="cl">Cloning into <span class="s1">&#39;cleanpress&#39;</span>...
+</span></span><span class="line"><span class="cl">remote: Counting objects: 273, <span class="k">done</span>.
+</span></span><span class="line"><span class="cl">remote: Compressing objects: 100% <span class="o">(</span>248/248<span class="o">)</span>, <span class="k">done</span>.
+</span></span><span class="line"><span class="cl">remote: Total <span class="m">273</span> <span class="o">(</span>delta 30<span class="o">)</span>, reused <span class="m">229</span> <span class="o">(</span>delta 16<span class="o">)</span>
+</span></span><span class="line"><span class="cl">Receiving objects: 100% <span class="o">(</span>273/273<span class="o">)</span>, 1.09 MiB <span class="p">|</span> <span class="m">554</span> KiB/s, <span class="k">done</span>.
+</span></span><span class="line"><span class="cl">Resolving deltas: 100% <span class="o">(</span>30/30<span class="o">)</span>, <span class="k">done</span>.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># テーマを適用する</span>
+</span></span><span class="line"><span class="cl">$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
+</span></span><span class="line"><span class="cl">A theme is already installed, proceeding will overwrite existing files. Are you sure? <span class="o">[</span>y/n<span class="o">]</span> y
+</span></span><span class="line"><span class="cl"><span class="c1">## Copying cleanpress theme into ./source and ./sass</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nb">source</span>
+</span></span><span class="line"><span class="cl">cp -r .themes/cleanpress/source/. <span class="nb">source</span>
+</span></span><span class="line"><span class="cl">mkdir -p sass
+</span></span><span class="line"><span class="cl">cp -r .themes/cleanpress/sass/. sass
+</span></span><span class="line"><span class="cl">mkdir -p source/_posts
+</span></span><span class="line"><span class="cl">mkdir -p public
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># generate!</span>
+</span></span><span class="line"><span class="cl">$ rake generate
+</span></span><span class="line"><span class="cl"><span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Generating Site with Jekyll</span>
+</span></span><span class="line"><span class="cl">unchanged sass/screen.scss
+</span></span><span class="line"><span class="cl">Configuration from /Users/kobtea/Programs/octopress/_config.yml
+</span></span><span class="line"><span class="cl">Building site: <span class="nb">source</span> -&gt; public
+</span></span><span class="line"><span class="cl">Successfully generated site: <span class="nb">source</span> -&gt; public
+</span></span></code></pre></div><p><code>rake preview</code>してちゃんと反映されているかを確認する。</p>
 
 
 
@@ -107,88 +107,88 @@ Successfully generated site: <span class="nb">source</span> -&gt; public
 
 <p>おおん、ページ作っていないAboutとかPortfolioがおる&hellip;</p>
 <p>どのへんで定義されているか探してみる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ find . -type f <span class="p">|</span> xargs grep Portfolio
-./.themes/cleanpress/source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;{{ root_url }}/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/404.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/404.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
-./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/hello-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/hello-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/change-octopress-theme/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/change-octopress-theme/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/change-octopress-theme/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
-./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/setup-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/2013/09/23/setup-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/etc/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/etc/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/markdown/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/markdown/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/octopress/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
-./public/blog/categories/octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/categories/vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/blog/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
-./public/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-./public/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
-./source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;{{ root_url }}/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
-Binary file ./source/_posts/.2013-09-23-change-octopress-theme.markdown.swp matches
-./source/_posts/2013-09-23-change-octopress-theme.markdown:おおん、ページ作っていないAboutとかPortfolioがおる...
-</code></pre></div><p><code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code>あたりがくさい。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ find . -type f <span class="p">|</span> xargs grep Portfolio
+</span></span><span class="line"><span class="cl">./.themes/cleanpress/source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;{{ root_url }}/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/404.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/404.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/06/15/tywin-lannister-quote/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/22/hello-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/22/hello-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/22/use-markdown-on-vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/22/use-multibytes-on-ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/23/change-octopress-theme/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/23/change-octopress-theme/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/23/change-octopress-theme/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/23/install-ruby-on-mba/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/23/setup-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/2013/09/23/setup-octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/archives/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/etc/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/etc/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/markdown/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/markdown/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/octopress/atom.xml:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/octopress/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/ruby/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/categories/vim/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/blog/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+</span></span><span class="line"><span class="cl">./public/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/index.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">./public/index.html:&lt;p&gt;おおん、ページ作っていないAboutとかPortfolioがおる<span class="p">&amp;</span>hellip<span class="p">;</span>&lt;br/&gt;
+</span></span><span class="line"><span class="cl">./source/_includes/custom/navigation.html:	&lt;li&gt;&lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&#34;{{ root_url }}/portfolio&#34;</span>&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+</span></span><span class="line"><span class="cl">Binary file ./source/_posts/.2013-09-23-change-octopress-theme.markdown.swp matches
+</span></span><span class="line"><span class="cl">./source/_posts/2013-09-23-change-octopress-theme.markdown:おおん、ページ作っていないAboutとかPortfolioがおる...
+</span></span></code></pre></div><p><code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code>あたりがくさい。<br>
 ブランチ切って編集する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> .themes/cleanpress
-$ git branch
-* master
-$ git checkout -b edit-contents-links
-Switched to a new branch <span class="s1">&#39;edit-contents-links&#39;</span>
-$ git branch
-* edit-contents-links
-  master
-</code></pre></div><p>ひとまずコメントアウトしておく。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> .themes/cleanpress
+</span></span><span class="line"><span class="cl">$ git branch
+</span></span><span class="line"><span class="cl">* master
+</span></span><span class="line"><span class="cl">$ git checkout -b edit-contents-links
+</span></span><span class="line"><span class="cl">Switched to a new branch <span class="s1">&#39;edit-contents-links&#39;</span>
+</span></span><span class="line"><span class="cl">$ git branch
+</span></span><span class="line"><span class="cl">* edit-contents-links
+</span></span><span class="line"><span class="cl">  master
+</span></span></code></pre></div><p>ひとまずコメントアウトしておく。</p>
 <p>source: <code>octopress/.themes/cleanpress/source/_includes/custom/navigation.html</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
-	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/&#34;</span><span class="p">&gt;</span>Blog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/about&#34;&gt;About&lt;/a&gt;&lt;/li--&gt;</span>
-	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/portfolio&#34;&gt;Portfolio&lt;/a&gt;&lt;/li--&gt;</span>
-	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/archives&#34;</span><span class="p">&gt;</span>Archive<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
-</code></pre></div><p>再度テーマをインストールする。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
-<span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
-A theme is already installed, proceeding will overwrite existing files. Are you sure? <span class="o">[</span>y/n<span class="o">]</span> y
-<span class="c1">## Copying cleanpress theme into ./source and ./sass</span>
-mkdir -p <span class="nb">source</span>
-cp -r .themes/cleanpress/source/. <span class="nb">source</span>
-mkdir -p sass
-cp -r .themes/cleanpress/sass/. sass
-mkdir -p source/_posts
-mkdir -p public
-
-$ rake generate
-<span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
-<span class="c1">## Generating Site with Jekyll</span>
-unchanged sass/screen.scss
-Configuration from /Users/kobtea/Programs/octopress/_config.yml
-Building site: <span class="nb">source</span> -&gt; public
-Successfully generated site: <span class="nb">source</span> -&gt; public
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/&#34;</span><span class="p">&gt;</span>Blog<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/about&#34;&gt;About&lt;/a&gt;&lt;/li--&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="c">&lt;!--li&gt;&lt;a href=&#34;{{ root_url }}/portfolio&#34;&gt;Portfolio&lt;/a&gt;&lt;/li--&gt;</span>
+</span></span><span class="line"><span class="cl">	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ root_url }}/archives&#34;</span><span class="p">&gt;</span>Archive<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</span></span></code></pre></div><p>再度テーマをインストールする。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ rake install<span class="se">\[</span>cleanpress<span class="se">\]</span>
+</span></span><span class="line"><span class="cl"><span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
+</span></span><span class="line"><span class="cl">A theme is already installed, proceeding will overwrite existing files. Are you sure? <span class="o">[</span>y/n<span class="o">]</span> y
+</span></span><span class="line"><span class="cl"><span class="c1">## Copying cleanpress theme into ./source and ./sass</span>
+</span></span><span class="line"><span class="cl">mkdir -p <span class="nb">source</span>
+</span></span><span class="line"><span class="cl">cp -r .themes/cleanpress/source/. <span class="nb">source</span>
+</span></span><span class="line"><span class="cl">mkdir -p sass
+</span></span><span class="line"><span class="cl">cp -r .themes/cleanpress/sass/. sass
+</span></span><span class="line"><span class="cl">mkdir -p source/_posts
+</span></span><span class="line"><span class="cl">mkdir -p public
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ rake generate
+</span></span><span class="line"><span class="cl"><span class="o">(</span>in /Users/kobtea/Programs/octopress<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">## Generating Site with Jekyll</span>
+</span></span><span class="line"><span class="cl">unchanged sass/screen.scss
+</span></span><span class="line"><span class="cl">Configuration from /Users/kobtea/Programs/octopress/_config.yml
+</span></span><span class="line"><span class="cl">Building site: <span class="nb">source</span> -&gt; public
+</span></span><span class="line"><span class="cl">Successfully generated site: <span class="nb">source</span> -&gt; public
+</span></span></code></pre></div>
 
 
 <figure class="capy-img">
@@ -202,7 +202,7 @@ Successfully generated site: <span class="nb">source</span> -&gt; public
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -307,7 +307,7 @@ Successfully generated site: <span class="nb">source</span> -&gt; public
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -316,7 +316,7 @@ Successfully generated site: <span class="nb">source</span> -&gt; public
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

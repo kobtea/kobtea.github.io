@@ -73,38 +73,38 @@
     <p>linuxでもお手軽に辞書を引きたい。<br>
 探した所<a href="http://goldendict.org/">GoldenDict</a>というのがあったのでこれ使う。</p>
 <h2 id="環境">環境</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ lsb_release -d
-Description:    Ubuntu 18.04.2 LTS
-
-$ dpkg -l <span class="p">|</span> egrep <span class="s1">&#39;goldendict|albert&#39;</span>
-ii  albert                                     0.16.1                                       amd64        A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt
-ii  goldendict                                 1.5.0~rc2+git20170908+ds-1                   amd64        feature-rich dictionary lookup program
-</code></pre></div><h2 id="goldendict">GoldenDict</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ lsb_release -d
+</span></span><span class="line"><span class="cl">Description:    Ubuntu 18.04.2 LTS
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ dpkg -l <span class="p">|</span> egrep <span class="s1">&#39;goldendict|albert&#39;</span>
+</span></span><span class="line"><span class="cl">ii  albert                                     0.16.1                                       amd64        A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt
+</span></span><span class="line"><span class="cl">ii  goldendict                                 1.5.0~rc2+git20170908+ds-1                   amd64        feature-rich dictionary lookup program
+</span></span></code></pre></div><h2 id="goldendict">GoldenDict</h2>
 <p>aptで入れる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sudo apt install goldendict
-</code></pre></div><p>辞書データは自分で入れるスタイルらしい。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo apt install goldendict
+</span></span></code></pre></div><p>辞書データは自分で入れるスタイルらしい。<br>
 <a href="http://goldendict.org/dictionaries.php">公式のリンク</a>から英和・和英辞書を探す。Babylon良さそう。</p>
 <ul>
 <li><a href="https://www.babylon-software.com/free-dictionaries/languages/Babylon-English-Japanese/907.html">Babylon English-Japanese Dictionary - Babylon</a></li>
 <li><a href="https://www.babylon-software.com/free-dictionaries/languages/Babylon-Japanese-English/1257.html">Babylon Japanese-English Dictionary - Babylon</a></li>
 </ul>
 <p>dotfile下に辞書用のディレクトリを作って、&ldquo;辞書ファイルを検索するパス&quot;に登録しておく。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ mkdir <span class="nv">$HOME</span>/.goldendict/dict
-$ mv <span class="nv">$HOME</span>/Downloads/Babylon-* <span class="nv">$HOME</span>/.goldendict/dict
-</code></pre></div><h2 id="albert連携">Albert連携</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkdir <span class="nv">$HOME</span>/.goldendict/dict
+</span></span><span class="line"><span class="cl">$ mv <span class="nv">$HOME</span>/Downloads/Babylon-* <span class="nv">$HOME</span>/.goldendict/dict
+</span></span></code></pre></div><h2 id="albert連携">Albert連携</h2>
 <p>ランチャにalbertを使っているので、これで気軽に検索できると嬉しい。</p>
 <p>albertはpythonで拡張が書ける。<br>
 <a href="https://albertlauncher.github.io/docs/extensions/python/">Albert - Python extension</a></p>
 <p>そんな公式の拡張用リポジトリにGoldenDict用スクリプトがあるので、cloneして有効にする。<br>
 <a href="https://github.com/albertlauncher/python">albertlauncher/python: A repository for the official Python extensions</a></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ git clone https://github.com/albertlauncher/python.git ~/.local/share/albert/org.albert.extension.python/modules
-</code></pre></div><p><code>gd foobar</code>みたいな感じで辞書が引けるようになって幸せ。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ git clone https://github.com/albertlauncher/python.git ~/.local/share/albert/org.albert.extension.python/modules
+</span></span></code></pre></div><p><code>gd foobar</code>みたいな感じで辞書が引けるようになって幸せ。</p>
 
 
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -209,7 +209,7 @@ $ mv <span class="nv">$HOME</span>/Downloads/Babylon-* <span class="nv">$HOME</s
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -218,7 +218,7 @@ $ mv <span class="nv">$HOME</span>/Downloads/Babylon-* <span class="nv">$HOME</s
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

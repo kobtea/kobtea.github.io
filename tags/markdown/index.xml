@@ -6,7 +6,7 @@
     <description>Recent content in Markdown on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2021, kobtea</copyright>
+    <copyright>Copyright © 2013-2023, kobtea</copyright>
     <lastBuildDate>Sun, 22 Sep 2013 22:57:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>VimでステキなMarkdownライフを送りたい</title>
@@ -14,7 +14,7 @@
       <pubDate>Sun, 22 Sep 2013 22:57:00 +0900</pubDate>
       
       <guid>https://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
-      <description>インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追記する。 NeoBundle使ってるよ。 &amp;#34; .vimrcNeoBundle &amp;#39;plasticboy/vim-markdown&amp;#39;NeoBundle &amp;#39;kannokanno/previm&amp;#39;NeoBundle &amp;#39;tyru/open-browser.vim&amp;#39;&amp;#34;g:previm_open_cmd &amp;#34; open-</description>
+      <description>インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追記する。 NeoBundle使ってるよ。 &amp;#34; .vimrc NeoBundle &amp;#39;plasticboy/vim-markdown&amp;#39; NeoBundle &amp;#39;kannokanno/previm&amp;#39; NeoBundle &amp;#39;tyru/open-browser.vim&amp;#39; &amp;#34;g:previm_open_cmd &amp;#34; o</description>
     </item>
     
   </channel>

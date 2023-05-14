@@ -64,90 +64,90 @@
         <nav id="TableOfContents"></nav>
     </aside>
 
-    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ sw_vers
-ProductName:    Mac OS X
-ProductVersion: 10.8.4
-BuildVersion:   12E3067
-</code></pre></div><p>rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。<br>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sw_vers
+</span></span><span class="line"><span class="cl">ProductName:    Mac OS X
+</span></span><span class="line"><span class="cl">ProductVersion: 10.8.4
+</span></span><span class="line"><span class="cl">BuildVersion:   12E3067
+</span></span></code></pre></div><p>rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。<br>
 <a href="https://github.com/yyuu/pyenv">Simple Python Version Management: pyenv</a>を参考に。</p>
 <p>Macでhomebrew使っているなら、brewで入れるのがらくちん。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># brewを最新の状態にする</span>
-$ brew update
-$ brew upgrade
-
-$ brew search pyenv
-pyenv		   pyenv-virtualenv
-$ brew install pyenv
-Warning: Your Xcode <span class="o">(</span>4.6.3<span class="o">)</span> is outdated
-Please update to Xcode 5.0.1.
-Xcode can be updated from the App Store.
-<span class="o">==</span>&gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
-<span class="c1">######################################################################## 100.0%</span>
-<span class="o">==</span>&gt; Caveats
-To <span class="nb">enable</span> shims and autocompletion add to your profile:
-  <span class="k">if</span> which pyenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span>
-
-To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.pyenv add to your profile:
-  <span class="nb">export</span> <span class="nv">PYENV_ROOT</span><span class="o">=</span>/usr/local/opt/pyenv
-<span class="o">==</span>&gt; Summary
-🍺  /usr/local/Cellar/pyenv/20131116: <span class="m">199</span> files, 2.2M, built in <span class="m">5</span> seconds
-</code></pre></div><p><code>.profile</code>とかに以下を追記する。</p>
-<pre><code>if which pyenv &gt; /dev/null; then eval &quot;$(pyenv init -)&quot;; fi
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># brewを最新の状態にする</span>
+</span></span><span class="line"><span class="cl">$ brew update
+</span></span><span class="line"><span class="cl">$ brew upgrade
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ brew search pyenv
+</span></span><span class="line"><span class="cl">pyenv		   pyenv-virtualenv
+</span></span><span class="line"><span class="cl">$ brew install pyenv
+</span></span><span class="line"><span class="cl">Warning: Your Xcode <span class="o">(</span>4.6.3<span class="o">)</span> is outdated
+</span></span><span class="line"><span class="cl">Please update to Xcode 5.0.1.
+</span></span><span class="line"><span class="cl">Xcode can be updated from the App Store.
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz
+</span></span><span class="line"><span class="cl"><span class="c1">######################################################################## 100.0%</span>
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Caveats
+</span></span><span class="line"><span class="cl">To <span class="nb">enable</span> shims and autocompletion add to your profile:
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> which pyenv &gt; /dev/null<span class="p">;</span> <span class="k">then</span> <span class="nb">eval</span> <span class="s2">&#34;</span><span class="k">$(</span>pyenv init -<span class="k">)</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To use Homebrew<span class="err">&#39;</span>s directories rather than ~/.pyenv add to your profile:
+</span></span><span class="line"><span class="cl">  <span class="nb">export</span> <span class="nv">PYENV_ROOT</span><span class="o">=</span>/usr/local/opt/pyenv
+</span></span><span class="line"><span class="cl"><span class="o">==</span>&gt; Summary
+</span></span><span class="line"><span class="cl">🍺  /usr/local/Cellar/pyenv/20131116: <span class="m">199</span> files, 2.2M, built in <span class="m">5</span> seconds
+</span></span></code></pre></div><p><code>.profile</code>とかに以下を追記する。</p>
+<pre tabindex="0"><code>if which pyenv &gt; /dev/null; then eval &#34;$(pyenv init -)&#34;; fi
 </code></pre><p>profileを再読み込み。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">source</span> ~/.zprofile
-</code></pre></div><p>使えるか試してみる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ pyenv versions
-* system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span>
-$ pyenv global
-system
-$ python --version
-Python 2.7.2
-</code></pre></div><p>試しに3.3.2を入れてみる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ pyenv install 3.3.2
-Downloading Python-3.3.2.tgz...
--&gt; http://yyuu.github.io/pythons/0a2ea57f6184baf45b150aee53c0c8da
-Installing Python-3.3.2...
-Installed Python-3.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
-
-Downloading setuptools-1.3.2.tar.gz...
--&gt; https://pypi.python.org/packages/source/s/setuptools/setuptools-1.3.2.tar.gz
-Installing setuptools-1.3.2...
-Installed setuptools-1.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
-
-Downloading pip-1.4.1.tar.gz...
--&gt; https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
-Installing pip-1.4.1...
-Installed pip-1.4.1 to /Users/kobtea/.pyenv/versions/3.3.2
-
-
-$ pyenv rehash
-$ pyenv versions
-* system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span>
-  3.3.2
-$ pyenv global 3.3.2
-$ pyenv version
-3.3.2 <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ pip --version
-pip 1.4.1 from /Users/kobtea/.pyenv/versions/3.3.2/lib/python3.3/site-packages/pip-1.4.1-py3.3.egg <span class="o">(</span>python 3.3<span class="o">)</span>
-</code></pre></div><p>すごいpipがもう使えるようになってる！！ステキ！！<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">source</span> ~/.zprofile
+</span></span></code></pre></div><p>使えるか試してみる。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pyenv versions
+</span></span><span class="line"><span class="cl">* system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span>
+</span></span><span class="line"><span class="cl">$ pyenv global
+</span></span><span class="line"><span class="cl">system
+</span></span><span class="line"><span class="cl">$ python --version
+</span></span><span class="line"><span class="cl">Python 2.7.2
+</span></span></code></pre></div><p>試しに3.3.2を入れてみる。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pyenv install 3.3.2
+</span></span><span class="line"><span class="cl">Downloading Python-3.3.2.tgz...
+</span></span><span class="line"><span class="cl">-&gt; http://yyuu.github.io/pythons/0a2ea57f6184baf45b150aee53c0c8da
+</span></span><span class="line"><span class="cl">Installing Python-3.3.2...
+</span></span><span class="line"><span class="cl">Installed Python-3.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Downloading setuptools-1.3.2.tar.gz...
+</span></span><span class="line"><span class="cl">-&gt; https://pypi.python.org/packages/source/s/setuptools/setuptools-1.3.2.tar.gz
+</span></span><span class="line"><span class="cl">Installing setuptools-1.3.2...
+</span></span><span class="line"><span class="cl">Installed setuptools-1.3.2 to /Users/kobtea/.pyenv/versions/3.3.2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Downloading pip-1.4.1.tar.gz...
+</span></span><span class="line"><span class="cl">-&gt; https://pypi.python.org/packages/source/p/pip/pip-1.4.1.tar.gz
+</span></span><span class="line"><span class="cl">Installing pip-1.4.1...
+</span></span><span class="line"><span class="cl">Installed pip-1.4.1 to /Users/kobtea/.pyenv/versions/3.3.2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ pyenv rehash
+</span></span><span class="line"><span class="cl">$ pyenv versions
+</span></span><span class="line"><span class="cl">* system <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span>
+</span></span><span class="line"><span class="cl">  3.3.2
+</span></span><span class="line"><span class="cl">$ pyenv global 3.3.2
+</span></span><span class="line"><span class="cl">$ pyenv version
+</span></span><span class="line"><span class="cl">3.3.2 <span class="o">(</span><span class="nb">set</span> by /Users/kobtea/.pyenv/version<span class="o">)</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pip --version
+</span></span><span class="line"><span class="cl">pip 1.4.1 from /Users/kobtea/.pyenv/versions/3.3.2/lib/python3.3/site-packages/pip-1.4.1-py3.3.egg <span class="o">(</span>python 3.3<span class="o">)</span>
+</span></span></code></pre></div><p>すごいpipがもう使えるようになってる！！ステキ！！<br>
 ついでにipythonを入れてみる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ pip install ipython
-Downloading/unpacking ipython
-  Downloading ipython-1.1.0.tar.gz <span class="o">(</span>8.7MB<span class="o">)</span>: 8.7MB downloaded
-  Running setup.py egg_info <span class="k">for</span> package ipython
-...
-
-$ pip list
-ipython <span class="o">(</span>1.1.0<span class="o">)</span>
-pip <span class="o">(</span>1.4.1<span class="o">)</span>
-setuptools <span class="o">(</span>1.3.2<span class="o">)</span>
-</code></pre></div><p>らくちん。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pip install ipython
+</span></span><span class="line"><span class="cl">Downloading/unpacking ipython
+</span></span><span class="line"><span class="cl">  Downloading ipython-1.1.0.tar.gz <span class="o">(</span>8.7MB<span class="o">)</span>: 8.7MB downloaded
+</span></span><span class="line"><span class="cl">  Running setup.py egg_info <span class="k">for</span> package ipython
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">$ pip list
+</span></span><span class="line"><span class="cl">ipython <span class="o">(</span>1.1.0<span class="o">)</span>
+</span></span><span class="line"><span class="cl">pip <span class="o">(</span>1.4.1<span class="o">)</span>
+</span></span><span class="line"><span class="cl">setuptools <span class="o">(</span>1.3.2<span class="o">)</span>
+</span></span></code></pre></div><p>らくちん。</p>
 
 
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -252,7 +252,7 @@ setuptools <span class="o">(</span>1.3.2<span class="o">)</span>
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -261,7 +261,7 @@ setuptools <span class="o">(</span>1.3.2<span class="o">)</span>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

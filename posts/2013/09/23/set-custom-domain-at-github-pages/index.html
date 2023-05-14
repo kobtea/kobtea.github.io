@@ -86,22 +86,22 @@
 反映されたらメールをくれるらしい。</p>
 <h2 id="octopress側の設定">Octopress側の設定</h2>
 <p><code>source/CNAME</code>に割り当てるドメインを設定する。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s1">&#39;blog.kobtea.net&#39;</span> &gt;&gt; source/CNAME
-</code></pre></div><p><code>_config.yml</code>のurlも変更しておく。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">echo</span> <span class="s1">&#39;blog.kobtea.net&#39;</span> &gt;&gt; source/CNAME
+</span></span></code></pre></div><p><code>_config.yml</code>のurlも変更しておく。</p>
 <p>source: <code>_config.yml</code></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="c"># ----------------------- #</span><span class="w">
-</span><span class="w"></span><span class="c">#      Main Configs       #</span><span class="w">
-</span><span class="w"></span><span class="c"># ----------------------- #</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://blog.kobtea.net</span><span class="w">
-</span><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">blog.kobtea.net</span><span class="w">
-</span><span class="w"></span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="l">咳をしても情弱</span><span class="w">
-</span><span class="w"></span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">kobtea</span><span class="w">
-</span><span class="w"></span><span class="nt">simple_search</span><span class="p">:</span><span class="w"> </span><span class="l">http://google.com/search</span><span class="w">
-</span><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w">
-</span></code></pre></div><h2 id="dns設定">DNS設定</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># ----------------------- #</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#      Main Configs       #</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># ----------------------- #</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l">http://blog.kobtea.net</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">blog.kobtea.net</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">subtitle</span><span class="p">:</span><span class="w"> </span><span class="l">咳をしても情弱</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">author</span><span class="p">:</span><span class="w"> </span><span class="l">kobtea</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">simple_search</span><span class="p">:</span><span class="w"> </span><span class="l">http://google.com/search</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">description</span><span class="p">:</span><span class="w">
+</span></span></span></code></pre></div><h2 id="dns設定">DNS設定</h2>
 <p>お名前.comを使っているので、そちらで設定する。</p>
-<pre><code>ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
+<pre tabindex="0"><code>ドメイン設定 -&gt; ネームサーバの設定 -&gt; DNS関連機能の設定 -&gt; DNSレコード設定を利用する
 </code></pre>
 
 
@@ -114,16 +114,16 @@
 適用されたよメールが届くまでのんびり待つ。</p>
 <h2 id="確認">確認</h2>
 <p>digしてみる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ dig +noall +answer blog.kobtea.net CNAME
-blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.
-</code></pre></div><p>できてるぽい。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ dig +noall +answer blog.kobtea.net CNAME
+</span></span><span class="line"><span class="cl">blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.
+</span></span></code></pre></div><p>できてるぽい。<br>
 最後にblog.kobtea.netでgithub pagesが見れたら喜んでおしまい。</p>
 
 
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -228,7 +228,7 @@ blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -237,7 +237,7 @@ blog.kobtea.net.    <span class="m">3600</span>    IN  CNAME   kobtea.github.io.
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

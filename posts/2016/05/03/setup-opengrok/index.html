@@ -86,42 +86,41 @@
 </ul>
 <h2 id="setup">Setup</h2>
 <p>必要なpackageをインストールする。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">~$ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade -y
-~$ sudo apt-get install openjdk-7-jdk tomcat7 exuberant-ctags git subversion mercurial
-</code></pre></div><p>OpenGrokのarchiveを落としてくる。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">~$ wget -O - https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.5.tar.gz <span class="p">|</span> tar xvzf -
-~$ ./opengrok-0.12.1.5/bin/OpenGrok --help
-Loading the default instance configuration ...
-
-Usage: OpenGrok &lt;deploy<span class="p">|</span>derby<span class="p">|</span>update<span class="p">|</span>updateQuietly<span class="p">|</span>usage<span class="p">|</span>help&gt;
-       OpenGrok index <span class="o">[</span>&lt;directory&gt;<span class="o">]</span>
-       OpenGrok indexpart &lt;src_root&gt; &lt;directory1&gt; <span class="o">[</span>..<span class="o">]</span>
-       OpenGrok clearHistory <span class="o">[</span>&lt;repository_name&gt;<span class="o">]</span>
-
-  Optional environment variables:
-    OPENGROK_CONFIGURATION - location of your configuration
-      e.g. $ <span class="nv">OPENGROK_CONFIGURATION</span><span class="o">=</span>/var/opengrok/myog.conf ./opengrok-0.12.1.5/bin/OpenGrok ...
-
-    See the code <span class="k">for</span> more information on configuration options / variables
-</code></pre></div><blockquote>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">~$ sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get upgrade -y
+</span></span><span class="line"><span class="cl">~$ sudo apt-get install openjdk-7-jdk tomcat7 exuberant-ctags git subversion mercurial
+</span></span></code></pre></div><p>OpenGrokのarchiveを落としてくる。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">~$ wget -O - https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.5.tar.gz <span class="p">|</span> tar xvzf -
+</span></span><span class="line"><span class="cl">~$ ./opengrok-0.12.1.5/bin/OpenGrok --help
+</span></span><span class="line"><span class="cl">Loading the default instance configuration ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Usage: OpenGrok &lt;deploy<span class="p">|</span>derby<span class="p">|</span>update<span class="p">|</span>updateQuietly<span class="p">|</span>usage<span class="p">|</span>help&gt;
+</span></span><span class="line"><span class="cl">       OpenGrok index <span class="o">[</span>&lt;directory&gt;<span class="o">]</span>
+</span></span><span class="line"><span class="cl">       OpenGrok indexpart &lt;src_root&gt; &lt;directory1&gt; <span class="o">[</span>..<span class="o">]</span>
+</span></span><span class="line"><span class="cl">       OpenGrok clearHistory <span class="o">[</span>&lt;repository_name&gt;<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  Optional environment variables:
+</span></span><span class="line"><span class="cl">    OPENGROK_CONFIGURATION - location of your configuration
+</span></span><span class="line"><span class="cl">      e.g. $ <span class="nv">OPENGROK_CONFIGURATION</span><span class="o">=</span>/var/opengrok/myog.conf ./opengrok-0.12.1.5/bin/OpenGrok ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    See the code <span class="k">for</span> more information on configuration options / variables
+</span></span></code></pre></div><blockquote>
 <p>See the code for more information on configuration options / variables</p>
 </blockquote>
 <p>Oh&hellip;軟弱者にとても厳しい。<br>
 と思ったけど、<code>bin/OpenGrok</code>自体はただのshell scriptなので頑張れば大丈夫そう。</p>
 <p>tomcatにデプロイするぞ。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">~$ sudo service tomcat7 status
- * Tomcat servlet engine is running with pid <span class="m">10477</span>
-~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
-Loading the default instance configuration ...
-Installing /home/vagrant/opengrok-0.12.1.5/bin/../lib/source.war to /var/lib/tomcat7/webapps ...
-
-Start your application server <span class="o">(</span>Tomcat<span class="o">)</span>,  <span class="k">if</span> it is not already
-running, or <span class="nb">wait</span> <span class="k">until</span> it loads the just installed web  application.
-
-OpenGrok should be available on &lt;HOST&gt;:&lt;PORT&gt;/source
-  where HOST and PORT are configured in Tomcat.
-
-</code></pre></div><p><code>http://&lt;HOST&gt;:8080/source/</code>にアクセスしてOpenGrokが表示されたら喜ぶ。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">~$ sudo service tomcat7 status
+</span></span><span class="line"><span class="cl"> * Tomcat servlet engine is running with pid <span class="m">10477</span>
+</span></span><span class="line"><span class="cl">~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok deploy
+</span></span><span class="line"><span class="cl">Loading the default instance configuration ...
+</span></span><span class="line"><span class="cl">Installing /home/vagrant/opengrok-0.12.1.5/bin/../lib/source.war to /var/lib/tomcat7/webapps ...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Start your application server <span class="o">(</span>Tomcat<span class="o">)</span>,  <span class="k">if</span> it is not already
+</span></span><span class="line"><span class="cl">running, or <span class="nb">wait</span> <span class="k">until</span> it loads the just installed web  application.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">OpenGrok should be available on &lt;HOST&gt;:&lt;PORT&gt;/source
+</span></span><span class="line"><span class="cl">  where HOST and PORT are configured in Tomcat.
+</span></span></code></pre></div><p><code>http://&lt;HOST&gt;:8080/source/</code>にアクセスしてOpenGrokが表示されたら喜ぶ。</p>
 <h2 id="リファレンス用のコードを配置">リファレンス用のコードを配置</h2>
 <p>リファレンス用のコードとは、リポジトリやプロジェクトと同義。<br>
 OpenGrokではプロジェクトという単語を使っている。</p>
@@ -148,25 +147,25 @@ OpenGrokではプロジェクトという単語を使っている。</p>
 </li>
 </ul>
 <p>適当に<a href="https://github.com/kobtea/akka-goat-mail">kobtea/akka-goat-mail</a>とかでいいや&hellip;</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># SRC_ROOTは$HOME/srcにしてみよう</span>
-~$ mkdir src
-~$ <span class="nb">cd</span> src/
-~/src$ git clone https://github.com/kobtea/akka-goat-mail.git
-~/src$ <span class="nb">cd</span>
-
-<span class="c1"># indexを張る</span>
-<span class="c1"># デフォルト以外のSRC_ROOTの場合は絶対パスを与える</span>
-~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok index <span class="nv">$HOME</span>/src
-Loading the default instance configuration ...
-WARNING: OpenGrok generated data path /var/opengrok/data doesn<span class="s1">&#39;t exist
-</span><span class="s1">  Attempting to create generated data directory ...
-</span><span class="s1">WARNING: OpenGrok generated etc path /var/opengrok/etc  doesn&#39;</span>t exist
-  Attempting to create generated etc directory ...
-  Creating default /var/opengrok/logging.properties ...
-</code></pre></div><p>ブラウザでプロジェクトが追加されたことを確認する。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># SRC_ROOTは$HOME/srcにしてみよう</span>
+</span></span><span class="line"><span class="cl">~$ mkdir src
+</span></span><span class="line"><span class="cl">~$ <span class="nb">cd</span> src/
+</span></span><span class="line"><span class="cl">~/src$ git clone https://github.com/kobtea/akka-goat-mail.git
+</span></span><span class="line"><span class="cl">~/src$ <span class="nb">cd</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># indexを張る</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># デフォルト以外のSRC_ROOTの場合は絶対パスを与える</span>
+</span></span><span class="line"><span class="cl">~$ sudo ./opengrok-0.12.1.5/bin/OpenGrok index <span class="nv">$HOME</span>/src
+</span></span><span class="line"><span class="cl">Loading the default instance configuration ...
+</span></span><span class="line"><span class="cl">WARNING: OpenGrok generated data path /var/opengrok/data doesn<span class="s1">&#39;t exist
+</span></span></span><span class="line"><span class="cl"><span class="s1">  Attempting to create generated data directory ...
+</span></span></span><span class="line"><span class="cl"><span class="s1">WARNING: OpenGrok generated etc path /var/opengrok/etc  doesn&#39;</span>t exist
+</span></span><span class="line"><span class="cl">  Attempting to create generated etc directory ...
+</span></span><span class="line"><span class="cl">  Creating default /var/opengrok/logging.properties ...
+</span></span></code></pre></div><p>ブラウザでプロジェクトが追加されたことを確認する。</p>
 <p>ここでちょっと寄り道。<br>
 indexを張ったあとの<code>OPENGROK_INSTANCE_BASE</code>を眺めてみる。</p>
-<pre><code>~$ tree /var/opengrok/
+<pre tabindex="0"><code>~$ tree /var/opengrok/
 /var/opengrok/
 ├── data
 │   ├── historycache
@@ -219,11 +218,11 @@ indexを張ったあとの<code>OPENGROK_INSTANCE_BASE</code>を眺めてみる�
 </code></pre><p>logもここにあるのね。<br>
 loggerを変更する場合は、<code>opengrok-0.12.1.5/doc/logging.properties</code>を参考にして<code>OPENGROK_LOGGER_CONFIG_PATH</code>に渡せば良い。</p>
 <p>etcにはコマンドパスなどのマッピング情報が記載されている。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;void</span> <span class="na">method=</span><span class="s">&#34;put&#34;</span><span class="nt">&gt;</span>
- <span class="nt">&lt;string&gt;</span>org.opensolaris.opengrok.history.GitRepository<span class="nt">&lt;/string&gt;</span>
- <span class="nt">&lt;string&gt;</span>/usr/bin/git<span class="nt">&lt;/string&gt;</span>
-<span class="nt">&lt;/void&gt;</span>
-</code></pre></div><p>こんな感じ。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;void</span> <span class="na">method=</span><span class="s">&#34;put&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;string&gt;</span>org.opensolaris.opengrok.history.GitRepository<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl"> <span class="nt">&lt;string&gt;</span>/usr/bin/git<span class="nt">&lt;/string&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/void&gt;</span>
+</span></span></code></pre></div><p>こんな感じ。<br>
 indexコマンドで生成しているわけだし、これは手でいじらないほうが良さそう。</p>
 <h2 id="運用">運用</h2>
 <p>基本的な運用自体は、読みたいソースを見つけて<code>SRC_ROOT</code>へ逐一追加、indexの貼り直しかな。<br>
@@ -234,7 +233,7 @@ indexコマンドで生成しているわけだし、これは手でいじらな
     <hr/>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
-    var disqus_config = function () {
+    window.disqus_config = function () {
     
     
     
@@ -339,7 +338,7 @@ indexコマンドで生成しているわけだし、これは手でいじらな
                 
             </div>
         </div>
-        <p class="has-text-centered">Copyright © 2013-2021, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
     </div>
 </footer>
 
@@ -348,7 +347,7 @@ indexコマンドで生成しているわけだし、これは手でいじらな
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-60750954-1', 'auto');
+	ga('create', 'G-LR0PW9ZWER', 'auto');
 	
 	ga('send', 'pageview');
 }

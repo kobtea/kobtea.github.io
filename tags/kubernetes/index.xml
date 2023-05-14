@@ -6,7 +6,7 @@
     <description>Recent content in kubernetes on kobtea.net</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2021, kobtea</copyright>
+    <copyright>Copyright © 2013-2023, kobtea</copyright>
     <lastBuildDate>Sat, 08 May 2021 09:25:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ArgoCDでHelmfileを使う</title>
