@@ -7,24 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2013-2023, kobtea</copyright>
-    <lastBuildDate>Sun, 29 Aug 2021 19:37:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/tags/jsonnet/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Aug 2021 19:37:00 +0900</lastBuildDate>
+    <atom:link href="https://kobtea.net/tags/jsonnet/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する</title>
       <link>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</link>
       <pubDate>Sun, 29 Aug 2021 19:37:00 +0900</pubDate>
-      
       <guid>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</guid>
       <description>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitori</description>
     </item>
-    
     <item>
       <title>Jsonnetで複数ファイルへ出力する</title>
       <link>https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/</link>
       <pubDate>Sun, 04 Apr 2021 19:03:00 +0900</pubDate>
-      
       <guid>https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/</guid>
       <description>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &amp;#39;a.json&amp;#39;: { a: &amp;#39;foo&amp;#39;, }, &amp;#39;b.json&amp;#39;: { b: &amp;#39;bar&amp;#39;, }, } こんな感じで {&amp;quot;FILE_NAME&amp;quot;: &amp;quot;OBJECT&amp;quot;, ...} として記述するだけ。 -m オプションでファイル</description>
     </item>
-    
   </channel>
 </rss>

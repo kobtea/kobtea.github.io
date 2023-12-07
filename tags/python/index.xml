@@ -7,15 +7,14 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2013-2023, kobtea</copyright>
-    <lastBuildDate>Sun, 24 Nov 2013 17:31:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 24 Nov 2013 17:31:00 +0900</lastBuildDate>
+    <atom:link href="https://kobtea.net/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MBAにpyenvを入れる</title>
       <link>https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</link>
       <pubDate>Sun, 24 Nov 2013 17:31:00 +0900</pubDate>
-      
       <guid>https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</guid>
       <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。 Simple Python Version Management: pyenvを参考に。 Macでhomebrew使っているなら、brewで入れるのが</description>
     </item>
-    
   </channel>
 </rss>

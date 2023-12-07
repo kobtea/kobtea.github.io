@@ -6,8 +6,7 @@
     <title>[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う - kobtea.net</title>
     <meta name="description" content="eternal jojaku">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う"/>
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う"/>
 <meta name="twitter:description" content="環境 scalaVersion := &#34;2.11.6&#34; libraryDependencies &#43;= &#34;com.typesafe.akka&#34; %% &#34;akka-actor&#34; % &#34;2.3.11&#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&gt; import scala.concurrent.Future scala&gt; import akka.actor.ActorSystem scala&gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&gt; :q // consoleから抜"/>
 
 
@@ -168,7 +167,7 @@ threadをdaemonにして再挑戦。</p>
 
     <hr/>
     <div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -279,7 +278,7 @@ threadをdaemonにして再挑戦。</p>
 </footer>
 
 
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;

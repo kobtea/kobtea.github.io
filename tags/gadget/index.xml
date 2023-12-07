@@ -7,24 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2013-2023, kobtea</copyright>
-    <lastBuildDate>Sun, 03 Feb 2019 17:25:00 +0900</lastBuildDate><atom:link href="https://kobtea.net/tags/gadget/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 Feb 2019 17:25:00 +0900</lastBuildDate>
+    <atom:link href="https://kobtea.net/tags/gadget/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>TEX Yoda IIをmacOSで使った</title>
       <link>https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/</link>
       <pubDate>Sun, 03 Feb 2019 17:25:00 +0900</pubDate>
-      
       <guid>https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/</guid>
       <description>前回: TEX Yoda IIを作る 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。 キーマップ 最終的にキーマップはこんな感じになった。 そんな特殊なマップにはしていない。</description>
     </item>
-    
     <item>
       <title>TEX Yoda IIを作る</title>
       <link>https://kobtea.net/posts/2019/01/11/tex-yoda-2/</link>
       <pubDate>Fri, 11 Jan 2019 15:24:00 +0900</pubDate>
-      
       <guid>https://kobtea.net/posts/2019/01/11/tex-yoda-2/</guid>
       <description>TEX Yoda IIというキーボードキットを買ったのでビルドログを残しておく。 TEX Yoda II (個人的には)魅力はトラックポイントが付いているというただ一点、でもそれで十分ポチれる魅力がある。 キーマップを自由にいじれたり、</description>
     </item>
-    
   </channel>
 </rss>

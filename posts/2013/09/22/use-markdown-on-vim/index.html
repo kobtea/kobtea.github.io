@@ -6,8 +6,7 @@
     <title>VimでステキなMarkdownライフを送りたい - kobtea.net</title>
     <meta name="description" content="eternal jojaku">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="VimでステキなMarkdownライフを送りたい"/>
+    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="VimでステキなMarkdownライフを送りたい"/>
 <meta name="twitter:description" content="インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追記する。 NeoBundle使ってるよ。 &#34; .vimrc NeoBundle &#39;plasticboy/vim-markdown&#39; NeoBundle &#39;kannokanno/previm&#39; NeoBundle &#39;tyru/open-browser.vim&#39; &#34;g:previm_open_cmd &#34; o"/>
 
 
@@ -86,22 +85,22 @@
 </ul>
 <p>.vimrcに以下を追記する。<br>
 NeoBundle使ってるよ。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="c">&#34; .vimrc</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;plasticboy/vim-markdown&#39;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;kannokanno/previm&#39;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">NeoBundle</span> <span class="s1">&#39;tyru/open-browser.vim&#39;</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c">
-</span></span></span><span class="line"><span class="cl"><span class="c">&#34;g:previm_open_cmd   &#34; open-browser使用時は不要</span><span class="err">
-</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="nx">autocmd</span> <span class="nx">BufNewFile</span><span class="p">,</span><span class="nx">BufRead</span> *.{<span class="nx">md</span><span class="p">,</span><span class="nx">mdwn</span><span class="p">,</span><span class="nx">mkd</span><span class="p">,</span><span class="nx">mkdn</span><span class="p">,</span><span class="nx">mark</span>*} <span class="nx">setfiletype</span> <span class="nx">mkd</span><span class="err">
-</span></span></span></code></pre></div><p>mkdファイルを良い感じに編集して、<code>:PrevimOpen</code>するといい感じにプレビューが出る。<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-vim" data-lang="vim"><span class="line"><span class="cl"><span class="c">&#34; .vimrc</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nx">NeoBundle</span> <span class="s1">&#39;plasticboy/vim-markdown&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">NeoBundle</span> <span class="s1">&#39;kannokanno/previm&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">NeoBundle</span> <span class="s1">&#39;tyru/open-browser.vim&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c">
+</span></span></span><span class="line"><span class="cl"><span class="c">&#34;g:previm_open_cmd   &#34; open-browser使用時は不要</span>
+</span></span><span class="line"><span class="cl"><span class="k">autocmd</span> <span class="nx">BufNewFile</span><span class="p">,</span><span class="nx">BufRead</span> *.{<span class="nx">md</span><span class="p">,</span><span class="nx">mdwn</span><span class="p">,</span><span class="nx">mkd</span><span class="p">,</span><span class="nx">mkdn</span><span class="p">,</span><span class="nx">mark</span>*} <span class="nx">setfiletype</span> <span class="nx">mkd</span>
+</span></span></code></pre></div><p>mkdファイルを良い感じに編集して、<code>:PrevimOpen</code>するといい感じにプレビューが出る。<br>
 ファイル保存すると、自動で更新される。<br>
 ステキやん。</p>
 
 
     <hr/>
     <div id="disqus_thread"></div>
-<script type="application/javascript">
+<script>
     window.disqus_config = function () {
     
     
@@ -212,7 +211,7 @@ NeoBundle使ってるよ。</p>
 </footer>
 
 
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
