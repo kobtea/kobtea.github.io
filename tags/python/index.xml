@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>python on kobtea.net</title>
+    <title>Python on kobtea.net</title>
     <link>https://kobtea.net/tags/python/</link>
-    <description>Recent content in python on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Python on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sun, 24 Nov 2013 17:31:00 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +14,7 @@
       <link>https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</link>
       <pubDate>Sun, 24 Nov 2013 17:31:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</guid>
-      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。 Simple Python Version Management: pyenvを参考に。 Macでhomebrew使っているなら、brewで入れるのが</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。 Simple Python Version Management: pyenvを参考に。 Macでhomebrew使っているなら、brewで入れるのがらくちん。 # brewを最新の状態にする $ brew update $ brew upgrade $ brew search pyenv pyenv pyenv-virtualenv $ brew install pyenv Warning: Your Xcode (4.6.3) is outdated Please update to Xcode 5.0.1. Xcode can be updated from the App Store. ==&amp;gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz ######################################################################## 100.0% ==&amp;gt; Caveats To enable shims and autocompletion add to your profile: if which pyenv &amp;gt; /dev/null; then eval &amp;#34;$(pyenv init -)&amp;#34;; fi To use Homebrew&amp;#39;s directories rather than ~/.pyenv add to your profile: export PYENV_ROOT=/usr/local/opt/pyenv ==&amp;gt; Summary 🍺 /usr/local/Cellar/pyenv/20131116: 199 files, 2.2M, built in 5 seconds .profileとかに以下を追記する。 if which pyenv &amp;gt; /dev/null; then eval &amp;#34;$(pyenv init -)&amp;#34;; fi profileを再読み込み。 $</description>
     </item>
   </channel>
 </rss>

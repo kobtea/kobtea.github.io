@@ -1,275 +1,389 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta name="generator" content="Hugo 0.121.0">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+	<meta name="generator" content="Hugo 0.125.5">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>kobtea.net</title>
-    <meta name="description" content="eternal jojaku">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="kobtea.net"/>
-<meta name="twitter:description" content="eternal jojaku"/>
+  <meta name="description" content="eternal jojaku" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="kobtea.net">
+<meta name="twitter:description" content="eternal jojaku">
 
-
-    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
-    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/syntax.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://kobtea.net/js/main.js"></script>
+    <link
+      rel="stylesheet"
+      href="/css/main.min.1aca34cd23d909569e12863eef6a7b32bb2cc1db15395706a970ba4554387a4f.css"
+      integrity="sha256-Gso0zSPZCVaeEoY&#43;72p7MrsswdsVOVcGqXC6RVQ4ek8="
+    />
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/syntax.css"
+  />
+  <script
+    defer
+    src="https://use.fontawesome.com/releases/v6.4.2/js/all.js"
+  ></script>
 </head>
 
-<body>
-<header>
-    <nav class="navbar is-primary">
-        <div class="container">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="https://kobtea.net/"><strong>kobtea.net</strong></a>
+  <body>
+    <header class="bg-primary">
+  <nav
+    class="mx-auto flex max-w-screen-lg flex-wrap items-start justify-between p-4 md:items-center"
+  >
+    <a class="text-xl font-bold text-white" href="https://kobtea.net/">
+      <span class="">kobtea.net</span>
+    </a>
 
-                <a class="navbar-burger burger" data-target="navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-            </div>
-
-            <div id="navigation" class="navbar-menu">
-                <div class="navbar-end">
-                    
-                    <a class="navbar-item" href="/posts">archives</a>
-                    
-                    <a class="navbar-item" href="/posts/index.xml">rss</a>
-                    
-                </div>
-            </div>
-        </div>
-    </nav>
+    <ul class="flex flex-col md:flex-row">
+      
+        <li>
+          <a href="/posts" class="block px-2 text-white"> Posts </a>
+        </li>
+      
+        <li>
+          <a href="/posts/index.xml" class="block px-2 text-white"> RSS </a>
+        </li>
+      
+    </ul>
+  </nav>
 </header>
 
-<section id="wrapper" class="section">
-    <div class="container">
-<br>
+    <section class="prose mx-auto max-w-screen-lg break-words p-4">
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2021/08/29/monitoring-mixins/">Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2021-08-29 19:37</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/monitoring">#monitoring</a>
+      
+        <a class="" href="/tags/prometheus">#prometheus</a>
+      
+        <a class="" href="/tags/grafana">#grafana</a>
+      
+        <a class="" href="/tags/jsonnet">#jsonnet</a>
+      
+      <p class="bg-code-light my-0 rounded">概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitoring Mixinsに焦点を当てる。 Monitoring Mixins Monitoring MixinsはPrometheus rule, Grafana dashboardといった監視設定のPackagingを目指すプロジェクト。 ExporterのMetricsだけではなく、それを使って何を観測し可視化するかという知見を共有するのが目的。Out-of-the-boxでいい感じ...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/">ArgoCDでHelmfileを使う</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2021-05-08 09:25</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/cicd">#cicd</a>
+      
+        <a class="" href="/tags/kubernetes">#kubernetes</a>
+      
+      <p class="bg-code-light my-0 rounded">ArgoCD上でHelmfileを使いたい。 概要 ArgoCDはmanifestの管理方法として下記ツールをサポートしている。 Kustomize Helm Ksonnet Yaml/Json/Jsonnet Helmfileなどその他ツールを利用したい場合、Config Management Pluginにより実現する。 Config Management Pluginとは、manifest生成のために任意のバイナリやスクリプトを実行する機能のこと。 設定方法は2ステップ。 Step1: argocd-repo-serverに該当ツールを配置する manifest生成はargocd-repo-server上で行われるため、argocd-rep...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/">Jsonnetで複数ファイルへ出力する</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2021-04-04 19:03</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/jsonnet">#jsonnet</a>
+      
+      <p class="bg-code-light my-0 rounded">jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &#39;a.json&#39;: { a: &#39;foo&#39;, }, &#39;b.json&#39;: { b: &#39;bar&#39;, }, } こんな感じで {&quot;FILE_NAME&quot;: &quot;OBJECT&quot;, ...} として記述するだけ。 -m オプションでファイルごとに出力される。 $ jsonnet -h | grep -A1 multi -m / --multi &lt;dir&gt; Write multiple files to the directory, list files on stdout $ jsonnet -m dist multi.jsonnet dist/a.json dist/b.json $ cat dist/a.json { &#34;a&#34;: &#34;foo&#34; } $ cat dist/b.json { &#34;b&#34;: &#34;bar&#34; } ちなみに -c オプションでtargetディレクトリが存在しない場合は作成してくれる。 $ jsonnet -h | grep -A1 cre -c / --create-output-dirs Automatically creates all parent directories for files $ jsonnet -c -m dist multi.jsonnet dist/a.json dist/b.json サブディレクトリも作成できる。 $ cat multi.jsonnet { &#39;a.json&#39;: { a: &#39;foo&#39;, }, &#39;b/bb.json&#39;: { b: &#39;bar&#39;, }, &#39;c/cc/ccc.json&#39;: { c: &#39;baz&#39;, },...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/">Linuxで辞書引き環境作る</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2019-05-12 17:01</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/linux">#linux</a>
+      
+      <p class="bg-code-light my-0 rounded">linuxでもお手軽に辞書を引きたい。 探した所GoldenDictというのがあったのでこれ使う。 環境 $ lsb_release -d Description: Ubuntu 18.04.2 LTS $ dpkg -l | egrep &#39;goldendict|albert&#39; ii albert 0.16.1 amd64 A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt ii goldendict 1.5.0~rc2+git20170908+ds-1 amd64 feature-rich dictionary lookup program GoldenDict aptで入れる。 $ sudo apt install goldendict 辞書データは自分で入れるスタイルらしい。 公式のリンクから英和・和英辞書を探す。Babylon良さそう。 Babylon English-Japanese Dictionary - Babylon Babylon Japanese-English Dictionary - Babylon dotfile下に辞書用のディレクトリを作って、&ldquo;辞書ファイルを検索するパス&quot;に登録しておく。 $ mkdir $HOME/.goldendict/dict $ mv $HOME/Downloads/Babylon-* $HOME/.goldendict/dict Albert連携 ランチャにalbertを使っているの...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/">LinuxでKeymapをmacOSぽくする</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2019-05-03 19:47</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/linux">#linux</a>
+      
+      <p class="bg-code-light my-0 rounded">macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。 shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu macos - Efficient key bindings using both Mac and Linux - Super User Is it possible to have an OS X-like key map in Gnome (Ubuntu)? : linux 自分もその1人だけど、今回だいぶ満足できる環境になったのでメモしておく。 macOSぽいキーマップとは macOSではcommandとctrlで役割がちゃんと分離されている。 commandキーを使ったショートカットは、全て選択・カット・ペースト・ウィンドウを閉じ...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/">TEX Yoda IIをmacOSで使った</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2019-02-03 17:25</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/gadget">#gadget</a>
+      
+      <p class="bg-code-light my-0 rounded">前回: TEX Yoda IIを作る 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。 キーマップ 最終的にキーマップはこんな感じになった。 そんな特殊なマップにはしていない。 中クリックがfnなのでサクサクfn押せて便利。 fn + wasdで方向キーは昔FPSしていたこともあり、hjklとかijkmよりも上下については直感的で良い。音量・メディア周りも手前に配置されているので、ありがとうデフォルト配列という感じに使っている。 概ね満足しているけど、今までは1の左にあった`, ~がf...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2019/01/11/tex-yoda-2/">TEX Yoda IIを作る</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2019-01-11 15:24</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/gadget">#gadget</a>
+      
+      <p class="bg-code-light my-0 rounded">TEX Yoda IIというキーボードキットを買ったのでビルドログを残しておく。 TEX Yoda II (個人的には)魅力はトラックポイントが付いているというただ一点、でもそれで十分ポチれる魅力がある。 キーマップを自由にいじれたり、マクロを組み込んだりとイマドキな機能も付いている。 見た目もステキ。 キーボードキットなので自分で組み立てる必要がある、いわゆる自作キーボード。 自分はMassdropで買った。時期によるかもしれないけど、mechanicalkeyboards.comで買ったほうが今は安いらしい。ちなみにmechanic...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2017/12/04/google-sre-book/">Google SRE本を読んだ</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2017-12-04 21:26</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/book">#book</a>
+      
+      <p class="bg-code-light my-0 rounded">やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。 SREってなんだろう ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。 価値を素早く提供するためには、インフラなどプロダクトチーム以外のリソースが制約事項になってはいけない。ということで人的リソースの制約を乗り越え、SREの価値をスケーラブルにするため自動化・自律化・マイクロサービス化などを積極的に行う。ナレッジに関してもスケールするよう明文化・定量化を徹底し、エンジニアが暗黙的・良心で...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2016/06/04/try-google-stackdriver/">Google Stackdriverを眺める</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2016-06-04 21:59</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/gcp">#gcp</a>
+      
+        <a class="" href="/tags/monitoring">#monitoring</a>
+      
+      <p class="bg-code-light my-0 rounded">以前話題になったStackdriverをbetaのうちに触っておこうそうしよう。 AWSがCloudWatchなら、GCPはStackdriverや！！ Stackdriverの提供する機能 Documentを眺めてみると機能はこんな感じ。 正直下3つはまだ触れていないのでわりと適当。 Monitoring 監視と計測のためのサービス Agentをリソースに仕込んでメトリックを取得する Agentを使わなくても、GCP APIを使って簡単なメトリックは取得してくれる みんな大好きアラート発砲もできる GCPだけでなく、AWSにも対応し...</p>
+      <br />
+    </article>
+  
+    <article>
+      <p class="my-2 text-xl font-semibold">
+        <a href="https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/">OpenGrokのデザインを変更する</a>
+      </p>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2016-05-14 04:21</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a class="" href="/tags/opengrok">#opengrok</a>
+      
+      <p class="bg-code-light my-0 rounded">以前Ubuntu trustyにOpenGrokをインストールするで、 サイトのデザインを変えたい場合はどうすればいいんだろう…folkして魔改造するのかな…それはつらそうだな… と書いたけど、方法がわかったのでメモ。 標準でいくつかのデザインテーマが提供されていた。 Web Site Look &amp; Feel Option OpenGrok wrapper scriptを眺めていたらSKINなんて環境変数を見つけた。 https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281 標準でdefault, offwhite, polishedの3種類のスキンが提供されている。 「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。 スキン ど...</p>
+      <br />
+    </article>
+  
 
-<p class="is-size-4"><a href="https://kobtea.net/posts/2021/08/29/monitoring-mixins/">Jsonnet/Monitoring MixinsでPrometheus Rule, Grafana Dashboardを管理する</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2021-08-29 19:37</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
 
-<a class="cp-tag" href="/tags/monitoring">#monitoring</a>
+  <nav class="text-center">
+    <a class="py-4" href="/posts">Show more</a>
+  </nav>
 
-<a class="cp-tag" href="/tags/prometheus">#prometheus</a>
+    </section>
+    <footer class="bg-primary-light">
+  <div class="prose mx-auto max-w-screen-lg p-4">
+    <div class="grid grid-cols-1 md:grid-cols-3">
+      <div class="col-span-1">
+        <p class="text-lg font-bold">Author</p>
+        <address class="flex content-start not-italic">
+          <img
+            class="my-0 rounded-full"
+            src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png"
+            alt="author"
+          />
+          <div class="px-4">
+            <strong>kobtea</strong>
+            <a href="https://twitter.com/kobtea"
+              ><i class="fa-brands fa-square-x-twitter fa-lg"></i
+            ></a>
+            <a href="https://github.com/kobtea"
+              ><i class="fa-brands fa-square-github fa-lg"></i
+            ></a>
+            <br />
+            <small>カピバラと暮らしたい</small>
+          </div>
+        </address>
+      </div>
 
-<a class="cp-tag" href="/tags/grafana">#grafana</a>
-
-<a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
-
-<p>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitori</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/">ArgoCDでHelmfileを使う</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2021-05-08 09:25</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/cicd">#cicd</a>
-
-<a class="cp-tag" href="/tags/kubernetes">#kubernetes</a>
-
-<p>ArgoCD上でHelmfileを使いたい。 概要 ArgoCDはmanifestの管理方法として下記ツールをサポートしている。 Kustomize Helm Ksonnet Yaml/Json/Jsonnet Helmfileなどその他ツールを利用したい場合、Config Management Pl</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/">Jsonnetで複数ファイルへ出力する</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2021-04-04 19:03</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
-
-<p>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &#39;a.json&#39;: { a: &#39;foo&#39;, }, &#39;b.json&#39;: { b: &#39;bar&#39;, }, } こんな感じで {&quot;FILE_NAME&quot;: &quot;OBJECT&quot;, ...} として記述するだけ。 -m オプションでファイル</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/">Linuxで辞書引き環境作る</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2019-05-12 17:01</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/linux">#linux</a>
-
-<p>linuxでもお手軽に辞書を引きたい。 探した所GoldenDictというのがあったのでこれ使う。 環境 $ lsb_release -d Description: Ubuntu 18.04.2 LTS $ dpkg -l | egrep &#39;goldendict|albert&#39; ii albert 0.16.1 amd64 A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt ii goldendict 1.5.0~rc2+git20170908+ds-1 amd64 feature-rich dictionary lookup program GoldenDict aptで入れる。 $ sudo apt install goldendict 辞書</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/">LinuxでKeymapをmacOSぽくする</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2019-05-03 19:47</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/linux">#linux</a>
-
-<p>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。 shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu macos - Efficient key bindings using both</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/">TEX Yoda IIをmacOSで使った</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2019-02-03 17:25</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/gadget">#gadget</a>
-
-<p>前回: TEX Yoda IIを作る 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。 キーマップ 最終的にキーマップはこんな感じになった。 そんな特殊なマップにはしていない。</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2019/01/11/tex-yoda-2/">TEX Yoda IIを作る</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2019-01-11 15:24</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/gadget">#gadget</a>
-
-<p>TEX Yoda IIというキーボードキットを買ったのでビルドログを残しておく。 TEX Yoda II (個人的には)魅力はトラックポイントが付いているというただ一点、でもそれで十分ポチれる魅力がある。 キーマップを自由にいじれたり、</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2017/12/04/google-sre-book/">Google SRE本を読んだ</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2017-12-04 21:26</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/book">#book</a>
-
-<p>やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。 SREってなんだろう ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。 価値を素早く提供す</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2016/06/04/try-google-stackdriver/">Google Stackdriverを眺める</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2016-06-04 21:59</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/gcp">#gcp</a>
-
-<a class="cp-tag" href="/tags/monitoring">#monitoring</a>
-
-<p>以前話題になったStackdriverをbetaのうちに触っておこうそうしよう。 AWSがCloudWatchなら、GCPはStackdriverや！！ Stackdriverの提供する機能 Documen</p>
-<br>
-
-<p class="is-size-4"><a href="https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/">OpenGrokのデザインを変更する</a></p>
-<i class="fas fa-calendar-alt"></i>
-<time>2016-05-14 04:21</time>
-<span>&nbsp;</span>
-<i class="fas fa-tags"></i>
-
-<a class="cp-tag" href="/tags/opengrok">#opengrok</a>
-
-<p>以前Ubuntu trustyにOpenGrokをインストールするで、 サイトのデザインを変えたい場合はどうすればいいんだろう…folkして魔改造するのかな…それはつらそうだな… と書いたけど、方法がわかっ</p>
-<br>
-
-
-<nav class="cp-pagination">
-    <ul class="pagination-list">
-        <li><a class="pagination-link" href="/posts">Show more</a></li>
-    </ul>
-</nav>
-
-
+      <div class="col-span-2">
+        
+          
+        
+          
+            <p><strong class="text-lg capitalize">tags</strong></p>
+            
+              <a class="" href="/tags/book"
+                >#book</a
+              >
+            
+              <a class="" href="/tags/cicd"
+                >#cicd</a
+              >
+            
+              <a class="" href="/tags/conference"
+                >#conference</a
+              >
+            
+              <a class="" href="/tags/gadget"
+                >#gadget</a
+              >
+            
+              <a class="" href="/tags/gcp"
+                >#gcp</a
+              >
+            
+              <a class="" href="/tags/github-pages"
+                >#github pages</a
+              >
+            
+              <a class="" href="/tags/grafana"
+                >#grafana</a
+              >
+            
+              <a class="" href="/tags/hardware"
+                >#hardware</a
+              >
+            
+              <a class="" href="/tags/java"
+                >#java</a
+              >
+            
+              <a class="" href="/tags/jsonnet"
+                >#jsonnet</a
+              >
+            
+              <a class="" href="/tags/kubernetes"
+                >#kubernetes</a
+              >
+            
+              <a class="" href="/tags/linux"
+                >#linux</a
+              >
+            
+              <a class="" href="/tags/markdown"
+                >#markdown</a
+              >
+            
+              <a class="" href="/tags/misc"
+                >#misc</a
+              >
+            
+              <a class="" href="/tags/monitoring"
+                >#monitoring</a
+              >
+            
+              <a class="" href="/tags/octopress"
+                >#octopress</a
+              >
+            
+              <a class="" href="/tags/opengrok"
+                >#opengrok</a
+              >
+            
+              <a class="" href="/tags/prometheus"
+                >#prometheus</a
+              >
+            
+              <a class="" href="/tags/python"
+                >#python</a
+              >
+            
+              <a class="" href="/tags/ruby"
+                >#ruby</a
+              >
+            
+              <a class="" href="/tags/scala"
+                >#scala</a
+              >
+            
+              <a class="" href="/tags/vim"
+                >#vim</a
+              >
+            
+              <a class="" href="/tags/windows"
+                >#windows</a
+              >
+            
+          
+        
+      </div>
     </div>
-</section>
-<footer class="footer">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-4">
-                <strong class="is-size-5">Author</strong>
-                <div class="media">
-                    <figure class="media-left">
-                        <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
-                    </figure>
-                    <div class="media-content">
-                        <strong>kobtea</strong>
-                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
-                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
-                        <br/>
-                        <small>カピバラと暮らしたい</small>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-8">
-                
-                
-                
-                
-                <p><strong class="is-capitalized is-size-5">tags</strong></p>
-                
-                <a class="cp-tag" href="/tags/book">#book</a>
-                
-                <a class="cp-tag" href="/tags/cicd">#cicd</a>
-                
-                <a class="cp-tag" href="/tags/conference">#conference</a>
-                
-                <a class="cp-tag" href="/tags/gadget">#gadget</a>
-                
-                <a class="cp-tag" href="/tags/gcp">#gcp</a>
-                
-                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
-                
-                <a class="cp-tag" href="/tags/grafana">#grafana</a>
-                
-                <a class="cp-tag" href="/tags/hardware">#hardware</a>
-                
-                <a class="cp-tag" href="/tags/java">#java</a>
-                
-                <a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
-                
-                <a class="cp-tag" href="/tags/kubernetes">#kubernetes</a>
-                
-                <a class="cp-tag" href="/tags/linux">#linux</a>
-                
-                <a class="cp-tag" href="/tags/markdown">#markdown</a>
-                
-                <a class="cp-tag" href="/tags/misc">#misc</a>
-                
-                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
-                
-                <a class="cp-tag" href="/tags/octopress">#octopress</a>
-                
-                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
-                
-                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
-                
-                <a class="cp-tag" href="/tags/python">#python</a>
-                
-                <a class="cp-tag" href="/tags/ruby">#ruby</a>
-                
-                <a class="cp-tag" href="/tags/scala">#scala</a>
-                
-                <a class="cp-tag" href="/tags/vim">#vim</a>
-                
-                <a class="cp-tag" href="/tags/windows">#windows</a>
-                
-                
-                
-            </div>
-        </div>
-        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+
+    <div class="py-2 text-center text-sm">
+      <span class=""
+        >Copyright © 2013-2024, kobtea | Powered by
+        <a href="https://gohugo.io/">HUGO</a> | Themed with
+        <a href="https://github.com/kobtea/hugo-theme-capybara"
+          >Capybara</a
+        ></span
+      >
     </div>
+  </div>
 </footer>
 
+  
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LR0PW9ZWER"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LR0PW9ZWER');
+        }
+      </script>
+    
+  
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-LR0PW9ZWER', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
-</body>
+  </body>
 </html>

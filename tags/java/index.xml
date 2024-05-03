@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>java on kobtea.net</title>
+    <title>Java on kobtea.net</title>
     <link>https://kobtea.net/tags/java/</link>
-    <description>Recent content in java on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Java on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sat, 28 Mar 2015 01:23:54 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +14,7 @@
       <link>https://kobtea.net/posts/2015/03/28/java-printflagsfinal/</link>
       <pubDate>Sat, 28 Mar 2015 01:23:54 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/03/28/java-printflagsfinal/</guid>
-      <description>JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。 そんなときは-XX:+PrintFlagsFinal等を使うと幸せになれるかもしれない！ (しかしこのO</description>
+      <description>JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。 そんなときは-XX:+PrintFlagsFinal等を使うと幸せになれるかもしれない！ (しかしこのOptionも先の例に漏れず偶然知った) Java Optionを表示するには3つのOptionがある。 -XX:+PrintFlagsFinal: 最終的な設定値 -XX:+PrintFlagsInitial: 初期値 -XX:+PrintCommandLineFlags: コマンドライン上で与えた設定値 -XX:+PrintFlagsFinal Option $ java -XX:+PrintFlagsFinal -version [Global flags] uintx AdaptiveSizeDecrementScaleFactor = 4 {product} uintx AdaptiveSizeMajorGCDecayTimeScale = 10 {product} uintx AdaptiveSizePausePolicy = 0 {product} uintx AdaptiveSizePolicyCollectionCostMargin = 50 {product} uintx AdaptiveSizePolicyInitializingSteps = 20 {product} uintx AdaptiveSizePolicyOutputInterval = 0 {product} uintx AdaptiveSizePolicyWeight = 10 {product} uintx AdaptiveSizeThroughPutPolicy = 0 {product} uintx AdaptiveTimeWeight = 25 {product} bool AdjustConcurrency = false {product} bool AggressiveOpts = false {product} intx AliasLevel = 3 {C2 product} bool AlignVector = false {C2 product} intx</description>
     </item>
   </channel>
 </rss>

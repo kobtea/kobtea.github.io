@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cicd on kobtea.net</title>
+    <title>Cicd on kobtea.net</title>
     <link>https://kobtea.net/tags/cicd/</link>
-    <description>Recent content in cicd on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Cicd on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sat, 08 May 2021 09:25:00 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/cicd/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +14,7 @@
       <link>https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/</link>
       <pubDate>Sat, 08 May 2021 09:25:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/</guid>
-      <description>ArgoCD上でHelmfileを使いたい。 概要 ArgoCDはmanifestの管理方法として下記ツールをサポートしている。 Kustomize Helm Ksonnet Yaml/Json/Jsonnet Helmfileなどその他ツールを利用したい場合、Config Management Pl</description>
+      <description>ArgoCD上でHelmfileを使いたい。 概要 ArgoCDはmanifestの管理方法として下記ツールをサポートしている。 Kustomize Helm Ksonnet Yaml/Json/Jsonnet Helmfileなどその他ツールを利用したい場合、Config Management Pluginにより実現する。 Config Management Pluginとは、manifest生成のために任意のバイナリやスクリプトを実行する機能のこと。 設定方法は2ステップ。 Step1: argocd-repo-serverに該当ツールを配置する manifest生成はargocd-repo-server上で行われるため、argocd-rep</description>
     </item>
   </channel>
 </rss>

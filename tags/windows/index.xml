@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>windows on kobtea.net</title>
+    <title>Windows on kobtea.net</title>
     <link>https://kobtea.net/tags/windows/</link>
-    <description>Recent content in windows on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Windows on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sun, 20 Dec 2015 18:19:02 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +14,14 @@
       <link>https://kobtea.net/posts/2015/12/20/rsync-instead-raid/</link>
       <pubDate>Sun, 20 Dec 2015 18:19:02 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/12/20/rsync-instead-raid/</guid>
-      <description>ちょびちょびバックアップはとっていたけど、まともな冗長構成の取れたストレージが自宅になかった。 写真とか自炊本を失う前にいい加減なんとかしようそうしよう。 紆余曲折あったのでありのままの紆余曲折を書いてい</description>
+      <description>ちょびちょびバックアップはとっていたけど、まともな冗長構成の取れたストレージが自宅になかった。 写真とか自炊本を失う前にいい加減なんとかしようそうしよう。 紆余曲折あったのでありのままの紆余曲折を書いていく。 自宅の環境 デスクトップPC (Windows) 常時起動していて自宅サーバ状態 意識低いことする用 Macbook Air コード書いたりする 意識高いことする用 プランをいくつか考えてみる RAIDを組めるストレージといえばNASということで、NASを買うかどうかも含め考えられるプランは3つ。 アプライアンスNAS案 自作NAS案 Windows機</description>
     </item>
     <item>
       <title>WindowsでUS配列&#43;親指IME ON/OFFするための設定</title>
       <link>https://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</link>
       <pubDate>Sun, 23 Mar 2014 00:43:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</guid>
-      <description>macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。 RealforceのUS配列を購入してwinに設定したこと。 環境 OS: Windows7 64bit Keyboard: Realforce 87U デスクトップ環境な</description>
+      <description>macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。 RealforceのUS配列を購入してwinに設定したこと。 環境 OS: Windows7 64bit Keyboard: Realforce 87U デスクトップ環境なので今回考えてないけど、ノートの場合は本体の配列がーとか考慮してあげないといけない。 やりたいこと [alt] [無変換] [space] [変換] [alt] みたいな配列にしたい [半角/全角] みたいなトグルは使いたくない macのJIS配列みたいな感じ。 作業ログ 英語キーボードとして認識させる # レジストリエディタを起動 Start &amp;gt; regedit # キーボード設定</description>
     </item>
   </channel>
 </rss>

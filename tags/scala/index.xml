@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>scala on kobtea.net</title>
+    <title>Scala on kobtea.net</title>
     <link>https://kobtea.net/tags/scala/</link>
-    <description>Recent content in scala on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Scala on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Tue, 15 Sep 2015 22:10:55 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/scala/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +14,14 @@
       <link>https://kobtea.net/posts/2015/09/15/sbt-console-quit/</link>
       <pubDate>Tue, 15 Sep 2015 22:10:55 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
-      <description>環境 scalaVersion := &amp;#34;2.11.6&amp;#34; libraryDependencies += &amp;#34;com.typesafe.akka&amp;#34; %% &amp;#34;akka-actor&amp;#34; % &amp;#34;2.3.11&amp;#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&amp;gt; import scala.concurrent.Future scala&amp;gt; import akka.actor.ActorSystem scala&amp;gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&amp;gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&amp;gt; :q // consoleから抜</description>
+      <description>環境 scalaVersion := &amp;#34;2.11.6&amp;#34; libraryDependencies += &amp;#34;com.typesafe.akka&amp;#34; %% &amp;#34;akka-actor&amp;#34; % &amp;#34;2.3.11&amp;#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&amp;gt; import scala.concurrent.Future scala&amp;gt; import akka.actor.ActorSystem scala&amp;gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&amp;gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&amp;gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ akkaが原因かな？と思い、ExecutorServiceを使ってみたけど同じくconsoleを抜けられない。 scala&amp;gt; import scala.concurrent.{Future, ExecutionContext} scala&amp;gt; import java.util.concurrent.Executors scala&amp;gt; implicit val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(1)) ec: scala.concurrent.ExecutionContextExecutorService = scala.concurrent.impl.ExecutionContextImpl$$anon$1@8a0f6d7 scala&amp;gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@64918adb scala&amp;gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ scala.concurrent.ExecutionC</description>
     </item>
     <item>
       <title>[Scala] Future#recoverを使って例外処理する</title>
       <link>https://kobtea.net/posts/2015/05/18/scala-future-recover/</link>
       <pubDate>Mon, 18 May 2015 20:56:24 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
-      <description>環境 ➜ ~ scala Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11). Type in expressions to have them evaluated. Type :help for more information. やりたいこと scala.concurrent.Futureで例外が発生してFailureになったとき、 デフォルト値を適用してSuccessで返</description>
+      <description>環境 ➜ ~ scala Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11). Type in expressions to have them evaluated. Type :help for more information. やりたいこと scala.concurrent.Futureで例外が発生してFailureになったとき、 デフォルト値を適用してSuccessで返したい！ Failureのままでいいんだけど別の例外を投げたい！ といったことをしたい。 recoverを使う そんなときのためのFuture#recover。 Throwableをキャッチして新しいFutureを作ってくれる。 シグネチャは以下。 def recover[U &amp;gt;: T](pf: PartialFunction[Throwable, U])(implicit executor: ExecutionContext): Future[U] ソースはこの辺。 下準備 scala&amp;gt; import scala.concurrent.Future import scala.concurrent.Future scala&amp;gt; import scala.concurrent.ExecutionContext.Implicits.global import scala.concurrent.ExecutionContext.Implicits.global scala&amp;gt; case</description>
     </item>
   </channel>
 </rss>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>conference on kobtea.net</title>
+    <title>Conference on kobtea.net</title>
     <link>https://kobtea.net/tags/conference/</link>
-    <description>Recent content in conference on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Conference on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sun, 23 Aug 2015 22:59:36 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/conference/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +14,14 @@
       <link>https://kobtea.net/posts/2015/08/23/yapc/</link>
       <pubDate>Sun, 23 Aug 2015 22:59:36 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/08/23/yapc/</guid>
-      <description>最初で最後のYAPC。 聴いたセッションのメモとか感想とかをぽつぽつと。 前夜祭 PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版） Hackとの速度勝負 Hackが</description>
+      <description>最初で最後のYAPC。 聴いたセッションのメモとか感想とかをぽつぽつと。 前夜祭 PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版） Hackとの速度勝負 Hackが前に流行ったけどPHP7では基本速度は大差無い コミニュティが安定しているPHP7を使ったほうが無難 PHP使う&amp;hellip;? スタートアップなどスピード勝負でガリガリ書きたいときは適している SlackもPHP使ってるしまだまだオワコンじゃないよ！ はてなブックマークのトピックページの裏側 Elastic</description>
     </item>
     <item>
       <title>YAPC::Asia Tokyo 2015 「ISUCONの勝ち方」メモ</title>
       <link>https://kobtea.net/posts/2015/08/22/yapc-isucon/</link>
       <pubDate>Sat, 22 Aug 2015 19:19:11 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/08/22/yapc-isucon/</guid>
-      <description>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。 そのうちスライドも公開して頂けるらしいが自分のために。 リンク [公式]ISUCON [公式]トーク情報 togetter スピーカー:</description>
+      <description>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。 そのうちスライドも公開して頂けるらしいが自分のために。 リンク [公式]ISUCON [公式]トーク情報 togetter スピーカー: @kazeburo さん 時間配分 競技全体では7時間 最初の1時間 まだ慌てるような時間じゃない 課題の理解、プロファイリング・チューニングの方向性を決める 最後の30分 再起動テストだけに使う 再起動の失敗はよくある 上記を考慮すると、実際の作業時間は5時間ほど 事前準備 chatroom (private) git repository 当日作業のリビジョン管理 見えてもいいならpublic wiki</description>
     </item>
   </channel>
 </rss>

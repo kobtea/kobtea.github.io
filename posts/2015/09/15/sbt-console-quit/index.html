@@ -1,74 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う - kobtea.net</title>
-    <meta name="description" content="eternal jojaku">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う"/>
-<meta name="twitter:description" content="環境 scalaVersion := &#34;2.11.6&#34; libraryDependencies &#43;= &#34;com.typesafe.akka&#34; %% &#34;akka-actor&#34; % &#34;2.3.11&#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&gt; import scala.concurrent.Future scala&gt; import akka.actor.ActorSystem scala&gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&gt; :q // consoleから抜"/>
+  <meta name="description" content="eternal jojaku" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="twitter:card" content="summary"><meta name="twitter:title" content="[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う">
+<meta name="twitter:description" content="環境 scalaVersion := &#34;2.11.6&#34; libraryDependencies &#43;= &#34;com.typesafe.akka&#34; %% &#34;akka-actor&#34; % &#34;2.3.11&#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&gt; import scala.concurrent.Future scala&gt; import akka.actor.ActorSystem scala&gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ akkaが原因かな？と思い、ExecutorServiceを使ってみたけど同じくconsoleを抜けられない。 scala&gt; import scala.concurrent.{Future, ExecutionContext} scala&gt; import java.util.concurrent.Executors scala&gt; implicit val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(1)) ec: scala.concurrent.ExecutionContextExecutorService = scala.concurrent.impl.ExecutionContextImpl$$anon$1@8a0f6d7 scala&gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@64918adb scala&gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ scala.concurrent.ExecutionC">
 
-
-    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/main.css">
-    <link type="text/css" rel="stylesheet" href="https://kobtea.net/css/syntax.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-    <script src="https://kobtea.net/js/main.js"></script>
+    <link
+      rel="stylesheet"
+      href="/css/main.min.1aca34cd23d909569e12863eef6a7b32bb2cc1db15395706a970ba4554387a4f.css"
+      integrity="sha256-Gso0zSPZCVaeEoY&#43;72p7MrsswdsVOVcGqXC6RVQ4ek8="
+    />
+  <link
+    type="text/css"
+    rel="stylesheet"
+    href="/css/syntax.css"
+  />
+  <script
+    defer
+    src="https://use.fontawesome.com/releases/v6.4.2/js/all.js"
+  ></script>
 </head>
 
-<body>
-<header>
-    <nav class="navbar is-primary">
-        <div class="container">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="https://kobtea.net/"><strong>kobtea.net</strong></a>
+  <body>
+    <header class="bg-primary">
+  <nav
+    class="mx-auto flex max-w-screen-lg flex-wrap items-start justify-between p-4 md:items-center"
+  >
+    <a class="text-xl font-bold text-white" href="https://kobtea.net/">
+      <span class="">kobtea.net</span>
+    </a>
 
-                <a class="navbar-burger burger" data-target="navigation">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </a>
-            </div>
-
-            <div id="navigation" class="navbar-menu">
-                <div class="navbar-end">
-                    
-                    <a class="navbar-item" href="/posts">archives</a>
-                    
-                    <a class="navbar-item" href="/posts/index.xml">rss</a>
-                    
-                </div>
-            </div>
-        </div>
-    </nav>
+    <ul class="flex flex-col md:flex-row">
+      
+        <li>
+          <a href="/posts" class="block px-2 text-white"> Posts </a>
+        </li>
+      
+        <li>
+          <a href="/posts/index.xml" class="block px-2 text-white"> RSS </a>
+        </li>
+      
+    </ul>
+  </nav>
 </header>
 
-<section id="wrapper" class="section">
-    <div class="container">
-<article>
-    <section class="hero">
-        <div class="hero-body">
-            <h1 class="title">[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</h1>
-        </div>
+    <section class="prose mx-auto max-w-screen-lg break-words p-4">
+  <article>
+    <section class="py-8">
+      <h1>[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</h1>
+      <i class="fas fa-calendar-alt"></i>
+      <time>2015-09-15 22:10</time>
+      <span>&nbsp;</span>
+      <i class="fas fa-tags"></i>
+      
+        <a href="/tags/scala">#scala</a>
+      
     </section>
 
-    <i class="fas fa-calendar-alt"></i>
-    <time>2015-09-15 22:10</time>
-    <span>&nbsp;</span>
-    <i class="fas fa-tags"></i>
-    
-    <a class="cp-tag" href="/tags/scala">#scala</a>
-    
-    <aside>
-        <nav id="TableOfContents">
+    <div class="rounded border">
+      <aside><nav id="TableOfContents">
   <ul>
     <li><a href="#環境">環境</a></li>
     <li><a href="#悩み">悩み</a></li>
     <li><a href="#threadをdaemonにすると解決するよ">threadをdaemonにすると解決するよ</a></li>
     <li><a href="#そもそもdaemonとnon-daemonどっちがいいんです">そもそもdaemonとnon-daemonどっちがいいんです？</a></li>
   </ul>
-</nav>
-    </aside>
+</nav></aside>
+    </div>
 
     <h2 id="環境">環境</h2>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-scala" data-lang="scala"><span class="line"><span class="cl"><span class="n">scalaVersion</span> <span class="k">:</span><span class="o">=</span> <span class="s">&#34;2.11.6&#34;</span>
@@ -164,132 +169,185 @@ threadをdaemonにして再挑戦。</p>
 <p>Java力低いので、<code>scala.concurrent.ExecutionContext.Implicits.global</code>がdaemonだしdaemonでいいじゃん！程度にしか考えてない。<br>
 今回みたいなthread poolで使うケースだと、親のthreadが終了したら残っていても仕方ないのでdaemonで良いかな。</p>
 
+    <hr class="my-0 py-0" />
+  </article>
+  <nav class="flex flex-col justify-between md:flex-row">
+    
+      <a class="py-4 text-left" href="https://kobtea.net/posts/2015/08/23/yapc/"
+        ><i class="fas fa-caret-left"></i>&nbsp;YAPC::Asia Tokyo 2015 で聴いたセッションのメモや感想</a
+      >
+    
+    
+      <a class="py-4 text-right" href="https://kobtea.net/posts/2015/12/20/rsync-instead-raid/"
+        >RAID組もうとしたけどrsync(robocopy)で済ませた話&nbsp;<i class="fas fa-caret-right"></i
+      ></a>
+    
+  </nav>
 
-    <hr/>
-    <div id="disqus_thread"></div>
-<script>
-    window.disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "kobtea" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</article>
-<nav class="cp-pagination">
-    
-    <a class="pagination-previous" href="https://kobtea.net/posts/2015/08/23/yapc/"><i class="fas fa-caret-left"></i>&nbsp;YAPC::Asia Tokyo 2015 で聴いたセッションのメモや感想</a>
-    
-    
-    <a class="pagination-next" href="https://kobtea.net/posts/2015/12/20/rsync-instead-raid/">RAID組もうとしたけどrsync(robocopy)で済ませた話&nbsp;<i class="fas fa-caret-right"></i></a>
-    
-</nav>
+    </section>
+    <footer class="bg-primary-light">
+  <div class="prose mx-auto max-w-screen-lg p-4">
+    <div class="grid grid-cols-1 md:grid-cols-3">
+      <div class="col-span-1">
+        <p class="text-lg font-bold">Author</p>
+        <address class="flex content-start not-italic">
+          <img
+            class="my-0 rounded-full"
+            src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png"
+            alt="author"
+          />
+          <div class="px-4">
+            <strong>kobtea</strong>
+            <a href="https://twitter.com/kobtea"
+              ><i class="fa-brands fa-square-x-twitter fa-lg"></i
+            ></a>
+            <a href="https://github.com/kobtea"
+              ><i class="fa-brands fa-square-github fa-lg"></i
+            ></a>
+            <br />
+            <small>カピバラと暮らしたい</small>
+          </div>
+        </address>
+      </div>
 
+      <div class="col-span-2">
+        
+          
+        
+          
+            <p><strong class="text-lg capitalize">tags</strong></p>
+            
+              <a class="" href="/tags/book"
+                >#book</a
+              >
+            
+              <a class="" href="/tags/cicd"
+                >#cicd</a
+              >
+            
+              <a class="" href="/tags/conference"
+                >#conference</a
+              >
+            
+              <a class="" href="/tags/gadget"
+                >#gadget</a
+              >
+            
+              <a class="" href="/tags/gcp"
+                >#gcp</a
+              >
+            
+              <a class="" href="/tags/github-pages"
+                >#github pages</a
+              >
+            
+              <a class="" href="/tags/grafana"
+                >#grafana</a
+              >
+            
+              <a class="" href="/tags/hardware"
+                >#hardware</a
+              >
+            
+              <a class="" href="/tags/java"
+                >#java</a
+              >
+            
+              <a class="" href="/tags/jsonnet"
+                >#jsonnet</a
+              >
+            
+              <a class="" href="/tags/kubernetes"
+                >#kubernetes</a
+              >
+            
+              <a class="" href="/tags/linux"
+                >#linux</a
+              >
+            
+              <a class="" href="/tags/markdown"
+                >#markdown</a
+              >
+            
+              <a class="" href="/tags/misc"
+                >#misc</a
+              >
+            
+              <a class="" href="/tags/monitoring"
+                >#monitoring</a
+              >
+            
+              <a class="" href="/tags/octopress"
+                >#octopress</a
+              >
+            
+              <a class="" href="/tags/opengrok"
+                >#opengrok</a
+              >
+            
+              <a class="" href="/tags/prometheus"
+                >#prometheus</a
+              >
+            
+              <a class="" href="/tags/python"
+                >#python</a
+              >
+            
+              <a class="" href="/tags/ruby"
+                >#ruby</a
+              >
+            
+              <a class="" href="/tags/scala"
+                >#scala</a
+              >
+            
+              <a class="" href="/tags/vim"
+                >#vim</a
+              >
+            
+              <a class="" href="/tags/windows"
+                >#windows</a
+              >
+            
+          
+        
+      </div>
     </div>
-</section>
-<footer class="footer">
-    <div class="container">
-        <div class="columns">
-            <div class="column is-4">
-                <strong class="is-size-5">Author</strong>
-                <div class="media">
-                    <figure class="media-left">
-                        <img src="https://www.gravatar.com/avatar/0341c09395fd77b2a42ee5f8f681c24d.png">
-                    </figure>
-                    <div class="media-content">
-                        <strong>kobtea</strong>
-                        <a href="https://twitter.com/kobtea"><i class="fab fa-twitter-square fa-lg"></i></a>
-                        <a href="https://github.com/kobtea"><i class="fab fa-github-square fa-lg"></i></a>
-                        <br/>
-                        <small>カピバラと暮らしたい</small>
-                    </div>
-                </div>
-            </div>
-            <div class="column is-8">
-                
-                
-                
-                
-                <p><strong class="is-capitalized is-size-5">tags</strong></p>
-                
-                <a class="cp-tag" href="/tags/book">#book</a>
-                
-                <a class="cp-tag" href="/tags/cicd">#cicd</a>
-                
-                <a class="cp-tag" href="/tags/conference">#conference</a>
-                
-                <a class="cp-tag" href="/tags/gadget">#gadget</a>
-                
-                <a class="cp-tag" href="/tags/gcp">#gcp</a>
-                
-                <a class="cp-tag" href="/tags/github-pages">#github-pages</a>
-                
-                <a class="cp-tag" href="/tags/grafana">#grafana</a>
-                
-                <a class="cp-tag" href="/tags/hardware">#hardware</a>
-                
-                <a class="cp-tag" href="/tags/java">#java</a>
-                
-                <a class="cp-tag" href="/tags/jsonnet">#jsonnet</a>
-                
-                <a class="cp-tag" href="/tags/kubernetes">#kubernetes</a>
-                
-                <a class="cp-tag" href="/tags/linux">#linux</a>
-                
-                <a class="cp-tag" href="/tags/markdown">#markdown</a>
-                
-                <a class="cp-tag" href="/tags/misc">#misc</a>
-                
-                <a class="cp-tag" href="/tags/monitoring">#monitoring</a>
-                
-                <a class="cp-tag" href="/tags/octopress">#octopress</a>
-                
-                <a class="cp-tag" href="/tags/opengrok">#opengrok</a>
-                
-                <a class="cp-tag" href="/tags/prometheus">#prometheus</a>
-                
-                <a class="cp-tag" href="/tags/python">#python</a>
-                
-                <a class="cp-tag" href="/tags/ruby">#ruby</a>
-                
-                <a class="cp-tag" href="/tags/scala">#scala</a>
-                
-                <a class="cp-tag" href="/tags/vim">#vim</a>
-                
-                <a class="cp-tag" href="/tags/windows">#windows</a>
-                
-                
-                
-            </div>
-        </div>
-        <p class="has-text-centered">Copyright © 2013-2023, kobtea | Powered by <a href="https://gohugo.io/">HUGO</a> | Themed with <a href="https://github.com/kobtea/hugo-theme-capybara">Capybara</a></p>
+
+    <div class="py-2 text-center text-sm">
+      <span class=""
+        >Copyright © 2013-2024, kobtea | Powered by
+        <a href="https://gohugo.io/">HUGO</a> | Themed with
+        <a href="https://github.com/kobtea/hugo-theme-capybara"
+          >Capybara</a
+        ></span
+      >
     </div>
+  </div>
 </footer>
 
+  
+  
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-LR0PW9ZWER"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-LR0PW9ZWER');
+        }
+      </script>
+    
+  
 
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-LR0PW9ZWER', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
 
-</body>
+  </body>
 </html>

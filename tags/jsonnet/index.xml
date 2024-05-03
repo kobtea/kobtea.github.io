@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jsonnet on kobtea.net</title>
+    <title>Jsonnet on kobtea.net</title>
     <link>https://kobtea.net/tags/jsonnet/</link>
-    <description>Recent content in jsonnet on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Jsonnet on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sun, 29 Aug 2021 19:37:00 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/jsonnet/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +14,14 @@
       <link>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</link>
       <pubDate>Sun, 29 Aug 2021 19:37:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</guid>
-      <description>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitori</description>
+      <description>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitoring Mixinsに焦点を当てる。 Monitoring Mixins Monitoring MixinsはPrometheus rule, Grafana dashboardといった監視設定のPackagingを目指すプロジェクト。 ExporterのMetricsだけではなく、それを使って何を観測し可視化するかという知見を共有するのが目的。Out-of-the-boxでいい感じ</description>
     </item>
     <item>
       <title>Jsonnetで複数ファイルへ出力する</title>
       <link>https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/</link>
       <pubDate>Sun, 04 Apr 2021 19:03:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/</guid>
-      <description>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &amp;#39;a.json&amp;#39;: { a: &amp;#39;foo&amp;#39;, }, &amp;#39;b.json&amp;#39;: { b: &amp;#39;bar&amp;#39;, }, } こんな感じで {&amp;quot;FILE_NAME&amp;quot;: &amp;quot;OBJECT&amp;quot;, ...} として記述するだけ。 -m オプションでファイル</description>
+      <description>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &amp;#39;a.json&amp;#39;: { a: &amp;#39;foo&amp;#39;, }, &amp;#39;b.json&amp;#39;: { b: &amp;#39;bar&amp;#39;, }, } こんな感じで {&amp;quot;FILE_NAME&amp;quot;: &amp;quot;OBJECT&amp;quot;, ...} として記述するだけ。 -m オプションでファイルごとに出力される。 $ jsonnet -h | grep -A1 multi -m / --multi &amp;lt;dir&amp;gt; Write multiple files to the directory, list files on stdout $ jsonnet -m dist multi.jsonnet dist/a.json dist/b.json $ cat dist/a.json { &amp;#34;a&amp;#34;: &amp;#34;foo&amp;#34; } $ cat dist/b.json { &amp;#34;b&amp;#34;: &amp;#34;bar&amp;#34; } ちなみに -c オプションでtargetディレクトリが存在しない場合は作成してくれる。 $ jsonnet -h | grep -A1 cre -c / --create-output-dirs Automatically creates all parent directories for files $ jsonnet -c -m dist multi.jsonnet dist/a.json dist/b.json サブディレクトリも作成できる。 $ cat multi.jsonnet { &amp;#39;a.json&amp;#39;: { a: &amp;#39;foo&amp;#39;, }, &amp;#39;b/bb.json&amp;#39;: { b: &amp;#39;bar&amp;#39;, }, &amp;#39;c/cc/ccc.json&amp;#39;: { c: &amp;#39;baz&amp;#39;, },</description>
     </item>
   </channel>
 </rss>

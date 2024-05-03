@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>opengrok on kobtea.net</title>
+    <title>Opengrok on kobtea.net</title>
     <link>https://kobtea.net/tags/opengrok/</link>
-    <description>Recent content in opengrok on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Opengrok on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sat, 14 May 2016 04:21:57 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/opengrok/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +14,14 @@
       <link>https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/</link>
       <pubDate>Sat, 14 May 2016 04:21:57 +0900</pubDate>
       <guid>https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/</guid>
-      <description>以前Ubuntu trustyにOpenGrokをインストールするで、 サイトのデザインを変えたい場合はどうすればいいんだろう…folkして魔改造するのかな…それはつらそうだな… と書いたけど、方法がわかっ</description>
+      <description>以前Ubuntu trustyにOpenGrokをインストールするで、 サイトのデザインを変えたい場合はどうすればいいんだろう…folkして魔改造するのかな…それはつらそうだな… と書いたけど、方法がわかったのでメモ。 標準でいくつかのデザインテーマが提供されていた。 Web Site Look &amp;amp; Feel Option OpenGrok wrapper scriptを眺めていたらSKINなんて環境変数を見つけた。 https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281 標準でdefault, offwhite, polishedの3種類のスキンが提供されている。 「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。 スキン ど</description>
     </item>
     <item>
       <title>Ubuntu trustyにOpenGrokをインストールする</title>
       <link>https://kobtea.net/posts/2016/05/03/setup-opengrok/</link>
       <pubDate>Tue, 03 May 2016 03:16:25 +0900</pubDate>
       <guid>https://kobtea.net/posts/2016/05/03/setup-opengrok/</guid>
-      <description>tomcat力低いけどOpenGrok使ってみたいんや！ お試しにvagrantで立ててみる。 参考: How to install OpenGrok Supported Languages and Formats 環境 Ubuntu 14.04.4 OpenJDK 1.7.0_95 OpenGrok 0.12.1.5 Setup 必要なpackageをインストールする。 ~$ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y ~$ sudo apt-get install openjdk-7-jdk</description>
+      <description>tomcat力低いけどOpenGrok使ってみたいんや！ お試しにvagrantで立ててみる。 参考: How to install OpenGrok Supported Languages and Formats 環境 Ubuntu 14.04.4 OpenJDK 1.7.0_95 OpenGrok 0.12.1.5 Setup 必要なpackageをインストールする。 ~$ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y ~$ sudo apt-get install openjdk-7-jdk tomcat7 exuberant-ctags git subversion mercurial OpenGrokのarchiveを落としてくる。 ~$ wget -O - https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.5.tar.gz | tar xvzf - ~$ ./opengrok-0.12.1.5/bin/OpenGrok --help Loading the default instance configuration ... Usage: OpenGrok &amp;lt;deploy|derby|update|updateQuietly|usage|help&amp;gt; OpenGrok index [&amp;lt;directory&amp;gt;] OpenGrok indexpart &amp;lt;src_root&amp;gt; &amp;lt;directory1&amp;gt; [..] OpenGrok clearHistory [&amp;lt;repository_name&amp;gt;] Optional environment variables: OPENGROK_CONFIGURATION - location of your configuration e.g. $ OPENGROK_CONFIGURATION=/var/opengrok/myog.conf ./opengrok-0.12.1.5/bin/OpenGrok ... See the code for more information on configuration options / variables See the code for more information on configuration options / variables Oh&amp;hellip;軟弱者にとても厳しい。 と思ったけど、bin/OpenGrok自体はただのshell sc</description>
     </item>
   </channel>
 </rss>

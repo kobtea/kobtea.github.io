@@ -4,9 +4,9 @@
     <title>Posts on kobtea.net</title>
     <link>https://kobtea.net/posts/</link>
     <description>Recent content in Posts on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sun, 29 Aug 2021 19:37:00 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,182 +14,182 @@
       <link>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</link>
       <pubDate>Sun, 29 Aug 2021 19:37:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</guid>
-      <description>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitori</description>
+      <description>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitoring Mixinsに焦点を当てる。 Monitoring Mixins Monitoring MixinsはPrometheus rule, Grafana dashboardといった監視設定のPackagingを目指すプロジェクト。 ExporterのMetricsだけではなく、それを使って何を観測し可視化するかという知見を共有するのが目的。Out-of-the-boxでいい感じ</description>
     </item>
     <item>
       <title>ArgoCDでHelmfileを使う</title>
       <link>https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/</link>
       <pubDate>Sat, 08 May 2021 09:25:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2021/05/08/argo-cd-helmfile/</guid>
-      <description>ArgoCD上でHelmfileを使いたい。 概要 ArgoCDはmanifestの管理方法として下記ツールをサポートしている。 Kustomize Helm Ksonnet Yaml/Json/Jsonnet Helmfileなどその他ツールを利用したい場合、Config Management Pl</description>
+      <description>ArgoCD上でHelmfileを使いたい。 概要 ArgoCDはmanifestの管理方法として下記ツールをサポートしている。 Kustomize Helm Ksonnet Yaml/Json/Jsonnet Helmfileなどその他ツールを利用したい場合、Config Management Pluginにより実現する。 Config Management Pluginとは、manifest生成のために任意のバイナリやスクリプトを実行する機能のこと。 設定方法は2ステップ。 Step1: argocd-repo-serverに該当ツールを配置する manifest生成はargocd-repo-server上で行われるため、argocd-rep</description>
     </item>
     <item>
       <title>Jsonnetで複数ファイルへ出力する</title>
       <link>https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/</link>
       <pubDate>Sun, 04 Apr 2021 19:03:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2021/04/04/jsonnet-multiple-output/</guid>
-      <description>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &amp;#39;a.json&amp;#39;: { a: &amp;#39;foo&amp;#39;, }, &amp;#39;b.json&amp;#39;: { b: &amp;#39;bar&amp;#39;, }, } こんな感じで {&amp;quot;FILE_NAME&amp;quot;: &amp;quot;OBJECT&amp;quot;, ...} として記述するだけ。 -m オプションでファイル</description>
+      <description>jsonnetの成果物を1ファイルでなく、複数ファイルへ出力したい。 Getting Startedに思いっきり書いてあった。 $ cat multi.jsonnet { &amp;#39;a.json&amp;#39;: { a: &amp;#39;foo&amp;#39;, }, &amp;#39;b.json&amp;#39;: { b: &amp;#39;bar&amp;#39;, }, } こんな感じで {&amp;quot;FILE_NAME&amp;quot;: &amp;quot;OBJECT&amp;quot;, ...} として記述するだけ。 -m オプションでファイルごとに出力される。 $ jsonnet -h | grep -A1 multi -m / --multi &amp;lt;dir&amp;gt; Write multiple files to the directory, list files on stdout $ jsonnet -m dist multi.jsonnet dist/a.json dist/b.json $ cat dist/a.json { &amp;#34;a&amp;#34;: &amp;#34;foo&amp;#34; } $ cat dist/b.json { &amp;#34;b&amp;#34;: &amp;#34;bar&amp;#34; } ちなみに -c オプションでtargetディレクトリが存在しない場合は作成してくれる。 $ jsonnet -h | grep -A1 cre -c / --create-output-dirs Automatically creates all parent directories for files $ jsonnet -c -m dist multi.jsonnet dist/a.json dist/b.json サブディレクトリも作成できる。 $ cat multi.jsonnet { &amp;#39;a.json&amp;#39;: { a: &amp;#39;foo&amp;#39;, }, &amp;#39;b/bb.json&amp;#39;: { b: &amp;#39;bar&amp;#39;, }, &amp;#39;c/cc/ccc.json&amp;#39;: { c: &amp;#39;baz&amp;#39;, },</description>
     </item>
     <item>
       <title>Linuxで辞書引き環境作る</title>
       <link>https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/</link>
       <pubDate>Sun, 12 May 2019 17:01:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/</guid>
-      <description>linuxでもお手軽に辞書を引きたい。 探した所GoldenDictというのがあったのでこれ使う。 環境 $ lsb_release -d Description: Ubuntu 18.04.2 LTS $ dpkg -l | egrep &amp;#39;goldendict|albert&amp;#39; ii albert 0.16.1 amd64 A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt ii goldendict 1.5.0~rc2+git20170908+ds-1 amd64 feature-rich dictionary lookup program GoldenDict aptで入れる。 $ sudo apt install goldendict 辞書</description>
+      <description>linuxでもお手軽に辞書を引きたい。 探した所GoldenDictというのがあったのでこれ使う。 環境 $ lsb_release -d Description: Ubuntu 18.04.2 LTS $ dpkg -l | egrep &amp;#39;goldendict|albert&amp;#39; ii albert 0.16.1 amd64 A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt ii goldendict 1.5.0~rc2+git20170908+ds-1 amd64 feature-rich dictionary lookup program GoldenDict aptで入れる。 $ sudo apt install goldendict 辞書データは自分で入れるスタイルらしい。 公式のリンクから英和・和英辞書を探す。Babylon良さそう。 Babylon English-Japanese Dictionary - Babylon Babylon Japanese-English Dictionary - Babylon dotfile下に辞書用のディレクトリを作って、&amp;ldquo;辞書ファイルを検索するパス&amp;quot;に登録しておく。 $ mkdir $HOME/.goldendict/dict $ mv $HOME/Downloads/Babylon-* $HOME/.goldendict/dict Albert連携 ランチャにalbertを使っているの</description>
     </item>
     <item>
       <title>LinuxでKeymapをmacOSぽくする</title>
       <link>https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/</link>
       <pubDate>Fri, 03 May 2019 19:47:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/</guid>
-      <description>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。 shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu macos - Efficient key bindings using both</description>
+      <description>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。 shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu macos - Efficient key bindings using both Mac and Linux - Super User Is it possible to have an OS X-like key map in Gnome (Ubuntu)? : linux 自分もその1人だけど、今回だいぶ満足できる環境になったのでメモしておく。 macOSぽいキーマップとは macOSではcommandとctrlで役割がちゃんと分離されている。 commandキーを使ったショートカットは、全て選択・カット・ペースト・ウィンドウを閉じ</description>
     </item>
     <item>
       <title>TEX Yoda IIをmacOSで使った</title>
       <link>https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/</link>
       <pubDate>Sun, 03 Feb 2019 17:25:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/</guid>
-      <description>前回: TEX Yoda IIを作る 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。 キーマップ 最終的にキーマップはこんな感じになった。 そんな特殊なマップにはしていない。</description>
+      <description>前回: TEX Yoda IIを作る 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。 キーマップ 最終的にキーマップはこんな感じになった。 そんな特殊なマップにはしていない。 中クリックがfnなのでサクサクfn押せて便利。 fn + wasdで方向キーは昔FPSしていたこともあり、hjklとかijkmよりも上下については直感的で良い。音量・メディア周りも手前に配置されているので、ありがとうデフォルト配列という感じに使っている。 概ね満足しているけど、今までは1の左にあった`, ~がf</description>
     </item>
     <item>
       <title>TEX Yoda IIを作る</title>
       <link>https://kobtea.net/posts/2019/01/11/tex-yoda-2/</link>
       <pubDate>Fri, 11 Jan 2019 15:24:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2019/01/11/tex-yoda-2/</guid>
-      <description>TEX Yoda IIというキーボードキットを買ったのでビルドログを残しておく。 TEX Yoda II (個人的には)魅力はトラックポイントが付いているというただ一点、でもそれで十分ポチれる魅力がある。 キーマップを自由にいじれたり、</description>
+      <description>TEX Yoda IIというキーボードキットを買ったのでビルドログを残しておく。 TEX Yoda II (個人的には)魅力はトラックポイントが付いているというただ一点、でもそれで十分ポチれる魅力がある。 キーマップを自由にいじれたり、マクロを組み込んだりとイマドキな機能も付いている。 見た目もステキ。 キーボードキットなので自分で組み立てる必要がある、いわゆる自作キーボード。 自分はMassdropで買った。時期によるかもしれないけど、mechanicalkeyboards.comで買ったほうが今は安いらしい。ちなみにmechanic</description>
     </item>
     <item>
       <title>Google SRE本を読んだ</title>
       <link>https://kobtea.net/posts/2017/12/04/google-sre-book/</link>
       <pubDate>Mon, 04 Dec 2017 21:26:45 +0900</pubDate>
       <guid>https://kobtea.net/posts/2017/12/04/google-sre-book/</guid>
-      <description>やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。 SREってなんだろう ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。 価値を素早く提供す</description>
+      <description>やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。 SREってなんだろう ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。 価値を素早く提供するためには、インフラなどプロダクトチーム以外のリソースが制約事項になってはいけない。ということで人的リソースの制約を乗り越え、SREの価値をスケーラブルにするため自動化・自律化・マイクロサービス化などを積極的に行う。ナレッジに関してもスケールするよう明文化・定量化を徹底し、エンジニアが暗黙的・良心で</description>
     </item>
     <item>
       <title>Google Stackdriverを眺める</title>
       <link>https://kobtea.net/posts/2016/06/04/try-google-stackdriver/</link>
       <pubDate>Sat, 04 Jun 2016 21:59:34 +0900</pubDate>
       <guid>https://kobtea.net/posts/2016/06/04/try-google-stackdriver/</guid>
-      <description>以前話題になったStackdriverをbetaのうちに触っておこうそうしよう。 AWSがCloudWatchなら、GCPはStackdriverや！！ Stackdriverの提供する機能 Documen</description>
+      <description>以前話題になったStackdriverをbetaのうちに触っておこうそうしよう。 AWSがCloudWatchなら、GCPはStackdriverや！！ Stackdriverの提供する機能 Documentを眺めてみると機能はこんな感じ。 正直下3つはまだ触れていないのでわりと適当。 Monitoring 監視と計測のためのサービス Agentをリソースに仕込んでメトリックを取得する Agentを使わなくても、GCP APIを使って簡単なメトリックは取得してくれる みんな大好きアラート発砲もできる GCPだけでなく、AWSにも対応し</description>
     </item>
     <item>
       <title>OpenGrokのデザインを変更する</title>
       <link>https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/</link>
       <pubDate>Sat, 14 May 2016 04:21:57 +0900</pubDate>
       <guid>https://kobtea.net/posts/2016/05/14/customize-skin-for-opengrok/</guid>
-      <description>以前Ubuntu trustyにOpenGrokをインストールするで、 サイトのデザインを変えたい場合はどうすればいいんだろう…folkして魔改造するのかな…それはつらそうだな… と書いたけど、方法がわかっ</description>
+      <description>以前Ubuntu trustyにOpenGrokをインストールするで、 サイトのデザインを変えたい場合はどうすればいいんだろう…folkして魔改造するのかな…それはつらそうだな… と書いたけど、方法がわかったのでメモ。 標準でいくつかのデザインテーマが提供されていた。 Web Site Look &amp;amp; Feel Option OpenGrok wrapper scriptを眺めていたらSKINなんて環境変数を見つけた。 https://github.com/OpenGrok/OpenGrok/blob/0.12.1.5/OpenGrok#L278-L281 標準でdefault, offwhite, polishedの3種類のスキンが提供されている。 「ちょっとだけ気分を変えたいな」程度であれば、このスキンを使えば幸せになれそう。 スキン ど</description>
     </item>
     <item>
       <title>Ubuntu trustyにOpenGrokをインストールする</title>
       <link>https://kobtea.net/posts/2016/05/03/setup-opengrok/</link>
       <pubDate>Tue, 03 May 2016 03:16:25 +0900</pubDate>
       <guid>https://kobtea.net/posts/2016/05/03/setup-opengrok/</guid>
-      <description>tomcat力低いけどOpenGrok使ってみたいんや！ お試しにvagrantで立ててみる。 参考: How to install OpenGrok Supported Languages and Formats 環境 Ubuntu 14.04.4 OpenJDK 1.7.0_95 OpenGrok 0.12.1.5 Setup 必要なpackageをインストールする。 ~$ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y ~$ sudo apt-get install openjdk-7-jdk</description>
+      <description>tomcat力低いけどOpenGrok使ってみたいんや！ お試しにvagrantで立ててみる。 参考: How to install OpenGrok Supported Languages and Formats 環境 Ubuntu 14.04.4 OpenJDK 1.7.0_95 OpenGrok 0.12.1.5 Setup 必要なpackageをインストールする。 ~$ sudo apt-get update &amp;amp;&amp;amp; sudo apt-get upgrade -y ~$ sudo apt-get install openjdk-7-jdk tomcat7 exuberant-ctags git subversion mercurial OpenGrokのarchiveを落としてくる。 ~$ wget -O - https://java.net/projects/opengrok/downloads/download/opengrok-0.12.1.5.tar.gz | tar xvzf - ~$ ./opengrok-0.12.1.5/bin/OpenGrok --help Loading the default instance configuration ... Usage: OpenGrok &amp;lt;deploy|derby|update|updateQuietly|usage|help&amp;gt; OpenGrok index [&amp;lt;directory&amp;gt;] OpenGrok indexpart &amp;lt;src_root&amp;gt; &amp;lt;directory1&amp;gt; [..] OpenGrok clearHistory [&amp;lt;repository_name&amp;gt;] Optional environment variables: OPENGROK_CONFIGURATION - location of your configuration e.g. $ OPENGROK_CONFIGURATION=/var/opengrok/myog.conf ./opengrok-0.12.1.5/bin/OpenGrok ... See the code for more information on configuration options / variables See the code for more information on configuration options / variables Oh&amp;hellip;軟弱者にとても厳しい。 と思ったけど、bin/OpenGrok自体はただのshell sc</description>
     </item>
     <item>
       <title>2015年の振り返り</title>
       <link>https://kobtea.net/posts/2015/12/31/inventory-of-2015/</link>
       <pubDate>Thu, 31 Dec 2015 22:00:48 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/12/31/inventory-of-2015/</guid>
-      <description>こたつでぬくぬく。 思いつくキーワードを拾いつつ、だらだら思い返す。 技術的なこと もう少し頑張りましょう OSSコントリビュート パッチを投げて初コントリビュートした。 メンテナの方が深夜にもかかわらず素早くレ</description>
+      <description>こたつでぬくぬく。 思いつくキーワードを拾いつつ、だらだら思い返す。 技術的なこと もう少し頑張りましょう OSSコントリビュート パッチを投げて初コントリビュートした。 メンテナの方が深夜にもかかわらず素早くレスポンスをくれたり、&amp;ldquo;このコミット1つにまとめてね&amp;quot;とか手取り足取り教えてくれた。 GitHubはカジュアルにパッチが投げられていいなー Scala ここ1年くらいscalaをたくさん書いていた。 関数型言語をまともに触ったのはこれが初めてだけど、ずっとオブジェクト指向で関数型初めてです＞＜と</description>
     </item>
     <item>
       <title>RAID組もうとしたけどrsync(robocopy)で済ませた話</title>
       <link>https://kobtea.net/posts/2015/12/20/rsync-instead-raid/</link>
       <pubDate>Sun, 20 Dec 2015 18:19:02 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/12/20/rsync-instead-raid/</guid>
-      <description>ちょびちょびバックアップはとっていたけど、まともな冗長構成の取れたストレージが自宅になかった。 写真とか自炊本を失う前にいい加減なんとかしようそうしよう。 紆余曲折あったのでありのままの紆余曲折を書いてい</description>
+      <description>ちょびちょびバックアップはとっていたけど、まともな冗長構成の取れたストレージが自宅になかった。 写真とか自炊本を失う前にいい加減なんとかしようそうしよう。 紆余曲折あったのでありのままの紆余曲折を書いていく。 自宅の環境 デスクトップPC (Windows) 常時起動していて自宅サーバ状態 意識低いことする用 Macbook Air コード書いたりする 意識高いことする用 プランをいくつか考えてみる RAIDを組めるストレージといえばNASということで、NASを買うかどうかも含め考えられるプランは3つ。 アプライアンスNAS案 自作NAS案 Windows機</description>
     </item>
     <item>
       <title>[Scala] sbt consoleでCtrl-Dが効かなくなったらthread設定を疑う</title>
       <link>https://kobtea.net/posts/2015/09/15/sbt-console-quit/</link>
       <pubDate>Tue, 15 Sep 2015 22:10:55 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/09/15/sbt-console-quit/</guid>
-      <description>環境 scalaVersion := &amp;#34;2.11.6&amp;#34; libraryDependencies += &amp;#34;com.typesafe.akka&amp;#34; %% &amp;#34;akka-actor&amp;#34; % &amp;#34;2.3.11&amp;#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&amp;gt; import scala.concurrent.Future scala&amp;gt; import akka.actor.ActorSystem scala&amp;gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&amp;gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&amp;gt; :q // consoleから抜</description>
+      <description>環境 scalaVersion := &amp;#34;2.11.6&amp;#34; libraryDependencies += &amp;#34;com.typesafe.akka&amp;#34; %% &amp;#34;akka-actor&amp;#34; % &amp;#34;2.3.11&amp;#34; 悩み akkaでthread pool作って遊んでたらsbt consoleをctrl-Dで抜けられなくなった。 scala&amp;gt; import scala.concurrent.Future scala&amp;gt; import akka.actor.ActorSystem scala&amp;gt; implicit val ec = ActorSystem().dispatcher ec: scala.concurrent.ExecutionContextExecutor = Dispatcher[akka.actor.default-dispatcher] scala&amp;gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@9ccb14d scala&amp;gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ akkaが原因かな？と思い、ExecutorServiceを使ってみたけど同じくconsoleを抜けられない。 scala&amp;gt; import scala.concurrent.{Future, ExecutionContext} scala&amp;gt; import java.util.concurrent.Executors scala&amp;gt; implicit val ec = ExecutionContext.fromExecutorService(Executors.newFixedThreadPool(1)) ec: scala.concurrent.ExecutionContextExecutorService = scala.concurrent.impl.ExecutionContextImpl$$anon$1@8a0f6d7 scala&amp;gt; Future(1)(ec) res0: scala.concurrent.Future[Int] = scala.concurrent.impl.Promise$DefaultPromise@64918adb scala&amp;gt; :q // consoleから抜けられない(´；ω；｀)ﾌﾞﾜｯ scala.concurrent.ExecutionC</description>
     </item>
     <item>
       <title>YAPC::Asia Tokyo 2015 で聴いたセッションのメモや感想</title>
       <link>https://kobtea.net/posts/2015/08/23/yapc/</link>
       <pubDate>Sun, 23 Aug 2015 22:59:36 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/08/23/yapc/</guid>
-      <description>最初で最後のYAPC。 聴いたセッションのメモとか感想とかをぽつぽつと。 前夜祭 PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版） Hackとの速度勝負 Hackが</description>
+      <description>最初で最後のYAPC。 聴いたセッションのメモとか感想とかをぽつぽつと。 前夜祭 PHP帝国の逆襲！（を願うPHPerが話す最近のPHPについてのクイックツアー PHP7対応版） Hackとの速度勝負 Hackが前に流行ったけどPHP7では基本速度は大差無い コミニュティが安定しているPHP7を使ったほうが無難 PHP使う&amp;hellip;? スタートアップなどスピード勝負でガリガリ書きたいときは適している SlackもPHP使ってるしまだまだオワコンじゃないよ！ はてなブックマークのトピックページの裏側 Elastic</description>
     </item>
     <item>
       <title>YAPC::Asia Tokyo 2015 「ISUCONの勝ち方」メモ</title>
       <link>https://kobtea.net/posts/2015/08/22/yapc-isucon/</link>
       <pubDate>Sat, 22 Aug 2015 19:19:11 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/08/22/yapc-isucon/</guid>
-      <description>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。 そのうちスライドも公開して頂けるらしいが自分のために。 リンク [公式]ISUCON [公式]トーク情報 togetter スピーカー:</description>
+      <description>インフラ力が上がると噂の競技ISUCONについて、ISUCON4優勝者自ら必勝法を公開。 そのうちスライドも公開して頂けるらしいが自分のために。 リンク [公式]ISUCON [公式]トーク情報 togetter スピーカー: @kazeburo さん 時間配分 競技全体では7時間 最初の1時間 まだ慌てるような時間じゃない 課題の理解、プロファイリング・チューニングの方向性を決める 最後の30分 再起動テストだけに使う 再起動の失敗はよくある 上記を考慮すると、実際の作業時間は5時間ほど 事前準備 chatroom (private) git repository 当日作業のリビジョン管理 見えてもいいならpublic wiki</description>
     </item>
     <item>
       <title>[Scala] Future#recoverを使って例外処理する</title>
       <link>https://kobtea.net/posts/2015/05/18/scala-future-recover/</link>
       <pubDate>Mon, 18 May 2015 20:56:24 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/05/18/scala-future-recover/</guid>
-      <description>環境 ➜ ~ scala Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11). Type in expressions to have them evaluated. Type :help for more information. やりたいこと scala.concurrent.Futureで例外が発生してFailureになったとき、 デフォルト値を適用してSuccessで返</description>
+      <description>環境 ➜ ~ scala Welcome to Scala version 2.11.6 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_11). Type in expressions to have them evaluated. Type :help for more information. やりたいこと scala.concurrent.Futureで例外が発生してFailureになったとき、 デフォルト値を適用してSuccessで返したい！ Failureのままでいいんだけど別の例外を投げたい！ といったことをしたい。 recoverを使う そんなときのためのFuture#recover。 Throwableをキャッチして新しいFutureを作ってくれる。 シグネチャは以下。 def recover[U &amp;gt;: T](pf: PartialFunction[Throwable, U])(implicit executor: ExecutionContext): Future[U] ソースはこの辺。 下準備 scala&amp;gt; import scala.concurrent.Future import scala.concurrent.Future scala&amp;gt; import scala.concurrent.ExecutionContext.Implicits.global import scala.concurrent.ExecutionContext.Implicits.global scala&amp;gt; case</description>
     </item>
     <item>
       <title>Java Optionの一覧表示</title>
       <link>https://kobtea.net/posts/2015/03/28/java-printflagsfinal/</link>
       <pubDate>Sat, 28 Mar 2015 01:23:54 +0900</pubDate>
       <guid>https://kobtea.net/posts/2015/03/28/java-printflagsfinal/</guid>
-      <description>JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。 そんなときは-XX:+PrintFlagsFinal等を使うと幸せになれるかもしれない！ (しかしこのO</description>
+      <description>JavaのOptionは口コミとかググって知ったオプションを使うとかでイマイチ全体観がつかめない。 そんなときは-XX:+PrintFlagsFinal等を使うと幸せになれるかもしれない！ (しかしこのOptionも先の例に漏れず偶然知った) Java Optionを表示するには3つのOptionがある。 -XX:+PrintFlagsFinal: 最終的な設定値 -XX:+PrintFlagsInitial: 初期値 -XX:+PrintCommandLineFlags: コマンドライン上で与えた設定値 -XX:+PrintFlagsFinal Option $ java -XX:+PrintFlagsFinal -version [Global flags] uintx AdaptiveSizeDecrementScaleFactor = 4 {product} uintx AdaptiveSizeMajorGCDecayTimeScale = 10 {product} uintx AdaptiveSizePausePolicy = 0 {product} uintx AdaptiveSizePolicyCollectionCostMargin = 50 {product} uintx AdaptiveSizePolicyInitializingSteps = 20 {product} uintx AdaptiveSizePolicyOutputInterval = 0 {product} uintx AdaptiveSizePolicyWeight = 10 {product} uintx AdaptiveSizeThroughPutPolicy = 0 {product} uintx AdaptiveTimeWeight = 25 {product} bool AdjustConcurrency = false {product} bool AggressiveOpts = false {product} intx AliasLevel = 3 {C2 product} bool AlignVector = false {C2 product} intx</description>
     </item>
     <item>
       <title>WindowsでUS配列&#43;親指IME ON/OFFするための設定</title>
       <link>https://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</link>
       <pubDate>Sun, 23 Mar 2014 00:43:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2014/03/23/setup-us-keyboard-on-win/</guid>
-      <description>macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。 RealforceのUS配列を購入してwinに設定したこと。 環境 OS: Windows7 64bit Keyboard: Realforce 87U デスクトップ環境な</description>
+      <description>macでJIS配列からUS配列にジョブチェンジして1年位経ったので、win環境でもUS配列にしたいなーと。 RealforceのUS配列を購入してwinに設定したこと。 環境 OS: Windows7 64bit Keyboard: Realforce 87U デスクトップ環境なので今回考えてないけど、ノートの場合は本体の配列がーとか考慮してあげないといけない。 やりたいこと [alt] [無変換] [space] [変換] [alt] みたいな配列にしたい [半角/全角] みたいなトグルは使いたくない macのJIS配列みたいな感じ。 作業ログ 英語キーボードとして認識させる # レジストリエディタを起動 Start &amp;gt; regedit # キーボード設定</description>
     </item>
     <item>
       <title>MBAにpyenvを入れる</title>
       <link>https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</link>
       <pubDate>Sun, 24 Nov 2013 17:31:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2013/11/24/install-pyenv-on-mba/</guid>
-      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。 Simple Python Version Management: pyenvを参考に。 Macでhomebrew使っているなら、brewで入れるのが</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのpython版ないかなーと探してみたらpyenvなんてそのまんまなものがあった。 Simple Python Version Management: pyenvを参考に。 Macでhomebrew使っているなら、brewで入れるのがらくちん。 # brewを最新の状態にする $ brew update $ brew upgrade $ brew search pyenv pyenv pyenv-virtualenv $ brew install pyenv Warning: Your Xcode (4.6.3) is outdated Please update to Xcode 5.0.1. Xcode can be updated from the App Store. ==&amp;gt; Downloading https://github.com/yyuu/pyenv/archive/v0.4.0-20131116.tar.gz ######################################################################## 100.0% ==&amp;gt; Caveats To enable shims and autocompletion add to your profile: if which pyenv &amp;gt; /dev/null; then eval &amp;#34;$(pyenv init -)&amp;#34;; fi To use Homebrew&amp;#39;s directories rather than ~/.pyenv add to your profile: export PYENV_ROOT=/usr/local/opt/pyenv ==&amp;gt; Summary 🍺 /usr/local/Cellar/pyenv/20131116: 199 files, 2.2M, built in 5 seconds .profileとかに以下を追記する。 if which pyenv &amp;gt; /dev/null; then eval &amp;#34;$(pyenv init -)&amp;#34;; fi profileを再読み込み。 $</description>
     </item>
     <item>
       <title>Github Pagesにカスタムドメインを割り当てる</title>
       <link>https://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</link>
       <pubDate>Mon, 23 Sep 2013 21:39:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2013/09/23/set-custom-domain-at-github-pages/</guid>
-      <description>参考: Setting up a custom domain with Pages - Github Pages Custom Domains - Octopress リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。 Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step.</description>
+      <description>参考: Setting up a custom domain with Pages - Github Pages Custom Domains - Octopress リポジトリのトップディレクトリにCNAMEファイルを作成して、そこに定義するだけで良いみたい。 Tip: After creating the file, it can take up to 10 minutes for the content to become available. Once the Page content is available, you can continue to make the DNS changes in the next step. If the Page doesn&amp;rsquo;t build successfully, you&amp;rsquo;ll receive a notification from GitHub. Setting up a custom domain with Pages - Github Pages 反映されるのに10分くらい待ってね、とのこと。 反映されたらメールをくれるらしい。 Octopress側の設定 source/CNAMEに割り当てるドメインを設定する。 $ echo &amp;#39;blog.kobtea.net&amp;#39; &amp;gt;&amp;gt; source/CNAME _config.ymlのurlも変更しておく。 source: _config.yml # ----------------------- # # Main Configs # # ----------------------- # url: http://blog.kobtea.net title: blog.kobtea.net subtitle: 咳を</description>
     </item>
     <item>
       <title>Octopressのテーマを変更する</title>
       <link>https://kobtea.net/posts/2013/09/23/change-octopress-theme/</link>
       <pubDate>Mon, 23 Sep 2013 14:56:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2013/09/23/change-octopress-theme/</guid>
-      <description>3rd Party Octopress Themesで公開されているので気に入ったものを選ぶ。 CleanPressがステキ。 # テーマのディレクトリまで行ってテーマのリポジトリをclone $ cd octopress/.theme $ git clone git@github.com:macjasp/cleanpress.git Cloning into &amp;#39;cleanpress&amp;#39;... remote: Counting objects: 273, done. remote: Compressing objects: 100% (248/248), done. remote: Total 273</description>
+      <description>3rd Party Octopress Themesで公開されているので気に入ったものを選ぶ。 CleanPressがステキ。 # テーマのディレクトリまで行ってテーマのリポジトリをclone $ cd octopress/.theme $ git clone git@github.com:macjasp/cleanpress.git Cloning into &amp;#39;cleanpress&amp;#39;... remote: Counting objects: 273, done. remote: Compressing objects: 100% (248/248), done. remote: Total 273 (delta 30), reused 229 (delta 16) Receiving objects: 100% (273/273), 1.09 MiB | 554 KiB/s, done. Resolving deltas: 100% (30/30), done. # テーマを適用する $ rake install\[cleanpress\] (in /Users/kobtea/Programs/octopress) A theme is already installed, proceeding will overwrite existing files. Are you sure? [y/n] y ## Copying cleanpress theme into ./source and ./sass mkdir -p source cp -r .themes/cleanpress/source/. source mkdir -p sass cp -r .themes/cleanpress/sass/. sass mkdir -p source/_posts mkdir -p public # generate! $ rake generate (in /Users/kobtea/Programs/octopress) ## Generating Site with Jekyll unchanged sass/screen.scss Configuration from /Users/kobtea/Programs/octopress/_config.yml Building site: source -&amp;gt; public Successfully generated site: source -&amp;gt; public rake previewしてちゃんと反映されているかを確認する。 おおん、ページ作っていないAbo</description>
     </item>
     <item>
       <title>Octopress &#43; Github Pagesな環境構築</title>
       <link>https://kobtea.net/posts/2013/09/23/setup-octopress/</link>
       <pubDate>Mon, 23 Sep 2013 01:54:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2013/09/23/setup-octopress/</guid>
-      <description>もはや様式美だけど自分のために。 公式のOctopress Documentationを参考に。 $ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby -v ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ gem -v 2.0.3 $ bundle -v Bundler version 1.3.5 Octopressのセットアップ 参考 : Octopress Setup # リポジ</description>
+      <description>もはや様式美だけど自分のために。 公式のOctopress Documentationを参考に。 $ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby -v ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ gem -v 2.0.3 $ bundle -v Bundler version 1.3.5 Octopressのセットアップ 参考 : Octopress Setup # リポジトリをclone $ git clone git://github.com/imathis/octopress.git octopress $ cd octopress # 必要なgemを入れる $ bundle install $ rake install rake aborted! You have already activated rake 0.9.6, but your Gemfile requires rake 0.9.2.2. Using bundle exec may solve this. /Users/kobtea/Programs/octopress/Rakefile:2:in `&amp;lt;top (required)&amp;gt;&amp;#39; (See full trace by running task with --trace) # 失敗した # 落ち着いてもう一度update $ bundle update $ rake install ## Copying classic theme into ./source and ./sass mkdir -p source cp -r .themes/classic/source/. source mkdir -p sass cp -r .themes/classic/sass/. sass mkdir -p source/_posts mkdir -p public rakeタスクを見てみる。 $ rake -T rake clean # Clean out caches: .pygments-cache, .gist-cache, .sass-cache rake copydot[source,dest] # copy dot files</description>
     </item>
     <item>
       <title>MBAにRuby環境を作る</title>
       <link>https://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</link>
       <pubDate>Mon, 23 Sep 2013 00:17:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2013/09/23/install-ruby-on-mba/</guid>
-      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのreadmeにそってやる。 PATHについて解説までしてくれるとかマジ天使。 rbenvのインストール # homebrewを最新の状態に $ brew update $ brew upgrade # rbenvをインストール</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 rbenvのreadmeにそってやる。 PATHについて解説までしてくれるとかマジ天使。 rbenvのインストール # homebrewを最新の状態に $ brew update $ brew upgrade # rbenvをインストール $ brew install rbenv ==&amp;gt; Downloading https://github.com/sstephenson/rbenv/archive/v0.4.0.tar.gz ######################################################################## 100.0% ==&amp;gt; Caveats To use Homebrew&amp;#39;s directories rather than ~/.rbenv add to your profile: export RBENV_ROOT=/usr/local/var/rbenv To enable shims and autocompletion add to your profile: if which rbenv &amp;gt; /dev/null; then eval &amp;#34;$(rbenv init -)&amp;#34;; fi ==&amp;gt; Summary 🍺 /usr/local/Cellar/rbenv/0.4.0: 31 files, 152K, built in 2 seconds # ruby-buildをインストール $ brew install ruby-build ######################################################################## 100.0% ==&amp;gt; ./configure --prefix=/usr/local/Cellar/autoconf/2.69 ==&amp;gt; make install 🍺 /usr/local/Cellar/autoconf/2.69: 69 files, 2.0M, built in 8 seconds ==&amp;gt; Installing ruby-build ==&amp;gt; Downloading https://github.com/sstephenson/ruby-build/archive/v20130907.tar.gz ######################################################################## 100.0% ==&amp;gt; ./install.sh 🍺 /usr/local/Cellar/ruby-build/20130907: 83 files, 368K, built in 2 seconds profileとかrcに以下を追記する。 $ echo &amp;#39;if which rbenv &amp;gt; /dev/null; then eval &amp;#34;$(rbenv init -)&amp;#34;; fi&amp;#39; &amp;gt;&amp;gt; ~/.zprofile $ source</description>
     </item>
     <item>
       <title>irbで日本語が文字化けする</title>
       <link>https://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</link>
       <pubDate>Sun, 22 Sep 2013 23:38:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2013/09/22/use-multibytes-on-ruby/</guid>
-      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby --version ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ irb --version irb 0.9.6(09/06/30) &amp;lsquo;日本語&amp;rsquo;と打とうとするとこうなる。 $ irb irb(main):001:0&amp;gt; p &amp;#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&amp;#39; &amp;#34;&amp;#34; =&amp;gt; &amp;#34;&amp;#34; 色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこ</description>
+      <description>$ sw_vers ProductName: Mac OS X ProductVersion: 10.8.4 BuildVersion: 12E3067 $ ruby --version ruby 2.0.0p247 (2013-06-27 revision 41674) [x86_64-darwin12.4.1] $ irb --version irb 0.9.6(09/06/30) &amp;lsquo;日本語&amp;rsquo;と打とうとするとこうなる。 $ irb irb(main):001:0&amp;gt; p &amp;#39;\U+FFE6\U+FFA5\U+FFE6\U+FFAC\U+FFE8\U+FFAA&amp;#39; &amp;#34;&amp;#34; =&amp;gt; &amp;#34;&amp;#34; 色々調べてみたらMacデフォルトのreadlineがあんまりイケてないとのこと。 irb で日本語を使うならば、下記でインストール。 CONFIGURE_OPTS=&amp;#34;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&amp;#34; rbenv install 2.0.0-p247 [Ruby on Rails] RUBY_CONFIGURE_OPTS, readline, openssl # readlineとopensslをインストールする $ brew install readline $ brew install openssl # 参考通りにやってみる $ CONFIGURE_OPTS=&amp;#34;--with-readline-dir=`brew --prefix readline` --enable-bundled-libyaml&amp;#34; rbenv install 2.0.0-p247 rbenv: /Users/kobtea/.rbenv/versions/2.0.0-p247 already exists continue with installation? (y/N) y Downloading ruby-2.0.0-p247.tar.gz... -&amp;gt; http://cache.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p247.tar.gz Installing ruby-2.0.0-p247... Installed ruby-2.0.0-p247 to /Users/kobtea/.rbenv/versions/2.0.0-p247 Fetching: bundler-1.3.5.gem (100%) Successfully installed bundler-1.3.5 Parsing documentation for bundler-1.3.5 Installing ri documentation for bundler-1.3.5 1 gem installed どきどき&amp;hellip; $ irb irb(main):001:0&amp;gt; puts &amp;#39;ほげ</description>
     </item>
     <item>
       <title>VimでステキなMarkdownライフを送りたい</title>
       <link>https://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</link>
       <pubDate>Sun, 22 Sep 2013 22:57:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2013/09/22/use-markdown-on-vim/</guid>
-      <description>インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追記する。 NeoBundle使ってるよ。 &amp;#34; .vimrc NeoBundle &amp;#39;plasticboy/vim-markdown&amp;#39; NeoBundle &amp;#39;kannokanno/previm&amp;#39; NeoBundle &amp;#39;tyru/open-browser.vim&amp;#39; &amp;#34;g:previm_open_cmd &amp;#34; o</description>
+      <description>インストールするもの。 https://github.com/plasticboy/vim-markdown markdown用シンタックスハイライト https://github.com/kannokanno/previm markdownのプレビュー https://github.com/tyru/open-browser.vim URIをブラウザで開く .vimrcに以下を追記する。 NeoBundle使ってるよ。 &amp;#34; .vimrc NeoBundle &amp;#39;plasticboy/vim-markdown&amp;#39; NeoBundle &amp;#39;kannokanno/previm&amp;#39; NeoBundle &amp;#39;tyru/open-browser.vim&amp;#39; &amp;#34;g:previm_open_cmd &amp;#34; open-browser使用時は不要 autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setfiletype mkd mkdファイルを良い感じに編集して、:PrevimOpenするといい感じにプレビューが出る。 ファイル保存すると、自動で更新される。 ステキやん。</description>
     </item>
     <item>
       <title>こんにちはOctopress</title>

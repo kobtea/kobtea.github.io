@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>book on kobtea.net</title>
+    <title>Book on kobtea.net</title>
     <link>https://kobtea.net/tags/book/</link>
-    <description>Recent content in book on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Book on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Mon, 04 Dec 2017 21:26:45 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/book/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +14,7 @@
       <link>https://kobtea.net/posts/2017/12/04/google-sre-book/</link>
       <pubDate>Mon, 04 Dec 2017 21:26:45 +0900</pubDate>
       <guid>https://kobtea.net/posts/2017/12/04/google-sre-book/</guid>
-      <description>やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。 SREってなんだろう ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。 価値を素早く提供す</description>
+      <description>やっとこさ読み終わったので、読む前に感じていた疑問を含めつつ感想などを書いておく。 SREってなんだろう ユーザに価値を最速かつ継続的に提供することを目的に添えた、開発もできる運用部隊。 価値を素早く提供するためには、インフラなどプロダクトチーム以外のリソースが制約事項になってはいけない。ということで人的リソースの制約を乗り越え、SREの価値をスケーラブルにするため自動化・自律化・マイクロサービス化などを積極的に行う。ナレッジに関してもスケールするよう明文化・定量化を徹底し、エンジニアが暗黙的・良心で</description>
     </item>
   </channel>
 </rss>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>grafana on kobtea.net</title>
+    <title>Grafana on kobtea.net</title>
     <link>https://kobtea.net/tags/grafana/</link>
-    <description>Recent content in grafana on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Grafana on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sun, 29 Aug 2021 19:37:00 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/grafana/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,7 +14,7 @@
       <link>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</link>
       <pubDate>Sun, 29 Aug 2021 19:37:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2021/08/29/monitoring-mixins/</guid>
-      <description>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitori</description>
+      <description>概要 Prometheus, Grafanaの監視基盤で遭遇する、Rule, Dashboardをどうやって管理しようかという話。 Raw Yaml/Json, Jsonnet, k8s CRDなど各社方法は様々だが、今回はJsonnetでの管理をより拡張したMonitoring Mixinsに焦点を当てる。 Monitoring Mixins Monitoring MixinsはPrometheus rule, Grafana dashboardといった監視設定のPackagingを目指すプロジェクト。 ExporterのMetricsだけではなく、それを使って何を観測し可視化するかという知見を共有するのが目的。Out-of-the-boxでいい感じ</description>
     </item>
   </channel>
 </rss>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>linux on kobtea.net</title>
+    <title>Linux on kobtea.net</title>
     <link>https://kobtea.net/tags/linux/</link>
-    <description>Recent content in linux on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Linux on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sun, 12 May 2019 17:01:00 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +14,14 @@
       <link>https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/</link>
       <pubDate>Sun, 12 May 2019 17:01:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2019/05/12/linux-dictionary-goldendict/</guid>
-      <description>linuxでもお手軽に辞書を引きたい。 探した所GoldenDictというのがあったのでこれ使う。 環境 $ lsb_release -d Description: Ubuntu 18.04.2 LTS $ dpkg -l | egrep &amp;#39;goldendict|albert&amp;#39; ii albert 0.16.1 amd64 A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt ii goldendict 1.5.0~rc2+git20170908+ds-1 amd64 feature-rich dictionary lookup program GoldenDict aptで入れる。 $ sudo apt install goldendict 辞書</description>
+      <description>linuxでもお手軽に辞書を引きたい。 探した所GoldenDictというのがあったのでこれ使う。 環境 $ lsb_release -d Description: Ubuntu 18.04.2 LTS $ dpkg -l | egrep &amp;#39;goldendict|albert&amp;#39; ii albert 0.16.1 amd64 A sophisticated, plugin-based, standalone keyboard launcher written in C++/Qt ii goldendict 1.5.0~rc2+git20170908+ds-1 amd64 feature-rich dictionary lookup program GoldenDict aptで入れる。 $ sudo apt install goldendict 辞書データは自分で入れるスタイルらしい。 公式のリンクから英和・和英辞書を探す。Babylon良さそう。 Babylon English-Japanese Dictionary - Babylon Babylon Japanese-English Dictionary - Babylon dotfile下に辞書用のディレクトリを作って、&amp;ldquo;辞書ファイルを検索するパス&amp;quot;に登録しておく。 $ mkdir $HOME/.goldendict/dict $ mv $HOME/Downloads/Babylon-* $HOME/.goldendict/dict Albert連携 ランチャにalbertを使っているの</description>
     </item>
     <item>
       <title>LinuxでKeymapをmacOSぽくする</title>
       <link>https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/</link>
       <pubDate>Fri, 03 May 2019 19:47:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2019/05/03/linux-keymap-like-mac/</guid>
-      <description>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。 shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu macos - Efficient key bindings using both</description>
+      <description>macユーザがmacOS離れをすると、キーマップ問題にだいたい悩まされる。 みんな同じ悩みを抱えている様子だけど、ベストプラクティスらしいものは見つからない。 shortcut keys - How to make keyboard work like OSX System Wide? - Ask Ubuntu macos - Efficient key bindings using both Mac and Linux - Super User Is it possible to have an OS X-like key map in Gnome (Ubuntu)? : linux 自分もその1人だけど、今回だいぶ満足できる環境になったのでメモしておく。 macOSぽいキーマップとは macOSではcommandとctrlで役割がちゃんと分離されている。 commandキーを使ったショートカットは、全て選択・カット・ペースト・ウィンドウを閉じ</description>
     </item>
   </channel>
 </rss>

@@ -1,4 +1,3 @@
 User-agent: *
-Disallow:
 
-Sitemap: http://kobtea.net/sitemap.xml
+Sitemap: https://kobtea.net/sitemap.xml

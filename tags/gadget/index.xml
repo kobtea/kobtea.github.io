@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>gadget on kobtea.net</title>
+    <title>Gadget on kobtea.net</title>
     <link>https://kobtea.net/tags/gadget/</link>
-    <description>Recent content in gadget on kobtea.net</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Gadget on kobtea.net</description>
+    <generator>Hugo</generator>
     <language>ja-jp</language>
-    <copyright>Copyright © 2013-2023, kobtea</copyright>
+    <copyright>Copyright © 2013-2024, kobtea</copyright>
     <lastBuildDate>Sun, 03 Feb 2019 17:25:00 +0900</lastBuildDate>
     <atom:link href="https://kobtea.net/tags/gadget/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -14,14 +14,14 @@
       <link>https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/</link>
       <pubDate>Sun, 03 Feb 2019 17:25:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2019/02/03/tex-yoda-2-with-macos/</guid>
-      <description>前回: TEX Yoda IIを作る 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。 キーマップ 最終的にキーマップはこんな感じになった。 そんな特殊なマップにはしていない。</description>
+      <description>前回: TEX Yoda IIを作る 1ヶ月弱macOSで使ってみたら、ちょいちょい試行錯誤したり諦めが必要なところがあったのでメモ。 キーマップ 最終的にキーマップはこんな感じになった。 そんな特殊なマップにはしていない。 中クリックがfnなのでサクサクfn押せて便利。 fn + wasdで方向キーは昔FPSしていたこともあり、hjklとかijkmよりも上下については直感的で良い。音量・メディア周りも手前に配置されているので、ありがとうデフォルト配列という感じに使っている。 概ね満足しているけど、今までは1の左にあった`, ~がf</description>
     </item>
     <item>
       <title>TEX Yoda IIを作る</title>
       <link>https://kobtea.net/posts/2019/01/11/tex-yoda-2/</link>
       <pubDate>Fri, 11 Jan 2019 15:24:00 +0900</pubDate>
       <guid>https://kobtea.net/posts/2019/01/11/tex-yoda-2/</guid>
-      <description>TEX Yoda IIというキーボードキットを買ったのでビルドログを残しておく。 TEX Yoda II (個人的には)魅力はトラックポイントが付いているというただ一点、でもそれで十分ポチれる魅力がある。 キーマップを自由にいじれたり、</description>
+      <description>TEX Yoda IIというキーボードキットを買ったのでビルドログを残しておく。 TEX Yoda II (個人的には)魅力はトラックポイントが付いているというただ一点、でもそれで十分ポチれる魅力がある。 キーマップを自由にいじれたり、マクロを組み込んだりとイマドキな機能も付いている。 見た目もステキ。 キーボードキットなので自分で組み立てる必要がある、いわゆる自作キーボード。 自分はMassdropで買った。時期によるかもしれないけど、mechanicalkeyboards.comで買ったほうが今は安いらしい。ちなみにmechanic</description>
     </item>
   </channel>
 </rss>
